@@ -1,0 +1,6 @@
+CompileFlags:
+  Add: -std=c++20
+Diagnostics:
+  ClangTidy:
+    Add: modernize*
+    Remove: modernize-use-trailing-return-type
