@@ -1,0 +1,56 @@
+{
+    "folders":
+    [
+        {
+            "path": ".",
+        }
+    ],
+    "debugger_configurations":
+    [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Add",
+            "program": "${folder}/build/add",
+            "args": ["12.14", "34", "-steps"],
+            "cwd": "${folder}/build",
+            "pre_debug_task": "Ninja Build"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Subtract",
+            "program": "${folder}/build/subtract",
+            "args": ["34", "12", "-steps"],
+            "cwd": "${folder}/build",
+            "pre_debug_task": "Ninja Build"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Comparison",
+            "program": "${folder}/build/comparison",
+            "args": ["4", "5"],
+            "cwd": "${folder}/build",
+            "pre_debug_task": "Ninja Build"
+        }
+    ],
+    "debugger_tasks":
+    [
+        {
+            "name": "Ninja Build",
+            "cmd": "ninja",
+            "working_dir": "$project_path/build"
+        },
+        {
+            "name": "Ninja Clean",
+            "cmd": ["ninja", "clean"],
+            "working_dir": "$project_path/build"
+        },
+        {
+            "name": "Format everything",
+            "shell_cmd": "find . -name '*.hpp' -o -name '*.cpp' | xargs clang-format -i",
+            "working_dir": "$project_path"
+        }
+    ]
+}
