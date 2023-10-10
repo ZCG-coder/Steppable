@@ -12,12 +12,12 @@ const std::string reportComparisonAtInteger(const std::string& a, const std::str
     if (bigger)
     {
         ss << BECAUSE " The integer part of " << a << " is bigger than the integer part of " << b << std::endl;
-        ss << "Therefore, " << a + " > " + b << std::endl;
+        ss << THEREFORE " " << a << " > " << b;
     }
     else
     {
         ss << BECAUSE " The integer part of " << b << " is bigger than the integer part of " << a << std::endl;
-        ss << b + " > " + a << std::endl;
+        ss << THEREFORE " " << b << " > " << a;
     }
 
     return std::move(ss.str());
