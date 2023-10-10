@@ -4,6 +4,7 @@
 
 #include <any>
 #include <array>
+#include <chrono>
 #include <cmath>
 #include <iomanip>
 #include <map>
@@ -47,7 +48,7 @@ constexpr inline NumberT abs(NumberT number)
     return number;
 }
 
-inline constexpr bool isNumber(const std::string& s)
+inline bool isNumber(const std::string& s)
 {
     if (s.empty())
         return false;
