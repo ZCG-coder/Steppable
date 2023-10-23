@@ -9,14 +9,14 @@
 #include <vector>
 
 const std::string reportAdd(const std::string& aInteger,
-                      const std::string& aDecimal,
-                      const std::string& bInteger,
-                      const std::string& bDecimal,
-                      const bool aIsDecimal,
-                      const bool bIsDecimal,
-                      const std::vector<int>& sumDigits,
-                      const std::vector<bool>& carries,
-                      const bool steps)
+                            const std::string& aDecimal,
+                            const std::string& bInteger,
+                            const std::string& bDecimal,
+                            const bool aIsDecimal,
+                            const bool bIsDecimal,
+                            const std::vector<int>& sumDigits,
+                            const std::vector<bool>& carries,
+                            const bool steps)
 {
     std::stringstream ss;
 
@@ -52,11 +52,14 @@ const std::string reportAdd(const std::string& aInteger,
         ss << std::endl << "   ";
         for (bool c : carries)
             if (c)
-                ss << "1  ";
+                ss << makeSubscript("1") << "  ";
             else
                 ss << "   ";
-        ss << std::endl << std::string(sumDigits.size() * 3 + 6, '_') << std::endl << "      ";
 
+        ss << std::endl << std::string((sumDigits.size() + 2) * 3, '_') << std::endl;
+        if (not (sumDigits.size() > aOut.length()))
+            ss << "   ";
+        ss << "   ";
         for (int outputChar : sumDigits)
         {
             if (outputChar == -1)

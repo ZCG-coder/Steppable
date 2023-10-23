@@ -1,4 +1,29 @@
 #pragma once
 
+#include "util.hpp"
+
+#include <iostream>
+#include <string>
+
 #define BECAUSE "\u2235"
 #define THEREFORE "\u2234"
+
+#define MULTIPLY "\u00D7"
+
+// Subscripts
+#define SUB_0 "\u2080"
+#define SUB_Z "\u1D69"
+#define SUB_MAGIC_NUMBER 8272
+
+std::string makeSubscript(const std::string& normal);
+
+std::string makeSubscript(const int normal);
+
+// Superscripts
+#define SUP_0 "\u2070"
+#define SUP_Z "\u1DBB"
+#define SUP_MAGIC_NUMBER 8256
+
+std::string makeSuperscript(const std::string& normal);
+
+std::string makeSuperscript(const char normal);
