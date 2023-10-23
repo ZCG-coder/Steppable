@@ -1,5 +1,16 @@
 # The Steppable Project
+[![Build Status](https://dev.azure.com/NWSOFT/Steppable/_apis/build/status%2FSteppable?branchName=main)](https://dev.azure.com/NWSOFT/Steppable/_build/latest?definitionId=3&branchName=main)
+
 This project tries to make a Computer Algebra System (CAS) out of scratch, and without any external libraries.
+
+## What is this?
+This project attempts to make a CAS that solves problems like a human does. It even adds, subtracts, multiplies, and
+divides using the column method. This is because we believe that a CAS should be able to solve problems step by step, so
+that the user can understand how the problem is solved.
+
+## What this is not?
+This is not a CAS intended for high-performance computing. This is because the basic arithmetic operations are much more
+time consuming than the plain old `+`, `-`, `*`, and `/` (around 10 times slower).
 
 ## Why another CAS?
 Out of [this list](https://en.wikipedia.org/wiki/List_of_computer_algebra_systems), we could not find a CAS that is:
@@ -10,17 +21,16 @@ Out of [this list](https://en.wikipedia.org/wiki/List_of_computer_algebra_system
 ## How does it work?
 We found that there is no simpler method of writing a step-by-step solver than imitating how a human solves it.
 So we wrote a parser that converts the input into a tree, and then we wrote a calculator that solves the tree step by
-step. Finally, the reporter shows the steps and resu
-lts to the user in a human-readable format.
+step. Finally, the reporter shows the steps and results to the user in a human-readable format.
 
-Currenly, only the calculator and the reporter is implemented, with very limited functionality. Here is a list of what
+Currently, only the calculator and the reporter is implemented, with very limited functionality. Here is a list of what
 we are planning to implement next (and in the near future):
 - [ ] Parser
 - [ ] Calculator and reporter (all the major functions)
     - [x] Comparison of integers and decimal
     - [x] Addition of integers and decimals
     - [x] Subtraction of integers and decimals
-    - [ ] Multiplication of integers and decimals
+    - [x] Multiplication of integers and decimals
     - [ ] Division of integers and decimals
     - [ ] Addition of fractions
     - [ ] Subtraction of fractions
@@ -32,7 +42,7 @@ we are planning to implement next (and in the near future):
     - [ ] Factoring of polynomials
 
 The parser is the most difficult part of the project, so we will probably start with the calculator and reporter first.
-When implemented, it will probably call the calculator(s) (which is/are compiled into executables together with the
+When implemented, it will probably call the calculator(s) (which is/are compiled into executable format together with the
 reporter) and then show the result to the user.
 
 ## How to get it running?
@@ -118,7 +128,8 @@ To add a new feature, `a`:
     * `aReport.cpp` - The report file to show the results.
     * `aReport.hpp` - A header that contains optional definition.
     > Note: Only the above-mentioned three files will be added to CMake.
-2. Add an entry to `src/CMakeLists.txt`
+2. Make sure to document the code. Please follow [this](docs/DOCUMENTING.md) for documentation guidelines.
+3. Add an entry to `src/CMakeLists.txt`
 ```cmake
 SET(COMPONENTS
     add
@@ -126,3 +137,4 @@ SET(COMPONENTS
     a # Replace with yours
 )
 ```
+4. Create a pull request.

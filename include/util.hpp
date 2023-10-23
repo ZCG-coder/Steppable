@@ -12,6 +12,8 @@
 #include <vector>
 
 #ifndef TIC
+/// FMCRO: TIC
+/// DESC : Start a timer to measure the time it takes to execute a section of code.
 #define TIC(...)                                                                                          \
     {                                                                                                     \
         const char* nameSection = #__VA_ARGS__;                                                           \
@@ -21,6 +23,8 @@
 #endif
 
 #ifndef TOC
+/// FMCRO: TOC
+/// DESC : Stop the timer and print the time it took to execute the section of code.
 #define TOC()                                                                                                    \
     auto duration =                                                                                              \
         std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start) \
@@ -32,6 +36,10 @@
     }
 #endif
 
+/// INFN : isZeroString
+/// OUT  : bool
+/// IN   : std::string string - The string to check.
+/// DESC : Check if a string is a zero string.
 inline bool isZeroString(std::string string)
 {
     for (char c : string)
@@ -40,14 +48,10 @@ inline bool isZeroString(std::string string)
     return true;
 }
 
-template<typename NumberT>
-constexpr inline NumberT abs(NumberT number)
-{
-    if (number < 0)
-        return -number;
-    return number;
-}
-
+/// INFN : isZeroString
+/// OUT  : bool
+/// IN   : std::string string - The string to check.
+/// DESC : Check if a string represents a number.
 inline bool isNumber(const std::string& s)
 {
     if (s.empty())
@@ -68,6 +72,10 @@ inline bool isNumber(const std::string& s)
     return true;
 }
 
+/// INFN : isZeroString
+/// OUT  : bool
+/// IN   : std::string string - The string to check.
+/// DESC : Check if a string is a zero string.
 template<typename CharT>
 std::vector<std::basic_string<CharT>> split(std::basic_string<CharT> s, CharT separator);
 
@@ -107,3 +115,9 @@ inline auto replace(std::basic_string<CharT>& s, const CharT t, const CharT repl
 {
     return lReplace(rReplace(s, t, replacement), t, replacement);
 }
+
+std::string makeWider(const std::string& orig);
+
+int utf8_to_unicode(const std::string& utf8_code);
+
+std::string unicode_to_utf8(int unicode);

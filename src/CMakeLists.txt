@@ -1,6 +1,7 @@
 SET(COMPONENTS
     add
     subtract
+    multiply
     baseConvert
     comparison
 )

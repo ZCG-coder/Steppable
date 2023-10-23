@@ -44,9 +44,9 @@ const std::string reportSubtract(const std::string& aInteger,
         {
             int currentBorrowDigit = borrows[i];
             if (currentBorrowDigit != aStr[i] - '0' and currentBorrowDigit >= 10)
-                ss << currentBorrowDigit << ' ';
+                ss << makeSubscript(std::to_string(currentBorrowDigit)) << ' ';
             else if (currentBorrowDigit != aStr[i] - '0' and currentBorrowDigit < 10 and currentBorrowDigit > 0)
-                ss << currentBorrowDigit << "  ";
+                ss << makeSubscript(std::to_string(currentBorrowDigit)) << "  ";
             else
                 ss << "   ";
         }
