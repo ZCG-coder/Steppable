@@ -84,8 +84,8 @@ int main(const int _argc, const char* _argv[])
 
     if (profile)
     {
-        TIC(Column Method Addition)
-        std::cout << "Column Method Addition :\n" << multiply(aStr, bStr, steps) << std::endl;
+        TIC(Column Method Multiplication)
+        std::cout << "Column Method Multiplication :\n" << multiply(aStr, bStr, steps) << std::endl;
         TOC()
     }
     else

@@ -1,29 +1,34 @@
+#include "argParse.hpp"
 #include "comparisonReport.hpp"
 #include "util.hpp"
-#include <string>
-#include <iostream>
-#include "argParse.hpp"
 
-auto compare(const std::string& a, const std::string& b)
+#include <iostream>
+#include <sstream>
+#include <string>
+
+auto compare(const std::string& a, const std::string& b, const bool steps = true)
 {
     auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
     std::string aIntegerReal = split(a, '.').front(), bIntegerReal = split(b, '.').front();
     if (aIntegerReal.length() != bIntegerReal.length())
-        return reportComparisonAtInteger(a, b, aIntegerReal.length() > bIntegerReal.length());
+        return reportComparisonAtInteger(a, b, aIntegerReal.length() > bIntegerReal.length(), steps);
 
     for (int i = 0; i < a.length(); i++)
     {
-        if (a[i] == b[i])
-            continue; // Equals
+        if (a[i] == b[i] or not isdigit(a[i]) or not isdigit(b[i]))
+            continue; // Decimal point or equals
         bool bigger = a[i] > b[i];
-        if (not isdigit(a[i]) or not isdigit(b[i]))
-            continue;
         if (bigger)
-            return reportComparisonByDigit(a, b, i, bigger);
+            return reportComparisonByDigit(a, b, i, bigger, steps);
         else
-            return reportComparisonByDigit(a, b, -i, bigger);
+            return reportComparisonByDigit(a, b, -i, bigger, steps);
     }
-    return (std::string) "Equal";
+
+    if (steps)
+        return (std::string) "Equal";
+    std::stringstream ss;
+    ss << a << " = " << b;
+    return ss.str();
 }
 
 int main(int _argc, const char** _argv)
@@ -33,7 +38,7 @@ int main(int _argc, const char** _argv)
     ProgramArgs program(_argc, _argv);
     program.addPosArg("a");
     program.addPosArg("b");
-    program.addSwitch("steps", true, "steps while adding");
+    program.addSwitch("steps", true, "steps while comparing");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
@@ -44,10 +49,10 @@ int main(int _argc, const char** _argv)
 
     if (profile)
     {
-        TIC(Column Method Addition)
-        std::cout << "Column Method Addition :\n" << compare(aStr, bStr) << std::endl;
+        TIC(Comparing...)
+        std::cout << compare(aStr, bStr, steps) << std::endl;
         TOC()
     }
     else
-        std::cout << compare(aStr, bStr) << std::endl;
+        std::cout << compare(aStr, bStr, steps) << std::endl;
 }

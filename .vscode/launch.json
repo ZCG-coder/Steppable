@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Launch",
+            "program": "${workspaceFolder}/build/multiply",
+            "args": [
+                "56",
+                "76",
+                "+profile"
+            ],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: build"
+        }
+    ]
+}
