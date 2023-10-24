@@ -5,48 +5,73 @@
 #include <sstream>
 #include <string>
 
-const std::string reportComparisonAtInteger(const std::string& a, const std::string& b, const bool bigger)
+const std::string reportComparisonAtInteger(const std::string& a,
+                                            const std::string& b,
+                                            const bool bigger,
+                                            const bool steps)
 {
     std::stringstream ss;
-    ss << "Comparing the integer part of a and b" << std::endl;
-    if (bigger)
+
+    if (steps)
     {
-        ss << BECAUSE " The integer part of " << a << " is bigger than the integer part of " << b << std::endl;
-        ss << THEREFORE " " << a << " > " << b;
+        ss << "Comparing the integer part of a and b" << std::endl;
+        if (bigger)
+        {
+            ss << BECAUSE " The integer part of " << a << " is bigger than the integer part of " << b << std::endl;
+            ss << THEREFORE " " << a << " is greater than " << b;
+        }
+        else
+        {
+            ss << BECAUSE " The integer part of " << b << " is bigger than the integer part of " << a << std::endl;
+            ss << THEREFORE " " << a << " is less than " << b;
+        }
     }
     else
     {
-        ss << BECAUSE " The integer part of " << b << " is bigger than the integer part of " << a << std::endl;
-        ss << THEREFORE " " << b << " > " << a;
+        if (bigger)
+            ss << a << " > " << b;
+        else
+            ss << a << " < " << b;
     }
 
-    return std::move(ss.str());
+    return ss.str();
 }
 
 const std::string reportComparisonByDigit(const std::string& a,
                                           const std::string& b,
                                           const unsigned int _digit,
-                                          const bool bigger)
+                                          const bool bigger,
+                                          const bool steps)
 {
     std::stringstream ss;
     int digit = _digit;
     if (not bigger)
         digit = -digit;
-    ss << "a = " << a << std::endl;
-    ss << "b = " << b << std::endl;
-
-    if (bigger)
+    if (steps)
     {
-        ss << std::string(digit + 4, ' ') << "^~~~~ " BECAUSE " At digit " << digit + 1 << ", " << a[digit]
-           << " is bigger than " << b[digit] << std::endl;
-        ss << THEREFORE " " << a << " is bigger than " << b;
+        ss << "a = " << a << std::endl;
+        ss << "b = " << b << std::endl;
+
+        if (bigger)
+        {
+            ss << std::string(digit + 4, ' ') << "^~~~~ " BECAUSE " At digit " << digit + 1 << ", " << a[digit]
+               << " is greater than " << b[digit] << std::endl;
+            ss << THEREFORE " " << a << " is greater than " << b;
+        }
+        else
+        {
+            ss << std::string(digit + 4, ' ') << "^~~~~ " BECAUSE " At digit " << digit + 1 << ", " << a[digit]
+               << " is less than " << b[digit] << std::endl;
+            ss << THEREFORE " " << a << " is less than " << b;
+        }
     }
     else
     {
-        ss << std::string(digit + 4, ' ') << "^~~~~ " BECAUSE " At digit " << digit + 1 << ", " << b[digit]
-           << " is bigger than " << a[digit] << std::endl;
-        ss << THEREFORE " " << b << " is bigger than " << a;
+        if (bigger)
+            ss << a << " > " << b;
+        else
+            ss << a << " < " << b;
     }
 
-    return std::move(ss.str());
+    return ss.str();
 }
