@@ -13,6 +13,7 @@ BraceWrapping:
   AfterCaseLabel: true
   AfterUnion: true
   AfterExternBlock: false
+RemoveBracesLLVM: true
 BreakBeforeTernaryOperators: false
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
@@ -41,3 +42,4 @@ SortIncludes: true
 SpaceAfterTemplateKeyword: false
 SpacesInAngles: false
 SpacesInContainerLiterals: false
+LineEnding: LF

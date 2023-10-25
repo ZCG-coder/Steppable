@@ -1,12 +1,13 @@
 #include "argParse.hpp"
 
 #include "colors.hpp"
+#include "output.hpp"
 #include "util.hpp"
 
 #include <any>
 #include <iostream>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 void ProgramArgs::addSwitch(const std::string& name, const bool defaultValue, const std::string& description)
@@ -25,22 +26,24 @@ void ProgramArgs::addPosArg(const std::string& name)
 
 void ProgramArgs::printUsage(const std::string& reason) const
 {
-    std::cout << "Usage: " << BOLD << programName << RESET << " ";
+    std::cout << "Usage: " << formats::bold << programName << reset << " ";
     for (const auto& posArg : posArgsNames)
-        std::cout << BRIGHT_GREEN << '<' << posArg << '>' << " ";
-    std::cout << "[switches]" << RESET << std::endl;
-    std::cout << BOLD << "Available switches:" << RESET << std::endl;
+        std::cout << colors::brightGreen << '<' << posArg << '>' << " ";
+    std::cout << "[switches]" << reset << std::endl;
+    std::cout << formats::bold << "Available switches:" << reset << std::endl;
 
     for (const auto& switchName : switchesNames)
     {
-        std::cout << BRIGHT_GREEN << BOLD << '[' << '-' << switchName << "] ";
-        std::cout << '[' << '+' << switchName << "]" << RESET << std::endl;
+        std::cout << colors::brightGreen << formats::bold << '[' << '-' << switchName << "] ";
+        std::cout << '[' << '+' << switchName << "]" << reset << std::endl;
         std::cout << "  Enables/Disables " << switches.at(switchName) << std::endl;
     }
 
     if (not reason.empty())
-        std::cerr << std::endl << RED BOLD << "Error: " RESET RED << reason << RESET << std::endl;
-
+    {
+        std::cerr << std::endl;
+        error(reason);
+    }
     exit(-1);
 }
 
