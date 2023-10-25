@@ -3,13 +3,9 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Launch",
+            "name": "Multiply",
             "program": "${workspaceFolder}/build/multiply",
-            "args": [
-                "56",
-                "76",
-                "+profile"
-            ],
+            "args": ["56", "76", "+profile"],
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "CMake: build"
         }

@@ -14,25 +14,25 @@
 #ifndef TIC
 /// FMCRO: TIC
 /// DESC : Start a timer to measure the time it takes to execute a section of code.
-#define TIC(...)                                                                                          \
-    {                                                                                                     \
-        const char* nameSection = #__VA_ARGS__;                                                           \
-        std::cout << BRIGHT_BLUE << std::setw(80) << std::setfill('-') << '\0';                           \
-        std::cout << std::endl << BRIGHT_BLUE "[Profiling: " << nameSection << ']' << RESET << std::endl; \
+#define TIC(...)                                                                                       \
+    {                                                                                                  \
+        const char* nameSection = #__VA_ARGS__;                                                        \
+        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << '\0' << std::endl;    \
+        std::cout << colors::brightBlue << "[Profiling: " << nameSection << ']' << reset << std::endl; \
         auto start = std::chrono::high_resolution_clock::now();
 #endif
 
 #ifndef TOC
 /// FMCRO: TOC
 /// DESC : Stop the timer and print the time it took to execute the section of code.
-#define TOC()                                                                                                    \
-    auto duration =                                                                                              \
-        std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start) \
-            .count();                                                                                            \
-    std::cout << BRIGHT_BLUE << '[' << nameSection << " took " << duration << "(microseconds) to execute]"       \
-              << std::endl;                                                                                      \
-    std::cout << BRIGHT_BLUE << std::setw(80) << std::setfill('-') << '\0';                                      \
-    std::cout << RESET << std::endl;                                                                             \
+#define TOC()                                                                                                     \
+    auto duration =                                                                                               \
+        std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start)  \
+            .count();                                                                                             \
+    std::cout << colors::brightBlue << '[' << nameSection << " took " << duration << "(microseconds) to execute]" \
+              << reset << std::endl;                                                                              \
+    std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << '\0';                                \
+    std::cout << reset << std::endl;                                                                              \
     }
 #endif
 
