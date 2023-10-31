@@ -1,20 +1,22 @@
 #pragma once
 
 #include "colors.hpp"
+#include "output.hpp"
 
+#include <format>
 #include <iostream>
 #include <string>
 
-template<typename T>
-void error(const T msg...)
+template<typename T, typename... Args>
+void error(const T msg, Args&&... args)
 {
     std::cerr << colors::red << formats::bold << "Error: " << reset << colors::red;
-    std::cerr << msg << reset << std::endl;
+    std::cerr << std::vformat(msg, std::make_format_args(args...)) << reset << std::endl;
 }
 
-template<typename T>
-void warning(const T msg...)
+template<typename T, typename... Args>
+void warning(const T msg, Args&&... args)
 {
     std::cout << colors::yellow << formats::bold << "Warning: " << reset << colors::yellow;
-    std::cout << msg << reset << std::endl;
+    std::cout << std::vformat(msg, std::make_format_args(args...)) << reset << std::endl;
 }

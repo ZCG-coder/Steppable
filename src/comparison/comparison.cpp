@@ -5,11 +5,12 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <string_view>
 
-auto compare(const std::string& a, const std::string& b, const bool steps = true)
+auto compare(const std::string_view& a, const std::string_view& b, const bool steps = true)
 {
     auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
-    std::string aIntegerReal = split(a, '.').front(), bIntegerReal = split(b, '.').front();
+    auto aIntegerReal = split(a, '.').front(), bIntegerReal = split(b, '.').front();
     if (aIntegerReal.length() != bIntegerReal.length())
         return reportComparisonAtInteger(a, b, aIntegerReal.length() > bIntegerReal.length(), steps);
 
@@ -44,8 +45,8 @@ int main(int _argc, const char** _argv)
 
     steps = program.getSwitch("steps");
     profile = program.getSwitch("profile");
-    const std::string& aStr = program.getPosArg(0);
-    const std::string& bStr = program.getPosArg(1);
+    const auto& aStr = program.getPosArg(0);
+    const auto& bStr = program.getPosArg(1);
 
     if (profile)
     {

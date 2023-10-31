@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <map>
 #include <string>
+#include <string_view>
 #include <vector>
 
 #ifndef TIC
@@ -40,7 +41,7 @@
 /// OUT  : bool
 /// IN   : std::string string - The string to check.
 /// DESC : Check if a string is a zero string.
-inline bool isZeroString(std::string string)
+constexpr inline bool isZeroString(std::string_view string)
 {
     for (char c : string)
         if (c != '0')
@@ -52,7 +53,7 @@ inline bool isZeroString(std::string string)
 /// OUT  : bool
 /// IN   : std::string string - The string to check.
 /// DESC : Check if a string represents a number.
-inline bool isNumber(const std::string& s)
+constexpr inline bool isNumber(const std::string_view& s)
 {
     if (s.empty())
         return false;
@@ -79,7 +80,13 @@ inline bool isNumber(const std::string& s)
 template<typename CharT>
 std::vector<std::basic_string<CharT>> split(std::basic_string<CharT> s, CharT separator);
 
-std::array<std::string, 4> splitNumber(std::string a, std::string b, bool padInteger = true, bool padDecimal = true);
+template<typename CharT>
+std::vector<std::basic_string_view<CharT>> split(std::basic_string_view<CharT> s, CharT separator);
+
+std::array<std::string, 4> splitNumber(const std::string_view& a,
+                                       const std::string_view& b,
+                                       const bool padInteger = true,
+                                       const bool padDecimal = true);
 
 /// Trim from end of string (right)
 template<typename CharT>

@@ -1,10 +1,20 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.8)
-PROJECT(CAS)
+cmake_minimum_required(VERSION 3.8)
+project(CAS)
 
-SET(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_EXTENSIONS OFF)
-SET(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-INCLUDE(src/CMakeLists.txt)
+if(WIN32)
+    add_compile_definitions(WINDOWS)
+elseif(APPLE)
+    add_compile_definitions(MACOSX)
+elseif(LINUX)
+    add_compile_definitions(LINUX)
+else()
+    message(ERROR "Platform not defined")
+endif()
+
+add_subdirectory(src/)

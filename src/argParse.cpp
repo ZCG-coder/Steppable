@@ -6,25 +6,27 @@
 
 #include <any>
 #include <iostream>
+#include <sstream>
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <vector>
 
-void ProgramArgs::addSwitch(const std::string& name, const bool defaultValue, const std::string& description)
+void ProgramArgs::addSwitch(const std::string_view& name, const bool defaultValue, const std::string_view& description)
 {
     args.insert({ name, defaultValue });
     switchesNames.emplace_back(name);
     switches.insert_or_assign(name, description);
 }
 
-void ProgramArgs::addPosArg(const std::string& name)
+void ProgramArgs::addPosArg(const std::string_view& name)
 {
-    auto posArgs = std::any_cast<std::vector<std::string>>(args["_pos"]);
+    auto posArgs = std::any_cast<PosArgs>(args["_pos"]);
     posArgsNames.emplace_back(name);
     posArgs.emplace_back("");
 }
 
-void ProgramArgs::printUsage(const std::string& reason) const
+void ProgramArgs::printUsage(const std::string_view& reason) const
 {
     std::cout << "Usage: " << formats::bold << programName << reset << " ";
     for (const auto& posArg : posArgsNames)
@@ -47,20 +49,20 @@ void ProgramArgs::printUsage(const std::string& reason) const
     exit(-1);
 }
 
-std::string ProgramArgs::getPosArg(const int index)
+std::string_view ProgramArgs::getPosArg(const int index)
 {
     if (not args.contains("_pos"))
         throw std::runtime_error("No positional arguments found. Argument map corrupted.");
-    const auto& pos = std::any_cast<std::vector<std::string>>(args["_pos"]);
+    const auto& pos = std::any_cast<PosArgs>(args["_pos"]);
     if (not(pos.size() > index))
         printUsage("Missing positional argument: " + std::to_string(index));
-    return std::any_cast<std::string>(pos[index]);
+    return std::any_cast<std::string_view>(pos[index]);
 }
 
-bool ProgramArgs::getSwitch(const std::string& name)
+bool ProgramArgs::getSwitch(const std::string_view& name)
 {
     if (not args.contains(name))
-        printUsage("Missing keyword argument: " + name);
+        printUsage("Missing keyword argument: " + (std::string)name);
     return std::any_cast<bool>(args[name]);
 }
 
@@ -68,7 +70,7 @@ ProgramArgs::ProgramArgs(const int _argc, const char** _argv)
 {
     argc = _argc - 1;
     programName = _argv[0];
-    std::vector<std::string> pos;
+    PosArgs pos;
 
     // Copy the arguments into a vector
     for (int i = 0; i <= argc; i++)
@@ -79,8 +81,8 @@ ProgramArgs::ProgramArgs(const int _argc, const char** _argv)
 
 void ProgramArgs::parseArgs()
 {
-    auto pos = std::any_cast<std::vector<std::string>>(args["_pos"]);
-    for (std::string arg : argv)
+    auto pos = std::any_cast<PosArgs>(args["_pos"]);
+    for (std::string_view arg : argv)
     {
         switch (arg[0])
         {
@@ -109,7 +111,7 @@ void ProgramArgs::parseArgs()
             // Treat as positional argument, must be number
             // Report error if it is not a number
             if (not isNumber(arg))
-                printUsage("Invalid number: " + arg);
+                printUsage("Invalid number: " + (std::string) arg);
             pos.push_back(arg);
         }
         }

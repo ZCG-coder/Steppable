@@ -7,9 +7,10 @@
 #include <ios>
 #include <iostream>
 #include <string>
+#include <string_view>
 #include <vector>
 
-std::string multiply(const std::string& a, const std::string& b, const bool steps)
+std::string multiply(const std::string_view& a, const std::string_view& b, const bool steps)
 {
     const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b, false);
     std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
@@ -54,7 +55,7 @@ std::string multiply(const std::string& a, const std::string& b, const bool step
     for (int indexDigit = finalProdDigits.size() - 1; indexDigit != -1; indexDigit--)
     {
         int sum = finalProdCarries[indexDigit];
-        for (auto & prodDigitVector : prodDigits)
+        for (auto prodDigitVector : prodDigits)
             sum += prodDigitVector[indexDigit];
         finalProdCarries[indexDigit - 1] = sum / 10;
         finalProdDigits[indexDigit - 1] += sum / 10;
@@ -79,8 +80,8 @@ int main(const int _argc, const char* _argv[])
 
     steps = program.getSwitch("steps");
     profile = program.getSwitch("profile");
-    const std::string& aStr = program.getPosArg(0);
-    const std::string& bStr = program.getPosArg(1);
+    const auto& aStr = program.getPosArg(0);
+    const auto& bStr = program.getPosArg(1);
 
     if (profile)
     {
