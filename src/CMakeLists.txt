@@ -1,21 +1,13 @@
-SET(COMPONENTS
-    add
-    subtract
-    multiply
-    baseConvert
-    comparison
-)
+set(COMPONENTS add subtract multiply baseConvert comparison)
 
-FILE(GLOB UTIL_SOURCES src/*.cpp)
-ADD_LIBRARY(util ${UTIL_SOURCES})
-TARGET_INCLUDE_DIRECTORIES(util PUBLIC include/)
+file(GLOB UTILS *.cpp)
+add_library(util ${UTILS})
+target_include_directories(util PUBLIC ../include/)
 
-FOREACH(COMPONENT IN LISTS COMPONENTS)
-    MESSAGE(STATUS "Adding component: ${COMPONENT}: ${COMPONENT}/${COMPONENT}.cpp, ${COMPONENT}/${COMPONENT}Report.cpp")
+foreach(COMPONENT IN LISTS COMPONENTS)
+    message(STATUS "Adding component: ${COMPONENT}: ${COMPONENT}/${COMPONENT}.cpp, ${COMPONENT}/${COMPONENT}Report.cpp")
 
-    ADD_EXECUTABLE(${COMPONENT} src/${COMPONENT}/${COMPONENT}.cpp
-                                src/${COMPONENT}/${COMPONENT}Report.cpp
-    )
-    TARGET_INCLUDE_DIRECTORIES(${COMPONENT} PUBLIC include/)
-    TARGET_LINK_LIBRARIES(${COMPONENT} util)
-ENDFOREACH()
+    add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
+    target_include_directories(${COMPONENT} PUBLIC ../include/)
+    target_link_libraries(${COMPONENT} util)
+endforeach()

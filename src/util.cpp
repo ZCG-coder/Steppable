@@ -9,6 +9,7 @@
 #include <map>
 #include <sstream>
 #include <string>
+#include <string_view>
 #include <vector>
 
 template<typename CharT>
@@ -24,11 +25,32 @@ std::vector<std::basic_string<CharT>> split(std::basic_string<CharT> s, CharT se
     return substrings;
 }
 
-std::array<std::string, 4> splitNumber(std::string a, std::string b, bool padInteger, bool padDecimal)
+template<typename CharT>
+std::vector<std::basic_string_view<CharT>> split(std::basic_string_view<CharT> s, CharT separator)
 {
-    std::vector<std::string> aParts = split(a, '.'), bParts = split(b, '.');
-    std::string aInteger = aParts.front(), aDecimal = aParts.back(), bInteger = bParts.front(),
-                bDecimal = bParts.back();
+    std::vector<std::basic_string_view<CharT>> result;
+    auto left = s.begin();
+    for (auto it = left; it != s.end(); ++it)
+    {
+        if (*it == separator)
+        {
+            result.emplace_back(&*left, it - left);
+            left = it + 1;
+        }
+    }
+    if (left != s.end())
+        result.emplace_back(&*left, s.end() - left);
+    return result;
+}
+
+std::array<std::string, 4> splitNumber(const std::string_view& a,
+                                       const std::string_view& b,
+                                       const bool padInteger,
+                                       const bool padDecimal)
+{
+    std::vector<std::string_view> aParts = split(a, '.'), bParts = split(b, '.');
+    std::string aInteger = static_cast<std::string>(aParts.front()), aDecimal = static_cast<std::string>(aParts.back()),
+                bInteger = static_cast<std::string>(bParts.front()), bDecimal = static_cast<std::string>(bParts.back());
     // If the numbers are integers, discard their decimal points
     if (isZeroString(aDecimal) or aParts.size() == 1)
         aDecimal = "";

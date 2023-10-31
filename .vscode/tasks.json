@@ -6,7 +6,7 @@
             "label": "CMake: build",
             "command": "build",
             "targets": [
-                "multiply"
+                "all"
             ],
             "group": "build",
             "problemMatcher": [],
