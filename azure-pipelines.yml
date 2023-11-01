@@ -10,9 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: |
-    mkdir build
-    cd build
-    cmake ..
-    cmake --build .
-  displayName: 'Generate the build files'
+- task: CMake@1
+  inputs:
+    cmakeArgs: '.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc-13 -D CMAKE_CXX_COMPILER=g++-13'
+- task: CMake@1
+  inputs:
+    cmakeArgs: '--build .'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)/build'
+    ArtifactName: 'res'
+    publishLocation: 'Container'
