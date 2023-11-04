@@ -71,7 +71,7 @@ Attributes:
 - `DESC`: Description of the object documented
 - `NOTE`: Defines an optional note to show in the documentation. This shows after `DESC`
 - `WARN`: Defines an optional warning to show in the documentation, for example, a depreciated warning.
-           This shows after `NOTE`.
+  This shows after `NOTE`.
 
 #### 2.2.2 Available labels for all functions and methods of classes
 

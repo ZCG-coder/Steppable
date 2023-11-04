@@ -13,7 +13,7 @@ that the user can understand how the problem is solved.
 ## What this is not?
 
 This is not a CAS intended for high-performance computing. This is because the basic arithmetic operations are much more
-time consuming than the plain old `+`, `-`, `*`, and `/` (around 10 times slower).
+time-consuming than the plain old `+`, `-`, `*`, and `/` (around 10 times slower).
 
 ## Why another CAS?
 
@@ -34,22 +34,23 @@ we are planning to implement next (and in the near future):
 
 - [ ] Parser
 - [ ] Calculator and reporter (all the major functions)
-  - [x] Comparison of integers and decimal
-  - [x] Addition of integers and decimals
-  - [x] Subtraction of integers and decimals
-  - [x] Multiplication of integers and decimals
-  - [ ] Division of integers and decimals
-  - [ ] Addition of fractions
-  - [ ] Subtraction of fractions
-  - [ ] Multiplication of fractions
-  - [ ] Simplification of fractions
-  - [ ] Division of fractions
-  - [ ] Conversion between fractions and decimals
-  - [ ] Expansion of polynomials
-  - [ ] Factoring of polynomials
+    - [x] Comparison of integers and decimal
+    - [x] Addition of integers and decimals
+    - [x] Subtraction of integers and decimals
+    - [x] Multiplication of integers and decimals
+    - [ ] Division of integers and decimals
+    - [ ] Addition of fractions
+    - [ ] Subtraction of fractions
+    - [ ] Multiplication of fractions
+    - [ ] Simplification of fractions
+    - [ ] Division of fractions
+    - [ ] Conversion between fractions and decimals
+    - [ ] Expansion of polynomials
+    - [ ] Factoring of polynomials
 
 The parser is the most difficult part of the project, so we will probably start with the calculator and reporter first.
-When implemented, it will probably call the calculator(s) (which is/are compiled into executable format together with the
+When implemented, it will probably call the calculator(s) (which is/are compiled into executable format together with
+the
 reporter) and then show the result to the user.
 
 ## How to get it running?
@@ -59,8 +60,15 @@ First, you will need:
 - [CMake](https://cmake.org/) (version 3.8 or higher, latest version preferred) to generate the build files.
 - A working C++ compiler (GCC and Clang are preferred) to generate the executable.
 - A build system ([GNU Make](https://www.gnu.org/software/make/), [Ninja](https://ninja-build.org/), etc.), as long as
-it gets along with CMake.
+  it gets along with CMake.
 - [Git](https://git-scm.com/) (optional, but recommended) to download the project and commit changes.
+
+> **Note**:
+> Currently, the compiler that ships with macOS Xcode Command-Line Tools supports few
+> C++20 features, which this project relies on.
+> (E.g., `std::format` to format messages, etc.).
+>
+> Please install the latest version of Clang (E.g., with Homebrew) to compile this project.
 
 Then, you can clone this repository by running the following command, or [download](https://github.com/ZCG-Coder) it
 from GitHub (if you don't have Git installed):
@@ -82,9 +90,9 @@ cmake .. -G <your build system> # Replace <your build system> with your build sy
 Alternatively, you may generate a differently optimized build by replacing adding with one of the following options:
 
 - `-DCMAKE_BUILD_TYPE=Debug` for a debug build (has debug symbols, no optimizations). This is perfect for running with a
-debugger, such as [GDB](https://www.gnu.org/software/gdb/), [LLDB](https://lldb.llvm.org/), or your IDE.
+  debugger, such as [GDB](https://www.gnu.org/software/gdb/), [LLDB](https://lldb.llvm.org/), or your IDE.
 - `-DCMAKE_BUILD_TYPE=Release` for a release build (no debug symbols, full optimizations). This is perfect for running
-the program normally and redistributing it.
+  the program normally and redistributing it.
 - `-DCMAKE_BUILD_TYPE=RelWithDebInfo` for a release build with debug symbols (has debug symbols, full optimizations).
 - `-DCMAKE_BUILD_TYPE=MinSizeRel` for a release build with minimum size (no debug symbols, minimum executable size).
 
@@ -148,7 +156,8 @@ To add a new feature, `a`:
     - `a.cpp` - The main file. The `main` function should be present, as it it the entry point of the executable.
     - `aReport.cpp` - The report file to show the results.
     - `aReport.hpp` - A header that contains optional definition.
-    > Note: Only the above-mentioned three files will be added to CMake.
+   > **Note**:
+   > Only the above-mentioned three files will be added to CMake.
 2. Make sure to document the code. Please follow [this](docs/DOCUMENTING.md) for documentation guidelines.
 3. Add an entry to `src/CMakeLists.txt`
 

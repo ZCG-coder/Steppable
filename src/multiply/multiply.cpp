@@ -69,17 +69,15 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
 
 int main(const int _argc, const char* _argv[])
 {
-    bool steps = true, profile = false;
-
     ProgramArgs program(_argc, _argv);
-    program.addPosArg("a");
-    program.addPosArg("b");
+    program.addPosArg('a', "Number 1");
+    program.addPosArg('b', "Number 2");
     program.addSwitch("steps", true, "steps while multiplying");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
-    steps = program.getSwitch("steps");
-    profile = program.getSwitch("profile");
+    bool steps = program.getSwitch("steps");
+    bool profile = program.getSwitch("profile");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
 

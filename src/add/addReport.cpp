@@ -12,14 +12,13 @@ const std::string reportAdd(const std::string& aInteger,
                             const std::string& aDecimal,
                             const std::string& bInteger,
                             const std::string& bDecimal,
-                            const bool aIsDecimal,
-                            const bool bIsDecimal,
                             const std::vector<int>& sumDigits,
                             const std::vector<bool>& carries,
-                            const bool steps)
+                            const int steps)
 {
     std::stringstream ss;
 
+    const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
     std::string aOut = aInteger, bOut = bInteger;
     if (aIsDecimal)
         aOut += '.' + aDecimal;
@@ -35,7 +34,7 @@ const std::string reportAdd(const std::string& aInteger,
     if (bIsDecimal and not aIsDecimal and steps)
         aOut += std::string(bDecimal.length() + 1, ' ');
 
-    if (steps)
+    if (steps == 2)
     {
         ss << "      "; // Reserve space for the plus
         if (bOut.length() > aOut.length())
@@ -57,20 +56,19 @@ const std::string reportAdd(const std::string& aInteger,
                 ss << "   ";
 
         ss << std::endl << std::string((sumDigits.size() + 2) * 3, '_') << std::endl;
-        if (not (sumDigits.size() > aOut.length()))
+        if (not(sumDigits.size() > aOut.length()))
             ss << "   ";
         ss << "   ";
         for (int outputChar : sumDigits)
-        {
             if (outputChar == -1)
                 ss << ".  ";
             else
                 ss << outputChar << "  "; // Two spaces
-        }
         ss << std::endl << THEREFORE " ";
     }
 
-    ss << "a + b = ";
+    if (steps == 1)
+        ss << "a + b = ";
     for (auto c : sumDigits)
         if (c == -1)
             ss << '.';
