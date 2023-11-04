@@ -14,7 +14,7 @@ jobs:
       - task: CMake@1
         displayName: 'Configure CMake (Linux)'
         inputs:
-          cmakeArgs: '-B build -DCMAKE_BUILD_TYPE=Release'
+          cmakeArgs: '-B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc-13 -D CMAKE_CXX_COMPILER=g++-13'
           workingDirectory: '$(Build.SourcesDirectory)'
 
       - task: CMake@1

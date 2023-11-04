@@ -1,8 +1,15 @@
 #include "colors.hpp"
 
-#include <iostream>
 #include <ostream>
+
+#ifdef WINDOWS
+#include <Windows.h>
+#include <io.h>
+#define isatty _isatty
+#define STDOUT_FILENO 0
+#else
 #include <unistd.h>
+#endif
 
 bool isTerminal(const std::ostream& stream) { return isatty(STDOUT_FILENO) != 0; }
 

@@ -4,13 +4,6 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <unistd.h>
-
-#ifdef _WIN32
-#include <Windows.h>
-#include <io.h>
-#define isatty _isatty
-#endif
 
 // RGB Text Colors (8-bit)
 #define RGB_TEXT(r, g, b) "\x1b[38;2;" #r ";" #g ";" #b "m"
