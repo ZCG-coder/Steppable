@@ -13,6 +13,13 @@ void error(T msg, Args&&... args)
     std::cerr << std::vformat(msg, std::make_format_args(args...)) << reset << std::endl;
 }
 
+template<typename CharT>
+void error(std::basic_string<CharT> msg)
+{
+    std::cerr << colors::red << formats::bold << "Error: " << reset << colors::red;
+    std::cerr << msg << reset << std::endl;
+}
+
 template<typename T, typename... Args>
 [[maybe_unused]] void warning(T msg, Args&&... args)
 {

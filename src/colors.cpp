@@ -5,13 +5,22 @@
 #ifdef WINDOWS
 #include <Windows.h>
 #include <io.h>
+#include <stdio.h>
 #define isatty _isatty
-#define STDOUT_FILENO 0
+#define fileno _fileno
+
 #else
 #include <unistd.h>
 #endif
 
-bool isTerminal(const std::ostream& stream) { return isatty(STDOUT_FILENO) != 0; }
+bool isTerminal(const std::ostream& stream)
+{
+#ifdef WINDOWS
+    return isatty(fileno(stdout)) != 0;
+#else
+    return isatty(STDOUT_FILENO) != 0;
+#endif
+}
 
 std::ostream& reset(std::ostream& stream)
 {

@@ -10,29 +10,29 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
-#include <string>
-#include <vector>
 
 #pragma region getExecutablePathName
 #if defined(WINDOWS)
-#include <libloaderapi.h>
+    #include <Windows.h>
 
 std::filesystem::path getExecutablePathName()
 {
-    std::filesystem::path pathName;
-    std::string out;
-    char* pathName;
-    GetModuleFileNameA(NULL, pathName, 256);
-    out = std::string(pathName);
-    pathName = out;
-    return pathName;
+    char buffer[MAX_PATH];
+
+    // Get the path of the current executable module
+    DWORD length = GetModuleFileNameA(nullptr, buffer, MAX_PATH);
+    if (length == 0) {
+        std::cerr << "Failed to get the module filename." << std::endl;
+        return "NUL";
+    }
+    return buffer;
 }
 
 #elif defined(LINUX)
 std::filesystem::path getExecutablePathName() { return std::filesystem::canonical("/proc/self/exe"); }
 
 #elif defined(MACOSX)
-#include <mach-o/dyld.h>
+    #include <mach-o/dyld.h>
 
 std::filesystem::path getExecutablePathName()
 {
@@ -47,7 +47,7 @@ std::filesystem::path getExecutablePathName()
     return buffer.data();
 }
 #else
-#error Not implemented yet
+    #error Not implemented yet
 #endif
 #pragma endregion
 
@@ -78,16 +78,16 @@ std::string Command::constructCommand(const std::string& commandName)
     return ss.str();
 }
 
-CommandResult Command::exec(const std::string& command)
+CommandResult Command::exec(const std::filesystem::path& command)
 {
     int exitcode = 257; // Should be an invalid exit code. If you see this, it probably means something is wrong.
 #ifdef WINDOWS
-#define popen _popen
-#define pclose _pclose
-#define WEXITSTATUS
+    #define popen _popen
+    #define pclose _pclose
+    #define WEXITSTATUS
 #endif
 
-    std::string fullCommand = constructCommand(command);
+    std::string fullCommand = constructCommand(command.string());
     FILE* pipe = popen(fullCommand.c_str(), "r");
     if (pipe == nullptr)
         throw std::runtime_error("popen() failed!");
@@ -115,7 +115,7 @@ int invokeCommand(const std::string& name)
     auto commands = split(name, ' ');
     auto currentExeFile = getExecutablePathName();
     if (not std::filesystem::is_regular_file(currentExeFile.string()))
-        error("Cannot get the executable directory");
+        error(static_cast<std::string>("Cannot get the executable directory"));
     auto currentDirectory = currentExeFile.parent_path();
 
     Command command;
@@ -125,10 +125,11 @@ int invokeCommand(const std::string& name)
     if (result.status != 0)
     {
         auto lines = split(result.err, '\n');
-        error("{} {}", lines.size(), "errors have occured:");
+        error("{} {}", lines.size(), "errors have occurred:");
         for (int i = 0; i < lines.size(); i++)
             error("{}: {}", i + 1, lines[i]);
     }
 
+    status = result.status;
     return status;
 }

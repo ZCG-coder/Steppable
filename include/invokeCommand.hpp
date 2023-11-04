@@ -34,7 +34,7 @@ public:
      * of command. Empty if command failed (or has no output). If you want stderr,
      * use shell redirection (2&>1).
      */
-    CommandResult exec(const std::string& command);
+    CommandResult exec(const std::filesystem::path& command);
 };
 
 std::filesystem::path getExecutablePathName();
