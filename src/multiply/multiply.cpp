@@ -23,7 +23,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
             continue;
         std::vector<int> currentProdDigits(aStr.length() + bStr.length() + 1, 0),
             currentCarries(aStr.length() + bStr.length() + 1, 0);
-        for (int indexA = aStr.length() - 1; indexA != -1; indexA--)
+        for (auto indexA = aStr.length() - 1; indexA != -1; indexA--)
         {
             int aDigit = aStr[indexA] - '0';
             int prodDigit = bDigit * aDigit + currentCarries[indexA + 1];
@@ -52,7 +52,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
 
     // Add the vectors digit-wise together
     std::vector<int> finalProdDigits(prodDigits[0].size(), 0), finalProdCarries(prodDigits[0].size(), 0);
-    for (int indexDigit = finalProdDigits.size() - 1; indexDigit != -1; indexDigit--)
+    for (auto indexDigit = finalProdDigits.size() - 1; indexDigit != -1; indexDigit--)
     {
         int sum = finalProdCarries[indexDigit];
         for (auto prodDigitVector : prodDigits)

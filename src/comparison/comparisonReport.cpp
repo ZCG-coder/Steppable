@@ -3,13 +3,12 @@
 #include "symbols.hpp"
 
 #include <sstream>
-#include <string>
 #include <string_view>
 
-const std::string reportComparisonAtInteger(const std::string_view& a,
-                                            const std::string_view& b,
-                                            const bool bigger,
-                                            const bool steps)
+std::string reportComparisonAtInteger(const std::string_view& a,
+                                      const std::string_view& b,
+                                      const bool bigger,
+                                      const bool steps)
 {
     std::stringstream ss;
 
@@ -18,7 +17,7 @@ const std::string reportComparisonAtInteger(const std::string_view& a,
         ss << "Comparing the integer part of a and b" << std::endl;
         if (bigger)
         {
-            ss << BECAUSE " The integer part of " << a << " is bigger than the integer part of " << b << std::endl;
+            ss << BECAUSE << " The integer part of " << a << " is bigger than the integer part of " << b << std::endl;
             ss << THEREFORE " " << a << " is greater than " << b;
         }
         else
@@ -38,14 +37,14 @@ const std::string reportComparisonAtInteger(const std::string_view& a,
     return ss.str();
 }
 
-const std::string reportComparisonByDigit(const std::string_view& a,
-                                          const std::string_view& b,
-                                          const unsigned int _digit,
-                                          const bool bigger,
-                                          const bool steps)
+std::string reportComparisonByDigit(const std::string_view& a,
+                                    const std::string_view& b,
+                                    const unsigned int _digit,
+                                    const bool bigger,
+                                    const bool steps)
 {
     std::stringstream ss;
-    int digit = _digit;
+    int digit = static_cast<int>(_digit);
     if (not bigger)
         digit = -digit;
     if (steps)

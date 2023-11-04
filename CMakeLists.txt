@@ -9,6 +9,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if (WIN32)
     add_compile_definitions(WINDOWS)
+    add_compile_options(/utf-8)
 elseif (APPLE)
     add_compile_definitions(MACOSX)
 elseif (LINUX)

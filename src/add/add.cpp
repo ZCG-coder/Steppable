@@ -3,9 +3,7 @@
 #include "util.hpp"
 
 #include <algorithm>
-#include <any>
 #include <iostream>
-#include <string>
 #include <string_view>
 #include <vector>
 
@@ -41,12 +39,12 @@ auto add(const std::string_view& a, const std::string_view& b, const int steps =
     // Add a decimal point
     if (aIsDecimal or bIsDecimal)
     {
-        int decimalPos = aDecimal.length();
+        auto decimalPos = aDecimal.length();
         const auto& itSumDigits = sumDigits.begin();
         const auto& itCarries = carries.begin();
 
-        sumDigits.insert(itSumDigits + decimalPos, -1); // -1 indicating a decimal point
-        carries.insert(itCarries + decimalPos, false); // Reserve the space
+        sumDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
+        carries.insert(itCarries + static_cast<long>(decimalPos), false); // Reserve the space
     }
 
     std::reverse(carries.begin(), carries.end());

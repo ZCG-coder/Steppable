@@ -7,3 +7,8 @@ foreach (COMPONENT IN LISTS COMPONENTS)
     add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
     target_link_libraries(${COMPONENT} util)
 endforeach ()
+
+add_executable(main main/main.cpp)
+add_dependencies(main util)
+target_link_libraries(main util)
+target_include_directories(main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)

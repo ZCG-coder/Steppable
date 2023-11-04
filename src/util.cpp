@@ -8,37 +8,6 @@
 #include <string_view>
 #include <vector>
 
-template<typename CharT>
-std::vector<std::basic_string<CharT>> split(std::basic_string<CharT> s, CharT separator)
-{
-    std::vector<std::string> substrings;
-    std::stringstream ss(s);
-    std::string token;
-
-    while (getline(ss, token, separator))
-        substrings.push_back(token);
-
-    return substrings;
-}
-
-template<typename CharT>
-std::vector<std::basic_string_view<CharT>> split(std::basic_string_view<CharT> s, CharT separator)
-{
-    std::vector<std::basic_string_view<CharT>> result;
-    auto left = s.begin();
-    for (auto it = left; it != s.end(); ++it)
-    {
-        if (*it == separator)
-        {
-            result.emplace_back(&*left, it - left);
-            left = it + 1;
-        }
-    }
-    if (left != s.end())
-        result.emplace_back(&*left, s.end() - left);
-    return result;
-}
-
 std::array<std::string, 4> splitNumber(const std::string_view& a,
                                        const std::string_view& b,
                                        const bool padInteger,

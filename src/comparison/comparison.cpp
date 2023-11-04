@@ -38,6 +38,7 @@ auto compare(const std::string_view& a, const std::string_view& b, const int ste
 
 int main(int _argc, const char** _argv)
 {
+    UTF8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number 1");
     program.addPosArg('b', "Number 2");
