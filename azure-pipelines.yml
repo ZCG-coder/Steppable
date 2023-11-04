@@ -1,23 +1,55 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-  - main
+  branches:
+    include:
+      - main
 
-pool:
-  vmImage: ubuntu-latest
+jobs:
+  - job: BuildJobLinux
+    displayName: 'Build C++ Project (Linux)'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - checkout: self
 
-steps:
-  - task: CMake@1
-    inputs:
-      cmakeArgs: '.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc-13 -D CMAKE_CXX_COMPILER=g++-13'
-  - task: CMake@1
-    inputs:
-      cmakeArgs: '--build .'
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: '$(Build.SourcesDirectory)/build'
-      ArtifactName: 'res'
-      publishLocation: 'Container'
+      - task: CMake@1
+        displayName: 'Configure CMake (Linux)'
+        inputs:
+          cmakeArgs: '-B build -DCMAKE_BUILD_TYPE=Release'
+          workingDirectory: '$(Build.SourcesDirectory)'
+
+      - task: CMake@1
+        displayName: 'Build C++ Project (Linux)'
+        inputs:
+          cmakeArgs: '--build .'
+          workingDirectory: '$(Build.SourcesDirectory)/build'
+
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: '$(Build.SourcesDirectory)/build'
+          artifact: 'Build-Linux'
+          publishLocation: 'pipeline'
+
+  - job: BuildJobWindows
+    displayName: 'Build C++ Project (Windows)'
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+      - checkout: self
+
+      - task: CMake@1
+        displayName: 'Configure CMake (Windows)'
+        inputs:
+          cmakeArgs: '-B build -DCMAKE_BUILD_TYPE=Release'
+          workingDirectory: '$(Build.SourcesDirectory)'
+
+      - task: CMake@1
+        displayName: 'Build C++ Project (Windows)'
+        inputs:
+          cmakeArgs: '--build .'
+          workingDirectory: '$(Build.SourcesDirectory)/build'
+
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: '$(Build.SourcesDirectory)/build'
+          artifact: 'Build-Windows'
+          publishLocation: 'pipeline'
