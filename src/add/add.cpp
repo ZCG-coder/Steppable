@@ -4,15 +4,12 @@
 
 #include <algorithm>
 #include <any>
-#include <chrono>
-#include <cstdlib>
 #include <iostream>
-#include <map>
 #include <string>
 #include <string_view>
 #include <vector>
 
-auto add(const std::string_view& a, const std::string_view& b, const bool steps = true)
+auto add(const std::string_view& a, const std::string_view& b, const int steps = 2)
 {
     auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
     bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
@@ -25,8 +22,7 @@ auto add(const std::string_view& a, const std::string_view& b, const bool steps 
     std::vector<bool> carries(aStr.length() + 1, false);
     for (int index = 0; index < aStr.length(); index++)
     {
-        int aDigit = aStr[index] - '0';
-        int bDigit = bStr[index] - '0';
+        int aDigit = aStr[index] - '0', bDigit = bStr[index] - '0';
         if (aStr[index] == ' ')
             aDigit = 0;
         if (bStr[index] == ' ')
@@ -58,22 +54,20 @@ auto add(const std::string_view& a, const std::string_view& b, const bool steps 
     if (sumDigits.front() == 0)
         sumDigits.erase(sumDigits.begin());
 
-    return reportAdd(aInteger, aDecimal, bInteger, bDecimal, aIsDecimal, bIsDecimal, sumDigits, carries, steps);
+    return reportAdd(aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, steps);
 }
 
 int main(const int _argc, const char* _argv[])
 {
-    bool steps = true, profile = false;
-
     ProgramArgs program(_argc, _argv);
-    program.addPosArg("a");
-    program.addPosArg("b");
-    program.addSwitch("steps", true, "steps while adding");
+    program.addPosArg('a', "Number 1");
+    program.addPosArg('b', "Number 2");
+    program.addKeywordArg("steps", 2, "Amount of steps while adding. 0 = No steps, 2 = All steps.");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
-    steps = program.getSwitch("steps");
-    profile = program.getSwitch("profile");
+    int steps = program.getKeywordArgument("steps");
+    bool profile = program.getSwitch("profile");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
 

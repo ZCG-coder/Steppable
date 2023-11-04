@@ -1,29 +1,36 @@
 {
-    "configurations": [
+  "configurations": [
+    {
+      "name": "Add",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/src/add",
+      "args": [
+        "5",
+        "6"
+      ],
+      "cwd": "${workspaceFolder}/build",
+      "preLaunchTask": "CMake: build",
+      "setupCommands": [
         {
-            "name": "Add",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/src/add",
-            "args": ["5", "6"],
-            "cwd": "${workspaceFolder}/build",
-            "preLaunchTask": "CMake: build",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ]
-        },
-        {
-            "type": "cppdbg",
-            "request": "launch",
-            "name": "Multiply",
-            "program": "${workspaceFolder}/build/src/multiply",
-            "args": ["56", "76", "+profile"],
-            "cwd": "${workspaceFolder}",
-            "preLaunchTask": "CMake: build"
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         }
-    ]
+      ]
+    },
+    {
+      "type": "cppdbg",
+      "request": "launch",
+      "name": "Multiply",
+      "program": "${workspaceFolder}/build/src/multiply",
+      "args": [
+        "56",
+        "76",
+        "+profile"
+      ],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "CMake: build"
+    }
+  ]
 }

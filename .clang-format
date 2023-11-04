@@ -21,24 +21,24 @@ ColumnLimit: 120
 CommentPragmas: "suppress"
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 Cpp11BracedListStyle: false
-FixNamespaceComments: false
+FixNamespaceComments: true
 IncludeBlocks: Regroup
 IncludeCategories:
-    - Regex: '^.*(precomp|pch|stdafx)'
-      Priority: -1
-    - Regex: '^".*"'
-      Priority: 1
-    - Regex: '^<.*>'
-      Priority: 2
-    - Regex: '.*'
-      Priority: 3
+  - Regex: '^.*(precomp|pch|stdafx)'
+    Priority: -1
+  - Regex: '^".*"'
+    Priority: 1
+  - Regex: '^<.*>'
+    Priority: 2
+  - Regex: '.*'
+    Priority: 3
 KeepEmptyLinesAtTheStartOfBlocks: false
 MacroBlockBegin: "BEGIN_TEST_METHOD_PROPERTIES|BEGIN_MODULE|BEGIN_TEST_CLASS|BEGIN_TEST_METHOD"
 MacroBlockEnd: "END_TEST_METHOD_PROPERTIES|END_MODULE|END_TEST_CLASS|END_TEST_METHOD"
 NamespaceIndentation: All
 PointerAlignment: Left
 ReflowComments: true
-SortIncludes: true
+SortIncludes: CaseSensitive
 SpaceAfterTemplateKeyword: false
 SpacesInAngles: false
 SpacesInContainerLiterals: false

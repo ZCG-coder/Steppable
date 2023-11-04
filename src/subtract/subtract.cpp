@@ -3,7 +3,6 @@
 #include "util.hpp"
 
 #include <algorithm>
-#include <chrono>
 #include <iostream>
 #include <string>
 #include <string_view>
@@ -44,12 +43,12 @@ auto subtract(const std::string_view& a, const std::string_view& b, const bool s
     // Add a decimal point
     if (aIsDecimal or bIsDecimal)
     {
-        int decimalPos = aDecimal.length();
+        auto decimalPos = aDecimal.length();
         auto itSumDigits = diffDigits.begin();
         auto itCarries = borrows.begin();
 
-        diffDigits.insert(itSumDigits + decimalPos, -1); // -1 indicating a decimal point
-        borrows.insert(itCarries + decimalPos, -1); // Reserve the space
+        diffDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
+        borrows.insert(itCarries + static_cast<long>(decimalPos), -1); // Reserve the space
     }
 
     std::reverse(borrows.begin(), borrows.end());
@@ -59,17 +58,15 @@ auto subtract(const std::string_view& a, const std::string_view& b, const bool s
 
 int main(int _argc, const char* _argv[])
 {
-    bool steps = true, profile = false;
-
     ProgramArgs program(_argc, _argv);
-    program.addPosArg("a");
-    program.addPosArg("b");
+    program.addPosArg('a', "");
+    program.addPosArg('b', "");
     program.addSwitch("steps", true, "steps while adding");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
-    steps = program.getSwitch("steps");
-    profile = program.getSwitch("profile");
+    bool steps = program.getSwitch("steps");
+    bool profile = program.getSwitch("profile");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
 

@@ -15,11 +15,11 @@
 #ifndef TIC
 /// FMCRO: TIC
 /// DESC : Start a timer to measure the time it takes to execute a section of code.
-#define TIC(...)                                                                                       \
-    {                                                                                                  \
-        const char* nameSection = #__VA_ARGS__;                                                        \
-        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << '\0' << std::endl;    \
-        std::cout << colors::brightBlue << "[Profiling: " << nameSection << ']' << reset << std::endl; \
+#define TIC(...)                                                                                             \
+    {                                                                                                        \
+        const char* nameSection = #__VA_ARGS__;                                                              \
+        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << '\0' << reset << std::endl; \
+        std::cout << colors::brightBlue << "[Profiling: " << nameSection << ']' << reset << std::endl;       \
         auto start = std::chrono::high_resolution_clock::now();
 #endif
 
@@ -125,6 +125,6 @@ inline auto replace(std::basic_string<CharT>& s, const CharT t, const CharT repl
 
 std::string makeWider(const std::string& orig);
 
-int utf8_to_unicode(const std::string& utf8_code);
+[[maybe_unused]] int utf8_to_unicode(const std::string& utf8_code);
 
 std::string unicode_to_utf8(int unicode);

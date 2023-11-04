@@ -7,9 +7,9 @@
 #include <string_view>
 
 const std::string reportComparisonAtInteger(const std::string_view& a,
-                                                 const std::string_view& b,
-                                                 const bool bigger,
-                                                 const bool steps)
+                                            const std::string_view& b,
+                                            const bool bigger,
+                                            const bool steps)
 {
     std::stringstream ss;
 

@@ -3,10 +3,9 @@
 #include "symbols.hpp"
 
 #include <iomanip>
-#include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
-#include <sstream>
 
 std::string reportMultiply(const std::string& a,
                            const std::string& b,
@@ -17,7 +16,7 @@ std::string reportMultiply(const std::string& a,
 {
     std::stringstream ss;
 
-    const int outputWidth = prodDigitsOut[0].size() * 3 - 2;
+    const int outputWidth = static_cast<int>(prodDigitsOut[0].size() * 3 - 2);
     ss << std::right << std::setw(outputWidth + 3) << makeWider(a) << std::endl;
     ss << MULTIPLY << std::right << std::setw(outputWidth + 2) << makeWider(b) << std::endl;
     ss << std::string(outputWidth + 6, '_') << std::endl;
