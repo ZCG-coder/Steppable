@@ -8,7 +8,6 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
-#include <memory>
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -16,14 +15,17 @@
 
 #pragma region getExecutablePathName
 #if defined(WINDOWS)
+#include <libloaderapi.h>
+
 std::filesystem::path getExecutablePathName()
 {
+    std::filesystem::path pathName;
     std::string out;
     char* pathName;
     GetModuleFileNameA(NULL, pathName, 256);
     out = std::string(pathName);
-
-    return out;
+    pathName = out;
+    return pathName;
 }
 
 #elif defined(LINUX)
@@ -112,7 +114,7 @@ int invokeCommand(const std::string& name)
     int status = 257;
     auto commands = split(name, ' ');
     auto currentExeFile = getExecutablePathName();
-    if (not std::filesystem::is_regular_file(currentExeFile))
+    if (not std::filesystem::is_regular_file(currentExeFile.string()))
         error("Cannot get the executable directory");
     auto currentDirectory = currentExeFile.parent_path();
 
