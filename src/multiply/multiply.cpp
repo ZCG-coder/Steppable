@@ -10,7 +10,7 @@
 #include <string_view>
 #include <vector>
 
-std::string multiply(const std::string_view& a, const std::string_view& b, const bool steps)
+std::string multiply(const std::string_view& a, const std::string_view& b, const int steps)
 {
     const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b, false);
     std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
@@ -41,7 +41,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
         carries.push_back(currentCarries);
     }
 
-    // Copy the original prodDigits to this new variable, beacause we'll be modifying prodDigits for output formatting.
+    // Copy the original prodDigits to this new variable, because we'll be modifying prodDigits for output formatting.
     auto prodDigitsOut(prodDigits);
     for (int index = 0; index < prodDigits.size(); index++)
     {
@@ -55,28 +55,36 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
     for (auto indexDigit = finalProdDigits.size() - 1; indexDigit != -1; indexDigit--)
     {
         int sum = finalProdCarries[indexDigit];
-        for (auto prodDigitVector : prodDigits)
+        for (auto& prodDigitVector : prodDigits)
             sum += prodDigitVector[indexDigit];
-        finalProdCarries[indexDigit - 1] = sum / 10;
-        finalProdDigits[indexDigit - 1] += sum / 10;
-        if (sum >= 10)
-            sum %= 10;
+        if (indexDigit != 0)
+        {
+            finalProdCarries[indexDigit - 1] = sum / 10;
+            finalProdDigits[indexDigit - 1] += sum / 10;
+        }
+        else
+        {
+            finalProdCarries[indexDigit] = sum / 10;
+            finalProdDigits[indexDigit] += sum / 10;
+        }
+        sum %= 10;
         finalProdDigits[indexDigit] = sum;
     }
 
-    return reportMultiply(aStr, bStr, finalProdDigits, finalProdCarries, prodDigitsOut, carries);
+    return reportMultiply(aStr, bStr, finalProdDigits, finalProdCarries, prodDigitsOut, carries, steps);
 }
 
 int main(const int _argc, const char* _argv[])
 {
+    UTF8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number 1");
     program.addPosArg('b', "Number 2");
-    program.addSwitch("steps", true, "steps while multiplying");
+    program.addKeywordArg("steps", 2, "Amount of steps while multiplying");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
-    bool steps = program.getSwitch("steps");
+    int steps = program.getKeywordArgument("steps");
     bool profile = program.getSwitch("profile");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);

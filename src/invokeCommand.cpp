@@ -21,7 +21,8 @@ std::filesystem::path getExecutablePathName()
 
     // Get the path of the current executable module
     DWORD length = GetModuleFileNameA(nullptr, buffer, MAX_PATH);
-    if (length == 0) {
+    if (length == 0)
+    {
         std::cerr << "Failed to get the module filename." << std::endl;
         return "NUL";
     }
@@ -51,6 +52,15 @@ std::filesystem::path getExecutablePathName()
 #endif
 #pragma endregion
 
+std::filesystem::path getExecutablesPath()
+{
+    auto currentExeFile = getExecutablePathName();
+    if (not std::filesystem::is_regular_file(currentExeFile.string()))
+        error(static_cast<std::string>("Cannot get the executable directory"));
+    auto executablesPath = currentExeFile.parent_path().parent_path();
+    return executablesPath / "bin";
+}
+
 std::string random_string(size_t length)
 {
     auto randchar = []() {
@@ -71,7 +81,10 @@ std::string Command::constructCommand(const std::string& commandName)
     tmpOut = std::filesystem::temp_directory_path() / random_string(10);
     std::stringstream ss;
 
-    ss << commandName << ' ';
+#ifdef WINDOWS
+    ss << "powershell -c "; // Makes sure it uses PowerShell, so that redirection works correctly
+#endif
+    ss << commandName << " -steps:0 "; // Disable steps
     ss << "2>" << tmpErr;
     ss << " 1>" << tmpOut;
 
@@ -94,42 +107,43 @@ CommandResult Command::exec(const std::filesystem::path& command)
     int status = pclose(pipe); // This avoids an error on macOS, do not inline!
     status = WEXITSTATUS(status);
 
-    std::fstream errFs;
-    std::stringstream err;
-    errFs.open(tmpErr, std::ios::in);
-    err << errFs.rdbuf();
-    errFs.close();
+    std::fstream errFs, outFs;
+    std::string err, out;
 
-    std::fstream outFs;
-    std::stringstream out;
+    errFs.open(tmpErr, std::ios::in);
     outFs.open(tmpOut, std::ios::in);
-    out << outFs.rdbuf();
+    errFs >> err;
+    outFs >> out;
+    errFs.close();
     outFs.close();
 
-    return { out.str(), err.str(), status };
+    out.erase(std::remove(out.begin(), out.end(), '\n'), out.cend());
+    err.erase(std::remove(err.begin(), err.end(), '\n'), err.cend());
+
+    return { out, err, status };
 }
 
-int invokeCommand(const std::string& name)
+CommandResult invokeCommand(const std::string& commands)
 {
-    int status = 257;
-    auto commands = split(name, ' ');
-    auto currentExeFile = getExecutablePathName();
-    if (not std::filesystem::is_regular_file(currentExeFile.string()))
-        error(static_cast<std::string>("Cannot get the executable directory"));
-    auto currentDirectory = currentExeFile.parent_path();
+    auto currentDirectory = getExecutablesPath();
 
     Command command;
-    CommandResult result = command.exec(currentDirectory / name);
-    std::cout << result.output << std::endl;
+    CommandResult result = command.exec(currentDirectory / commands);
 
-    if (result.status != 0)
+    if (result.status != 0 or not result.err.empty())
     {
         auto lines = split(result.err, '\n');
         error("{} {}", lines.size(), "errors have occurred:");
         for (int i = 0; i < lines.size(); i++)
             error("{}: {}", i + 1, lines[i]);
     }
+    return result;
+}
 
-    status = result.status;
-    return status;
+CommandResult invokeCommand(const std::vector<std::string>& commands)
+{
+    std::string fullCommand;
+    for (auto& item : commands)
+        fullCommand += item + " ";
+    return invokeCommand(fullCommand);
 }

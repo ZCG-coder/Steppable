@@ -32,33 +32,50 @@ void ProgramArgs::addPosArg(const char name, const std::string_view& description
 void ProgramArgs::printUsage(const std::string_view& reason) const
 {
     std::cout << "Usage: " << formats::bold << programName << reset << " ";
-    for (const auto& [posArg, _] : posArgDescriptions)
-        std::cout << colors::brightGreen << '<' << posArg << '>' << " ";
-    std::cout << "[switches] [keywordArguments]" << reset << std::endl;
 
-    std::cout << formats::bold << "Available positional arguments:" << reset << std::endl;
-    for (const auto& [posArgName, posArgDescription] : posArgDescriptions)
-    {
-        std::cout << colors::brightGreen << formats::bold << '<' << posArgName << '>' << reset;
-        std::cout << ": " << posArgDescription << std::endl;
-    }
+    if (not posArgDescriptions.empty())
+        for (const auto& [posArg, _] : posArgDescriptions)
+            std::cout << colors::brightGreen << '<' << posArg << '>' << " ";
+
+    if (not switchDescriptions.empty())
+        std::cout << colors::brightGreen << "[switches] " << reset;
+    if (not keywordArgDescriptions.empty())
+        std::cout << colors::brightGreen << "[keywordArguments] " << reset;
     std::cout << std::endl;
 
-    std::cout << formats::bold << "Available switches:" << reset << std::endl;
-    for (const auto& [switchName, switchDescription] : switchDescriptions)
+    if (not posArgDescriptions.empty())
     {
-        std::cout << colors::brightGreen << formats::bold << '[' << '-' << switchName << "] ";
-        std::cout << '[' << '+' << switchName << "]" << reset << std::endl;
-        std::cout << "  Enables/Disables " << switchDescription << std::endl;
+        std::cout << formats::bold << "Available positional arguments:" << reset << std::endl;
+        for (const auto& [posArgName, posArgDescription] : posArgDescriptions)
+        {
+            std::cout << colors::brightGreen << formats::bold << '<' << posArgName << '>' << reset;
+            std::cout << ": " << posArgDescription << std::endl;
+        }
+        std::cout << reset << std::endl;
     }
-    std::cout << std::endl;
 
-    std::cout << formats::bold << "Available keyword arguments:" << reset << std::endl;
-    for (const auto& [keywordArgName, keywordArgDescription] : keywordArgDescriptions)
+    if (not switchDescriptions.empty())
     {
-        std::cout << colors::brightGreen << formats::bold << '[' << '-' << keywordArgName << ": <VALUE>]" << reset
-                  << std::endl;
-        std::cout << "  " << keywordArgDescription << std::endl;
+        std::cout << formats::bold << "Available switches:" << reset << std::endl;
+        for (const auto& [switchName, switchDescription] : switchDescriptions)
+        {
+            std::cout << colors::brightGreen << formats::bold << '[' << '-' << switchName << "] ";
+            std::cout << '[' << '+' << switchName << "]" << reset << std::endl;
+            std::cout << "  Enables/Disables " << switchDescription << std::endl;
+        }
+        std::cout << reset << std::endl;
+    }
+
+    if (not keywordArgDescriptions.empty())
+    {
+        std::cout << formats::bold << "Available keyword arguments:" << reset << std::endl;
+        for (const auto& [keywordArgName, keywordArgDescription] : keywordArgDescriptions)
+        {
+            std::cout << colors::brightGreen << formats::bold << '[' << '-' << keywordArgName << ": <VALUE>]" << reset
+                      << std::endl;
+            std::cout << "  " << keywordArgDescription << reset << std::endl;
+        }
+        std::cout << reset;
     }
 
     if (not reason.empty())

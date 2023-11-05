@@ -16,7 +16,7 @@ const std::string reportSubtract(const std::string& aInteger,
                                  const bool bIsDecimal,
                                  const std::vector<int>& _diffDigits,
                                  const std::vector<int>& borrows,
-                                 const bool steps)
+                                 const int steps)
 {
     std::stringstream ss;
     std::string aStr = aInteger + '.' + aDecimal;
@@ -37,7 +37,7 @@ const std::string reportSubtract(const std::string& aInteger,
     if (not aIsDecimal and bIsDecimal and not steps)
         aOut += std::string(bDecimal.length() + 1, ' ');
 
-    if (steps)
+    if (steps == 2)
     {
         ss << "      "; // Reserve space for the minus
         for (int i = 0; i < borrows.size(); i++)
@@ -73,7 +73,9 @@ const std::string reportSubtract(const std::string& aInteger,
         }
         ss << std::endl << THEREFORE " ";
     }
-    ss << aOut << " - " << bOut << " = ";
+
+    if (steps == 1)
+        ss << aOut << " - " << bOut << " = ";
     for (int outputDigit : diffDigits)
     {
         char outputChar = outputDigit + '0';

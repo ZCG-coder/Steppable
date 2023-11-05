@@ -1,27 +1,29 @@
 #include <string_view>
 #define TEST_START() \
     int main()       \
-    {
+    {                \
+        UTF8CodePage _;
 #define SECTION(...)                                                                                         \
     {                                                                                                        \
-        const char* nameSection = #__VA_ARGS__;                                                              \
+        const std::string& nameSection = #__VA_ARGS__;                                                       \
         std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << '\0' << reset << std::endl; \
         std::cout << colors::brightBlue << "[Testing: " << nameSection << ']' << reset << std::endl;         \
         auto start = std::chrono::high_resolution_clock::now();                                              \
-        auto testCase = TestCase(static_cast<std::string>(nameSection));
+        auto _ = TestCase(nameSection);
 
 #define SECTION_END()                                                                                            \
     auto end = std::chrono::high_resolution_clock::now();                                                        \
     auto duration =                                                                                              \
         std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start) \
             .count();                                                                                            \
-    testCase.summarize();                                                                                        \
+    _.summarize();                                                                                               \
     std::cout << colors::brightBlue << '[' << nameSection << " took " << duration << "(microseconds) to finish]" \
               << reset << std::endl;                                                                             \
-    std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << '\0';                               \
     std::cout << reset << std::endl;                                                                             \
     }
-#define TEST_END() }
+#define TEST_END()                                                                                       \
+    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << '\0' << reset << std::endl; \
+    }
 
 class TestCase
 {

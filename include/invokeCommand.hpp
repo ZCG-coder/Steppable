@@ -39,4 +39,8 @@ public:
 
 std::filesystem::path getExecutablePathName();
 
-int invokeCommand(const std::string& name);
+std::filesystem::path getExecutablesPath();
+
+CommandResult invokeCommand(const std::string& commands);
+
+CommandResult invokeCommand(const std::vector<std::string>& commands);

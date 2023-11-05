@@ -25,7 +25,7 @@ std::array<std::string, 4> splitNumber(const std::string_view& a,
     // Pad with zeros
     if (padInteger)
     {
-        auto diffLengthInteger = aInteger.length() - bInteger.length();
+        auto diffLengthInteger = static_cast<long>(aInteger.length()) - static_cast<long>(bInteger.length());
 
         if (diffLengthInteger > 0)
             bInteger.insert(0, diffLengthInteger, ' ');
@@ -34,7 +34,7 @@ std::array<std::string, 4> splitNumber(const std::string_view& a,
     }
     if (padDecimal)
     {
-        auto diffLengthDecimal = aDecimal.length() - bDecimal.length();
+        auto diffLengthDecimal = static_cast<long>(aDecimal.length()) - static_cast<long>(bDecimal.length());
 
         if (diffLengthDecimal > 0)
             bDecimal += std::string(diffLengthDecimal, '0');
