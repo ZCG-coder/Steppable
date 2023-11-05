@@ -8,7 +8,7 @@
 #include <string_view>
 #include <vector>
 
-auto subtract(const std::string_view& a, const std::string_view& b, const bool steps = true)
+auto subtract(const std::string_view& a, const std::string_view& b, const int steps = 2)
 {
     auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
     bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
@@ -58,14 +58,15 @@ auto subtract(const std::string_view& a, const std::string_view& b, const bool s
 
 int main(int _argc, const char* _argv[])
 {
+    UTF8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "");
     program.addPosArg('b', "");
-    program.addSwitch("steps", true, "steps while adding");
+    program.addKeywordArg("steps", 2, "steps while adding");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
-    bool steps = program.getSwitch("steps");
+    int steps = program.getKeywordArgument("steps");
     bool profile = program.getSwitch("profile");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);

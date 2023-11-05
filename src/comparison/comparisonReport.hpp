@@ -6,10 +6,10 @@
 std::string reportComparisonAtInteger(const std::string_view& a,
                                       const std::string_view& b,
                                       const bool bigger,
-                                      const bool steps = true);
+                                      const int steps = 2);
 
 std::string reportComparisonByDigit(const std::string_view& a,
                                     const std::string_view& b,
                                     const unsigned int digit,
                                     const bool bigger,
-                                    const bool steps = true);
+                                    const int steps = 2);

@@ -9,7 +9,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if (WIN32)
     add_compile_definitions(WINDOWS)
-    add_compile_options(/utf-8)
+	if (MSVC) # MSVC Has no UTF-8 support by default
+		add_compile_options(/utf-8)
+	endif()
+    set(WINDOWS TRUE)
 elseif (APPLE)
     add_compile_definitions(MACOSX)
 elseif (LINUX)
@@ -40,3 +43,5 @@ endforeach ()
 add_subdirectory(src/)
 add_subdirectory(tests/)
 add_subdirectory(include/) # The CMakeLists file there adds the include/ directory to everything
+
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)

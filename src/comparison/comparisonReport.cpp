@@ -8,11 +8,11 @@
 std::string reportComparisonAtInteger(const std::string_view& a,
                                       const std::string_view& b,
                                       const bool bigger,
-                                      const bool steps)
+                                      const int steps)
 {
     std::stringstream ss;
 
-    if (steps)
+    if (steps == 2)
     {
         ss << "Comparing the integer part of a and b" << std::endl;
         if (bigger)
@@ -26,13 +26,10 @@ std::string reportComparisonAtInteger(const std::string_view& a,
             ss << THEREFORE " " << a << " is less than " << b;
         }
     }
+    else if (steps == 1)
+        ss << a << (bigger ? " > " : " < ") << b;
     else
-    {
-        if (bigger)
-            ss << a << " > " << b;
-        else
-            ss << a << " < " << b;
-    }
+        ss << bigger ? '1' : '0';
 
     return ss.str();
 }
@@ -41,13 +38,13 @@ std::string reportComparisonByDigit(const std::string_view& a,
                                     const std::string_view& b,
                                     const unsigned int _digit,
                                     const bool bigger,
-                                    const bool steps)
+                                    const int steps)
 {
     std::stringstream ss;
     int digit = static_cast<int>(_digit);
     if (not bigger)
         digit = -digit;
-    if (steps)
+    if (steps == 2)
     {
         ss << "a = " << a << std::endl;
         ss << "b = " << b << std::endl;
@@ -65,13 +62,10 @@ std::string reportComparisonByDigit(const std::string_view& a,
             ss << THEREFORE " " << a << " is less than " << b;
         }
     }
+    else if (steps == 1)
+        ss << a << (bigger ? " > " : " < ") << b;
     else
-    {
-        if (bigger)
-            ss << a << " > " << b;
-        else
-            ss << a << " < " << b;
-    }
+        ss << bigger ? '1' : '0';
 
     return ss.str();
 }

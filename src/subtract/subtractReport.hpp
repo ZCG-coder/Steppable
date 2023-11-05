@@ -11,4 +11,4 @@ const std::string reportSubtract(const std::string& aInteger,
                                  const bool bIsDecimal,
                                  const std::vector<int>& _diffDigits,
                                  const std::vector<int>& borrows,
-                                 const bool steps);
+                                 const int steps);

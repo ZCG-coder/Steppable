@@ -67,7 +67,7 @@ const std::string reportAdd(const std::string& aInteger,
         ss << std::endl << THEREFORE " ";
     }
 
-    if (steps == 1)
+    if (steps >= 1)
         ss << "a + b = ";
     for (auto c : sumDigits)
         if (c == -1)

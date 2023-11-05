@@ -42,20 +42,59 @@
     #include <fcntl.h>
     #include <io.h>
 
+inline DWORD EnableVTMode()
+{
+    // Set output mode to handle virtual terminal sequences
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hOut == INVALID_HANDLE_VALUE)
+        return -1;
+
+    DWORD dwMode = 0;
+    if (!GetConsoleMode(hOut, &dwMode))
+        return -1;
+    DWORD dwModeOrig = dwMode;
+
+    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    if (!SetConsoleMode(hOut, dwMode))
+        return -1;
+    return dwModeOrig;
+}
+
+inline bool RestoreVTMode(DWORD dwModeOrig)
+{
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hOut == INVALID_HANDLE_VALUE)
+        return false;
+
+    if (!SetConsoleMode(hOut, dwModeOrig))
+        return false;
+    return true;
+}
+
 class UTF8CodePage
 {
 public:
     UTF8CodePage() : m_old_code_page(::GetConsoleOutputCP())
     {
         ::SetConsoleOutputCP(CP_UTF8);
+        dwModeOrig = EnableVTMode();
     }
-    ~UTF8CodePage() { ::SetConsoleOutputCP(m_old_code_page); }
+
+    ~UTF8CodePage()
+    {
+        ::SetConsoleOutputCP(m_old_code_page);
+        RestoreVTMode(dwModeOrig);
+    }
 
 private:
     UINT m_old_code_page;
+
+    DWORD dwModeOrig;
 };
 #else
-class UTF8CodePage {};
+class UTF8CodePage
+{
+};
 #endif
 
 /// INFN : isZeroString

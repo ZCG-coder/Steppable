@@ -57,6 +57,7 @@ auto add(const std::string_view& a, const std::string_view& b, const int steps =
 
 int main(const int _argc, const char* _argv[])
 {
+    UTF8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number 1");
     program.addPosArg('b', "Number 2");
