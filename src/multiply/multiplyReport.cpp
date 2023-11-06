@@ -16,7 +16,7 @@ std::string reportMultiply(const std::string& a,
                            int steps)
 {
     std::stringstream ss;
-    unsigned long outputWidth; 
+    unsigned long outputWidth;
 
     if (steps == 2)
     {
@@ -27,7 +27,7 @@ std::string reportMultiply(const std::string& a,
 
         for (int indexProdDigits = 0; indexProdDigits < prodDigitsOut.size(); indexProdDigits++)
         {
-            auto& subVector = prodDigitsOut[indexProdDigits];
+            auto subVector = removeLeadingZeros(prodDigitsOut[indexProdDigits]);
 
             ss << std::string(indexProdDigits * 3 + 3, ' ');
             for (int c : carries[indexProdDigits])
@@ -39,7 +39,10 @@ std::string reportMultiply(const std::string& a,
 
             ss << std::string(indexProdDigits * 3 + 3, ' ');
             for (int i : subVector)
-                ss << i << "  ";
+                if (i > 0)
+                    ss << i << "  ";
+                else
+                    ss << "   ";
         }
 
         // Display the full result. If there is just one result, do not show them again.
@@ -59,14 +62,16 @@ std::string reportMultiply(const std::string& a,
         }
     }
     else if (steps == 1)
-    {
         ss << a << " " MULTIPLY " " << b << " = ";
-        for (int i : finalProdDigits)
-            ss << i;
+    if (steps == 1 or steps == 0)
+    {
+        auto vector = removeLeadingZeros(finalProdDigits);
+        for (int i : vector)
+            if (i >= 0)
+                ss << i;
+            else
+                ss << ' ';
     }
-    else
-        for (int i : finalProdDigits)
-            ss << i;
 
     return ss.str();
 }

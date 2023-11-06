@@ -1,9 +1,9 @@
 #include "colors.hpp"
 #include "invokeCommand.hpp"
+#include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"
 
-#include <chrono>
 #include <iomanip>
 #include <iostream>
 
@@ -11,7 +11,8 @@ TEST_START()
 SECTION(Multiplication without carry)
 std::string a = "2", b = "4";
 const auto& multiplyResult1 = invokeCommand({ "multiply", a, b }).output;
-const auto& multiplyResult2 = invokeCommand({ "multiply", b, a }).output; // Makes sure it works when a and b are inversed.
+const auto& multiplyResult2 =
+    invokeCommand({ "multiply", b, a }).output; // Makes sure it works when a and b are inversed.
 _.assertIsEqual(multiplyResult1, "8");
 _.assertIsEqual(multiplyResult1, multiplyResult2);
 SECTION_END()

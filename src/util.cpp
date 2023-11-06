@@ -140,3 +140,18 @@ std::string unicode_to_utf8(int unicode)
 
     return "";
 }
+
+auto removeLeadingZeros(std::vector<int> vector) -> decltype(vector)
+{
+    auto out = vector;
+    auto firstNonZero = std::find_if(out.begin(), out.end(), [](int num) { return num != 0; });
+
+    // Check if the first element is zero
+    if (out.begin() != firstNonZero && out.front() == 0)
+    {
+        std::replace_if(
+            out.begin(), firstNonZero, [](int num) { return num == 0; }, -2);
+    }
+
+    return out;
+}

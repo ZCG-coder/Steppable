@@ -1,9 +1,9 @@
 #include "colors.hpp"
 #include "invokeCommand.hpp"
+#include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"
 
-#include <chrono>
 #include <iomanip>
 #include <iostream>
 
@@ -12,7 +12,7 @@ SECTION(Comparison at integer)
 std::string a = "6453.55", b = "54329.334";
 const auto& compareResult1 = invokeCommand({ "comparison", a, b }).output;
 const auto& compareResult2 =
-    invokeCommand({ "comparison", b, a }).output; // Makes sure it works when a and b are inversed.
+    invokeCommand({ "comparison", b, a }).output; // Makes sure it works when a and b are reordered.
 _.assertIsEqual(compareResult1, "0");
 _.assertIsEqual(compareResult2, "1");
 SECTION_END()

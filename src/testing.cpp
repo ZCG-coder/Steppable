@@ -10,10 +10,10 @@ void TestCase::assert(bool condition, const std::string_view& conditionName)
 {
     if (condition)
     {
-        info("in {}: {} PASSED", testCaseName, conditionName);
+        info("{} PASSED", conditionName);
         return;
     }
-    error("{} in {}: condition {} evaluates to false", errorCount + 1, testCaseName, conditionName);
+    error("{}: Condition {} evaluates to false. FAILED", errorCount + 1, conditionName);
     errorCount++;
 }
 
