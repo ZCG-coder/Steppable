@@ -29,7 +29,7 @@ std::string reportComparisonAtInteger(const std::string_view& a,
     else if (steps == 1)
         ss << a << (bigger ? " > " : " < ") << b;
     else
-        ss << bigger ? '1' : '0';
+        ss << (bigger ? '1' : '0');
 
     return ss.str();
 }
@@ -65,7 +65,7 @@ std::string reportComparisonByDigit(const std::string_view& a,
     else if (steps == 1)
         ss << a << (bigger ? " > " : " < ") << b;
     else
-        ss << bigger ? '1' : '0';
+        ss << (bigger ? '1' : '0');
 
     return ss.str();
 }

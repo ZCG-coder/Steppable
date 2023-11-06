@@ -3,14 +3,14 @@
 #include <ostream>
 
 #ifdef WINDOWS
-#include <Windows.h>
-#include <io.h>
-#include <stdio.h>
-#define isatty _isatty
-#define fileno _fileno
+    #include <Windows.h>
+    #include <io.h>
+    #include <stdio.h>
+    #define isatty _isatty
+    #define fileno _fileno
 
 #else
-#include <unistd.h>
+    #include <unistd.h>
 #endif
 
 bool isTerminal(const std::ostream& stream)
