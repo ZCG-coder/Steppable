@@ -1,5 +1,6 @@
 #include "addReport.hpp"
 #include "argParse.hpp"
+#include "fn/basicArithm.hpp"
 #include "util.hpp"
 
 #include <algorithm>
@@ -7,7 +8,7 @@
 #include <string_view>
 #include <vector>
 
-auto add(const std::string_view& a, const std::string_view& b, const int steps = 2)
+std::string add(const std::string_view& a, const std::string_view& b, const int steps)
 {
     auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
     bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
@@ -55,6 +56,7 @@ auto add(const std::string_view& a, const std::string_view& b, const int steps =
     return reportAdd(aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, steps);
 }
 
+#ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
     UTF8CodePage _;
@@ -79,3 +81,4 @@ int main(const int _argc, const char* _argv[])
     else
         std::cout << add(aStr, bStr, steps) << std::endl;
 }
+#endif

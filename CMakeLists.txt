@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.21)
 project(CAS)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -30,7 +30,7 @@ function(capitalize IN OUT)
             ${CAPITALIZED}
             PARENT_SCOPE)
 endfunction()
-set(COMPONENTS add subtract multiply baseConvert comparison)
+set(COMPONENTS add subtract multiply decimalConvert comparison)
 set(TARGETS ${COMPONENTS} util)
 set(TEST_TARGETS_TEMP ${COMPONENTS})
 foreach (TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
@@ -45,3 +45,4 @@ add_subdirectory(tests/)
 add_subdirectory(include/) # The CMakeLists file there adds the include/ directory to everything
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)

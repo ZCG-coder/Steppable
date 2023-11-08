@@ -69,8 +69,6 @@ std::string reportMultiply(const std::string& a,
         for (int i : vector)
             if (i >= 0)
                 ss << i;
-            else
-                ss << ' ';
     }
 
     return ss.str();

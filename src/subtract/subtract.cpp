@@ -1,4 +1,5 @@
 #include "argParse.hpp"
+#include "fn/basicArithm.hpp"
 #include "subtractReport.hpp"
 #include "util.hpp"
 
@@ -8,7 +9,7 @@
 #include <string_view>
 #include <vector>
 
-auto subtract(const std::string_view& a, const std::string_view& b, const int steps = 2)
+std::string subtract(const std::string_view& a, const std::string_view& b, const int steps)
 {
     auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
     bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);

@@ -1,4 +1,5 @@
 #include "argParse.hpp"
+#include "fn/basicArithm.hpp"
 #include "multiplyReport.hpp"
 #include "symbols.hpp"
 
