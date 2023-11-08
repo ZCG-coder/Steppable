@@ -1,9 +1,9 @@
-#include "invokeCommand.hpp"
+#include "fn/basicArithm.hpp"
 #include "util.hpp"
 
 int main()
 {
     UTF8CodePage _;
-    invokeCommand("multiply 5 6");
+    multiply("5", "6", 0);
     return 0;
 }

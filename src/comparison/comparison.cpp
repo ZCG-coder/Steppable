@@ -1,5 +1,6 @@
 #include "argParse.hpp"
 #include "comparisonReport.hpp"
+#include "fn/basicArithm.hpp"
 #include "util.hpp"
 
 #include <iostream>
@@ -7,7 +8,7 @@
 #include <string>
 #include <string_view>
 
-auto compare(const std::string_view& a, const std::string_view& b, const int steps = 2)
+std::string compare(const std::string_view& a, const std::string_view& b, const int steps)
 {
     auto aIntegerReal = split(a, '.').front(), bIntegerReal = split(b, '.').front();
     if (aIntegerReal.length() != bIntegerReal.length())

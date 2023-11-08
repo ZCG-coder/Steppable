@@ -1,8 +1,11 @@
 enable_testing()
 
-foreach (ITEM IN LISTS TEST_TARGETS)
+foreach (ORIG ITEM IN ZIP_LISTS TARGETS TEST_TARGETS)
+    if (${ORIG} STREQUAL "util")
+        continue()
+    endif ()
     add_executable(${ITEM} ${ITEM}.cpp)
-    target_link_libraries(${ITEM} util)
+    target_link_libraries(${ITEM} util _${ORIG})
     add_test(NAME ${ITEM} COMMAND ${CMAKE_BINARY_DIR}/tests/${ITEM})
     message(STATUS "Added test case: ${ITEM}: ${ITEM}.cpp")
 endforeach ()
