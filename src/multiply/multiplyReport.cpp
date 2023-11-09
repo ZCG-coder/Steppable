@@ -39,10 +39,11 @@ std::string reportMultiply(const std::string& a,
 
             ss << std::string(indexProdDigits * 3 + 3, ' ');
             for (int i : subVector)
-                if (i > 0)
+                if (i >= 0)
                     ss << i << "  ";
                 else
                     ss << "   ";
+            ss << std::endl;
         }
 
         // Display the full result. If there is just one result, do not show them again.
