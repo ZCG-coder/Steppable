@@ -73,6 +73,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
     return reportMultiply(aStr, bStr, finalProdDigits, finalProdCarries, prodDigitsOut, carries, steps);
 }
 
+#ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
     UTF8CodePage _;
@@ -97,3 +98,4 @@ int main(const int _argc, const char* _argv[])
     else
         std::cout << multiply(aStr, bStr, steps) << std::endl;
 }
+#endif
