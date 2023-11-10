@@ -37,6 +37,7 @@ std::string compare(const std::string_view& a, const std::string_view& b, const 
         return (std::string) "2";
 }
 
+#ifndef NO_MAIN
 int main(int _argc, const char** _argv)
 {
     UTF8CodePage _;
@@ -61,3 +62,4 @@ int main(int _argc, const char** _argv)
     else
         std::cout << compare(aStr, bStr, steps) << std::endl;
 }
+#endif

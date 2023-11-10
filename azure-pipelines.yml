@@ -22,6 +22,22 @@ jobs:
         inputs:
           cmakeArgs: '--build .'
           workingDirectory: '$(Build.SourcesDirectory)/build'
+          
+      - task: CmdLine@2
+        inputs:
+          script: 'ctest . --output-junit out-linux.xml'
+          workingDirectory: '$(Build.SourcesDirectory)/build/tests'
+          failOnStderr: true
+
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '*.xml'
+          searchFolder: '$(Build.SourcesDirectory)/build/tests'
+          mergeTestResults: true
+          failTaskOnFailedTests: true
+          failTaskOnMissingResultsFile: true
+          testRunTitle: 'Test on Linux'
 
       - task: PublishPipelineArtifact@1
         inputs:
@@ -47,6 +63,22 @@ jobs:
         inputs:
           cmakeArgs: '--build .'
           workingDirectory: '$(Build.SourcesDirectory)/build'
+
+      - task: CmdLine@2
+        inputs:
+          script: 'ctest . --output-junit out-windows.xml -C Release'
+          workingDirectory: '$(Build.SourcesDirectory)/build/tests'
+          failOnStderr: true
+
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '*.xml'
+          searchFolder: '$(Build.SourcesDirectory)/build/tests'
+          mergeTestResults: true
+          failTaskOnFailedTests: true
+          failTaskOnMissingResultsFile: true
+          testRunTitle: 'Test on Windows'
 
       - task: PublishPipelineArtifact@1
         inputs:

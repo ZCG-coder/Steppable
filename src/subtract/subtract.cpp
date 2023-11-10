@@ -57,6 +57,7 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
     return reportSubtract(aInteger, aDecimal, bInteger, bDecimal, aIsDecimal, bIsDecimal, diffDigits, borrows, steps);
 }
 
+#ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
 {
     UTF8CodePage _;
@@ -81,3 +82,4 @@ int main(int _argc, const char* _argv[])
     else
         std::cout << subtract(aStr, bStr, steps) << std::endl;
 }
+#endif
