@@ -19,14 +19,38 @@ void TestCase::assert(bool condition, const std::string_view& conditionName)
 
 void TestCase::assertIsEqual(const std::string_view& a, const std::string_view& b)
 {
-    const std::string& conditionName = std::format("{} == {}", a, b);
+    const std::string& conditionName = std::format("String {} == {}", a, b);
     assert(a == b, conditionName);
 }
 
 void TestCase::assertIsNotEqual(const std::string_view& a, const std::string_view& b)
 {
-    const std::string& conditionName = std::format("{} != {}", a, b);
+    const std::string& conditionName = std::format("String {} != {}", a, b);
     assert(a != b, conditionName);
+}
+
+void TestCase::assertIsEqual(const int a, const int b)
+{
+    const std::string& conditionName = std::format("Integer {} == {}", a, b);
+    assert(a == b, conditionName);
+}
+
+void TestCase::assertIsNotEqual(const int a, const int b)
+{
+    const std::string& conditionName = std::format("Integer {} != {}", a, b);
+    assert(a != b, conditionName);
+}
+
+void TestCase::assertTrue(const bool value)
+{
+    const std::string& conditionName = std::format("{} is True", value);
+    assert(value, conditionName);
+}
+
+void TestCase::assertFalse(const bool value)
+{
+    const std::string& conditionName = std::format("{} is False", value);
+    assert(not value, conditionName);
 }
 
 void TestCase::summarize()
