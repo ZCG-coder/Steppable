@@ -1,4 +1,7 @@
+#pragma once
+
 #include <string_view>
+
 #define TEST_START()           \
     int main()                 \
     {                          \
@@ -48,6 +51,14 @@ public:
     void assertIsEqual(const std::string_view& a, const std::string_view& b);
 
     void assertIsNotEqual(const std::string_view& a, const std::string_view& b);
+
+    void assertIsEqual(const int a, const int b);
+
+    void assertIsNotEqual(const int a, const int b);
+
+    void assertTrue(bool value);
+
+    void assertFalse(bool value);
 
     void summarize();
 };

@@ -54,7 +54,7 @@ std::string makeWider(const std::string& orig)
     return outStr;
 }
 
-[[maybe_unused]] int utf8_to_unicode(const std::string& utf8_code)
+[[maybe_unused]] int utf8ToUnicode(const std::string& utf8_code)
 {
     unsigned utf8_size = utf8_code.length();
     int unicode = 0;
@@ -71,7 +71,7 @@ std::string makeWider(const std::string& orig)
     return unicode;
 }
 
-std::string unicode_to_utf8(int unicode)
+std::string unicodeToUtf8(int unicode)
 {
     std::string s;
 
@@ -141,7 +141,7 @@ std::string unicode_to_utf8(int unicode)
     return "";
 }
 
-auto removeLeadingZeros(std::vector<int> vector) -> decltype(vector)
+auto removeLeadingZeros(const std::vector<int> vector) -> decltype(vector)
 {
     auto out = vector;
     auto firstNonZero = std::find_if(out.begin(), out.end(), [](int num) { return num != 0; });

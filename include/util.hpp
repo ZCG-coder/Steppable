@@ -5,11 +5,10 @@
 #include <algorithm>
 #include <array>
 #include <chrono>
-#include <cmath>
 #include <iomanip>
-#include <map>
 #include <string>
 #include <string_view>
+#include <sstream>
 #include <vector>
 
 #ifndef TIC
@@ -74,7 +73,7 @@ inline bool RestoreVTMode(DWORD dwModeOrig)
 class UTF8CodePage
 {
 public:
-    UTF8CodePage() : m_old_code_page(::GetConsoleOutputCP())
+    UTF8CodePage() : oldCodePage(::GetConsoleOutputCP())
     {
         ::SetConsoleOutputCP(CP_UTF8);
         dwModeOrig = EnableVTMode();
@@ -82,12 +81,12 @@ public:
 
     ~UTF8CodePage()
     {
-        ::SetConsoleOutputCP(m_old_code_page);
+        ::SetConsoleOutputCP(oldCodePage);
         RestoreVTMode(dwModeOrig);
     }
 
 private:
-    UINT m_old_code_page;
+    UINT oldCodePage;
 
     DWORD dwModeOrig;
 };
@@ -134,7 +133,6 @@ constexpr inline bool isNumber(const std::string_view& s)
 /// OUT  : bool
 /// IN   : std::string string - The string to check.
 /// DESC : Check if a string is a zero string.
-
 template<typename CharT>
 std::vector<std::basic_string<CharT>> split(std::basic_string<CharT> s, CharT separator)
 {
@@ -173,43 +171,48 @@ std::array<std::string, 4> splitNumber(const std::string_view& a,
 
 /// Trim from end of string (right)
 template<typename CharT>
-inline auto rReplace(std::basic_string<CharT>& s, const CharT t, const CharT replacement = '\0') -> decltype(s)
+inline auto rReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0') -> decltype(s)
 {
+    std::basic_string<CharT> out = s;
     typename std::basic_string<CharT>::size_type count = 0;
-    while (s.back() == t)
+    while (out.back() == t)
     {
-        s.pop_back();
+        out.pop_back();
         count++;
     }
-    s += std::basic_string<CharT>(count, replacement);
-    return s;
+    if (replacement != '\0')
+        out += std::basic_string<CharT>(count, replacement);
+    return out;
 }
 
 /// Trim from beginning of string (left)
 template<typename CharT>
-inline auto lReplace(std::basic_string<CharT>& s, const CharT t, const CharT replacement = '\0') -> decltype(s)
+inline auto lReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0') -> decltype(s)
 {
+    std::basic_string<CharT> out = s;
     typename std::basic_string<CharT>::size_type count = 0;
-    while (s[0] == t)
+    while (out[0] == t)
     {
-        s.erase(s.begin());
+        out.erase(out.begin());
         count++;
     }
-    s = std::basic_string<CharT>(count, replacement) + s;
-    return s;
+    if (replacement != '\0')
+        out = std::basic_string<CharT>(count, replacement) + out;
+    return out;
 }
 
 /// Trim from both ends of string (right then left)
 template<typename CharT>
-inline auto replace(std::basic_string<CharT>& s, const CharT t, const CharT replacement = '\0') -> decltype(s)
+inline auto bothEndsReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
+    -> decltype(s)
 {
     return lReplace(rReplace(s, t, replacement), t, replacement);
 }
 
-auto removeLeadingZeros(std::vector<int> vector) -> decltype(vector);
+auto removeLeadingZeros(const std::vector<int> vector) -> decltype(vector);
 
 std::string makeWider(const std::string& orig);
 
-[[maybe_unused]] int utf8_to_unicode(const std::string& utf8_code);
+[[maybe_unused]] int utf8ToUnicode(const std::string& utf8_code);
 
-std::string unicode_to_utf8(int unicode);
+std::string unicodeToUtf8(int unicode);
