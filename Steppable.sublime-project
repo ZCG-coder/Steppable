@@ -3,7 +3,10 @@
     [
         {
             "path": ".",
-        }
+        },
+        {
+			"path": "src/power"
+		},
     ],
     "debugger_configurations":
     [
@@ -14,7 +17,7 @@
             "program": "${folder}/build/add",
             "args": ["1", "9", "+steps", "+profile"],
             "cwd": "${folder}/build",
-            "pre_debug_task": "Ninja Build"
+            "pre_debug_task": "CMake Build",
         },
         {
             "type": "lldb",
@@ -23,7 +26,16 @@
             "program": "${folder}/build/subtract",
             "args": ["32", "19", "+steps"],
             "cwd": "${folder}/build",
-            "pre_debug_task": "Ninja Build"
+            "pre_debug_task": "CMake Build",
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Power",
+            "program": "${folder}/build/src/power",
+            "args": ["32", "19", "+steps"],
+            "cwd": "${folder}/build",
+            "pre_debug_task": "CMake Build",
         },
         {
             "type": "lldb",
@@ -32,7 +44,7 @@
             "program": "${folder}/build/comparison",
             "args": ["4", "5"],
             "cwd": "${folder}/build",
-            "pre_debug_task": "Ninja Build"
+            "pre_debug_task": "CMake Build",
         },
         {
             "type": "lldb",
@@ -41,25 +53,25 @@
             "program": "${folder}/build/multiply",
             "args": ["4", "5"],
             "cwd": "${folder}/build",
-            "pre_debug_task": "Ninja Build"
+            "pre_debug_task": "CMake Build",
         }
     ],
     "debugger_tasks":
     [
         {
-            "name": "Ninja Build",
+            "name": "CMake Build",
             "cmd": "ninja",
-            "working_dir": "$project_path/build"
+            "working_dir": "$project_path/build",
         },
         {
             "name": "Ninja Clean",
             "cmd": ["ninja", "clean"],
-            "working_dir": "$project_path/build"
+            "working_dir": "$project_path/build",
         },
         {
             "name": "Format everything",
             "shell_cmd": "find . -name '*.hpp' -o -name '*.cpp' | xargs clang-format -i",
-            "working_dir": "$project_path"
+            "working_dir": "$project_path",
         }
-    ]
+    ],
 }

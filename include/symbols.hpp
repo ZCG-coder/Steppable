@@ -15,6 +15,8 @@
 #define SUB_Z "\u1D69"
 #define SUB_MAGIC_NUMBER 8272
 
+extern const std::array<std::string_view, 10>& SUPERSCRIPTS;
+
 std::string makeSubscript(const std::string& normal);
 
 std::string makeSubscript(const int normal);
@@ -22,8 +24,8 @@ std::string makeSubscript(const int normal);
 // Superscripts
 #define SUP_0 "\u2070"
 #define SUP_Z "\u1DBB"
-#define SUP_MAGIC_NUMBER 8256
+#define SUP_MAGIC_NUMBER 8304
 
 std::string makeSuperscript(const std::string& normal);
 
-std::string makeSuperscript(const char normal);
+std::string_view makeSuperscript(const char normal);
