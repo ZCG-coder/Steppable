@@ -38,6 +38,7 @@ we are planning to implement next (and in the near future):
     - [x] Addition of integers and decimals
     - [x] Subtraction of integers and decimals
     - [x] Multiplication of integers and decimals
+    - [x] Powers of integers
     - [ ] Division of integers and decimals
     - [ ] Addition of fractions
     - [ ] Subtraction of fractions

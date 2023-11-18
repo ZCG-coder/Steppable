@@ -30,8 +30,8 @@ int main(const int _argc, const char* _argv[])
 
     if (profile)
     {
-        TIC(Column Method Power)
-        std::cout << "Column Method Power :\n" << power(aStr, bStr) << std::endl;
+        TIC(Power)
+        std::cout << "Power :\n" << power(aStr, bStr, steps) << std::endl;
         TOC()
     }
     else

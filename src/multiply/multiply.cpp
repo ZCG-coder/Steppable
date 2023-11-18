@@ -11,6 +11,12 @@
 
 std::string multiply(const std::string_view& a, const std::string_view& b, const int steps)
 {
+    if (isZeroString(a) or isZeroString(b))
+        return "0"; // Since a or b is zero, the result must be zero as well
+    if (a == "1")
+        return static_cast<std::string>(b);
+    if (b == "1")
+        return static_cast<std::string>(a);
     const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b, false);
     std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
     std::vector<std::vector<int>> prodDigits, carries;

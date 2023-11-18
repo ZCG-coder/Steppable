@@ -10,7 +10,7 @@ std::string add(const std::string_view& a, const std::string_view& b, int steps 
 std::string compare(const std::string_view& a, const std::string_view& b, int steps = 2);
 std::string multiply(const std::string_view& a, const std::string_view& b, int steps = 2);
 std::string subtract(const std::string_view& a, const std::string_view& b, int steps = 2);
-std::string decimalConvert(const std::string& inputStr, const std::string& baseStr, int steps = 2);
+std::string decimalConvert(const std::string_view& _inputString, const std::string_view& baseString, int steps = 2);
 std::string power(const std::string_view _number, const std::string_view& raiseTo, const int steps = 2);
 
 template<typename Pred>
