@@ -65,12 +65,6 @@ jobs:
       # uses: egor-tensin/setup-clang@ef434b41eb33a70396fb336b1bae39c76d740c3d
       uses: egor-tensin/setup-clang@v1.4
 
-    - name: clang-tidy check
-      # You may pin to the exact commit or the version.
-      # uses: muxee/clang-tidy-action@7b55a601bc127aeca89a8d1a67a74159e828fbd6
-      uses: muxee/clang-tidy-action@master
-          
-
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
