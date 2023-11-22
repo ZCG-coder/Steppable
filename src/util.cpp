@@ -1,3 +1,25 @@
+/**************************************************************************************************
+ * Copyright (c) 2023 NWSOFT                                                                      *
+ *                                                                                                *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
+ * of this software and associated documentation files (the "Software"), to deal                  *
+ * in the Software without restriction, including without limitation the rights                   *
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                      *
+ * copies of the Software, and to permit persons to whom the Software is                          *
+ * furnished to do so, subject to the following conditions:                                       *
+ *                                                                                                *
+ * The above copyright notice and this permission notice shall be included in all                 *
+ * copies or substantial portions of the Software.                                                *
+ *                                                                                                *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                     *
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                       *
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE                    *
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                         *
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,                  *
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                  *
+ * SOFTWARE.                                                                                      *
+ **************************************************************************************************/
+
 #include "util.hpp"
 
 #include <algorithm>
@@ -8,12 +30,14 @@
 #include <string_view>
 #include <vector>
 
-std::array<std::string, 4> splitNumber(const std::string_view& a,
-                                       const std::string_view& b,
+std::array<std::string, 4> splitNumber(const std::string_view& _a,
+                                       const std::string_view& _b,
                                        const bool padInteger,
                                        const bool padDecimal)
 {
-    std::vector<std::string_view> aParts = split(a, '.'), bParts = split(b, '.');
+    std::string a = removeLeadingZeros(std::string(_a));
+    std::string b = removeLeadingZeros(std::string(_b));
+    std::vector<std::string> aParts = split(a, '.'), bParts = split(b, '.');
     std::string aInteger = static_cast<std::string>(aParts.front()), aDecimal = static_cast<std::string>(aParts.back()),
                 bInteger = static_cast<std::string>(bParts.front()), bDecimal = static_cast<std::string>(bParts.back());
     // If the numbers are integers, discard their decimal points
@@ -152,6 +176,20 @@ auto removeLeadingZeros(const std::vector<int> vector) -> decltype(vector)
         std::replace_if(
             out.begin(), firstNonZero, [](int num) { return num == 0; }, -2);
     }
+
+    return out;
+}
+
+auto removeLeadingZeros(const std::string string) -> decltype(string)
+{
+    if (string == "0")
+        return "0";
+    auto out = string;
+    auto firstNonZero = std::find_if(out.begin(), out.end(), [](auto item) { return item != '0'; });
+
+    // Check if the first element is zero
+    if (out.begin() != firstNonZero && out.front() == '0')
+        out.erase(std::remove_if(out.begin(), firstNonZero, [](auto item) { return item == '0'; }));
 
     return out;
 }

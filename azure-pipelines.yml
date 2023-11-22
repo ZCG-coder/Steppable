@@ -55,13 +55,13 @@ jobs:
       - task: CMake@1
         displayName: 'Configure CMake (Windows)'
         inputs:
-          cmakeArgs: '-B build -DCMAKE_BUILD_TYPE=Release --config Release'
+          cmakeArgs: '-B build -DCMAKE_BUILD_TYPE=Release'
           workingDirectory: '$(Build.SourcesDirectory)'
 
       - task: CMake@1
         displayName: 'Build C++ Project (Windows)'
         inputs:
-          cmakeArgs: '--build .'
+          cmakeArgs: '--build . --config Release'
           workingDirectory: '$(Build.SourcesDirectory)/build'
 
       - task: CmdLine@2
