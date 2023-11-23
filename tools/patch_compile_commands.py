@@ -20,45 +20,54 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-file(GLOB UTILS *.cpp)
-add_library(util ${UTILS})
+"""
+PATCH_COMPILE_COMMANDS.PY - Removes NO_MAIN definitions in compile_commands.json
 
-set(CALCULATOR_FILES)
+This file contains the patch method, which patches the compile_commands.json file.
+The compile_commands.json file is used by various LSP servers to try compiling the project,
+and generate an AST tree for analyzing.
 
-function(COPY_TO_BIN TARGET_NAME)
-    if (WINDOWS)
-        add_custom_command(TARGET ${TARGET_NAME}
-                POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
-                ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME}.exe)
-    else ()
-        add_custom_command(TARGET ${TARGET_NAME}
-                POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
-                ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME})
-    endif ()
-endfunction()
+However, since this project also builds a library, calc,
+we have to disable all the main() functions by the NO_MAIN macro.
+This causes the LSP to spot out more warnings as usual, as the main function would get ignored.
+This file removes the NO_MAIN definition to fix this issue.
+"""
 
-foreach (COMPONENT IN LISTS COMPONENTS)
-    list(APPEND CALCULATOR_FILES ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
-endforeach ()
+from pathlib import Path
+import json
+import re
 
-add_library(calc ${CALCULATOR_FILES})
-target_link_libraries(calc util)
-target_include_directories(calc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
-target_compile_definitions(calc PRIVATE NO_MAIN)
+PROJECT_PATH = Path(__file__).parent.parent
+NO_MAIN_PATTERN = re.compile(r"\s-DNO_MAIN\s")
 
-foreach (COMPONENT IN LISTS COMPONENTS)
-    message(STATUS "Adding component: ${COMPONENT}: ${COMPONENT}/${COMPONENT}.cpp, ${COMPONENT}/${COMPONENT}Report.cpp")
 
-    add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
-    target_link_libraries(${COMPONENT} util calc)
+def get_compile_commands() -> Path:
+    if (compile_commands_file := PROJECT_PATH / "build" / "compile_commands.json").is_file:
+        return compile_commands_file
+    elif (compile_commands_file := PROJECT_PATH / "cmake-build-debug" / "compile_commands.json").is_file:
+        return compile_commands_file
+    elif (compile_commands_file := PROJECT_PATH / "cmake-build-release" / "compile_commands.json").is_file:
+        return compile_commands_file
 
-    list(APPEND CALCULATOR_FILES ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
+    raise RuntimeError("Cannot get the CMake build directory")
 
-    COPY_TO_BIN(${COMPONENT})
-endforeach ()
 
-add_executable(main main/main.cpp)
-target_link_libraries(main util calc)
-target_include_directories(main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+def patch():
+    file = get_compile_commands()
+    with open(file) as f:
+        objs = json.load(f)
+
+    modified_objs = []
+    for obj in objs:
+        command: str = obj["command"]
+        command = re.sub(NO_MAIN_PATTERN, " ", command)
+        obj["command"] = command
+        modified_objs.append(obj)
+
+    with open(file, "w") as f:
+        json.dump(modified_objs, f, indent=4)
+        print(f"Wrote {file} successfully!")
+
+
+if __name__ == '__main__':
+    patch()

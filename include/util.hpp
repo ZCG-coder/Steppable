@@ -231,9 +231,9 @@ inline auto bothEndsReplace(const std::basic_string<CharT> s, const CharT t, con
     return lReplace(rReplace(s, t, replacement), t, replacement);
 }
 
-auto removeLeadingZeros(const std::vector<int> vector) -> decltype(vector);
+auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
 
-auto removeLeadingZeros(const std::string string) -> decltype(string);
+auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>;
 
 std::string makeWider(const std::string& orig);
 
