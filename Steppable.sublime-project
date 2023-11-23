@@ -3,10 +3,7 @@
     [
         {
             "path": ".",
-        },
-        {
-			"path": "src/power",
-		},
+        }
     ],
     "debugger_configurations":
     [
@@ -14,7 +11,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "Add",
-            "program": "${folder}/build/add",
+            "program": "${folder}/build/src/add",
             "args": ["1", "9", "+steps", "+profile"],
             "cwd": "${folder}/build",
             "pre_debug_task": "CMake Build",
@@ -23,9 +20,9 @@
             "type": "lldb",
             "request": "launch",
             "name": "Subtract",
-            "program": "${folder}/build/subtract",
+            "program": "${folder}/build/src/subtract",
             "args": ["32", "19", "+steps"],
-            "cwd": "${folder}/build",
+            "cwd": "${folder}/build/src",
             "pre_debug_task": "CMake Build",
         },
         {
@@ -41,7 +38,16 @@
             "type": "lldb",
             "request": "launch",
             "name": "Comparison",
-            "program": "${folder}/build/comparison",
+            "program": "${folder}/build/src/comparison",
+            "args": ["4", "5"],
+            "cwd": "${folder}/build",
+            "pre_debug_task": "CMake Build",
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Division",
+            "program": "${folder}/build/src/division",
             "args": ["4", "5"],
             "cwd": "${folder}/build",
             "pre_debug_task": "CMake Build",
@@ -50,9 +56,9 @@
             "type": "lldb",
             "request": "launch",
             "name": "Multiply",
-            "program": "${folder}/build/multiply",
+            "program": "${folder}/build/src/multiply",
             "args": ["4", "5"],
-            "cwd": "${folder}/build",
+            "cwd": "${folder}/build/src",
             "pre_debug_task": "CMake Build",
         }
     ],
@@ -74,4 +80,7 @@
             "working_dir": "$project_path",
         }
     ],
+    "settings": {
+        "SublimeLinter.linters.clangtidy.compile_commands": "${project_path}/build"
+    }
 }

@@ -23,22 +23,21 @@
 #include "subtractReport.hpp"
 
 #include "symbols.hpp"
-#include "util.hpp"
 
 #include <sstream>
 #include <string>
 #include <utility>
 #include <vector>
 
-const std::string reportSubtract(const std::string& aInteger,
-                                 const std::string& aDecimal,
-                                 const std::string& bInteger,
-                                 const std::string& bDecimal,
-                                 const bool aIsDecimal,
-                                 const bool bIsDecimal,
-                                 const std::vector<int>& _diffDigits,
-                                 const std::vector<int>& borrows,
-                                 const int steps)
+std::string reportSubtract(const std::string& aInteger,
+                           const std::string& aDecimal,
+                           const std::string& bInteger,
+                           const std::string& bDecimal,
+                           const bool aIsDecimal,
+                           const bool bIsDecimal,
+                           const std::vector<int>& _diffDigits,
+                           const std::vector<int>& borrows,
+                           const int steps)
 {
     std::stringstream ss;
     std::string aStr = aInteger + '.' + aDecimal;
@@ -65,10 +64,9 @@ const std::string reportSubtract(const std::string& aInteger,
         for (int i = 0; i < borrows.size(); i++)
         {
             int currentBorrowDigit = borrows[i];
-            if (currentBorrowDigit != aStr[i] - '0' and currentBorrowDigit >= 10)
-                ss << makeSubscript(std::to_string(currentBorrowDigit)) << ' ';
-            else if (currentBorrowDigit != aStr[i] - '0' and currentBorrowDigit < 10 and currentBorrowDigit > 0)
-                ss << makeSubscript(std::to_string(currentBorrowDigit)) << "  ";
+            if (currentBorrowDigit != aStr[i] - '0')
+                ss << makeSubscript(std::to_string(currentBorrowDigit))
+                   << std::string(2 - (currentBorrowDigit / 10), ' ');
             else
                 ss << "   ";
         }
@@ -76,7 +74,7 @@ const std::string reportSubtract(const std::string& aInteger,
         for (char aChar : aOut)
             ss << aChar << "  ";
 
-        ss << std::endl << "-     "; // Print a subtract sign before printing b
+        ss << std::endl << "-     "; // Print a subtraction sign before printing b
         if (aOut.length() > bOut.length())
             ss << std::string(aOut.length() - bOut.length(), ' ');
         for (char bChar : bOut)
@@ -86,7 +84,7 @@ const std::string reportSubtract(const std::string& aInteger,
 
         for (int outputDigit : diffDigits)
         {
-            char outputChar = outputDigit + '0';
+            char outputChar = static_cast<char>(outputDigit + '0');
             if (outputDigit == -1)
                 outputChar = '.';
             else if (outputDigit == -2)
@@ -98,12 +96,12 @@ const std::string reportSubtract(const std::string& aInteger,
 
     if (steps == 1)
         ss << aOut << " - " << bOut << " = ";
-    if (diffDigits.size() == 0)
+    if (diffDigits.empty())
         diffDigits = { 0 };
 
     for (int outputDigit : diffDigits)
     {
-        char outputChar = outputDigit + '0';
+        char outputChar = static_cast<char>(outputDigit + '0');
         if (outputDigit == -1)
             outputChar = '.';
         else if (outputDigit == -2)

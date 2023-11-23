@@ -20,43 +20,64 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "argParse.hpp"
+#include "divisionReport.hpp"
 #include "fn/basicArithm.hpp"
-#include "powerReport.hpp"
 #include "util.hpp"
 
 #include <iostream>
+#include <sstream>
+#include <string>
 
-std::string power(const std::string_view _number, const std::string_view& raiseTo, const int steps)
+auto getQuotient(const auto& _temp, const auto& _divisor)
 {
-    std::string numberOrig = static_cast<std::string>(_number), number = "1";
-    return reportPower(_number, raiseTo, steps);
-}
+    auto temp = _temp, divisior = _divisor;
+    if (compare(temp, divisior, 0) == "0")
+        return std::string("0");
+    if (compare(temp, divisior, 0) == "2")
+        return std::string("1"); // Equal
 
-#ifndef NO_MAIN
-int main(const int _argc, const char* _argv[])
-{
-    UTF8CodePage _;
-    ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number as the base");
-    program.addPosArg('b', "Number as the exponent");
-    program.addKeywordArg(
-        "steps", 2, "Amount of steps while raising the power (i.e., multiplying). 0 = No steps, 2 = All steps.");
-    program.addSwitch("profile", false, "profiling the program");
-    program.parseArgs();
-
-    int steps = program.getKeywordArgument("steps");
-    bool profile = program.getSwitch("profile");
-    const auto& aStr = program.getPosArg(0);
-    const auto& bStr = program.getPosArg(1);
-
-    if (profile)
+    int out = 0;
+    while (compare(temp, divisior, 0) == "1" or compare(temp, divisior, 0) == "2")
     {
-        TIC(Power)
-        std::cout << "Power :\n" << power(aStr, bStr, steps) << std::endl;
-        TOC()
+        out++;
+        temp = subtract(temp, divisior, 0);
     }
-    else
-        std::cout << power(aStr, bStr, steps) << std::endl;
+
+    return std::to_string(out);
 }
-#endif
+
+inline auto getRemainder(const auto& quotient, const auto& temp, const auto& divisor)
+{
+    return subtract(temp, multiply(quotient, divisor, 0), 0);
+}
+
+std::string divide(const std::string& number, const std::string& divisor, int steps = 2)
+{
+    std::string ans;
+    std::stringstream formattedAns;
+
+    int idx = 0;
+    std::string temp(1, number[idx]);
+    formattedAns << makeWider(divisor) << ") " << makeWider(number) << std::endl;
+    while (compare(temp, divisor, 0) == "0")
+        temp += number[++idx];
+    while (number.length() > idx)
+    {
+        auto quotient = getQuotient(temp, divisor);
+        ans += quotient;
+        formattedAns << reportDivisionStep(temp, quotient, divisor) << std::endl;
+        temp = getRemainder(quotient, temp, divisor);
+        if (number.length() - 1 > ++idx)
+            temp += number[idx];
+    }
+    if (ans.length() == 0)
+        return "0";
+
+    return formattedAns.str();
+}
+
+int main()
+{
+    std::cout << divide("102022", "44") << std::endl;
+    return 0;
+}

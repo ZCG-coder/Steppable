@@ -24,7 +24,6 @@
 
 #include <algorithm>
 #include <array>
-#include <iostream>
 #include <sstream>
 #include <string>
 #include <string_view>
@@ -165,7 +164,7 @@ std::string unicodeToUtf8(int unicode)
     return "";
 }
 
-auto removeLeadingZeros(const std::vector<int> vector) -> decltype(vector)
+auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>
 {
     auto out = vector;
     auto firstNonZero = std::find_if(out.begin(), out.end(), [](int num) { return num != 0; });
@@ -180,16 +179,11 @@ auto removeLeadingZeros(const std::vector<int> vector) -> decltype(vector)
     return out;
 }
 
-auto removeLeadingZeros(const std::string string) -> decltype(string)
+auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>
 {
     if (string == "0")
         return "0";
     auto out = string;
-    auto firstNonZero = std::find_if(out.begin(), out.end(), [](auto item) { return item != '0'; });
-
-    // Check if the first element is zero
-    if (out.begin() != firstNonZero && out.front() == '0')
-        out.erase(std::remove_if(out.begin(), firstNonZero, [](auto item) { return item == '0'; }));
-
+    out.erase(0, std::min(out.find_first_not_of('0'), out.size() - 1));
     return out;
 }
