@@ -19,3 +19,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                  *
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
+
+#include "colors.hpp"
+#include "fn/basicArithm.hpp"
+#include "output.hpp"
+#include "testing.hpp"
+#include "util.hpp"
+
+#include <iomanip>
+#include <iostream>
+
+TEST_START()
+
+TEST_END()

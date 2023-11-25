@@ -125,7 +125,7 @@ SECTION_END()
 
 SECTION(removeLeadingZeros)
 const std::vector<int>& vector = { 0, 0, 142, 0, 142, 0, 0 };
-const auto& out = removeLeadingZeros(vector);
+const auto& out = replaceLeadningZeros(vector);
 
 _.assertIsEqual(out.size(), 7);
 _.assertIsEqual(out[0], out[1]);

@@ -61,7 +61,7 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
 {
-    UTF8CodePage _;
+    UTF8CodePage();
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number in the base");
     program.addPosArg('b', "Base number");

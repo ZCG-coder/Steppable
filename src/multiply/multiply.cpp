@@ -103,7 +103,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
-    UTF8CodePage _;
+    UTF8CodePage();
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number 1");
     program.addPosArg('b', "Number 2");

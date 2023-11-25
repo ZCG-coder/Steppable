@@ -25,7 +25,7 @@
 
 int main()
 {
-    UTF8CodePage _;
+    UTF8CodePage();
     multiply("5", "6", 0);
     return 0;
 }

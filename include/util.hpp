@@ -122,7 +122,7 @@ class UTF8CodePage
 /// OUT  : bool
 /// IN   : std::string string - The string to check.
 /// DESC : Check if a string is a zero string.
-constexpr inline bool isZeroString(std::string_view string)
+constexpr inline bool isZeroString(const std::string_view& string)
 {
     return std::all_of(string.begin(), string.end(), [](char c) { return c == '0'; });
 }
@@ -156,9 +156,9 @@ constexpr inline bool isNumber(const std::string_view& s)
 /// IN   : std::string string - The string to check.
 /// DESC : Check if a string is a zero string.
 template<typename CharT>
-std::vector<std::basic_string<CharT>> split(std::basic_string<CharT> s, CharT separator)
+inline auto split(std::basic_string<CharT> s, const CharT separator)
 {
-    std::vector<std::string> substrings;
+    std::vector<decltype(s)> substrings;
     std::stringstream ss(s);
     std::string token;
 
@@ -169,9 +169,9 @@ std::vector<std::basic_string<CharT>> split(std::basic_string<CharT> s, CharT se
 }
 
 template<typename CharT>
-std::vector<std::basic_string_view<CharT>> split(std::basic_string_view<CharT> s, CharT separator)
+inline auto split(std::basic_string_view<CharT> s, const CharT separator)
 {
-    std::vector<std::basic_string_view<CharT>> result;
+    std::vector<decltype(s)> result;
     auto left = s.begin();
     for (auto it = left; it != s.end(); ++it)
     {
@@ -193,7 +193,7 @@ std::array<std::string, 4> splitNumber(const std::string_view& a,
 
 /// Trim from end of string (right)
 template<typename CharT>
-inline auto rReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0') -> decltype(s)
+inline auto rReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
 {
     std::basic_string<CharT> out = s;
     typename std::basic_string<CharT>::size_type count = 0;
@@ -209,7 +209,7 @@ inline auto rReplace(const std::basic_string<CharT> s, const CharT t, const Char
 
 /// Trim from beginning of string (left)
 template<typename CharT>
-inline auto lReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0') -> decltype(s)
+inline auto lReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
 {
     std::basic_string<CharT> out = s;
     typename std::basic_string<CharT>::size_type count = 0;
@@ -226,12 +226,13 @@ inline auto lReplace(const std::basic_string<CharT> s, const CharT t, const Char
 /// Trim from both ends of string (right then left)
 template<typename CharT>
 inline auto bothEndsReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
-    -> decltype(s)
 {
     return lReplace(rReplace(s, t, replacement), t, replacement);
 }
 
-auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
+auto replaceLeadningZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
+
+auto removeLeadningZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
 
 auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>;
 

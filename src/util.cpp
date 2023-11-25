@@ -164,7 +164,7 @@ std::string unicodeToUtf8(int unicode)
     return "";
 }
 
-auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>
+auto replaceLeadningZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>
 {
     auto out = vector;
     auto firstNonZero = std::find_if(out.begin(), out.end(), [](int num) { return num != 0; });
@@ -177,6 +177,15 @@ auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype
     }
 
     return out;
+}
+
+auto removeLeadningZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>
+{
+    auto firstNonZero = std::find_if(vector.begin(), vector.end(), [](int num) { return num != 0; });
+
+    // Create a new vector with the non-zero elements
+    std::vector<int> result(firstNonZero, vector.end());
+    return result;
 }
 
 auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>

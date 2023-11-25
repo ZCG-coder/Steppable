@@ -50,7 +50,7 @@ std::string reportMultiply(const std::string& a,
 
         for (int indexProdDigits = 0; indexProdDigits < prodDigitsOut.size(); indexProdDigits++)
         {
-            auto subVector = removeLeadingZeros(prodDigitsOut[indexProdDigits]);
+            auto subVector = replaceLeadningZeros(prodDigitsOut[indexProdDigits]);
 
             ss << std::string(indexProdDigits * 3 + 3, ' ');
             for (int c : carries[indexProdDigits])
@@ -89,7 +89,7 @@ std::string reportMultiply(const std::string& a,
         ss << a << " " MULTIPLY " " << b << " = ";
     if (steps == 1 or steps == 0)
     {
-        auto vector = removeLeadingZeros(finalProdDigits);
+        auto vector = replaceLeadningZeros(finalProdDigits);
         for (int i : vector)
             if (i >= 0)
                 ss << i;
