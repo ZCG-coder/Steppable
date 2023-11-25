@@ -36,7 +36,7 @@ std::string power(const std::string_view _number, const std::string_view& raiseT
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
-    UTF8CodePage _;
+    UTF8CodePage();
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number as the base");
     program.addPosArg('b', "Number as the exponent");

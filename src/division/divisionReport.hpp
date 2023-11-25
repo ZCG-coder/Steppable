@@ -27,4 +27,7 @@
 
 std::string reportDivisionStep(const std::string_view& temp,
                                const std::string_view& quotient,
-                               const std::string_view& divisor);
+                               const std::string_view& divisor,
+                               const int width,
+                               const int index,
+                               const std::string_view lastRemainder);

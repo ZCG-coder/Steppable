@@ -19,3 +19,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                  *
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
+
+#include "divisionReport.hpp"
+
+#include "fn/basicArithm.hpp"
+#include "util.hpp"
+
+#include <ostream>
+#include <sstream>
+#include <string>
+#include <string_view>
+
+std::string reportDivisionStep(const std::string_view& temp,
+                               const std::string_view& quotient,
+                               const std::string_view& divisor,
+                               const int width,
+                               const int index,
+                               const std::string_view lastRemainder)
+{
+    std::stringstream ss;
+
+    auto result = subtract(temp, multiply(divisor, quotient, 0), 2);
+
+    // Remove the summary line and the result
+    auto splitted = split(result, '\n');
+    splitted.pop_back();
+    splitted.pop_back();
+    int normalWidth = divisor.length() + 1;
+
+    const auto outputWidth =
+        index == 0 ? divisor.length() + 2 : 3 * (divisor.length() + index + normalWidth - lastRemainder.length() - 3);
+    for (auto i : splitted)
+        ss << std::string(outputWidth, ' ') << i << std::endl;
+
+    return ss.str();
+}

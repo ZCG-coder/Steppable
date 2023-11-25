@@ -23,6 +23,7 @@
 #include "subtractReport.hpp"
 
 #include "symbols.hpp"
+#include "util.hpp"
 
 #include <sstream>
 #include <string>
@@ -40,14 +41,14 @@ std::string reportSubtract(const std::string& aInteger,
                            const int steps)
 {
     std::stringstream ss;
-    std::string aStr = aInteger + '.' + aDecimal;
-    std::vector<int> diffDigits = _diffDigits;
+    auto aStr = aInteger + '.' + aDecimal;
+    auto diffDigits = _diffDigits;
     if (diffDigits.front() == 0 and not steps)
-        diffDigits.erase(diffDigits.begin());
+        diffDigits = removeLeadningZeros(diffDigits);
     else if (diffDigits.front() == 0)
-        diffDigits[0] = -2;
+        diffDigits = replaceLeadningZeros(diffDigits);
 
-    std::string aOut = aInteger, bOut = bInteger;
+    auto aOut = aInteger, bOut = bInteger;
     if (aIsDecimal)
         aOut += '.' + aDecimal;
     if (bIsDecimal)
@@ -94,7 +95,7 @@ std::string reportSubtract(const std::string& aInteger,
         ss << std::endl << THEREFORE " ";
     }
 
-    if (steps == 1)
+    if (steps >= 1)
         ss << aOut << " - " << bOut << " = ";
     if (diffDigits.empty())
         diffDigits = { 0 };
