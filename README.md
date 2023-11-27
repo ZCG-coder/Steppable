@@ -64,13 +64,6 @@ First, you will need:
   it gets along with CMake.
 - [Git](https://git-scm.com/) (optional, but recommended) to download the project and commit changes.
 
-> **Note**:
-> Currently, the compiler that ships with macOS Xcode Command-Line Tools supports few
-> C++20 features, which this project relies on.
-> (E.g., `std::format` to format messages, etc.).
->
-> Please install the latest version of Clang (E.g., with Homebrew) to compile this project.
-
 Then, you can clone this repository by running the following command, or [download](https://github.com/ZCG-Coder) it
 from GitHub (if you don't have Git installed):
 
