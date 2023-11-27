@@ -101,7 +101,7 @@ void ProgramArgs::printUsage(const std::string_view& reason) const
     if (not reason.empty())
     {
         std::cerr << std::endl;
-        error(reason);
+        error(std::string(reason));
     }
     exit(-1);
 }
@@ -161,7 +161,7 @@ void ProgramArgs::parseArgs()
         {
             if (not isNumber(_arg))
             {
-                error("Invalid argument: {}", _arg);
+                error("Invalid argument: %s", _arg);
                 exit(-1);
             }
             posArgs.push_back(_arg);

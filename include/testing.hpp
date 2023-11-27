@@ -50,7 +50,7 @@
     }
 #define TEST_END()                                                                               \
     if (errors)                                                                                  \
-        error("Not all tests passed. There are {} errors.", errors);                             \
+        error("Not all tests passed. There are %i errors.", errors);                             \
     else                                                                                         \
         info("All tests passed.");                                                               \
     std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << std::endl; \
@@ -68,11 +68,11 @@ private:
 public:
     int errorCount = 0;
 
-    TestCase(const std::string_view& testCaseName);
+    TestCase(const std::string& testCaseName);
 
-    void assertIsEqual(const std::string_view& a, const std::string_view& b);
+    void assertIsEqual(const std::string& a, const std::string& b);
 
-    void assertIsNotEqual(const std::string_view& a, const std::string_view& b);
+    void assertIsNotEqual(const std::string& a, const std::string& b);
 
     void assertIsEqual(const int a, const int b);
 
