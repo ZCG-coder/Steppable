@@ -30,7 +30,7 @@
 #include <string_view>
 #include <vector>
 
-std::string subtract(const std::string_view& a, const std::string_view& b, const int steps)
+std::string subtract(const std::string_view& a, const std::string_view& b, const int steps, const bool noMinus)
 {
     auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
     bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
@@ -75,7 +75,8 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
 
     std::reverse(borrows.begin(), borrows.end());
     std::reverse(diffDigits.begin(), diffDigits.end());
-    return reportSubtract(aInteger, aDecimal, bInteger, bDecimal, aIsDecimal, bIsDecimal, diffDigits, borrows, steps);
+    return reportSubtract(
+        aInteger, aDecimal, bInteger, bDecimal, aIsDecimal, bIsDecimal, diffDigits, borrows, steps, noMinus);
 }
 
 #ifndef NO_MAIN
@@ -86,21 +87,22 @@ int main(int _argc, const char* _argv[])
     program.addPosArg('a', "");
     program.addPosArg('b', "");
     program.addKeywordArg("steps", 2, "steps while adding");
+    program.addSwitch("noMinus", false, "shows the minus sign");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");
-    bool profile = program.getSwitch("profile");
+    bool profile = program.getSwitch("profile"), noMinus = program.getSwitch("noMinus");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
 
     if (profile)
     {
         TIC(Column Method Addition)
-        std::cout << "Column Method Addition :\n" << subtract(aStr, bStr) << std::endl;
+        std::cout << "Column Method Addition :\n" << subtract(aStr, bStr, steps, noMinus) << std::endl;
         TOC()
     }
     else
-        std::cout << subtract(aStr, bStr, steps) << std::endl;
+        std::cout << subtract(aStr, bStr, steps, noMinus) << std::endl;
 }
 #endif

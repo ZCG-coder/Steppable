@@ -22,8 +22,20 @@
 
 #pragma once
 
+#include <sstream>
 #include <string>
 #include <string_view>
+
+std::string reportDivision(std::stringstream& tempFormattedAns,
+                           const std::string_view& temp,
+                           const std::string_view& ans,
+                           const std::string_view& divisor,
+                           const std::string_view& number,
+                           const std::string_view& _divisor,
+                           const std::string_view& _number,
+                           const int steps,
+                           const int decimals,
+                           const int width);
 
 std::string reportDivisionStep(const std::string_view& temp,
                                const std::string_view& quotient,

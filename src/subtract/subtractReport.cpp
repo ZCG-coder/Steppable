@@ -38,7 +38,8 @@ std::string reportSubtract(const std::string& aInteger,
                            const bool bIsDecimal,
                            const std::vector<int>& _diffDigits,
                            const std::vector<int>& borrows,
-                           const int steps)
+                           const int steps,
+                           const bool noMinus)
 {
     std::stringstream ss;
     auto aStr = aInteger + '.' + aDecimal;
@@ -61,7 +62,7 @@ std::string reportSubtract(const std::string& aInteger,
 
     if (steps == 2)
     {
-        ss << "      "; // Reserve space for the minus
+        ss << "   "; // Reserve space for the minus
         for (int i = 0; i < borrows.size(); i++)
         {
             int currentBorrowDigit = borrows[i];
@@ -71,17 +72,19 @@ std::string reportSubtract(const std::string& aInteger,
             else
                 ss << "   ";
         }
-        ss << std::endl << "      "; // Reserve space for the minus
+        ss << std::endl << "   "; // Reserve space for the minus
         for (char aChar : aOut)
             ss << aChar << "  ";
 
-        ss << std::endl << "-     "; // Print a subtraction sign before printing b
+        if (not noMinus)
+            ss << std::endl << "-  "; // Print a subtraction sign before printing b
+        else
+            ss << std::endl << "   ";
         if (aOut.length() > bOut.length())
             ss << std::string(aOut.length() - bOut.length(), ' ');
         for (char bChar : bOut)
             ss << bChar << "  ";
-
-        ss << std::endl << std::string(diffDigits.size() * 3 + 6, '_') << std::endl << "      ";
+        ss << std::endl << std::string(diffDigits.size() * 3 + 2, '_') << std::endl << "   ";
 
         for (int outputDigit : diffDigits)
         {

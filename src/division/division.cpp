@@ -23,9 +23,9 @@
 #include "argParse.hpp"
 #include "divisionReport.hpp"
 #include "fn/basicArithm.hpp"
+#include "symbols.hpp"
 #include "util.hpp"
 
-#include <iomanip>
 #include <iostream>
 #include <ostream>
 #include <sstream>
@@ -55,15 +55,32 @@ inline auto getRemainder(const auto& quotient, const auto& temp, const auto& div
     return subtract(temp, multiply(quotient, divisor, 0), 0);
 }
 
-std::string divide(const std::string_view& number, const std::string_view& divisor, int steps = 2)
+std::string divide(const std::string_view& _number,
+                   const std::string_view& _divisor,
+                   const int steps,
+                   const int _decimals)
 {
+    auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] = splitNumber(_number, _divisor, false, true);
+    auto decimals = _decimals;
+
+    while (not divisorDecimal.empty())
+    {
+        divisorInteger += divisorDecimal[0];
+        divisorDecimal.erase(divisorDecimal.begin());
+        numberInteger += numberDecimal[0];
+        numberDecimal.erase(numberDecimal.begin());
+    }
+    auto number = numberInteger + numberDecimal;
+    auto divisor = divisorInteger + divisorDecimal;
     std::string ans;
     std::stringstream tempFormattedAns, formattedAns;
 
+    int numDecimals;
+    for (int i = 0; i < decimals + 1; i++) // Additional 0 is for rounding
+        number += '0';
+
     int idx = 0;
-    std::string temp(1, number[idx]),
-        lastRemainder = "",
-        header = makeWider(static_cast<std::string>(divisor)) + ") " + makeWider(static_cast<std::string>(number));
+    std::string temp(1, number[idx]), lastRemainder = "", header = makeWider(divisor) + ") " + makeWider(number);
     tempFormattedAns << header << std::endl;
     auto width = header.length();
 
@@ -71,27 +88,44 @@ std::string divide(const std::string_view& number, const std::string_view& divis
         temp += number[++idx];
     while (number.length() > idx)
     {
+        if (isZeroString(temp))
+        {
+            idx++;
+            ans += "0";
+            continue;
+        }
         auto quotient = getQuotient(temp, divisor);
         auto rem = getRemainder(quotient, temp, divisor);
 
         ans += quotient;
-        tempFormattedAns << reportDivisionStep(temp, quotient, divisor, width, ans.length() - 1, lastRemainder);
+        if (steps == 2)
+            tempFormattedAns << reportDivisionStep(temp, quotient, divisor, width, ans.length() - 1, lastRemainder);
         lastRemainder = temp = rem;
         if (number.length() - 1 >= ++idx)
             temp += number[idx];
     }
-    if (ans.length() == 0)
-        return "0";
 
-    tempFormattedAns << std::setw(width) << std::setfill(' ') << std::right << makeWider(temp) << std::endl;
-    tempFormattedAns << ans << " ... " << temp << std::endl;
+    // Only does this when it is a decimal
+    if ((not numberDecimal.empty()) or decimals)
+    {
+        if (not numberDecimal.empty() and numberDecimal.length() < decimals)
+            decimals = numberDecimal.length();
+        int decimalPos = static_cast<int>(ans.length()) - decimals - 1;
+        if (decimalPos < 0)
+        {
+            decimals = 0;
+            decimalPos = ans.length() - 1;
+        }
+        auto beforeDecimal = ans.substr(0, decimalPos), afterDecimal = ans.substr(decimalPos, ans.length() - 1);
 
-    formattedAns << std::setw(width) << std::setfill(' ') << std::right << makeWider(ans) << std::endl;
-    formattedAns << std::setw(divisor.length() * 3 - 1) << std::setfill(' ') << "";
-    formattedAns << std::setw(width - divisor.length() * 2) << std::setfill('_') << "" << std::endl;
-    formattedAns << tempFormattedAns.rdbuf();
+        if (afterDecimal.back() > '4')
+            afterDecimal = add(afterDecimal, "1", 0);
+        if (beforeDecimal.empty())
+            beforeDecimal = "0";
+        ans = beforeDecimal + "." + afterDecimal;
+    }
 
-    return formattedAns.str();
+    return reportDivision(tempFormattedAns, temp, ans, divisor, number, _divisor, _number, steps, decimals, width);
 }
 
 #ifndef NO_MAIN
@@ -102,21 +136,23 @@ int main(const int _argc, const char* _argv[])
     program.addPosArg('a', "Number 1");
     program.addPosArg('b', "Number 2");
     program.addKeywordArg("steps", 2, "Amount of steps while dividing. 0 = No steps, 2 = All steps.");
+    program.addKeywordArg("decimals", 5, "Decimals to output");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
-    int steps = program.getKeywordArgument("steps");
-    bool profile = program.getSwitch("profile");
+    const int steps = program.getKeywordArgument("steps");
+    const int decimals = program.getKeywordArgument("decimals");
+    const bool profile = program.getSwitch("profile");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
 
     if (profile)
     {
         TIC(Column Method Division)
-        std::cout << "Column Method Division :\n" << divide(aStr, bStr, steps) << std::endl;
+        std::cout << "Column Method Division :\n" << divide(aStr, bStr, steps, decimals) << std::endl;
         TOC()
     }
     else
-        std::cout << divide(aStr, bStr, steps) << std::endl;
+        std::cout << divide(aStr, bStr, steps, decimals) << std::endl;
 }
 #endif

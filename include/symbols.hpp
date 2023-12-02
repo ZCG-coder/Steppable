@@ -28,6 +28,7 @@
 #define THEREFORE "\u2234"
 
 #define MULTIPLY "\u00D7"
+#define DIVIDED_BY "\u00f7"
 
 // Subscripts
 #define SUB_0 "\u2080"

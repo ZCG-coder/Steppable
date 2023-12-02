@@ -22,6 +22,7 @@ Out of [this list](https://en.wikipedia.org/wiki/List_of_computer_algebra_system
 - Free and open source
 - Solves step by step
 - Runs even without internet connection
+- Has no external dependencies (including BigNum libraries)
 
 ## How does it work?
 
@@ -39,7 +40,7 @@ we are planning to implement next (and in the near future):
     - [x] Subtraction of integers and decimals
     - [x] Multiplication of integers and decimals
     - [x] Powers of integers
-    - [ ] Division of integers and decimals
+    - [x] Division of integers and decimals
     - [ ] Addition of fractions
     - [ ] Subtraction of fractions
     - [ ] Multiplication of fractions
@@ -68,8 +69,7 @@ Then, you can clone this repository by running the following command, or [downlo
 from GitHub (if you don't have Git installed):
 
 ```bash
-# TODO: Publish this to GitHub
-git clone ...
+git clone https://github.com/ZCG-Coder/Steppable.git
 ```
 
 Then, you can build the project by running the following commands:
@@ -78,7 +78,8 @@ Then, you can build the project by running the following commands:
 cd <path/to/this/repo>
 mkdir build
 cd build
-cmake .. -G <your build system> # Replace <your build system> with your build system of choice. Default is Make.
+cmake .. -G <your build system>
+# Replace <your build system> with your build system of choice. Default is Make.
 ```
 
 Alternatively, you may generate a differently optimized build by replacing adding with one of the following options:
