@@ -26,6 +26,7 @@
 int main()
 {
     UTF8CodePage();
-    multiply("5", "6", 0);
+    std::cout << "Welcome to NWSOFT Steppable!" << std::endl;
+    std::cout << "Type the command to execute it" << std::endl;
     return 0;
 }

@@ -24,6 +24,7 @@
 
 #include "colors.hpp"
 #include "format.hpp"
+#include "symbols.hpp"
 
 #include <iostream>
 #include <string>
@@ -31,27 +32,27 @@
 template<typename T, typename... Args>
 void error(T msg, Args&&... args)
 {
-    std::cerr << colors::red << formats::bold << "Error: " << reset << colors::red;
+    std::cerr << colors::red << formats::bold << LARGE_DOT " Error: " << reset << colors::red;
     std::cerr << vFormat(msg, args...) << reset << std::endl;
 }
 
 template<typename CharT>
 void error(std::basic_string<CharT> msg)
 {
-    std::cerr << colors::red << formats::bold << "Error: " << reset << colors::red;
+    std::cerr << colors::red << formats::bold << LARGE_DOT " Error: " << reset << colors::red;
     std::cerr << msg << reset << std::endl;
 }
 
 template<typename T, typename... Args>
 [[maybe_unused]] void warning(T msg, Args&&... args)
 {
-    std::cout << colors::yellow << formats::bold << "Warning: " << reset << colors::yellow;
+    std::cout << colors::yellow << formats::bold << LARGE_DOT " Warning: " << reset << colors::yellow;
     std::cout << vFormat(msg, args...) << reset << std::endl;
 }
 
 template<typename T, typename... Args>
 void info(T msg, Args&&... args)
 {
-    std::cout << colors::brightGreen << formats::bold << "Info: " << reset << colors::brightGreen;
+    std::cout << colors::brightGreen << formats::bold << LARGE_DOT " Info: " << reset << colors::brightGreen;
     std::cout << vFormat(msg, args...) << reset << std::endl;
 }

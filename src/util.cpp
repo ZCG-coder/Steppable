@@ -22,6 +22,11 @@
 
 #include "util.hpp"
 
+#ifdef WINDOWS
+    #undef min
+    #undef max
+#endif
+
 #include <algorithm>
 #include <array>
 #include <sstream>
