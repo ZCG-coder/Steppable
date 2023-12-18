@@ -28,9 +28,9 @@
     #include <Windows.h>
     #include <io.h>
     #include <stdio.h>
+    #include <versionhelpers.h>
     #define isatty _isatty
     #define fileno _fileno
-
 #else
     #include <unistd.h>
 #endif
@@ -38,7 +38,9 @@
 bool isTerminal(const std::ostream& stream)
 {
 #ifdef WINDOWS
-    return isatty(fileno(stdout)) != 0;
+    if (IsWindows10OrGreater())
+        return isatty(fileno(stdout)) != 0;
+    return false; // The Windows console in Windows 7 does not support ANSI escapes
 #else
     return isatty(STDOUT_FILENO) != 0;
 #endif
