@@ -23,7 +23,7 @@
 #include "argParse.hpp"
 #include "divisionReport.hpp"
 #include "fn/basicArithm.hpp"
-#include "symbols.hpp"
+#include "output.hpp"
 #include "util.hpp"
 
 #include <iostream>
@@ -60,6 +60,20 @@ std::string divide(const std::string_view& _number,
                    const int steps,
                    const int _decimals)
 {
+    if (isZeroString(_number) and isZeroString(_divisor))
+    {
+        // Easter egg in open-source code
+        error("Imagine that you have zero cookies and you split them evenly among zero friends, how many cookies does "
+              "each person get? See? It doesn't make sense. And Cookie Monster is sad that there are no cookies, and "
+              "you are sad that you have no friends.");
+        return "Indeterminate";
+    }
+    if (isZeroString(_divisor))
+    {
+        error("Division of %s by zero leads to infinity.", std::string(_number).c_str());
+        return "Infinity";
+    }
+
     auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] = splitNumber(_number, _divisor, false, true);
     auto decimals = _decimals;
 
@@ -67,8 +81,13 @@ std::string divide(const std::string_view& _number,
     {
         divisorInteger += divisorDecimal[0];
         divisorDecimal.erase(divisorDecimal.begin());
-        numberInteger += numberDecimal[0];
-        numberDecimal.erase(numberDecimal.begin());
+        if (not numberDecimal.empty())
+        {
+            numberInteger += numberDecimal[0];
+            numberDecimal.erase(numberDecimal.begin());
+        }
+        else
+            numberInteger += '0';
     }
     auto number = numberInteger + numberDecimal;
     auto divisor = divisorInteger + divisorDecimal;

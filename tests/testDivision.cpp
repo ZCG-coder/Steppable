@@ -40,7 +40,7 @@ _.assertIsEqual(res,
 SECTION_END()
 
 SECTION(Integer divided by decimal)
-// A googol divided by 50
+// A googol divided by 79
 std::string a = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
             b = "79", res = divide(a, b, 0, 8);
 
@@ -50,10 +50,9 @@ _.assertIsEqual(
 SECTION_END()
 
 SECTION(Decimal divided by decimal)
-// A googol divided by 50
 std::string a = "532.532132", b = "53524.2353", res = divide(a, b, 0, 8);
 
-_.assertIsEqual(res, "994936.4");
+_.assertIsEqual(res, "0.009949364");
 SECTION_END()
 
 TEST_END()
