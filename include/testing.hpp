@@ -22,6 +22,7 @@
 
 #pragma once
 
+#include <string>
 #include <string_view>
 
 #define TEST_START()           \
@@ -61,7 +62,7 @@
 class TestCase
 {
 private:
-    void assert(bool condition, const std::string_view& conditionName);
+    void assert(bool condition, const std::string& conditionName);
 
     std::string_view testCaseName;
 
