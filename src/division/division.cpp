@@ -75,6 +75,7 @@ std::string divide(const std::string_view& _number,
     }
 
     auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] = splitNumber(_number, _divisor, false, true);
+    auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger;
     auto decimals = _decimals;
 
     while (not divisorDecimal.empty())
@@ -91,66 +92,84 @@ std::string divide(const std::string_view& _number,
     }
     auto number = numberInteger + numberDecimal;
     auto divisor = divisorInteger + divisorDecimal;
-    std::string ans;
+    std::string quotient;
     std::stringstream tempFormattedAns, formattedAns;
 
-    int numDecimals;
     for (int i = 0; i < decimals + 1; i++) // Additional 0 is for rounding
         number += '0';
 
     int idx = 0;
-    std::string temp(1, number[idx]), lastRemainder = "", header = makeWider(divisor) + ") " + makeWider(number);
+    std::string remainder(1, number[idx]), lastRemainder = "", header = makeWider(divisor) + ") " + makeWider(number);
     tempFormattedAns << header << std::endl;
-    auto width = header.length();
+    auto width = static_cast<int>(header.length());
 
-    while (compare(temp, divisor, 0) == "0")
-        temp += number[++idx];
+    while (compare(remainder, divisor, 0) == "0")
+        remainder += number[++idx];
     while (number.length() > idx)
     {
-        if (isZeroString(temp))
+        if (isZeroString(remainder))
         {
             idx++;
-            ans += "0";
+            quotient += "0";
             continue;
         }
-        auto quotient = getQuotient(temp, divisor);
-        auto rem = getRemainder(quotient, temp, divisor);
+        auto currentQuotient = getQuotient(remainder, divisor);
+        auto currentRemainder = getRemainder(currentQuotient, remainder, divisor);
 
-        ans += quotient;
+        quotient += currentQuotient;
         if (steps == 2)
-            tempFormattedAns << reportDivisionStep(temp, quotient, divisor, width, ans.length() - 1, lastRemainder);
-        lastRemainder = temp = rem;
+            tempFormattedAns << reportDivisionStep(
+                remainder, currentQuotient, divisor, width, quotient.length() - 1, lastRemainder);
+        lastRemainder = remainder = currentRemainder;
         if (number.length() - 1 >= ++idx)
-            temp += number[idx];
+            remainder += number[idx];
     }
 
-    // Only does this when it is a decimal
-    if ((not numberDecimal.empty()) or decimals)
-    {
-        if (not numberDecimal.empty() and numberDecimal.length() < decimals)
-            decimals = numberDecimal.length();
-        int decimalPos = static_cast<int>(ans.length()) - decimals - 1;
-        if (decimalPos < 0)
-        {
-            decimals = 0;
-            decimalPos = ans.length() - 1;
-        }
-        auto beforeDecimal = ans.substr(0, decimalPos), afterDecimal = ans.substr(decimalPos, ans.length() - 1);
+    // Here, we attempt to round the result.
+    // - Length of integer in output  = Length of integers in number - Length of integers in divisor  (*)
+    // - Length of decimals in output = Length of output - Length of integers + 1
+    // Note: It can be negative!
+    auto numberIntegers = static_cast<long long>(numberIntegerOrig.length() - divisorIntegerOrig.length()),
+         numberDecimals = static_cast<long long>(quotient.length() - numberIntegers + 1);
 
-        if (afterDecimal.back() > '4')
+    // Scenario 1: No decimal places returned
+    // Solution  : Do nothing
+    if (static_cast<size_t>(numberIntegers) == quotient.length() - 1)
+        ;
+    // Scenario 2: Decimal places more than requested
+    // Solution  : Round to the nearest decimal place
+    else if (numberDecimals > decimals and numberIntegers >= 0)
+    {
+        auto beforeDecimal = quotient.substr(0, numberIntegers),
+             afterDecimal = quotient.substr(numberIntegers, quotient.length() - 1);
+        if (not afterDecimal.empty() and afterDecimal.back() > '4')
             afterDecimal = add(afterDecimal, "1", 0);
         if (beforeDecimal.empty())
             beforeDecimal = "0";
-        ans = beforeDecimal + "." + afterDecimal;
+        quotient = beforeDecimal + "." + afterDecimal;
+    }
+    // Scenario 3: Result is less than one
+    // Solution  : 1. Append "0." to the beginning
+    //             2. Append appropriate amount of zeros
+    else if (numberIntegers < 0)
+        quotient = "0." + std::string(-numberIntegers, '0') + quotient;
+
+    // Scenario 4: Decimal places less than requested
+    // Solution  : Pad with trailing zeros
+    if (numberDecimals < decimals and numberDecimals >= 0)
+    {
+        auto difference = decimals - numberDecimals;
+        quotient += std::string(difference, '0');
     }
 
-    return reportDivision(tempFormattedAns, temp, ans, divisor, number, _divisor, _number, steps, decimals, width);
+    return reportDivision(
+        tempFormattedAns, remainder, quotient, divisor, number, _divisor, _number, steps, decimals, width);
 }
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
-    UTF8CodePage();
+    UTF8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number 1");
     program.addPosArg('b', "Number 2");

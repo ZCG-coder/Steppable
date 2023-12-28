@@ -29,14 +29,14 @@
 
 TestCase::TestCase(const std::string& testCaseName) { this->testCaseName = testCaseName; }
 
-void TestCase::assert(bool condition, const std::string_view& conditionName)
+void TestCase::assert(bool condition, const std::string& conditionName)
 {
     if (condition)
     {
         info("%s PASSED", conditionName);
         return;
     }
-    error("%i: Condition %s evaluates to false. FAILED", errorCount + 1, conditionName);
+    error("%i: Condition %s evaluates to false. FAILED", errorCount + 1, conditionName.c_str());
     errorCount++;
 }
 

@@ -159,8 +159,8 @@ template<typename CharT>
 inline auto split(std::basic_string<CharT> s, const CharT separator)
 {
     std::vector<decltype(s)> substrings;
-    std::stringstream ss(s);
-    std::string token;
+    std::basic_stringstream<CharT> ss(s);
+    decltype(s) token;
 
     while (getline(ss, token, separator))
         substrings.push_back(token);
