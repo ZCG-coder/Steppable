@@ -41,7 +41,7 @@ extern const std::array<std::string_view, 10>& SUPERSCRIPTS;
 
 std::string makeSubscript(const std::string& normal);
 
-std::string makeSubscript(const int normal);
+std::string makeSubscript(int normal);
 
 // Superscripts
 #define SUP_0 "\u2070"
@@ -50,4 +50,4 @@ std::string makeSubscript(const int normal);
 
 std::string makeSuperscript(const std::string& normal);
 
-std::string_view makeSuperscript(const char normal);
+std::string_view makeSuperscript(char normal);

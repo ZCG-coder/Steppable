@@ -25,8 +25,8 @@
 
 int main()
 {
-    UTF8CodePage();
-    std::cout << "Welcome to NWSOFT Steppable!" << std::endl;
-    std::cout << "Type the command to execute it" << std::endl;
+    Utf8CodePage();
+    std::cout << "Welcome to NWSOFT Steppable!" << '\n';
+    std::cout << "Type the command to execute it" << '\n';
     return 0;
 }

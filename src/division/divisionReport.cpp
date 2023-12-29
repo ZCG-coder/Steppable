@@ -46,12 +46,12 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
     if (steps == 2)
     {
         tempFormattedAns << std::setw(width) << std::setfill(' ') << std::right
-                         << makeWider(static_cast<std::string>(temp)) << std::endl;
+                         << makeWider(static_cast<std::string>(temp)) << '\n';
 
         formattedAns << std::setw(width) << std::setfill(' ') << std::right << makeWider(static_cast<std::string>(ans))
-                     << std::endl;
+                     << '\n';
         formattedAns << std::setw(divisor.length() * 3 - 1) << std::setfill(' ') << "";
-        formattedAns << std::setw(width - divisor.length() * 2) << std::setfill('_') << "" << std::endl;
+        formattedAns << std::setw(width - divisor.length() * 2) << std::setfill('_') << "" << '\n';
         formattedAns << tempFormattedAns.rdbuf();
 
         formattedAns << THEREFORE " ";
@@ -74,18 +74,18 @@ std::string reportDivisionStep(const std::string_view& temp,
 {
     std::stringstream ss;
 
-    auto result = subtract(temp, multiply(divisor, quotient, 0), 2, true);
+    const auto result = subtract(temp, multiply(divisor, quotient, 0), 2, true);
 
     // Remove the summary line and the result
-    auto splitted = split(result, '\n');
-    splitted.pop_back();
-    splitted.pop_back();
-    int normalWidth = divisor.length() + 1;
+    auto splitResult = split(result, '\n');
+    splitResult.pop_back();
+    splitResult.pop_back();
+    const auto normalWidth = divisor.length() + 1;
 
     const auto outputWidth = index == 0 ? (divisor.length() - 1) * 3 :
                                           3 * (divisor.length() + index + normalWidth - lastRemainder.length() - 2);
-    for (auto i : splitted)
-        ss << std::string(outputWidth, ' ') << i << std::endl;
+    for (auto i : splitResult)
+        ss << std::string(outputWidth, ' ') << i << '\n';
 
     return ss.str();
 }

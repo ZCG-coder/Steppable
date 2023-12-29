@@ -27,6 +27,7 @@
 #include "util.hpp"
 
 #include <iostream>
+#include <ranges>
 #include <regex>
 #include <string>
 #include <string_view>
@@ -49,64 +50,64 @@ void ProgramArgs::addPosArg(const char name, const std::string_view& description
     posArgDescriptions.insert({ name, description });
 }
 
-void ProgramArgs::printUsage(const std::string_view& reason) const
+[[noreturn]] void ProgramArgs::printUsage(const std::string_view& reason) const
 {
     std::cout << "Usage: " << formats::bold << programName << reset << " ";
 
     if (not posArgDescriptions.empty())
-        for (const auto& [posArg, _] : posArgDescriptions)
+        for (const auto& posArg : posArgDescriptions | std::views::keys)
             std::cout << colors::brightGreen << '<' << posArg << '>' << " ";
 
     if (not switchDescriptions.empty())
         std::cout << colors::brightGreen << "[switches] " << reset;
     if (not keywordArgDescriptions.empty())
         std::cout << colors::brightGreen << "[keywordArguments] " << reset;
-    std::cout << std::endl;
+    std::cout << '\n';
 
     if (not posArgDescriptions.empty())
     {
-        std::cout << formats::bold << "Available positional arguments:" << reset << std::endl;
+        std::cout << formats::bold << "Available positional arguments:" << reset << '\n';
         for (const auto& [posArgName, posArgDescription] : posArgDescriptions)
         {
             std::cout << colors::brightGreen << formats::bold << '<' << posArgName << '>' << reset;
-            std::cout << ": " << posArgDescription << std::endl;
+            std::cout << ": " << posArgDescription << '\n';
         }
-        std::cout << reset << std::endl;
+        std::cout << reset << '\n';
     }
 
     if (not switchDescriptions.empty())
     {
-        std::cout << formats::bold << "Available switches:" << reset << std::endl;
+        std::cout << formats::bold << "Available switches:" << reset << '\n';
         for (const auto& [switchName, switchDescription] : switchDescriptions)
         {
             std::cout << colors::brightGreen << formats::bold << '[' << '-' << switchName << "] ";
-            std::cout << '[' << '+' << switchName << "]" << reset << std::endl;
-            std::cout << "  Enables/Disables " << switchDescription << std::endl;
+            std::cout << '[' << '+' << switchName << "]" << reset << '\n';
+            std::cout << "  Enables/Disables " << switchDescription << '\n';
         }
-        std::cout << reset << std::endl;
+        std::cout << reset << '\n';
     }
 
     if (not keywordArgDescriptions.empty())
     {
-        std::cout << formats::bold << "Available keyword arguments:" << reset << std::endl;
+        std::cout << formats::bold << "Available keyword arguments:" << reset << '\n';
         for (const auto& [keywordArgName, keywordArgDescription] : keywordArgDescriptions)
         {
             std::cout << colors::brightGreen << formats::bold << '[' << '-' << keywordArgName << ": <VALUE>]" << reset
-                      << std::endl;
-            std::cout << "  " << keywordArgDescription << reset << std::endl;
+                << '\n';
+            std::cout << "  " << keywordArgDescription << reset << '\n';
         }
         std::cout << reset;
     }
 
     if (not reason.empty())
     {
-        std::cerr << std::endl;
+        std::cerr << '\n';
         error(std::string(reason));
     }
-    exit(-1);
+    std::quick_exit(-1);
 }
 
-std::string_view ProgramArgs::getPosArg(const int index)
+std::string_view ProgramArgs::getPosArg(const size_t index) const
 {
     if (posArgs.size() <= index)
         printUsage("Missing positional argument: " + std::to_string(index));
@@ -116,14 +117,14 @@ std::string_view ProgramArgs::getPosArg(const int index)
 int ProgramArgs::getKeywordArgument(const std::string_view& name)
 {
     if (not keywordArgs.contains(name))
-        printUsage("Missing switch: " + (std::string)name);
+        printUsage("Missing switch: " + static_cast<std::string>(name));
     return keywordArgs[name];
 }
 
 bool ProgramArgs::getSwitch(const std::string_view& name)
 {
     if (not switches.contains(name))
-        printUsage("Missing switch: " + (std::string)name);
+        printUsage("Missing switch: " + static_cast<std::string>(name));
     return switches[name];
 }
 
@@ -144,14 +145,14 @@ void ProgramArgs::parseArgs()
     for (auto _arg : argv)
     {
         std::smatch match;
-        std::string arg = static_cast<std::string>(_arg);
-        if (std::regex_match(arg, match, keywordArgRegex))
+        auto arg = static_cast<std::string>(_arg);
+        if (std::regex_match(arg, match, KEYWORD_ARG_REGEX))
         {
             std::string name = match[1];
             int value = std::stoi(match[2]);
             keywordArgs.insert_or_assign(name, value);
         }
-        else if (std::regex_match(arg, match, switchRegex))
+        else if (std::regex_match(arg, match, SWITCH_REGEX))
         {
             bool enabled = match[1] == "+";
             std::string name = match[2];
@@ -162,7 +163,7 @@ void ProgramArgs::parseArgs()
             if (not isNumber(_arg))
             {
                 error("Invalid argument: %s", _arg);
-                exit(-1);
+                std::quick_exit(-1);
             }
             posArgs.push_back(_arg);
         }

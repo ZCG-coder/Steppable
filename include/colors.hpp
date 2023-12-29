@@ -22,10 +22,7 @@
 
 #pragma once
 
-#include <cstdio>
-#include <iostream>
 #include <ostream>
-#include <string>
 
 // RGB Text Colors (8-bit)
 #define RGB_TEXT(r, g, b) "\x1b[38;2;" #r ";" #g ";" #b "m"

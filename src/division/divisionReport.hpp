@@ -33,13 +33,13 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string_view& number,
                            const std::string_view& _divisor,
                            const std::string_view& _number,
-                           const int steps,
-                           const int decimals,
-                           const int width);
+                           int steps,
+                           int decimals,
+                           int width);
 
 std::string reportDivisionStep(const std::string_view& temp,
                                const std::string_view& quotient,
                                const std::string_view& divisor,
-                               const int width,
-                               const int index,
-                               const std::string_view lastRemainder);
+                               int width,
+                               int index,
+                               std::string_view lastRemainder);

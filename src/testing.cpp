@@ -29,7 +29,7 @@
 
 TestCase::TestCase(const std::string& testCaseName) { this->testCaseName = testCaseName; }
 
-void TestCase::assert(bool condition, const std::string& conditionName)
+void TestCase::assert(const bool condition, const std::string& conditionName)
 {
     if (condition)
     {
@@ -76,12 +76,12 @@ void TestCase::assertFalse(const bool value)
     assert(not value, conditionName);
 }
 
-void TestCase::summarize()
+void TestCase::summarize() const
 {
     if (errorCount == 1)
-        std::cout << colors::red << '[' << testCaseName << ": Total " << errorCount << " error]" << reset << std::endl;
+        std::cout << colors::red << '[' << testCaseName << ": Total " << errorCount << " error]" << reset << '\n';
     else if (errorCount > 1)
-        std::cout << colors::red << '[' << testCaseName << ": Total " << errorCount << " errors]" << reset << std::endl;
+        std::cout << colors::red << '[' << testCaseName << ": Total " << errorCount << " errors]" << reset << '\n';
     else
-        std::cout << colors::brightGreen << '[' << testCaseName << ": All tests passed]" << reset << std::endl;
+        std::cout << colors::brightGreen << '[' << testCaseName << ": All tests passed]" << reset << '\n';
 }

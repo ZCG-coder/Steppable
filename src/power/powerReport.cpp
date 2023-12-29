@@ -30,14 +30,15 @@
 std::string reportPower(const std::string_view _number, const std::string_view& raiseTo, const int steps)
 {
     std::stringstream ss;
-    auto numberOrig = static_cast<std::string>(_number), number = static_cast<std::string>("1");
+    const auto numberOrig = static_cast<std::string>(_number);
+    auto number = static_cast<std::string>("1");
 
     loop(raiseTo, [&](const auto& i) {
         number = multiply(number, numberOrig, 0);
         const auto& currentPower = add(i, "1", 0);
         if (steps == 2)
         {
-            ss << BECAUSE " " << multiply(number, numberOrig, 1) << std::endl;
+            ss << BECAUSE " " << multiply(number, numberOrig, 1) << '\n';
             ss << THEREFORE " " << numberOrig << makeSuperscript(currentPower) << " = " << number << std::endl;
         }
     });

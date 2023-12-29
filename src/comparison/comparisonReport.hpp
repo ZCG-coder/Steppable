@@ -25,13 +25,10 @@
 #include <string>
 #include <string_view>
 
-std::string reportComparisonAtInteger(const std::string_view& a,
-                                      const std::string_view& b,
-                                      const bool bigger,
-                                      const int steps = 2);
+std::string reportComparisonAtInteger(const std::string_view& a, const std::string_view& b, bool bigger, int steps = 2);
 
 std::string reportComparisonByDigit(const std::string_view& a,
                                     const std::string_view& b,
-                                    const unsigned int digit,
-                                    const bool bigger,
-                                    const int steps = 2);
+                                    size_t digit,
+                                    bool bigger,
+                                    int steps = 2);

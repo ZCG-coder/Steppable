@@ -20,8 +20,8 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "argParse.hpp"
 #include "fn/basicArithm.hpp"
+#include "argParse.hpp"
 #include "subtractReport.hpp"
 #include "util.hpp"
 
@@ -33,16 +33,16 @@
 std::string subtract(const std::string_view& a, const std::string_view& b, const int steps, const bool noMinus)
 {
     auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
-    bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
+    const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
 
     std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
-    std::reverse(aStr.begin(), aStr.end());
-    std::reverse(bStr.begin(), bStr.end());
+    std::ranges::reverse(aStr);
+    std::ranges::reverse(bStr);
 
     std::vector<int> diffDigits(aStr.length(), 0);
     std::vector<int> borrows(aStr.length());
-    std::copy(aStr.begin(), aStr.end(), borrows.begin());
-    std::for_each(borrows.begin(), borrows.end(), [](int& c) { c -= '0'; });
+    std::ranges::copy(aStr, borrows.begin());
+    std::ranges::for_each(borrows, [](int& c) { c -= '0'; });
     for (int index = 0; index < aStr.length(); index++)
     {
         int aDigit = borrows[index], bDigit = bStr[index] - '0';
@@ -51,7 +51,7 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
         if (bStr[index] == ' ')
             bDigit = 0;
 
-        int diffDigit = aDigit - bDigit;
+        const int diffDigit = aDigit - bDigit;
         diffDigits[index] = diffDigit;
         if (diffDigits[index] < 0)
         {
@@ -65,16 +65,16 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
     // Add a decimal point
     if (aIsDecimal or bIsDecimal)
     {
-        auto decimalPos = aDecimal.length();
-        auto itSumDigits = diffDigits.begin();
-        auto itCarries = borrows.begin();
+        const auto decimalPos = aDecimal.length();
+        const auto itSumDigits = diffDigits.begin();
+        const auto itCarries = borrows.begin();
 
         diffDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
         borrows.insert(itCarries + static_cast<long>(decimalPos), -1); // Reserve the space
     }
 
-    std::reverse(borrows.begin(), borrows.end());
-    std::reverse(diffDigits.begin(), diffDigits.end());
+    std::ranges::reverse(borrows);
+    std::ranges::reverse(diffDigits);
     return reportSubtract(
         aInteger, aDecimal, bInteger, bDecimal, aIsDecimal, bIsDecimal, diffDigits, borrows, steps, noMinus);
 }
@@ -82,7 +82,7 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
 {
-    UTF8CodePage();
+    Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "");
     program.addPosArg('b', "");

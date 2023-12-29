@@ -26,7 +26,6 @@
 #include "output.hpp"
 #include "util.hpp"
 
-#include <iostream>
 #include <ostream>
 #include <sstream>
 #include <string>
@@ -34,17 +33,17 @@
 auto getQuotient(const auto& _temp, const auto& _divisor)
 {
     auto temp = _temp;
-    auto divisior = _divisor;
-    if (compare(temp, divisior, 0) == "0")
+    auto divisor = _divisor;
+    if (compare(temp, divisor, 0) == "0")
         return std::string("0");
-    if (compare(temp, divisior, 0) == "2")
+    if (compare(temp, divisor, 0) == "2")
         return std::string("1"); // Equal
 
     int out = 0;
-    while (compare(temp, divisior, 0) == "1" or compare(temp, divisior, 0) == "2")
+    while (compare(temp, divisor, 0) == "1" or compare(temp, divisor, 0) == "2")
     {
         out++;
-        temp = subtract(temp, divisior, 0);
+        temp = subtract(temp, divisor, 0);
     }
 
     return std::to_string(out);
@@ -100,7 +99,7 @@ std::string divide(const std::string_view& _number,
 
     int idx = 0;
     std::string remainder(1, number[idx]), lastRemainder = "", header = makeWider(divisor) + ") " + makeWider(number);
-    tempFormattedAns << header << std::endl;
+    tempFormattedAns << header << '\n';
     auto width = static_cast<int>(header.length());
 
     while (compare(remainder, divisor, 0) == "0")
@@ -169,7 +168,7 @@ std::string divide(const std::string_view& _number,
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
-    UTF8CodePage _;
+    Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number 1");
     program.addPosArg('b', "Number 2");

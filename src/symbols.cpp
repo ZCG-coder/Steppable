@@ -33,7 +33,7 @@ const std::array<std::string_view, 10>& SUPERSCRIPTS = { "\u2070", "\u00b9", "\u
 std::string makeSubscript(const std::string& normal)
 {
     std::string out;
-    for (char c : normal)
+    for (const char c : normal)
         out += unicodeToUtf8(c + SUB_MAGIC_NUMBER);
     return out;
 }
@@ -43,7 +43,7 @@ std::string makeSubscript(const int normal) { return unicodeToUtf8(normal + SUB_
 std::string makeSuperscript(const std::string& normal)
 {
     std::stringstream ss;
-    for (char c : normal)
+    for (const char c : normal)
         ss << SUPERSCRIPTS[c - '0'];
     std::string string = ss.str();
     return string;

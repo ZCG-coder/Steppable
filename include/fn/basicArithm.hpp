@@ -33,7 +33,7 @@ std::string compare(const std::string_view& a, const std::string_view& b, int st
 std::string decimalConvert(const std::string_view& _inputString, const std::string_view& baseString, int steps = 2);
 std::string divide(const std::string_view& number, const std::string_view& divisor, int steps = 2, int decimals = 5);
 std::string multiply(const std::string_view& a, const std::string_view& b, int steps = 2);
-std::string power(const std::string_view _number, const std::string_view& raiseTo, int steps = 2);
+std::string power(std::string_view _number, const std::string_view& raiseTo, int steps = 2);
 std::string subtract(const std::string_view& a, const std::string_view& b, int steps = 2, bool noMinus = false);
 
 template<typename Pred>
@@ -50,7 +50,7 @@ void loop(const std::string_view& times, Pred predicate)
         }
         catch (std::exception e)
         {
-            error("Exception occured in predicate.");
+            error("Exception occurred in predicate.");
             error("Exception message: %s", e.what());
         }
         current = add(current, "1", 0);
