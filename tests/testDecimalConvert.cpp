@@ -31,8 +31,8 @@
 
 TEST_START()
 SECTION(Decimal Convert)
-std::string a = "46432231133131", b = "8";
-std::string result = decimalConvert(a, b, 0);
+const std::string &a = "46432231133131", &b = "8";
+const auto& result = decimalConvert(a, b, 0);
 
 _.assertIsEqual(result, "2649229669977");
 SECTION_END()

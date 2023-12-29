@@ -45,9 +45,9 @@ std::string reportSubtract(const std::string& aInteger,
     auto aStr = aInteger + '.' + aDecimal;
     auto diffDigits = _diffDigits;
     if (diffDigits.front() == 0 and not steps)
-        diffDigits = removeLeadningZeros(diffDigits);
+        diffDigits = removeLeadingZeros(diffDigits);
     else if (diffDigits.front() == 0)
-        diffDigits = replaceLeadningZeros(diffDigits);
+        diffDigits = replaceLeadingZeros(diffDigits);
 
     auto aOut = aInteger, bOut = bInteger;
     if (aIsDecimal)
@@ -72,19 +72,19 @@ std::string reportSubtract(const std::string& aInteger,
             else
                 ss << "   ";
         }
-        ss << std::endl << "   "; // Reserve space for the minus
+        ss << '\n' << "   "; // Reserve space for the minus
         for (char aChar : aOut)
             ss << aChar << "  ";
 
         if (not noMinus)
-            ss << std::endl << "-  "; // Print a subtraction sign before printing b
+            ss << '\n' << "-  "; // Print a subtraction sign before printing b
         else
-            ss << std::endl << "   ";
+            ss << '\n' << "   ";
         if (aOut.length() > bOut.length())
             ss << std::string(aOut.length() - bOut.length(), ' ');
         for (char bChar : bOut)
             ss << bChar << "  ";
-        ss << std::endl << std::string(diffDigits.size() * 3 + 2, '_') << std::endl << "   ";
+        ss << '\n' << std::string(diffDigits.size() * 3 + 2, '_') << '\n' << "   ";
 
         for (int outputDigit : diffDigits)
         {
@@ -95,7 +95,7 @@ std::string reportSubtract(const std::string& aInteger,
                 outputChar = ' ';
             ss << outputChar << "  "; // Two spaces
         }
-        ss << std::endl << THEREFORE " ";
+        ss << '\n' << THEREFORE " ";
     }
 
     if (steps >= 1)

@@ -27,10 +27,8 @@
 #include <algorithm>
 #include <array>
 #include <chrono>
-#include <iomanip>
 #include <sstream>
 #include <string>
-#include <string_view>
 #include <vector>
 
 #ifndef TIC
@@ -61,19 +59,18 @@
 #ifdef WINDOWS
     #include <Windows.h>
     #include <fcntl.h>
-    #include <io.h>
 
-inline DWORD EnableVTMode()
+inline DWORD enableVtMode()
 {
     // Set output mode to handle virtual terminal sequences
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hOut == INVALID_HANDLE_VALUE)
         return -1;
 
     DWORD dwMode = 0;
     if (!GetConsoleMode(hOut, &dwMode))
         return -1;
-    DWORD dwModeOrig = dwMode;
+    const DWORD dwModeOrig = dwMode;
 
     dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
     if (!SetConsoleMode(hOut, dwMode))
@@ -81,9 +78,9 @@ inline DWORD EnableVTMode()
     return dwModeOrig;
 }
 
-inline bool RestoreVTMode(DWORD dwModeOrig)
+inline bool restoreVtMode(const DWORD dwModeOrig)
 {
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hOut == INVALID_HANDLE_VALUE)
         return false;
 
@@ -92,19 +89,19 @@ inline bool RestoreVTMode(DWORD dwModeOrig)
     return true;
 }
 
-class UTF8CodePage
+class Utf8CodePage
 {
 public:
-    UTF8CodePage() : oldCodePage(::GetConsoleOutputCP())
+    Utf8CodePage() : oldCodePage(::GetConsoleOutputCP())
     {
         ::SetConsoleOutputCP(CP_UTF8);
-        dwModeOrig = EnableVTMode();
+        dwModeOrig = enableVtMode();
     }
 
-    ~UTF8CodePage()
+    ~Utf8CodePage()
     {
         ::SetConsoleOutputCP(oldCodePage);
-        RestoreVTMode(dwModeOrig);
+        restoreVtMode(dwModeOrig);
     }
 
 private:
@@ -113,7 +110,7 @@ private:
     DWORD dwModeOrig;
 };
 #else
-class UTF8CodePage
+class Utf8CodePage
 {
 };
 #endif
@@ -122,28 +119,27 @@ class UTF8CodePage
 /// OUT  : bool
 /// IN   : std::string string - The string to check.
 /// DESC : Check if a string is a zero string.
-constexpr inline bool isZeroString(const std::string_view& string)
+constexpr bool isZeroString(const std::string_view& string)
 {
-    return std::all_of(string.begin(), string.end(), [](char c) { return c == '0'; });
+    return std::ranges::all_of(string, [](const char c) { return c == '0'; });
 }
 
 /// INFN : isZeroString
 /// OUT  : bool
 /// IN   : std::string string - The string to check.
 /// DESC : Check if a string represents a number.
-constexpr inline bool isNumber(const std::string_view& s)
+constexpr bool isNumber(const std::string_view& s)
 {
     if (s.empty())
         return false;
     int decimalPointCount = 0;
-    for (char c : s)
+    for (const char c : s)
     {
         if (c == '.')
         {
             if (decimalPointCount > 0)
                 return false;
             decimalPointCount++;
-            continue;
         }
         else if (not isdigit(c))
             return false;
@@ -156,7 +152,7 @@ constexpr inline bool isNumber(const std::string_view& s)
 /// IN   : std::string string - The string to check.
 /// DESC : Check if a string is a zero string.
 template<typename CharT>
-inline auto split(std::basic_string<CharT> s, const CharT separator)
+auto split(std::basic_string<CharT> s, const CharT separator)
 {
     std::vector<decltype(s)> substrings;
     std::basic_stringstream<CharT> ss(s);
@@ -169,7 +165,7 @@ inline auto split(std::basic_string<CharT> s, const CharT separator)
 }
 
 template<typename CharT>
-inline auto split(std::basic_string_view<CharT> s, const CharT separator)
+auto split(std::basic_string_view<CharT> s, const CharT separator)
 {
     std::vector<decltype(s)> result;
     auto left = s.begin();
@@ -193,14 +189,14 @@ std::array<std::string, 4> splitNumber(const std::string_view& a,
 
 /// Trim from end of string (right)
 template<typename CharT>
-inline auto rReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
+auto rReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
 {
     std::basic_string<CharT> out = s;
     typename std::basic_string<CharT>::size_type count = 0;
     while (out.back() == t)
     {
         out.pop_back();
-        count++;
+        ++count;
     }
     if (replacement != '\0')
         out += std::basic_string<CharT>(count, replacement);
@@ -209,14 +205,14 @@ inline auto rReplace(const std::basic_string<CharT> s, const CharT t, const Char
 
 /// Trim from beginning of string (left)
 template<typename CharT>
-inline auto lReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
+auto lReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
 {
     std::basic_string<CharT> out = s;
     typename std::basic_string<CharT>::size_type count = 0;
     while (out[0] == t)
     {
         out.erase(out.begin());
-        count++;
+        ++count;
     }
     if (replacement != '\0')
         out = std::basic_string<CharT>(count, replacement) + out;
@@ -225,14 +221,14 @@ inline auto lReplace(const std::basic_string<CharT> s, const CharT t, const Char
 
 /// Trim from both ends of string (right then left)
 template<typename CharT>
-inline auto bothEndsReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
+auto bothEndsReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
 {
     return lReplace(rReplace(s, t, replacement), t, replacement);
 }
 
-auto replaceLeadningZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
+auto replaceLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
 
-auto removeLeadningZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
+auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
 
 auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>;
 

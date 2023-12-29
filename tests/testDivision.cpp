@@ -32,8 +32,9 @@
 TEST_START()
 SECTION(Integer division)
 // A gogol divided by 50
-std::string a = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-            b = "50", res = divide(a, b, 0, 0);
+const std::string
+    &a = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    &b = "50", &res = divide(a, b, 0, 0);
 
 _.assertIsEqual(res,
                 "2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
@@ -41,8 +42,9 @@ SECTION_END()
 
 SECTION(Integer divided by decimal)
 // A gogol divided by 79
-std::string a = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-            b = "79", res = divide(a, b, 0, 8);
+const std::string
+    &a = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    &b = "79", &res = divide(a, b, 0, 8);
 
 _.assertIsEqual(
     res,
@@ -50,13 +52,13 @@ _.assertIsEqual(
 SECTION_END()
 
 SECTION(Decimal divided by decimal)
-std::string a = "532.532132", b = "53524.2353", res = divide(a, b, 0, 8);
+const std::string &a = "532.532132", &b = "53524.2353", &res = divide(a, b, 0, 8);
 
 _.assertIsEqual(res, "0.009949364");
 SECTION_END()
 
 SECTION(Division with less decimal places than requested)
-std::string a = "1", b = "2", res = divide(a, b, 0, 8);
+const std::string &a = "1", &b = "2", &res = divide(a, b, 0, 8);
 
 _.assertIsEqual(res, "0.50000000");
 SECTION_END()

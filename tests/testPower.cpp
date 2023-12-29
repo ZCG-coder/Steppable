@@ -31,7 +31,7 @@
 
 TEST_START()
 SECTION(Power)
-const std::string_view &number = "47", raiseTo = "10";
+const std::string_view &number = "47", &raiseTo = "10";
 const auto& result = power(number, raiseTo, 0);
 
 _.assertIsEqual(result, "52599132235830049");

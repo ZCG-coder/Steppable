@@ -28,7 +28,7 @@
 #define TEST_START()           \
     int main()                 \
     {                          \
-        UTF8CodePage use_utf8; \
+        Utf8CodePage use_utf8; \
         int errors = 0;
 #define SECTION(...)                                                                                 \
     {                                                                                                \
@@ -75,13 +75,13 @@ public:
 
     void assertIsNotEqual(const std::string& a, const std::string& b);
 
-    void assertIsEqual(const int a, const int b);
+    void assertIsEqual(int a, int b);
 
-    void assertIsNotEqual(const int a, const int b);
+    void assertIsNotEqual(int a, int b);
 
     void assertTrue(bool value);
 
     void assertFalse(bool value);
 
-    void summarize();
+    void summarize() const;
 };

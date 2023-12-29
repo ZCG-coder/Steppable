@@ -25,7 +25,6 @@
 #include "multiplyReport.hpp"
 #include "util.hpp"
 
-#include <iostream>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -39,19 +38,19 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
     if (b == "1")
         return static_cast<std::string>(a);
     const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b, false);
-    std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
+    const std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
     std::vector<std::vector<int>> prodDigits, carries;
 
-    for (int indexB = 0; indexB < bStr.length(); indexB++)
+    for (size_t indexB = 0; indexB < bStr.length(); indexB++)
     {
-        int bDigit = bStr[indexB] - '0';
+        const int bDigit = static_cast<int>(bStr[indexB]) - '0';
         if (bDigit == 0)
             continue;
         std::vector<int> currentProdDigits(aStr.length() + bStr.length() + 1, 0),
             currentCarries(aStr.length() + bStr.length() + 1, 0);
-        for (auto indexA = aStr.length() - 1; indexA != -1; indexA--)
+        for (long long indexA = static_cast<long long>(aStr.length()) - 1; indexA != -1; indexA--)
         {
-            int aDigit = aStr[indexA] - '0';
+            const int aDigit = aStr[indexA] - '0';
             int prodDigit = bDigit * aDigit + currentCarries[indexA + 1];
             currentCarries[indexA] = prodDigit / 10;
             if (currentCarries[indexA] > 10)
@@ -69,7 +68,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
 
     // Copy the original prodDigits to this new variable, because we'll be modifying prodDigits for output formatting.
     auto prodDigitsOut(prodDigits);
-    for (int index = 0; index < prodDigits.size(); index++)
+    for (size_t index = 0; index < prodDigits.size(); index++)
     {
         prodDigits[index].resize(prodDigits[index].size() - index - 1);
         prodDigitsOut[index].resize(prodDigitsOut[index].size() - index - 1);
@@ -78,7 +77,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
 
     // Add the vectors digit-wise together
     std::vector<int> finalProdDigits(prodDigits[0].size(), 0), finalProdCarries(prodDigits[0].size(), 0);
-    for (auto indexDigit = finalProdDigits.size() - 1; indexDigit != -1; indexDigit--)
+    for (long long indexDigit = static_cast<long long>(finalProdDigits.size()) - 1; indexDigit != -1; indexDigit--)
     {
         int sum = finalProdCarries[indexDigit];
         for (auto& prodDigitVector : prodDigits)
@@ -103,7 +102,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
-    UTF8CodePage();
+    Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number 1");
     program.addPosArg('b', "Number 2");

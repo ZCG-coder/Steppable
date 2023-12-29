@@ -36,15 +36,15 @@ std::string reportComparisonAtInteger(const std::string_view& a,
 
     if (steps == 2)
     {
-        ss << "Comparing the integer part of a and b" << std::endl;
+        ss << "Comparing the integer part of a and b" << '\n';
         if (bigger)
         {
-            ss << BECAUSE << " The integer part of " << a << " is bigger than the integer part of " << b << std::endl;
+            ss << BECAUSE << " The integer part of " << a << " is bigger than the integer part of " << b << '\n';
             ss << THEREFORE " " << a << " is greater than " << b;
         }
         else
         {
-            ss << BECAUSE " The integer part of " << b << " is bigger than the integer part of " << a << std::endl;
+            ss << BECAUSE " The integer part of " << b << " is bigger than the integer part of " << a << '\n';
             ss << THEREFORE " " << a << " is less than " << b;
         }
     }
@@ -58,7 +58,7 @@ std::string reportComparisonAtInteger(const std::string_view& a,
 
 std::string reportComparisonByDigit(const std::string_view& a,
                                     const std::string_view& b,
-                                    const unsigned int _digit,
+                                    const size_t _digit,
                                     const bool bigger,
                                     const int steps)
 {
@@ -68,19 +68,19 @@ std::string reportComparisonByDigit(const std::string_view& a,
         digit = -digit;
     if (steps == 2)
     {
-        ss << "a = " << a << std::endl;
-        ss << "b = " << b << std::endl;
+        ss << "a = " << a << '\n';
+        ss << "b = " << b << '\n';
 
         if (bigger)
         {
             ss << std::string(digit + 4, ' ') << "^~~~~ " BECAUSE " At digit " << digit + 1 << ", " << a[digit]
-               << " is greater than " << b[digit] << std::endl;
+               << " is greater than " << b[digit] << '\n';
             ss << THEREFORE " " << a << " is greater than " << b;
         }
         else
         {
             ss << std::string(digit + 4, ' ') << "^~~~~ " BECAUSE " At digit " << digit + 1 << ", " << a[digit]
-               << " is less than " << b[digit] << std::endl;
+               << " is less than " << b[digit] << '\n';
             ss << THEREFORE " " << a << " is less than " << b;
         }
     }

@@ -39,49 +39,48 @@ std::string reportMultiply(const std::string& a,
                            int steps)
 {
     std::stringstream ss;
-    unsigned long outputWidth;
 
     if (steps == 2)
     {
-        outputWidth = prodDigitsOut[0].size() * 3 - 2;
-        ss << std::right << std::setw(outputWidth + 3) << makeWider(a) << std::endl;
-        ss << MULTIPLY << std::right << std::setw(outputWidth + 2) << makeWider(b) << std::endl;
-        ss << std::string(outputWidth + 6, '_') << std::endl;
+        const long long outputWidth = static_cast<long long>(prodDigitsOut[0].size()) * 3 - 2;
+        ss << std::right << std::setw(outputWidth + 3) << makeWider(a) << '\n';
+        ss << MULTIPLY << std::right << std::setw(outputWidth + 2) << makeWider(b) << '\n';
+        ss << std::string(outputWidth + 6, '_') << '\n';
 
-        for (int indexProdDigits = 0; indexProdDigits < prodDigitsOut.size(); indexProdDigits++)
+        for (size_t indexProdDigits = 0; indexProdDigits < prodDigitsOut.size(); indexProdDigits++)
         {
-            auto subVector = replaceLeadningZeros(prodDigitsOut[indexProdDigits]);
+            auto subVector = replaceLeadingZeros(prodDigitsOut[indexProdDigits]);
 
             ss << std::string(indexProdDigits * 3 + 3, ' ');
-            for (int c : carries[indexProdDigits])
+            for (const int c : carries[indexProdDigits])
                 if (c != 0)
                     ss << makeSubscript(std::to_string(c)) << "  ";
                 else
                     ss << "   ";
-            ss << std::endl;
+            ss << '\n';
 
             ss << std::string(indexProdDigits * 3 + 3, ' ');
-            for (int i : subVector)
+            for (const int i : subVector)
                 if (i >= 0)
                     ss << i << "  ";
                 else
                     ss << "   ";
-            ss << std::endl;
+            ss << '\n';
         }
 
         // Display the full result. If there is just one result, do not show them again.
         if (prodDigitsOut.size() != 1)
         {
-            ss << std::endl;
-            ss << std::string(outputWidth + 6, '_') << std::endl << "   ";
-            for (int i : finalProdCarries)
+            ss << '\n';
+            ss << std::string(outputWidth + 6, '_') << '\n' << "   ";
+            for (const int i : finalProdCarries)
                 if (i)
                     ss << makeSubscript(i + '0') << "  ";
                 else
                     ss << "   ";
-            ss << std::endl << "   ";
+            ss << '\n' << "   ";
 
-            for (int i : finalProdDigits)
+            for (const int i : finalProdDigits)
                 ss << i << "  ";
         }
     }
@@ -89,8 +88,7 @@ std::string reportMultiply(const std::string& a,
         ss << a << " " MULTIPLY " " << b << " = ";
     if (steps == 1 or steps == 0)
     {
-        auto vector = replaceLeadningZeros(finalProdDigits);
-        for (int i : vector)
+        for (const auto vector = replaceLeadingZeros(finalProdDigits); const int i : vector)
             if (i >= 0)
                 ss << i;
     }

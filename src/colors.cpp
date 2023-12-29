@@ -25,11 +25,13 @@
 #include <ostream>
 
 #ifdef WINDOWS
-    #include <Windows.h>
+    #include <windows.h>
     #include <io.h>
-    #include <stdio.h>
+    #include <cstdio>
     #include <versionhelpers.h>
+    // ReSharper disable once CppInconsistentNaming
     #define isatty _isatty
+    // ReSharper disable once CppInconsistentNaming
     #define fileno _fileno
 #else
     #include <unistd.h>

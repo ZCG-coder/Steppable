@@ -26,9 +26,9 @@
 
 std::string reportDecimalConvertStep(const std::string_view& baseString,
                                      const char digit,
-                                     const long powerIndex,
+                                     const size_t powerIndex,
                                      const std::string_view& convertedDigit,
-                                     const long maxWidth);
+                                     const size_t maxWidth);
 
 std::string reportDecimalConvert(const std::string_view& inputString,
                                  const std::string_view& baseString,

@@ -37,12 +37,12 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
     }
 
     std::string converted = "0", inputString = static_cast<std::string>(_inputString);
-    std::reverse(inputString.begin(), inputString.end());
+    std::ranges::reverse(inputString);
 
     auto maxWidth = power(baseString, std::to_string(_inputString.length()), 0).length();
 
     std::stringstream ss;
-    for (auto iterator = inputString.begin(); iterator < inputString.end(); iterator++)
+    for (auto iterator = inputString.begin(); iterator < inputString.end(); ++iterator)
     {
         auto index = iterator - inputString.begin();
         auto currentIndex = std::to_string(index);
@@ -52,7 +52,7 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
         converted = add(converted, convertedDigit, 0);
 
         if (steps == 2)
-            ss << reportDecimalConvertStep(baseString, digit, index, convertedDigit, maxWidth) << std::endl;
+            ss << reportDecimalConvertStep(baseString, digit, index, convertedDigit, maxWidth) << '\n';
     }
     ss << reportDecimalConvert(_inputString, baseString, converted, steps);
     return ss.str();
@@ -61,7 +61,7 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
 {
-    UTF8CodePage();
+    Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number in the base");
     program.addPosArg('b', "Base number");
