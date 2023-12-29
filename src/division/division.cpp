@@ -33,7 +33,7 @@
 auto getQuotient(const auto& _temp, const auto& _divisor)
 {
     auto temp = _temp;
-    auto divisor = _divisor;
+    const auto& divisor = _divisor;
     if (compare(temp, divisor, 0) == "0")
         return std::string("0");
     if (compare(temp, divisor, 0) == "2")
@@ -97,8 +97,8 @@ std::string divide(const std::string_view& _number,
     for (int i = 0; i < decimals + 1; i++) // Additional 0 is for rounding
         number += '0';
 
-    int idx = 0;
-    std::string remainder(1, number[idx]), lastRemainder = "", header = makeWider(divisor) + ") " + makeWider(number);
+    size_t idx = 0;
+    std::string remainder(1, number[idx]), lastRemainder, header = makeWider(divisor) + ") " + makeWider(number);
     tempFormattedAns << header << '\n';
     auto width = static_cast<int>(header.length());
 
