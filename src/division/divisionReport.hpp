@@ -40,6 +40,6 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
 std::string reportDivisionStep(const std::string_view& temp,
                                const std::string_view& quotient,
                                const std::string_view& divisor,
-                               int width,
-                               int index,
+                               size_t width,
+                               size_t index,
                                std::string_view lastRemainder);
