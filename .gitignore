@@ -1,6 +1,7 @@
 *.sublime-workspace
 .vs/
 .DS_Store
+*.user
 
 # Clangd caches
 .cache/
@@ -11,6 +12,10 @@
 # Compiled Object files
 build/
 cmake-build-*/
+Debug/
+Release/
+x64/
+x86/
 *.slo
 *.lo
 *.o

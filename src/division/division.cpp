@@ -106,16 +106,11 @@ std::string divide(const std::string_view& _number,
         remainder += number[++idx];
     while (number.length() > idx)
     {
-        if (isZeroString(remainder))
-        {
-            idx++;
-            quotient += "0";
-            continue;
-        }
         auto currentQuotient = getQuotient(remainder, divisor);
         auto currentRemainder = getRemainder(currentQuotient, remainder, divisor);
 
-        quotient += currentQuotient;
+        if (currentQuotient != "0")
+            quotient += currentQuotient;
         if (steps == 2)
             tempFormattedAns << reportDivisionStep(
                 remainder, currentQuotient, divisor, width, quotient.length() - 1, lastRemainder);

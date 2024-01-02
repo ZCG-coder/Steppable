@@ -36,7 +36,7 @@ std::string compare(const std::string_view& a, const std::string_view& b, const 
     if (const auto& bIntegerReal = result[2]; aIntegerReal.length() != bIntegerReal.length())
         return reportComparisonAtInteger(a, b, aIntegerReal.length() > bIntegerReal.length(), steps);
 
-    for (size_t i = 0; i < a.length(); i++)
+    for (long i = 0; static_cast<size_t>(i) < a.length(); i++)
     {
         if (a[i] == b[i] or not isdigit(a[i]) or not isdigit(b[i]))
             continue; // Decimal point or equals
