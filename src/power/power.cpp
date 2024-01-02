@@ -51,10 +51,10 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Power)
-        std::cout << "Power :\n" << power(aStr, bStr, steps) << std::endl;
+        std::cout << "Power :\n" << power(aStr, bStr, steps) << '\n';
         TOC()
     }
     else
-        std::cout << power(aStr, bStr, steps) << std::endl;
+        std::cout << power(aStr, bStr, steps) << '\n';
 }
 #endif

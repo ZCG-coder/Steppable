@@ -76,10 +76,10 @@ int main(int _argc, const char** _argv)
     if (profile)
     {
         TIC(Comparing...)
-        std::cout << compare(aStr, bStr, steps) << std::endl;
+        std::cout << compare(aStr, bStr, steps) << '\n';
         TOC()
     }
     else
-        std::cout << compare(aStr, bStr, steps) << std::endl;
+        std::cout << compare(aStr, bStr, steps) << '\n';
 }
 #endif

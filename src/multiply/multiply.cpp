@@ -118,10 +118,10 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Column Method Multiplication)
-        std::cout << "Column Method Multiplication :\n" << multiply(aStr, bStr, steps) << std::endl;
+        std::cout << "Column Method Multiplication :\n" << multiply(aStr, bStr, steps) << '\n';
         TOC()
     }
     else
-        std::cout << multiply(aStr, bStr, steps) << std::endl;
+        std::cout << multiply(aStr, bStr, steps) << '\n';
 }
 #endif

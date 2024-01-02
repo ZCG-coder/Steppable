@@ -26,7 +26,7 @@
 #define SECTION(__VA_ARGS__)                                                                                 \
     {                                                                                                        \
         const char* nameSection = #__VA_ARGS__;                                                              \
-        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << '\0' << reset << std::endl; \
-        std::cout << colors::brightBlue << "[Testing: " << nameSection << ']' << reset << std::endl;         \
+        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << '\0' << reset << '\n'; \
+        std::cout << colors::brightBlue << "[Testing: " << nameSection << ']' << reset << '\n';         \
         auto start = std::chrono::high_resolution_clock::now();                                              \
         auto testCase = TestCase(static_cast<std::string>(nameSection));

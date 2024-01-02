@@ -39,7 +39,7 @@ std::string reportPower(const std::string_view _number, const std::string_view& 
         if (steps == 2)
         {
             ss << BECAUSE " " << multiply(number, numberOrig, 1) << '\n';
-            ss << THEREFORE " " << numberOrig << makeSuperscript(currentPower) << " = " << number << std::endl;
+            ss << THEREFORE " " << numberOrig << makeSuperscript(currentPower) << " = " << number << '\n';
         }
     });
 

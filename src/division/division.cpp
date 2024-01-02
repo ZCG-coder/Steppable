@@ -181,10 +181,10 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Column Method Division)
-        std::cout << "Column Method Division :\n" << divide(aStr, bStr, steps, decimals) << std::endl;
+        std::cout << "Column Method Division :\n" << divide(aStr, bStr, steps, decimals) << '\n';
         TOC()
     }
     else
-        std::cout << divide(aStr, bStr, steps, decimals) << std::endl;
+        std::cout << divide(aStr, bStr, steps, decimals) << '\n';
 }
 #endif
