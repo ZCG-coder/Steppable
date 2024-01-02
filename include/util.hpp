@@ -37,8 +37,8 @@
     #define TIC(...)                                                                                       \
         {                                                                                                  \
             const char* nameSection = #__VA_ARGS__;                                                        \
-            std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << std::endl;   \
-            std::cout << colors::brightBlue << "[Profiling: " << nameSection << ']' << reset << std::endl; \
+            std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << '\n';   \
+            std::cout << colors::brightBlue << "[Profiling: " << nameSection << ']' << reset << '\n'; \
             auto start = std::chrono::high_resolution_clock::now();
 #endif
 
@@ -50,9 +50,9 @@
             std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start)  \
                 .count();                                                                                             \
         std::cout << colors::brightBlue << '[' << nameSection << " took " << duration << "(microseconds) to execute]" \
-                  << reset << std::endl;                                                                              \
+                  << reset << '\n';                                                                              \
         std::cout << colors::brightBlue << std::setw(80) << std::setfill('-');                                        \
-        std::cout << reset << std::endl;                                                                              \
+        std::cout << reset << '\n';                                                                              \
         }
 #endif
 

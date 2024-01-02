@@ -33,8 +33,8 @@
 #define SECTION(...)                                                                                 \
     {                                                                                                \
         const std::string& nameSection = #__VA_ARGS__;                                               \
-        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << std::endl; \
-        std::cout << colors::brightBlue << "[Testing: " << nameSection << ']' << reset << std::endl; \
+        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << '\n'; \
+        std::cout << colors::brightBlue << "[Testing: " << nameSection << ']' << reset << '\n'; \
         auto start = std::chrono::high_resolution_clock::now();                                      \
         auto _ = TestCase(nameSection);
 
@@ -45,8 +45,8 @@
             .count();                                                                                            \
     _.summarize();                                                                                               \
     std::cout << colors::brightBlue << '[' << nameSection << " took " << duration << "(microseconds) to finish]" \
-              << reset << std::endl;                                                                             \
-    std::cout << reset << std::endl;                                                                             \
+              << reset << '\n';                                                                             \
+    std::cout << reset << '\n';                                                                             \
     errors += _.errorCount;                                                                                      \
     }
 #define TEST_END()                                                                               \
@@ -54,7 +54,7 @@
         error("Not all tests passed. There are %i errors.", errors);                             \
     else                                                                                         \
         info("All tests passed.");                                                               \
-    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << std::endl; \
+    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << '\n'; \
     if (errors)                                                                                  \
         return 1;                                                                                \
     }
