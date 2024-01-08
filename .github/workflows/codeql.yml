@@ -60,11 +60,6 @@ jobs:
         # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
         # queries: security-extended,security-and-quality
 
-    - name: Install Clang
-      # You may pin to the exact commit or the version.
-      # uses: egor-tensin/setup-clang@ef434b41eb33a70396fb336b1bae39c76d740c3d
-      uses: egor-tensin/setup-clang@v1.4
-
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
