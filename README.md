@@ -1,6 +1,7 @@
 # The Steppable Project
 
 [![Build Status](https://dev.azure.com/NWSOFT/Steppable/_apis/build/status%2FSteppable?branchName=main)](https://dev.azure.com/NWSOFT/Steppable/_build/latest?definitionId=3&branchName=main)
+[![CodeQL](https://github.com/ZCG-coder/Steppable/actions/workflows/codeql.yml/badge.svg)](https://github.com/ZCG-coder/Steppable/actions/workflows/codeql.yml)
 
 This project tries to make a Computer Algebra System (CAS) out of scratch, and without any external libraries.
 
