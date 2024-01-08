@@ -30,10 +30,33 @@
 #include <string_view>
 #include <vector>
 
-std::string add(const std::string_view& a, const std::string_view& b, const int steps)
+std::string add(const std::string_view& a, const std::string_view& b, const int steps, const bool negative)
 {
-    auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
+    auto splittedNumber = splitNumber(a, b);
+    auto [aInteger, aDecimal, bInteger, bDecimal] = splittedNumber.splittedNumberArray;
+    bool aIsNegative = splittedNumber.aIsNegative, bIsNegative = splittedNumber.bIsNegative, resultIsNegative = false;
     const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
+
+    if (negative)
+        resultIsNegative = true;
+    else if (aIsNegative and bIsNegative)
+    {
+        resultIsNegative = true;
+        aIsNegative = false;
+        bIsNegative = false;
+    }
+    else if (aIsNegative)
+    {
+        if (steps == 2)
+            std::cout << "Subtracting " << b << " from " << a << " since " << a << " is negative.\n";
+        return subtract(b, a, steps);
+    }
+    else if (bIsNegative)
+    {
+        if (steps == 2)
+            std::cout << "Subtracting " << a << " from " << b << " since " << b << " is negative.\n";
+        return subtract(a, b, steps);
+    }
 
     auto aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
     std::ranges::reverse(aStr);
@@ -75,7 +98,7 @@ std::string add(const std::string_view& a, const std::string_view& b, const int 
     if (sumDigits.front() == 0)
         sumDigits.erase(sumDigits.begin());
 
-    return reportAdd(aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, steps);
+    return reportAdd(aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, resultIsNegative, steps);
 }
 
 #ifndef NO_MAIN

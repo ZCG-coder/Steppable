@@ -37,7 +37,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
         return static_cast<std::string>(b);
     if (b == "1")
         return static_cast<std::string>(a);
-    const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b, false);
+    const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b, false).splittedNumberArray;
     const std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
     std::vector<std::vector<int>> prodDigits, carries;
 

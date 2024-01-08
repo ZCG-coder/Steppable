@@ -28,13 +28,17 @@
 #include <string>
 #include <string_view>
 
-std::string add(const std::string_view& a, const std::string_view& b, int steps = 2);
+std::string add(const std::string_view& a, const std::string_view& b, int steps = 2, bool negative = false);
 std::string compare(const std::string_view& a, const std::string_view& b, int steps = 2);
 std::string decimalConvert(const std::string_view& _inputString, const std::string_view& baseString, int steps = 2);
 std::string divide(const std::string_view& number, const std::string_view& divisor, int steps = 2, int decimals = 5);
 std::string multiply(const std::string_view& a, const std::string_view& b, int steps = 2);
 std::string power(std::string_view _number, const std::string_view& raiseTo, int steps = 2);
-std::string subtract(const std::string_view& a, const std::string_view& b, int steps = 2, bool noMinus = false);
+std::string subtract(const std::string_view& a,
+                     const std::string_view& b,
+                     int steps = 2,
+                     bool noMinus = false,
+                     bool negative = false);
 
 template<typename Pred>
 void loop(const std::string_view& times, Pred predicate)

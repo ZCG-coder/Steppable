@@ -6,7 +6,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/build/src/add",
       "args": [
-        "5",
+        "-5",
         "6"
       ],
       "cwd": "${workspaceFolder}/build",

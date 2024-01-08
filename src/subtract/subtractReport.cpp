@@ -39,6 +39,7 @@ std::string reportSubtract(const std::string& aInteger,
                            const std::vector<int>& _diffDigits,
                            const std::vector<int>& borrows,
                            const int steps,
+                           bool resultIsNegative,
                            const bool noMinus)
 {
     std::stringstream ss;
@@ -103,13 +104,15 @@ std::string reportSubtract(const std::string& aInteger,
     if (diffDigits.empty())
         diffDigits = { 0 };
 
+    if (resultIsNegative)
+        ss << '-';
     for (int outputDigit : diffDigits)
     {
         char outputChar = static_cast<char>(outputDigit + '0');
         if (outputDigit == -1)
             outputChar = '.';
         else if (outputDigit == -2)
-            outputChar = ' ';
+            outputChar = '\0';
         ss << outputChar; // No spaces
     }
 

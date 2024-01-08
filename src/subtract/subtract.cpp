@@ -20,20 +20,81 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "fn/basicArithm.hpp"
 #include "argParse.hpp"
+#include "fn/basicArithm.hpp"
 #include "subtractReport.hpp"
+#include "symbols.hpp"
 #include "util.hpp"
 
 #include <algorithm>
+#include <sstream>
 #include <string>
 #include <string_view>
 #include <vector>
 
-std::string subtract(const std::string_view& a, const std::string_view& b, const int steps, const bool noMinus)
+std::string subtract(const std::string_view& a,
+                     const std::string_view& b,
+                     const int steps,
+                     const bool noMinus,
+                     const bool negative)
 {
-    auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b);
+    auto splittedNumber = splitNumber(a, b);
+    auto [aInteger, aDecimal, bInteger, bDecimal] = splittedNumber.splittedNumberArray;
+    const bool aIsNegative = splittedNumber.aIsNegative, bIsNegative = splittedNumber.bIsNegative;
+    bool resultIsNegative;
     const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
+
+    // Here, we try to determine if the result is negative or not
+    // Scenario 1: a is negative and b is positive
+    // Polarity  : Negative
+    // Action    : Add a and b, negate the result
+    //
+    // Scenario 2: a is positive and b is negative
+    // Polarity  : Positive
+    // Action    : Add a and b
+    //
+    // Scenario 3: Both a and b are negative
+    // Polarity  : Negative
+    // Action    : Subtract positive b from positive a
+    resultIsNegative = aIsNegative and bIsNegative and compare(a, b, 0) == "1";
+
+    if (aIsNegative and not bIsNegative)
+    {
+        resultIsNegative = true;
+        if (steps == 2)
+            std::cout << "Adding " << a.substr(1) << " and " << b << " since " << a << " is negative\n";
+        auto addResult = add(a.substr(1), b, steps, true);
+        auto res = addResult.substr(addResult.find_last_of(' ') + 1);
+        if (steps == 2)
+        {
+            // Replace last line with a subtraction report
+            std::stringstream ss;
+            ss << addResult.substr(0, addResult.find_last_of('\n')) << '\n';
+            ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
+            return ss.str();
+        }
+        else if (steps == 1)
+        {
+            std::stringstream ss;
+            ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
+            return ss.str();
+        }
+        else
+        {
+            return "-" + addResult;
+        }
+    }
+    else if (bIsNegative and not aIsNegative)
+    {
+        std::cout << "Adding " << a << " and " << b.substr(1) << " since " << b << " is negative\n";
+        resultIsNegative = false;
+        return add(a, b.substr(1), steps);
+    }
+    if (compare(a, b, 0) == "0")
+    {
+        std::swap(aInteger, bInteger);
+        std::swap(aDecimal, bDecimal);
+    }
 
     std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
     std::ranges::reverse(aStr);
@@ -75,8 +136,20 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
 
     std::ranges::reverse(borrows);
     std::ranges::reverse(diffDigits);
-    return reportSubtract(
-        aInteger, aDecimal, bInteger, bDecimal, aIsDecimal, bIsDecimal, diffDigits, borrows, steps, noMinus);
+    if (diffDigits.empty())
+        diffDigits.push_back(0);
+
+    return reportSubtract(aInteger,
+                          aDecimal,
+                          bInteger,
+                          bDecimal,
+                          aIsDecimal,
+                          bIsDecimal,
+                          diffDigits,
+                          borrows,
+                          steps,
+                          resultIsNegative,
+                          noMinus);
 }
 
 #ifndef NO_MAIN
