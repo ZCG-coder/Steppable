@@ -35,6 +35,7 @@ std::string reportAdd(const std::string& aInteger,
                       const std::string& bDecimal,
                       const std::vector<int>& sumDigits,
                       const std::vector<bool>& carries,
+                      const bool resultIsNegative,
                       const int steps)
 {
     std::stringstream ss;

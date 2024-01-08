@@ -34,4 +34,5 @@ std::string reportSubtract(const std::string& aInteger,
                            const std::vector<int>& _diffDigits,
                            const std::vector<int>& borrows,
                            int steps,
+                           bool resultIsNegative,
                            bool noMinus = false);

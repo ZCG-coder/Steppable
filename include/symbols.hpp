@@ -22,6 +22,7 @@
 
 #pragma once
 
+#include <array>
 #include <string>
 
 #define BECAUSE "\u2235"

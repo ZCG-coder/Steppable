@@ -31,7 +31,7 @@
 
 std::string compare(const std::string_view& a, const std::string_view& b, const int steps)
 {
-    const auto result = splitNumber(a, b, false, true);
+    const auto result = splitNumber(a, b, false, true).splittedNumberArray;
     const auto& aIntegerReal = result[0];
     if (const auto& bIntegerReal = result[2]; aIntegerReal.length() != bIntegerReal.length())
         return reportComparisonAtInteger(a, b, aIntegerReal.length() > bIntegerReal.length(), steps);

@@ -31,11 +31,10 @@
 using PosArgs = std::vector<std::string_view>;
 
 // language=RegExp
-[[maybe_unused]] static const std::regex KEYWORD_ARG_REGEX(R"(^-([a-zA-Z]*):([0-9]*?)$)",
-                                                         std::regex_constants::ECMAScript);
+[[maybe_unused]] static const std::regex KEYWORD_ARG_REGEX(R"(^-([a-zA-Z]*):(-?[0-9]+)$)");
 
 // language=RegExp
-[[maybe_unused]] static const std::regex SWITCH_REGEX(R"(^([-+])([a-zA-Z0-9]*)$)", std::regex_constants::ECMAScript);
+[[maybe_unused]] static const std::regex SWITCH_REGEX(R"(^([-+])([a-zA-Z]*)$)");
 
 class ProgramArgs
 {

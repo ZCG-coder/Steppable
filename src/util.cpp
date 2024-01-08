@@ -33,13 +33,25 @@
 #include <string>
 #include <vector>
 
-std::array<std::string, 4> splitNumber(const std::string_view& _a,
-                                       const std::string_view& _b,
-                                       const bool padInteger,
-                                       const bool padDecimal)
+SplittedNumber splitNumber(const std::string_view& _a,
+                           const std::string_view& _b,
+                           const bool padInteger,
+                           const bool padDecimal)
 {
-    const auto& a = removeLeadingZeros(std::string(_a));
-    const auto& b = removeLeadingZeros(std::string(_b));
+    auto a = std::string(_a), b = std::string(_b);
+    bool aIsNegative = false, bIsNegative = false;
+    if (a.front() == '-')
+    {
+        aIsNegative = true;
+        a.erase(a.begin());
+    }
+    if (b.front() == '-')
+    {
+        bIsNegative = true;
+        b.erase(b.begin());
+    }
+    a = removeLeadingZeros(a);
+    b = removeLeadingZeros(b);
     const std::vector<std::string> aParts = split(a, '.'), bParts = split(b, '.');
     auto aInteger = static_cast<std::string>(aParts.front()), aDecimal = static_cast<std::string>(aParts.back()),
          bInteger = static_cast<std::string>(bParts.front()), bDecimal = static_cast<std::string>(bParts.back());
@@ -66,7 +78,8 @@ std::array<std::string, 4> splitNumber(const std::string_view& _a,
         else
             aDecimal += std::string(-diffLengthDecimal, '0');
     }
-    return { aInteger, aDecimal, bInteger, bDecimal };
+    std::array splittedNumber{ aInteger, aDecimal, bInteger, bDecimal };
+    return SplittedNumber { splittedNumber, aIsNegative, bIsNegative };
 }
 
 std::string makeWider(const std::string& orig)

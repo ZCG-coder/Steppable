@@ -73,7 +73,8 @@ std::string divide(const std::string_view& _number,
         return "Infinity";
     }
 
-    auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] = splitNumber(_number, _divisor, false, true);
+    auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] =
+        splitNumber(_number, _divisor, false, true).splittedNumberArray;
     auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger;
     auto decimals = _decimals;
 
@@ -109,8 +110,7 @@ std::string divide(const std::string_view& _number,
         auto currentQuotient = getQuotient(remainder, divisor);
         auto currentRemainder = getRemainder(currentQuotient, remainder, divisor);
 
-        if (currentQuotient != "0")
-            quotient += currentQuotient;
+        quotient += currentQuotient;
         if (steps == 2)
             tempFormattedAns << reportDivisionStep(
                 remainder, currentQuotient, divisor, width, quotient.length() - 1, lastRemainder);
@@ -123,9 +123,11 @@ std::string divide(const std::string_view& _number,
     // - Length of integer in output  = Length of integers in number - Length of integers in divisor  (*)
     // - Length of decimals in output = Length of output - Length of integers + 1
     // Note: It can be negative!
-    auto numberIntegers = static_cast<long long>(numberIntegerOrig.length() - divisorIntegerOrig.length()),
-         numberDecimals = static_cast<long long>(quotient.length() - numberIntegers + 1);
-
+    auto numberIntegers = static_cast<long long>(numberIntegerOrig.length() - divisorIntegerOrig.length());
+    auto diffNumberDivisor = subtract(numberIntegerOrig, divisorIntegerOrig);
+    if (compare(diffNumberDivisor, "10", 0) == "0")
+        numberIntegers++;
+    auto numberDecimals = static_cast<long long>(quotient.length() - numberIntegers + 1);
     // Scenario 1: No decimal places returned
     // Solution  : Do nothing
     if (static_cast<size_t>(numberIntegers) == quotient.length() - 1)

@@ -27,6 +27,7 @@
 #include <algorithm>
 #include <array>
 #include <chrono>
+#include <iomanip>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -55,6 +56,12 @@
         std::cout << reset << '\n';                                                                              \
         }
 #endif
+
+struct SplittedNumber
+{
+    std::array<std::string, 4> splittedNumberArray;
+    bool aIsNegative, bIsNegative;
+};
 
 #ifdef WINDOWS
     #include <Windows.h>
@@ -132,7 +139,8 @@ constexpr bool isNumber(const std::string_view& s)
 {
     if (s.empty())
         return false;
-    int decimalPointCount = 0;
+    int decimalPointCount = 0, minusCount = 0;
+    
     for (const char c : s)
     {
         if (c == '.')
@@ -140,6 +148,12 @@ constexpr bool isNumber(const std::string_view& s)
             if (decimalPointCount > 0)
                 return false;
             decimalPointCount++;
+        }
+        else if (c == '-')
+        {
+            if (minusCount > 0)
+                return false;
+            minusCount++;
         }
         else if (not isdigit(c))
             return false;
@@ -182,10 +196,10 @@ auto split(std::basic_string_view<CharT> s, const CharT separator)
     return result;
 }
 
-std::array<std::string, 4> splitNumber(const std::string_view& a,
-                                       const std::string_view& b,
-                                       bool padInteger = true,
-                                       bool padDecimal = true);
+SplittedNumber splitNumber(const std::string_view& a,
+                           const std::string_view& b,
+                           bool padInteger = true,
+                           bool padDecimal = true);
 
 /// Trim from end of string (right)
 template<typename CharT>

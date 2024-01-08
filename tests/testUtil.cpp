@@ -63,7 +63,7 @@ SECTION_END()
 
 SECTION(splitNumber without padInteger or padDecimal)
 const std::string &number1 = "1.24", &number2 = "2";
-const auto& out = splitNumber(number1, number2, false, false);
+const auto& out = splitNumber(number1, number2, false, false).splittedNumberArray;
 
 _.assertIsEqual(out[0], "1");
 _.assertIsEqual(out[1], "24");
@@ -73,7 +73,7 @@ SECTION_END()
 
 SECTION(splitNumber with padInteger except padDecimal)
 const std::string &number1 = "11.24", &number2 = "2";
-const auto& out = splitNumber(number1, number2, true, false);
+const auto& out = splitNumber(number1, number2, true, false).splittedNumberArray;
 
 _.assertIsEqual(out[0], "11");
 _.assertIsEqual(out[1], "24");
@@ -83,7 +83,7 @@ SECTION_END()
 
 SECTION(splitNumber with padInteger and padDecimal)
 const std::string &number1 = "11.24", &number2 = "2.2";
-const auto& out = splitNumber(number1, number2, true, true);
+const auto& out = splitNumber(number1, number2, true, true).splittedNumberArray;
 
 _.assertIsEqual(out[0], "11");
 _.assertIsEqual(out[1], "24");
