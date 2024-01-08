@@ -24,12 +24,14 @@ jobs:
           workingDirectory: '$(Build.SourcesDirectory)/build'
           
       - task: CmdLine@2
+        displayName: 'Run Tests (Linux)'
         inputs:
           script: 'ctest --output-junit out-linux.xml'
           workingDirectory: '$(Build.SourcesDirectory)/build/tests'
           failOnStderr: true
 
       - task: PublishTestResults@2
+        displayName: 'Publish Test Results (Linux)'
         inputs:
           testResultsFormat: 'JUnit'
           testResultsFiles: '*.xml'
@@ -40,6 +42,7 @@ jobs:
           testRunTitle: 'Test on Linux'
 
       - task: PublishPipelineArtifact@1
+        displayName: 'Publish Build Artifact (Linux)'
         inputs:
           targetPath: '$(Build.SourcesDirectory)/build'
           artifact: 'Build-Linux'
@@ -65,12 +68,14 @@ jobs:
           workingDirectory: '$(Build.SourcesDirectory)/build'
 
       - task: CmdLine@2
+        displayName: 'Run Tests (Windows)'
         inputs:
-          script: 'ctest --output-junit out-windows.xml'
+          script: 'ctest --output-junit out-windows.xml -C Release'
           workingDirectory: '$(Build.SourcesDirectory)/build/tests'
           failOnStderr: true
 
       - task: PublishTestResults@2
+        displayName: 'Publish Test Results (Windows)'
         inputs:
           testResultsFormat: 'JUnit'
           testResultsFiles: '*.xml'
@@ -81,6 +86,7 @@ jobs:
           testRunTitle: 'Test on Windows'
 
       - task: PublishPipelineArtifact@1
+        displayName: 'Publish Build Artifact (Windows)'
         inputs:
           targetPath: '$(Build.SourcesDirectory)/build'
           artifact: 'Build-Windows'
