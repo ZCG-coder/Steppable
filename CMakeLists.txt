@@ -43,6 +43,11 @@ else ()
     message(ERROR "Platform not defined")
 endif ()
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_compile_definitions(DEBUG)
+    set(DEBUG TRUE)
+endif()
+
 function(capitalize IN OUT)
     string(SUBSTRING ${IN} 0 1 FIRST_LETTER)
     string(SUBSTRING ${IN} 1 -1 THE_REST)
@@ -69,3 +74,16 @@ add_subdirectory(include/) # The CMakeLists file there adds the include/ directo
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+
+if (DEBUG)
+    # Ensure that Python is available to run the development scripts
+    find_package(Python3 COMPONENTS Interpreter REQUIRED)
+
+    # Patch the compile_commands.json using the Python script
+    add_custom_target(
+            fix_ccjson ALL
+            COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/patch_compile_commands.py
+            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+            COMMENT "Patching compile_commands.json"
+    )
+endif ()

@@ -56,16 +56,44 @@ std::string reportComparisonAtInteger(const std::string_view& a,
     return ss.str();
 }
 
+std::string reportComparisonByPolarity(const std::string_view& a,
+                                        const std::string_view& b,
+                                        const bool bigger,
+                                        const int steps)
+{
+    std::stringstream ss;
+
+    if (steps == 2)
+    {
+        ss << "Comparing the polarities of a and b" << '\n';
+        if (bigger)
+        {
+            ss << BECAUSE << " " << a << " is positive and " << b << " is negative" << '\n';
+            ss << THEREFORE " " << a << " is greater than " << b;
+        }
+        else
+        {
+            ss << BECAUSE << " " << a << " is negative and " << b << " is positive" << '\n';
+            ss << THEREFORE " " << a << " is less than " << b;
+        }
+    }
+    else if (steps == 1)
+        ss << a << (bigger ? " > " : " < ") << b;
+    else
+        ss << (bigger ? '1' : '0');
+
+    return ss.str();
+}
+
 std::string reportComparisonByDigit(const std::string_view& a,
                                     const std::string_view& b,
                                     const size_t _digit,
                                     const bool bigger,
+                                    const bool bothNegative,
                                     const int steps)
 {
     std::stringstream ss;
-    int digit = static_cast<int>(_digit);
-    if (not bigger)
-        digit = -digit;
+    size_t digit = _digit;
     if (steps == 2)
     {
         ss << "a = " << a << '\n';

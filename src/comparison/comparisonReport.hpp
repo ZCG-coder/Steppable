@@ -22,13 +22,20 @@
 
 #pragma once
 
+#include <cstddef>
 #include <string>
 #include <string_view>
 
 std::string reportComparisonAtInteger(const std::string_view& a, const std::string_view& b, bool bigger, int steps = 2);
 
+std::string reportComparisonByPolarity(const std::string_view& a,
+                                       const std::string_view& b,
+                                       bool greater,
+                                       int steps = 2);
+
 std::string reportComparisonByDigit(const std::string_view& a,
                                     const std::string_view& b,
                                     size_t digit,
                                     bool bigger,
+                                    bool bothNegative,
                                     int steps = 2);

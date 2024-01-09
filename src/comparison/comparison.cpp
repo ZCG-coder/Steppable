@@ -31,19 +31,43 @@
 
 std::string compare(const std::string_view& a, const std::string_view& b, const int steps)
 {
-    const auto result = splitNumber(a, b, false, true).splittedNumberArray;
+    const auto splittedNumber = splitNumber(a, b, false, true);
+    const auto result = splittedNumber.splittedNumberArray;
+    const bool aIsNegative = splittedNumber.aIsNegative, bIsNegative = splittedNumber.bIsNegative,
+               bothNegative = aIsNegative and bIsNegative;
     const auto& aIntegerReal = result[0];
     if (const auto& bIntegerReal = result[2]; aIntegerReal.length() != bIntegerReal.length())
         return reportComparisonAtInteger(a, b, aIntegerReal.length() > bIntegerReal.length(), steps);
 
+    // Here, we try to determine whether a or b is greater based on their polarities
+    // Scenario 1: a and b are both positive
+    // Action    : Continue, cannot determine
+    //
+    // Scenario 2: a and b are both negative
+    // Action    : Continue, cannot determine
+    //
+    // Scenario 3: a is positive and b is negative
+    // Action    : Return a > b
+    //
+    // Scenario 4: a is negative and b is positive
+    // Action    : Return a < b
+    if (not aIsNegative and bIsNegative)
+        return reportComparisonByPolarity(a, b, true, steps);
+    else if (aIsNegative and not bIsNegative)
+        return reportComparisonByPolarity(a, b, false, steps);
+
     for (long i = 0; static_cast<size_t>(i) < a.length(); i++)
     {
         if (a[i] == b[i] or not isdigit(a[i]) or not isdigit(b[i]))
-            continue; // Decimal point or equals
-        if (const bool bigger = a[i] > b[i])
-            return reportComparisonByDigit(a, b, i, bigger, steps);
-        else
-            return reportComparisonByDigit(a, b, -i, bigger, steps);
+            continue; // Negative sign, decimal point or equals
+        if (a[i] > b[i] and not bothNegative)
+            return reportComparisonByDigit(a, b, i, true, false, steps);
+        else if (a[i] < b[i] and not bothNegative)
+            return reportComparisonByDigit(a, b, i, false, false, steps);
+        else if (a[i] > b[i] and bothNegative) // First digit is the negative sign
+            return reportComparisonByDigit(a, b, i - 1, false, false, steps);
+        else if (a[i] < b[i] and bothNegative)
+            return reportComparisonByDigit(a, b, i - 1, true, false, steps);
     }
 
     if (steps == 1)
