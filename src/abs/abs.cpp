@@ -20,53 +20,47 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#pragma once
+#include "absReport.hpp"
+#include "argParse.hpp"
+#include "output.hpp"
+#include "util.hpp"
 
-#include <cstdarg>
+#include <fn/basicArithm.hpp>
 #include <string>
-#include <vector>
+#include <string_view>
 
-// https://stackoverflow.com/a/49812356/14868780
-template<typename CharT>
-std::basic_string<CharT> vFormat(const std::basic_string<CharT> sFormat, ...)
+std::string abs(const std::string_view& _number, const int steps)
 {
-    const CharT* const zcFormat = sFormat.c_str();
-
-    // Initialize a variable argument array
-    va_list vaArgs;
-    va_start(vaArgs, sFormat);
-
-    // Reliably acquire the size from a copy of the variable argument array
-    // and a functionally reliable call to mock the formatting
-    va_list vaCopy;
-    va_copy(vaCopy, vaArgs);
-    const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy);
-    va_end(vaCopy);
-
-    // Return a formatted string without risking memory mismanagement
-    // and without assuming any compiler or platform specific behavior
-    std::vector<CharT> zc(iLen + 1);
-    std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs);
-    va_end(vaArgs);
-    return std::string(zc.data(), zc.size());
+    if (not isNumber(_number))
+    {
+        error("The argument is not a number.");
+        return "";
+    }
+    std::string number = static_cast<std::string>(_number);
+    return reportAbs(number, steps);
 }
 
-template<typename CharT>
-std::basic_string<CharT> vFormat(const CharT* sFormat, ...)
+#ifndef NO_MAIN
+int main(const int _argc, const char* _argv[])
 {
-    const CharT* const zcFormat = sFormat;
+    Utf8CodePage _;
+    ProgramArgs program(_argc, _argv);
+    program.addPosArg('a', "Number");
+    program.addKeywordArg("steps", 2, "Amount of steps while taking the absolute value. 0 = No steps, 2 = All steps.");
+    program.addSwitch("profile", false, "profiling the program");
+    program.parseArgs();
 
-    va_list vaArgs;
-    va_start(vaArgs, sFormat);
+    const int steps = program.getKeywordArgument("steps");
+    const bool profile = program.getSwitch("profile");
+    const auto& number = program.getPosArg(0);
 
-    va_list vaCopy;
-    va_copy(vaCopy, vaArgs);
-    const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy); // NOLINT(clang-diagnostic-format-nonliteral)
-    va_end(vaCopy);
-
-    std::vector<CharT> zc(iLen + 1);
-    static_cast<void>(
-        std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs)); // NOLINT(clang-diagnostic-format-nonliteral)
-    va_end(vaArgs);
-    return std::string(zc.data(), zc.size());
+    if (profile)
+    {
+        TIC(Column Method Addition)
+        std::cout << "Taking absolute value :\n" << abs(number, steps) << '\n';
+        TOC()
+    }
+    else
+        std::cout << abs(number, steps) << '\n';
 }
+#endif

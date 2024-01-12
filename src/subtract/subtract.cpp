@@ -56,7 +56,7 @@ std::string subtract(const std::string_view& a,
     // Scenario 3: Both a and b are negative
     // Polarity  : Negative
     // Action    : Subtract positive b from positive a
-    resultIsNegative = aIsNegative and bIsNegative and compare(a, b, 0) == "1";
+    resultIsNegative = aIsNegative and bIsNegative or compare(a, b, 0) == "0";
 
     if (aIsNegative and not bIsNegative)
     {
@@ -92,8 +92,25 @@ std::string subtract(const std::string_view& a,
     }
     if (compare(a, b, 0) == "0")
     {
-        std::swap(aInteger, bInteger);
-        std::swap(aDecimal, bDecimal);
+        auto subtractResult = subtract(b, a, steps);
+        if (steps == 2)
+        {
+            // Replace last line with a subtraction report
+            std::stringstream ss;
+            ss << subtractResult.substr(0, subtractResult.find_last_of('\n')) << '\n';
+            ss << THEREFORE << ' ' << a << " - " << b << " = -" << subtractResult.substr(subtractResult.find_last_of(' ') + 1);
+            return ss.str();
+        }
+        else if (steps == 1)
+        {
+            std::stringstream ss;
+            ss << THEREFORE << ' ' << a << " - " << b << " = -" << subtractResult.substr(subtractResult.find_last_of(' ') + 1);
+            return ss.str();
+        }
+        else
+        {
+            return "-" + subtractResult;
+        }
     }
 
     std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;

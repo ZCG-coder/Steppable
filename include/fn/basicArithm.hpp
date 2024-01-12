@@ -28,6 +28,7 @@
 #include <string>
 #include <string_view>
 
+std::string abs(const std::string_view& _number, const int steps);
 std::string add(const std::string_view& a, const std::string_view& b, int steps = 2, bool negative = false);
 std::string compare(const std::string_view& a, const std::string_view& b, int steps = 2);
 std::string decimalConvert(const std::string_view& _inputString, const std::string_view& baseString, int steps = 2);

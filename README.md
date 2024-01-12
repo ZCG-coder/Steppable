@@ -1,7 +1,6 @@
 # The Steppable Project
 
 [![Build Status](https://dev.azure.com/NWSOFT/Steppable/_apis/build/status%2FSteppable?branchName=main)](https://dev.azure.com/NWSOFT/Steppable/_build/latest?definitionId=3&branchName=main)
-[![CodeQL](https://github.com/ZCG-coder/Steppable/actions/workflows/codeql.yml/badge.svg)](https://github.com/ZCG-coder/Steppable/actions/workflows/codeql.yml)
 
 This project tries to make a Computer Algebra System (CAS) out of scratch, and without any external libraries.
 
@@ -36,20 +35,20 @@ we are planning to implement next (and in the near future):
 
 - [ ] Parser
 - [ ] Calculator and reporter (all the major functions)
-    - [x] Comparison of integers and decimal
-    - [x] Addition of integers and decimals
-    - [x] Subtraction of integers and decimals
-    - [x] Multiplication of integers and decimals
-    - [x] Powers of integers
-    - [x] Division of integers and decimals
-    - [ ] Addition of fractions
-    - [ ] Subtraction of fractions
-    - [ ] Multiplication of fractions
-    - [ ] Simplification of fractions
-    - [ ] Division of fractions
-    - [ ] Conversion between fractions and decimals
-    - [ ] Expansion of polynomials
-    - [ ] Factoring of polynomials
+  - [x] Comparison of integers and decimal
+  - [x] Addition of integers and decimals
+  - [x] Subtraction of integers and decimals
+  - [x] Multiplication of integers and decimals
+  - [x] Powers of integers
+  - [x] Division of integers and decimals
+  - [ ] Addition of fractions
+  - [ ] Subtraction of fractions
+  - [ ] Multiplication of fractions
+  - [ ] Simplification of fractions
+  - [ ] Division of fractions
+  - [ ] Conversion between fractions and decimals
+  - [ ] Expansion of polynomials
+  - [ ] Factoring of polynomials
 
 The parser is the most difficult part of the project, so we will probably start with the calculator and reporter first.
 When implemented, it will probably call the calculator(s) (which is/are compiled into executable format together with
