@@ -1,5 +1,5 @@
 #####################################################################################################
-#  Copyright (c) 2023 NWSOFT                                                                        #
+#  Copyright (c) 2024 NWSOFT                                                                        #
 #                                                                                                   #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
 #  of this software and associated documentation files (the "Software"), to deal                    #
@@ -26,7 +26,7 @@ PROJECT_PATH = Path(__file__).parent.parent
 
 COPYRIGHT_CPP = """\
 /**************************************************************************************************
- * Copyright (c) 2023 NWSOFT                                                                      *
+ * Copyright (c) 2024 NWSOFT                                                                      *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -50,7 +50,7 @@ COPYRIGHT_CPP = """\
 
 COPYRIGHT_PY_CMAKE = """\
 #####################################################################################################
-#  Copyright (c) 2023 NWSOFT                                                                        #
+#  Copyright (c) 2024 NWSOFT                                                                        #
 #                                                                                                   #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
 #  of this software and associated documentation files (the "Software"), to deal                    #

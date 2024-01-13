@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * Copyright (c) 2023 NWSOFT                                                                      *
+ * Copyright (c) 2024 NWSOFT                                                                      *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                  *
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
-
 #include "argParse.hpp"
 
 #include "colors.hpp"
@@ -156,6 +155,7 @@ void ProgramArgs::parseArgs()
         {
             bool enabled = match[1] == "+";
             std::string name = match[2];
+
             switches.insert_or_assign(name, enabled);
         }
         else
@@ -163,7 +163,7 @@ void ProgramArgs::parseArgs()
             if (not isNumber(_arg))
             {
                 error("Invalid argument: %s", _arg);
-                std::quick_exit(-1);
+                static_cast<void>(std::quick_exit(-1));
             }
             posArgs.push_back(_arg);
         }

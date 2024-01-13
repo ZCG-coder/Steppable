@@ -1,5 +1,5 @@
 #####################################################################################################
-#  Copyright (c) 2023 NWSOFT                                                                        #
+#  Copyright (c) 2024 NWSOFT                                                                        #
 #                                                                                                   #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
 #  of this software and associated documentation files (the "Software"), to deal                    #
@@ -33,9 +33,9 @@ This causes the LSP to spot out more warnings as usual, as the main function wou
 This file removes the NO_MAIN definition to fix this issue.
 """
 
-from pathlib import Path
 import json
 import re
+from pathlib import Path
 
 PROJECT_PATH = Path(__file__).parent.parent
 NO_MAIN_PATTERN = re.compile(r"\s-DNO_MAIN\s")
