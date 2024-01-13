@@ -19,58 +19,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                  *
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
-
 #pragma once
 
-#include <map>
-#include <regex>
-#include <string_view>
-#include <unordered_map>
-#include <vector>
+#include <cstdlib>
 
-using PosArgs = std::vector<std::string_view>;
-
-// language=RegExp
-[[maybe_unused]] static const std::regex KEYWORD_ARG_REGEX(R"(^-([a-zA-Z]*):(-?[0-9]+)$)");
-
-// language=RegExp
-[[maybe_unused]] static const std::regex SWITCH_REGEX(R"(^([-+])([a-zA-Z]*)$)");
-
-class ProgramArgs
+namespace internals
 {
-private:
-    std::unordered_map<std::string_view, bool> switches;
-    std::map<std::string_view, std::string_view> switchDescriptions;
-
-    std::vector<std::string_view> posArgs; // Names are used for error messages only.
-    std::map<char, std::string_view> posArgDescriptions;
-
-    std::unordered_map<std::string_view, int> keywordArgs;
-    std::map<std::string_view, std::string_view> keywordArgDescriptions;
-
-    int argc;
-
-    std::vector<std::string_view> argv;
-
-    std::string_view programName;
-
-public:
-    ProgramArgs(int _argc, const char** argv);
-
-    void parseArgs();
-
-    void addSwitch(const std::string_view& name, bool defaultValue, const std::string_view& description = "");
-
-    void addPosArg(char name,
-                   const std::string_view& description = ""); // Positional arguments are always required and ordered
-
-    void addKeywordArg(const std::string_view& name, int defaultValue, std::string_view description = "");
-
-    [[nodiscard]] std::string_view getPosArg(size_t index) const;
-
-    int getKeywordArgument(const std::string_view& name);
-
-    bool getSwitch(const std::string_view& name);
-
-    void printUsage(const std::string_view& reason = "") const;
-};
+    void programSafeExit(const int status)
+    {
+#ifdef MACOSX
+        exit(status);
+#else
+        std::quick_exit(status);
+#endif
+    }
+} // namespace internals

@@ -23,6 +23,7 @@
 
 #include "colors.hpp"
 #include "output.hpp"
+#include "platform.hpp"
 #include "util.hpp"
 
 #include <iostream>
@@ -49,7 +50,7 @@ void ProgramArgs::addPosArg(const char name, const std::string_view& description
     posArgDescriptions.insert({ name, description });
 }
 
-[[noreturn]] void ProgramArgs::printUsage(const std::string_view& reason) const
+void ProgramArgs::printUsage(const std::string_view& reason) const
 {
     std::cout << "Usage: " << formats::bold << programName << reset << " ";
 
@@ -103,7 +104,7 @@ void ProgramArgs::addPosArg(const char name, const std::string_view& description
         std::cerr << '\n';
         error(std::string(reason));
     }
-    std::quick_exit(-1);
+    internals::programSafeExit(-1);
 }
 
 std::string_view ProgramArgs::getPosArg(const size_t index) const
@@ -163,7 +164,7 @@ void ProgramArgs::parseArgs()
             if (not isNumber(_arg))
             {
                 error("Invalid argument: %s", _arg);
-                static_cast<void>(std::quick_exit(-1));
+                internals::programSafeExit(-1);
             }
             posArgs.push_back(_arg);
         }
