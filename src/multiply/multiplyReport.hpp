@@ -27,8 +27,11 @@
 
 std::string reportMultiply(const std::string& a,
                            const std::string& b,
+                           const std::string& aStr,
+                           const std::string& bStr,
                            const std::vector<int>& finalProdDigits,
                            const std::vector<int>& finalProdCarries,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
+                           bool resultIsNegative = false,
                            int steps = 2);

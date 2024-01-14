@@ -32,9 +32,9 @@
 
 std::string add(const std::string_view& a, const std::string_view& b, const int steps, const bool negative)
 {
-    auto splittedNumber = splitNumber(a, b);
-    auto [aInteger, aDecimal, bInteger, bDecimal] = splittedNumber.splittedNumberArray;
-    bool aIsNegative = splittedNumber.aIsNegative, bIsNegative = splittedNumber.bIsNegative, resultIsNegative = false;
+    auto splitNumberResult = splitNumber(a, b);
+    auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberResult.splitNumberArray;
+    bool aIsNegative = splitNumberResult.aIsNegative, bIsNegative = splitNumberResult.bIsNegative, resultIsNegative = false;
     const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
 
     if (negative)

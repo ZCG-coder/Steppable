@@ -32,19 +32,22 @@
 
 std::string reportMultiply(const std::string& a,
                            const std::string& b,
+                           const std::string& aStr,
+                           const std::string& bStr,
                            const std::vector<int>& finalProdDigits,
                            const std::vector<int>& finalProdCarries,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
-                           int steps)
+                           bool resultIsNegative,
+                           const int steps)
 {
     std::stringstream ss;
 
     if (steps == 2)
     {
         const long long outputWidth = static_cast<long long>(prodDigitsOut[0].size()) * 3 - 2;
-        ss << std::right << std::setw(outputWidth + 3) << makeWider(a) << '\n';
-        ss << MULTIPLY << std::right << std::setw(outputWidth + 2) << makeWider(b) << '\n';
+        ss << std::right << std::setw(outputWidth + 3) << makeWider(aStr) << '\n';
+        ss << MULTIPLY << std::right << std::setw(outputWidth + 2) << makeWider(bStr) << '\n';
         ss << std::string(outputWidth + 6, '_') << '\n';
 
         for (size_t indexProdDigits = 0; indexProdDigits < prodDigitsOut.size(); indexProdDigits++)
@@ -83,15 +86,15 @@ std::string reportMultiply(const std::string& a,
             for (const int i : finalProdDigits)
                 ss << i << "  ";
         }
+        ss << "\n" THEREFORE " ";
     }
-    else if (steps == 1)
+    if (steps >= 1)
         ss << a << " " MULTIPLY " " << b << " = ";
-    if (steps == 1 or steps == 0)
-    {
-        for (const auto vector = replaceLeadingZeros(finalProdDigits); const int i : vector)
-            if (i >= 0)
-                ss << i;
-    }
+    if (resultIsNegative)
+        ss << '-';
+    for (const auto vector = replaceLeadingZeros(finalProdDigits); const int i : vector)
+        if (i >= 0)
+            ss << i;
 
     return ss.str();
 }

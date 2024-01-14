@@ -74,7 +74,7 @@ std::string divide(const std::string_view& _number,
     }
 
     auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] =
-        splitNumber(_number, _divisor, false, true).splittedNumberArray;
+        splitNumber(_number, _divisor, false, true).splitNumberArray;
     auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger;
     auto decimals = _decimals;
 

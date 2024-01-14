@@ -31,9 +31,9 @@
 
 std::string compare(const std::string_view& a, const std::string_view& b, const int steps)
 {
-    const auto splittedNumber = splitNumber(a, b, false, true);
-    const auto result = splittedNumber.splittedNumberArray;
-    const bool aIsNegative = splittedNumber.aIsNegative, bIsNegative = splittedNumber.bIsNegative,
+    const auto splitNumberResult = splitNumber(a, b, false, true);
+    const auto result = splitNumberResult.splitNumberArray;
+    const bool aIsNegative = splitNumberResult.aIsNegative, bIsNegative = splitNumberResult.bIsNegative,
                bothNegative = aIsNegative and bIsNegative;
     const auto& aIntegerReal = result[0];
     if (const auto& bIntegerReal = result[2]; aIntegerReal.length() != bIntegerReal.length())

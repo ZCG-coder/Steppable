@@ -38,9 +38,9 @@ std::string subtract(const std::string_view& a,
                      const bool noMinus,
                      const bool negative)
 {
-    auto splittedNumber = splitNumber(a, b);
-    auto [aInteger, aDecimal, bInteger, bDecimal] = splittedNumber.splittedNumberArray;
-    const bool aIsNegative = splittedNumber.aIsNegative, bIsNegative = splittedNumber.bIsNegative;
+    auto splitNumberResult = splitNumber(a, b);
+    auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberResult.splitNumberArray;
+    const bool aIsNegative = splitNumberResult.aIsNegative, bIsNegative = splitNumberResult.bIsNegative;
     bool resultIsNegative;
     const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
 

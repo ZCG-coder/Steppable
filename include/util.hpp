@@ -33,39 +33,39 @@
 #include <vector>
 
 #ifndef TIC
-    /// FMCRO: TIC
-    /// DESC : Start a timer to measure the time it takes to execute a section of code.
-    #define TIC(...)                                                                                       \
-        {                                                                                                  \
-            const char* nameSection = #__VA_ARGS__;                                                        \
+/// FMCRO: TIC
+/// DESC : Start a timer to measure the time it takes to execute a section of code.
+#define TIC(...)                                                                                  \
+        {                                                                                             \
+            const char* nameSection = #__VA_ARGS__;                                                   \
             std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << '\n';   \
             std::cout << colors::brightBlue << "[Profiling: " << nameSection << ']' << reset << '\n'; \
             auto start = std::chrono::high_resolution_clock::now();
 #endif
 
 #ifndef TOC
-    /// FMCRO: TOC
-    /// DESC : Stop the timer and print the time it took to execute the section of code.
-    #define TOC()                                                                                                     \
+/// FMCRO: TOC
+/// DESC : Stop the timer and print the time it took to execute the section of code.
+#define TOC()                                                                                                     \
         auto duration =                                                                                               \
             std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start)  \
                 .count();                                                                                             \
         std::cout << colors::brightBlue << '[' << nameSection << " took " << duration << "(microseconds) to execute]" \
-                  << reset << '\n';                                                                              \
+                  << reset << '\n';                                                                                   \
         std::cout << colors::brightBlue << std::setw(80) << std::setfill('-');                                        \
-        std::cout << reset << '\n';                                                                              \
+        std::cout << reset << '\n';                                                                                   \
         }
 #endif
 
-struct SplittedNumber
+struct SplitNumberResult
 {
-    std::array<std::string, 4> splittedNumberArray;
+    std::array<std::string, 4> splitNumberArray;
     bool aIsNegative, bIsNegative;
 };
 
 #ifdef WINDOWS
-    #include <Windows.h>
-    #include <fcntl.h>
+#include <Windows.h>
+#include <fcntl.h>
 
 inline DWORD enableVtMode()
 {
@@ -99,7 +99,8 @@ inline bool restoreVtMode(const DWORD dwModeOrig)
 class Utf8CodePage
 {
 public:
-    Utf8CodePage() : oldCodePage(::GetConsoleOutputCP())
+    Utf8CodePage() :
+        oldCodePage(::GetConsoleOutputCP())
     {
         ::SetConsoleOutputCP(CP_UTF8);
         dwModeOrig = enableVtMode();
@@ -140,7 +141,7 @@ constexpr bool isNumber(const std::string_view& s)
     if (s.empty())
         return false;
     int decimalPointCount = 0, minusCount = 0;
-    
+
     for (const char c : s)
     {
         if (c == '.')
@@ -196,10 +197,10 @@ auto split(std::basic_string_view<CharT> s, const CharT separator)
     return result;
 }
 
-SplittedNumber splitNumber(const std::string_view& a,
-                           const std::string_view& b,
-                           bool padInteger = true,
-                           bool padDecimal = true);
+SplitNumberResult splitNumber(const std::string_view& a,
+                              const std::string_view& b,
+                              bool padInteger = true,
+                              bool padDecimal = true);
 
 /// Trim from end of string (right)
 template<typename CharT>

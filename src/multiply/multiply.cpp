@@ -37,9 +37,19 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
         return static_cast<std::string>(b);
     if (b == "1")
         return static_cast<std::string>(a);
-    const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumber(a, b, false).splittedNumberArray;
-    const std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
+
+    const auto& [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false);
+    bool resultIsNegative = false;
+    const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
+    const std::string &aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
     std::vector<std::vector<int>> prodDigits, carries;
+
+    if (aIsNegative and bIsNegative)
+        resultIsNegative = false; // NOLINT(bugprone-branch-clone)
+    else if (aIsNegative or bIsNegative)
+        resultIsNegative = true;
+    else
+        resultIsNegative = false;
 
     for (size_t indexB = 0; indexB < bStr.length(); indexB++)
     {
@@ -96,7 +106,10 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
         finalProdDigits[indexDigit] = sum;
     }
 
-    return reportMultiply(aStr, bStr, finalProdDigits, finalProdCarries, prodDigitsOut, carries, steps);
+    return reportMultiply(
+        static_cast<std::string>(a), static_cast<std::string>(b), aStr, bStr, finalProdDigits, finalProdCarries, prodDigitsOut, carries,
+        resultIsNegative,
+        steps);
 }
 
 #ifndef NO_MAIN

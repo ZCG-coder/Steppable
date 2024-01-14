@@ -23,8 +23,8 @@
 #include "util.hpp"
 
 #ifdef WINDOWS
-    #undef min
-    #undef max
+#undef min
+#undef max
 #endif
 
 #include <algorithm>
@@ -33,10 +33,10 @@
 #include <string>
 #include <vector>
 
-SplittedNumber splitNumber(const std::string_view& _a,
-                           const std::string_view& _b,
-                           const bool padInteger,
-                           const bool padDecimal)
+SplitNumberResult splitNumber(const std::string_view& _a,
+                              const std::string_view& _b,
+                              const bool padInteger,
+                              const bool padDecimal)
 {
     auto a = std::string(_a), b = std::string(_b);
     bool aIsNegative = false, bIsNegative = false;
@@ -78,12 +78,14 @@ SplittedNumber splitNumber(const std::string_view& _a,
         else
             aDecimal += std::string(-diffLengthDecimal, '0');
     }
-    std::array splittedNumber{ aInteger, aDecimal, bInteger, bDecimal };
-    return SplittedNumber { splittedNumber, aIsNegative, bIsNegative };
+    std::array splitNumberResult{ aInteger, aDecimal, bInteger, bDecimal };
+    return SplitNumberResult{ splitNumberResult, aIsNegative, bIsNegative };
 }
 
 std::string makeWider(const std::string& orig)
 {
+    if (orig.empty())
+        return "";
     std::stringstream out;
     for (const char origChar : orig)
         out << origChar << "  ";
@@ -187,7 +189,10 @@ auto replaceLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltyp
         out.begin() != firstNonZero && out.front() == 0)
     {
         std::replace_if(
-            out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
+            out.begin(),
+            firstNonZero,
+            [](const int num) { return num == 0; },
+            -2);
     }
 
     return out;
