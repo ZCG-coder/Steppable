@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.34301.259
@@ -51,6 +50,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		cpp.hint = cpp.hint
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "abs", "src\abs\abs.vcxproj", "{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -172,6 +173,14 @@ Global
 		{668A3747-6867-47C6-9581-17255CF15648}.Release|x64.Build.0 = Release|x64
 		{668A3747-6867-47C6-9581-17255CF15648}.Release|x86.ActiveCfg = Release|Win32
 		{668A3747-6867-47C6-9581-17255CF15648}.Release|x86.Build.0 = Release|Win32
+		{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}.Debug|x64.ActiveCfg = Debug|x64
+		{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}.Debug|x64.Build.0 = Debug|x64
+		{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}.Debug|x86.ActiveCfg = Debug|Win32
+		{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}.Debug|x86.Build.0 = Debug|Win32
+		{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}.Release|x64.ActiveCfg = Release|x64
+		{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}.Release|x64.Build.0 = Release|x64
+		{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}.Release|x86.ActiveCfg = Release|Win32
+		{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,6 +199,7 @@ Global
 		{2C318747-D6E9-43B5-AA16-15C417C7F3E6} = {FBC7F145-C76B-45D5-8C0C-1C2939FC2519}
 		{FC7B02BE-FB27-41D6-A0B9-1A716602E09B} = {FBC7F145-C76B-45D5-8C0C-1C2939FC2519}
 		{668A3747-6867-47C6-9581-17255CF15648} = {556A8502-6077-47B6-A1EE-2D50727E6D2B}
+		{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34} = {FF9F8F23-3D4A-4BA7-A511-24A3A75C2436}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C3C77D4-6690-439D-B991-2C8628BEA398}
