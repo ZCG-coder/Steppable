@@ -40,7 +40,8 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string_view& _number,
                            const int steps,
                            const int decimals,
-                           const int width)
+                           const int width,
+                           const bool resultIsNegative)
 {
     std::stringstream formattedAns;
 
@@ -60,10 +61,16 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
 
     if (steps >= 1)
     {
-        formattedAns << _number << " " << DIVIDED_BY << " " << _divisor << " = " << ans;
+        formattedAns << _number << " " << DIVIDED_BY << " " << _divisor << " = ";
+        if (resultIsNegative)
+            formattedAns << '-';
+        formattedAns << ans;
         return formattedAns.str();
     }
-    return static_cast<std::string>(ans);
+    if (resultIsNegative)
+        return "-" + static_cast<std::string>(ans);
+    else
+        return static_cast<std::string>(ans);
 }
 
 std::string reportDivisionStep(const std::string_view& temp,
@@ -79,8 +86,8 @@ std::string reportDivisionStep(const std::string_view& temp,
 
     // Remove the summary line and the result
     auto splitResult = split(result, '\n');
-    splitResult.pop_back();
-    splitResult.pop_back();
+    // splitResult.pop_back();
+    // splitResult.pop_back();
     const auto normalWidth = divisor.length() + 1;
 
     const auto outputWidth = index == 0 ? (divisor.length() - 1) * 3 :

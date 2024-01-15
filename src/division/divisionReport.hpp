@@ -35,7 +35,8 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string_view& _number,
                            int steps,
                            int decimals,
-                           int width);
+                           int width,
+                           bool resultIsNegative);
 
 std::string reportDivisionStep(const std::string_view& temp,
                                const std::string_view& quotient,

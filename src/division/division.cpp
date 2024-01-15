@@ -73,10 +73,28 @@ std::string divide(const std::string_view& _number,
         return "Infinity";
     }
 
-    auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] =
-        splitNumber(_number, _divisor, false, true).splitNumberArray;
+    auto splitNumberResult = splitNumber(_number, _divisor, false, true);
+    bool numberIsNegative = splitNumberResult.aIsNegative, divisorIsNegative = splitNumberResult.bIsNegative;
+    auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] = splitNumberResult.splitNumberArray;
     auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger;
     auto decimals = _decimals;
+
+    // Here, we determine the polarity of the result.
+    // Scenario 1: Both positive
+    // Solution  : Do nothing
+    //
+    // Scenario 2: Both negative
+    // Solution  : Do nothing
+    //
+    // Scenario 3: One positive, one negative
+    // Solution  : Result is negative, but make it positive
+    bool resultIsNegative = false;
+    if (numberIsNegative and divisorIsNegative)
+        resultIsNegative = false;
+    else if (numberIsNegative or divisorIsNegative)
+        resultIsNegative = true;
+    else if (not numberIsNegative and not divisorIsNegative)
+        resultIsNegative = false;
 
     while (not divisorDecimal.empty())
     {
@@ -111,7 +129,7 @@ std::string divide(const std::string_view& _number,
         auto currentRemainder = getRemainder(currentQuotient, remainder, divisor);
 
         quotient += currentQuotient;
-        if (steps == 2)
+        if (steps == 2 and isZeroString(currentQuotient))
             tempFormattedAns << reportDivisionStep(
                 remainder, currentQuotient, divisor, width, quotient.length() - 1, lastRemainder);
         lastRemainder = remainder = currentRemainder;
@@ -159,7 +177,7 @@ std::string divide(const std::string_view& _number,
     }
 
     return reportDivision(
-        tempFormattedAns, remainder, quotient, divisor, number, _divisor, _number, steps, decimals, width);
+        tempFormattedAns, remainder, quotient, divisor, number, _divisor, _number, steps, decimals, width, resultIsNegative);
 }
 
 #ifndef NO_MAIN
