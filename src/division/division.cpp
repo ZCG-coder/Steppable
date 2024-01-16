@@ -62,14 +62,14 @@ std::string divide(const std::string_view& _number,
     if (isZeroString(_number) and isZeroString(_divisor))
     {
         // Easter egg in open-source code
-        error("Imagine that you have zero cookies and you split them evenly among zero friends, how many cookies does "
+        error("division", (std::string)"Imagine that you have zero cookies and you split them evenly among zero friends, how many cookies does "
               "each person get? See? It doesn't make sense. And Cookie Monster is sad that there are no cookies, and "
               "you are sad that you have no friends.");
         return "Indeterminate";
     }
     if (isZeroString(_divisor))
     {
-        error("Division of %s by zero leads to infinity.", std::string(_number).c_str());
+        error("division", (std::string)"Division of %s by zero leads to infinity.", std::string(_number).c_str());
         return "Infinity";
     }
 

@@ -36,7 +36,7 @@ void TestCase::assert(const bool condition, const std::string& conditionName)
         info("%s PASSED", conditionName.c_str());
         return;
     }
-    error("%i: Condition %s evaluates to false. FAILED", errorCount + 1, conditionName.c_str());
+    error("TestCase::assert", (std::string)"%i: Condition %s evaluates to false. FAILED", errorCount + 1, conditionName.c_str());
     errorCount++;
 }
 

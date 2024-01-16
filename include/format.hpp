@@ -20,6 +20,23 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file format.hpp
+ * @brief This file contains the definition of the vFormat function template.
+ *
+ * The vFormat function template provides a convenient way to format strings using variable arguments.
+ * It supports both C-style format strings and std::basic_string format strings.
+ * The formatted string is returned as a std::basic_string object.
+ *
+ * Example usage:
+ * @code
+ * std::string formatted = vFormat("Hello, %s!", "world");
+ * @endcode
+ *
+ * @author Andy Zhang
+ * @date 27th November 2023
+ */
+
 #pragma once
 
 #include <cstdarg>

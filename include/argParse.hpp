@@ -20,6 +20,21 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file argParse.hpp
+ * @brief This file contains the declaration of the ProgramArgs class and related helper classes and functions.
+ *
+ * The ProgramArgs class provides a convenient way to parse command-line arguments and retrieve their values.
+ * It supports switches, positional arguments, and keyword arguments.
+ *
+ * The class uses regular expressions to match and parse the command-line arguments.
+ *
+ * The file also includes the necessary headers and defines some types and constants used by the class.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #pragma once
 
 #include <map>

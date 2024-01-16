@@ -15,5 +15,6 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
 
 # [Optional] Uncomment this section to install additional packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends clangd-15 clang-format-15 clang-tidy-15 \
+    && apt-get -y full-upgrade \
+    && apt-get -y install --no-install-recommends clangd-15 clang-format-15 clang-tidy-15 doxygen graphviz \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*

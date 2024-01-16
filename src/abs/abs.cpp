@@ -31,11 +31,6 @@
 
 std::string abs(const std::string_view& _number, const int steps)
 {
-    if (not isNumber(_number))
-    {
-        error("The argument is not a number.");
-        return "";
-    }
     std::string number = static_cast<std::string>(_number);
     return reportAbs(number, steps);
 }

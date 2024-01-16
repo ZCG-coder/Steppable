@@ -20,29 +20,106 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file output.hpp
+ * @brief This file contains functions for displaying error, warning, and info messages.
+ *
+ * The functions in this file provide a convenient way to display formatted error, warning, and info messages to the
+ *console. The error function displays an error message in red color, the warning function displays a warning message in
+ *yellow color, and the info function displays an info message in bright green color. These functions also write the
+ *messages to a log file.
+ *
+ * Example usage:
+ *
+ * @code
+ * error("main.cpp", "Invalid input: {}", input);
+ * warning("main.cpp", "Unused variable: {}", variable);
+ * info("main.cpp", "Program started successfully");
+ * @endcode
+ *
+ * @author Andy Zhang
+ * @date 25th October 2023
+ */
+
 #pragma once
 
 #include "colors.hpp"
 #include "format.hpp"
+#include "logging.hpp"
 #include "symbols.hpp"
 
 #include <iostream>
 #include <string>
 
+/**
+ * @brief Prints an error message.
+ *
+ * This function prints an error message with the given name and message.
+ * Additional arguments can be provided to format the message using the
+ * `std::basic_string<T>` format syntax.
+ *
+ * The message is printed in red color, and is also written to the log file.
+ * It is intended to tell the user that something is going wrong and cannot be handled.
+ *
+ * @tparam T The character type of the message.
+ * @tparam Args The types of the additional arguments.
+ * @param name The name of the error.
+ * @param msg The error message.
+ * @param args Additional arguments for formatting the message.
+ */
 template<typename T, typename... Args>
-void error(T msg, Args&&... args)
+void error(const std::string& name, std::basic_string<T> msg, Args&&... args)
 {
+    auto formattedMsg = vFormat(std::string(msg), args...);
     std::cerr << colors::red << formats::bold << LARGE_DOT " Error: " << reset << colors::red;
-    std::cerr << vFormat(msg, args...) << reset << '\n';
+    std::cerr << formattedMsg << reset << '\n';
+
+    // Write to the log file
+    auto logger = logging::Logger(static_cast<std::string>(name), "steppable.log");
+    logger.error(formattedMsg);
 }
 
+/**
+ * @brief Prints an error message.
+ *
+ * This function prints an error message with the given name and message.
+ * Additional arguments can be provided to format the message using the
+ * `std::basic_string<T>` format syntax.
+ *
+ * The message is printed in red color, and is also written to the log file.
+ * It is intended to tell the user that something is going wrong and cannot be handled.
+ *
+ * @tparam CharT The character type of the message.
+ * @param name The name of the error.
+ * @param msg The error message.
+ */
 template<typename CharT>
-void error(std::basic_string<CharT> msg)
+void error(const std::string& name, std::basic_string<CharT> msg)
 {
     std::cerr << colors::red << formats::bold << LARGE_DOT " Error: " << reset << colors::red;
     std::cerr << msg << reset << '\n';
+
+    // Write to the log file
+    auto logger = logging::Logger(static_cast<std::string>(name), "steppable.log");
+    logger.error(msg);
 }
 
+/**
+ * @brief Prints a warning message.
+ *
+ * This function prints an error message with the given name and message.
+ * Additional arguments can be provided to format the message using the
+ * `std::basic_string<T>` format syntax.
+ *
+ * The message is printed in yellow color, and is also written to the log file.
+ * It is intended to tell the user that something is going wrong but can be handled.
+ *
+ * @tparam T The character type of the message.
+ * @tparam Args The types of the additional arguments.
+ * @param name The name of the error.
+ * @param msg The error message.
+ * @param args Additional arguments for formatting the message.
+ */
 template<typename T, typename... Args>
 [[maybe_unused]] void warning(T msg, Args&&... args)
 {
@@ -50,6 +127,22 @@ template<typename T, typename... Args>
     std::cout << vFormat(msg, args...) << reset << '\n';
 }
 
+/**
+ * @brief Prints an info message.
+ *
+ * This function prints an info message with the given name and message.
+ * Additional arguments can be provided to format the message using the
+ * `std::basic_string<T>` format syntax.
+ *
+ * The message is printed in bright green color.
+ * It is intended to tell the user that something is going right, or to provide some information.
+ *
+ * @tparam T The character type of the message.
+ * @tparam Args The types of the additional arguments.
+ * @param name The name of the info message.
+ * @param msg The info message.
+ * @param args Additional arguments for formatting the message.
+ */
 template<typename T, typename... Args>
 void info(T msg, Args&&... args)
 {

@@ -1,7 +1,15 @@
+# Project temporary files
 *.sublime-workspace
 .vs/
 .DS_Store
 *.user
+
+# Doxygen files
+docs/
+*.bak
+
+# Running logs
+*.log
 
 # Clangd caches
 .cache/

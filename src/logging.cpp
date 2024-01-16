@@ -20,43 +20,59 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-/**
- * @file platform.hpp
- * @brief This file contains platform-specific functions
- * As the name suggests, this file contains functions that are specific to a certain platform.
- * For example, the programSafeExit function uses std::quick_exit on Windows and exit on macOS,
- * because std::quick_exit is not implemented on macOS.
- *
- * @author Andy Zhang
- * @date 13th January 2024
- */
+#include "logging.hpp"
 
-#pragma once
+#include <chrono>
+#include <ctime>
+#include <fstream>
+#include <iomanip>
 
-#include <cstdlib>
-
-/**
- * @namespace internals
- * @brief Namespace for internal functions
- * @note This namespace should not be used by other programs outside of the Steppable core.
- */
-namespace internals
+namespace logging
 {
-    /**
-     * @brief Exit the program safely
-     *
-     * This function exits the program safely with the given status code.
-     * On Windows, it uses std::quick_exit, and on macOS, it uses exit,
-     * because std::quick_exit is not implemented on macOS.
-     *
-     * @param status The status code to exit with
-     */
-    void programSafeExit(const int status)
-    {
-#ifdef MACOSX
-        exit(status);
+#if DEBUG
+    Logger::Logger(const std::string& name, const std::string& filename, const Level level)
 #else
-        std::quick_exit(status);
+    Logger::Logger(const std::string& name, const std::string& filename, const Level level)
 #endif
+    {
+        file.open(filename);
+        this->level = level;
+        this->name = name;
+
+        info(name + " logger started");
     }
-} // namespace internals
+
+    Logger::~Logger() { file.close(); }
+
+    void Logger::log(const std::string& message)
+    {
+        auto const now = std::chrono::system_clock::now();
+        auto now_time = std::chrono::system_clock::to_time_t(now);
+        auto timestamp = std::put_time(std::localtime(&now_time), "%F %T %Z");
+        file << '[' << timestamp << "] " << message << '\n';
+    }
+
+    void Logger::error(const std::string& message)
+    {
+        if (level <= Level::ERROR)
+            log(name + " - ERROR: " + message);
+    }
+
+    void Logger::warning(const std::string& message)
+    {
+        if (level <= Level::WARNING)
+            log(name + " - WARNING: " + message);
+    }
+
+    void Logger::info(const std::string& message)
+    {
+        if (level <= Level::INFO)
+            log(name + " - INFO: " + message);
+    }
+
+    void Logger::debug(const std::string& message)
+    {
+        if (level <= Level::DBG)
+            log(name + " - DEBUG: " + message);
+    }
+} // namespace logging

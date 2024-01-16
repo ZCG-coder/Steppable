@@ -20,6 +20,14 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file testing.hpp
+ * @brief This file contains the declaration of the TestCase class and macros for testing.
+ *
+ * The TestCase class provides methods for asserting test conditions and summarizing test results.
+ * The macros TEST_START, SECTION, SECTION_END, and TEST_END are used to define test sections and execute tests.
+ */
+
 #pragma once
 
 #include <string>
@@ -49,19 +57,28 @@
     std::cout << reset << '\n';                                                                             \
     errors += _.errorCount;                                                                                      \
     }
-#define TEST_END()                                                                               \
-    if (errors)                                                                                  \
-        error("Not all tests passed. There are %i errors.", errors);                             \
-    else                                                                                         \
-        info("All tests passed.");                                                               \
-    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << '\n'; \
-    if (errors)                                                                                  \
-        return 1;                                                                                \
+#define TEST_END()                                                                             \
+    if (errors)                                                                                \
+        error("TEST_END", (std::string) "Not all tests passed. There are %i errors.", errors); \
+    else                                                                                       \
+        info("All tests passed.");                                                             \
+    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << '\n';    \
+    if (errors)                                                                                \
+        return 1;                                                                              \
     }
 
+/**
+ * @class TestCase
+ * @brief Represents a test case for unit testing.
+ */
 class TestCase
 {
 private:
+    /**
+     * @brief Asserts a given condition and logs the condition name if it fails.
+     * @param condition The condition to be checked.
+     * @param conditionName The name of the condition.
+     */
     void assert(bool condition, const std::string& conditionName);
 
     std::string_view testCaseName;
@@ -69,19 +86,54 @@ private:
 public:
     int errorCount = 0;
 
+    /**
+     * @brief Constructs a new TestCase object with the given name.
+     * @param testCaseName The name of the test case.
+     */
     TestCase(const std::string& testCaseName);
 
+    /**
+     * @brief Asserts that two strings are equal.
+     * @param a The first string.
+     * @param b The second string.
+     */
     void assertIsEqual(const std::string& a, const std::string& b);
 
+    /**
+     * @brief Asserts that two strings are not equal.
+     * @param a The first string.
+     * @param b The second string.
+     */
     void assertIsNotEqual(const std::string& a, const std::string& b);
 
+    /**
+     * @brief Asserts that two integers are equal.
+     * @param a The first integer.
+     * @param b The second integer.
+     */
     void assertIsEqual(int a, int b);
 
+    /**
+     * @brief Asserts that two integers are not equal.
+     * @param a The first integer.
+     * @param b The second integer.
+     */
     void assertIsNotEqual(int a, int b);
 
+    /**
+     * @brief Asserts that a boolean value is true.
+     * @param value The boolean value to be checked.
+     */
     void assertTrue(bool value);
 
+    /**
+     * @brief Asserts that a boolean value is false.
+     * @param value The boolean value to be checked.
+     */
     void assertFalse(bool value);
 
+    /**
+     * @brief Prints a summary of the test case, including the number of errors encountered.
+     */
     void summarize() const;
 };

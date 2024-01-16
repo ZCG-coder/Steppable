@@ -20,6 +20,16 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**************************************************************************************************
+ * @file symbols.hpp
+ * @brief This file contains the definitions of various symbols used in the project.
+ *
+ * The symbols include mathematical operators, subscripts, and superscripts.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ **************************************************************************************************/
+
 #pragma once
 
 #include <array>
@@ -40,8 +50,20 @@
 
 extern const std::array<std::string_view, 10>& SUPERSCRIPTS;
 
+/**
+ * @brief Create a subscript string from a normal string.
+ *
+ * @param normal The normal string.
+ * @return The subscript string.
+ */
 std::string makeSubscript(const std::string& normal);
 
+/**
+ * @brief Create a subscript string from a normal integer.
+ *
+ * @param normal The normal integer.
+ * @return The subscript string.
+ */
 std::string makeSubscript(int normal);
 
 // Superscripts
@@ -49,6 +71,18 @@ std::string makeSubscript(int normal);
 #define SUP_Z "\u1DBB"
 #define SUP_MAGIC_NUMBER 8304
 
+/**
+ * @brief Create a superscript string from a normal string.
+ *
+ * @param normal The normal string.
+ * @return The superscript string.
+ */
 std::string makeSuperscript(const std::string& normal);
 
+/**
+ * @brief Create a superscript string from a normal character.
+ *
+ * @param normal The normal character.
+ * @return The superscript string.
+ */
 std::string_view makeSuperscript(char normal);

@@ -102,7 +102,7 @@ void ProgramArgs::printUsage(const std::string_view& reason) const
     if (not reason.empty())
     {
         std::cerr << '\n';
-        error(std::string(reason));
+        error("ProgramArgs::printUsage", std::string(reason));
     }
     internals::programSafeExit(-1);
 }
@@ -163,7 +163,7 @@ void ProgramArgs::parseArgs()
         {
             if (not isNumber(_arg))
             {
-                error("Invalid argument: %s", _arg);
+                error("ProgramArgs::parseArgs", (std::string) "Invalid argument: %s", _arg);
                 internals::programSafeExit(-1);
             }
             posArgs.push_back(_arg);

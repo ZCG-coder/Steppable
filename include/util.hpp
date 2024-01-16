@@ -20,6 +20,15 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file util.hpp
+ * @brief This file contains utility functions and macros for the Steppable project.
+ *
+ * The functions and macros in this file provide various utility functionalities such as profiling code execution time,
+ * string manipulation, and Unicode conversion. It also includes a structure for storing split numbers and a class for
+ * handling UTF-8 code page settings.
+ */
+
 #pragma once
 
 #include "colors.hpp"
@@ -33,9 +42,7 @@
 #include <vector>
 
 #ifndef TIC
-/// FMCRO: TIC
-/// DESC : Start a timer to measure the time it takes to execute a section of code.
-#define TIC(...)                                                                                  \
+    #define TIC(...)                                                                                  \
         {                                                                                             \
             const char* nameSection = #__VA_ARGS__;                                                   \
             std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << '\n';   \
@@ -44,9 +51,7 @@
 #endif
 
 #ifndef TOC
-/// FMCRO: TOC
-/// DESC : Stop the timer and print the time it took to execute the section of code.
-#define TOC()                                                                                                     \
+    #define TOC()                                                                                                     \
         auto duration =                                                                                               \
             std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start)  \
                 .count();                                                                                             \
@@ -57,6 +62,13 @@
         }
 #endif
 
+/**
+ * @struct SplitNumberResult
+ * @brief A structure for storing split numbers.
+ *
+ * This structure is used to store the result of splitting two numbers.
+ * It contains the split numbers as strings, as well as flags indicating whether the numbers are negative.
+ */
 struct SplitNumberResult
 {
     std::array<std::string, 4> splitNumberArray;
@@ -67,6 +79,11 @@ struct SplitNumberResult
 #include <Windows.h>
 #include <fcntl.h>
 
+/**
+ * @brief Enables VT mode.
+ *
+ * @return The result code indicating the success or failure of enabling VT mode.
+ */
 inline DWORD enableVtMode()
 {
     // Set output mode to handle virtual terminal sequences
@@ -85,6 +102,12 @@ inline DWORD enableVtMode()
     return dwModeOrig;
 }
 
+/**
+ * @brief Restores the VT mode to the original mode.
+ *
+ * @param dwModeOrig The original mode to restore.
+ * @return true if the VT mode is successfully restored, false otherwise.
+ */
 inline bool restoreVtMode(const DWORD dwModeOrig)
 {
     const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -96,9 +119,22 @@ inline bool restoreVtMode(const DWORD dwModeOrig)
     return true;
 }
 
+/**
+ * @class Utf8CodePage
+ * @brief A class that sets the console output code page to UTF-8 and enables VT mode.
+ *
+ * This class is responsible for setting the console output code page to UTF-8 and enabling VT mode.
+ * It automatically restores the original code page and VT mode when the object is destroyed.
+ */
 class Utf8CodePage
 {
 public:
+    /**
+     * @brief Constructs a Utf8CodePage object.
+     *
+     * This constructor sets the console output code page to UTF-8 and enables VT mode.
+     * It also saves the original code page and VT mode for restoration later.
+     */
     Utf8CodePage() :
         oldCodePage(::GetConsoleOutputCP())
     {
@@ -106,6 +142,11 @@ public:
         dwModeOrig = enableVtMode();
     }
 
+    /**
+     * @brief Destroys the Utf8CodePage object.
+     *
+     * This destructor restores the original code page and VT mode.
+     */
     ~Utf8CodePage()
     {
         ::SetConsoleOutputCP(oldCodePage);
@@ -113,29 +154,43 @@ public:
     }
 
 private:
-    UINT oldCodePage;
-
-    DWORD dwModeOrig;
+    UINT oldCodePage; ///< The original console output code page.
+    DWORD dwModeOrig; ///< The original VT mode.
 };
 #else
+
+/**
+ * @class Utf8CodePage
+ * @brief A class that sets the console output code page to UTF-8 and enables VT mode.
+ *
+ * This class is responsible for setting the console output code page to UTF-8 and enabling VT mode.
+ * It automatically restores the original code page and VT mode when the object is destroyed.
+ */
 class Utf8CodePage
 {
 };
 #endif
 
-/// INFN : isZeroString
-/// OUT  : bool
-/// IN   : std::string string - The string to check.
-/// DESC : Check if a string is a zero string.
+/**
+ * @fn constexpr bool isZeroString(const std::string_view& string)
+ * @brief Checks if a given string is a zero string.
+ *
+ * A zero string is defined as a string that contains only the character '0'.
+ *
+ * @param string The string to check.
+ * @return True if the string is a zero string, false otherwise.
+ */
 constexpr bool isZeroString(const std::string_view& string)
 {
     return std::ranges::all_of(string, [](const char c) { return c == '0'; });
 }
 
-/// INFN : isZeroString
-/// OUT  : bool
-/// IN   : std::string string - The string to check.
-/// DESC : Check if a string represents a number.
+/**
+ * @brief Checks if a given string is a valid number.
+ *
+ * @param s The string to be checked.
+ * @return True if the string is a valid number, false otherwise.
+ */
 constexpr bool isNumber(const std::string_view& s)
 {
     if (s.empty())
@@ -162,10 +217,13 @@ constexpr bool isNumber(const std::string_view& s)
     return true;
 }
 
-/// INFN : isZeroString
-/// OUT  : bool
-/// IN   : std::string string - The string to check.
-/// DESC : Check if a string is a zero string.
+/**
+ * @brief Splits a string into substrings based on a separator.
+ *
+ * @param s The string to be split.
+ * @param separator The separator to split the string by.
+ * @return A vector of substrings.
+ */
 template<typename CharT>
 auto split(std::basic_string<CharT> s, const CharT separator)
 {
@@ -179,6 +237,13 @@ auto split(std::basic_string<CharT> s, const CharT separator)
     return substrings;
 }
 
+/**
+ * @brief Splits a string view into substrings based on a separator.
+ *
+ * @param s The string view to be split.
+ * @param separator The separator to split the string view by.
+ * @return A vector of substrings.
+ */
 template<typename CharT>
 auto split(std::basic_string_view<CharT> s, const CharT separator)
 {
@@ -197,12 +262,36 @@ auto split(std::basic_string_view<CharT> s, const CharT separator)
     return result;
 }
 
+/**
+ * Splits two numbers represented as strings and returns the result.
+ *
+ * @param a The first number as a string.
+ * @param b The second number as a string.
+ * @param padInteger Flag indicating whether to pad the integer part with spaces of the result.
+ * @param padDecimal Flag indicating whether to pad the decimal part with zeros of the result.
+ * @return The result of splitting the two numbers.
+ *
+ * @see SplitNumberResult
+ */
 SplitNumberResult splitNumber(const std::string_view& a,
                               const std::string_view& b,
                               bool padInteger = true,
                               bool padDecimal = true);
 
-/// Trim from end of string (right)
+/**
+ * @brief Replaces the trailing occurrences of a character in a string with another character.
+ *
+ * This function takes a string `s` and replaces all trailing occurrences of the character `t` with the character
+ * `replacement`. If `replacement` is not provided, the trailing occurrences of `t` are simply removed.
+ *
+ * @tparam CharT The character type of the string.
+ * @param s The input string.
+ * @param t The character to be replaced.
+ * @param replacement The character to replace `t` with. Default is '\0' (null character).
+ * @return The modified string with trailing occurrences of `t` replaced by `replacement`.
+ *
+ * @see lReplace
+ */
 template<typename CharT>
 auto rReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
 {
@@ -218,7 +307,17 @@ auto rReplace(const std::basic_string<CharT> s, const CharT t, const CharT repla
     return out;
 }
 
-/// Trim from beginning of string (left)
+/**
+ * @brief Replaces the leading occurrences of a character in a string with a replacement character.
+ *
+ * @tparam CharT The character type of the string.
+ * @param s The input string.
+ * @param t The character to be replaced.
+ * @param replacement The replacement character (default is '\0').
+ * @return The modified string with leading occurrences replaced.
+ *
+ * @see rReplace
+ */
 template<typename CharT>
 auto lReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
 {
@@ -234,21 +333,73 @@ auto lReplace(const std::basic_string<CharT> s, const CharT t, const CharT repla
     return out;
 }
 
-/// Trim from both ends of string (right then left)
+/**
+ * @brief Replaces the leading and trailing occurrences of a character in a string with a replacement character.
+ *
+ * @tparam CharT The character type of the string.
+ * @param s The input string.
+ * @param t The character to be replaced.
+ * @param replacement The replacement character (default is '\0').
+ * @return The modified string with leading and trailing occurrences replaced.
+ *
+ * @note This function is equivalent to calling `lReplace(rReplace(s, t, replacement), t, replacement)`.
+ *
+ * @see lReplace
+ * @see rReplace
+ */
 template<typename CharT>
 auto bothEndsReplace(const std::basic_string<CharT> s, const CharT t, const CharT replacement = '\0')
 {
     return lReplace(rReplace(s, t, replacement), t, replacement);
 }
 
+/**
+ * Replaces leading zeros in the given vector with -2.
+ *
+ * @param vector The vector to modify.
+ * @return The modified vector with leading zeros replaced.
+ */
 auto replaceLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
 
+/**
+ * Removes leading zeros from a vector of integers.
+ *
+ * @param vector The input vector.
+ * @return The vector with leading zeros removed.
+ */
 auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
 
+/**
+ * Removes leading zeros from a string.
+ *
+ * @param string The input string.
+ * @return The string with leading zeros removed.
+ */
 auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>;
 
+/**
+ * @brief Makes the given string wider by adding 2 spaces between each character.
+ *
+ * @param orig The original string.
+ * @return The widened string.
+ */
 std::string makeWider(const std::string& orig);
 
+/**
+ * @brief Converts a UTF-8 encoded string to a Unicode string.
+ *
+ * @param utf8_code The UTF-8 encoded string to convert.
+ * @return The converted Unicode string.
+ */
 [[maybe_unused]] int utf8ToUnicode(const std::string& utf8_code);
 
+/**
+ * @brief Converts a Unicode character to UTF-8 encoding.
+ *
+ * @param unicode The Unicode character to be converted.
+ * @return The UTF-8 encoded string representation of the Unicode character.
+ *
+ * @note When output goes wrong, make sure to call this function when printing!
+ * @see Utf8CodePage
+ */
 std::string unicodeToUtf8(int unicode);
