@@ -1,7 +1,7 @@
 var searchData=
 [
   ['a_0',['a',['../testSubtract_8cpp.html#ab84b4a8313499179719205ec1f580c85',1,'a():&#160;testSubtract.cpp'],['../testMultiply_8cpp.html#ab84b4a8313499179719205ec1f580c85',1,'a():&#160;testMultiply.cpp'],['../testDivision_8cpp.html#ab84b4a8313499179719205ec1f580c85',1,'a():&#160;testDivision.cpp'],['../testDecimalConvert_8cpp.html#ab84b4a8313499179719205ec1f580c85',1,'a():&#160;testDecimalConvert.cpp'],['../testComparison_8cpp.html#ab84b4a8313499179719205ec1f580c85',1,'a():&#160;testComparison.cpp'],['../testAdd_8cpp.html#ab84b4a8313499179719205ec1f580c85',1,'a():&#160;testAdd.cpp'],['../testAbs_8cpp.html#a593739f1bb6a31dd486c26a331d1de0e',1,'a():&#160;testAbs.cpp']]],
-  ['abs_1',['abs',['../abs_8cpp.html#a1930a867676803950db773f157663770',1,'abs(const std::string_view &amp;_number, const int steps):&#160;abs.cpp'],['../basicArithm_8hpp.html#a1930a867676803950db773f157663770',1,'abs(const std::string_view &amp;_number, const int steps):&#160;abs.cpp']]],
+  ['abs_1',['abs',['../abs_8cpp.html#a1930a867676803950db773f157663770',1,'abs(const std::string_view &amp;_number, const int steps):&#160;abs.cpp'],['../basicArithm_8hpp.html#a0bf76a4df6c2748fbcb5b33b3e8166b3',1,'abs(const std::string_view &amp;_number, int steps):&#160;abs.cpp']]],
   ['abs_2ecpp_2',['abs.cpp',['../abs_8cpp.html',1,'']]],
   ['absreport_2ecpp_3',['absReport.cpp',['../absReport_8cpp.html',1,'']]],
   ['absreport_2ehpp_4',['absReport.hpp',['../absReport_8hpp.html',1,'']]],

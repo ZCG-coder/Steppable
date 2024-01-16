@@ -108,7 +108,7 @@ Why another CAS?</h1>
 <h1><a class="anchor" id="autotoc_md24"></a>
 How does it work?</h1>
 <p>We found that there is no simpler method of writing a step-by-step solver than imitating how a human solves it. So we wrote a parser that converts the input into a tree, and then we wrote a calculator that solves the tree step by step. Finally, the reporter shows the steps and results to the user in a human-readable format.</p>
-<p>Currently, only the calculator and the reporter is implemented, with very limited functionality. Here is a list of what we are planning to implement next (and in the near future):</p>
+<p>Currently, only the calculator and the reporter are implemented, with very limited functionality. Here is a list of what we are planning to implement next (and in the near future):</p>
 <ul>
 <li>[ ] Parser</li>
 <li>[ ] Calculator and reporter (all the major functions)<ul>
@@ -196,12 +196,12 @@ How to add a new feature</h2>
 <p>To add a new feature, <code>a</code>:</p>
 <ol type="1">
 <li>Add a directory called <code>src/a</code>, with at least three files:<ul>
-<li><code>a.cpp</code> - The main file. The <code>main</code> function should be present, as it it the entry point of the executable.</li>
+<li><code>a.cpp</code> - The main file. The <code>main</code> function should be present, as it is the entry point of the executable.</li>
 <li><code>aReport.cpp</code> - The report file to show the results.</li>
 <li><code>aReport.hpp</code> - A header that contains optional definition. <blockquote class="doxtable">
 <p><b>Note</b>: Only the above-mentioned three files will be added to CMake. </p>
 </blockquote>
-2. Make sure to document the code. Please follow this for documentation guidelines.</li>
+2. Make sure to document the code. Please use Doxygen to document this project.</li>
 </ul>
 </li>
 <li><p class="startli">Add an entry to <code>src/CMakeLists.txt</code></p>

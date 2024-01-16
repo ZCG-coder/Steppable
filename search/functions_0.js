@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['abs_288',['abs',['../abs_8cpp.html#a1930a867676803950db773f157663770',1,'abs(const std::string_view &amp;_number, const int steps):&#160;abs.cpp'],['../basicArithm_8hpp.html#a1930a867676803950db773f157663770',1,'abs(const std::string_view &amp;_number, const int steps):&#160;abs.cpp']]],
+  ['abs_288',['abs',['../abs_8cpp.html#a1930a867676803950db773f157663770',1,'abs(const std::string_view &amp;_number, const int steps):&#160;abs.cpp'],['../basicArithm_8hpp.html#a0bf76a4df6c2748fbcb5b33b3e8166b3',1,'abs(const std::string_view &amp;_number, int steps):&#160;abs.cpp']]],
   ['add_289',['add',['../add_8cpp.html#a3b7c641c3c06453e9e673a9b50292843',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool negative):&#160;add.cpp'],['../basicArithm_8hpp.html#acf222f0bfc4ca97fbdc6db7fe808a9ee',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false):&#160;add.cpp']]],
   ['addkeywordarg_290',['addKeywordArg',['../classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336',1,'ProgramArgs']]],
   ['addposarg_291',['addPosArg',['../classProgramArgs.html#a589a2d348f85c88765b79de0dc19d398',1,'ProgramArgs']]],

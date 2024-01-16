@@ -15,7 +15,7 @@ var searchData=
   ['sub_5f0_173',['SUB_0',['../symbols_8hpp.html#a35943be7ed235d818e5478abfff7ab17',1,'symbols.hpp']]],
   ['sub_5fmagic_5fnumber_174',['SUB_MAGIC_NUMBER',['../symbols_8hpp.html#a32511187a5c4c47b89f7b51fb21a5d6a',1,'symbols.hpp']]],
   ['sub_5fz_175',['SUB_Z',['../symbols_8hpp.html#aa4dea2005705da4160b13c1a51d921b4',1,'symbols.hpp']]],
-  ['subtract_176',['subtract',['../subtract_8cpp.html#a8d8d6fa02f88d6dc7346a13e198c7c3e',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool noMinus, const bool negative):&#160;subtract.cpp'],['../basicArithm_8hpp.html#a453ecbdb8d5d00188790ca2b2e3fcb8a',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false, bool negative=false):&#160;subtract.cpp']]],
+  ['subtract_176',['subtract',['../subtract_8cpp.html#ac94acf58b23f19e226b9263fa3a2b0da',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool noMinus):&#160;subtract.cpp'],['../basicArithm_8hpp.html#a08faec0b8e863df19e3f978758166482',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false):&#160;subtract.cpp']]],
   ['subtract_2ecpp_177',['subtract.cpp',['../subtract_8cpp.html',1,'']]],
   ['subtractreport_2ecpp_178',['subtractReport.cpp',['../subtractReport_8cpp.html',1,'']]],
   ['subtractreport_2ehpp_179',['subtractReport.hpp',['../subtractReport_8hpp.html',1,'']]],
