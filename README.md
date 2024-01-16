@@ -30,25 +30,25 @@ We found that there is no simpler method of writing a step-by-step solver than i
 So we wrote a parser that converts the input into a tree, and then we wrote a calculator that solves the tree step by
 step. Finally, the reporter shows the steps and results to the user in a human-readable format.
 
-Currently, only the calculator and the reporter is implemented, with very limited functionality. Here is a list of what
+Currently, only the calculator and the reporter are implemented, with very limited functionality. Here is a list of what
 we are planning to implement next (and in the near future):
 
 - [ ] Parser
 - [ ] Calculator and reporter (all the major functions)
-  - [x] Comparison of integers and decimal
-  - [x] Addition of integers and decimals
-  - [x] Subtraction of integers and decimals
-  - [x] Multiplication of integers and decimals
-  - [x] Powers of integers
-  - [x] Division of integers and decimals
-  - [ ] Addition of fractions
-  - [ ] Subtraction of fractions
-  - [ ] Multiplication of fractions
-  - [ ] Simplification of fractions
-  - [ ] Division of fractions
-  - [ ] Conversion between fractions and decimals
-  - [ ] Expansion of polynomials
-  - [ ] Factoring of polynomials
+    - [x] Comparison of integers and decimal
+    - [x] Addition of integers and decimals
+    - [x] Subtraction of integers and decimals
+    - [x] Multiplication of integers and decimals
+    - [x] Powers of integers
+    - [x] Division of integers and decimals
+    - [ ] Addition of fractions
+    - [ ] Subtraction of fractions
+    - [ ] Multiplication of fractions
+    - [ ] Simplification of fractions
+    - [ ] Division of fractions
+    - [ ] Conversion between fractions and decimals
+    - [ ] Expansion of polynomials
+    - [ ] Factoring of polynomials
 
 The parser is the most difficult part of the project, so we will probably start with the calculator and reporter first.
 When implemented, it will probably call the calculator(s) (which is/are compiled into executable format together with
@@ -148,12 +148,12 @@ Steppable
 To add a new feature, `a`:
 
 1. Add a directory called `src/a`, with at least three files:
-    - `a.cpp` - The main file. The `main` function should be present, as it it the entry point of the executable.
+    - `a.cpp` - The main file. The `main` function should be present, as it is the entry point of the executable.
     - `aReport.cpp` - The report file to show the results.
     - `aReport.hpp` - A header that contains optional definition.
    > **Note**:
    > Only the above-mentioned three files will be added to CMake.
-2. Make sure to document the code. Please follow [this](docs/DOCUMENTING.md) for documentation guidelines.
+2. Make sure to document the code. Please use Doxygen to document this project.
 3. Add an entry to `src/CMakeLists.txt`
 
     ```cmake

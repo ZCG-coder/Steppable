@@ -37,6 +37,7 @@
 
 #include <string>
 #include <string_view>
+#include "output.hpp"
 
 /**
  * @brief Calculates the absolute value of a string representation of a number.
@@ -45,7 +46,7 @@
  * @param steps The number of steps to perform the calculation.
  * @return The absolute value of the number as a string.
  */
-std::string abs(const std::string_view& _number, const int steps);
+std::string abs(const std::string_view& _number, int steps);
 
 /**
  * @brief Adds two string representations of numbers, and performs with the column method.
@@ -121,15 +122,13 @@ std::string power(std::string_view _number, const std::string_view& raiseTo, int
  * @param a The string representation of the minuend.
  * @param b The string representation of the subtrahend.
  * @param steps The number of steps to perform the subtraction.
- * @param noMinus Flag indicating whether the result should be negative.
- * @param negative Flag indicating whether the result should be negative.
+ * @param noMinus Flag indicating whether to display a minus sign or not.
  * @return The difference between the two numbers as a string.
  */
 std::string subtract(const std::string_view& a,
                      const std::string_view& b,
                      int steps = 2,
-                     bool noMinus = false,
-                     bool negative = false);
+                     bool noMinus = false);
 
 /**
  * @brief Executes a given predicate function a specified number of times.
@@ -138,4 +137,23 @@ std::string subtract(const std::string_view& a,
  * @param predicate The predicate function to execute.
  */
 template<typename Pred>
-void loop(const std::string_view& times, Pred predicate);
+void loop(const std::string_view& times, Pred predicate)
+{
+    std::string current = "0";
+    auto result = compare(current, times, 0);
+
+    while (result == "0")
+    {
+        try
+        {
+            predicate(current);
+        }
+        catch (std::exception& e)
+        {
+            error("loop", static_cast<std::string>("Exception occurred in predicate."));
+            error("loop", static_cast<std::string>("Exception message: %s"), e.what());
+        }
+        current = add(current, "1", 0);
+        result = compare(current, times, 0);
+    }
+}

@@ -23,6 +23,7 @@
 #include "argParse.hpp"
 #include "decimalConvertReport.hpp"
 #include "fn/basicArithm.hpp"
+#include "output.hpp"
 #include "util.hpp"
 
 #include <string>
@@ -32,7 +33,8 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
     std::string larger = compare(baseString, "36");
     if (larger == "0")
     {
-        error("decimalConvert", (std::string) "The base is larger than 36, which means that it is impossible to represent the number.");
+        error("decimalConvert",
+              (std::string) "The base is larger than 36, which means that it is impossible to represent the number.");
         return "";
     }
 
