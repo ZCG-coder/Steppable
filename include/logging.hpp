@@ -30,13 +30,24 @@
  * @code
  * auto logger = logging::Logger("main", "steppable.log");
  * logger.error("Invalid input: " + input);
+ * logger.warning("Invalid input: " + input);
+ * logger.info("Invalid input: " + input);
+ * logger.debug("Invalid input: " + input);
+ * @endcode
  */
+
 
 #pragma once
 
 #include <fstream>
 #include <string>
 
+/**
+ * @namespace logging
+ * @brief The logging namespace contains classes and functions for logging.
+ * The logging namespace contains the Logger class, which provides logging functionality, including logging messages
+ * at different levels, such as error, warning, info, and debug. It writes the log messages to a specified log file.
+*/
 namespace logging
 {
     /**
@@ -141,13 +152,19 @@ namespace logging
         }
 
     private:
-        std::ofstream file; /**< The log file stream. */
-        Level level = Level::INFO; /**< The logging level. */
-        std::string name; /**< The name of the logger. */
+        /// @brief The log file stream.
+        std::ofstream file;
+
+        /// @brief The default logging level.
+        Level level = Level::INFO;
+
+        /// @brief The name of the logger. This will be prepended to the log messages.
+        std::string name;
 
         /**
          * @brief Logs a message.
          * @param message The message to be logged.
+         * @note This function is private and should not be called directly.
          */
         void log(const std::string& message);
     };
