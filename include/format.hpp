@@ -46,11 +46,11 @@
 // https://stackoverflow.com/a/49812356/14868780
 /**
  * @brief Formats a string using a variable number of arguments.
- * 
+ *
  * This function takes a format string and a variable number of arguments,
  * and returns a formatted string. It uses the same format specifiers as
  * the standard library's `printf` function.
- * 
+ *
  * @tparam CharT The character type of the string.
  * @param sFormat The format string.
  * @param ... The variable arguments.
@@ -82,11 +82,11 @@ std::basic_string<CharT> vFormat(const std::basic_string<CharT> sFormat, ...)
 
 /**
  * @brief Formats a string using a format specifier and variable arguments.
- * 
+ *
  * This function takes a format specifier and variable arguments, similar to the printf function,
  * and returns a formatted string. The format specifier is a string that may contain placeholders
  * for the variable arguments. The function uses the vsnprintf function to perform the formatting.
- * 
+ *
  * @tparam CharT The character type of the string.
  * @param sFormat The format specifier string.
  * @param ... The variable arguments.

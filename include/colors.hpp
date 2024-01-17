@@ -39,9 +39,23 @@
 
 #include <ostream>
 
+/**
+ * @brief An ANSI Escape Sequence to set a custom RGB color code for the text.
+ * @param r The red component of the color.
+ * @param g The green component of the color.
+ * @param b The blue component of the color.
+ * @warning The color code should be from 0 to 255. No error checking is performed.
+ */
 // RGB Text Colors (8-bit)
 #define RGB_TEXT(r, g, b) "\x1b[38;2;" #r ";" #g ";" #b "m"
 
+/**
+ * @brief An ANSI Escape Sequence to set a custom RGB color code for the background.
+ * @param r The red component of the color.
+ * @param g The green component of the color.
+ * @param b The blue component of the color.
+ * @warning The color code should be from 0 to 255. No error checking is performed.
+ */
 // RGB Background Colors (8-bit)
 #define RGB_BG(r, g, b) "\x1b[48;2;" #r ";" #g ";" #b "m"
 

@@ -42,6 +42,10 @@
 #include <vector>
 
 #ifndef TIC
+    /**
+     * @brief Starts a timer for profiling code execution time.
+     * @param ... The name of the section to profile.
+     */
     #define TIC(...)                                                                                  \
         {                                                                                             \
             const char* nameSection = #__VA_ARGS__;                                                   \
@@ -51,6 +55,7 @@
 #endif
 
 #ifndef TOC
+    /// @brief Stops the timer and prints the time taken to execute the section.
     #define TOC()                                                                                                     \
         auto duration =                                                                                               \
             std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start)  \
@@ -76,8 +81,8 @@ struct SplitNumberResult
 };
 
 #ifdef WINDOWS
-#include <Windows.h>
-#include <fcntl.h>
+    #include <Windows.h>
+    #include <fcntl.h>
 
 /**
  * @brief Enables VT mode.
@@ -135,8 +140,7 @@ public:
      * This constructor sets the console output code page to UTF-8 and enables VT mode.
      * It also saves the original code page and VT mode for restoration later.
      */
-    Utf8CodePage() :
-        oldCodePage(::GetConsoleOutputCP())
+    Utf8CodePage() : oldCodePage(::GetConsoleOutputCP())
     {
         ::SetConsoleOutputCP(CP_UTF8);
         dwModeOrig = enableVtMode();

@@ -35,19 +35,37 @@
 #include <array>
 #include <string>
 
+/// @brief The because symbol (3 dots in a triangle, Unicode U+2235)
 #define BECAUSE "\u2235"
+/// @brief The therefore symbol (3 dots in a triangle, Unicode U+2234)
 #define THEREFORE "\u2234"
 
+/// @brief The multiply symbol (Unicode U+00D7)
 #define MULTIPLY "\u00D7"
+/// @brief The divide symbol (Unicode U+00F7)
 #define DIVIDED_BY "\u00F7"
 
+/// @brief The large dot symbol (Unicode U+25C9)
 #define LARGE_DOT "\u25C9"
 
 // Subscripts
+/**
+ * @brief The subscript 0 (Unicode U+2080)
+ * @note This is used to check if a subscript is converted correctly, do not use this in the program.
+ */
 #define SUB_0 "\u2080"
+/**
+ * @brief The subscript z (Unicode U+2098)
+ * @note This is used to check if a subscript is converted correctly, do not use this in the program.
+ */
 #define SUB_Z "\u1D69"
+/**
+ * @brief The subscript magic number (8272)
+ * @note This is used to check if a subscript is converted correctly, do not use this in the program.
+ */
 #define SUB_MAGIC_NUMBER 8272
 
+/// @brief A list of subscript characters.
 extern const std::array<std::string_view, 10>& SUPERSCRIPTS;
 
 /**
@@ -67,8 +85,20 @@ std::string makeSubscript(const std::string& normal);
 std::string makeSubscript(int normal);
 
 // Superscripts
+/**
+ * @brief The superscript 0 (Unicode U+2070)
+ * @note This is used to check if a superscript is converted correctly, do not use this in the program.
+ */
 #define SUP_0 "\u2070"
+/**
+ * @brief The superscript z (Unicode U+1DBB)
+ * @note This is used to check if a superscript is converted correctly, do not use this in the program.
+ */
 #define SUP_Z "\u1DBB"
+/**
+ * @brief The superscript magic number (8304)
+ * @note This is used to check if a superscript is converted correctly, do not use this in the program.
+ */
 #define SUP_MAGIC_NUMBER 8304
 
 /**

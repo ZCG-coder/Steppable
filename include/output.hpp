@@ -75,7 +75,7 @@ void error(const std::string& name, std::basic_string<T> msg, Args&&... args)
     std::cerr << formattedMsg << reset << '\n';
 
     // Write to the log file
-    auto logger = logging::Logger(static_cast<std::string>(name), "steppable.log");
+    auto logger = logging::Logger(name, "steppable.log");
     logger.error(formattedMsg);
 }
 
@@ -100,7 +100,7 @@ void error(const std::string& name, std::basic_string<CharT> msg)
     std::cerr << msg << reset << '\n';
 
     // Write to the log file
-    auto logger = logging::Logger(static_cast<std::string>(name), "steppable.log");
+    auto logger = logging::Logger(name, "steppable.log");
     logger.error(msg);
 }
 

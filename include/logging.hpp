@@ -36,7 +36,6 @@
  * @endcode
  */
 
-
 #pragma once
 
 #include <fstream>
@@ -47,7 +46,7 @@
  * @brief The logging namespace contains classes and functions for logging.
  * The logging namespace contains the Logger class, which provides logging functionality, including logging messages
  * at different levels, such as error, warning, info, and debug. It writes the log messages to a specified log file.
-*/
+ */
 namespace logging
 {
     /**
@@ -58,9 +57,13 @@ namespace logging
      */
     enum Level
     {
+        /// @brief Logs ONLY error messages.
         ERROR = 3,
+        /// @brief Logs error and warning messages.
         WARNING = 2,
+        /// @brief Logs error, warning, and info messages. Recommended for release.
         INFO = 1,
+        /// @brief Logs error, warning, info, and debug messages. Basically, logs everything.
         DBG = 0
     };
 
@@ -74,12 +77,12 @@ namespace logging
     class Logger
     {
     public:
-        /**
-         * @brief Constructs a Logger object.
-         * @param name The name of the logger.
-         * @param filename The name of the log file.
-         * @param level The logging level (default: Level::INFO).
-         */
+/**
+ * @brief Constructs a Logger object.
+ * @param name The name of the logger.
+ * @param filename The name of the log file.
+ * @param level The logging level (default: Level::INFO).
+ */
 #if DEBUG
         Logger(const std::string& name, const std::string& filename, const Level level = Level::DBG);
 #else
@@ -152,11 +155,13 @@ namespace logging
         }
 
     private:
-        /// @brief The log file stream.
+        /** @brief The log file stream.
+         * @warning Don't write to this directly. Use the log() / warning()... functions instead.
+         */
         std::ofstream file;
 
         /// @brief The default logging level.
-        Level level = Level::INFO;
+        Level level = INFO;
 
         /// @brief The name of the logger. This will be prepended to the log messages.
         std::string name;

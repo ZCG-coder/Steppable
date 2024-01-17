@@ -33,19 +33,23 @@
 #include <string>
 #include <string_view>
 
+/// @brief This macro defines the main function and initializes the Utf8CodePage object, and prepares the error counter.
 #define TEST_START()           \
     int main()                 \
     {                          \
         Utf8CodePage use_utf8; \
         int errors = 0;
-#define SECTION(...)                                                                                 \
-    {                                                                                                \
-        const std::string& nameSection = #__VA_ARGS__;                                               \
+
+/// @brief This macro defines a test section with the given name.
+#define SECTION(...)                                                                            \
+    {                                                                                           \
+        const std::string& nameSection = #__VA_ARGS__;                                          \
         std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << '\n'; \
         std::cout << colors::brightBlue << "[Testing: " << nameSection << ']' << reset << '\n'; \
-        auto start = std::chrono::high_resolution_clock::now();                                      \
+        auto start = std::chrono::high_resolution_clock::now();                                 \
         auto _ = TestCase(nameSection);
 
+/// @brief This macro ends a test section and prints the time taken to execute the section.
 #define SECTION_END()                                                                                            \
     auto end = std::chrono::high_resolution_clock::now();                                                        \
     auto duration =                                                                                              \
@@ -53,10 +57,12 @@
             .count();                                                                                            \
     _.summarize();                                                                                               \
     std::cout << colors::brightBlue << '[' << nameSection << " took " << duration << "(microseconds) to finish]" \
-              << reset << '\n';                                                                             \
-    std::cout << reset << '\n';                                                                             \
+              << reset << '\n';                                                                                  \
+    std::cout << reset << '\n';                                                                                  \
     errors += _.errorCount;                                                                                      \
     }
+
+/// @brief This macro ends the main function and prints the number of errors encountered.
 #define TEST_END()                                                                             \
     if (errors)                                                                                \
         error("TEST_END", (std::string) "Not all tests passed. There are %i errors.", errors); \
