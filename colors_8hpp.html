@@ -126,8 +126,10 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a1c92c41f9a358554c589c5877d61bf20"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="colors_8hpp.html#a1c92c41f9a358554c589c5877d61bf20">RGB_TEXT</a>(r,  g,  b)&#160;&#160;&#160;&quot;\x1b[38;2;&quot; #r &quot;;&quot; #g &quot;;&quot; #b &quot;m&quot;</td></tr>
+<tr class="memdesc:a1c92c41f9a358554c589c5877d61bf20"><td class="mdescLeft">&#160;</td><td class="mdescRight">An ANSI Escape Sequence to set a custom RGB color code for the text.  <a href="colors_8hpp.html#a1c92c41f9a358554c589c5877d61bf20">More...</a><br /></td></tr>
 <tr class="separator:a1c92c41f9a358554c589c5877d61bf20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ed9cd37a5983107984f2af583c469d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="colors_8hpp.html#a2ed9cd37a5983107984f2af583c469d8">RGB_BG</a>(r,  g,  b)&#160;&#160;&#160;&quot;\x1b[48;2;&quot; #r &quot;;&quot; #g &quot;;&quot; #b &quot;m&quot;</td></tr>
+<tr class="memdesc:a2ed9cd37a5983107984f2af583c469d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">An ANSI Escape Sequence to set a custom RGB color code for the background.  <a href="colors_8hpp.html#a2ed9cd37a5983107984f2af583c469d8">More...</a><br /></td></tr>
 <tr class="separator:a2ed9cd37a5983107984f2af583c469d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -265,6 +267,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>An ANSI Escape Sequence to set a custom RGB color code for the background. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>The red component of the color. </td></tr>
+    <tr><td class="paramname">g</td><td>The green component of the color. </td></tr>
+    <tr><td class="paramname">b</td><td>The blue component of the color. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>The color code should be from 0 to 255. No error checking is performed. </dd></dl>
+
 </div>
 </div>
 <a id="a1c92c41f9a358554c589c5877d61bf20"></a>
@@ -298,6 +311,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>An ANSI Escape Sequence to set a custom RGB color code for the text. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>The red component of the color. </td></tr>
+    <tr><td class="paramname">g</td><td>The green component of the color. </td></tr>
+    <tr><td class="paramname">b</td><td>The blue component of the color. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>The color code should be from 0 to 255. No error checking is performed. </dd></dl>
 
 </div>
 </div>

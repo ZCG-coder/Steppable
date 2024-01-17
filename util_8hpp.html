@@ -130,8 +130,10 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:aeb09b3077689c00cd9d9856491211261"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8hpp.html#aeb09b3077689c00cd9d9856491211261">TIC</a>(...)</td></tr>
+<tr class="memdesc:aeb09b3077689c00cd9d9856491211261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts a timer for profiling code execution time.  <a href="util_8hpp.html#aeb09b3077689c00cd9d9856491211261">More...</a><br /></td></tr>
 <tr class="separator:aeb09b3077689c00cd9d9856491211261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6a8edd5b2f8ff896de156bba81dc725"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8hpp.html#aa6a8edd5b2f8ff896de156bba81dc725">TOC</a>()</td></tr>
+<tr class="memdesc:aa6a8edd5b2f8ff896de156bba81dc725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the timer and prints the time taken to execute the section.  <a href="util_8hpp.html#aa6a8edd5b2f8ff896de156bba81dc725">More...</a><br /></td></tr>
 <tr class="separator:aa6a8edd5b2f8ff896de156bba81dc725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -207,6 +209,14 @@ Functions</h2></td></tr>
 <div class="ttc" id="acolors_8hpp_html_a4661597771a019efa3f0f92cfb0c6e02"><div class="ttname"><a href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a></div><div class="ttdeci">std::ostream &amp; reset(std::ostream &amp;stream)</div><div class="ttdoc">Reset the text color and format to the default values.</div><div class="ttdef"><b>Definition:</b> colors.cpp:51</div></div>
 <div class="ttc" id="anamespacecolors_html_aad9ae24338f510c8faf9e8f395e0ee4b"><div class="ttname"><a href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a></div><div class="ttdeci">std::ostream &amp; brightBlue(std::ostream &amp;stream)</div><div class="ttdoc">Set the text color to bright blue.</div><div class="ttdef"><b>Definition:</b> colors.cpp:144</div></div>
 </div><!-- fragment -->
+<p>Starts a timer for profiling code execution time. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">...</td><td>The name of the section to profile. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aa6a8edd5b2f8ff896de156bba81dc725"></a>
@@ -232,6 +242,8 @@ Functions</h2></td></tr>
 <div class="line">        std::cout &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;                                                                                   \</div>
 <div class="line">        }</div>
 </div><!-- fragment -->
+<p>Stops the timer and prints the time taken to execute the section. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>

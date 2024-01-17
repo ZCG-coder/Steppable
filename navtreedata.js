@@ -25,6 +25,16 @@
 var NAVTREE =
 [
   [ "Steppable", "index.html", [
+    [ "The Steppable Project", "index.html", [
+      [ "What is this?", "index.html#autotoc_md21", null ],
+      [ "What this is not?", "index.html#autotoc_md22", null ],
+      [ "Why another CAS?", "index.html#autotoc_md23", null ],
+      [ "How does it work?", "index.html#autotoc_md24", null ],
+      [ "How to get it running?", "index.html#autotoc_md25", null ],
+      [ "How to contribute?", "index.html#autotoc_md26", [
+        [ "How to add a new feature", "index.html#autotoc_md27", null ]
+      ] ]
+    ] ],
     [ "Contributor Covenant Code of Conduct", "md_CODE_OF_CONDUCT.html", [
       [ "Our Pledge", "md_CODE_OF_CONDUCT.html#autotoc_md1", null ],
       [ "Our Standards", "md_CODE_OF_CONDUCT.html#autotoc_md2", null ],
@@ -48,16 +58,6 @@ var NAVTREE =
         [ "Suggesting new features", "md_CONTRIBUTING.html#autotoc_md18", null ]
       ] ],
       [ "Contacts and inquiries", "md_CONTRIBUTING.html#autotoc_md19", null ]
-    ] ],
-    [ "The Steppable Project", "md_README.html", [
-      [ "What is this?", "md_README.html#autotoc_md21", null ],
-      [ "What this is not?", "md_README.html#autotoc_md22", null ],
-      [ "Why another CAS?", "md_README.html#autotoc_md23", null ],
-      [ "How does it work?", "md_README.html#autotoc_md24", null ],
-      [ "How to get it running?", "md_README.html#autotoc_md25", null ],
-      [ "How to contribute?", "md_README.html#autotoc_md26", [
-        [ "How to add a new feature", "md_README.html#autotoc_md27", null ]
-      ] ]
     ] ],
     [ "Security Policy", "md_SECURITY.html", [
       [ "Introduction", "md_SECURITY.html#autotoc_md29", null ],
@@ -98,7 +98,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "absReport_8cpp.html",
-"md_README.html#autotoc_md27"
+"md_CONTRIBUTING.html#autotoc_md19"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -93,51 +93,87 @@ $(document).ready(function(){initNavTree('classProgramArgs.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 
+<p>This class is used by the program to parse command-line arguments. The class uses regular expressions to match and parse the command-line arguments. It supports switches, positional arguments, and keyword arguments.  
+ <a href="classProgramArgs.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="argParse_8hpp_source.html">argParse.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa22388f97b615afd8fdf86a9ee96841c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#aa22388f97b615afd8fdf86a9ee96841c">ProgramArgs</a> (int _argc, const char **<a class="el" href="classProgramArgs.html#a59e9ffc63d633638dbfed8697611a19c">argv</a>)</td></tr>
+<tr class="memdesc:aa22388f97b615afd8fdf86a9ee96841c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor of the <a class="el" href="classProgramArgs.html" title="This class is used by the program to parse command-line arguments. The class uses regular expressions...">ProgramArgs</a> class, which copies the arguments passed to the program to the class.  <a href="classProgramArgs.html#aa22388f97b615afd8fdf86a9ee96841c">More...</a><br /></td></tr>
 <tr class="separator:aa22388f97b615afd8fdf86a9ee96841c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a849066672f4caced42480a76dec02fdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a849066672f4caced42480a76dec02fdd">parseArgs</a> ()</td></tr>
+<tr class="memdesc:a849066672f4caced42480a76dec02fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to parse the command-line arguments and store them in the appropriate class members.  <a href="classProgramArgs.html#a849066672f4caced42480a76dec02fdd">More...</a><br /></td></tr>
 <tr class="separator:a849066672f4caced42480a76dec02fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1517bda6763b0efc42b5a6ca579a3412"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a1517bda6763b0efc42b5a6ca579a3412">addSwitch</a> (const std::string_view &amp;name, bool defaultValue, const std::string_view &amp;description=&quot;&quot;)</td></tr>
+<tr class="memdesc:a1517bda6763b0efc42b5a6ca579a3412"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a switch to the class.  <a href="classProgramArgs.html#a1517bda6763b0efc42b5a6ca579a3412">More...</a><br /></td></tr>
 <tr class="separator:a1517bda6763b0efc42b5a6ca579a3412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a589a2d348f85c88765b79de0dc19d398"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a589a2d348f85c88765b79de0dc19d398">addPosArg</a> (char name, const std::string_view &amp;description=&quot;&quot;)</td></tr>
+<tr class="memdesc:a589a2d348f85c88765b79de0dc19d398"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a positional argument to the class.  <a href="classProgramArgs.html#a589a2d348f85c88765b79de0dc19d398">More...</a><br /></td></tr>
 <tr class="separator:a589a2d348f85c88765b79de0dc19d398"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cfadc3e489780e1411ef0807ee6f336"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336">addKeywordArg</a> (const std::string_view &amp;name, int defaultValue, std::string_view description=&quot;&quot;)</td></tr>
+<tr class="memdesc:a8cfadc3e489780e1411ef0807ee6f336"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a keyword argument to the class.  <a href="classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336">More...</a><br /></td></tr>
 <tr class="separator:a8cfadc3e489780e1411ef0807ee6f336"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37b2fdefcdd9a9317584d551c7dcf1d9"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a37b2fdefcdd9a9317584d551c7dcf1d9">getPosArg</a> (size_t index) const</td></tr>
+<tr class="memdesc:a37b2fdefcdd9a9317584d551c7dcf1d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to get the value of a positional argument.  <a href="classProgramArgs.html#a37b2fdefcdd9a9317584d551c7dcf1d9">More...</a><br /></td></tr>
 <tr class="separator:a37b2fdefcdd9a9317584d551c7dcf1d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67d7bd75b7221946e8173398a6c2868e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a67d7bd75b7221946e8173398a6c2868e">getKeywordArgument</a> (const std::string_view &amp;name)</td></tr>
+<tr class="memdesc:a67d7bd75b7221946e8173398a6c2868e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to get the value of a keyword argument.  <a href="classProgramArgs.html#a67d7bd75b7221946e8173398a6c2868e">More...</a><br /></td></tr>
 <tr class="separator:a67d7bd75b7221946e8173398a6c2868e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1056310905a8c465549d1abcd54942c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a1056310905a8c465549d1abcd54942c3">getSwitch</a> (const std::string_view &amp;name)</td></tr>
+<tr class="memdesc:a1056310905a8c465549d1abcd54942c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to get the value of a switch.  <a href="classProgramArgs.html#a1056310905a8c465549d1abcd54942c3">More...</a><br /></td></tr>
 <tr class="separator:a1056310905a8c465549d1abcd54942c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37d6e46cb7b30f1a93a8455b7ce192f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a37d6e46cb7b30f1a93a8455b7ce192f0">printUsage</a> (const std::string_view &amp;reason=&quot;&quot;) const</td></tr>
+<tr class="memdesc:a37d6e46cb7b30f1a93a8455b7ce192f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to print the possible command-line arguments. Usually called when the user specifies the wrong arguments.  <a href="classProgramArgs.html#a37d6e46cb7b30f1a93a8455b7ce192f0">More...</a><br /></td></tr>
 <tr class="separator:a37d6e46cb7b30f1a93a8455b7ce192f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:acd63e57b63dd86a3b68a269a8dd7ef95"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string_view, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#acd63e57b63dd86a3b68a269a8dd7ef95">switches</a></td></tr>
+<tr class="memdesc:acd63e57b63dd86a3b68a269a8dd7ef95"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the information of all switches specified. Keys are switch names, and values are whether the switch is enabled.  <a href="classProgramArgs.html#acd63e57b63dd86a3b68a269a8dd7ef95">More...</a><br /></td></tr>
 <tr class="separator:acd63e57b63dd86a3b68a269a8dd7ef95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4023c0453d94632ea56da0850601b723"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string_view, std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a4023c0453d94632ea56da0850601b723">switchDescriptions</a></td></tr>
+<tr class="memdesc:a4023c0453d94632ea56da0850601b723"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all switches specified.  <a href="classProgramArgs.html#a4023c0453d94632ea56da0850601b723">More...</a><br /></td></tr>
 <tr class="separator:a4023c0453d94632ea56da0850601b723"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40242eb883e363f5dc861da07830a0c2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a40242eb883e363f5dc861da07830a0c2">posArgs</a></td></tr>
+<tr class="memdesc:a40242eb883e363f5dc861da07830a0c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector is used to store the values of all positional arguments specified.  <a href="classProgramArgs.html#a40242eb883e363f5dc861da07830a0c2">More...</a><br /></td></tr>
 <tr class="separator:a40242eb883e363f5dc861da07830a0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ce40731d055aa61933de73dff8a5505"><td class="memItemLeft" align="right" valign="top">std::map&lt; char, std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a4ce40731d055aa61933de73dff8a5505">posArgDescriptions</a></td></tr>
+<tr class="memdesc:a4ce40731d055aa61933de73dff8a5505"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all positional arguments specified.  <a href="classProgramArgs.html#a4ce40731d055aa61933de73dff8a5505">More...</a><br /></td></tr>
 <tr class="separator:a4ce40731d055aa61933de73dff8a5505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a5cf80d248bc23733f41e6c8fc8af10"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string_view, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a7a5cf80d248bc23733f41e6c8fc8af10">keywordArgs</a></td></tr>
+<tr class="memdesc:a7a5cf80d248bc23733f41e6c8fc8af10"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the values of all keyword arguments specified. Keys are keyword argument names and values are the values of the keyword arguments.  <a href="classProgramArgs.html#a7a5cf80d248bc23733f41e6c8fc8af10">More...</a><br /></td></tr>
 <tr class="separator:a7a5cf80d248bc23733f41e6c8fc8af10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adecc792c6c1285316da4094691aa4e5a"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string_view, std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#adecc792c6c1285316da4094691aa4e5a">keywordArgDescriptions</a></td></tr>
+<tr class="memdesc:adecc792c6c1285316da4094691aa4e5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all keyword arguments specified.  <a href="classProgramArgs.html#adecc792c6c1285316da4094691aa4e5a">More...</a><br /></td></tr>
 <tr class="separator:adecc792c6c1285316da4094691aa4e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad90385a6998fa1a5ab1c8fd281c2c7c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#ad90385a6998fa1a5ab1c8fd281c2c7c3">argc</a></td></tr>
+<tr class="memdesc:ad90385a6998fa1a5ab1c8fd281c2c7c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This stores the number of arguments passed to the program.  <a href="classProgramArgs.html#ad90385a6998fa1a5ab1c8fd281c2c7c3">More...</a><br /></td></tr>
 <tr class="separator:ad90385a6998fa1a5ab1c8fd281c2c7c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59e9ffc63d633638dbfed8697611a19c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a59e9ffc63d633638dbfed8697611a19c">argv</a></td></tr>
+<tr class="memdesc:a59e9ffc63d633638dbfed8697611a19c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This stores the arguments passed to the program.  <a href="classProgramArgs.html#a59e9ffc63d633638dbfed8697611a19c">More...</a><br /></td></tr>
 <tr class="separator:a59e9ffc63d633638dbfed8697611a19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f5e13b1fd67d6fbb1bba8e4d1abd085"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a9f5e13b1fd67d6fbb1bba8e4d1abd085">programName</a></td></tr>
+<tr class="memdesc:a9f5e13b1fd67d6fbb1bba8e4d1abd085"><td class="mdescLeft">&#160;</td><td class="mdescRight">This stores the name of the program.  <a href="classProgramArgs.html#a9f5e13b1fd67d6fbb1bba8e4d1abd085">More...</a><br /></td></tr>
 <tr class="separator:a9f5e13b1fd67d6fbb1bba8e4d1abd085"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class is used by the program to parse command-line arguments. The class uses regular expressions to match and parse the command-line arguments. It supports switches, positional arguments, and keyword arguments. </p>
+<dl class="section note"><dt>Note</dt><dd>A note on the names used in this class: </dd>
+<dd>
+- Switches are arguments that start with a '+' or '-' sign. They are optional and can be in any order. </dd>
+<dd>
+'+' switches are used to enable a feature, while '-' switches are used to disable a feature. </dd>
+<dd>
+- Positional arguments are arguments that are not switches or keyword arguments. The names does not matter, and they are </dd>
+<dd>
+required and ordered. </dd>
+<dd>
+- Keyword arguments are arguments that start with a '-' sign and are followed by a name and a value. The format </dd>
+<dd>
+is "-name:value". They are optional and can be in any order. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa22388f97b615afd8fdf86a9ee96841c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa22388f97b615afd8fdf86a9ee96841c">&#9670;&nbsp;</a></span>ProgramArgs()</h2>
 
@@ -163,6 +199,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The constructor of the <a class="el" href="classProgramArgs.html" title="This class is used by the program to parse command-line arguments. The class uses regular expressions...">ProgramArgs</a> class, which copies the arguments passed to the program to the class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_argc</td><td>The number of arguments passed to the program. </td></tr>
+    <tr><td class="paramname">argv</td><td>The arguments passed to the program. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -198,6 +243,16 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function is used to add a keyword argument to the class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the keyword argument. </td></tr>
+    <tr><td class="paramname">defaultValue</td><td>The default value of the keyword argument. The value is stored as an integer. </td></tr>
+    <tr><td class="paramname">description</td><td>The description of the keyword argument. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -232,6 +287,18 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function is used to add a positional argument to the class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the positional argument. Only one character is allowed. </td></tr>
+    <tr><td class="paramname">description</td><td>The description of the positional argument.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The name of the positional argument is used for error messages only. It does not affect the parsing of </dd>
+<dd>
+the command-line arguments. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -272,6 +339,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function is used to add a switch to the class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the switch. </td></tr>
+    <tr><td class="paramname">defaultValue</td><td>The default value of the switch. True = enabled, False = disabled. </td></tr>
+    <tr><td class="paramname">description</td><td>The description of the switch. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -296,6 +373,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function is used to get the value of a keyword argument. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the keyword argument. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the keyword argument.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If the keyword argument is not specified, the function will print an error message and exit the program. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -320,6 +407,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function is used to get the value of a positional argument. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the positional argument. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the positional argument.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If the positional argument is not specified, the function will print an error message and exit the program. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -344,6 +441,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function is used to get the value of a switch. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the switch. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the switch.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If the switch is not specified, the function will print an error message and exit the program. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -367,6 +474,9 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function is used to parse the command-line arguments and store them in the appropriate class members. </p>
+<dl class="section note"><dt>Note</dt><dd>You may want to call this function after adding all the arguments to the class. Otherwise, the class will not recognize the arguments specified after the call. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -391,6 +501,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function is used to print the possible command-line arguments. Usually called when the user specifies the wrong arguments. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reason</td><td>The reason for printing the usage. If specified, the reason will be printed after the usage.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The function will print the usage of the program and exit the program. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -421,6 +540,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>This stores the number of arguments passed to the program. </p>
+
 </div>
 </div>
 <a id="a59e9ffc63d633638dbfed8697611a19c"></a>
@@ -442,6 +563,8 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>This stores the arguments passed to the program. </p>
 
 </div>
 </div>
@@ -465,6 +588,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>This map is used to store the descriptions of all keyword arguments specified. </p>
+
 </div>
 </div>
 <a id="a7a5cf80d248bc23733f41e6c8fc8af10"></a>
@@ -486,6 +611,8 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>This map is used to store the values of all keyword arguments specified. Keys are keyword argument names and values are the values of the keyword arguments. </p>
 
 </div>
 </div>
@@ -509,6 +636,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>This map is used to store the descriptions of all positional arguments specified. </p>
+
 </div>
 </div>
 <a id="a40242eb883e363f5dc861da07830a0c2"></a>
@@ -530,6 +659,8 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>This vector is used to store the values of all positional arguments specified. </p>
 
 </div>
 </div>
@@ -553,6 +684,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>This stores the name of the program. </p>
+
 </div>
 </div>
 <a id="a4023c0453d94632ea56da0850601b723"></a>
@@ -575,6 +708,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>This map is used to store the descriptions of all switches specified. </p>
+
 </div>
 </div>
 <a id="acd63e57b63dd86a3b68a269a8dd7ef95"></a>
@@ -596,6 +731,8 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>This map is used to store the information of all switches specified. Keys are switch names, and values are whether the switch is enabled. </p>
 
 </div>
 </div>

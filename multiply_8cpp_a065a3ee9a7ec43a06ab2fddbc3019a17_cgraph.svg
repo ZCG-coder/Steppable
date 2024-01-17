@@ -66,7 +66,7 @@ var sectionId = 'dynsection-1';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336" target="_top" xlink:title="This function is used to add a keyword argument to the class.">
 <polygon fill="none" stroke="black" points="91.5,-304.5 91.5,-323.5 253.5,-323.5 253.5,-304.5 91.5,-304.5"/>
 <text text-anchor="middle" x="172.5" y="-311.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::addKeywordArg</text>
 </a>
@@ -81,7 +81,7 @@ var sectionId = 'dynsection-1';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="classProgramArgs.html#a589a2d348f85c88765b79de0dc19d398" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classProgramArgs.html#a589a2d348f85c88765b79de0dc19d398" target="_top" xlink:title="This function is used to add a positional argument to the class.">
 <polygon fill="none" stroke="black" points="104,-266.5 104,-285.5 241,-285.5 241,-266.5 104,-266.5"/>
 <text text-anchor="middle" x="172.5" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::addPosArg</text>
 </a>
@@ -96,7 +96,7 @@ var sectionId = 'dynsection-1';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="classProgramArgs.html#a1517bda6763b0efc42b5a6ca579a3412" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classProgramArgs.html#a1517bda6763b0efc42b5a6ca579a3412" target="_top" xlink:title="This function is used to add a switch to the class.">
 <polygon fill="none" stroke="black" points="104.5,-228.5 104.5,-247.5 240.5,-247.5 240.5,-228.5 104.5,-228.5"/>
 <text text-anchor="middle" x="172.5" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::addSwitch</text>
 </a>
@@ -111,7 +111,7 @@ var sectionId = 'dynsection-1';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="classProgramArgs.html#a67d7bd75b7221946e8173398a6c2868e" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classProgramArgs.html#a67d7bd75b7221946e8173398a6c2868e" target="_top" xlink:title="This function is used to get the value of a keyword argument.">
 <polygon fill="none" stroke="black" points="77,-190.5 77,-209.5 268,-209.5 268,-190.5 77,-190.5"/>
 <text text-anchor="middle" x="172.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::getKeywordArgument</text>
 </a>
@@ -126,7 +126,7 @@ var sectionId = 'dynsection-1';
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="classProgramArgs.html#a37b2fdefcdd9a9317584d551c7dcf1d9" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classProgramArgs.html#a37b2fdefcdd9a9317584d551c7dcf1d9" target="_top" xlink:title="This function is used to get the value of a positional argument.">
 <polygon fill="none" stroke="black" points="105,-152.5 105,-171.5 240,-171.5 240,-152.5 105,-152.5"/>
 <text text-anchor="middle" x="172.5" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::getPosArg</text>
 </a>
@@ -141,7 +141,7 @@ var sectionId = 'dynsection-1';
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="classProgramArgs.html#a1056310905a8c465549d1abcd54942c3" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classProgramArgs.html#a1056310905a8c465549d1abcd54942c3" target="_top" xlink:title="This function is used to get the value of a switch.">
 <polygon fill="none" stroke="black" points="105.5,-114.5 105.5,-133.5 239.5,-133.5 239.5,-114.5 105.5,-114.5"/>
 <text text-anchor="middle" x="172.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::getSwitch</text>
 </a>
@@ -171,7 +171,7 @@ var sectionId = 'dynsection-1';
 <!-- Node18 -->
 <g id="node18" class="node">
 <title>Node18</title>
-<g id="a_node18"><a xlink:href="classProgramArgs.html#a849066672f4caced42480a76dec02fdd" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="classProgramArgs.html#a849066672f4caced42480a76dec02fdd" target="_top" xlink:title="This function is used to parse the command&#45;line arguments and store them in the appropriate class mem...">
 <polygon fill="none" stroke="black" points="105.5,-38.5 105.5,-57.5 239.5,-57.5 239.5,-38.5 105.5,-38.5"/>
 <text text-anchor="middle" x="172.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::parseArgs</text>
 </a>

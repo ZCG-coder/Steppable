@@ -120,12 +120,16 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a688216c3227582c2d3387a4eca8b745b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8hpp.html#a688216c3227582c2d3387a4eca8b745b">TEST_START</a>()</td></tr>
+<tr class="memdesc:a688216c3227582c2d3387a4eca8b745b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro defines the main function and initializes the <a class="el" href="classUtf8CodePage.html" title="A class that sets the console output code page to UTF-8 and enables VT mode.">Utf8CodePage</a> object, and prepares the error counter.  <a href="testing_8hpp.html#a688216c3227582c2d3387a4eca8b745b">More...</a><br /></td></tr>
 <tr class="separator:a688216c3227582c2d3387a4eca8b745b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad512fd95a78b95770b9759823f8fbc21"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8hpp.html#ad512fd95a78b95770b9759823f8fbc21">SECTION</a>(...)</td></tr>
+<tr class="memdesc:ad512fd95a78b95770b9759823f8fbc21"><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro defines a test section with the given name.  <a href="testing_8hpp.html#ad512fd95a78b95770b9759823f8fbc21">More...</a><br /></td></tr>
 <tr class="separator:ad512fd95a78b95770b9759823f8fbc21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade9946ba3f7f793c31c7d29509c13748"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8hpp.html#ade9946ba3f7f793c31c7d29509c13748">SECTION_END</a>()</td></tr>
+<tr class="memdesc:ade9946ba3f7f793c31c7d29509c13748"><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro ends a test section and prints the time taken to execute the section.  <a href="testing_8hpp.html#ade9946ba3f7f793c31c7d29509c13748">More...</a><br /></td></tr>
 <tr class="separator:ade9946ba3f7f793c31c7d29509c13748"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a878cf7c1251c636b56789fb6782e9ce2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8hpp.html#a878cf7c1251c636b56789fb6782e9ce2">TEST_END</a>()</td></tr>
+<tr class="memdesc:a878cf7c1251c636b56789fb6782e9ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro ends the main function and prints the number of errors encountered.  <a href="testing_8hpp.html#a878cf7c1251c636b56789fb6782e9ce2">More...</a><br /></td></tr>
 <tr class="separator:a878cf7c1251c636b56789fb6782e9ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -147,16 +151,18 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    {                                                                                                \</div>
-<div class="line">        const std::string&amp; nameSection = #__VA_ARGS__;                                               \</div>
+<b>Value:</b><div class="fragment"><div class="line">    {                                                                                           \</div>
+<div class="line">        const std::string&amp; nameSection = #__VA_ARGS__;                                          \</div>
 <div class="line">        std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; std::setw(80) &lt;&lt; std::setfill(<span class="charliteral">&#39;-&#39;</span>) &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
 <div class="line">        std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; <span class="stringliteral">&quot;[Testing: &quot;</span> &lt;&lt; nameSection &lt;&lt; <span class="charliteral">&#39;]&#39;</span> &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
-<div class="line">        auto start = std::chrono::high_resolution_clock::now();                                      \</div>
+<div class="line">        auto start = std::chrono::high_resolution_clock::now();                                 \</div>
 <div class="line">        auto _ = <a class="code" href="classTestCase.html">TestCase</a>(nameSection);</div>
-<div class="ttc" id="aclassTestCase_html"><div class="ttname"><a href="classTestCase.html">TestCase</a></div><div class="ttdoc">Represents a test case for unit testing.</div><div class="ttdef"><b>Definition:</b> testing.hpp:75</div></div>
+<div class="ttc" id="aclassTestCase_html"><div class="ttname"><a href="classTestCase.html">TestCase</a></div><div class="ttdoc">Represents a test case for unit testing.</div><div class="ttdef"><b>Definition:</b> testing.hpp:81</div></div>
 <div class="ttc" id="acolors_8hpp_html_a4661597771a019efa3f0f92cfb0c6e02"><div class="ttname"><a href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a></div><div class="ttdeci">std::ostream &amp; reset(std::ostream &amp;stream)</div><div class="ttdoc">Reset the text color and format to the default values.</div><div class="ttdef"><b>Definition:</b> colors.cpp:51</div></div>
 <div class="ttc" id="anamespacecolors_html_aad9ae24338f510c8faf9e8f395e0ee4b"><div class="ttname"><a href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a></div><div class="ttdeci">std::ostream &amp; brightBlue(std::ostream &amp;stream)</div><div class="ttdoc">Set the text color to bright blue.</div><div class="ttdef"><b>Definition:</b> colors.cpp:144</div></div>
 </div><!-- fragment -->
+<p>This macro defines a test section with the given name. </p>
+
 </div>
 </div>
 <a id="ade9946ba3f7f793c31c7d29509c13748"></a>
@@ -179,11 +185,13 @@ Macros</h2></td></tr>
 <div class="line">            .count();                                                                                            \</div>
 <div class="line">    _.summarize();                                                                                               \</div>
 <div class="line">    std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; <span class="charliteral">&#39;[&#39;</span> &lt;&lt; nameSection &lt;&lt; <span class="stringliteral">&quot; took &quot;</span> &lt;&lt; duration &lt;&lt; <span class="stringliteral">&quot;(microseconds) to finish]&quot;</span> \</div>
-<div class="line">              &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;                                                                             \</div>
-<div class="line">    std::cout &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;                                                                             \</div>
+<div class="line">              &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;                                                                                  \</div>
+<div class="line">    std::cout &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;                                                                                  \</div>
 <div class="line">    errors += _.errorCount;                                                                                      \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
+<p>This macro ends a test section and prints the time taken to execute the section. </p>
+
 </div>
 </div>
 <a id="a878cf7c1251c636b56789fb6782e9ce2"></a>
@@ -210,6 +218,8 @@ Macros</h2></td></tr>
 <div class="line">    }</div>
 <div class="ttc" id="aoutput_8hpp_html_afa50372fb14acf84c371c61d2cc6585a"><div class="ttname"><a href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">info</a></div><div class="ttdeci">void info(T msg, Args &amp;&amp;... args)</div><div class="ttdoc">Prints an info message.</div><div class="ttdef"><b>Definition:</b> output.hpp:147</div></div>
 </div><!-- fragment -->
+<p>This macro ends the main function and prints the number of errors encountered. </p>
+
 </div>
 </div>
 <a id="a688216c3227582c2d3387a4eca8b745b"></a>
@@ -232,6 +242,8 @@ Macros</h2></td></tr>
 <div class="line">        int errors = 0;</div>
 <div class="ttc" id="aabs_8cpp_html_a065a3ee9a7ec43a06ab2fddbc3019a17"><div class="ttname"><a href="abs_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a></div><div class="ttdeci">int main(const int _argc, const char *_argv[])</div><div class="ttdef"><b>Definition:</b> abs.cpp:39</div></div>
 </div><!-- fragment -->
+<p>This macro defines the main function and initializes the <a class="el" href="classUtf8CodePage.html" title="A class that sets the console output code page to UTF-8 and enables VT mode.">Utf8CodePage</a> object, and prepares the error counter. </p>
+
 </div>
 </div>
 </div><!-- contents -->
