@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['errorcount_383',['errorCount',['../classTestCase.html#add657e77651739499dcaf7d77259c05e',1,'TestCase']]]
+  ['file_343',['file',['../classlogging_1_1Logger.html#a43ec57f8542a11586688e0437f516544',1,'logging::Logger']]]
 ];

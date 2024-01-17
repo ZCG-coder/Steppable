@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['out_398',['out',['../testUtil_8cpp.html#a61181bf88b3b63050402e7db68444e6c',1,'testUtil.cpp']]],
-  ['out1_399',['out1',['../testUtil_8cpp.html#ac5ccc4188776cef08adbec6256a04465',1,'testUtil.cpp']]],
-  ['out2_400',['out2',['../testUtil_8cpp.html#ad61dba3daafcf04867df783cf1b5b46d',1,'testUtil.cpp']]],
-  ['out3_401',['out3',['../testUtil_8cpp.html#a6e5269649a46c03f0e7ead3eb0618849',1,'testUtil.cpp']]],
-  ['out4_402',['out4',['../testUtil_8cpp.html#a768da23b6da925d3fa15be77c0f5ff6d',1,'testUtil.cpp']]]
+  ['splitnumberarray_351',['splitNumberArray',['../structSplitNumberResult.html#ae2dbc7553b8528acab3adcd0bcb13f88',1,'SplitNumberResult']]],
+  ['superscripts_352',['SUPERSCRIPTS',['../symbols_8hpp.html#ae7f9945c578c5cf042d74580ee7cff38',1,'SUPERSCRIPTS():&#160;symbols.cpp'],['../symbols_8cpp.html#ae7f9945c578c5cf042d74580ee7cff38',1,'SUPERSCRIPTS():&#160;symbols.cpp']]],
+  ['switchdescriptions_353',['switchDescriptions',['../classProgramArgs.html#a4023c0453d94632ea56da0850601b723',1,'ProgramArgs']]],
+  ['switches_354',['switches',['../classProgramArgs.html#acd63e57b63dd86a3b68a269a8dd7ef95',1,'ProgramArgs']]]
 ];

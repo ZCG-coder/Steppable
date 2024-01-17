@@ -117,50 +117,50 @@ $(document).ready(function(){initNavTree('format_8hpp_source.html',''); initResi
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// https://stackoverflow.com/a/49812356/14868780</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">   48</a></span>&#160;std::basic_string&lt;CharT&gt; <a class="code" href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">vFormat</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; sFormat, ...)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">const</span> CharT* <span class="keyword">const</span> zcFormat = sFormat.c_str();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// Initialize a variable argument array</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    va_list vaArgs;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    va_start(vaArgs, sFormat);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// Reliably acquire the size from a copy of the variable argument array</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// and a functionally reliable call to mock the formatting</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    va_list vaCopy;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    va_copy(vaCopy, vaArgs);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> iLen = std::vsnprintf(<span class="keyword">nullptr</span>, 0, zcFormat, vaCopy);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    va_end(vaCopy);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Return a formatted string without risking memory mismanagement</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// and without assuming any compiler or platform specific behavior</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::vector&lt;CharT&gt; zc(iLen + 1);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    va_end(vaArgs);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> std::string(zc.data(), zc.size());</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="format_8hpp.html#a145f187acb1003d20b7eb30331d65d4e">   72</a></span>&#160;std::basic_string&lt;CharT&gt; <a class="code" href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">vFormat</a>(<span class="keyword">const</span> CharT* sFormat, ...)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">const</span> CharT* <span class="keyword">const</span> zcFormat = sFormat;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    va_list vaArgs;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    va_start(vaArgs, sFormat);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    va_list vaCopy;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    va_copy(vaCopy, vaArgs);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> iLen = std::vsnprintf(<span class="keyword">nullptr</span>, 0, zcFormat, vaCopy); <span class="comment">// NOLINT(clang-diagnostic-format-nonliteral)</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    va_end(vaCopy);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::vector&lt;CharT&gt; zc(iLen + 1);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs)); <span class="comment">// NOLINT(clang-diagnostic-format-nonliteral)</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    va_end(vaArgs);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> std::string(zc.data(), zc.size());</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
-<div class="ttc" id="aformat_8hpp_html_aec7a78e0e53305094ec38dc8bd038de8"><div class="ttname"><a href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">vFormat</a></div><div class="ttdeci">std::basic_string&lt; CharT &gt; vFormat(const std::basic_string&lt; CharT &gt; sFormat,...)</div><div class="ttdef"><b>Definition:</b> format.hpp:48</div></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">   60</a></span>&#160;std::basic_string&lt;CharT&gt; <a class="code" href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">vFormat</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; sFormat, ...)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">const</span> CharT* <span class="keyword">const</span> zcFormat = sFormat.c_str();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Initialize a variable argument array</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    va_list vaArgs;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    va_start(vaArgs, sFormat);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// Reliably acquire the size from a copy of the variable argument array</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// and a functionally reliable call to mock the formatting</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    va_list vaCopy;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    va_copy(vaCopy, vaArgs);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> iLen = std::vsnprintf(<span class="keyword">nullptr</span>, 0, zcFormat, vaCopy);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    va_end(vaCopy);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// Return a formatted string without risking memory mismanagement</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// and without assuming any compiler or platform specific behavior</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::vector&lt;CharT&gt; zc(iLen + 1);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    va_end(vaArgs);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> std::string(zc.data(), zc.size());</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="format_8hpp.html#a145f187acb1003d20b7eb30331d65d4e">   96</a></span>&#160;std::basic_string&lt;CharT&gt; <a class="code" href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">vFormat</a>(<span class="keyword">const</span> CharT* sFormat, ...)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">const</span> CharT* <span class="keyword">const</span> zcFormat = sFormat;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    va_list vaArgs;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    va_start(vaArgs, sFormat);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    va_list vaCopy;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    va_copy(vaCopy, vaArgs);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> iLen = std::vsnprintf(<span class="keyword">nullptr</span>, 0, zcFormat, vaCopy); <span class="comment">// NOLINT(clang-diagnostic-format-nonliteral)</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    va_end(vaCopy);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    std::vector&lt;CharT&gt; zc(iLen + 1);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs)); <span class="comment">// NOLINT(clang-diagnostic-format-nonliteral)</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    va_end(vaArgs);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> std::string(zc.data(), zc.size());</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="ttc" id="aformat_8hpp_html_aec7a78e0e53305094ec38dc8bd038de8"><div class="ttname"><a href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">vFormat</a></div><div class="ttdeci">std::basic_string&lt; CharT &gt; vFormat(const std::basic_string&lt; CharT &gt; sFormat,...)</div><div class="ttdoc">Formats a string using a variable number of arguments.</div><div class="ttdef"><b>Definition:</b> format.hpp:60</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

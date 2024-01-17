@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['programargs_222',['ProgramArgs',['../classProgramArgs.html',1,'']]]
+  ['logger_193',['Logger',['../classlogging_1_1Logger.html',1,'logging']]]
 ];

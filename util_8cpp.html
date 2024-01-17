@@ -99,20 +99,8 @@ $(document).ready(function(){initNavTree('util_8cpp.html',''); initResizable(); 
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for util.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="util_8cpp__incl.png" border="0" usemap="#asrc_2util_8cpp" alt=""/></div>
-<map name="asrc_2util_8cpp" id="asrc_2util_8cpp">
-<area shape="rect" title=" " alt="" coords="427,5,520,32"/>
-<area shape="rect" href="util_8hpp.html" title="This file contains utility functions and macros for the Steppable project." alt="" coords="402,80,473,107"/>
-<area shape="rect" title=" " alt="" coords="5,155,91,181"/>
-<area shape="rect" title=" " alt="" coords="115,155,171,181"/>
-<area shape="rect" title=" " alt="" coords="499,155,573,181"/>
-<area shape="rect" title=" " alt="" coords="597,155,656,181"/>
-<area shape="rect" title=" " alt="" coords="681,155,743,181"/>
-<area shape="rect" href="colors_8hpp.html" title="This file contains functions and macros for manipulating text colors and formats in the terminal." alt="" coords="195,155,285,181"/>
-<area shape="rect" title=" " alt="" coords="309,155,376,181"/>
-<area shape="rect" title=" " alt="" coords="400,155,475,181"/>
-<area shape="rect" title=" " alt="" coords="202,229,278,256"/>
-</map>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp__incl.svg" width="100%" height="496"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -128,9 +116,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a5d3673801816ad366e92dc0f27b529f7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a5d3673801816ad366e92dc0f27b529f7">unicodeToUtf8</a> (const int unicode)</td></tr>
 <tr class="memdesc:a5d3673801816ad366e92dc0f27b529f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a Unicode character to UTF-8 encoding.  <a href="util_8cpp.html#a5d3673801816ad366e92dc0f27b529f7">More...</a><br /></td></tr>
 <tr class="separator:a5d3673801816ad366e92dc0f27b529f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac87bf229222a2a4f32b8626281c6c282"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#ac87bf229222a2a4f32b8626281c6c282">replaceLeadingZeros</a> (const <a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">std::vector</a>&lt; int &gt; &amp;<a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">vector</a>) -&gt; std::decay_t&lt; decltype(<a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">vector</a>)&gt;</td></tr>
+<tr class="memitem:ac87bf229222a2a4f32b8626281c6c282"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#ac87bf229222a2a4f32b8626281c6c282">replaceLeadingZeros</a> (const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</td></tr>
 <tr class="separator:ac87bf229222a2a4f32b8626281c6c282"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8056dcad90ba9582ba25405a95c2f1e4"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a8056dcad90ba9582ba25405a95c2f1e4">removeLeadingZeros</a> (const <a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">std::vector</a>&lt; int &gt; &amp;<a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">vector</a>) -&gt; std::decay_t&lt; decltype(<a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">vector</a>)&gt;</td></tr>
+<tr class="memitem:a8056dcad90ba9582ba25405a95c2f1e4"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a8056dcad90ba9582ba25405a95c2f1e4">removeLeadingZeros</a> (const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</td></tr>
 <tr class="separator:a8056dcad90ba9582ba25405a95c2f1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8db0b6516cd43653a22f81a36140b658"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a8db0b6516cd43653a22f81a36140b658">removeLeadingZeros</a> (const std::string &amp;string) -&gt; std::decay_t&lt; decltype(string)&gt;</td></tr>
 <tr class="separator:a8db0b6516cd43653a22f81a36140b658"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,6 +148,12 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The widened string. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a93b9ba3fe803c8e3fa1b128f4e83924f_icgraph.svg" width="100%" height="537"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -198,9 +192,9 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">auto removeLeadingZeros </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">std::vector</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
           <td class="paramname"><em>vector</em></td><td>)</td>
-          <td> -&gt;  std::decay_t&lt; decltype(<a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">vector</a>)&gt;</td>
+          <td> -&gt;  std::decay_t&lt; decltype(vector)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -212,6 +206,12 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The vector with leading zeros removed. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a8056dcad90ba9582ba25405a95c2f1e4_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -224,9 +224,9 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">auto replaceLeadingZeros </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">std::vector</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
           <td class="paramname"><em>vector</em></td><td>)</td>
-          <td> -&gt;  std::decay_t&lt; decltype(<a class="el" href="testUtil_8cpp.html#aabef8c84de372e1ed3227bf64a095e3c">vector</a>)&gt;</td>
+          <td> -&gt;  std::decay_t&lt; decltype(vector)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -238,6 +238,12 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The modified vector with leading zeros replaced. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_ac87bf229222a2a4f32b8626281c6c282_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -290,6 +296,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The result of splitting the two numbers.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="structSplitNumberResult.html" title="A structure for storing split numbers.">SplitNumberResult</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="util_8cpp_afd4f95f2c2aa156bdcd4259ce36ca049_cgraph.svg" width="322" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_afd4f95f2c2aa156bdcd4259ce36ca049_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -319,6 +337,12 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The UTF-8 encoded string representation of the Unicode character.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>When output goes wrong, make sure to call this function when printing! </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classUtf8CodePage.html" title="A class that sets the console output code page to UTF-8 and enables VT mode.">Utf8CodePage</a> </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a5d3673801816ad366e92dc0f27b529f7_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
