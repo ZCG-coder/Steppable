@@ -36,6 +36,7 @@ var namespaces_dup =
       [ "underline", "namespaceformats.html#a221fbf978f90ffb8aa76e92bef0da498", null ]
     ] ],
     [ "internals", "namespaceinternals.html", [
+      [ "localtime_xp", "namespaceinternals.html#a27d06fa2d5220c9128fdbb6674cf79c0", null ],
       [ "programSafeExit", "namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e", null ]
     ] ],
     [ "logging", "namespacelogging.html", "namespacelogging" ]

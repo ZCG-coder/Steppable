@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fraction_192',['Fraction',['../classFraction.html',1,'']]]
+  ['fraction_193',['Fraction',['../classFraction.html',1,'']]]
 ];

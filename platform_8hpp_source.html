@@ -113,20 +113,37 @@ $(document).ready(function(){initNavTree('platform_8hpp_source.html',''); initRe
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceinternals.html">internals</a></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e">   54</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e">programSafeExit</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> status)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#ifdef MACOSX</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        exit(status);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        std::quick_exit(status);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <span class="comment">// namespace internals</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceinternals.html">internals</a></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e">   55</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e">programSafeExit</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> status)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#ifdef MACOSX</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        exit(status);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        std::quick_exit(status);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="namespaceinternals.html#a27d06fa2d5220c9128fdbb6674cf79c0">   64</a></span>&#160;    <span class="keyword">inline</span> std::tm <a class="code" href="namespaceinternals.html#a27d06fa2d5220c9128fdbb6674cf79c0">localtime_xp</a>(std::time_t* timer)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::tm bt{};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#if defined(__unix__)</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        localtime_r(timer, &amp;bt);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#elif defined(WINDOWS)</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        localtime_s(&amp;bt, timer);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">static</span> std::mutex mtx;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::lock_guard&lt;std::mutex&gt; lock(mtx);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        bt = *std::localtime(timer);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> bt;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <span class="comment">// namespace internals</span></div>
 <div class="ttc" id="anamespaceinternals_html"><div class="ttname"><a href="namespaceinternals.html">internals</a></div><div class="ttdoc">Namespace for internal functions.</div></div>
-<div class="ttc" id="anamespaceinternals_html_a1e32c90e4c076ff4eaa2ac510e1d586e"><div class="ttname"><a href="namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e">internals::programSafeExit</a></div><div class="ttdeci">void programSafeExit(const int status)</div><div class="ttdoc">Exit the program safely.</div><div class="ttdef"><b>Definition:</b> platform.hpp:54</div></div>
+<div class="ttc" id="anamespaceinternals_html_a1e32c90e4c076ff4eaa2ac510e1d586e"><div class="ttname"><a href="namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e">internals::programSafeExit</a></div><div class="ttdeci">void programSafeExit(const int status)</div><div class="ttdoc">Exit the program safely.</div><div class="ttdef"><b>Definition:</b> platform.hpp:55</div></div>
+<div class="ttc" id="anamespaceinternals_html_a27d06fa2d5220c9128fdbb6674cf79c0"><div class="ttname"><a href="namespaceinternals.html#a27d06fa2d5220c9128fdbb6674cf79c0">internals::localtime_xp</a></div><div class="ttdeci">std::tm localtime_xp(std::time_t *timer)</div><div class="ttdef"><b>Definition:</b> platform.hpp:64</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
