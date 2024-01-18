@@ -34,6 +34,7 @@
 #pragma once
 
 #include <cstdlib>
+#include <ctime>
 
 /**
  * @namespace internals
@@ -51,12 +52,27 @@ namespace internals
      *
      * @param status The status code to exit with
      */
-    void programSafeExit(const int status)
+    inline void programSafeExit(const int status)
     {
 #ifdef MACOSX
         exit(status);
 #else
         std::quick_exit(status);
 #endif
+    }
+
+    inline std::tm localtime_xp(std::time_t* timer)
+    {
+        std::tm bt{};
+#if defined(__unix__)
+        localtime_r(timer, &bt);
+#elif defined(WINDOWS)
+        localtime_s(&bt, timer);
+#else
+        static std::mutex mtx;
+        std::lock_guard<std::mutex> lock(mtx);
+        bt = *std::localtime(timer);
+#endif
+        return bt;
     }
 } // namespace internals

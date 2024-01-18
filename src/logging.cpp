@@ -21,9 +21,9 @@
  **************************************************************************************************/
 
 #include "logging.hpp"
+#include "platform.hpp"
 
 #include <chrono>
-#include <ctime>
 #include <fstream>
 #include <iomanip>
 
@@ -48,7 +48,8 @@ namespace logging
     {
         auto const now = std::chrono::system_clock::now();
         auto now_time = std::chrono::system_clock::to_time_t(now);
-        auto timestamp = std::put_time(std::localtime(&now_time), "%F %T %Z");
+        auto localTime = internals::localtime_xp(&now_time);
+        auto timestamp = std::put_time(&localTime, "%F %T %Z");
         file << '[' << timestamp << "] " << message << '\n';
     }
 

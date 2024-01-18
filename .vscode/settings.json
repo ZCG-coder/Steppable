@@ -68,5 +68,8 @@
   "python.formatting.provider": "none",
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.cursorStyle": "line"
+  "editor.cursorStyle": "line",
+  "clangd.path": "clangd-17",
+  "C_Cpp.clang_format_path": "clang-format-17",
+  "C_Cpp.codeAnalysis.clangTidy.path": "clang-tidy-17"
 }
