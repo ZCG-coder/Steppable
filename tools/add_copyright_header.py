@@ -1,5 +1,5 @@
 #####################################################################################################
-#  Copyright (c) 2023-{year} NWSOFT                                                                    #
+#  Copyright (c) 2023-2024 NWSOFT                                                                    #
 #                                                                                                   #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
 #  of this software and associated documentation files (the "Software"), to deal                    #
@@ -56,7 +56,7 @@ REGEX_CPP = re.compile(r"""/\*+
  \* Permission is hereby granted, free of charge, to any person obtaining a copy {19}\*
  \* of this software and associated documentation files \(the "Software"\), to deal {18}\*
  \* in the Software without restriction, including without limitation the rights {19}\*
- \* to use, copy, modify, merge, publish, distribute, sublicense, and\/or sell {22}\*
+ \* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell {22}\*
  \* copies of the Software, and to permit persons to whom the Software is {26}\*
  \* furnished to do so, subject to the following conditions: {39}\*
  \* {96}\*
@@ -152,7 +152,7 @@ def process(file: Path):
             results = re.match(REGEX_PY_CMAKE, first_n_lines(contents, count_lines(COPYRIGHT_PY_CMAKE) + 1))
             year = results.group(1) if results is not None else None
             if results is None:
-                contents = COPYRIGHT_PY_CMAKE + "\n\n" + contents
+                contents = COPYRIGHT_PY_CMAKE.format(year=datetime.datetime.now().year) + "\n\n" + contents
                 print(f"Added header to {file}")
             elif year != str(datetime.datetime.now().year):
                 header = COPYRIGHT_PY_CMAKE.format(year=datetime.datetime.now().year)

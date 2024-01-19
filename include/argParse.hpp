@@ -83,6 +83,8 @@ private:
     std::vector<std::string_view> posArgs; // Names are used for error messages only.
     /// @brief This map is used to store the descriptions of all positional arguments specified.
     std::map<char, std::string_view> posArgDescriptions;
+    /// @brief This map stores whether the positional arguments are required to be numbers.
+    std::vector<bool> posArgIsNumber;
 
     /**
      * @brief This map is used to store the values of all keyword arguments specified. Keys are keyword argument names
@@ -128,12 +130,14 @@ public:
      * @brief This function is used to add a positional argument to the class.
      * @param name The name of the positional argument. Only one character is allowed.
      * @param description The description of the positional argument.
+     * @param requiresNumber Whether the positional argument requires to be a number.
      *
      * @note The name of the positional argument is used for error messages only. It does not affect the parsing of
      * @note the command-line arguments.
      */
     void addPosArg(char name,
-                   const std::string_view& description = ""); // Positional arguments are always required and ordered
+                   const std::string_view& description = "",
+                   bool requiresNumber = true); // Positional arguments are always required and ordered
 
     /**
      * @brief This function is used to add a keyword argument to the class.

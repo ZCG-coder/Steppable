@@ -45,9 +45,10 @@ void ProgramArgs::addKeywordArg(const std::string_view& name, int defaultValue, 
     keywordArgDescriptions.insert({ name, description });
 }
 
-void ProgramArgs::addPosArg(const char name, const std::string_view& description)
+void ProgramArgs::addPosArg(const char name, const std::string_view& description, const bool requiresNumber)
 {
     posArgDescriptions.insert({ name, description });
+    posArgIsNumber.push_back(requiresNumber);
 }
 
 void ProgramArgs::printUsage(const std::string_view& reason) const
@@ -144,9 +145,8 @@ void ProgramArgs::parseArgs()
 {
     for (auto _arg : argv)
     {
-        std::smatch match;
         auto arg = static_cast<std::string>(_arg);
-        if (std::regex_match(arg, match, KEYWORD_ARG_REGEX))
+        if (std::smatch match; std::regex_match(arg, match, KEYWORD_ARG_REGEX))
         {
             std::string name = match[1];
             int value = std::stoi(match[2]);
@@ -161,9 +161,9 @@ void ProgramArgs::parseArgs()
         }
         else
         {
-            if (not isNumber(_arg))
+            if (not isNumber(_arg) and posArgIsNumber[posArgs.size()])
             {
-                error("ProgramArgs::parseArgs", (std::string) "Invalid argument: %s", _arg);
+                error("ProgramArgs::parseArgs", static_cast<std::string>("Invalid argument: %s"), _arg);
                 internals::programSafeExit(-1);
             }
             posArgs.push_back(_arg);
