@@ -2,7 +2,7 @@ var classProgramArgs =
 [
     [ "ProgramArgs", "classProgramArgs.html#aa22388f97b615afd8fdf86a9ee96841c", null ],
     [ "addKeywordArg", "classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336", null ],
-    [ "addPosArg", "classProgramArgs.html#a589a2d348f85c88765b79de0dc19d398", null ],
+    [ "addPosArg", "classProgramArgs.html#a419988f156cdd89651c16c65e6d26c14", null ],
     [ "addSwitch", "classProgramArgs.html#a1517bda6763b0efc42b5a6ca579a3412", null ],
     [ "getKeywordArgument", "classProgramArgs.html#a67d7bd75b7221946e8173398a6c2868e", null ],
     [ "getPosArg", "classProgramArgs.html#a37b2fdefcdd9a9317584d551c7dcf1d9", null ],
@@ -14,6 +14,7 @@ var classProgramArgs =
     [ "keywordArgDescriptions", "classProgramArgs.html#adecc792c6c1285316da4094691aa4e5a", null ],
     [ "keywordArgs", "classProgramArgs.html#a7a5cf80d248bc23733f41e6c8fc8af10", null ],
     [ "posArgDescriptions", "classProgramArgs.html#a4ce40731d055aa61933de73dff8a5505", null ],
+    [ "posArgIsNumber", "classProgramArgs.html#a2bd740f77e5b15c7b047a85f3721373c", null ],
     [ "posArgs", "classProgramArgs.html#a40242eb883e363f5dc861da07830a0c2", null ],
     [ "programName", "classProgramArgs.html#a9f5e13b1fd67d6fbb1bba8e4d1abd085", null ],
     [ "switchDescriptions", "classProgramArgs.html#a4023c0453d94632ea56da0850601b723", null ],

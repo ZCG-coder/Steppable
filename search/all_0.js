@@ -7,7 +7,7 @@ var searchData=
   ['add_4',['add',['../add_8cpp.html#a3b7c641c3c06453e9e673a9b50292843',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool negative):&#160;add.cpp'],['../basicArithm_8hpp.html#acf222f0bfc4ca97fbdc6db7fe808a9ee',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false):&#160;add.cpp']]],
   ['add_2ecpp_5',['add.cpp',['../add_8cpp.html',1,'']]],
   ['addkeywordarg_6',['addKeywordArg',['../classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336',1,'ProgramArgs']]],
-  ['addposarg_7',['addPosArg',['../classProgramArgs.html#a589a2d348f85c88765b79de0dc19d398',1,'ProgramArgs']]],
+  ['addposarg_7',['addPosArg',['../classProgramArgs.html#a419988f156cdd89651c16c65e6d26c14',1,'ProgramArgs']]],
   ['addreport_2ecpp_8',['addReport.cpp',['../addReport_8cpp.html',1,'']]],
   ['addreport_2ehpp_9',['addReport.hpp',['../addReport_8hpp.html',1,'']]],
   ['addswitch_10',['addSwitch',['../classProgramArgs.html#a1517bda6763b0efc42b5a6ca579a3412',1,'ProgramArgs']]],

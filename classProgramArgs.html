@@ -109,9 +109,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1517bda6763b0efc42b5a6ca579a3412"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a1517bda6763b0efc42b5a6ca579a3412">addSwitch</a> (const std::string_view &amp;name, bool defaultValue, const std::string_view &amp;description=&quot;&quot;)</td></tr>
 <tr class="memdesc:a1517bda6763b0efc42b5a6ca579a3412"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a switch to the class.  <a href="classProgramArgs.html#a1517bda6763b0efc42b5a6ca579a3412">More...</a><br /></td></tr>
 <tr class="separator:a1517bda6763b0efc42b5a6ca579a3412"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a589a2d348f85c88765b79de0dc19d398"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a589a2d348f85c88765b79de0dc19d398">addPosArg</a> (char name, const std::string_view &amp;description=&quot;&quot;)</td></tr>
-<tr class="memdesc:a589a2d348f85c88765b79de0dc19d398"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a positional argument to the class.  <a href="classProgramArgs.html#a589a2d348f85c88765b79de0dc19d398">More...</a><br /></td></tr>
-<tr class="separator:a589a2d348f85c88765b79de0dc19d398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a419988f156cdd89651c16c65e6d26c14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a419988f156cdd89651c16c65e6d26c14">addPosArg</a> (char name, const std::string_view &amp;description=&quot;&quot;, bool requiresNumber=true)</td></tr>
+<tr class="memdesc:a419988f156cdd89651c16c65e6d26c14"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a positional argument to the class.  <a href="classProgramArgs.html#a419988f156cdd89651c16c65e6d26c14">More...</a><br /></td></tr>
+<tr class="separator:a419988f156cdd89651c16c65e6d26c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cfadc3e489780e1411ef0807ee6f336"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336">addKeywordArg</a> (const std::string_view &amp;name, int defaultValue, std::string_view description=&quot;&quot;)</td></tr>
 <tr class="memdesc:a8cfadc3e489780e1411ef0807ee6f336"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a keyword argument to the class.  <a href="classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336">More...</a><br /></td></tr>
 <tr class="separator:a8cfadc3e489780e1411ef0807ee6f336"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,6 +142,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a4ce40731d055aa61933de73dff8a5505"><td class="memItemLeft" align="right" valign="top">std::map&lt; char, std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a4ce40731d055aa61933de73dff8a5505">posArgDescriptions</a></td></tr>
 <tr class="memdesc:a4ce40731d055aa61933de73dff8a5505"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all positional arguments specified.  <a href="classProgramArgs.html#a4ce40731d055aa61933de73dff8a5505">More...</a><br /></td></tr>
 <tr class="separator:a4ce40731d055aa61933de73dff8a5505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd740f77e5b15c7b047a85f3721373c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a2bd740f77e5b15c7b047a85f3721373c">posArgIsNumber</a></td></tr>
+<tr class="memdesc:a2bd740f77e5b15c7b047a85f3721373c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map stores whether the positional arguments are required to be numbers.  <a href="classProgramArgs.html#a2bd740f77e5b15c7b047a85f3721373c">More...</a><br /></td></tr>
+<tr class="separator:a2bd740f77e5b15c7b047a85f3721373c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a5cf80d248bc23733f41e6c8fc8af10"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string_view, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProgramArgs.html#a7a5cf80d248bc23733f41e6c8fc8af10">keywordArgs</a></td></tr>
 <tr class="memdesc:a7a5cf80d248bc23733f41e6c8fc8af10"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the values of all keyword arguments specified. Keys are keyword argument names and values are the values of the keyword arguments.  <a href="classProgramArgs.html#a7a5cf80d248bc23733f41e6c8fc8af10">More...</a><br /></td></tr>
 <tr class="separator:a7a5cf80d248bc23733f41e6c8fc8af10"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -262,8 +265,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a589a2d348f85c88765b79de0dc19d398"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a589a2d348f85c88765b79de0dc19d398">&#9670;&nbsp;</a></span>addPosArg()</h2>
+<a id="a419988f156cdd89651c16c65e6d26c14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a419988f156cdd89651c16c65e6d26c14">&#9670;&nbsp;</a></span>addPosArg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -278,7 +281,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::string_view &amp;&#160;</td>
-          <td class="paramname"><em>description</em> = <code>&quot;&quot;</code>&#160;</td>
+          <td class="paramname"><em>description</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>requiresNumber</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -292,7 +301,8 @@ Here is the caller graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>The name of the positional argument. Only one character is allowed. </td></tr>
-    <tr><td class="paramname">description</td><td>The description of the positional argument.</td></tr>
+    <tr><td class="paramname">description</td><td>The description of the positional argument. </td></tr>
+    <tr><td class="paramname">requiresNumber</td><td>Whether the positional argument requires to be a number.</td></tr>
   </table>
   </dd>
 </dl>
@@ -302,7 +312,7 @@ the command-line arguments. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classProgramArgs_a589a2d348f85c88765b79de0dc19d398_icgraph.svg" width="296" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classProgramArgs_a419988f156cdd89651c16c65e6d26c14_icgraph.svg" width="296" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -637,6 +647,30 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>This map is used to store the descriptions of all positional arguments specified. </p>
+
+</div>
+</div>
+<a id="a2bd740f77e5b15c7b047a85f3721373c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd740f77e5b15c7b047a85f3721373c">&#9670;&nbsp;</a></span>posArgIsNumber</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;bool&gt; ProgramArgs::posArgIsNumber</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This map stores whether the positional arguments are required to be numbers. </p>
 
 </div>
 </div>
