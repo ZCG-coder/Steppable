@@ -74,7 +74,8 @@ std::string subtract(const std::string_view &a, const std::string_view &b, const
             return "-" + addResult;
         }
     } else if (bIsNegative and not aIsNegative) {
-        std::cout << "Adding " << a << " and " << b.substr(1) << " since " << b << " is negative\n";
+        if (steps == 2)
+            std::cout << "Adding " << a << " and " << b.substr(1) << " since " << b << " is negative\n";
         resultIsNegative = false;
         return add(a, b.substr(1), steps);
     }
