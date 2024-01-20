@@ -30,10 +30,17 @@
 #include <iostream>
 
 TEST_START()
-SECTION(Decimal Convert)
-const std::string &a = "46432231133131", &b = "8";
-const auto& result = decimalConvert(a, b, 0);
+    SECTION(Decimal Convert without letters)
+        const std::string& a = "46432231133131",& b = "8";
+        const auto& result = decimalConvert(a, b, 0);
 
-_.assertIsEqual(result, "2649229669977");
-SECTION_END()
+        _.assertIsEqual(result, "2649229669977");
+    SECTION_END()
+
+    SECTION(Decimal Convert)
+        const std::string& a = "88a",& b = "16";
+        const auto& result = decimalConvert(a, b, 0);
+
+        _.assertIsEqual(result, "2186");
+    SECTION_END()
 TEST_END()

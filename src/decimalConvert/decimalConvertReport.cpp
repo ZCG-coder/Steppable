@@ -30,7 +30,7 @@
 #include <string_view>
 
 std::string reportDecimalConvertStep(const std::string_view& baseString,
-                                     const char digit,
+                                     const std::string_view& digit,
                                      const size_t powerIndex,
                                      const std::string_view& convertedDigit,
                                      const size_t maxWidth)

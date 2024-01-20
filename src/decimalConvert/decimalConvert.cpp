@@ -23,18 +23,36 @@
 #include "argParse.hpp"
 #include "decimalConvertReport.hpp"
 #include "fn/basicArithm.hpp"
-#include "output.hpp"
 #include "util.hpp"
 
+#include <platform.hpp>
 #include <string>
+
+std::string toNumber(const char _input)
+{
+    const char input = toupper(_input);
+    if ('0' <= input and input <= '9')
+        return { 1, input };
+    // If letters are used in counting, it should be like this:
+    // 0 1 2 3 4 5 6 7 8 9 A B C D E ...
+    // Where A is the 10th numeral.
+    if ('A' <= input and input <= 'Z')
+        return std::to_string(input - 'A' + 10);
+    throw std::runtime_error(static_cast<std::string>("Cannot convert ") + _input + " to Number");
+}
 
 std::string decimalConvert(const std::string_view& _inputString, const std::string_view& baseString, int steps)
 {
-    std::string larger = compare(baseString, "36");
-    if (larger == "0")
+    if (compare(baseString, "0", 0) == "0")
+    {
+        error("decimalConvert", static_cast<std::string>("negadecimals are not supported (yet)"));
+        internals::programSafeExit(-1);
+    }
+    if (std::string larger = compare(baseString, "36"); larger == "0")
     {
         error("decimalConvert",
-              (std::string) "The base is larger than 36, which means that it is impossible to represent the number.");
+              static_cast<std::string>(
+                  "The base is larger than 36, which means that it is impossible to represent the number."));
         return "";
     }
 
@@ -48,9 +66,8 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
     {
         auto index = iterator - inputString.begin();
         auto currentIndex = std::to_string(index);
-        auto digit = inputString[index];
-        auto placeValue = power(baseString, std::to_string(index), 0),
-             convertedDigit = multiply(placeValue, std::string(1, digit), 0);
+        auto digit = toNumber(inputString[index]);
+        auto placeValue = power(baseString, std::to_string(index), 0), convertedDigit = multiply(placeValue, digit, 0);
         converted = add(converted, convertedDigit, 0);
 
         if (steps == 2)
@@ -61,11 +78,12 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
 }
 
 #ifndef NO_MAIN
+
 int main(int _argc, const char* _argv[])
 {
-    Utf8CodePage _;
+    [[maybe_unused]] Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number in the base");
+    program.addPosArg('a', "Number in the base", false);
     program.addPosArg('b', "Base number");
     program.addKeywordArg("steps", 2, "Amount of steps while converting the number. 0 = No steps, 2 = All steps.");
     program.addSwitch("profile", false, "profiling the program");
@@ -73,15 +91,16 @@ int main(int _argc, const char* _argv[])
 
     int steps = program.getKeywordArgument("steps");
     bool profile = program.getSwitch("profile");
-    const auto &inputString = program.getPosArg(0), baseString = program.getPosArg(1);
+    const auto& inputString = program.getPosArg(0), baseString = program.getPosArg(1);
 
     if (profile)
     {
         TIC(Decimal Conversion)
-        std::cout << "Decimal Conversion :\n" << decimalConvert(inputString, baseString, steps) << std::endl;
+            std::cout << "Decimal Conversion :\n" << decimalConvert(inputString, baseString, steps) << std::endl;
         TOC()
     }
     else
         std::cout << decimalConvert(inputString, baseString, steps) << std::endl;
 }
+
 #endif
