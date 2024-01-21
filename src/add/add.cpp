@@ -49,13 +49,13 @@ std::string add(const std::string_view& a, const std::string_view& b, const int 
     {
         if (steps == 2)
             std::cout << "Subtracting " << b << " from " << a << " since " << a << " is negative.\n";
-        return subtract(b, a, steps);
+        return subtract(b, a.substr(1), steps);
     }
     else if (bIsNegative)
     {
         if (steps == 2)
             std::cout << "Subtracting " << a << " from " << b << " since " << b << " is negative.\n";
-        return subtract(a, b, steps);
+        return subtract(a, b.substr(1), steps);
     }
 
     auto aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;

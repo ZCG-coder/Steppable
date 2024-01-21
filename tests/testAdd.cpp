@@ -45,4 +45,12 @@ const auto& addResult2 = add(b, a, 0); // Makes sure it works when a and b are r
 _.assertIsEqual(addResult1, "120272.929");
 _.assertIsEqual(addResult1, addResult2);
 SECTION_END()
+
+SECTION(Addition with negative numbers)
+const std::string &a = "-65943.595", &b = "54329.334";
+const auto& addResult1 = add(a, b, 0);
+const auto& addResult2 = add(b, a, 0); // Makes sure it works when a and b are reordered.
+_.assertIsEqual(addResult1, "-11614.261");
+_.assertIsEqual(addResult1, addResult2);
+SECTION_END()
 TEST_END()
