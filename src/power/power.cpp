@@ -25,10 +25,18 @@
 #include "powerReport.hpp"
 #include "util.hpp"
 
-std::string power(const std::string_view _number, const std::string_view& raiseTo, const int steps)
+std::string power(const std::string_view _number, const std::string_view& _raiseTo, const int steps)
 {
+    std::string raiseTo = static_cast<std::string>(_raiseTo);
+    bool negative = false;
+    if (compare(raiseTo, "0", 0) == "0")
+    {
+        // raiseTo is negative
+        raiseTo = raiseTo.substr(1);
+        negative = true;
+    }
     std::string numberOrig = static_cast<std::string>(_number), number = "1";
-    return reportPower(_number, raiseTo, steps);
+    return reportPower(_number, raiseTo, negative, steps);
 }
 
 #ifndef NO_MAIN

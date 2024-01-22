@@ -53,4 +53,12 @@ const auto& multiplyResult2 = multiply(b, a, 0); // Makes sure it works when a a
 _.assertIsEqual(multiplyResult1, "108");
 _.assertIsEqual(multiplyResult1, multiplyResult2);
 SECTION_END()
+
+SECTION(Multiplication with negative numbers)
+const std::string &a = "-12", &b = "9";
+const auto& multiplyResult1 = multiply(a, b, 0);
+const auto& multiplyResult2 = multiply(b, a, 0); // Makes sure it works when a and b are reordered.
+_.assertIsEqual(multiplyResult1, "-108");
+_.assertIsEqual(multiplyResult1, multiplyResult2);
+SECTION_END()
 TEST_END()

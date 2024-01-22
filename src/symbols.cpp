@@ -49,4 +49,10 @@ std::string makeSuperscript(const std::string& normal)
     return string;
 }
 
-std::string_view makeSuperscript(const char normal) { return SUPERSCRIPTS[normal - '0']; }
+std::string_view makeSuperscript(const char normal)
+{
+    if (normal == '-')
+        return "\u207B";
+
+    return SUPERSCRIPTS[normal - '0'];
+}

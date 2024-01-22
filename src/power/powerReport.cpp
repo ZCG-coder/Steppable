@@ -27,21 +27,47 @@
 
 #include <sstream>
 
-std::string reportPower(const std::string_view _number, const std::string_view& raiseTo, const int steps)
+std::string reportPower(const std::string_view _number,
+                        const std::string_view& raiseTo,
+                        const bool negative,
+                        const int steps)
 {
     std::stringstream ss;
     const auto numberOrig = static_cast<std::string>(_number);
     auto number = static_cast<std::string>("1");
 
     loop(raiseTo, [&](const auto& i) {
-        number = multiply(number, numberOrig, 0);
+        if (not negative)
+            number = multiply(number, numberOrig, 0);
+        else
+            number = divide("1", number, 0);
         const auto& currentPower = add(i, "1", 0);
         if (steps == 2)
         {
-            ss << BECAUSE " " << multiply(number, numberOrig, 1) << '\n';
-            ss << THEREFORE " " << numberOrig << makeSuperscript(currentPower) << " = " << number << '\n';
+            if (not negative)
+                ss << BECAUSE " " << multiply(number, numberOrig, 1) << '\n';
+            else
+                ss << BECAUSE " " << divide("1", number, 1) << '\n';
+            ss << THEREFORE " " << numberOrig;
+            if (negative)
+                ss << makeSuperscript('-');
+            ss << makeSuperscript(currentPower) << " = " << number << '\n';
         }
     });
+
+    if (negative)
+    {
+        if (steps == 2)
+            ss << BECAUSE " " << divide("1", number, 1) << '\n';
+        else if (steps == 1)
+        {
+            const auto& divisionResult = divide("1", number, 0);
+            ss << numberOrig << makeSuperscript('-') << makeSuperscript(static_cast<std::string>(raiseTo)) << " = "
+               << divisionResult;
+        }
+        else
+            ss << number;
+    }
 
     if (steps == 1)
         ss << numberOrig << makeSuperscript(static_cast<std::string>(raiseTo)) << " = " << number;

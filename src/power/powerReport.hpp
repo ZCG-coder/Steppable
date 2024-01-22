@@ -23,4 +23,4 @@
 
 #include <string>
 
-std::string reportPower(std::string_view _number, const std::string_view& raiseTo, int steps);
+std::string reportPower(std::string_view _number, const std::string_view& raiseTo, bool negative, int steps);

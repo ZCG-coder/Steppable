@@ -79,6 +79,11 @@ std::string divide(const std::string_view& _number,
     auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger;
     auto decimals = _decimals;
 
+    if (numberIntegerOrig.empty())
+        numberIntegerOrig = "0";
+    if (divisorIntegerOrig.empty())
+        divisorIntegerOrig = "0";
+
     // Here, we determine the polarity of the result.
     // Scenario 1: Both positive
     // Solution  : Do nothing
@@ -141,9 +146,9 @@ std::string divide(const std::string_view& _number,
     // - Length of integer in output  = Length of integers in number - Length of integers in divisor  (*)
     // - Length of decimals in output = Length of output - Length of integers + 1
     // Note: It can be negative!
-    auto numberIntegers = static_cast<long long>(numberIntegerOrig.length() - divisorIntegerOrig.length());
-    auto diffNumberDivisor = subtract(numberIntegerOrig, divisorIntegerOrig);
-    if (compare(diffNumberDivisor, "10", 0) == "0")
+    auto numberIntegers = static_cast<long long>(numberInteger.length() - divisorInteger.length());
+    auto diffNumberDivisor = abs(subtract(numberIntegerOrig, divisorIntegerOrig, 0), 0);
+    if (compare(diffNumberDivisor, "1", 0) == "0")
         numberIntegers++;
     auto numberDecimals = static_cast<long long>(quotient.length() - numberIntegers + 1);
     // Scenario 1: No decimal places returned
