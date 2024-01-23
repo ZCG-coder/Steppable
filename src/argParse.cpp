@@ -33,6 +33,8 @@
 #include <string_view>
 #include <vector>
 
+using namespace std::literals;
+
 void ProgramArgs::addSwitch(const std::string_view& name, const bool defaultValue, const std::string_view& description)
 {
     switches.insert({ name, defaultValue });
@@ -94,7 +96,7 @@ void ProgramArgs::printUsage(const std::string_view& reason) const
         for (const auto& [keywordArgName, keywordArgDescription] : keywordArgDescriptions)
         {
             std::cout << colors::brightGreen << formats::bold << '[' << '-' << keywordArgName << ": <VALUE>]" << reset
-                << '\n';
+                      << '\n';
             std::cout << "  " << keywordArgDescription << reset << '\n';
         }
         std::cout << reset;
@@ -163,7 +165,7 @@ void ProgramArgs::parseArgs()
         {
             if (not isNumber(_arg) and posArgIsNumber[posArgs.size()])
             {
-                error("ProgramArgs::parseArgs", static_cast<std::string>("Invalid argument: %s"), _arg);
+                error("ProgramArgs::parseArgs", "Invalid argument: %s"s, _arg);
                 internals::programSafeExit(-1);
             }
             posArgs.push_back(_arg);

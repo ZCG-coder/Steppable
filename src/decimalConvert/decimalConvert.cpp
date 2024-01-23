@@ -27,6 +27,7 @@
 
 #include <cctype>
 #include <string>
+using namespace std::literals;
 
 std::string toNumber(const char _input)
 {
@@ -38,7 +39,7 @@ std::string toNumber(const char _input)
     // Where A is the 10th numeral.
     if ('A' <= input and input <= 'Z')
         return std::to_string(input - 'A' + 10);
-    throw std::runtime_error(static_cast<std::string>("Cannot convert ") + _input + " to Number");
+    throw std::runtime_error("Cannot convert "s + _input + " to Number");
 }
 
 std::string decimalConvert(const std::string_view& _inputString, const std::string_view& baseString, int steps)
@@ -46,8 +47,7 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
     if (compare(baseString, "36", 0) == "1")
     {
         error("decimalConvert",
-              static_cast<std::string>(
-                  "The base is larger than 36, which means that it is impossible to represent the number."));
+              "The base is larger than 36, which means that it is impossible to represent the number."s);
         return "";
     }
 
@@ -62,6 +62,13 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
         auto index = iterator - inputString.begin();
         auto currentIndex = std::to_string(index);
         auto digit = toNumber(inputString[index]);
+
+        if (compare(digit, baseString, 0) != "0")
+        {
+            error("decimalConvert",
+                  "The digit "s + digit + " is larger than the base " + static_cast<std::string>(baseString));
+            return "";
+        }
         auto placeValue = power(baseString, std::to_string(index), 0), convertedDigit = multiply(placeValue, digit, 0);
         converted = add(converted, convertedDigit, 0);
 

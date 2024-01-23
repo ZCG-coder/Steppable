@@ -35,9 +35,12 @@
 
 #pragma once
 
+#include "output.hpp"
+
 #include <string>
 #include <string_view>
-#include "output.hpp"
+
+using namespace std::literals;
 
 /**
  * @brief Calculates the absolute value of a string representation of a number.
@@ -125,10 +128,7 @@ std::string power(std::string_view _number, const std::string_view& raiseTo, int
  * @param noMinus Flag indicating whether to display a minus sign or not.
  * @return The difference between the two numbers as a string.
  */
-std::string subtract(const std::string_view& a,
-                     const std::string_view& b,
-                     int steps = 2,
-                     bool noMinus = false);
+std::string subtract(const std::string_view& a, const std::string_view& b, int steps = 2, bool noMinus = false);
 
 /**
  * @brief Executes a given predicate function a specified number of times.
@@ -150,8 +150,8 @@ void loop(const std::string_view& times, Pred predicate)
         }
         catch (std::exception& e)
         {
-            error("loop", static_cast<std::string>("Exception occurred in predicate."));
-            error("loop", static_cast<std::string>("Exception message: %s"), e.what());
+            error("loop", "Exception occurred in predicate."s);
+            error("loop", "Exception message: %s"s, e.what());
         }
         current = add(current, "1", 0);
         result = compare(current, times, 0);

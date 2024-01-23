@@ -26,10 +26,12 @@
 #include "symbols.hpp"
 #include "util.hpp"
 
+#include <iomanip>
 #include <sstream>
 #include <string>
 #include <string_view>
-#include <iomanip>
+
+using namespace std::literals;
 
 std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string_view& temp,
@@ -68,7 +70,7 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
         return formattedAns.str();
     }
     if (resultIsNegative)
-        return "-" + static_cast<std::string>(ans);
+        return "-"s + ans;
     else
         return static_cast<std::string>(ans);
 }

@@ -27,6 +27,8 @@
 
 #include <sstream>
 
+using namespace std::literals;
+
 std::string reportPower(const std::string_view _number,
                         const std::string_view& raiseTo,
                         const bool negative,
@@ -34,7 +36,7 @@ std::string reportPower(const std::string_view _number,
 {
     std::stringstream ss;
     const auto numberOrig = static_cast<std::string>(_number);
-    auto number = static_cast<std::string>("1");
+    auto number = "1"s;
 
     loop(raiseTo, [&](const auto& i) {
         if (not negative)
