@@ -6,7 +6,7 @@ var searchData=
   ['posargisnumber_116',['posArgIsNumber',['../classProgramArgs.html#a2bd740f77e5b15c7b047a85f3721373c',1,'ProgramArgs']]],
   ['posargs_117',['posArgs',['../classProgramArgs.html#a40242eb883e363f5dc861da07830a0c2',1,'ProgramArgs']]],
   ['posargs_118',['PosArgs',['../argParse_8hpp.html#abcc0e9a7c3b8fc77562a1b471ab29390',1,'argParse.hpp']]],
-  ['power_119',['power',['../basicArithm_8hpp.html#a5967cef8aeb4f6ea90014159becd286d',1,'power(std::string_view _number, const std::string_view &amp;raiseTo, int steps=2):&#160;power.cpp'],['../power_8cpp.html#af8e216791924f14991ddd81da3955794',1,'power(const std::string_view _number, const std::string_view &amp;raiseTo, const int steps):&#160;power.cpp']]],
+  ['power_119',['power',['../basicArithm_8hpp.html#a5967cef8aeb4f6ea90014159becd286d',1,'power(std::string_view _number, const std::string_view &amp;raiseTo, int steps=2):&#160;power.cpp'],['../power_8cpp.html#af89984cd69aac63fd697b9cdcc548020',1,'power(const std::string_view _number, const std::string_view &amp;_raiseTo, const int steps):&#160;power.cpp']]],
   ['power_2ecpp_120',['power.cpp',['../power_8cpp.html',1,'']]],
   ['powerreport_2ecpp_121',['powerReport.cpp',['../powerReport_8cpp.html',1,'']]],
   ['powerreport_2ehpp_122',['powerReport.hpp',['../powerReport_8hpp.html',1,'']]],
