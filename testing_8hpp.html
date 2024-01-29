@@ -94,12 +94,11 @@ $(document).ready(function(){initNavTree('testing_8hpp.html',''); initResizable(
 
 <p>This file contains the declaration of the <a class="el" href="classTestCase.html" title="Represents a test case for unit testing.">TestCase</a> class and macros for testing.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
-<code>#include &lt;string_view&gt;</code><br />
+<div class="textblock"><code>#include &lt;string_view&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for testing.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="testing_8hpp__incl.svg" width="192" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="testing_8hpp__incl.svg" width="158" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -157,7 +156,7 @@ Macros</h2></td></tr>
 <div class="line">        std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; <span class="stringliteral">&quot;[Testing: &quot;</span> &lt;&lt; nameSection &lt;&lt; <span class="charliteral">&#39;]&#39;</span> &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
 <div class="line">        auto start = std::chrono::high_resolution_clock::now();                                 \</div>
 <div class="line">        auto _ = <a class="code" href="classTestCase.html">TestCase</a>(nameSection);</div>
-<div class="ttc" id="aclassTestCase_html"><div class="ttname"><a href="classTestCase.html">TestCase</a></div><div class="ttdoc">Represents a test case for unit testing.</div><div class="ttdef"><b>Definition:</b> testing.hpp:81</div></div>
+<div class="ttc" id="aclassTestCase_html"><div class="ttname"><a href="classTestCase.html">TestCase</a></div><div class="ttdoc">Represents a test case for unit testing.</div><div class="ttdef"><b>Definition:</b> testing.hpp:82</div></div>
 <div class="ttc" id="acolors_8hpp_html_a4661597771a019efa3f0f92cfb0c6e02"><div class="ttname"><a href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a></div><div class="ttdeci">std::ostream &amp; reset(std::ostream &amp;stream)</div><div class="ttdoc">Reset the text color and format to the default values.</div><div class="ttdef"><b>Definition:</b> colors.cpp:51</div></div>
 <div class="ttc" id="anamespacecolors_html_aad9ae24338f510c8faf9e8f395e0ee4b"><div class="ttname"><a href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a></div><div class="ttdeci">std::ostream &amp; brightBlue(std::ostream &amp;stream)</div><div class="ttdoc">Set the text color to bright blue.</div><div class="ttdef"><b>Definition:</b> colors.cpp:144</div></div>
 </div><!-- fragment -->
@@ -208,13 +207,13 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (errors)                                                                                \</div>
-<div class="line">        error(<span class="stringliteral">&quot;TEST_END&quot;</span>, (std::string) <span class="stringliteral">&quot;Not all tests passed. There are %i errors.&quot;</span>, errors); <a class="code" href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">\</a></div>
-<div class="line"><a class="code" href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">    else                                                                                       \</a></div>
-<div class="line"><a class="code" href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">        info</a>(<span class="stringliteral">&quot;All tests passed.&quot;</span>);                                                             \</div>
-<div class="line">    std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; std::setw(80) &lt;&lt; std::setfill(<span class="charliteral">&#39;=&#39;</span>) &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;    \</div>
-<div class="line">    if (errors)                                                                                \</div>
-<div class="line">        return 1;                                                                              \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (errors)                                                                             \</div>
+<div class="line">        error(<span class="stringliteral">&quot;TEST_END&quot;</span>, <span class="stringliteral">&quot;Not all tests passed. There are %i errors.&quot;</span>s, errors);           <a class="code" href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">\</a></div>
+<div class="line"><a class="code" href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">    else                                                                                    \</a></div>
+<div class="line"><a class="code" href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">        info</a>(<span class="stringliteral">&quot;All tests passed.&quot;</span>);                                                          \</div>
+<div class="line">    std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; std::setw(80) &lt;&lt; std::setfill(<span class="charliteral">&#39;=&#39;</span>) &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
+<div class="line">    if (errors)                                                                             \</div>
+<div class="line">        return 1;                                                                           \</div>
 <div class="line">    }</div>
 <div class="ttc" id="aoutput_8hpp_html_afa50372fb14acf84c371c61d2cc6585a"><div class="ttname"><a href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">info</a></div><div class="ttdeci">void info(T msg, Args &amp;&amp;... args)</div><div class="ttdoc">Prints an info message.</div><div class="ttdef"><b>Definition:</b> output.hpp:147</div></div>
 </div><!-- fragment -->

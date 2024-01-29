@@ -7,6 +7,9 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "fraction.hpp", "fraction_8hpp.html", [
       [ "Fraction", "classFraction.html", null ]
     ] ],
+    [ "internals.hpp", "internals_8hpp.html", [
+      [ "setw", "structinternals_1_1setw.html", "structinternals_1_1setw" ]
+    ] ],
     [ "logging.hpp", "logging_8hpp.html", "logging_8hpp" ],
     [ "output.hpp", "output_8hpp.html", "output_8hpp" ],
     [ "platform.hpp", "platform_8hpp.html", "platform_8hpp" ],

@@ -1,5 +1,8 @@
 var annotated_dup =
 [
+    [ "internals", "namespaceinternals.html", [
+      [ "setw", "structinternals_1_1setw.html", "structinternals_1_1setw" ]
+    ] ],
     [ "logging", "namespacelogging.html", [
       [ "Logger", "classlogging_1_1Logger.html", "classlogging_1_1Logger" ]
     ] ],
