@@ -30,13 +30,11 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string_view& temp,
                            const std::string_view& ans,
                            const std::string_view& divisor,
-                           const std::string_view& number,
                            const std::string_view& _divisor,
                            const std::string_view& _number,
-                           int steps,
-                           int decimals,
-                           int width,
-                           bool resultIsNegative);
+                           const int steps,
+                           const int width,
+                           const bool resultIsNegative);
 
 std::string reportDivisionStep(const std::string_view& temp,
                                const std::string_view& quotient,

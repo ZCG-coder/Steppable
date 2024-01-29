@@ -25,7 +25,10 @@
 #include "format.hpp"
 #include "output.hpp"
 
+#include <string>
 #include <string_view>
+
+using namespace std::literals;
 
 TestCase::TestCase(const std::string& testCaseName) { this->testCaseName = testCaseName; }
 
@@ -36,7 +39,7 @@ void TestCase::assert(const bool condition, const std::string& conditionName)
         info("%s PASSED", conditionName.c_str());
         return;
     }
-    error("TestCase::assert", (std::string)"%i: Condition %s evaluates to false. FAILED", errorCount + 1, conditionName.c_str());
+    error("TestCase::assert", "%i: Condition %s evaluates to false. FAILED"s, errorCount + 1, conditionName.c_str());
     errorCount++;
 }
 

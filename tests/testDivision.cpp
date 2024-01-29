@@ -37,7 +37,7 @@ const std::string
     &b = "50", &res = divide(a, b, 0, 0);
 
 _.assertIsEqual(res,
-                "2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+                "200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 SECTION_END()
 
 SECTION(Integer divided by decimal)
@@ -54,7 +54,7 @@ SECTION_END()
 SECTION(Decimal divided by decimal)
 const std::string &a = "532.532132", &b = "53524.2353", &res = divide(a, b, 0, 8);
 
-_.assertIsEqual(res, "0.009949364");
+_.assertIsEqual(res, "0.00994936");
 SECTION_END()
 
 SECTION(Division with less decimal places than requested)

@@ -23,7 +23,7 @@
 #include "divisionReport.hpp"
 
 #include "fn/basicArithm.hpp"
-#include "symbols.hpp"
+#include "internals.hpp"
 #include "util.hpp"
 
 #include <iomanip>
@@ -37,11 +37,9 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string_view& temp,
                            const std::string_view& ans,
                            const std::string_view& divisor,
-                           const std::string_view& number,
                            const std::string_view& _divisor,
                            const std::string_view& _number,
                            const int steps,
-                           const int decimals,
                            const int width,
                            const bool resultIsNegative)
 {
@@ -49,13 +47,11 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
 
     if (steps == 2)
     {
-        tempFormattedAns << std::setw(width) << std::setfill(' ') << std::right
-                         << makeWider(static_cast<std::string>(temp)) << '\n';
-
-        formattedAns << std::setw(width) << std::setfill(' ') << std::right << makeWider(static_cast<std::string>(ans))
-                     << '\n';
-        formattedAns << std::setw(divisor.length() * 3 - 1) << std::setfill(' ') << "";
-        formattedAns << std::setw(width - divisor.length() * 2) << std::setfill('_') << "" << '\n';
+        tempFormattedAns << std::string(width - temp.length(), ' ') << makeWider(static_cast<std::string>(temp))
+                         << '\n';
+        formattedAns << std::string(width - ans.length(), ' ') << makeWider(static_cast<std::string>(ans)) << '\n';
+        formattedAns << std::string(divisor.length() * 3 - 1, ' ');
+        formattedAns << std::string(width - divisor.length() * 2, '_') << '\n';
         formattedAns << tempFormattedAns.rdbuf();
 
         formattedAns << THEREFORE " ";
@@ -70,9 +66,8 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
         return formattedAns.str();
     }
     if (resultIsNegative)
-        return "-"s + ans;
-    else
-        return static_cast<std::string>(ans);
+        return "-"s + static_cast<std::string>(ans);
+    return static_cast<std::string>(ans);
 }
 
 std::string reportDivisionStep(const std::string_view& temp,
@@ -88,8 +83,8 @@ std::string reportDivisionStep(const std::string_view& temp,
 
     // Remove the summary line and the result
     auto splitResult = split(result, '\n');
-    // splitResult.pop_back();
-    // splitResult.pop_back();
+    splitResult.pop_back();
+    splitResult.pop_back();
     const auto normalWidth = divisor.length() + 1;
 
     const auto outputWidth = index == 0 ? (divisor.length() - 1) * 3 :

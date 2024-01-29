@@ -30,8 +30,9 @@
 
 #pragma once
 
-#include <string>
 #include <string_view>
+
+using namespace std::literals;
 
 /// @brief This macro defines the main function and initializes the Utf8CodePage object, and prepares the error counter.
 #define TEST_START()           \
@@ -63,14 +64,14 @@
     }
 
 /// @brief This macro ends the main function and prints the number of errors encountered.
-#define TEST_END()                                                                             \
-    if (errors)                                                                                \
-        error("TEST_END", (std::string) "Not all tests passed. There are %i errors.", errors); \
-    else                                                                                       \
-        info("All tests passed.");                                                             \
-    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << '\n';    \
-    if (errors)                                                                                \
-        return 1;                                                                              \
+#define TEST_END()                                                                          \
+    if (errors)                                                                             \
+        error("TEST_END", "Not all tests passed. There are %i errors."s, errors);           \
+    else                                                                                    \
+        info("All tests passed.");                                                          \
+    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << '\n'; \
+    if (errors)                                                                             \
+        return 1;                                                                           \
     }
 
 /**
@@ -96,7 +97,7 @@ public:
      * @brief Constructs a new TestCase object with the given name.
      * @param testCaseName The name of the test case.
      */
-    TestCase(const std::string& testCaseName);
+    explicit TestCase(const std::string& testCaseName);
 
     /**
      * @brief Asserts that two strings are equal.
