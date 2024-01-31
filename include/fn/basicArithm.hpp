@@ -41,6 +41,11 @@
 #include <string_view>
 
 using namespace std::literals;
+struct QuotientRemainder
+{
+    std::string quotient;
+    std::string remainder;
+};
 
 /**
  * @brief Calculates the absolute value of a string representation of a number.

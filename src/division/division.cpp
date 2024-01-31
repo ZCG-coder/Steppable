@@ -30,28 +30,23 @@
 #include <sstream>
 #include <string>
 
-auto getQuotient(const auto& _temp, const auto& _divisor)
+QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto& divisor)
 {
-    auto temp = _temp;
-    const auto& divisor = _divisor;
-    if (compare(temp, divisor, 0) == "0")
-        return std::string("0");
-    if (compare(temp, divisor, 0) == "2")
-        return std::string("1"); // Equal
+    auto currentRemainder = _currentRemainder;
+    if (compare(currentRemainder, divisor, 0) == "0")
+        return { "0", currentRemainder };
+    if (compare(currentRemainder, divisor, 0) == "2")
+        return { "1", "0" }; // Equal
 
     int out = 0;
-    while (compare(temp, divisor, 0) == "1" or compare(temp, divisor, 0) == "2")
+    while (compare(currentRemainder, divisor, 0) == "1" or compare(currentRemainder, divisor, 0) == "2")
     {
         out++;
-        temp = subtract(temp, divisor, 0);
+        currentRemainder = subtract(currentRemainder, divisor, 0);
     }
 
-    return std::to_string(out);
-}
-
-auto getRemainder(const auto& quotient, const auto& temp, const auto& divisor)
-{
-    return subtract(temp, multiply(quotient, divisor, 0), 0);
+    const auto &quotient = std::to_string(out), remainder = currentRemainder;
+    return { quotient, remainder };
 }
 
 std::string divide(const std::string_view& _number,
@@ -131,8 +126,7 @@ std::string divide(const std::string_view& _number,
 
     while (number.length() > idx)
     {
-        auto currentQuotient = getQuotient(remainder, divisor);
-        auto currentRemainder = getRemainder(currentQuotient, remainder, divisor);
+        auto [currentQuotient, currentRemainder] = getQuotientRemainder(remainder, divisor);
 
         quotient += currentQuotient;
         if (steps == 2)

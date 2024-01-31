@@ -69,7 +69,11 @@
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorStyle": "line",
-  "clangd.path": "clangd-17",
+  "clangd.path": "/usr/bin/clangd",
   "C_Cpp.clang_format_path": "clang-format-17",
-  "C_Cpp.codeAnalysis.clangTidy.path": "clang-tidy-17"
+  "C_Cpp.codeAnalysis.clangTidy.path": "clang-tidy-17",
+  "files.exclude": {
+    "**/.cache": true,
+    "**/doxygen-awesome-css": true
+  }
 }
