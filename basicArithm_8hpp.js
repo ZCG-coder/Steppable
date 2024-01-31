@@ -1,5 +1,6 @@
 var basicArithm_8hpp =
 [
+    [ "QuotientRemainder", "structQuotientRemainder.html", "structQuotientRemainder" ],
     [ "abs", "basicArithm_8hpp.html#a0bf76a4df6c2748fbcb5b33b3e8166b3", null ],
     [ "add", "basicArithm_8hpp.html#acf222f0bfc4ca97fbdc6db7fe808a9ee", null ],
     [ "compare", "basicArithm_8hpp.html#aabb709fcb471467879352bf51bb0030a", null ],
