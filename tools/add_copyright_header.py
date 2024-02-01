@@ -28,7 +28,7 @@ PROJECT_PATH = Path(__file__).parent.parent
 
 COPYRIGHT_CPP = """\
 /**************************************************************************************************
- * Copyright (c) 2023-{year} NWSOFT                                                                  *
+ * Copyright (c) 2023-{year} NWSOFT                                                                 *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -137,7 +137,7 @@ def process(file: Path):
             results = re.match(REGEX_CPP, first_n_lines(contents, count_lines(COPYRIGHT_CPP) + 1))
             year = results.group(1) if results is not None else None
             if results is None:
-                contents = COPYRIGHT_CPP + "\n\n" + contents
+                contents = COPYRIGHT_CPP.format(year=datetime.datetime.now().year) + "\n\n" + contents
                 print(f"Added header to {file}")
             elif year != str(datetime.datetime.now().year):
                 header = COPYRIGHT_CPP.format(year=datetime.datetime.now().year)
