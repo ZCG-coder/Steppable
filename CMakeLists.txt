@@ -57,7 +57,7 @@ function(capitalize IN OUT)
             ${CAPITALIZED}
             PARENT_SCOPE)
 endfunction()
-set(COMPONENTS abs add subtract multiply decimalConvert comparison power division)
+set(COMPONENTS abs add baseConvert subtract multiply decimalConvert comparison power division)
 set(TARGETS ${COMPONENTS} util)
 set(TEST_TARGETS_TEMP util ${COMPONENTS})
 

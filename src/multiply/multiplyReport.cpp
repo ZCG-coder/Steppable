@@ -38,7 +38,8 @@ std::string reportMultiply(const std::string& a,
                            const std::vector<int>& finalProdCarries,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
-                           bool resultIsNegative,
+                           const bool resultIsNegative,
+                           const size_t numberDecimals,
                            const int steps)
 {
     std::stringstream ss;
@@ -92,9 +93,21 @@ std::string reportMultiply(const std::string& a,
         ss << a << " " MULTIPLY " " << b << " = ";
     if (resultIsNegative)
         ss << '-';
-    for (const auto vector = replaceLeadingZeros(finalProdDigits); const int i : vector)
-        if (i >= 0)
-            ss << i;
+    const auto vector = replaceLeadingZeros(finalProdDigits);
 
+    std::string out;
+    for (const int i : vector)
+        if (i >= 0)
+            out += std::to_string(i);
+    if (long long numberIntegers =
+            static_cast<long long>(out.length()) - numberDecimals; // NOLINT(*-narrowing-conversions)
+        numberIntegers < 0)
+        out = std::string(-numberIntegers, '0') + "." + out;
+    else if (numberIntegers == 0)
+        out = "0." + out;
+    else
+        out.insert(numberIntegers, ".");
+
+    ss << out;
     return ss.str();
 }

@@ -382,6 +382,22 @@ auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype
 auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>;
 
 /**
+ * @brief Joins a vector of elements into a single string using a delimiter.
+ *
+ * @tparam T The type of the vector elements.
+ * @param vector The vector of strings to join.
+ * @param delimiter The delimiter to join the strings with.
+ * @return The joined string.
+ */
+template<typename T>
+auto join(const std::vector<T>& vector, const std::string& delimiter)
+{
+    std::stringstream result;
+    for (const auto& item : vector)
+        result << item << delimiter;
+    return result.str();
+}
+/**
  * @brief Makes the given string wider by adding 2 spaces between each character.
  *
  * @param orig The original string.
@@ -407,3 +423,7 @@ std::string makeWider(const std::string& orig);
  * @see Utf8CodePage
  */
 std::string unicodeToUtf8(int unicode);
+
+auto removeTrailingZeros(const std::vector<int>& _vector) -> std::decay_t<decltype(_vector)>;
+
+auto removeTrailingZeros(const std::string& numStr) -> std::decay_t<decltype(numStr)>;

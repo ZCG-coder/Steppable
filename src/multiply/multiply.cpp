@@ -38,7 +38,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
     if (b == "1")
         return static_cast<std::string>(a);
 
-    const auto& [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false);
+    const auto& [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, false);
     bool resultIsNegative = false;
     const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
     const std::string &aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
@@ -106,10 +106,18 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
         finalProdDigits[indexDigit] = sum;
     }
 
-    return reportMultiply(
-        static_cast<std::string>(a), static_cast<std::string>(b), aStr, bStr, finalProdDigits, finalProdCarries, prodDigitsOut, carries,
-        resultIsNegative,
-        steps);
+    const size_t numberDecimals = aDecimal.length() + bDecimal.length();
+    return reportMultiply(static_cast<std::string>(a),
+                          static_cast<std::string>(b),
+                          aStr,
+                          bStr,
+                          finalProdDigits,
+                          finalProdCarries,
+                          prodDigitsOut,
+                          carries,
+                          resultIsNegative,
+                          numberDecimals,
+                          steps);
 }
 
 #ifndef NO_MAIN

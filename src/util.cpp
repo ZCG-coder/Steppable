@@ -23,8 +23,8 @@
 #include "util.hpp"
 
 #ifdef WINDOWS
-#undef min
-#undef max
+    #undef min
+    #undef max
 #endif
 
 #include <algorithm>
@@ -60,6 +60,8 @@ SplitNumberResult splitNumber(const std::string_view& _a,
         aDecimal = "";
     if (isZeroString(bDecimal) or bParts.size() == 1)
         bDecimal = "";
+    aDecimal = removeTrailingZeros(aDecimal);
+    bDecimal = removeTrailingZeros(bDecimal);
 
     // Pad with zeros
     if (padInteger)
@@ -188,11 +190,7 @@ auto replaceLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltyp
     if (const auto firstNonZero = std::ranges::find_if(out, [](const int num) { return num != 0; });
         out.begin() != firstNonZero && out.front() == 0)
     {
-        std::replace_if(
-            out.begin(),
-            firstNonZero,
-            [](const int num) { return num == 0; },
-            -2);
+        std::replace_if(out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
     }
 
     return out;
@@ -214,4 +212,26 @@ auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(stri
     auto out = string;
     out.erase(0, std::min(out.find_first_not_of('0'), out.size() - 1));
     return out;
+}
+
+auto removeTrailingZeros(const std::vector<int>& _vector) -> std::decay_t<decltype(_vector)>
+{
+    std::vector vector = _vector;
+    auto i = vector.size() - 1;
+    while (vector[i] == 0)
+    {
+        vector.pop_back();
+        i--;
+    }
+    return vector;
+}
+
+auto removeTrailingZeros(const std::string& numStr) -> std::decay_t<decltype(numStr)>
+{
+    size_t i = numStr.size() - 1;
+    while (i > 0 && numStr[i] == '0')
+        i--;
+
+    std::string result = numStr.substr(0, i + 1);
+    return result;
 }

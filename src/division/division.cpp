@@ -39,7 +39,7 @@ QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto
         return { "1", "0" }; // Equal
 
     int out = 0;
-    while (compare(currentRemainder, divisor, 0) == "1" or compare(currentRemainder, divisor, 0) == "2")
+    while (compare(currentRemainder, divisor, 0) != "0")
     {
         out++;
         currentRemainder = subtract(currentRemainder, divisor, 0);
@@ -74,7 +74,7 @@ std::string divide(const std::string_view& _number,
     auto splitNumberResult = splitNumber(_number, _divisor, false, true);
     bool numberIsNegative = splitNumberResult.aIsNegative, divisorIsNegative = splitNumberResult.bIsNegative;
     auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] = splitNumberResult.splitNumberArray;
-    auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger;
+    auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger, numberDecimalOrig = numberDecimal;
     auto decimals = _decimals;
 
     if (numberIntegerOrig.empty())
@@ -142,46 +142,89 @@ std::string divide(const std::string_view& _number,
     // - Length of integer in output  = Length of integers in number - Length of integers in divisor  (*)
     // - Length of decimals in output = Length of output - Length of integers
     // Note: It can be negative!
-    auto numberIntegers = static_cast<long long>(numberInteger.length() - divisorInteger.length());
-    auto diffNumberDivisor = subtract(numberIntegerOrig, divisorIntegerOrig, 0);
-    if (compare(abs(_number, 0), abs(_divisor, 0), 0) != "0" and compare(diffNumberDivisor, "9", 0) != "1")
-        numberIntegers++;
+    auto numberIntegers = static_cast<long long>(numberIntegerOrig.length() - divisorIntegerOrig.length());
     long long numberDecimals = quotient.length() - numberIntegers;
+    std::string testedResult;
+    SplitNumberResult parts;
+    std::string finalQuotient = quotient;
+    bool adjusted = false;
+
+    // The gotos here are confusing. Here's a breakdown of how it runs:
+    // - Determine number of decimals
+    // - rounding: Round the numbers according to the estimated number of integers and decimals. <=========+-+
+    //   |- Is the result correctly adjusted?                                                              | | Jump
+    //    |-Yes|-> Jumps to finish, returns the result.----------------------------------------------------+-+----+
+    //    |-No|-> Jumps to testDigits and adjust the numbers accordingly.----------------------------------+-+--+ |
+    // - testDigits: Adjust the number of digits by multiplying and then see if the result is reasonable.<-+-+--+ |
+    //   |- Is reasonable?                                                                                 | |    |
+    //    |-Correct|-> Jumps to finish, returns the result.------------------------------------------------+-+----+
+    //    |-Too many integer places / Not enough decimal places|-> Remove one integer place----------------+ |    |
+    //    |-Not enough integer places / Too many decimal places|-> Add one integer place---------------------+    |
+    // - finish: Returns the correct result, and reports it using the reportDivision function.<===================+
+    //   |-> Ends program.
+
+rounding:
     // Scenario 1: No decimal places returned
     // Solution  : Do nothing
     if (static_cast<size_t>(numberIntegers) == quotient.length() - 1)
-        quotient = quotient.substr(0, quotient.length() - 1);
+        finalQuotient = quotient.substr(0, quotient.length() - 1);
     // Scenario 2: Decimal places more than requested
     // Solution  : Round to the nearest decimal place
     else if (numberDecimals >= decimals and numberIntegers > 0)
     {
-        auto beforeDecimal = quotient.substr(0, numberIntegers),
-             afterDecimal = quotient.substr(numberIntegers, numberDecimals);
+        auto beforeDecimal = quotient.substr(0, numberIntegers - 1),
+             afterDecimal = quotient.substr(numberIntegers - 1, numberDecimals);
         if (not afterDecimal.empty() and afterDecimal.back() > '4')
             afterDecimal = add(afterDecimal, "1", 0);
         if (beforeDecimal.empty())
             beforeDecimal = "0";
         if (not afterDecimal.empty())
-            quotient = beforeDecimal + "." + afterDecimal;
+            finalQuotient = beforeDecimal + "." + afterDecimal;
         else
-            quotient = beforeDecimal;
+            finalQuotient = beforeDecimal;
     }
     // Scenario 3: Result is less than one
     // Solution  : 1. Append "0." to the beginning
     //             2. Append appropriate amount of zeros
     else if (numberIntegers <= 0)
-        quotient = "0." + std::string(-numberIntegers, '0') + quotient.substr(0, quotient.length() - 1);
+        finalQuotient = "0." + std::string(-numberIntegers, '0') + quotient.substr(0, quotient.length() - 1);
 
     // Scenario 4: Decimal places less than requested
     // Solution  : Pad with trailing zeros
     if (numberDecimals < decimals and numberDecimals >= 0)
     {
         auto difference = decimals - numberDecimals;
-        quotient += std::string(difference, '0');
+        finalQuotient += std::string(difference, '0');
     }
 
+testDigits:
+    // Here, we try out the estimated value, and see if it is right.
+    testedResult = multiply(finalQuotient, _divisor, 0);
+    parts = splitNumber(testedResult, "0", false, false);
+
+    if (parts.splitNumberArray[0].length() == numberIntegerOrig.length() or
+        parts.splitNumberArray[1].length() == numberDecimalOrig.length())
+        goto finish;
+    if (parts.splitNumberArray[0].length() > numberIntegerOrig.length() and
+        parts.splitNumberArray[1].length() < numberDecimalOrig.length())
+    {
+        numberIntegers--;
+        numberDecimals = finalQuotient.length() - numberIntegers;
+        adjusted = true;
+        goto rounding;
+    }
+    if (parts.splitNumberArray[0].length() < numberIntegerOrig.length() and
+        parts.splitNumberArray[1].length() > numberDecimalOrig.length())
+    {
+        numberIntegers++;
+        numberDecimals = finalQuotient.length() - numberIntegers;
+        adjusted = true;
+        goto rounding;
+    }
+
+finish:
     return reportDivision(
-        tempFormattedAns, remainder, quotient, divisor, _divisor, _number, steps, width, resultIsNegative);
+        tempFormattedAns, remainder, finalQuotient, divisor, _divisor, _number, steps, width, resultIsNegative);
 }
 
 #ifndef NO_MAIN

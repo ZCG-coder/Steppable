@@ -22,12 +22,14 @@
 
 #pragma once
 
+#include <iostream>
+
 namespace internals
 {
     struct setw
     {
         unsigned long n;
-        setw(unsigned long n) : n(n) {}
+        explicit setw(const unsigned long n) : n(n) {}
 
         friend std::ostream& operator<<(std::ostream& os, const setw& cs)
         {

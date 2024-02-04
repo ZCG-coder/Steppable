@@ -105,6 +105,15 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
 std::string divide(const std::string_view& number, const std::string_view& divisor, int steps = 2, int decimals = 5);
 
 /**
+ * Calculates the quotient and remainder of dividing the current remainder by the divisor.
+ *
+ * @param _currentRemainder The current remainder.
+ * @param divisor The divisor.
+ * @return A QuotientRemainder object containing the quotient and remainder.
+ */
+QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto& divisor);
+
+/**
  * @brief Multiplies two string representations of numbers.
  *
  * @param a The first string representation of the number.

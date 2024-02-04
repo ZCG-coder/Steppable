@@ -1,10 +1,10 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,modernize-*,-*'
+Checks: 'abseil-*,altera-*,bugprone-*,concurrency-*,cppcoreguidelines-*,darwin-*,fuchsia-*,readability-*,performance-*,portability-*,zircon-*,hicpp-*,google-*,cert-*,clang-diagnostic-*,clang-analyzer-*,modernize-*,-*'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
-FormatStyle:     Microsoft
-User:            coder
+FormatStyle: Microsoft
+User: coder
 CheckOptions:
   llvm-else-after-return.WarnOnConditionVariables: 'false'
   modernize-loop-convert.MinConfidence: reasonable

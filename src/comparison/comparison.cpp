@@ -31,13 +31,18 @@
 
 std::string compare(const std::string_view& a, const std::string_view& b, const int steps)
 {
-    const auto splitNumberResult = splitNumber(a, b, false, true);
-    const auto result = splitNumberResult.splitNumberArray;
-    const bool aIsNegative = splitNumberResult.aIsNegative, bIsNegative = splitNumberResult.bIsNegative,
-               bothNegative = aIsNegative and bIsNegative;
+    const auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, true);
+    const auto result = splitNumberArray;
+    const bool bothNegative = aIsNegative and bIsNegative;
     const auto& aIntegerReal = result[0];
-    if (const auto& bIntegerReal = result[2]; aIntegerReal.length() != bIntegerReal.length())
+    if (const auto& bIntegerReal = result[2];
+        // a is longer than b and is of different polarities
+        aIntegerReal.length() != bIntegerReal.length() and aIsNegative == bIsNegative)
+    {
+        if (bothNegative)
+            return reportComparisonAtInteger(a, b, aIntegerReal.length() < bIntegerReal.length(), steps);
         return reportComparisonAtInteger(a, b, aIntegerReal.length() > bIntegerReal.length(), steps);
+    }
 
     // Here, we try to determine whether a or b is greater based on their polarities
     // Scenario 1: a and b are both positive
@@ -53,7 +58,7 @@ std::string compare(const std::string_view& a, const std::string_view& b, const 
     // Action    : Return a < b
     if (not aIsNegative and bIsNegative)
         return reportComparisonByPolarity(a, b, true, steps);
-    else if (aIsNegative and not bIsNegative)
+    if (aIsNegative and not bIsNegative)
         return reportComparisonByPolarity(a, b, false, steps);
 
     for (long i = 0; static_cast<size_t>(i) < a.length(); i++)
@@ -62,11 +67,11 @@ std::string compare(const std::string_view& a, const std::string_view& b, const 
             continue; // Negative sign, decimal point or equals
         if (a[i] > b[i] and not bothNegative)
             return reportComparisonByDigit(a, b, i, true, false, steps);
-        else if (a[i] < b[i] and not bothNegative)
+        if (a[i] < b[i] and not bothNegative)
             return reportComparisonByDigit(a, b, i, false, false, steps);
-        else if (a[i] > b[i] and bothNegative) // First digit is the negative sign
+        if (a[i] > b[i] and bothNegative) // First digit is the negative sign
             return reportComparisonByDigit(a, b, i - 1, false, false, steps);
-        else if (a[i] < b[i] and bothNegative)
+        if (a[i] < b[i] and bothNegative)
             return reportComparisonByDigit(a, b, i - 1, true, false, steps);
     }
 

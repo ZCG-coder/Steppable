@@ -34,4 +34,5 @@ std::string reportMultiply(const std::string& a,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
                            bool resultIsNegative = false,
+                           size_t numberDecimals = 0,
                            int steps = 2);
