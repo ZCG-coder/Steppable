@@ -77,63 +77,63 @@
 <path fill="none" stroke="midnightblue" d="M41.11,-145.48C64.34,-148.43 103.58,-153.4 132.96,-157.12"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="132.54,-160.59 142.9,-158.38 133.42,-153.65 132.54,-160.59"/>
 </g>
-<!-- Node13 -->
-<g id="node13" class="node">
-<title>Node13</title>
-<g id="a_node13"><a xlink:href="classProgramArgs.html#a67d7bd75b7221946e8173398a6c2868e" target="_top" xlink:title="This function is used to get the value of a keyword argument.">
-<polygon fill="none" stroke="black" points="77,-114.5 77,-133.5 268,-133.5 268,-114.5 77,-114.5"/>
-<text text-anchor="middle" x="172.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::getKeywordArgument</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node13 -->
-<g id="edge12" class="edge">
-<title>Node1&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M41.11,-140.52C53.13,-138.99 69.43,-136.93 86.43,-134.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="87.02,-138.23 96.5,-133.5 86.14,-131.28 87.02,-138.23"/>
-</g>
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node14"><a xlink:href="classProgramArgs.html#a37b2fdefcdd9a9317584d551c7dcf1d9" target="_top" xlink:title="This function is used to get the value of a positional argument.">
-<polygon fill="none" stroke="black" points="105,-76.5 105,-95.5 240,-95.5 240,-76.5 105,-76.5"/>
-<text text-anchor="middle" x="172.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::getPosArg</text>
+<g id="a_node14"><a xlink:href="classProgramArgs.html#a67d7bd75b7221946e8173398a6c2868e" target="_top" xlink:title="This function is used to get the value of a keyword argument.">
+<polygon fill="none" stroke="black" points="77,-114.5 77,-133.5 268,-133.5 268,-114.5 77,-114.5"/>
+<text text-anchor="middle" x="172.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::getKeywordArgument</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node14 -->
 <g id="edge13" class="edge">
 <title>Node1&#45;&gt;Node14</title>
-<path fill="none" stroke="midnightblue" d="M32.61,-133.38C43.28,-124.65 60.22,-112.08 77,-105 83.16,-102.4 89.71,-100.15 96.36,-98.2"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="97.41,-101.54 106.16,-95.55 95.59,-94.78 97.41,-101.54"/>
+<path fill="none" stroke="midnightblue" d="M41.11,-140.52C53.13,-138.99 69.43,-136.93 86.43,-134.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="87.02,-138.23 96.5,-133.5 86.14,-131.28 87.02,-138.23"/>
 </g>
 <!-- Node15 -->
 <g id="node15" class="node">
 <title>Node15</title>
-<g id="a_node15"><a xlink:href="classProgramArgs.html#a1056310905a8c465549d1abcd54942c3" target="_top" xlink:title="This function is used to get the value of a switch.">
-<polygon fill="none" stroke="black" points="105.5,-38.5 105.5,-57.5 239.5,-57.5 239.5,-38.5 105.5,-38.5"/>
-<text text-anchor="middle" x="172.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::getSwitch</text>
+<g id="a_node15"><a xlink:href="classProgramArgs.html#a37b2fdefcdd9a9317584d551c7dcf1d9" target="_top" xlink:title="This function is used to get the value of a positional argument.">
+<polygon fill="none" stroke="black" points="105,-76.5 105,-95.5 240,-95.5 240,-76.5 105,-76.5"/>
+<text text-anchor="middle" x="172.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::getPosArg</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node15 -->
 <g id="edge14" class="edge">
 <title>Node1&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M25.69,-133.27C33.32,-116.78 51.13,-83.56 77,-67 82.68,-63.36 88.92,-60.4 95.39,-57.99"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="96.6,-61.28 105.01,-54.84 94.42,-54.63 96.6,-61.28"/>
+<path fill="none" stroke="midnightblue" d="M32.61,-133.38C43.28,-124.65 60.22,-112.08 77,-105 83.16,-102.4 89.71,-100.15 96.36,-98.2"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="97.41,-101.54 106.16,-95.55 95.59,-94.78 97.41,-101.54"/>
 </g>
 <!-- Node16 -->
 <g id="node16" class="node">
 <title>Node16</title>
-<g id="a_node16"><a xlink:href="classProgramArgs.html#a849066672f4caced42480a76dec02fdd" target="_top" xlink:title="This function is used to parse the command&#45;line arguments and store them in the appropriate class mem...">
-<polygon fill="none" stroke="black" points="105.5,-0.5 105.5,-19.5 239.5,-19.5 239.5,-0.5 105.5,-0.5"/>
-<text text-anchor="middle" x="172.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::parseArgs</text>
+<g id="a_node16"><a xlink:href="classProgramArgs.html#a1056310905a8c465549d1abcd54942c3" target="_top" xlink:title="This function is used to get the value of a switch.">
+<polygon fill="none" stroke="black" points="105.5,-38.5 105.5,-57.5 239.5,-57.5 239.5,-38.5 105.5,-38.5"/>
+<text text-anchor="middle" x="172.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::getSwitch</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node16 -->
 <g id="edge15" class="edge">
 <title>Node1&#45;&gt;Node16</title>
+<path fill="none" stroke="midnightblue" d="M25.69,-133.27C33.32,-116.78 51.13,-83.56 77,-67 82.68,-63.36 88.92,-60.4 95.39,-57.99"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="96.6,-61.28 105.01,-54.84 94.42,-54.63 96.6,-61.28"/>
+</g>
+<!-- Node17 -->
+<g id="node17" class="node">
+<title>Node17</title>
+<g id="a_node17"><a xlink:href="classProgramArgs.html#a849066672f4caced42480a76dec02fdd" target="_top" xlink:title="This function is used to parse the command&#45;line arguments and store them in the appropriate class mem...">
+<polygon fill="none" stroke="black" points="105.5,-0.5 105.5,-19.5 239.5,-19.5 239.5,-0.5 105.5,-0.5"/>
+<text text-anchor="middle" x="172.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">ProgramArgs::parseArgs</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node17 -->
+<g id="edge16" class="edge">
+<title>Node1&#45;&gt;Node17</title>
 <path fill="none" stroke="midnightblue" d="M23.24,-133.22C27.74,-110.9 41.99,-56.06 77,-29 82.52,-24.74 88.74,-21.36 95.29,-18.69"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="96.8,-21.87 105.09,-15.26 94.49,-15.26 96.8,-21.87"/>
 </g>
@@ -201,46 +201,61 @@
 <g id="node10" class="node">
 <title>Node10</title>
 <g id="a_node10"><a xlink:href="util_8hpp.html#a183c024df291889f90106e47bb64fe0b" target="_top" xlink:title="Checks if a given string is a zero string.">
-<polygon fill="none" stroke="black" points="517,-133.5 517,-152.5 593,-152.5 593,-133.5 517,-133.5"/>
-<text text-anchor="middle" x="555" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">isZeroString</text>
+<polygon fill="none" stroke="black" points="517,-152.5 517,-171.5 593,-171.5 593,-152.5 517,-152.5"/>
+<text text-anchor="middle" x="555" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">isZeroString</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node10 -->
 <g id="edge9" class="edge">
 <title>Node9&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M420.14,-113.34C445.58,-118.98 479.38,-126.47 506.65,-132.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="506.23,-136 516.75,-134.75 507.74,-129.17 506.23,-136"/>
+<path fill="none" stroke="midnightblue" d="M420.02,-112.41C432.61,-115.39 446.6,-119.27 459,-124 475.9,-130.45 478.33,-135.98 495,-143 500.14,-145.17 505.63,-147.24 511.1,-149.16"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="510.27,-152.57 520.86,-152.45 512.5,-145.94 510.27,-152.57"/>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
 <g id="a_node11"><a xlink:href="util_8cpp.html#a8056dcad90ba9582ba25405a95c2f1e4" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="495,-95.5 495,-114.5 615,-114.5 615,-95.5 495,-95.5"/>
-<text text-anchor="middle" x="555" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">removeLeadingZeros</text>
+<polygon fill="none" stroke="black" points="495,-114.5 495,-133.5 615,-133.5 615,-114.5 495,-114.5"/>
+<text text-anchor="middle" x="555" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">removeLeadingZeros</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node11 -->
 <g id="edge10" class="edge">
 <title>Node9&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M420.14,-105C439.12,-105 462.75,-105 484.85,-105"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="484.88,-108.5 494.88,-105 484.88,-101.5 484.88,-108.5"/>
+<path fill="none" stroke="midnightblue" d="M420.14,-109.17C439.12,-111.27 462.75,-113.89 484.85,-116.34"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="484.56,-119.83 494.88,-117.45 485.33,-112.87 484.56,-119.83"/>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7" target="_top" xlink:title="Splits a string into substrings based on a separator.">
-<polygon fill="none" stroke="black" points="536,-57.5 536,-76.5 574,-76.5 574,-57.5 536,-57.5"/>
-<text text-anchor="middle" x="555" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">split</text>
+<g id="a_node12"><a xlink:href="util_8cpp.html#a7f0f5e18cd1b1507ace9b814e6286dda" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="496.5,-76.5 496.5,-95.5 613.5,-95.5 613.5,-76.5 496.5,-76.5"/>
+<text text-anchor="middle" x="555" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">removeTrailingZeros</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node12 -->
 <g id="edge11" class="edge">
 <title>Node9&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M420.14,-96.66C452.1,-89.58 497.26,-79.57 526.08,-73.19"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="526.9,-76.59 535.91,-71.01 525.39,-69.76 526.9,-76.59"/>
+<path fill="none" stroke="midnightblue" d="M420.14,-100.83C439.46,-98.69 463.6,-96.01 486.05,-93.53"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="486.66,-96.98 496.22,-92.4 485.89,-90.02 486.66,-96.98"/>
+</g>
+<!-- Node13 -->
+<g id="node13" class="node">
+<title>Node13</title>
+<g id="a_node13"><a xlink:href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7" target="_top" xlink:title="Splits a string into substrings based on a separator.">
+<polygon fill="none" stroke="black" points="536,-38.5 536,-57.5 574,-57.5 574,-38.5 536,-38.5"/>
+<text text-anchor="middle" x="555" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">split</text>
+</a>
+</g>
+</g>
+<!-- Node9&#45;&gt;Node13 -->
+<g id="edge12" class="edge">
+<title>Node9&#45;&gt;Node13</title>
+<path fill="none" stroke="midnightblue" d="M410.67,-95.36C433.4,-87.61 466.22,-76.49 495,-67 505.16,-63.65 516.33,-60.03 526.2,-56.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="527.45,-60.14 535.9,-53.75 525.31,-53.47 527.45,-60.14"/>
 </g>
 </g>
 </svg>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['operator_3c_3c_113',['operator&lt;&lt;',['../structinternals_1_1setw.html#a25816cede65bec5196c279bf254afc25',1,'internals::setw']]],
-  ['output_2ehpp_114',['output.hpp',['../output_8hpp.html',1,'']]]
+  ['n_112',['n',['../structinternals_1_1setw.html#aee2b5c7f116e49b39eb67da839da7234',1,'internals::setw']]],
+  ['name_113',['name',['../classlogging_1_1Logger.html#ad8aa90e05b98f093f1654f3d012f4cf6',1,'logging::Logger']]]
 ];

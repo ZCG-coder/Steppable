@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7elogger_351',['~Logger',['../classlogging_1_1Logger.html#a7128c47e95497ef7851e65ab10132e99',1,'logging::Logger']]]
+  ['yellow_354',['yellow',['../namespacecolors.html#a6588eec65261123d3693936bd6068c51',1,'colors']]]
 ];
