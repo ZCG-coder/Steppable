@@ -99,7 +99,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "absReport_8cpp.html",
-"md_CONTRIBUTING.html#autotoc_md14"
+"md_CODE_OF_CONDUCT.html#autotoc_md4"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

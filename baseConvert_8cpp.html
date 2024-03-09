@@ -90,31 +90,37 @@ $(document).ready(function(){initNavTree('baseConvert_8cpp.html',''); initResiza
 <div class="title">baseConvert.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="util_8hpp_source.html">util.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="baseConvertReport_8hpp_source.html">baseConvertReport.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="basicArithm_8hpp_source.html">fn/basicArithm.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="output_8hpp_source.html">output.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="util_8hpp_source.html">util.hpp</a>&quot;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for baseConvert.cpp:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="baseConvert_8cpp__incl.svg" width="100%" height="496"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="baseConvert_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa69d2d1b8fb48aa02dd687882f33dd98"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="baseConvert_8cpp.html#aa69d2d1b8fb48aa02dd687882f33dd98">baseConvert</a> (const std::string &amp;inputStr, const std::string &amp;baseStr)</td></tr>
-<tr class="separator:aa69d2d1b8fb48aa02dd687882f33dd98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80419d3463efc029e66b9cb0a1390912"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="baseConvert_8cpp.html#a80419d3463efc029e66b9cb0a1390912">representNumber</a> (const std::string_view &amp;_number)</td></tr>
+<tr class="separator:a80419d3463efc029e66b9cb0a1390912"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6443634f54179f61c6e58098cbb32210"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="baseConvert_8cpp.html#a6443634f54179f61c6e58098cbb32210">baseConvert</a> (const std::string &amp;inputStr, const std::string &amp;baseStr, const int steps=2)</td></tr>
+<tr class="separator:a6443634f54179f61c6e58098cbb32210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="baseConvert_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aa69d2d1b8fb48aa02dd687882f33dd98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa69d2d1b8fb48aa02dd687882f33dd98">&#9670;&nbsp;</a></span>baseConvert()</h2>
+<a id="a6443634f54179f61c6e58098cbb32210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6443634f54179f61c6e58098cbb32210">&#9670;&nbsp;</a></span>baseConvert()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">auto baseConvert </td>
+          <td class="memname">std::string baseConvert </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>inputStr</em>, </td>
@@ -123,7 +129,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>baseStr</em>&#160;</td>
+          <td class="paramname"><em>baseStr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>steps</em> = <code>2</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -132,6 +144,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="baseConvert_8cpp_a6443634f54179f61c6e58098cbb32210_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="baseConvert_8cpp_a6443634f54179f61c6e58098cbb32210_icgraph.svg" width="218" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -149,6 +173,42 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="baseConvert_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a80419d3463efc029e66b9cb0a1390912"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80419d3463efc029e66b9cb0a1390912">&#9670;&nbsp;</a></span>representNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string representNumber </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view &amp;&#160;</td>
+          <td class="paramname"><em>_number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="baseConvert_8cpp_a80419d3463efc029e66b9cb0a1390912_cgraph.svg" width="100%" height="518"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="baseConvert_8cpp_a80419d3463efc029e66b9cb0a1390912_icgraph.svg" width="402" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>

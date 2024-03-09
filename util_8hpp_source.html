@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('util_8hpp_source.html',''); initResiza
 <div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="structSplitNumberResult.html">   77</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structSplitNumberResult.html">SplitNumberResult</a></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
 <div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="structSplitNumberResult.html#ae2dbc7553b8528acab3adcd0bcb13f88">   79</a></span>&#160;    std::array&lt;std::string, 4&gt; <a class="code" href="structSplitNumberResult.html#ae2dbc7553b8528acab3adcd0bcb13f88">splitNumberArray</a>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structSplitNumberResult.html#a82aced89f2eb094b289e95e81ce83a5e">   80</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structSplitNumberResult.html#a82aced89f2eb094b289e95e81ce83a5e">aIsNegative</a>, <a class="code" href="structSplitNumberResult.html#a6a9aac05140492ee0f9daf0d9045d54c">bIsNegative</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structSplitNumberResult.html#a82aced89f2eb094b289e95e81ce83a5e">   80</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structSplitNumberResult.html#a82aced89f2eb094b289e95e81ce83a5e">aIsNegative</a> = <span class="keyword">false</span>, <a class="code" href="structSplitNumberResult.html#a6a9aac05140492ee0f9daf0d9045d54c">bIsNegative</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#ifdef WINDOWS</span></div>
@@ -208,152 +208,161 @@ $(document).ready(function(){initNavTree('util_8hpp_source.html',''); initResiza
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;};</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="util_8hpp.html#a183c024df291889f90106e47bb64fe0b">  187</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="util_8hpp.html#a183c024df291889f90106e47bb64fe0b">isZeroString</a>(<span class="keyword">const</span> std::string_view&amp; <span class="keywordtype">string</span>)</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;{</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> std::ranges::all_of(<span class="keywordtype">string</span>, [](<span class="keyword">const</span> <span class="keywordtype">char</span> c) { <span class="keywordflow">return</span> c == <span class="charliteral">&#39;0&#39;</span>; });</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="util_8hpp.html#ab5181747c16ee879c5a0e5fd6a3ac0c6">  198</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="util_8hpp.html#ab5181747c16ee879c5a0e5fd6a3ac0c6">isNumber</a>(<span class="keyword">const</span> std::string_view&amp; s)</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;{</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">if</span> (s.empty())</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordtype">int</span> decimalPointCount = 0, minusCount = 0;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;std::string <a class="code" href="util_8hpp.html#a70584872ee14fa0befa8f25788f98a2b">simplifyZeroPolarity</a>(<span class="keyword">const</span> std::string_view&amp; <span class="keywordtype">string</span>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;std::string <a class="code" href="util_8hpp.html#a32344e51c6ae485367b4fbf6bb535742">simplifyPolarity</a>(<span class="keyword">const</span> std::string_view&amp; _string);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;std::string <a class="code" href="util_8hpp.html#afbed3096b7064ba07c83c6c15212b793">standardizeNumber</a>(<span class="keyword">const</span> std::string_view&amp; _number);</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">char</span> c : s)</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span>)</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">if</span> (decimalPointCount &gt; 0)</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            decimalPointCount++;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        }</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;-&#39;</span>)</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">if</span> (minusCount &gt; 0)</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            minusCount++;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (not isdigit(c))</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;}</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7">  232</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7">split</a>(std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT separator)</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;{</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    std::vector&lt;decltype(s)&gt; substrings;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    std::basic_stringstream&lt;CharT&gt; ss(s);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    decltype(s) token;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">while</span> (getline(ss, token, separator))</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        substrings.push_back(token);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">return</span> substrings;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="util_8hpp.html#a4bd2c04ff3c3cf1dfddb3fb97da971c0">  252</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7">split</a>(std::basic_string_view&lt;CharT&gt; s, <span class="keyword">const</span> CharT separator)</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;{</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    std::vector&lt;decltype(s)&gt; result;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keyword">auto</span> left = s.begin();</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = left; it != s.end(); ++it)</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">if</span> (*it == separator)</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            result.emplace_back(&amp;*left, it - left);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            left = it + 1;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">if</span> (left != s.end())</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        result.emplace_back(&amp;*left, s.end() - left);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<a class="code" href="structSplitNumberResult.html">SplitNumberResult</a> <a class="code" href="util_8hpp.html#a7e7fdd236a1593ed0124a3a7dd05946d">splitNumber</a>(<span class="keyword">const</span> std::string_view&amp; a,</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                              <span class="keyword">const</span> std::string_view&amp; b,</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                              <span class="keywordtype">bool</span> padInteger = <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                              <span class="keywordtype">bool</span> padDecimal = <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">  300</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">rReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;{</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    std::basic_string&lt;CharT&gt; out = s;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keyword">typename</span> std::basic_string&lt;CharT&gt;::size_type count = 0;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">while</span> (out.back() == t)</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        out.pop_back();</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        ++count;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    }</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">if</span> (replacement != <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        out += std::basic_string&lt;CharT&gt;(count, replacement);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;}</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="util_8hpp.html#a183c024df291889f90106e47bb64fe0b">  213</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="util_8hpp.html#a183c024df291889f90106e47bb64fe0b">isZeroString</a>(<span class="keyword">const</span> std::string_view&amp; <span class="keywordtype">string</span>)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;{</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">return</span> std::ranges::all_of(<span class="keywordtype">string</span>, [](<span class="keyword">const</span> <span class="keywordtype">char</span> c) { <span class="keywordflow">return</span> c == <span class="charliteral">&#39;0&#39;</span> or c == <span class="charliteral">&#39;.&#39;</span> or c == <span class="charliteral">&#39;-&#39;</span>; });</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="util_8hpp.html#ab5181747c16ee879c5a0e5fd6a3ac0c6">  224</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="util_8hpp.html#ab5181747c16ee879c5a0e5fd6a3ac0c6">isNumber</a>(<span class="keyword">const</span> std::string_view&amp; s)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;{</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">if</span> (s.empty())</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordtype">int</span> decimalPointCount = 0, minusCount = 0;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">char</span> c : s)</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span>)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">if</span> (decimalPointCount &gt; 0)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            decimalPointCount++;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;-&#39;</span>)</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keywordflow">if</span> (minusCount &gt; 0)</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            minusCount++;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (not isdigit(c))</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7">  258</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7">split</a>(std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT separator)</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;{</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    std::vector&lt;decltype(s)&gt; substrings;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    std::basic_stringstream&lt;CharT&gt; ss(s);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    decltype(s) token;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">while</span> (getline(ss, token, separator))</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        substrings.push_back(token);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">return</span> substrings;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="util_8hpp.html#a4bd2c04ff3c3cf1dfddb3fb97da971c0">  278</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7">split</a>(std::basic_string_view&lt;CharT&gt; s, <span class="keyword">const</span> CharT separator)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;{</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    std::vector&lt;decltype(s)&gt; result;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keyword">auto</span> left = s.begin();</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = left; it != s.end(); ++it)</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="keywordflow">if</span> (*it == separator)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            result.emplace_back(&amp;*left, it - left);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            left = it + 1;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">if</span> (left != s.end())</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        result.emplace_back(&amp;*left, s.end() - left);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;}</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<a class="code" href="structSplitNumberResult.html">SplitNumberResult</a> <a class="code" href="util_8hpp.html#a7e7fdd236a1593ed0124a3a7dd05946d">splitNumber</a>(<span class="keyword">const</span> std::string_view&amp; a,</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                              <span class="keyword">const</span> std::string_view&amp; b,</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                              <span class="keywordtype">bool</span> padInteger = <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                              <span class="keywordtype">bool</span> padDecimal = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="util_8hpp.html#a38324e37e9a3fc8c1819750620b277d4">  326</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a38324e37e9a3fc8c1819750620b277d4">lReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">  326</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">rReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;{</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    std::basic_string&lt;CharT&gt; out = s;</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keyword">typename</span> std::basic_string&lt;CharT&gt;::size_type count = 0;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">while</span> (out[0] == t)</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">while</span> (out.back() == t)</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        out.erase(out.begin());</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        out.pop_back();</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        ++count;</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    }</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordflow">if</span> (replacement != <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        out = std::basic_string&lt;CharT&gt;(count, replacement) + out;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        out += std::basic_string&lt;CharT&gt;(count, replacement);</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">return</span> out;</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="util_8hpp.html#abcb0e591d56d9eee835f0eb199557635">  355</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#abcb0e591d56d9eee835f0eb199557635">bothEndsReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;{</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="util_8hpp.html#a38324e37e9a3fc8c1819750620b277d4">lReplace</a>(<a class="code" href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">rReplace</a>(s, t, replacement), t, replacement);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;}</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#ac87bf229222a2a4f32b8626281c6c282">replaceLeadingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; vector) -&gt; std::decay_t&lt;decltype(vector)&gt;;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a8056dcad90ba9582ba25405a95c2f1e4">removeLeadingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; vector) -&gt; std::decay_t&lt;decltype(vector)&gt;;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a8056dcad90ba9582ba25405a95c2f1e4">removeLeadingZeros</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">string</span>) -&gt; std::decay_t&lt;decltype(<span class="keywordtype">string</span>)&gt;;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00393"></a><span class="lineno"><a class="line" href="util_8hpp.html#a3dd6d942897366039648e301673915e2">  393</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a3dd6d942897366039648e301673915e2">join</a>(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; vector, <span class="keyword">const</span> std::string&amp; delimiter)</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;{</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    std::stringstream result;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; item : vector)</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        result &lt;&lt; item &lt;&lt; delimiter;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keywordflow">return</span> result.str();</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;}</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;std::string <a class="code" href="util_8hpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f">makeWider</a>(<span class="keyword">const</span> std::string&amp; orig);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;[[maybe_unused]] <span class="keywordtype">int</span> <a class="code" href="util_8hpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3">utf8ToUnicode</a>(<span class="keyword">const</span> std::string&amp; utf8_code);</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;std::string <a class="code" href="util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e">unicodeToUtf8</a>(<span class="keywordtype">int</span> unicode);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a7f0f5e18cd1b1507ace9b814e6286dda">removeTrailingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; _vector) -&gt; std::decay_t&lt;decltype(_vector)&gt;;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a7f0f5e18cd1b1507ace9b814e6286dda">removeTrailingZeros</a>(<span class="keyword">const</span> std::string&amp; numStr) -&gt; std::decay_t&lt;decltype(numStr)&gt;;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="line"><a name="l00352"></a><span class="lineno"><a class="line" href="util_8hpp.html#a38324e37e9a3fc8c1819750620b277d4">  352</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a38324e37e9a3fc8c1819750620b277d4">lReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;{</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    std::basic_string&lt;CharT&gt; out = s;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keyword">typename</span> std::basic_string&lt;CharT&gt;::size_type count = 0;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">while</span> (out[0] == t)</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        out.erase(out.begin());</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        ++count;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <span class="keywordflow">if</span> (replacement != <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        out = std::basic_string&lt;CharT&gt;(count, replacement) + out;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;}</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="line"><a name="l00381"></a><span class="lineno"><a class="line" href="util_8hpp.html#abcb0e591d56d9eee835f0eb199557635">  381</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#abcb0e591d56d9eee835f0eb199557635">bothEndsReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;{</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="util_8hpp.html#a38324e37e9a3fc8c1819750620b277d4">lReplace</a>(<a class="code" href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">rReplace</a>(s, t, replacement), t, replacement);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;}</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#ac87bf229222a2a4f32b8626281c6c282">replaceLeadingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; vector) -&gt; std::decay_t&lt;decltype(vector)&gt;;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a8056dcad90ba9582ba25405a95c2f1e4">removeLeadingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; vector) -&gt; std::decay_t&lt;decltype(vector)&gt;;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a8056dcad90ba9582ba25405a95c2f1e4">removeLeadingZeros</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">string</span>) -&gt; std::decay_t&lt;decltype(<span class="keywordtype">string</span>)&gt;;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00419"></a><span class="lineno"><a class="line" href="util_8hpp.html#a3dd6d942897366039648e301673915e2">  419</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a3dd6d942897366039648e301673915e2">join</a>(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; vector, <span class="keyword">const</span> std::string&amp; delimiter)</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;{</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    std::stringstream result;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; item : vector)</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        result &lt;&lt; item &lt;&lt; delimiter;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keywordflow">return</span> result.str();</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;}</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;std::string <a class="code" href="util_8hpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f">makeWider</a>(<span class="keyword">const</span> std::string&amp; orig);</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;[[maybe_unused]] <span class="keywordtype">int</span> <a class="code" href="util_8hpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3">utf8ToUnicode</a>(<span class="keyword">const</span> std::string&amp; utf8_code);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;std::string <a class="code" href="util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e">unicodeToUtf8</a>(<span class="keywordtype">int</span> unicode);</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a7f0f5e18cd1b1507ace9b814e6286dda">removeTrailingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; _vector) -&gt; std::decay_t&lt;decltype(_vector)&gt;;</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="keyword">auto</span> <a class="code" href="util_8hpp.html#a7f0f5e18cd1b1507ace9b814e6286dda">removeTrailingZeros</a>(<span class="keyword">const</span> std::string&amp; numStr) -&gt; std::decay_t&lt;decltype(numStr)&gt;;</div>
 <div class="ttc" id="aclassUtf8CodePage_html"><div class="ttname"><a href="classUtf8CodePage.html">Utf8CodePage</a></div><div class="ttdoc">A class that sets the console output code page to UTF-8 and enables VT mode.</div><div class="ttdef"><b>Definition:</b> util.hpp:174</div></div>
 <div class="ttc" id="acolors_8hpp_html"><div class="ttname"><a href="colors_8hpp.html">colors.hpp</a></div><div class="ttdoc">This file contains functions and macros for manipulating text colors and formats in the terminal.</div></div>
 <div class="ttc" id="astructSplitNumberResult_html"><div class="ttname"><a href="structSplitNumberResult.html">SplitNumberResult</a></div><div class="ttdoc">A structure for storing split numbers.</div><div class="ttdef"><b>Definition:</b> util.hpp:78</div></div>
 <div class="ttc" id="astructSplitNumberResult_html_a6a9aac05140492ee0f9daf0d9045d54c"><div class="ttname"><a href="structSplitNumberResult.html#a6a9aac05140492ee0f9daf0d9045d54c">SplitNumberResult::bIsNegative</a></div><div class="ttdeci">bool bIsNegative</div><div class="ttdef"><b>Definition:</b> util.hpp:80</div></div>
 <div class="ttc" id="astructSplitNumberResult_html_a82aced89f2eb094b289e95e81ce83a5e"><div class="ttname"><a href="structSplitNumberResult.html#a82aced89f2eb094b289e95e81ce83a5e">SplitNumberResult::aIsNegative</a></div><div class="ttdeci">bool aIsNegative</div><div class="ttdef"><b>Definition:</b> util.hpp:80</div></div>
 <div class="ttc" id="astructSplitNumberResult_html_ae2dbc7553b8528acab3adcd0bcb13f88"><div class="ttname"><a href="structSplitNumberResult.html#ae2dbc7553b8528acab3adcd0bcb13f88">SplitNumberResult::splitNumberArray</a></div><div class="ttdeci">std::array&lt; std::string, 4 &gt; splitNumberArray</div><div class="ttdef"><b>Definition:</b> util.hpp:79</div></div>
-<div class="ttc" id="autil_8hpp_html_a183c024df291889f90106e47bb64fe0b"><div class="ttname"><a href="util_8hpp.html#a183c024df291889f90106e47bb64fe0b">isZeroString</a></div><div class="ttdeci">constexpr bool isZeroString(const std::string_view &amp;string)</div><div class="ttdoc">Checks if a given string is a zero string.</div><div class="ttdef"><b>Definition:</b> util.hpp:187</div></div>
-<div class="ttc" id="autil_8hpp_html_a2c093cfa77eddb403db19eaecf57fa6e"><div class="ttname"><a href="util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e">unicodeToUtf8</a></div><div class="ttdeci">std::string unicodeToUtf8(int unicode)</div><div class="ttdoc">Converts a Unicode character to UTF-8 encoding.</div><div class="ttdef"><b>Definition:</b> util.cpp:116</div></div>
-<div class="ttc" id="autil_8hpp_html_a38324e37e9a3fc8c1819750620b277d4"><div class="ttname"><a href="util_8hpp.html#a38324e37e9a3fc8c1819750620b277d4">lReplace</a></div><div class="ttdeci">auto lReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the leading occurrences of a character in a string with a replacement character.</div><div class="ttdef"><b>Definition:</b> util.hpp:326</div></div>
-<div class="ttc" id="autil_8hpp_html_a3dd6d942897366039648e301673915e2"><div class="ttname"><a href="util_8hpp.html#a3dd6d942897366039648e301673915e2">join</a></div><div class="ttdeci">auto join(const std::vector&lt; T &gt; &amp;vector, const std::string &amp;delimiter)</div><div class="ttdoc">Joins a vector of elements into a single string using a delimiter.</div><div class="ttdef"><b>Definition:</b> util.hpp:393</div></div>
-<div class="ttc" id="autil_8hpp_html_a771e8f4ac1c095d4c0fef2c966cd69d7"><div class="ttname"><a href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7">split</a></div><div class="ttdeci">auto split(std::basic_string&lt; CharT &gt; s, const CharT separator)</div><div class="ttdoc">Splits a string into substrings based on a separator.</div><div class="ttdef"><b>Definition:</b> util.hpp:232</div></div>
-<div class="ttc" id="autil_8hpp_html_a7e7fdd236a1593ed0124a3a7dd05946d"><div class="ttname"><a href="util_8hpp.html#a7e7fdd236a1593ed0124a3a7dd05946d">splitNumber</a></div><div class="ttdeci">SplitNumberResult splitNumber(const std::string_view &amp;a, const std::string_view &amp;b, bool padInteger=true, bool padDecimal=true)</div><div class="ttdef"><b>Definition:</b> util.cpp:36</div></div>
-<div class="ttc" id="autil_8hpp_html_a7f0f5e18cd1b1507ace9b814e6286dda"><div class="ttname"><a href="util_8hpp.html#a7f0f5e18cd1b1507ace9b814e6286dda">removeTrailingZeros</a></div><div class="ttdeci">auto removeTrailingZeros(const std::vector&lt; int &gt; &amp;_vector) -&gt; std::decay_t&lt; decltype(_vector)&gt;</div><div class="ttdef"><b>Definition:</b> util.cpp:217</div></div>
-<div class="ttc" id="autil_8hpp_html_a8056dcad90ba9582ba25405a95c2f1e4"><div class="ttname"><a href="util_8hpp.html#a8056dcad90ba9582ba25405a95c2f1e4">removeLeadingZeros</a></div><div class="ttdeci">auto removeLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</div><div class="ttdef"><b>Definition:</b> util.cpp:199</div></div>
-<div class="ttc" id="autil_8hpp_html_a93b9ba3fe803c8e3fa1b128f4e83924f"><div class="ttname"><a href="util_8hpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f">makeWider</a></div><div class="ttdeci">std::string makeWider(const std::string &amp;orig)</div><div class="ttdoc">Makes the given string wider by adding 2 spaces between each character.</div><div class="ttdef"><b>Definition:</b> util.cpp:87</div></div>
-<div class="ttc" id="autil_8hpp_html_aad0ced1dffb5cde8bcff9ad90823da9a"><div class="ttname"><a href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">rReplace</a></div><div class="ttdeci">auto rReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the trailing occurrences of a character in a string with another character.</div><div class="ttdef"><b>Definition:</b> util.hpp:300</div></div>
-<div class="ttc" id="autil_8hpp_html_ab5181747c16ee879c5a0e5fd6a3ac0c6"><div class="ttname"><a href="util_8hpp.html#ab5181747c16ee879c5a0e5fd6a3ac0c6">isNumber</a></div><div class="ttdeci">constexpr bool isNumber(const std::string_view &amp;s)</div><div class="ttdoc">Checks if a given string is a valid number.</div><div class="ttdef"><b>Definition:</b> util.hpp:198</div></div>
-<div class="ttc" id="autil_8hpp_html_abcb0e591d56d9eee835f0eb199557635"><div class="ttname"><a href="util_8hpp.html#abcb0e591d56d9eee835f0eb199557635">bothEndsReplace</a></div><div class="ttdeci">auto bothEndsReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the leading and trailing occurrences of a character in a string with a replacement character...</div><div class="ttdef"><b>Definition:</b> util.hpp:355</div></div>
-<div class="ttc" id="autil_8hpp_html_abefee7cd9b9e06f03aeec9bb1e934ef3"><div class="ttname"><a href="util_8hpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3">utf8ToUnicode</a></div><div class="ttdeci">int utf8ToUnicode(const std::string &amp;utf8_code)</div><div class="ttdoc">Converts a UTF-8 encoded string to a Unicode string.</div><div class="ttdef"><b>Definition:</b> util.cpp:99</div></div>
-<div class="ttc" id="autil_8hpp_html_ac87bf229222a2a4f32b8626281c6c282"><div class="ttname"><a href="util_8hpp.html#ac87bf229222a2a4f32b8626281c6c282">replaceLeadingZeros</a></div><div class="ttdeci">auto replaceLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</div><div class="ttdef"><b>Definition:</b> util.cpp:185</div></div>
+<div class="ttc" id="autil_8hpp_html_a183c024df291889f90106e47bb64fe0b"><div class="ttname"><a href="util_8hpp.html#a183c024df291889f90106e47bb64fe0b">isZeroString</a></div><div class="ttdeci">constexpr bool isZeroString(const std::string_view &amp;string)</div><div class="ttdoc">Checks if a given string is a zero string.</div><div class="ttdef"><b>Definition:</b> util.hpp:213</div></div>
+<div class="ttc" id="autil_8hpp_html_a2c093cfa77eddb403db19eaecf57fa6e"><div class="ttname"><a href="util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e">unicodeToUtf8</a></div><div class="ttdeci">std::string unicodeToUtf8(int unicode)</div><div class="ttdoc">Converts a Unicode character to UTF-8 encoding.</div><div class="ttdef"><b>Definition:</b> util.cpp:148</div></div>
+<div class="ttc" id="autil_8hpp_html_a32344e51c6ae485367b4fbf6bb535742"><div class="ttname"><a href="util_8hpp.html#a32344e51c6ae485367b4fbf6bb535742">simplifyPolarity</a></div><div class="ttdeci">std::string simplifyPolarity(const std::string_view &amp;_string)</div><div class="ttdoc">Simplifies a string with non-standard polarity (e.g., –1, —1, etc.).</div><div class="ttdef"><b>Definition:</b> util.cpp:44</div></div>
+<div class="ttc" id="autil_8hpp_html_a38324e37e9a3fc8c1819750620b277d4"><div class="ttname"><a href="util_8hpp.html#a38324e37e9a3fc8c1819750620b277d4">lReplace</a></div><div class="ttdeci">auto lReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the leading occurrences of a character in a string with a replacement character.</div><div class="ttdef"><b>Definition:</b> util.hpp:352</div></div>
+<div class="ttc" id="autil_8hpp_html_a3dd6d942897366039648e301673915e2"><div class="ttname"><a href="util_8hpp.html#a3dd6d942897366039648e301673915e2">join</a></div><div class="ttdeci">auto join(const std::vector&lt; T &gt; &amp;vector, const std::string &amp;delimiter)</div><div class="ttdoc">Joins a vector of elements into a single string using a delimiter.</div><div class="ttdef"><b>Definition:</b> util.hpp:419</div></div>
+<div class="ttc" id="autil_8hpp_html_a70584872ee14fa0befa8f25788f98a2b"><div class="ttname"><a href="util_8hpp.html#a70584872ee14fa0befa8f25788f98a2b">simplifyZeroPolarity</a></div><div class="ttdeci">std::string simplifyZeroPolarity(const std::string_view &amp;string)</div><div class="ttdoc">Simplifies a string that represents a number with non-standard polarity.</div><div class="ttdef"><b>Definition:</b> util.cpp:36</div></div>
+<div class="ttc" id="autil_8hpp_html_a771e8f4ac1c095d4c0fef2c966cd69d7"><div class="ttname"><a href="util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7">split</a></div><div class="ttdeci">auto split(std::basic_string&lt; CharT &gt; s, const CharT separator)</div><div class="ttdoc">Splits a string into substrings based on a separator.</div><div class="ttdef"><b>Definition:</b> util.hpp:258</div></div>
+<div class="ttc" id="autil_8hpp_html_a7e7fdd236a1593ed0124a3a7dd05946d"><div class="ttname"><a href="util_8hpp.html#a7e7fdd236a1593ed0124a3a7dd05946d">splitNumber</a></div><div class="ttdeci">SplitNumberResult splitNumber(const std::string_view &amp;a, const std::string_view &amp;b, bool padInteger=true, bool padDecimal=true)</div><div class="ttdef"><b>Definition:</b> util.cpp:66</div></div>
+<div class="ttc" id="autil_8hpp_html_a7f0f5e18cd1b1507ace9b814e6286dda"><div class="ttname"><a href="util_8hpp.html#a7f0f5e18cd1b1507ace9b814e6286dda">removeTrailingZeros</a></div><div class="ttdeci">auto removeTrailingZeros(const std::vector&lt; int &gt; &amp;_vector) -&gt; std::decay_t&lt; decltype(_vector)&gt;</div><div class="ttdef"><b>Definition:</b> util.cpp:249</div></div>
+<div class="ttc" id="autil_8hpp_html_a8056dcad90ba9582ba25405a95c2f1e4"><div class="ttname"><a href="util_8hpp.html#a8056dcad90ba9582ba25405a95c2f1e4">removeLeadingZeros</a></div><div class="ttdeci">auto removeLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</div><div class="ttdef"><b>Definition:</b> util.cpp:231</div></div>
+<div class="ttc" id="autil_8hpp_html_a93b9ba3fe803c8e3fa1b128f4e83924f"><div class="ttname"><a href="util_8hpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f">makeWider</a></div><div class="ttdeci">std::string makeWider(const std::string &amp;orig)</div><div class="ttdoc">Makes the given string wider by adding 2 spaces between each character.</div><div class="ttdef"><b>Definition:</b> util.cpp:119</div></div>
+<div class="ttc" id="autil_8hpp_html_aad0ced1dffb5cde8bcff9ad90823da9a"><div class="ttname"><a href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">rReplace</a></div><div class="ttdeci">auto rReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the trailing occurrences of a character in a string with another character.</div><div class="ttdef"><b>Definition:</b> util.hpp:326</div></div>
+<div class="ttc" id="autil_8hpp_html_ab5181747c16ee879c5a0e5fd6a3ac0c6"><div class="ttname"><a href="util_8hpp.html#ab5181747c16ee879c5a0e5fd6a3ac0c6">isNumber</a></div><div class="ttdeci">constexpr bool isNumber(const std::string_view &amp;s)</div><div class="ttdoc">Checks if a given string is a valid number.</div><div class="ttdef"><b>Definition:</b> util.hpp:224</div></div>
+<div class="ttc" id="autil_8hpp_html_abcb0e591d56d9eee835f0eb199557635"><div class="ttname"><a href="util_8hpp.html#abcb0e591d56d9eee835f0eb199557635">bothEndsReplace</a></div><div class="ttdeci">auto bothEndsReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the leading and trailing occurrences of a character in a string with a replacement character...</div><div class="ttdef"><b>Definition:</b> util.hpp:381</div></div>
+<div class="ttc" id="autil_8hpp_html_abefee7cd9b9e06f03aeec9bb1e934ef3"><div class="ttname"><a href="util_8hpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3">utf8ToUnicode</a></div><div class="ttdeci">int utf8ToUnicode(const std::string &amp;utf8_code)</div><div class="ttdoc">Converts a UTF-8 encoded string to a Unicode string.</div><div class="ttdef"><b>Definition:</b> util.cpp:131</div></div>
+<div class="ttc" id="autil_8hpp_html_ac87bf229222a2a4f32b8626281c6c282"><div class="ttname"><a href="util_8hpp.html#ac87bf229222a2a4f32b8626281c6c282">replaceLeadingZeros</a></div><div class="ttdeci">auto replaceLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</div><div class="ttdef"><b>Definition:</b> util.cpp:217</div></div>
+<div class="ttc" id="autil_8hpp_html_afbed3096b7064ba07c83c6c15212b793"><div class="ttname"><a href="util_8hpp.html#afbed3096b7064ba07c83c6c15212b793">standardizeNumber</a></div><div class="ttdeci">std::string standardizeNumber(const std::string_view &amp;_number)</div><div class="ttdoc">Standardizes a number string.</div><div class="ttdef"><b>Definition:</b> util.cpp:52</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

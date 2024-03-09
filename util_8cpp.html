@@ -105,6 +105,15 @@ Include dependency graph for util.cpp:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a70584872ee14fa0befa8f25788f98a2b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b">simplifyZeroPolarity</a> (const std::string_view &amp;string)</td></tr>
+<tr class="memdesc:a70584872ee14fa0befa8f25788f98a2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplifies a string that represents a number with non-standard polarity.  <a href="util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b">More...</a><br /></td></tr>
+<tr class="separator:a70584872ee14fa0befa8f25788f98a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32344e51c6ae485367b4fbf6bb535742"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742">simplifyPolarity</a> (const std::string_view &amp;_string)</td></tr>
+<tr class="memdesc:a32344e51c6ae485367b4fbf6bb535742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplifies a string with non-standard polarity (e.g., &ndash;1, &mdash;1, etc.).  <a href="util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742">More...</a><br /></td></tr>
+<tr class="separator:a32344e51c6ae485367b4fbf6bb535742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbed3096b7064ba07c83c6c15212b793"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#afbed3096b7064ba07c83c6c15212b793">standardizeNumber</a> (const std::string_view &amp;_number)</td></tr>
+<tr class="memdesc:afbed3096b7064ba07c83c6c15212b793"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standardizes a number string.  <a href="util_8cpp.html#afbed3096b7064ba07c83c6c15212b793">More...</a><br /></td></tr>
+<tr class="separator:afbed3096b7064ba07c83c6c15212b793"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd4f95f2c2aa156bdcd4259ce36ca049"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#afd4f95f2c2aa156bdcd4259ce36ca049">splitNumber</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal)</td></tr>
 <tr class="separator:afd4f95f2c2aa156bdcd4259ce36ca049"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93b9ba3fe803c8e3fa1b128f4e83924f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f">makeWider</a> (const std::string &amp;orig)</td></tr>
@@ -155,7 +164,7 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a93b9ba3fe803c8e3fa1b128f4e83924f_icgraph.svg" width="100%" height="554"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a93b9ba3fe803c8e3fa1b128f4e83924f_icgraph.svg" width="100%" height="579"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -295,6 +304,85 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a32344e51c6ae485367b4fbf6bb535742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32344e51c6ae485367b4fbf6bb535742">&#9670;&nbsp;</a></span>simplifyPolarity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string simplifyPolarity </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view &amp;&#160;</td>
+          <td class="paramname"><em>_string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Simplifies a string with non-standard polarity (e.g., &ndash;1, &mdash;1, etc.). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_string</td><td>A string to simplify. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A simplified string with correct polarity. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="util_8cpp_a32344e51c6ae485367b4fbf6bb535742_cgraph.svg" width="487" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a32344e51c6ae485367b4fbf6bb535742_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a70584872ee14fa0befa8f25788f98a2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70584872ee14fa0befa8f25788f98a2b">&#9670;&nbsp;</a></span>simplifyZeroPolarity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string simplifyZeroPolarity </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view &amp;&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Simplifies a string that represents a number with non-standard polarity. </p>
+<p>This function takes a string that represents a number with a zero polarity and simplifies it to a standard polarity. E.g. "-0" is simplified to "0".</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The input string to be simplified. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A simplified string with standard polarity. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="util_8cpp_a70584872ee14fa0befa8f25788f98a2b_cgraph.svg" width="315" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a70584872ee14fa0befa8f25788f98a2b_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
 <a id="afd4f95f2c2aa156bdcd4259ce36ca049"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afd4f95f2c2aa156bdcd4259ce36ca049">&#9670;&nbsp;</a></span>splitNumber()</h2>
 
@@ -347,13 +435,52 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="util_8cpp_afd4f95f2c2aa156bdcd4259ce36ca049_cgraph.svg" width="322" height="190"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_afd4f95f2c2aa156bdcd4259ce36ca049_cgraph.svg" width="100%" height="509"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_afd4f95f2c2aa156bdcd4259ce36ca049_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="afbed3096b7064ba07c83c6c15212b793"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbed3096b7064ba07c83c6c15212b793">&#9670;&nbsp;</a></span>standardizeNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string standardizeNumber </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view &amp;&#160;</td>
+          <td class="paramname"><em>_number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Standardizes a number string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_number</td><td>The number string to standardize. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The standardized number string. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_afbed3096b7064ba07c83c6c15212b793_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_afbed3096b7064ba07c83c6c15212b793_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

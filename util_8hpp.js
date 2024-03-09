@@ -16,9 +16,12 @@ var util_8hpp =
     [ "removeTrailingZeros", "util_8hpp.html#a7f0f5e18cd1b1507ace9b814e6286dda", null ],
     [ "replaceLeadingZeros", "util_8hpp.html#ac87bf229222a2a4f32b8626281c6c282", null ],
     [ "rReplace", "util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a", null ],
+    [ "simplifyPolarity", "util_8hpp.html#a32344e51c6ae485367b4fbf6bb535742", null ],
+    [ "simplifyZeroPolarity", "util_8hpp.html#a70584872ee14fa0befa8f25788f98a2b", null ],
     [ "split", "util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7", null ],
     [ "split", "util_8hpp.html#a4bd2c04ff3c3cf1dfddb3fb97da971c0", null ],
     [ "splitNumber", "util_8hpp.html#a7e7fdd236a1593ed0124a3a7dd05946d", null ],
+    [ "standardizeNumber", "util_8hpp.html#afbed3096b7064ba07c83c6c15212b793", null ],
     [ "unicodeToUtf8", "util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e", null ],
     [ "utf8ToUnicode", "util_8hpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3", null ]
 ];
