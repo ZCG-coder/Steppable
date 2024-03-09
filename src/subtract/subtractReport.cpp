@@ -65,14 +65,11 @@ std::string reportSubtract(const std::string& aInteger,
     {
         ss << "   "; // Reserve space for the minus
         for (int i = 0; i < borrows.size(); i++)
-        {
-            int currentBorrowDigit = borrows[i];
-            if (currentBorrowDigit != aStr[i] - '0')
+            if (int currentBorrowDigit = borrows[i]; currentBorrowDigit != aStr[i] - '0')
                 ss << makeSubscript(std::to_string(currentBorrowDigit))
                    << std::string(2 - (currentBorrowDigit / 10), ' ');
             else
                 ss << "   ";
-        }
         ss << '\n' << "   "; // Reserve space for the minus
         for (char aChar : aOut)
             ss << aChar << "  ";
@@ -112,7 +109,7 @@ std::string reportSubtract(const std::string& aInteger,
         if (outputDigit == -1)
             outputChar = '.';
         else if (outputDigit == -2)
-            outputChar = '\0';
+            outputChar = '0';
         ss << outputChar; // No spaces
     }
 

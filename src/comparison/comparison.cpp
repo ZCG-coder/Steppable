@@ -31,11 +31,25 @@
 
 std::string compare(const std::string_view& a, const std::string_view& b, const int steps)
 {
+    if (standardizeNumber(a) == standardizeNumber(b))
+    {
+        if (steps == 2)
+            return BECAUSE " " + static_cast<std::string>(a) + " is identical to " + static_cast<std::string>(b) +
+                   ", " THEREFORE " a = b";
+        if (steps == 1)
+            return static_cast<std::string>(a) + " = " + static_cast<std::string>(b);
+        return "2";
+    }
     const auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, true);
     const auto result = splitNumberArray;
     const bool bothNegative = aIsNegative and bIsNegative;
-    const auto& aIntegerReal = result[0];
-    if (const auto& bIntegerReal = result[2];
+    auto aIntegerReal = result[0];
+    if (aIntegerReal.empty())
+        aIntegerReal = "0";
+    auto bIntegerReal = result[2];
+    if (bIntegerReal.empty())
+        bIntegerReal = "0";
+    if (
         // a is longer than b and is of different polarities
         aIntegerReal.length() != bIntegerReal.length() and aIsNegative == bIsNegative)
     {

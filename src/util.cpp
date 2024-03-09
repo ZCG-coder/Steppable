@@ -33,12 +33,42 @@
 #include <string>
 #include <vector>
 
+std::string simplifyZeroPolarity(const std::string_view& string)
+{
+    // Check if the string is zero
+    if (isZeroString(string))
+        return "0";
+    return static_cast<std::string>(string);
+}
+
+std::string simplifyPolarity(const std::string_view& _string)
+{
+    auto string = simplifyZeroPolarity(_string);
+    while (string[0] == '-' and string[1] == '-')
+        string = string.substr(2);
+    return string;
+}
+
+std::string standardizeNumber(const std::string_view& _number)
+{
+    auto number = simplifyPolarity(_number);
+    if (number.empty())
+        return "0";
+    if (number.front() == '+')
+        number.erase(0, 1);
+    if (number.front() == '.')
+        number.insert(0, 1, '0');
+    if (number.substr(0, 2) == "-.")
+        number.insert(1, 1, '0');
+    return number;
+}
+
 SplitNumberResult splitNumber(const std::string_view& _a,
                               const std::string_view& _b,
                               const bool padInteger,
                               const bool padDecimal)
 {
-    auto a = std::string(_a), b = std::string(_b);
+    auto a = simplifyPolarity(_a), b = simplifyPolarity(_b);
     bool aIsNegative = false, bIsNegative = false;
     if (a.front() == '-')
     {
@@ -60,6 +90,8 @@ SplitNumberResult splitNumber(const std::string_view& _a,
         aDecimal = "";
     if (isZeroString(bDecimal) or bParts.size() == 1)
         bDecimal = "";
+    aInteger = simplifyZeroPolarity(aInteger);
+    bInteger = simplifyZeroPolarity(bInteger);
     aDecimal = removeTrailingZeros(aDecimal);
     bDecimal = removeTrailingZeros(bDecimal);
 

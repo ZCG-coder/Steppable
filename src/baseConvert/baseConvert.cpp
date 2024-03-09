@@ -20,16 +20,64 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+#include "baseConvertReport.hpp"
+#include "fn/basicArithm.hpp"
+#include "output.hpp"
 #include "util.hpp"
 
 #include <string>
+#include <vector>
 
-auto baseConvert(const std::string& inputStr, const std::string& baseStr)
+using namespace std::literals;
+
+std::string representNumber(const std::string_view& _number)
 {
-    int base = std::stoi(baseStr);
-    if (base > 36)
-        return "";
-    return "";
+    if (compare(_number, "10", 0) != "1")
+    {
+        // Do nothing, the number can be represented as is
+        return static_cast<std::string>(_number);
+    }
+    const int number = std::stoi(static_cast<std::string>(_number));
+    if (number > 10)
+        throw std::invalid_argument("Number should be a single digit or a letter from A to Z");
+    const unsigned char letter = 'A' + static_cast<char>(number) - 10;
+    return { 1, static_cast<char>(letter) };
 }
 
-int main() {}
+std::string baseConvert(const std::string& inputStr, const std::string& baseStr, const int steps = 2)
+{
+    const int base = std::stoi(baseStr);
+    if (base > 36)
+    {
+        error("baseConvert"s, "It is impossilbe to represent a number in base greater than 36"s);
+        return "Impossible";
+    }
+    if (base == 0 or base == 1)
+    {
+        error("baseConvert"s, "Conversion to base 0 or 1 is not possible"s);
+        return "Impossible";
+    }
+
+    std::vector<std::string> digits;
+    std::string number = inputStr;
+    while (compare(number, "0", 0) != "2")
+    {
+        auto quotient = divide(number, baseStr, 0);
+        quotient = split(quotient, '.')[0];
+        auto remainder = subtract(number, multiply(quotient, baseStr, 0), 0);
+        if (compare(remainder, "0", 0) == "0")
+        {
+            remainder = subtract(remainder, baseStr, 0);
+            quotient = add(quotient, "1", 0);
+        }
+
+        if (steps == 2)
+            std::cout << reportBaseConvertStep(number, baseStr, quotient, representNumber(remainder)) << '\n';
+
+        number = quotient;
+        digits.push_back(remainder);
+    }
+    return join(digits, "");
+}
+
+int main() { baseConvert("10", "2"); }

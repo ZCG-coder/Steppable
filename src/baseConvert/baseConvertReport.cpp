@@ -20,44 +20,32 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+#include "baseConvertReport.hpp"
+
 #include "symbols.hpp"
+#include "util.hpp"
 
 #include <sstream>
 #include <string>
 #include <string_view>
-#include <util.hpp>
+#include <vector>
 
-std::string reportAbs(const std::string_view& number, int steps = 2)
+using namespace std::string_literals;
+
+std::string reportBaseConvertStep(const std::string& _number,
+                                  const std::string& _base,
+                                  const std::string& _quotient,
+                                  const std::string& _remainder)
 {
     std::stringstream ss;
-
-    if (steps == 2)
-    {
-        if (number[0] == '-')
-        {
-            ss << "Since " << number << " is negative, abs(" << number << ") = -(" << number << ")\n";
-            ss << THEREFORE " The absolute value of " << number << " is " << standardizeNumber(number.substr(1));
-        }
-        else
-        {
-            ss << "Since " << number << " is positive, abs(" << number << ") = " << number << '\n';
-            ss << THEREFORE " The absolute value of " << number << " is " << standardizeNumber(number);
-        }
-    }
-    else if (steps == 1)
-    {
-        if (number[0] == '-')
-            ss << "abs(" << number << ") = " << standardizeNumber(number.substr(1));
-        else
-            ss << "abs(" << number << ") = " << standardizeNumber(number);
-    }
-    else
-    {
-        if (number[0] == '-')
-            ss << standardizeNumber(number.substr(1));
-        else
-            ss << standardizeNumber(number);
-    }
-
+    ss << _number << " " DIVIDED_BY " " << _base << " = " << _quotient << " ... " << _remainder;
     return ss.str();
+}
+
+std::string reportBaseConvert(const std::string_view& _number,
+                              const std::string_view& _base,
+                              const std::vector<std::string>& _result)
+{
+    return THEREFORE + "The number "s + std::string(_number) + " in base " + std::string(_base) + " is " +
+           join(_result, "");
 }

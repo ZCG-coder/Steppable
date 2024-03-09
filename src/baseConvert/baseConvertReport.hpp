@@ -20,44 +20,17 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "symbols.hpp"
+#pragma once
 
-#include <sstream>
 #include <string>
 #include <string_view>
-#include <util.hpp>
+#include <vector>
 
-std::string reportAbs(const std::string_view& number, int steps = 2)
-{
-    std::stringstream ss;
+std::string reportBaseConvertStep(const std::string& _number,
+                                  const std::string& _base,
+                                  const std::string& _quotient,
+                                  const std::string& _remainder);
 
-    if (steps == 2)
-    {
-        if (number[0] == '-')
-        {
-            ss << "Since " << number << " is negative, abs(" << number << ") = -(" << number << ")\n";
-            ss << THEREFORE " The absolute value of " << number << " is " << standardizeNumber(number.substr(1));
-        }
-        else
-        {
-            ss << "Since " << number << " is positive, abs(" << number << ") = " << number << '\n';
-            ss << THEREFORE " The absolute value of " << number << " is " << standardizeNumber(number);
-        }
-    }
-    else if (steps == 1)
-    {
-        if (number[0] == '-')
-            ss << "abs(" << number << ") = " << standardizeNumber(number.substr(1));
-        else
-            ss << "abs(" << number << ") = " << standardizeNumber(number);
-    }
-    else
-    {
-        if (number[0] == '-')
-            ss << standardizeNumber(number.substr(1));
-        else
-            ss << standardizeNumber(number);
-    }
-
-    return ss.str();
-}
+std::string reportBaseConvert(const std::string_view& _number,
+                              const std::string_view& _base,
+                              const std::vector<std::string>& _result);

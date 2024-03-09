@@ -69,18 +69,15 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
             ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
             return ss.str();
         }
-        else if (steps == 1)
+        if (steps == 1)
         {
             std::stringstream ss;
             ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
             return ss.str();
         }
-        else
-        {
-            return "-" + addResult;
-        }
+        return "-" + addResult;
     }
-    else if (bIsNegative and not aIsNegative)
+    if (bIsNegative)
     {
         if (steps == 2)
             std::cout << "Adding " << a << " and " << b.substr(1) << " since " << b << " is negative\n";
@@ -99,17 +96,14 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
                << subtractResult.substr(subtractResult.find_last_of(' ') + 1);
             return ss.str();
         }
-        else if (steps == 1)
+        if (steps == 1)
         {
             std::stringstream ss;
             ss << THEREFORE << ' ' << a << " - " << b << " = -"
                << subtractResult.substr(subtractResult.find_last_of(' ') + 1);
             return ss.str();
         }
-        else
-        {
-            return "-" + subtractResult;
-        }
+        return "-" + subtractResult;
     }
 
     std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
@@ -143,8 +137,8 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
     if (aIsDecimal or bIsDecimal)
     {
         const auto decimalPos = aDecimal.length();
-        const auto itSumDigits = diffDigits.begin();
-        const auto itCarries = borrows.begin();
+        const auto itSumDigits = diffDigits.cbegin();
+        const auto itCarries = borrows.cbegin();
 
         diffDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
         borrows.insert(itCarries + static_cast<long>(decimalPos), -1); // Reserve the space
@@ -154,6 +148,11 @@ std::string subtract(const std::string_view& a, const std::string_view& b, const
     std::ranges::reverse(diffDigits);
     if (diffDigits.empty())
         diffDigits.push_back(0);
+    if (diffDigits.front() == -1)
+    {
+        diffDigits.insert(diffDigits.cbegin(), -2);
+        borrows.insert(borrows.cbegin(), -2);
+    }
 
     return reportSubtract(aInteger,
                           aDecimal,

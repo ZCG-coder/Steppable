@@ -32,9 +32,40 @@
 
 std::string add(const std::string_view& a, const std::string_view& b, const int steps, const bool negative)
 {
-    auto splitNumberResult = splitNumber(a, b);
-    auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberResult.splitNumberArray;
-    bool aIsNegative = splitNumberResult.aIsNegative, bIsNegative = splitNumberResult.bIsNegative, resultIsNegative = false;
+    if (isZeroString(a))
+    {
+        std::stringstream ss;
+        if (steps == 2)
+        {
+            ss << BECAUSE " a = 0, the result is " << b << '\n';
+            ss << THEREFORE " " << a << " + " << b << " = " << b;
+        }
+        else if (steps == 1)
+            ss << a << " + " << b << " = " << b;
+        else
+            ss << b;
+
+        return ss.str();
+    }
+
+    if (isZeroString(b))
+    {
+        std::stringstream ss;
+        if (steps == 2)
+        {
+            ss << BECAUSE " b = 0, the result is " << a << '\n';
+            ss << THEREFORE " " << a << " + " << b << " = " << a;
+        }
+        else if (steps == 1)
+            ss << a << " + " << b << " = " << a;
+        else
+            ss << a;
+
+        return ss.str();
+    }
+    auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b);
+    auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
+    bool resultIsNegative = false;
     const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
 
     if (negative)

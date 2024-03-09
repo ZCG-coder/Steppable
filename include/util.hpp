@@ -77,7 +77,7 @@
 struct SplitNumberResult
 {
     std::array<std::string, 4> splitNumberArray;
-    bool aIsNegative, bIsNegative;
+    bool aIsNegative = false, bIsNegative = false;
 };
 
 #ifdef WINDOWS
@@ -176,6 +176,32 @@ class Utf8CodePage
 #endif
 
 /**
+ * @brief Simplifies a string that represents a number with non-standard polarity.
+ *
+ * This function takes a string that represents a number with a zero polarity and simplifies it to a standard polarity.
+ * E.g. "-0" is simplified to "0".
+ *
+ * @param string The input string to be simplified.
+ * @return A simplified string with standard polarity.
+ */
+std::string simplifyZeroPolarity(const std::string_view& string);
+
+/**
+ * @brief Simplifies a string with non-standard polarity (e.g., --1, ---1, etc.).
+ * @param _string A string to simplify.
+ * @return A simplified string with correct polarity.
+ */
+std::string simplifyPolarity(const std::string_view& _string);
+
+/**
+ * @brief Standardizes a number string.
+ *
+ * @param _number The number string to standardize.
+ * @return The standardized number string.
+ */
+std::string standardizeNumber(const std::string_view& _number);
+
+/**
  * @fn constexpr bool isZeroString(const std::string_view& string)
  * @brief Checks if a given string is a zero string.
  *
@@ -186,7 +212,7 @@ class Utf8CodePage
  */
 constexpr bool isZeroString(const std::string_view& string)
 {
-    return std::ranges::all_of(string, [](const char c) { return c == '0'; });
+    return std::ranges::all_of(string, [](const char c) { return c == '0' or c == '.' or c == '-'; });
 }
 
 /**

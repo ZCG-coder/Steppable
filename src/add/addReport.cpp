@@ -45,11 +45,11 @@ std::string reportAdd(const std::string& aInteger,
     if (aIsDecimal)
         aOut += '.' + aDecimal;
     else if (not steps)
-        aOut += '\0'; // Don't use the spaced formatting
+        ; // Don't use the spaced formatting
     if (bIsDecimal)
         bOut += '.' + bDecimal;
     else if (not steps)
-        bOut += '\0'; // Don't use the spaced formatting
+        ; // Don't use the spaced formatting
 
     if (aIsDecimal and not bIsDecimal and steps)
         bOut += std::string(aDecimal.length() + 1, ' ');
@@ -91,11 +91,14 @@ std::string reportAdd(const std::string& aInteger,
 
     if (steps >= 1)
         ss << aOut << " + " << bOut << " = ";
+
+    std::string outStr;
     for (const auto c : sumDigits)
         if (c == -1)
-            ss << '.';
+            outStr += ".";
         else
-            ss << c;
+            outStr += std::string(1, c + '0');
+    ss << standardizeNumber(outStr);
 
     return ss.str();
 }
