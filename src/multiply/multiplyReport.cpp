@@ -108,6 +108,6 @@ std::string reportMultiply(const std::string& a,
     else
         out.insert(numberIntegers, ".");
 
-    ss << out;
+    ss << standardizeNumber(out);
     return ss.str();
 }

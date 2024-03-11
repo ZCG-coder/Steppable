@@ -52,6 +52,10 @@ std::string simplifyPolarity(const std::string_view& _string)
 std::string standardizeNumber(const std::string_view& _number)
 {
     auto number = simplifyPolarity(_number);
+    // Remove the trailing decimal point
+    if (number.back() == '.')
+        number.pop_back();
+
     if (number.empty())
         return "0";
     if (number.front() == '+')
