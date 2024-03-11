@@ -1,6 +1,10 @@
 # The Steppable Project
 
-[![Build Status](https://dev.azure.com/NWSOFT/Steppable/_apis/build/status%2FSteppable?branchName=main)](https://dev.azure.com/NWSOFT/Steppable/_build/latest?definitionId=3&branchName=main)
+[![CMake Build](https://github.com/ZCG-coder/Steppable/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/ZCG-coder/Steppable/actions/workflows/cmake-multi-platform.yml)
+
+[![Doxygen Deploy](https://github.com/ZCG-coder/Steppable/actions/workflows/doxygen-gh-pages.yml/badge.svg)](https://github.com/ZCG-coder/Steppable/actions/workflows/doxygen-gh-pages.yml)
+
+![GitHub Repo stars](https://img.shields.io/github/stars/ZCG-Coder/Steppable)
 
 This project tries to make a Computer Algebra System (CAS) out of scratch, and without any external libraries.
 
@@ -110,7 +114,7 @@ The different calculators can be run by specifying the necessary arguments, and 
 #       9  .  6  7  7  
 
 # Add 4 and 5.677, but do not show the steps
-./add 4 5.677 -steps
+./add 4 5.677 -steps:0
 # Output:
 # 9.677
 ```
@@ -154,10 +158,10 @@ To add a new feature, `a`:
    > **Note**:
    > Only the above-mentioned three files will be added to CMake.
 2. Make sure to document the code. Please use Doxygen to document this project.
-3. Add an entry to `src/CMakeLists.txt`
+3. Add an entry to `CMakeLists.txt` at the root of the repository.
 
     ```cmake
-    SET(COMPONENTS
+    set(COMPONENTS
         add
         ...
         a # Replace with yours
