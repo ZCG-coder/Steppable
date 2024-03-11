@@ -88,7 +88,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">The Steppable Project </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://dev.azure.com/NWSOFT/Steppable/_build/latest?definitionId=3&amp;branchName=main"><img src="https://dev.azure.com/NWSOFT/Steppable/_apis/build/status%2FSteppable?branchName=main" alt="Build Status" class="inline"/></a></p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/ZCG-coder/Steppable/actions/workflows/cmake-multi-platform.yml"><img src="https://github.com/ZCG-coder/Steppable/actions/workflows/cmake-multi-platform.yml/badge.svg" alt="CMake Build" style="pointer-events: none;" class="inline"/></a></p>
+<p><a href="https://github.com/ZCG-coder/Steppable/actions/workflows/doxygen-gh-pages.yml"><img src="https://github.com/ZCG-coder/Steppable/actions/workflows/doxygen-gh-pages.yml/badge.svg" alt="Doxygen Deploy" style="pointer-events: none;" class="inline"/></a></p>
+<p><img src="https://img.shields.io/github/stars/ZCG-Coder/Steppable" alt="GitHub Repo stars" class="inline"/></p>
 <p>This project tries to make a Computer Algebra System (CAS) out of scratch, and without any external libraries.</p>
 <h1><a class="anchor" id="autotoc_md21"></a>
 What is this?</h1>
@@ -167,7 +169,7 @@ How to get it running?</h1>
 <div class="line">#       9  .  6  7  7  </div>
 <div class="line"> </div>
 <div class="line"># Add 4 and 5.677, but do not show the steps</div>
-<div class="line">./add 4 5.677 -steps</div>
+<div class="line">./add 4 5.677 -steps:0</div>
 <div class="line"># Output:</div>
 <div class="line"># 9.677</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md26"></a>
@@ -204,8 +206,8 @@ How to add a new feature</h2>
 2. Make sure to document the code. Please use Doxygen to document this project.</li>
 </ul>
 </li>
-<li><p class="startli">Add an entry to <code>src/CMakeLists.txt</code></p>
-<p class="startli">```cmake SET(COMPONENTS add ... a # Replace with yours ) ```</p>
+<li><p class="startli">Add an entry to <code>CMakeLists.txt</code> at the root of the repository.</p>
+<p class="startli">```cmake set(COMPONENTS add ... a # Replace with yours ) ```</p>
 </li>
 <li>Create a pull request. </li>
 </ol>
