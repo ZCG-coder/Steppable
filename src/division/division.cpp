@@ -23,16 +23,20 @@
 #include "argParse.hpp"
 #include "divisionReport.hpp"
 #include "fn/basicArithm.hpp"
+#include "logging.hpp"
 #include "output.hpp"
 #include "util.hpp"
 
+#include <cstddef>
+#include <cstdlib>
 #include <ostream>
 #include <sstream>
 #include <string>
+#include <string_view>
 
 QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto& divisor)
 {
-    auto currentRemainder = _currentRemainder;
+    auto currentRemainder = removeLeadingZeros(_currentRemainder);
     if (compare(currentRemainder, divisor, 0) == "0")
         return { "0", currentRemainder };
     if (compare(currentRemainder, divisor, 0) == "2")
@@ -47,6 +51,67 @@ QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto
 
     const auto &quotient = std::to_string(out), remainder = currentRemainder;
     return { quotient, remainder };
+}
+
+long long determineScale(const std::string_view& number)
+{
+    auto splitNumberResult = splitNumber(number, "0", false, false).splitNumberArray;
+    auto numberInteger = splitNumberResult[0], numberDecimal = splitNumberResult[1];
+
+    // If there is an integer component, determine the scale of it
+    if (not isZeroString(numberInteger))
+        return static_cast<long long>(numberInteger.length() - 1);
+
+    // If there is no integer component but a decimal one, count the number of zeros preceeding the most significant
+    // figure. Scale = -(numberOfZeros + 1)
+    // E.g.: 0.1 => 0 leading zeros => scale = -(0 + 1) = -1; 0.0325 => 1 leading zero => scale = -(1 + 1) = -2.
+    auto newNumberDecimal = removeLeadingZeros(numberDecimal);
+    long long numberOfZeros = static_cast<long long>(numberDecimal.length()) - newNumberDecimal.length();
+    return -(numberOfZeros + 1);
+}
+
+// Credits to
+// https://worldmentalcalculation.com/how-to-divide-by-long-numbers-in-mental-math/
+long long determineResultScale(const std::string& _number, const std::string& _divisor)
+{
+    std::string number = _number, divisor = _divisor;
+    std::string lastDivisor = divisor;
+    long long divisorScale = determineScale(divisor), numberScale = determineScale(number),
+              diffScale = abs(numberScale - divisorScale);
+
+    // Step 1: Make divisor the same scale as number
+    // Method: If divisorScale > numberScale -> Scale up number.
+    //         If numberScale > divisorScale -> Scale up divisor.
+    // Eg.   : 1. 500, 20 => 20 -> 200 (diffScale = 1 -> 20 * 10^1 = 200)
+    //         2. 50, 500 => 50 -> 500 (diffScale = 1 -> 50 * 10^1 = 500)
+    auto scaleFactor = power("10", std::to_string(diffScale), 0);
+    if (divisorScale > numberScale)
+    {
+        number = multiply(number, scaleFactor, 0);
+        if (numberScale > 0)
+            numberScale = -numberScale;
+    }
+    else if (numberScale > divisorScale)
+        divisor = multiply(divisor, scaleFactor, 0);
+    // Special cases - Needs to minus 1.
+    else if (numberScale == divisorScale and compare(_number, _divisor, 0) == "0")
+        return 0;
+    else if (numberScale == divisorScale and compare(_number, _divisor, 0) != "0")
+        return -1;
+
+    // Step 2: Squeeze!
+    // Method: If number >= divisor -> return numberScale.
+    //         Else                -> return numberScale - 1.
+    if (compare(divisor, number, 0) != "1")
+    {
+        if (numberScale < 0)
+            return numberScale + 1;
+        return numberScale;
+    }
+
+    if (numberScale < 0)
+        return numberScale;
+    return numberScale - 1;
 }
 
 std::string divide(const std::string_view& _number,
@@ -71,16 +136,24 @@ std::string divide(const std::string_view& _number,
         return "Infinity";
     }
 
+    if (compare(_number, _divisor, 0) == "2")
+    {
+        std::stringstream ss;
+        if (steps == 2)
+            ss << "Since " << _number << " is equal to " << _divisor << ", " THEREFORE " the result is 1";
+        else if (steps == 1)
+            ss << _number << " " DIVIDED_BY " " << _divisor << " = 1";
+        else
+            ss << "1";
+        return ss.str();
+    }
+
     auto splitNumberResult = splitNumber(_number, _divisor, false, true);
     bool numberIsNegative = splitNumberResult.aIsNegative, divisorIsNegative = splitNumberResult.bIsNegative;
     auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] = splitNumberResult.splitNumberArray;
-    auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger, numberDecimalOrig = numberDecimal;
+    auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger, numberDecimalOrig = numberDecimal,
+         divisorDecimalOrig = divisorDecimal;
     auto decimals = _decimals;
-
-    if (numberIntegerOrig.empty())
-        numberIntegerOrig = "0";
-    if (divisorIntegerOrig.empty())
-        divisorIntegerOrig = "0";
 
     // Here, we determine the polarity of the result.
     // Scenario 1: Both positive
@@ -93,10 +166,10 @@ std::string divide(const std::string_view& _number,
     // Solution  : Result is negative, but make it positive
     bool resultIsNegative = false;
     if (numberIsNegative and divisorIsNegative)
-        resultIsNegative = false;
+        ;
     else if (numberIsNegative or divisorIsNegative)
         resultIsNegative = true;
-    else if (not numberIsNegative and not divisorIsNegative)
+    else
         resultIsNegative = false;
 
     while (not divisorDecimal.empty())
@@ -111,10 +184,10 @@ std::string divide(const std::string_view& _number,
         else
             numberInteger += '0';
     }
-    auto number = numberInteger + numberDecimal;
-    auto divisor = divisorInteger + divisorDecimal;
+    auto number = removeLeadingZeros(numberInteger + numberDecimal);
+    auto divisor = removeLeadingZeros(divisorInteger);
     std::string quotient;
-    std::stringstream tempFormattedAns, formattedAns;
+    std::stringstream tempFormattedAns;
 
     for (int i = 0; i < decimals + 1; i++) // Additional 0 is for rounding
         number += '0';
@@ -139,31 +212,13 @@ std::string divide(const std::string_view& _number,
 
     quotient = removeLeadingZeros(quotient);
     // Here, we attempt to round the result.
-    // - Length of integer in output  = Length of integers in number - Length of integers in divisor  (*)
-    // - Length of decimals in output = Length of output - Length of integers
     // Note: It can be negative!
-    auto numberIntegers = static_cast<long long>(numberIntegerOrig.length() - divisorIntegerOrig.length());
-    long long numberDecimals = quotient.length() - numberIntegers;
-    std::string testedResult;
-    SplitNumberResult parts;
+    auto numberIntegers = determineResultScale(numberIntegerOrig + "." + numberDecimalOrig,
+                                               divisorIntegerOrig + "." + divisorDecimalOrig);
+
+    auto numberDecimals = quotient.length() - numberIntegers;
     std::string finalQuotient = quotient;
-    bool adjusted = false;
 
-    // The gotos here are confusing. Here's a breakdown of how it runs:
-    // - Determine number of decimals
-    // - rounding: Round the numbers according to the estimated number of integers and decimals. <=========+-+
-    //   |- Is the result correctly adjusted?                                                              | | Jump
-    //    |-Yes|-> Jumps to finish, returns the result.----------------------------------------------------+-+----+
-    //    |-No|-> Jumps to testDigits and adjust the numbers accordingly.----------------------------------+-+--+ |
-    // - testDigits: Adjust the number of digits by multiplying and then see if the result is reasonable.<-+-+--+ |
-    //   |- Is reasonable?                                                                                 | |    |
-    //    |-Correct|-> Jumps to finish, returns the result.------------------------------------------------+-+----+
-    //    |-Too many integer places / Not enough decimal places|-> Remove one integer place----------------+ |    |
-    //    |-Not enough integer places / Too many decimal places|-> Add one integer place---------------------+    |
-    // - finish: Returns the correct result, and reports it using the reportDivision function.<===================+
-    //   |-> Ends program.
-
-rounding:
     // Scenario 1: No decimal places returned
     // Solution  : Do nothing
     if (static_cast<size_t>(numberIntegers) == quotient.length() - 1)
@@ -172,8 +227,8 @@ rounding:
     // Solution  : Round to the nearest decimal place
     else if (numberDecimals >= decimals and numberIntegers > 0)
     {
-        auto beforeDecimal = quotient.substr(0, numberIntegers - 1),
-             afterDecimal = quotient.substr(numberIntegers - 1, numberDecimals);
+        auto beforeDecimal = quotient.substr(0, numberIntegers),
+             afterDecimal = quotient.substr(numberIntegers, numberDecimals - 1);
         if (not afterDecimal.empty() and afterDecimal.back() > '4')
             afterDecimal = add(afterDecimal, "1", 0);
         if (beforeDecimal.empty())
@@ -197,32 +252,6 @@ rounding:
         finalQuotient += std::string(difference, '0');
     }
 
-testDigits:
-    // Here, we try out the estimated value, and see if it is right.
-    testedResult = multiply(finalQuotient, _divisor, 0);
-    parts = splitNumber(testedResult, "0", false, false);
-
-    if (parts.splitNumberArray[0].length() == numberIntegerOrig.length() or
-        parts.splitNumberArray[1].length() == numberDecimalOrig.length())
-        goto finish;
-    if (parts.splitNumberArray[0].length() > numberIntegerOrig.length() and
-        parts.splitNumberArray[1].length() < numberDecimalOrig.length())
-    {
-        numberIntegers--;
-        numberDecimals = finalQuotient.length() - numberIntegers;
-        adjusted = true;
-        goto rounding;
-    }
-    if (parts.splitNumberArray[0].length() < numberIntegerOrig.length() and
-        parts.splitNumberArray[1].length() > numberDecimalOrig.length())
-    {
-        numberIntegers++;
-        numberDecimals = finalQuotient.length() - numberIntegers;
-        adjusted = true;
-        goto rounding;
-    }
-
-finish:
     return reportDivision(
         tempFormattedAns, remainder, finalQuotient, divisor, _divisor, _number, steps, width, resultIsNegative);
 }
