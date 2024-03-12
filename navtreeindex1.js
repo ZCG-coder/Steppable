@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"md_CODE_OF_CONDUCT.html#autotoc_md2":[1,1],
+"md_CODE_OF_CONDUCT.html#autotoc_md3":[1,2],
 "md_CODE_OF_CONDUCT.html#autotoc_md4":[1,3],
 "md_CODE_OF_CONDUCT.html#autotoc_md5":[1,4],
 "md_CODE_OF_CONDUCT.html#autotoc_md6":[1,5],

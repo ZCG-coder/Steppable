@@ -204,9 +204,11 @@ var NAVTREEINDEX0 =
 "divisionReport_8hpp.html#a37e4e7cb6fe42ae3131cdc071b038687":[6,0,1,5,2,0],
 "divisionReport_8hpp_source.html":[6,0,1,5,2],
 "division_8cpp.html":[6,0,1,5,0],
-"division_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17":[6,0,1,5,0,2],
-"division_8cpp.html#ad8fb7bec6096894294df4c15d498dab7":[6,0,1,5,0,0],
-"division_8cpp.html#afe2f9d37fbb1090dfb3af32476b43fca":[6,0,1,5,0,1],
+"division_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17":[6,0,1,5,0,4],
+"division_8cpp.html#a222752517a35fde0e4de4bb32cbaa9be":[6,0,1,5,0,0],
+"division_8cpp.html#a5ae4861eefaae75d07eaa4228cdf94d0":[6,0,1,5,0,1],
+"division_8cpp.html#ad8fb7bec6096894294df4c15d498dab7":[6,0,1,5,0,2],
+"division_8cpp.html#afe2f9d37fbb1090dfb3af32476b43fca":[6,0,1,5,0,3],
 "files.html":[6,0],
 "format_8hpp.html":[6,0,0,3],
 "format_8hpp.html#a145f187acb1003d20b7eb30331d65d4e":[6,0,0,3,0],
@@ -223,8 +225,8 @@ var NAVTREEINDEX0 =
 "globals_func.html":[6,1,1],
 "globals_type.html":[6,1,3],
 "globals_vars.html":[6,1,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md21":[0,0],
 "index.html#autotoc_md22":[0,1],
 "index.html#autotoc_md23":[0,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "md_CODE_OF_CONDUCT.html":[1],
 "md_CODE_OF_CONDUCT.html#autotoc_md1":[1,0],
 "md_CODE_OF_CONDUCT.html#autotoc_md10":[1,5,3],
-"md_CODE_OF_CONDUCT.html#autotoc_md11":[1,6],
-"md_CODE_OF_CONDUCT.html#autotoc_md2":[1,1],
-"md_CODE_OF_CONDUCT.html#autotoc_md3":[1,2]
+"md_CODE_OF_CONDUCT.html#autotoc_md11":[1,6]
 };
