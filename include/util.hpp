@@ -450,6 +450,18 @@ std::string makeWider(const std::string& orig);
  */
 std::string unicodeToUtf8(int unicode);
 
+/**
+ * Removes trailing zeros from a vector of integers.
+ *
+ * @param _vector The input vector.
+ * @return The vector with trailing zeros removed.
+ */
 auto removeTrailingZeros(const std::vector<int>& _vector) -> std::decay_t<decltype(_vector)>;
 
+/**
+ * Removes trailing zeros from a string.
+ *
+ * @param numStr The input string.
+ * @return The string with trailing zeros removed.
+ */
 auto removeTrailingZeros(const std::string& numStr) -> std::decay_t<decltype(numStr)>;
