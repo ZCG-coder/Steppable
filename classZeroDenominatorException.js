@@ -1,4 +1,4 @@
 var classZeroDenominatorException =
 [
-    [ "what", "classZeroDenominatorException.html#a789d2c52cf3a6b87ab152195194b9dbf", null ]
+    [ "what", "classZeroDenominatorException.html#a602926a93b2e84020db1f0fc8984a3e8", null ]
 ];

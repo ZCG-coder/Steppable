@@ -91,7 +91,7 @@ var NAVTREEINDEX0 =
 "classTestCase.html#afbe493a0502c89eeb564e1ffc4f86f49":[5,0,6,10],
 "classUtf8CodePage.html":[5,0,7],
 "classZeroDenominatorException.html":[5,0,8],
-"classZeroDenominatorException.html#a789d2c52cf3a6b87ab152195194b9dbf":[5,0,8,0],
+"classZeroDenominatorException.html#a602926a93b2e84020db1f0fc8984a3e8":[5,0,8,0],
 "classes.html":[5,1],
 "classlogging_1_1Logger.html":[5,0,1,0],
 "classlogging_1_1Logger.html#a0a39b4bb48441b231c2785daa5dcf047":[5,0,1,0,8],

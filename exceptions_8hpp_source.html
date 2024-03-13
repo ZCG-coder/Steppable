@@ -114,16 +114,16 @@ $(document).ready(function(){initNavTree('exceptions_8hpp_source.html',''); init
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"> #include &lt;exception&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classZeroDenominatorException.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="classZeroDenominatorException.html">ZeroDenominatorException</a> : <span class="keyword">public</span> std::runtime_error</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classZeroDenominatorException.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="classZeroDenominatorException.html">ZeroDenominatorException</a> : <span class="keyword">public</span> std::exception</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classZeroDenominatorException.html#a789d2c52cf3a6b87ab152195194b9dbf">   42</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classZeroDenominatorException.html#a789d2c52cf3a6b87ab152195194b9dbf">what</a>()<span class="keyword"> const override</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classZeroDenominatorException.html#a602926a93b2e84020db1f0fc8984a3e8">   42</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classZeroDenominatorException.html#a602926a93b2e84020db1f0fc8984a3e8">what</a>() <span class="keyword">const</span> throw()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;The denominator is zero, which is not allowed.&quot;</span>;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
 <div class="ttc" id="aclassZeroDenominatorException_html"><div class="ttname"><a href="classZeroDenominatorException.html">ZeroDenominatorException</a></div><div class="ttdoc">Thrown when initializing a fraction with zero as denominator.</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:40</div></div>
-<div class="ttc" id="aclassZeroDenominatorException_html_a789d2c52cf3a6b87ab152195194b9dbf"><div class="ttname"><a href="classZeroDenominatorException.html#a789d2c52cf3a6b87ab152195194b9dbf">ZeroDenominatorException::what</a></div><div class="ttdeci">const char * what() const override</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:42</div></div>
+<div class="ttc" id="aclassZeroDenominatorException_html_a602926a93b2e84020db1f0fc8984a3e8"><div class="ttname"><a href="classZeroDenominatorException.html#a602926a93b2e84020db1f0fc8984a3e8">ZeroDenominatorException::what</a></div><div class="ttdeci">const char * what() const</div><div class="ttdef"><b>Definition:</b> exceptions.hpp:42</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
