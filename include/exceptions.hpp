@@ -36,10 +36,10 @@
  * @class ZeroDenominatorException
  * @brief Thrown when initializing a fraction with zero as denominator.
  */
-class ZeroDenominatorException : public std::runtime_error
+class ZeroDenominatorException : public std::exception
 {
 public:
-    const char* what() const override
+    const char* what() const throw()
     {
         return "The denominator is zero, which is not allowed.";
     }

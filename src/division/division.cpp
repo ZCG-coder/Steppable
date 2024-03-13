@@ -53,6 +53,12 @@ QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto
     return { quotient, remainder };
 }
 
+/**
+ * @brief Determines the scale of a number, i.e., the power of 10 when it is expressed in
+ * scientific notation.
+ * @param number The number to be processed.
+ * @return The scale of the number
+ */
 long long determineScale(const std::string_view& number)
 {
     auto splitNumberResult = splitNumber(number, "0", false, false).splitNumberArray;
@@ -70,8 +76,13 @@ long long determineScale(const std::string_view& number)
     return -(numberOfZeros + 1);
 }
 
-// Credits to
-// https://worldmentalcalculation.com/how-to-divide-by-long-numbers-in-mental-math/
+/**
+ * @brief Determines the scale of the quotient of division.
+ * @param _number The number to be divided.
+ * @param _divisor The divisor of the division.
+ * @return The scale of the result.
+ * @see https://worldmentalcalculation.com/how-to-divide-by-long-numbers-in-mental-math/
+ */
 long long determineResultScale(const std::string& _number, const std::string& _divisor)
 {
     std::string number = _number, divisor = _divisor;
