@@ -39,5 +39,8 @@
 class ZeroDenominatorException : public std::runtime_error
 {
 public:
-    const char* what() const override;
-}
+    const char* what() const override
+    {
+        return "The denominator is zero, which is not allowed.";
+    }
+};

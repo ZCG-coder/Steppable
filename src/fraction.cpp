@@ -20,13 +20,11 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+#include "exceptions.hpp"
+#include "fn/basicArithm.hpp"
 #include "fraction.hpp"
+#include "util.hpp"
 #include <string>
-
-const char* ZeroDenominatorException::what() const
-{
-    return "The denominator is zero, which is not allowed.";
-}
 
 Fraction::Fraction()
 {
