@@ -88,7 +88,7 @@ long long determineResultScale(const std::string& _number, const std::string& _d
     std::string number = _number, divisor = _divisor;
     std::string lastDivisor = divisor;
     long long divisorScale = determineScale(divisor), numberScale = determineScale(number),
-              diffScale = abs(numberScale - divisorScale);
+              diffScale = std::abs(numberScale - divisorScale);
 
     // Step 1: Make divisor the same scale as number
     // Method: If divisorScale > numberScale -> Scale up number.
