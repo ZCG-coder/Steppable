@@ -3,9 +3,12 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "fn", "dir_468765572d4c759fba87263a449f2bdd.html", "dir_468765572d4c759fba87263a449f2bdd" ],
     [ "argParse.hpp", "argParse_8hpp.html", "argParse_8hpp" ],
     [ "colors.hpp", "colors_8hpp.html", "colors_8hpp" ],
+    [ "exceptions.hpp", "exceptions_8hpp.html", [
+      [ "ZeroDenominatorException", "classZeroDenominatorException.html", "classZeroDenominatorException" ]
+    ] ],
     [ "format.hpp", "format_8hpp.html", "format_8hpp" ],
     [ "fraction.hpp", "fraction_8hpp.html", [
-      [ "Fraction", "classFraction.html", null ]
+      [ "Fraction", "classFraction.html", "classFraction" ]
     ] ],
     [ "internals.hpp", "internals_8hpp.html", [
       [ "setw", "structinternals_1_1setw.html", "structinternals_1_1setw" ]

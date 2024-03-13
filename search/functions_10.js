@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vformat_372',['vFormat',['../format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8',1,'vFormat(const std::basic_string&lt; CharT &gt; sFormat,...):&#160;format.hpp'],['../format_8hpp.html#a145f187acb1003d20b7eb30331d65d4e',1,'vFormat(const CharT *sFormat,...):&#160;format.hpp']]]
+  ['testcase_393',['TestCase',['../classTestCase.html#acf9c24083e7c1b0ab208417f12127d47',1,'TestCase']]],
+  ['tonumber_394',['toNumber',['../decimalConvert_8cpp.html#ae999c7b3ae6117d5e807502b2c5d038d',1,'decimalConvert.cpp']]]
 ];

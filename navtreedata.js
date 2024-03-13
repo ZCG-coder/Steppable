@@ -76,6 +76,7 @@ var NAVTREE =
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
@@ -99,7 +100,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "absReport_8cpp.html",
-"md_CODE_OF_CONDUCT.html#autotoc_md2"
+"index.html#autotoc_md26"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['setw_359',['setw',['../structinternals_1_1setw.html#a350c69e417ce0b9fd405ff2ac7c294e2',1,'internals::setw']]],
-  ['simplifypolarity_360',['simplifyPolarity',['../util_8hpp.html#a32344e51c6ae485367b4fbf6bb535742',1,'simplifyPolarity(const std::string_view &amp;_string):&#160;util.cpp'],['../util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742',1,'simplifyPolarity(const std::string_view &amp;_string):&#160;util.cpp']]],
-  ['simplifyzeropolarity_361',['simplifyZeroPolarity',['../util_8hpp.html#a70584872ee14fa0befa8f25788f98a2b',1,'simplifyZeroPolarity(const std::string_view &amp;string):&#160;util.cpp'],['../util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b',1,'simplifyZeroPolarity(const std::string_view &amp;string):&#160;util.cpp']]],
-  ['split_362',['split',['../util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7',1,'split(std::basic_string&lt; CharT &gt; s, const CharT separator):&#160;util.hpp'],['../util_8hpp.html#a4bd2c04ff3c3cf1dfddb3fb97da971c0',1,'split(std::basic_string_view&lt; CharT &gt; s, const CharT separator):&#160;util.hpp']]],
-  ['splitnumber_363',['splitNumber',['../util_8hpp.html#a7e7fdd236a1593ed0124a3a7dd05946d',1,'splitNumber(const std::string_view &amp;a, const std::string_view &amp;b, bool padInteger=true, bool padDecimal=true):&#160;util.cpp'],['../util_8cpp.html#afd4f95f2c2aa156bdcd4259ce36ca049',1,'splitNumber(const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal):&#160;util.cpp']]],
-  ['standardizenumber_364',['standardizeNumber',['../util_8hpp.html#afbed3096b7064ba07c83c6c15212b793',1,'standardizeNumber(const std::string_view &amp;_number):&#160;util.cpp'],['../util_8cpp.html#afbed3096b7064ba07c83c6c15212b793',1,'standardizeNumber(const std::string_view &amp;_number):&#160;util.cpp']]],
-  ['subtract_365',['subtract',['../basicArithm_8hpp.html#a08faec0b8e863df19e3f978758166482',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false):&#160;subtract.cpp'],['../subtract_8cpp.html#ac94acf58b23f19e226b9263fa3a2b0da',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool noMinus):&#160;subtract.cpp']]],
-  ['summarize_366',['summarize',['../classTestCase.html#a066fd61f7f3693cdd821d7057611cf61',1,'TestCase']]]
+  ['parseargs_358',['parseArgs',['../classProgramArgs.html#a849066672f4caced42480a76dec02fdd',1,'ProgramArgs']]],
+  ['power_359',['power',['../basicArithm_8hpp.html#a5967cef8aeb4f6ea90014159becd286d',1,'power(std::string_view _number, const std::string_view &amp;raiseTo, int steps=2):&#160;power.cpp'],['../power_8cpp.html#af89984cd69aac63fd697b9cdcc548020',1,'power(const std::string_view _number, const std::string_view &amp;_raiseTo, const int steps):&#160;power.cpp']]],
+  ['printusage_360',['printUsage',['../classProgramArgs.html#a37d6e46cb7b30f1a93a8455b7ce192f0',1,'ProgramArgs']]],
+  ['programargs_361',['ProgramArgs',['../classProgramArgs.html#aa22388f97b615afd8fdf86a9ee96841c',1,'ProgramArgs']]],
+  ['programsafeexit_362',['programSafeExit',['../namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e',1,'internals']]]
 ];
