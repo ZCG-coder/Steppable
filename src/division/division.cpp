@@ -86,9 +86,8 @@ long long determineScale(const std::string_view& number)
 long long determineResultScale(const std::string& _number, const std::string& _divisor)
 {
     std::string number = _number, divisor = _divisor;
-    std::string lastDivisor = divisor;
-    long long divisorScale = determineScale(divisor), numberScale = determineScale(number),
-              diffScale = std::abs(numberScale - divisorScale);
+    long long numberScale = determineScale(number);
+    long long divisorScale = determineScale(divisor), diffScale = std::abs(numberScale - divisorScale);
 
     // Step 1: Make divisor the same scale as number
     // Method: If divisorScale > numberScale -> Scale up number.
@@ -99,30 +98,29 @@ long long determineResultScale(const std::string& _number, const std::string& _d
     if (divisorScale > numberScale)
     {
         number = multiply(number, scaleFactor, 0);
-        if (numberScale > 0)
-            numberScale = -numberScale;
+        if (diffScale > 0)
+            diffScale = -diffScale;
     }
     else if (numberScale > divisorScale)
+    {
         divisor = multiply(divisor, scaleFactor, 0);
+    }
     // Special cases - Needs to minus 1.
     else if (numberScale == divisorScale and compare(_number, _divisor, 0) == "0")
         return 0;
     else if (numberScale == divisorScale and compare(_number, _divisor, 0) != "0")
-        return -1;
+        return 1;
 
     // Step 2: Squeeze!
     // Method: If number >= divisor -> return numberScale.
-    //         Else                -> return numberScale - 1.
-    if (compare(divisor, number, 0) != "1")
+    //         Else                 -> return numberScale - 1.
+    if (compare(number, divisor, 0) != "0")
     {
-        if (numberScale < 0)
-            return numberScale + 1;
-        return numberScale;
+        if (diffScale < 0)
+            return diffScale + 1;
+        return diffScale - 1;
     }
-
-    if (numberScale < 0)
-        return numberScale;
-    return numberScale - 1;
+    return diffScale;
 }
 
 std::string divide(const std::string_view& _number,
@@ -232,18 +230,19 @@ std::string divide(const std::string_view& _number,
 
     // Scenario 1: No decimal places returned
     // Solution  : Do nothing
-    if (static_cast<size_t>(numberIntegers) == quotient.length() - 1)
+    if (static_cast<size_t>(numberIntegers) == quotient.length() - 1 or decimals == 0)
         finalQuotient = quotient.substr(0, quotient.length() - 1);
     // Scenario 2: Decimal places more than requested
     // Solution  : Round to the nearest decimal place
     else if (numberDecimals >= decimals and numberIntegers > 0)
     {
         auto beforeDecimal = quotient.substr(0, numberIntegers),
-             afterDecimal = quotient.substr(numberIntegers, numberDecimals - 1);
+             afterDecimal = quotient.substr(numberIntegers, numberDecimals);
         if (not afterDecimal.empty() and afterDecimal.back() > '4')
-            afterDecimal = add(afterDecimal, "1", 0);
+            afterDecimal = add(afterDecimal, "10", 0);
         if (beforeDecimal.empty())
             beforeDecimal = "0";
+        afterDecimal.pop_back();
         if (not afterDecimal.empty())
             finalQuotient = beforeDecimal + "." + afterDecimal;
         else
@@ -257,7 +256,7 @@ std::string divide(const std::string_view& _number,
 
     // Scenario 4: Decimal places less than requested
     // Solution  : Pad with trailing zeros
-    if (numberDecimals < decimals and numberDecimals >= 0)
+    if (numberDecimals < decimals)
     {
         auto difference = decimals - numberDecimals;
         finalQuotient += std::string(difference, '0');
