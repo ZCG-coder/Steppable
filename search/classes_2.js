@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['programargs_230',['ProgramArgs',['../classProgramArgs.html',1,'']]]
+  ['multilengthletterexception_230',['MultiLengthLetterException',['../classMultiLengthLetterException.html',1,'']]]
 ];

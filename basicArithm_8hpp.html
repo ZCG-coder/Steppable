@@ -122,9 +122,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a0bf76a4df6c2748fbcb5b33b3e8166b3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="basicArithm_8hpp.html#a0bf76a4df6c2748fbcb5b33b3e8166b3">abs</a> (const std::string_view &amp;_number, int steps)</td></tr>
 <tr class="memdesc:a0bf76a4df6c2748fbcb5b33b3e8166b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the absolute value of a string representation of a number.  <a href="basicArithm_8hpp.html#a0bf76a4df6c2748fbcb5b33b3e8166b3">More...</a><br /></td></tr>
 <tr class="separator:a0bf76a4df6c2748fbcb5b33b3e8166b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf222f0bfc4ca97fbdc6db7fe808a9ee"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="basicArithm_8hpp.html#acf222f0bfc4ca97fbdc6db7fe808a9ee">add</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false)</td></tr>
-<tr class="memdesc:acf222f0bfc4ca97fbdc6db7fe808a9ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two string representations of numbers, and performs with the column method.  <a href="basicArithm_8hpp.html#acf222f0bfc4ca97fbdc6db7fe808a9ee">More...</a><br /></td></tr>
-<tr class="separator:acf222f0bfc4ca97fbdc6db7fe808a9ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22524b6e1ea1e62b578978978521148e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="basicArithm_8hpp.html#a22524b6e1ea1e62b578978978521148e">add</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false, bool properlyFormat=true)</td></tr>
+<tr class="memdesc:a22524b6e1ea1e62b578978978521148e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two string representations of numbers, and performs with the column method.  <a href="basicArithm_8hpp.html#a22524b6e1ea1e62b578978978521148e">More...</a><br /></td></tr>
+<tr class="separator:a22524b6e1ea1e62b578978978521148e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabb709fcb471467879352bf51bb0030a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="basicArithm_8hpp.html#aabb709fcb471467879352bf51bb0030a">compare</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2)</td></tr>
 <tr class="memdesc:aabb709fcb471467879352bf51bb0030a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two string representations of numbers.  <a href="basicArithm_8hpp.html#aabb709fcb471467879352bf51bb0030a">More...</a><br /></td></tr>
 <tr class="separator:aabb709fcb471467879352bf51bb0030a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,8 +206,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="acf222f0bfc4ca97fbdc6db7fe808a9ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf222f0bfc4ca97fbdc6db7fe808a9ee">&#9670;&nbsp;</a></span>add()</h2>
+<a id="a22524b6e1ea1e62b578978978521148e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22524b6e1ea1e62b578978978521148e">&#9670;&nbsp;</a></span>add()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -234,7 +234,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>negative</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>negative</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>properlyFormat</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -251,6 +257,7 @@ Here is the caller graph for this function:</div>
     <tr><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
     <tr><td class="paramname">steps</td><td>The number of steps to perform the addition. 2 = column method, 1 = normal addition, 0 = result only. Default is 2. </td></tr>
     <tr><td class="paramname">negative</td><td>Flag indicating whether the result should be negative. </td></tr>
+    <tr><td class="paramname">properlyFormat</td><td>Flag indicating whether to properly format the output. Default true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -258,13 +265,13 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="basicArithm_8hpp_acf222f0bfc4ca97fbdc6db7fe808a9ee_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="basicArithm_8hpp_a22524b6e1ea1e62b578978978521148e_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="basicArithm_8hpp_acf222f0bfc4ca97fbdc6db7fe808a9ee_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="basicArithm_8hpp_a22524b6e1ea1e62b578978978521148e_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

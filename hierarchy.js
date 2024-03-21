@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "std::exception", null, [
+      [ "MultiLengthLetterException", "classMultiLengthLetterException.html", null ],
       [ "ZeroDenominatorException", "classZeroDenominatorException.html", null ]
     ] ],
     [ "Fraction", "classFraction.html", null ],

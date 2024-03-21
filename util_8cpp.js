@@ -1,5 +1,6 @@
 var util_8cpp =
 [
+    [ "determineScale", "util_8cpp.html#a5ae4861eefaae75d07eaa4228cdf94d0", null ],
     [ "makeWider", "util_8cpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f", null ],
     [ "removeLeadingZeros", "util_8cpp.html#a8db0b6516cd43653a22f81a36140b658", null ],
     [ "removeLeadingZeros", "util_8cpp.html#a8056dcad90ba9582ba25405a95c2f1e4", null ],
@@ -8,7 +9,7 @@ var util_8cpp =
     [ "replaceLeadingZeros", "util_8cpp.html#ac87bf229222a2a4f32b8626281c6c282", null ],
     [ "simplifyPolarity", "util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742", null ],
     [ "simplifyZeroPolarity", "util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b", null ],
-    [ "splitNumber", "util_8cpp.html#afd4f95f2c2aa156bdcd4259ce36ca049", null ],
+    [ "splitNumber", "util_8cpp.html#af391dcb35601f4af79349bec28aeb379", null ],
     [ "standardizeNumber", "util_8cpp.html#afbed3096b7064ba07c83c6c15212b793", null ],
     [ "unicodeToUtf8", "util_8cpp.html#a5d3673801816ad366e92dc0f27b529f7", null ],
     [ "utf8ToUnicode", "util_8cpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3", null ]

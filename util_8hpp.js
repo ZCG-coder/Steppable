@@ -5,6 +5,7 @@ var util_8hpp =
     [ "TIC", "util_8hpp.html#aeb09b3077689c00cd9d9856491211261", null ],
     [ "TOC", "util_8hpp.html#aa6a8edd5b2f8ff896de156bba81dc725", null ],
     [ "bothEndsReplace", "util_8hpp.html#abcb0e591d56d9eee835f0eb199557635", null ],
+    [ "determineScale", "util_8hpp.html#a5ae4861eefaae75d07eaa4228cdf94d0", null ],
     [ "isNumber", "util_8hpp.html#ab5181747c16ee879c5a0e5fd6a3ac0c6", null ],
     [ "isZeroString", "util_8hpp.html#a183c024df291889f90106e47bb64fe0b", null ],
     [ "join", "util_8hpp.html#a3dd6d942897366039648e301673915e2", null ],
@@ -20,7 +21,7 @@ var util_8hpp =
     [ "simplifyZeroPolarity", "util_8hpp.html#a70584872ee14fa0befa8f25788f98a2b", null ],
     [ "split", "util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7", null ],
     [ "split", "util_8hpp.html#a4bd2c04ff3c3cf1dfddb3fb97da971c0", null ],
-    [ "splitNumber", "util_8hpp.html#a7e7fdd236a1593ed0124a3a7dd05946d", null ],
+    [ "splitNumber", "util_8hpp.html#ac76b4ec861cbb199d3349f225f969b82", null ],
     [ "standardizeNumber", "util_8hpp.html#afbed3096b7064ba07c83c6c15212b793", null ],
     [ "unicodeToUtf8", "util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e", null ],
     [ "utf8ToUnicode", "util_8hpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3", null ]

@@ -4,7 +4,8 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "argParse.hpp", "argParse_8hpp.html", "argParse_8hpp" ],
     [ "colors.hpp", "colors_8hpp.html", "colors_8hpp" ],
     [ "exceptions.hpp", "exceptions_8hpp.html", [
-      [ "ZeroDenominatorException", "classZeroDenominatorException.html", "classZeroDenominatorException" ]
+      [ "ZeroDenominatorException", "classZeroDenominatorException.html", "classZeroDenominatorException" ],
+      [ "MultiLengthLetterException", "classMultiLengthLetterException.html", "classMultiLengthLetterException" ]
     ] ],
     [ "format.hpp", "format_8hpp.html", "format_8hpp" ],
     [ "fraction.hpp", "fraction_8hpp.html", [

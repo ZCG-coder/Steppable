@@ -114,8 +114,8 @@ Functions</h2></td></tr>
 <tr class="memitem:afbed3096b7064ba07c83c6c15212b793"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#afbed3096b7064ba07c83c6c15212b793">standardizeNumber</a> (const std::string_view &amp;_number)</td></tr>
 <tr class="memdesc:afbed3096b7064ba07c83c6c15212b793"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standardizes a number string.  <a href="util_8cpp.html#afbed3096b7064ba07c83c6c15212b793">More...</a><br /></td></tr>
 <tr class="separator:afbed3096b7064ba07c83c6c15212b793"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd4f95f2c2aa156bdcd4259ce36ca049"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#afd4f95f2c2aa156bdcd4259ce36ca049">splitNumber</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal)</td></tr>
-<tr class="separator:afd4f95f2c2aa156bdcd4259ce36ca049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af391dcb35601f4af79349bec28aeb379"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#af391dcb35601f4af79349bec28aeb379">splitNumber</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal, bool properlyFormat)</td></tr>
+<tr class="separator:af391dcb35601f4af79349bec28aeb379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93b9ba3fe803c8e3fa1b128f4e83924f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f">makeWider</a> (const std::string &amp;orig)</td></tr>
 <tr class="memdesc:a93b9ba3fe803c8e3fa1b128f4e83924f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes the given string wider by adding 2 spaces between each character.  <a href="util_8cpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f">More...</a><br /></td></tr>
 <tr class="separator:a93b9ba3fe803c8e3fa1b128f4e83924f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,8 +135,50 @@ Functions</h2></td></tr>
 <tr class="separator:a7f0f5e18cd1b1507ace9b814e6286dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d42f48c477c78fe45f36569d709c068"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a5d42f48c477c78fe45f36569d709c068">removeTrailingZeros</a> (const std::string &amp;numStr) -&gt; std::decay_t&lt; decltype(numStr)&gt;</td></tr>
 <tr class="separator:a5d42f48c477c78fe45f36569d709c068"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ae4861eefaae75d07eaa4228cdf94d0"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a5ae4861eefaae75d07eaa4228cdf94d0">determineScale</a> (const std::string_view &amp;number)</td></tr>
+<tr class="memdesc:a5ae4861eefaae75d07eaa4228cdf94d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation.  <a href="util_8cpp.html#a5ae4861eefaae75d07eaa4228cdf94d0">More...</a><br /></td></tr>
+<tr class="separator:a5ae4861eefaae75d07eaa4228cdf94d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a5ae4861eefaae75d07eaa4228cdf94d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ae4861eefaae75d07eaa4228cdf94d0">&#9670;&nbsp;</a></span>determineScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long long determineScale </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view &amp;&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>The number to be processed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The scale of the number </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a5ae4861eefaae75d07eaa4228cdf94d0_cgraph.svg" width="100%" height="534"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a5ae4861eefaae75d07eaa4228cdf94d0_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a93b9ba3fe803c8e3fa1b128f4e83924f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a93b9ba3fe803c8e3fa1b128f4e83924f">&#9670;&nbsp;</a></span>makeWider()</h2>
 
@@ -397,8 +439,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="afd4f95f2c2aa156bdcd4259ce36ca049"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd4f95f2c2aa156bdcd4259ce36ca049">&#9670;&nbsp;</a></span>splitNumber()</h2>
+<a id="af391dcb35601f4af79349bec28aeb379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af391dcb35601f4af79349bec28aeb379">&#9670;&nbsp;</a></span>splitNumber()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -425,7 +467,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>padDecimal</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>padDecimal</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>properlyFormat</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -441,6 +489,7 @@ Here is the caller graph for this function:</div>
     <tr><td class="paramname">b</td><td>The second number as a string. </td></tr>
     <tr><td class="paramname">padInteger</td><td>Flag indicating whether to pad the integer part with spaces of the result. </td></tr>
     <tr><td class="paramname">padDecimal</td><td>Flag indicating whether to pad the decimal part with zeros of the result. </td></tr>
+    <tr><td class="paramname">properlyFormat</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -449,13 +498,13 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_afd4f95f2c2aa156bdcd4259ce36ca049_cgraph.svg" width="100%" height="509"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_af391dcb35601f4af79349bec28aeb379_cgraph.svg" width="100%" height="509"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_afd4f95f2c2aa156bdcd4259ce36ca049_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_af391dcb35601f4af79349bec28aeb379_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

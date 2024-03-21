@@ -4,7 +4,7 @@ var searchData=
   ['abs_2ecpp_1',['abs.cpp',['../abs_8cpp.html',1,'']]],
   ['absreport_2ecpp_2',['absReport.cpp',['../absReport_8cpp.html',1,'']]],
   ['absreport_2ehpp_3',['absReport.hpp',['../absReport_8hpp.html',1,'']]],
-  ['add_4',['add',['../add_8cpp.html#a3b7c641c3c06453e9e673a9b50292843',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool negative):&#160;add.cpp'],['../basicArithm_8hpp.html#acf222f0bfc4ca97fbdc6db7fe808a9ee',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false):&#160;add.cpp']]],
+  ['add_4',['add',['../add_8cpp.html#a9dab42e311b982887e521b7ef2dc6ad1',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool negative, const bool properlyFormat):&#160;add.cpp'],['../basicArithm_8hpp.html#a22524b6e1ea1e62b578978978521148e',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false, bool properlyFormat=true):&#160;add.cpp']]],
   ['add_2ecpp_5',['add.cpp',['../add_8cpp.html',1,'']]],
   ['addkeywordarg_6',['addKeywordArg',['../classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336',1,'ProgramArgs']]],
   ['addposarg_7',['addPosArg',['../classProgramArgs.html#a419988f156cdd89651c16c65e6d26c14',1,'ProgramArgs']]],
