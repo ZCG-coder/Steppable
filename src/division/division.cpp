@@ -54,29 +54,6 @@ QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto
 }
 
 /**
- * @brief Determines the scale of a number, i.e., the power of 10 when it is expressed in
- * scientific notation.
- * @param number The number to be processed.
- * @return The scale of the number
- */
-long long determineScale(const std::string_view& number)
-{
-    auto splitNumberResult = splitNumber(number, "0", false, false).splitNumberArray;
-    auto numberInteger = splitNumberResult[0], numberDecimal = splitNumberResult[1];
-
-    // If there is an integer component, determine the scale of it
-    if (not isZeroString(numberInteger))
-        return static_cast<long long>(numberInteger.length() - 1);
-
-    // If there is no integer component but a decimal one, count the number of zeros preceeding the most significant
-    // figure. Scale = -(numberOfZeros + 1)
-    // E.g.: 0.1 => 0 leading zeros => scale = -(0 + 1) = -1; 0.0325 => 1 leading zero => scale = -(1 + 1) = -2.
-    auto newNumberDecimal = removeLeadingZeros(numberDecimal);
-    long long numberOfZeros = static_cast<long long>(numberDecimal.length()) - newNumberDecimal.length();
-    return -(numberOfZeros + 1);
-}
-
-/**
  * @brief Determines the scale of the quotient of division.
  * @param _number The number to be divided.
  * @param _divisor The divisor of the division.
@@ -115,11 +92,7 @@ long long determineResultScale(const std::string& _number, const std::string& _d
     // Method: If number >= divisor -> return numberScale.
     //         Else                 -> return numberScale - 1.
     if (compare(number, divisor, 0) != "0")
-    {
-        if (diffScale < 0)
-            return diffScale + 1;
-        return diffScale - 1;
-    }
+        return diffScale + 1;
     return diffScale;
 }
 
@@ -219,13 +192,13 @@ std::string divide(const std::string_view& _number,
             remainder += number[idx];
     }
 
-    quotient = removeLeadingZeros(quotient);
     // Here, we attempt to round the result.
     // Note: It can be negative!
     auto numberIntegers = determineResultScale(numberIntegerOrig + "." + numberDecimalOrig,
                                                divisorIntegerOrig + "." + divisorDecimalOrig);
 
     auto numberDecimals = quotient.length() - numberIntegers;
+    quotient = removeLeadingZeros(quotient);
     std::string finalQuotient = quotient;
 
     // Scenario 1: No decimal places returned
@@ -236,23 +209,53 @@ std::string divide(const std::string_view& _number,
     // Solution  : Round to the nearest decimal place
     else if (numberDecimals >= decimals and numberIntegers > 0)
     {
+        bool carry = false;
+        if (not quotient.empty() and quotient.back() > '4')
+        {
+            quotient = add(quotient, "10", 0, false, false);
+
+            if (quotient.front() == '0')
+                quotient.erase(0, 1);
+            else
+            {
+                carry = true;
+                quotient += '0';
+            }
+        }
+        quotient.pop_back();
         auto beforeDecimal = quotient.substr(0, numberIntegers),
              afterDecimal = quotient.substr(numberIntegers, numberDecimals);
-        if (not afterDecimal.empty() and afterDecimal.back() > '4')
-            afterDecimal = add(afterDecimal, "10", 0);
         if (beforeDecimal.empty())
             beforeDecimal = "0";
-        afterDecimal.pop_back();
         if (not afterDecimal.empty())
             finalQuotient = beforeDecimal + "." + afterDecimal;
         else
             finalQuotient = beforeDecimal;
+
+        if (afterDecimal.length() > decimals)
+            finalQuotient = multiply(finalQuotient, "10", 0);
     }
     // Scenario 3: Result is less than one
     // Solution  : 1. Append "0." to the beginning
     //             2. Append appropriate amount of zeros
+    //             3. Apply rounding
     else if (numberIntegers <= 0)
-        finalQuotient = "0." + std::string(-numberIntegers, '0') + quotient.substr(0, quotient.length() - 1);
+    {
+        if (not quotient.empty() and quotient.back() > '4')
+        {
+            quotient = add(quotient, "10", 0, false, false);
+            if (quotient.front() == '0')
+                quotient.erase(0, 1);
+            else
+                quotient += '0';
+        }
+        quotient.pop_back();
+        auto afterDecimal = std::string(-numberIntegers, '0') + quotient;
+        finalQuotient = "0." + afterDecimal;
+
+        if (afterDecimal.length() > decimals)
+            finalQuotient = multiply(finalQuotient, "10", 0);
+    }
 
     // Scenario 4: Decimal places less than requested
     // Solution  : Pad with trailing zeros

@@ -299,6 +299,7 @@ auto split(std::basic_string_view<CharT> s, const CharT separator)
  * @param b The second number as a string.
  * @param padInteger Flag indicating whether to pad the integer part with spaces of the result.
  * @param padDecimal Flag indicating whether to pad the decimal part with zeros of the result.
+ * @param properlyFormat
  * @return The result of splitting the two numbers.
  *
  * @see SplitNumberResult
@@ -306,7 +307,8 @@ auto split(std::basic_string_view<CharT> s, const CharT separator)
 SplitNumberResult splitNumber(const std::string_view& a,
                               const std::string_view& b,
                               bool padInteger = true,
-                              bool padDecimal = true);
+                              bool padDecimal = true,
+                              bool properlyFormat = true);
 
 /**
  * @brief Replaces the trailing occurrences of a character in a string with another character.
@@ -465,3 +467,11 @@ auto removeTrailingZeros(const std::vector<int>& _vector) -> std::decay_t<declty
  * @return The string with trailing zeros removed.
  */
 auto removeTrailingZeros(const std::string& numStr) -> std::decay_t<decltype(numStr)>;
+
+/**
+ * @brief Determines the scale of a number, i.e., the power of 10 when it is expressed in
+ * scientific notation.
+ * @param number The number to be processed.
+ * @return The scale of the number
+ */
+long long determineScale(const std::string_view& number);

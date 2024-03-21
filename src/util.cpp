@@ -70,22 +70,28 @@ std::string standardizeNumber(const std::string_view& _number)
 SplitNumberResult splitNumber(const std::string_view& _a,
                               const std::string_view& _b,
                               const bool padInteger,
-                              const bool padDecimal)
+                              const bool padDecimal,
+                              bool properlyFormat)
 {
-    auto a = simplifyPolarity(_a), b = simplifyPolarity(_b);
     bool aIsNegative = false, bIsNegative = false;
-    if (a.front() == '-')
+
+    std::string a = static_cast<std::string>(_a), b = static_cast<std::string>(_b);
+    if (properlyFormat)
     {
-        aIsNegative = true;
-        a.erase(a.begin());
+        a = simplifyPolarity(_a), b = simplifyPolarity(_b);
+        if (a.front() == '-')
+        {
+            aIsNegative = true;
+            a.erase(a.begin());
+        }
+        if (b.front() == '-')
+        {
+            bIsNegative = true;
+            b.erase(b.begin());
+        }
+        a = removeLeadingZeros(a);
+        b = removeLeadingZeros(b);
     }
-    if (b.front() == '-')
-    {
-        bIsNegative = true;
-        b.erase(b.begin());
-    }
-    a = removeLeadingZeros(a);
-    b = removeLeadingZeros(b);
     const std::vector<std::string> aParts = split(a, '.'), bParts = split(b, '.');
     auto aInteger = static_cast<std::string>(aParts.front()), aDecimal = static_cast<std::string>(aParts.back()),
          bInteger = static_cast<std::string>(bParts.front()), bDecimal = static_cast<std::string>(bParts.back());
@@ -270,4 +276,21 @@ auto removeTrailingZeros(const std::string& numStr) -> std::decay_t<decltype(num
 
     std::string result = numStr.substr(0, i + 1);
     return result;
+}
+
+long long determineScale(const std::string_view& number)
+{
+    auto splitNumberResult = splitNumber(number, "0", false, false).splitNumberArray;
+    auto numberInteger = splitNumberResult[0], numberDecimal = splitNumberResult[1];
+
+    // If there is an integer component, determine the scale of it
+    if (not isZeroString(numberInteger))
+        return static_cast<long long>(numberInteger.length() - 1);
+
+    // If there is no integer component but a decimal one, count the number of zeros preceeding the most significant
+    // figure. Scale = -(numberOfZeros + 1)
+    // E.g.: 0.1 => 0 leading zeros => scale = -(0 + 1) = -1; 0.0325 => 1 leading zero => scale = -(1 + 1) = -2.
+    auto newNumberDecimal = removeLeadingZeros(numberDecimal);
+    long long numberOfZeros = static_cast<long long>(numberDecimal.length()) - newNumberDecimal.length();
+    return -(numberOfZeros + 1);
 }

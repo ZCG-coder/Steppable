@@ -30,7 +30,11 @@
 #include <string_view>
 #include <vector>
 
-std::string add(const std::string_view& a, const std::string_view& b, const int steps, const bool negative)
+std::string add(const std::string_view& a,
+                const std::string_view& b,
+                const int steps,
+                const bool negative,
+                const bool properlyFormat)
 {
     if (isZeroString(a))
     {
@@ -63,7 +67,7 @@ std::string add(const std::string_view& a, const std::string_view& b, const int 
 
         return ss.str();
     }
-    auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b);
+    auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, true, true, properlyFormat);
     auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
     bool resultIsNegative = false;
     const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
@@ -126,10 +130,11 @@ std::string add(const std::string_view& a, const std::string_view& b, const int 
 
     std::reverse(carries.begin(), carries.end());
     std::ranges::reverse(sumDigits);
-    if (sumDigits.front() == 0)
+    if (sumDigits.front() == 0 and properlyFormat)
         sumDigits.erase(sumDigits.begin());
 
-    return reportAdd(aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, resultIsNegative, steps);
+    return reportAdd(
+        aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, resultIsNegative, steps, properlyFormat);
 }
 
 #ifndef NO_MAIN

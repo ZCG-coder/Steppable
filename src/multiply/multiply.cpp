@@ -29,6 +29,14 @@
 #include <string_view>
 #include <vector>
 
+long long determineProductScale(const std::string& a, const std::string& b)
+{
+    auto aScale = determineScale(a);
+    auto bScale = determineScale(b);
+
+    return aScale + bScale;
+}
+
 std::string multiply(const std::string_view& a, const std::string_view& b, const int steps)
 {
     if (isZeroString(a) or isZeroString(b))
@@ -106,7 +114,11 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
         finalProdDigits[indexDigit] = sum;
     }
 
-    const size_t numberDecimals = aDecimal.length() + bDecimal.length();
+    const auto scale = determineProductScale(static_cast<std::string>(a), static_cast<std::string>(b));
+    size_t numberDecimals = 0;
+
+    if (scale < 0)
+        ;
     return reportMultiply(static_cast<std::string>(a),
                           static_cast<std::string>(b),
                           aStr,

@@ -27,10 +27,10 @@
  * @author Andy Zhang
  * @date 13th March 2024
  */
- 
- #pragma once
- 
- #include <exception>
+
+#pragma once
+
+#include <exception>
 
 /**
  * @class ZeroDenominatorException
@@ -39,8 +39,15 @@
 class ZeroDenominatorException : public std::exception
 {
 public:
-    const char* what() const throw()
-    {
-        return "The denominator is zero, which is not allowed.";
-    }
+    const char* what() const throw() { return "The denominator is zero, which is not allowed."; }
+};
+
+/**
+ * @class MultiLengthLetterException
+ * @brief Thrown when initializing a Key object with two or more letters.
+ */
+class MultiLengthLetterException : public std::exception
+{
+public:
+    const char* what() const throw() { return "The length of letter exceeds the 1 limit."; }
 };

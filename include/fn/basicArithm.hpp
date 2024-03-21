@@ -64,9 +64,14 @@ std::string abs(const std::string_view& _number, int steps);
  * @param steps The number of steps to perform the addition. 2 = column method, 1 = normal addition, 0 = result only.
  * Default is 2.
  * @param negative Flag indicating whether the result should be negative.
+ * @param properlyFormat Flag indicating whether to properly format the output. Default true.
  * @return The sum of the two numbers as a string.
  */
-std::string add(const std::string_view& a, const std::string_view& b, int steps = 2, bool negative = false);
+std::string add(const std::string_view& a,
+                const std::string_view& b,
+                int steps = 2,
+                bool negative = false,
+                bool properlyFormat = true);
 
 /**
  * @brief Compares two string representations of numbers.

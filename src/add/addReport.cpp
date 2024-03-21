@@ -36,7 +36,8 @@ std::string reportAdd(const std::string& aInteger,
                       const std::vector<int>& sumDigits,
                       const std::vector<bool>& carries,
                       const bool resultIsNegative,
-                      const int steps)
+                      const int steps,
+                      const bool properlyFormat)
 {
     std::stringstream ss;
 
@@ -98,7 +99,11 @@ std::string reportAdd(const std::string& aInteger,
             outStr += ".";
         else
             outStr += std::string(1, c + '0');
-    ss << standardizeNumber(outStr);
+
+    if (properlyFormat)
+        ss << standardizeNumber(outStr);
+    else
+        ss << outStr;
 
     return ss.str();
 }
