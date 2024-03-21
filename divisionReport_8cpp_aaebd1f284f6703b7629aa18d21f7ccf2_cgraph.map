@@ -1,32 +1,29 @@
 <map id="reportDivisionStep" name="reportDivisionStep">
-<area shape="rect" id="node1" title=" " alt="" coords="5,169,148,196"/>
-<area shape="rect" id="node2" href="$basicArithm_8hpp.html#ac99d69ea51545fe30da4a36290f3fedc" title="Multiplies two string representations of numbers." alt="" coords="319,169,395,196"/>
-<area shape="rect" id="node11" href="$util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7" title="Splits a string into substrings based on a separator." alt="" coords="1172,144,1223,171"/>
-<area shape="rect" id="node19" href="$basicArithm_8hpp.html#a08faec0b8e863df19e3f978758166482" title="Subtracts one string representation of a number from another string representation of a number." alt="" coords="196,765,271,792"/>
-<area shape="rect" id="node3" href="$multiply_8cpp.html#a599800c0e265121b8977d06a4d14a945" title=" " alt="" coords="443,144,616,171"/>
-<area shape="rect" id="node5" href="$util_8hpp.html#a183c024df291889f90106e47bb64fe0b" title="Checks if a given string is a zero string." alt="" coords="1528,397,1629,424"/>
-<area shape="rect" id="node12" href="$multiplyReport_8cpp.html#a66ad602068d3c80661db7d3cd3069681" title=" " alt="" coords="472,651,587,677"/>
-<area shape="rect" id="node18" href="$util_8hpp.html#ac76b4ec861cbb199d3349f225f969b82" title=" " alt="" coords="943,347,1045,373"/>
-<area shape="rect" id="node4" href="$util_8hpp.html#a5ae4861eefaae75d07eaa4228cdf94d0" title="Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation." alt="" coords="705,144,829,171"/>
-<area shape="rect" id="node6" href="$util_8cpp.html#a8056dcad90ba9582ba25405a95c2f1e4" title=" " alt="" coords="1117,347,1277,373"/>
-<area shape="rect" id="node7" href="$util_8cpp.html#af391dcb35601f4af79349bec28aeb379" title=" " alt="" coords="943,245,1045,272"/>
-<area shape="rect" id="node8" href="$util_8cpp.html#a7f0f5e18cd1b1507ace9b814e6286dda" title=" " alt="" coords="1119,296,1275,323"/>
-<area shape="rect" id="node9" href="$util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742" title="Simplifies a string with non&#45;standard polarity (e.g., –1, —1, etc.)." alt="" coords="1135,397,1259,424"/>
-<area shape="rect" id="node10" href="$util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b" title="Simplifies a string that represents a number with non&#45;standard polarity." alt="" coords="1325,397,1480,424"/>
-<area shape="rect" id="node13" href="$symbols_8hpp.html#a4c2486dd425b34a3a7b6f64db79add2c" title="Create a subscript string from a normal string." alt="" coords="935,853,1053,880"/>
-<area shape="rect" id="node15" href="$util_8hpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f" title="Makes the given string wider by adding 2 spaces between each character." alt="" coords="719,600,815,627"/>
-<area shape="rect" id="node16" href="$util_8hpp.html#ac87bf229222a2a4f32b8626281c6c282" title=" " alt="" coords="688,752,847,779"/>
-<area shape="rect" id="node17" href="$util_8hpp.html#afbed3096b7064ba07c83c6c15212b793" title="Standardizes a number string." alt="" coords="919,600,1069,627"/>
-<area shape="rect" id="node14" href="$util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e" title="Converts a Unicode character to UTF&#45;8 encoding." alt="" coords="1140,853,1255,880"/>
-<area shape="rect" id="node20" href="$basicArithm_8hpp.html#a22524b6e1ea1e62b578978978521148e" title="Adds two string representations of numbers, and performs with the column method." alt="" coords="506,961,553,988"/>
-<area shape="rect" id="node22" href="$namespaceformats.html#a296119cbd1b0c858739af6b363fb262a" title="Set the text format to reverse." alt="" coords="702,1107,833,1133"/>
-<area shape="rect" id="node24" href="$basicArithm_8hpp.html#aabb709fcb471467879352bf51bb0030a" title="Compares two string representations of numbers." alt="" coords="490,499,569,525"/>
-<area shape="rect" id="node28" href="$subtractReport_8cpp.html#ad21f3d209885b1c419ff73800bb3b33b" title=" " alt="" coords="472,803,587,829"/>
-<area shape="rect" id="node30" href="$subtract_8cpp.html#ac94acf58b23f19e226b9263fa3a2b0da" title="Subtracts one string representation of a number from another string representation of a number." alt="" coords="319,840,394,867"/>
-<area shape="rect" id="node21" href="$addReport_8cpp.html#ad77bd53c675044525fecd7273407c4a6" title=" " alt="" coords="724,955,811,981"/>
-<area shape="rect" id="node23" href="$colors_8cpp.html#aea0b5c095796ad31bd8aa86853337868" title="Check if the output stream is a terminal." alt="" coords="949,1107,1039,1133"/>
-<area shape="rect" id="node25" href="$comparisonReport_8cpp.html#a9837660fa80278748f7f9bc397f5fba4" title=" " alt="" coords="668,397,867,424"/>
-<area shape="rect" id="node26" href="$comparisonReport_8cpp.html#adc6ac398c16b4d30ab55b0ec5ceef9f3" title=" " alt="" coords="674,499,861,525"/>
-<area shape="rect" id="node27" href="$comparisonReport_8cpp.html#a8bdddfcaa5a1d0339df5705ec6ff2aff" title=" " alt="" coords="664,448,871,475"/>
-<area shape="rect" id="node29" href="$util_8hpp.html#a8056dcad90ba9582ba25405a95c2f1e4" title=" " alt="" coords="687,803,847,829"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,395,148,421"/>
+<area shape="rect" id="node2" href="$basicArithm_8hpp.html#ac99d69ea51545fe30da4a36290f3fedc" title="Multiplies two string representations of numbers." alt="" coords="443,144,519,171"/>
+<area shape="rect" id="node15" href="$util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7" title="Splits a string into substrings based on a separator." alt="" coords="877,701,928,728"/>
+<area shape="rect" id="node16" href="$basicArithm_8hpp.html#a08faec0b8e863df19e3f978758166482" title="Subtracts one string representation of a number from another string representation of a number." alt="" coords="196,395,271,421"/>
+<area shape="rect" id="node3" href="$util_8hpp.html#a183c024df291889f90106e47bb64fe0b" title="Checks if a given string is a zero string." alt="" coords="1405,499,1507,525"/>
+<area shape="rect" id="node4" href="$multiplyReport_8cpp.html#a66ad602068d3c80661db7d3cd3069681" title=" " alt="" coords="614,144,729,171"/>
+<area shape="rect" id="node12" href="$util_8hpp.html#ac76b4ec861cbb199d3349f225f969b82" title=" " alt="" coords="620,501,723,528"/>
+<area shape="rect" id="node5" href="$symbols_8hpp.html#a4c2486dd425b34a3a7b6f64db79add2c" title="Create a subscript string from a normal string." alt="" coords="843,195,962,221"/>
+<area shape="rect" id="node7" href="$util_8hpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f" title="Makes the given string wider by adding 2 spaces between each character." alt="" coords="855,43,951,69"/>
+<area shape="rect" id="node8" href="$util_8hpp.html#ac87bf229222a2a4f32b8626281c6c282" title=" " alt="" coords="823,93,982,120"/>
+<area shape="rect" id="node9" href="$util_8hpp.html#afbed3096b7064ba07c83c6c15212b793" title="Standardizes a number string." alt="" coords="827,347,978,373"/>
+<area shape="rect" id="node6" href="$util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e" title="Converts a Unicode character to UTF&#45;8 encoding." alt="" coords="1035,195,1150,221"/>
+<area shape="rect" id="node10" href="$util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742" title="Simplifies a string with non&#45;standard polarity (e.g., –1, —1, etc.)." alt="" coords="1031,448,1155,475"/>
+<area shape="rect" id="node11" href="$util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b" title="Simplifies a string that represents a number with non&#45;standard polarity." alt="" coords="1203,499,1357,525"/>
+<area shape="rect" id="node13" href="$util_8cpp.html#a8056dcad90ba9582ba25405a95c2f1e4" title=" " alt="" coords="823,499,983,525"/>
+<area shape="rect" id="node14" href="$util_8cpp.html#a7f0f5e18cd1b1507ace9b814e6286dda" title=" " alt="" coords="825,651,981,677"/>
+<area shape="rect" id="node17" href="$basicArithm_8hpp.html#a22524b6e1ea1e62b578978978521148e" title="Adds two string representations of numbers, and performs with the column method." alt="" coords="457,296,504,323"/>
+<area shape="rect" id="node19" href="$namespaceformats.html#a296119cbd1b0c858739af6b363fb262a" title="Set the text format to reverse." alt="" coords="606,396,737,423"/>
+<area shape="rect" id="node21" href="$basicArithm_8hpp.html#aabb709fcb471467879352bf51bb0030a" title="Compares two string representations of numbers." alt="" coords="441,557,520,584"/>
+<area shape="rect" id="node25" href="$subtractReport_8cpp.html#ad21f3d209885b1c419ff73800bb3b33b" title=" " alt="" coords="614,195,729,221"/>
+<area shape="rect" id="node27" href="$subtract_8cpp.html#ac94acf58b23f19e226b9263fa3a2b0da" title="Subtracts one string representation of a number from another string representation of a number." alt="" coords="319,432,393,459"/>
+<area shape="rect" id="node18" href="$addReport_8cpp.html#ad77bd53c675044525fecd7273407c4a6" title=" " alt="" coords="628,245,715,272"/>
+<area shape="rect" id="node20" href="$colors_8cpp.html#aea0b5c095796ad31bd8aa86853337868" title="Check if the output stream is a terminal." alt="" coords="858,397,947,424"/>
+<area shape="rect" id="node22" href="$comparisonReport_8cpp.html#a9837660fa80278748f7f9bc397f5fba4" title=" " alt="" coords="572,552,771,579"/>
+<area shape="rect" id="node23" href="$comparisonReport_8cpp.html#adc6ac398c16b4d30ab55b0ec5ceef9f3" title=" " alt="" coords="578,603,765,629"/>
+<area shape="rect" id="node24" href="$comparisonReport_8cpp.html#a8bdddfcaa5a1d0339df5705ec6ff2aff" title=" " alt="" coords="568,653,775,680"/>
+<area shape="rect" id="node26" href="$util_8hpp.html#a8056dcad90ba9582ba25405a95c2f1e4" title=" " alt="" coords="823,144,983,171"/>
 </map>
