@@ -114,11 +114,12 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
         finalProdDigits[indexDigit] = sum;
     }
 
-    const auto scale = determineProductScale(static_cast<std::string>(a), static_cast<std::string>(b));
-    size_t numberDecimals = 0;
+    // const auto scale = determineProductScale(static_cast<std::string>(a), static_cast<std::string>(b));
+    // size_t numberDecimals = 0;
 
-    if (scale < 0)
-        ;
+    // if (scale < 0)
+    //     ;
+    const size_t numberDecimals = aDecimal.length() + bDecimal.length();
     return reportMultiply(static_cast<std::string>(a),
                           static_cast<std::string>(b),
                           aStr,

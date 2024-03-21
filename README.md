@@ -45,11 +45,11 @@ we are planning to implement next (and in the near future):
     - [x] Multiplication of integers and decimals
     - [x] Powers of integers
     - [x] Division of integers and decimals
-    - [ ] Addition of fractions
-    - [ ] Subtraction of fractions
-    - [ ] Multiplication of fractions
+    - [x] Addition of fractions
+    - [x] Subtraction of fractions
+    - [x] Multiplication of fractions
     - [ ] Simplification of fractions
-    - [ ] Division of fractions
+    - [x] Division of fractions
     - [ ] Conversion between fractions and decimals
     - [ ] Expansion of polynomials
     - [ ] Factoring of polynomials

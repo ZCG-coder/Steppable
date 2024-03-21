@@ -23,8 +23,8 @@
 file(GLOB UTILS *.cpp)
 add_library(util ${UTILS})
 
-file(GLOB GUIS gui/*.cpp)
-add_executable(gui ${GUIS})
+# file(GLOB GUIS gui/*.cpp)
+# add_executable(gui ${GUIS})
 
 set(CALCULATOR_FILES)
 
@@ -48,9 +48,9 @@ endforeach ()
 
 add_library(calc ${CALCULATOR_FILES})
 target_link_libraries(calc util)
-target_link_libraries(gui util)
+# target_link_libraries(gui util)
 target_include_directories(calc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
-target_include_directories(gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+# target_include_directories(gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 target_compile_definitions(calc PRIVATE NO_MAIN)
 
 foreach (COMPONENT IN LISTS COMPONENTS)
