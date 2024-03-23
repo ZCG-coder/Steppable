@@ -39,9 +39,16 @@ from pathlib import Path
 
 PROJECT_PATH = Path(__file__).parent.parent
 NO_MAIN_PATTERN = re.compile(r"\s-DNO_MAIN\s")
+I_SYS_ROOT_PATTERN = re.compile(r"\s/Library/Developer/CommandLineTools/SDKs/MacOSX\d\d\.\d\.sdk\s")
 
 
 def get_compile_commands() -> Path:
+    """
+    Gets the path to compile_commands.json.
+    :returns: The commands file.
+    :raises RuntimeError: if the build directory cannot be found.
+    """
+
     if (compile_commands_file := PROJECT_PATH / "build" / "compile_commands.json").is_file:
         return compile_commands_file
     elif (compile_commands_file := PROJECT_PATH / "cmake-build-debug" / "compile_commands.json").is_file:
@@ -53,6 +60,8 @@ def get_compile_commands() -> Path:
 
 
 def patch():
+    """Remove the NO_MAIN definition in compile_commands.json"""
+
     file = get_compile_commands()
     with open(file) as f:
         objs = json.load(f)
@@ -61,6 +70,7 @@ def patch():
     for obj in objs:
         command: str = obj["command"]
         command = re.sub(NO_MAIN_PATTERN, " ", command)
+        command = re.sub(I_SYS_ROOT_PATTERN, " /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk ", command)
         obj["command"] = command
         modified_objs.append(obj)
 
