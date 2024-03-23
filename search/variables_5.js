@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['level_415',['level',['../classlogging_1_1Logger.html#a2e0c780842b1cb47d28f16a9bf2192fa',1,'logging::Logger']]]
+  ['file_445',['file',['../classlogging_1_1Logger.html#a43ec57f8542a11586688e0437f516544',1,'logging::Logger']]]
 ];

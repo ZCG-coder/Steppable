@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['bisnegative_409',['bIsNegative',['../structSplitNumberResult.html#a6a9aac05140492ee0f9daf0d9045d54c',1,'SplitNumberResult']]],
-  ['bottom_410',['bottom',['../classFraction.html#a3a4f852f20e5093dc71f20aebdf46c91',1,'Fraction']]]
+  ['bisnegative_437',['bIsNegative',['../structSplitNumberResult.html#a6a9aac05140492ee0f9daf0d9045d54c',1,'SplitNumberResult']]],
+  ['bottom_438',['bottom',['../classFraction.html#a3a4f852f20e5093dc71f20aebdf46c91',1,'Fraction']]]
 ];

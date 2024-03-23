@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['file_412',['file',['../classlogging_1_1Logger.html#a43ec57f8542a11586688e0437f516544',1,'logging::Logger']]]
+  ['direction_442',['direction',['../structKey.html#ab5b25f04e8df42c65ea3cfb634efd377',1,'Key']]]
 ];

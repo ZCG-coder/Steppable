@@ -5,7 +5,9 @@ var hierarchy =
       [ "ZeroDenominatorException", "classZeroDenominatorException.html", null ]
     ] ],
     [ "Fraction", "classFraction.html", null ],
+    [ "Key", "structKey.html", null ],
     [ "logging::Logger", "classlogging_1_1Logger.html", null ],
+    [ "Program", "structProgram.html", null ],
     [ "ProgramArgs", "classProgramArgs.html", null ],
     [ "QuotientRemainder", "structQuotientRemainder.html", null ],
     [ "internals::setw", "structinternals_1_1setw.html", null ],

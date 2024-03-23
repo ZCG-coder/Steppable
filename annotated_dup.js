@@ -7,7 +7,9 @@ var annotated_dup =
       [ "Logger", "classlogging_1_1Logger.html", "classlogging_1_1Logger" ]
     ] ],
     [ "Fraction", "classFraction.html", "classFraction" ],
+    [ "Key", "structKey.html", "structKey" ],
     [ "MultiLengthLetterException", "classMultiLengthLetterException.html", "classMultiLengthLetterException" ],
+    [ "Program", "structProgram.html", "structProgram" ],
     [ "ProgramArgs", "classProgramArgs.html", "classProgramArgs" ],
     [ "QuotientRemainder", "structQuotientRemainder.html", "structQuotientRemainder" ],
     [ "SplitNumberResult", "structSplitNumberResult.html", "structSplitNumberResult" ],

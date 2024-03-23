@@ -1,5 +1,11 @@
 var searchData=
 [
-  ['testcase_395',['TestCase',['../classTestCase.html#acf9c24083e7c1b0ab208417f12127d47',1,'TestCase']]],
-  ['tonumber_396',['toNumber',['../decimalConvert_8cpp.html#ae999c7b3ae6117d5e807502b2c5d038d',1,'decimalConvert.cpp']]]
+  ['setw_414',['setw',['../structinternals_1_1setw.html#a350c69e417ce0b9fd405ff2ac7c294e2',1,'internals::setw']]],
+  ['simplifypolarity_415',['simplifyPolarity',['../util_8hpp.html#a32344e51c6ae485367b4fbf6bb535742',1,'simplifyPolarity(const std::string_view &amp;_string):&#160;util.cpp'],['../util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742',1,'simplifyPolarity(const std::string_view &amp;_string):&#160;util.cpp']]],
+  ['simplifyzeropolarity_416',['simplifyZeroPolarity',['../util_8hpp.html#a70584872ee14fa0befa8f25788f98a2b',1,'simplifyZeroPolarity(const std::string_view &amp;string):&#160;util.cpp'],['../util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b',1,'simplifyZeroPolarity(const std::string_view &amp;string):&#160;util.cpp']]],
+  ['split_417',['split',['../util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7',1,'split(std::basic_string&lt; CharT &gt; s, const CharT separator):&#160;util.hpp'],['../util_8hpp.html#a4bd2c04ff3c3cf1dfddb3fb97da971c0',1,'split(std::basic_string_view&lt; CharT &gt; s, const CharT separator):&#160;util.hpp']]],
+  ['splitnumber_418',['splitNumber',['../util_8hpp.html#ac76b4ec861cbb199d3349f225f969b82',1,'splitNumber(const std::string_view &amp;a, const std::string_view &amp;b, bool padInteger=true, bool padDecimal=true, bool properlyFormat=true):&#160;util.cpp'],['../util_8cpp.html#af391dcb35601f4af79349bec28aeb379',1,'splitNumber(const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal, bool properlyFormat):&#160;util.cpp']]],
+  ['standardizenumber_419',['standardizeNumber',['../util_8hpp.html#afbed3096b7064ba07c83c6c15212b793',1,'standardizeNumber(const std::string_view &amp;_number):&#160;util.cpp'],['../util_8cpp.html#afbed3096b7064ba07c83c6c15212b793',1,'standardizeNumber(const std::string_view &amp;_number):&#160;util.cpp']]],
+  ['subtract_420',['subtract',['../basicArithm_8hpp.html#a08faec0b8e863df19e3f978758166482',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false):&#160;subtract.cpp'],['../subtract_8cpp.html#ac94acf58b23f19e226b9263fa3a2b0da',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool noMinus):&#160;subtract.cpp']]],
+  ['summarize_421',['summarize',['../classTestCase.html#a066fd61f7f3693cdd821d7057611cf61',1,'TestCase']]]
 ];

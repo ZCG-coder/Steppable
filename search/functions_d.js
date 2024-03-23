@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['parseargs_360',['parseArgs',['../classProgramArgs.html#a849066672f4caced42480a76dec02fdd',1,'ProgramArgs']]],
-  ['power_361',['power',['../basicArithm_8hpp.html#a5967cef8aeb4f6ea90014159becd286d',1,'power(std::string_view _number, const std::string_view &amp;raiseTo, int steps=2):&#160;power.cpp'],['../power_8cpp.html#af89984cd69aac63fd697b9cdcc548020',1,'power(const std::string_view _number, const std::string_view &amp;_raiseTo, const int steps):&#160;power.cpp']]],
-  ['printusage_362',['printUsage',['../classProgramArgs.html#a37d6e46cb7b30f1a93a8455b7ce192f0',1,'ProgramArgs']]],
-  ['programargs_363',['ProgramArgs',['../classProgramArgs.html#aa22388f97b615afd8fdf86a9ee96841c',1,'ProgramArgs']]],
-  ['programsafeexit_364',['programSafeExit',['../namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e',1,'internals']]]
+  ['operator_2a_378',['operator*',['../classFraction.html#a76d9c8cbd0d7442c1c78cab88eb29cb2',1,'Fraction']]],
+  ['operator_2a_3d_379',['operator*=',['../classFraction.html#a260e2faf8062c854a286b79591f87b65',1,'Fraction']]],
+  ['operator_2b_380',['operator+',['../classFraction.html#abf6c69e3adc859e25d9040583f3ca1d5',1,'Fraction']]],
+  ['operator_2b_3d_381',['operator+=',['../classFraction.html#a2c891f9bf7f6dbed8e5a8b4386ce3688',1,'Fraction']]],
+  ['operator_2d_382',['operator-',['../classFraction.html#a4f19125df2684e17c9a9f439eb38261d',1,'Fraction']]],
+  ['operator_2d_3d_383',['operator-=',['../classFraction.html#a2e3544fa85d66736287a981fe24bed1b',1,'Fraction']]],
+  ['operator_2f_384',['operator/',['../classFraction.html#a6ed047b2c1c281d348f4358da6d62f2b',1,'Fraction']]],
+  ['operator_2f_3d_385',['operator/=',['../classFraction.html#a2f92ff208c733cbd53e268c710f885d9',1,'Fraction']]]
 ];

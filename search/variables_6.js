@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['n_416',['n',['../structinternals_1_1setw.html#aee2b5c7f116e49b39eb67da839da7234',1,'internals::setw']]],
-  ['name_417',['name',['../classlogging_1_1Logger.html#ad8aa90e05b98f093f1654f3d012f4cf6',1,'logging::Logger']]]
+  ['keywordargdescriptions_446',['keywordArgDescriptions',['../classProgramArgs.html#adecc792c6c1285316da4094691aa4e5a',1,'ProgramArgs']]],
+  ['keywordargs_447',['keywordArgs',['../classProgramArgs.html#a7a5cf80d248bc23733f41e6c8fc8af10',1,'ProgramArgs']]]
 ];

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['posargdescriptions_418',['posArgDescriptions',['../classProgramArgs.html#a4ce40731d055aa61933de73dff8a5505',1,'ProgramArgs']]],
-  ['posargisnumber_419',['posArgIsNumber',['../classProgramArgs.html#a2bd740f77e5b15c7b047a85f3721373c',1,'ProgramArgs']]],
-  ['posargs_420',['posArgs',['../classProgramArgs.html#a40242eb883e363f5dc861da07830a0c2',1,'ProgramArgs']]],
-  ['programname_421',['programName',['../classProgramArgs.html#a9f5e13b1fd67d6fbb1bba8e4d1abd085',1,'ProgramArgs']]]
+  ['letter_448',['letter',['../structKey.html#a918fe16b276df6f895275589996ed16b',1,'Key']]],
+  ['level_449',['level',['../classlogging_1_1Logger.html#a2e0c780842b1cb47d28f16a9bf2192fa',1,'logging::Logger']]]
 ];
