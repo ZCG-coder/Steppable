@@ -83,8 +83,8 @@ class TestCase
 private:
     /**
      * @brief Asserts a given condition and logs the condition name if it fails.
-     * @param condition The condition to be checked.
-     * @param conditionName The name of the condition.
+     * @param[in] condition The condition to be checked.
+     * @param[in] conditionName The name of the condition.
      */
     void assert(bool condition, const std::string& conditionName);
 
@@ -95,47 +95,47 @@ public:
 
     /**
      * @brief Constructs a new TestCase object with the given name.
-     * @param testCaseName The name of the test case.
+     * @param[in] testCaseName The name of the test case.
      */
     explicit TestCase(const std::string& testCaseName);
 
     /**
      * @brief Asserts that two strings are equal.
-     * @param a The first string.
-     * @param b The second string.
+     * @param[in] a The first string.
+     * @param[in] b The second string.
      */
     void assertIsEqual(const std::string& a, const std::string& b);
 
     /**
      * @brief Asserts that two strings are not equal.
-     * @param a The first string.
-     * @param b The second string.
+     * @param[in] a The first string.
+     * @param[in] b The second string.
      */
     void assertIsNotEqual(const std::string& a, const std::string& b);
 
     /**
      * @brief Asserts that two integers are equal.
-     * @param a The first integer.
-     * @param b The second integer.
+     * @param[in] a The first integer.
+     * @param[in] b The second integer.
      */
     void assertIsEqual(int a, int b);
 
     /**
      * @brief Asserts that two integers are not equal.
-     * @param a The first integer.
-     * @param b The second integer.
+     * @param[in] a The first integer.
+     * @param[in] b The second integer.
      */
     void assertIsNotEqual(int a, int b);
 
     /**
      * @brief Asserts that a boolean value is true.
-     * @param value The boolean value to be checked.
+     * @param[in] value The boolean value to be checked.
      */
     void assertTrue(bool value);
 
     /**
      * @brief Asserts that a boolean value is false.
-     * @param value The boolean value to be checked.
+     * @param[in] value The boolean value to be checked.
      */
     void assertFalse(bool value);
 

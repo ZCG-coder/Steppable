@@ -20,6 +20,11 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file decimalConvert.cpp
+ * @brief This file contains the implementation of the decimalConvert function, which converts a number from one base to
+ * decimal.
+ */
 #include "argParse.hpp"
 #include "decimalConvertReport.hpp"
 #include "fn/basicArithm.hpp"
@@ -29,6 +34,12 @@
 #include <string>
 using namespace std::literals;
 
+/**
+ * @brief Converts a numeral character to a number string.
+ *
+ * @param[in] _input The character to convert.
+ * @return The number string.
+ */
 std::string toNumber(const char _input)
 {
     const char input = toupper(_input);

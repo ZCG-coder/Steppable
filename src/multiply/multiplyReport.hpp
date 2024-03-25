@@ -20,11 +20,36 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file multiplyReport.hpp
+ * @brief This file contains the declaration for function reportMultiply, which reports the result of a multiplication
+ * operation to the user.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
 #pragma once
 
 #include <string>
 #include <vector>
 
+/**
+ * @brief Reports a multiplication operation to the user.
+ *
+ * @param[in] a Number 1.
+ * @param[in] b Number 2.
+ * @param[in] aStr Modified number 1.
+ * @param[in] bStr Modified number 2.
+ * @param[in] finalProdDigits The final product digits.
+ * @param[in] finalProdCarries The final product's carries.
+ * @param[in] prodDigitsOut The product digits for each step.
+ * @param[in] carries The carries for each step.
+ * @param[in] resultIsNegative Whether the result should be negative.
+ * @param[in] scale The scale of the result.
+ * @param[in] steps The steps to show while reporting.
+ *
+ * @return The formatted multiplication report.
+ */
 std::string reportMultiply(const std::string& a,
                            const std::string& b,
                            const std::string& aStr,
@@ -34,5 +59,5 @@ std::string reportMultiply(const std::string& a,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
                            bool resultIsNegative = false,
-                           size_t numberDecimals = 0,
+                           long long scale = 0,
                            int steps = 2);

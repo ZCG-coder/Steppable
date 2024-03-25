@@ -50,7 +50,7 @@ namespace internals
      * On Windows, it uses std::quick_exit, and on macOS, it uses exit,
      * because std::quick_exit is not implemented on macOS.
      *
-     * @param status The status code to exit with
+     * @param[in] status The status code to exit with
      */
     inline void programSafeExit(const int status)
     {

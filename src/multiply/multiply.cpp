@@ -20,6 +20,14 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file multiply.cpp
+ * @brief This file contains the implementation of the multiply function, which can multiply two strings together.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
 #include "multiplyReport.hpp"
@@ -29,6 +37,14 @@
 #include <string_view>
 #include <vector>
 
+/**
+ * @brief Determines the scale for a product of two numbers.
+ *
+ * @param[in] a Number 1,
+ * @param[in] b Number 2.
+ *
+ * @return The correct scale for their product.
+ */
 long long determineProductScale(const std::string& a, const std::string& b)
 {
     auto aScale = determineScale(a);
@@ -114,12 +130,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
         finalProdDigits[indexDigit] = sum;
     }
 
-    // const auto scale = determineProductScale(static_cast<std::string>(a), static_cast<std::string>(b));
-    // size_t numberDecimals = 0;
-
-    // if (scale < 0)
-    //     ;
-    const size_t numberDecimals = aDecimal.length() + bDecimal.length();
+    const auto scale = determineProductScale(static_cast<std::string>(a), static_cast<std::string>(b));
     return reportMultiply(static_cast<std::string>(a),
                           static_cast<std::string>(b),
                           aStr,
@@ -129,7 +140,7 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
                           prodDigitsOut,
                           carries,
                           resultIsNegative,
-                          numberDecimals,
+                          scale,
                           steps);
 }
 

@@ -20,6 +20,15 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file addReport.cpp
+ * @brief This file contains the implementation of the reportAdd function, which reports the sum of two number strings
+ * together.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #include "addReport.hpp"
 
 #include "symbols.hpp"

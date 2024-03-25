@@ -20,11 +20,37 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file subtractReport.hpp
+ * @brief This file contains the declaration of the reportSubtract function, which reports the result of a
+ * subtraction to the user.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #pragma once
 
 #include <string>
 #include <vector>
 
+/**
+ * @brief Reports a subtraction operation to the user.
+ *
+ * @param[in] aInteger The integer part of the first number.
+ * @param[in] aDecimal The decimal part of the first number.
+ * @param[in] bInteger The integer part of the second number.
+ * @param[in] bDecimal The decimal part of the second number.
+ * @param[in] aIsDecimal Whether the first number has a decimal part.
+ * @param[in] bIsDecimal Whether the second number has a decimal part.
+ * @param[in] _diffDigits The digits of their difference.
+ * @param[in] borrows The borrowed digits.
+ * @param[in] steps The steps to show while reporting.
+ * @param[in] resultIsNegative Whether the result should be negative.
+ * @param[in] noMinus Whether to show the minus sign.
+ *
+ * @return The formatted subtraction report.
+ */
 std::string reportSubtract(const std::string& aInteger,
                            const std::string& aDecimal,
                            const std::string& bInteger,

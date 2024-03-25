@@ -20,6 +20,15 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file absReport.cpp
+ * @brief This file contains the implementation of the reportAbs function, which reports the absolute value of a number
+ * string to the user.
+ *
+ * @author Andy Zhang
+ * @date 12th January 2024
+ */
+
 #include "symbols.hpp"
 
 #include <sstream>

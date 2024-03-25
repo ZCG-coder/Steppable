@@ -20,7 +20,7 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-/**************************************************************************************************
+/**
  * @file symbols.hpp
  * @brief This file contains the definitions of various symbols used in the project.
  *
@@ -28,7 +28,7 @@
  *
  * @author Andy Zhang
  * @date 9th October 2023
- **************************************************************************************************/
+ */
 
 #pragma once
 
@@ -71,7 +71,7 @@ extern const std::array<std::string_view, 10>& SUPERSCRIPTS;
 /**
  * @brief Create a subscript string from a normal string.
  *
- * @param normal The normal string.
+ * @param[in] normal The normal string.
  * @return The subscript string.
  */
 std::string makeSubscript(const std::string& normal);
@@ -79,7 +79,7 @@ std::string makeSubscript(const std::string& normal);
 /**
  * @brief Create a subscript string from a normal integer.
  *
- * @param normal The normal integer.
+ * @param[in] normal The normal integer.
  * @return The subscript string.
  */
 std::string makeSubscript(int normal);
@@ -104,7 +104,7 @@ std::string makeSubscript(int normal);
 /**
  * @brief Create a superscript string from a normal string.
  *
- * @param normal The normal string.
+ * @param[in] normal The normal string.
  * @return The superscript string.
  */
 std::string makeSuperscript(const std::string& normal);
@@ -112,7 +112,7 @@ std::string makeSuperscript(const std::string& normal);
 /**
  * @brief Create a superscript string from a normal character.
  *
- * @param normal The normal character.
+ * @param[in] normal The normal character.
  * @return The superscript string.
  */
 std::string_view makeSuperscript(char normal);

@@ -52,8 +52,8 @@
  * the standard library's `printf` function.
  *
  * @tparam CharT The character type of the string.
- * @param sFormat The format string.
- * @param ... The variable arguments.
+ * @param[in] sFormat The format string.
+ * @param[in] ... The variable arguments.
  * @return The formatted string.
  */
 template<typename CharT>
@@ -88,8 +88,8 @@ std::basic_string<CharT> vFormat(const std::basic_string<CharT> sFormat, ...)
  * for the variable arguments. The function uses the vsnprintf function to perform the formatting.
  *
  * @tparam CharT The character type of the string.
- * @param sFormat The format specifier string.
- * @param ... The variable arguments.
+ * @param[in] sFormat The format specifier string.
+ * @param[in] ... The variable arguments.
  * @return The formatted string.
  */
 template<typename CharT>

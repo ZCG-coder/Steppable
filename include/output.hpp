@@ -63,9 +63,9 @@
  *
  * @tparam T The character type of the message.
  * @tparam Args The types of the additional arguments.
- * @param name The name of the error.
- * @param msg The error message.
- * @param args Additional arguments for formatting the message.
+ * @param[in] name The name of the error.
+ * @param[in] msg The error message.
+ * @param[in] args Additional arguments for formatting the message.
  */
 template<typename T, typename... Args>
 void error(const std::string& name, std::basic_string<T> msg, Args&&... args)
@@ -90,8 +90,8 @@ void error(const std::string& name, std::basic_string<T> msg, Args&&... args)
  * It is intended to tell the user that something is going wrong and cannot be handled.
  *
  * @tparam CharT The character type of the message.
- * @param name The name of the error.
- * @param msg The error message.
+ * @param[in] name The name of the error.
+ * @param[in] msg The error message.
  */
 template<typename CharT>
 void error(const std::string& name, std::basic_string<CharT> msg)
@@ -116,9 +116,9 @@ void error(const std::string& name, std::basic_string<CharT> msg)
  *
  * @tparam T The character type of the message.
  * @tparam Args The types of the additional arguments.
- * @param name The name of the error.
- * @param msg The error message.
- * @param args Additional arguments for formatting the message.
+ * @param[in] name The name of the error.
+ * @param[in] msg The error message.
+ * @param[in] args Additional arguments for formatting the message.
  */
 template<typename T, typename... Args>
 [[maybe_unused]] void warning(T msg, Args&&... args)
@@ -139,9 +139,9 @@ template<typename T, typename... Args>
  *
  * @tparam T The character type of the message.
  * @tparam Args The types of the additional arguments.
- * @param name The name of the info message.
- * @param msg The info message.
- * @param args Additional arguments for formatting the message.
+ * @param[in] name The name of the info message.
+ * @param[in] msg The info message.
+ * @param[in] args Additional arguments for formatting the message.
  */
 template<typename T, typename... Args>
 void info(T msg, Args&&... args)

@@ -50,8 +50,8 @@ struct QuotientRemainder
 /**
  * @brief Calculates the absolute value of a string representation of a number.
  *
- * @param _number The string representation of the number.
- * @param steps The number of steps to perform the calculation.
+ * @param[in] _number The string representation of the number.
+ * @param[in] steps The number of steps to perform the calculation.
  * @return The absolute value of the number as a string.
  */
 std::string abs(const std::string_view& _number, int steps);
@@ -59,12 +59,12 @@ std::string abs(const std::string_view& _number, int steps);
 /**
  * @brief Adds two string representations of numbers, and performs with the column method.
  *
- * @param a The first string representation of the number.
- * @param b The second string representation of the number.
- * @param steps The number of steps to perform the addition. 2 = column method, 1 = normal addition, 0 = result only.
+ * @param[in] a The first string representation of the number.
+ * @param[in] b The second string representation of the number.
+ * @param[in] steps The number of steps to perform the addition. 2 = column method, 1 = normal addition, 0 = result only.
  * Default is 2.
- * @param negative Flag indicating whether the result should be negative.
- * @param properlyFormat Flag indicating whether to properly format the output. Default true.
+ * @param[in] negative Flag indicating whether the result should be negative.
+ * @param[in] properlyFormat Flag indicating whether to properly format the output. Default true.
  * @return The sum of the two numbers as a string.
  */
 std::string add(const std::string_view& a,
@@ -76,9 +76,9 @@ std::string add(const std::string_view& a,
 /**
  * @brief Compares two string representations of numbers.
  *
- * @param a The first string representation of the number.
- * @param b The second string representation of the number.
- * @param steps The number of steps to perform the comparison.
+ * @param[in] a The first string representation of the number.
+ * @param[in] b The second string representation of the number.
+ * @param[in] steps The number of steps to perform the comparison.
  * @return A string indicating the result of the comparison:
  *         "2" if a and b are equal,
  *         "1" if a is greater than b,
@@ -89,9 +89,9 @@ std::string compare(const std::string_view& a, const std::string_view& b, int st
 /**
  * @brief Converts a string representation of a number from one base to another.
  *
- * @param _inputString The string representation of the number.
- * @param baseString The base of the input number.
- * @param steps The number of steps to perform the conversion.
+ * @param[in] _inputString The string representation of the number.
+ * @param[in] baseString The base of the input number.
+ * @param[in] steps The number of steps to perform the conversion.
  * @return The converted number as a string.
  *
  * @warning Still in development.
@@ -101,10 +101,10 @@ std::string decimalConvert(const std::string_view& _inputString, const std::stri
 /**
  * @brief Divides a string representation of a number by another string representation of a number.
  *
- * @param number The string representation of the dividend.
- * @param divisor The string representation of the divisor.
- * @param steps The number of steps to perform the division.
- * @param decimals The number of decimal places in the result.
+ * @param[in] number The string representation of the dividend.
+ * @param[in] divisor The string representation of the divisor.
+ * @param[in] steps The number of steps to perform the division.
+ * @param[in] decimals The number of decimal places in the result.
  * @return The quotient of the division as a string.
  */
 std::string divide(const std::string_view& number, const std::string_view& divisor, int steps = 2, int decimals = 5);
@@ -112,8 +112,8 @@ std::string divide(const std::string_view& number, const std::string_view& divis
 /**
  * Calculates the quotient and remainder of dividing the current remainder by the divisor.
  *
- * @param _currentRemainder The current remainder.
- * @param divisor The divisor.
+ * @param[in] _currentRemainder The current remainder.
+ * @param[in] divisor The divisor.
  * @return A QuotientRemainder object containing the quotient and remainder.
  */
 QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto& divisor);
@@ -121,9 +121,9 @@ QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto
 /**
  * @brief Multiplies two string representations of numbers.
  *
- * @param a The first string representation of the number.
- * @param b The second string representation of the number.
- * @param steps The number of steps to perform the multiplication.
+ * @param[in] a The first string representation of the number.
+ * @param[in] b The second string representation of the number.
+ * @param[in] steps The number of steps to perform the multiplication.
  * @return The product of the two numbers as a string.
  */
 std::string multiply(const std::string_view& a, const std::string_view& b, int steps = 2);
@@ -131,9 +131,9 @@ std::string multiply(const std::string_view& a, const std::string_view& b, int s
 /**
  * @brief Raises a string representation of a number to a power.
  *
- * @param _number The string representation of the number.
- * @param raiseTo The string representation of the power to raise the number to.
- * @param steps The number of steps to perform the power operation.
+ * @param[in] _number The string representation of the number.
+ * @param[in] raiseTo The string representation of the power to raise the number to.
+ * @param[in] steps The number of steps to perform the power operation.
  * @return The result of the power operation as a string.
  */
 std::string power(std::string_view _number, const std::string_view& raiseTo, int steps = 2);
@@ -141,10 +141,10 @@ std::string power(std::string_view _number, const std::string_view& raiseTo, int
 /**
  * @brief Subtracts one string representation of a number from another string representation of a number.
  *
- * @param a The string representation of the minuend.
- * @param b The string representation of the subtrahend.
- * @param steps The number of steps to perform the subtraction.
- * @param noMinus Flag indicating whether to display a minus sign or not.
+ * @param[in] a The string representation of the minuend.
+ * @param[in] b The string representation of the subtrahend.
+ * @param[in] steps The number of steps to perform the subtraction.
+ * @param[in] noMinus Flag indicating whether to display a minus sign or not.
  * @return The difference between the two numbers as a string.
  */
 std::string subtract(const std::string_view& a, const std::string_view& b, int steps = 2, bool noMinus = false);
@@ -152,8 +152,8 @@ std::string subtract(const std::string_view& a, const std::string_view& b, int s
 /**
  * @brief Executes a given predicate function a specified number of times.
  *
- * @param times The number of times to execute the predicate function.
- * @param predicate The predicate function to execute.
+ * @param[in] times The number of times to execute the predicate function.
+ * @param[in] predicate The predicate function to execute.
  */
 template<typename Pred>
 void loop(const std::string_view& times, Pred predicate)

@@ -106,8 +106,8 @@ private:
 public:
     /**
      * @brief The constructor of the ProgramArgs class, which copies the arguments passed to the program to the class.
-     * @param _argc The number of arguments passed to the program.
-     * @param argv The arguments passed to the program.
+     * @param[in] _argc The number of arguments passed to the program.
+     * @param[in] argv The arguments passed to the program.
      */
     ProgramArgs(int _argc, const char** argv);
 
@@ -120,17 +120,17 @@ public:
 
     /**
      * @brief This function is used to add a switch to the class.
-     * @param name The name of the switch.
-     * @param defaultValue The default value of the switch. True = enabled, False = disabled.
-     * @param description The description of the switch.
+     * @param[in] name The name of the switch.
+     * @param[in] defaultValue The default value of the switch. True = enabled, False = disabled.
+     * @param[in] description The description of the switch.
      */
     void addSwitch(const std::string_view& name, bool defaultValue, const std::string_view& description = "");
 
     /**
      * @brief This function is used to add a positional argument to the class.
-     * @param name The name of the positional argument. Only one character is allowed.
-     * @param description The description of the positional argument.
-     * @param requiresNumber Whether the positional argument requires to be a number.
+     * @param[in] name The name of the positional argument. Only one character is allowed.
+     * @param[in] description The description of the positional argument.
+     * @param[in] requiresNumber Whether the positional argument requires to be a number.
      *
      * @note The name of the positional argument is used for error messages only. It does not affect the parsing of
      * @note the command-line arguments.
@@ -141,15 +141,15 @@ public:
 
     /**
      * @brief This function is used to add a keyword argument to the class.
-     * @param name The name of the keyword argument.
-     * @param defaultValue The default value of the keyword argument. The value is stored as an integer.
-     * @param description The description of the keyword argument.
+     * @param[in] name The name of the keyword argument.
+     * @param[in] defaultValue The default value of the keyword argument. The value is stored as an integer.
+     * @param[in] description The description of the keyword argument.
      */
     void addKeywordArg(const std::string_view& name, int defaultValue, std::string_view description = "");
 
     /**
      * @brief This function is used to get the value of a positional argument.
-     * @param index The index of the positional argument.
+     * @param[in] index The index of the positional argument.
      * @return The value of the positional argument.
      *
      * @note If the positional argument is not specified, the function will print an error message and exit the program.
@@ -158,7 +158,7 @@ public:
 
     /**
      * @brief This function is used to get the value of a keyword argument.
-     * @param name The name of the keyword argument.
+     * @param[in] name The name of the keyword argument.
      * @return The value of the keyword argument.
      *
      * @note If the keyword argument is not specified, the function will print an error message and exit the program.
@@ -167,7 +167,7 @@ public:
 
     /**
      * @brief This function is used to get the value of a switch.
-     * @param name The name of the switch.
+     * @param[in] name The name of the switch.
      * @return The value of the switch.
      *
      * @note If the switch is not specified, the function will print an error message and exit the program.
@@ -177,7 +177,7 @@ public:
     /**
      * @brief This function is used to print the possible command-line arguments. Usually called when the user specifies
      * the wrong arguments
-     * @param reason The reason for printing the usage. If specified, the reason will be printed after the usage.
+     * @param[in] reason The reason for printing the usage. If specified, the reason will be printed after the usage.
      *
      * @note The function will print the usage of the program and exit the program.
      */

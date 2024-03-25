@@ -20,6 +20,13 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file power.cpp
+ * @brief This file contains the implementation for the function power, which raises a number to a power.
+ *
+ * @author Andy Zhang
+ * @date 8rd November 2023
+ */
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
 #include "powerReport.hpp"

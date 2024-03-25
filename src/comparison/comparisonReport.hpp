@@ -20,19 +20,64 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file comparisonReport.hpp
+ * @brief This file contains the declarations of the functions reportComparisonAtInteger, reportComparisonByPolarity and
+ * reportComparisonByDigit, which reports the result of the comparision from the integer part, polarity and digit
+ * respectively.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #pragma once
 
 #include <cstddef>
 #include <string>
 #include <string_view>
 
+/**
+ * @brief Reports the comparison based on the integer. If the integer parts are of different length, the one with longer
+ * length is larger than that with shorter length.
+ *
+ * @param[in] a Number a.
+ * @param[in] b Number b.
+ * @param[in] bigger Whether a is longer than b.
+ * @param[in] steps The steps to show while comparing.
+ *
+ * @returns The comparison result.
+ */
 std::string reportComparisonAtInteger(const std::string_view& a, const std::string_view& b, bool bigger, int steps = 2);
 
+/**
+ * @brief Reports the comparison based on the polarity. If they are of different polarity, the one that is positive is
+ * larger than the negative one.
+ *
+ * @param[in] a Number a.
+ * @param[in] b Number b.
+ * @param[in] bigger Whether a is larger than b.
+ * @param[in] steps The steps to show while comparing.
+ *
+ * @returns The comparison result.
+ */
 std::string reportComparisonByPolarity(const std::string_view& a,
                                        const std::string_view& b,
                                        bool greater,
                                        int steps = 2);
 
+/**
+ * @brief Compares each digit and see if one is larger.
+ *
+ * @param[in] a Number a.
+ * @param[in] b Number b.
+ * @param[in] _digit The digit where a is bigger than b.
+ * @param[in] bigger Whether a is longer than b.
+ * @param[in] bothNegative Whether both a and b are negative. If they are both negative, the result needs to be
+ * inverted.
+ * @param[in] steps The steps to show while comparing.
+ *
+ * @returns The comparison result.
+ */
 std::string reportComparisonByDigit(const std::string_view& a,
                                     const std::string_view& b,
                                     size_t digit,

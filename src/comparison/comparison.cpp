@@ -20,6 +20,13 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file comparision.cpp
+ * @brief This file contains the implementation of the compare function, which compares two numbers.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
 #include "argParse.hpp"
 #include "comparisonReport.hpp"
 #include "fn/basicArithm.hpp"

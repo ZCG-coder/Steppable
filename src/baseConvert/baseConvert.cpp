@@ -20,6 +20,15 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file baseConvert.cpp
+ * @brief This file contains the implementation of the baseConvert function, which converts any number to any base.
+ * @warning Still work-in-progress.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #include "baseConvertReport.hpp"
 #include "fn/basicArithm.hpp"
 #include "output.hpp"
@@ -30,6 +39,11 @@
 
 using namespace std::literals;
 
+/**
+ * @brief Represents a number using alphabets and numberals.
+ * @param[in] _number The number in decimal form.
+ * @returns The number represented using alphabets and numberals.
+ */
 std::string representNumber(const std::string_view& _number)
 {
     if (compare(_number, "10", 0) != "1")

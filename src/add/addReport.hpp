@@ -20,11 +20,35 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file addReport.hpp
+ * @brief This file contains the declaration of the reportAdd function, which reports the sum of two number strings
+ * together.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #pragma once
 
 #include <string>
 #include <vector>
 
+/**
+ * @brief Reports the sum of two number strings.
+ *
+ * @param[in] aInteger The integer part of the first number.
+ * @param[in] aDecimal The decimal part of the first number.
+ * @param[in] bInteger The integer part of the second number.
+ * @param[in] bDecimal The decimal part of the second number.
+ * @param[in] sumDigits The digits of the sum.
+ * @param[in] carries The carries of the sum.
+ * @param[in] resultIsNegative Whether the result is negative.
+ * @param[in] steps The number of steps to show.
+ * @param[in] properlyFormat Whether to properly format the output.
+ *
+ * @return The reported string.
+ */
 std::string reportAdd(const std::string& aInteger,
                       const std::string& aDecimal,
                       const std::string& bInteger,

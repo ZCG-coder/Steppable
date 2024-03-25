@@ -21,7 +21,7 @@
  **************************************************************************************************/
 
 /**
- * @file exception.hpp
+ * @file exceptions.hpp
  * @brief This file contains the definition of exceptions.
  *
  * @author Andy Zhang

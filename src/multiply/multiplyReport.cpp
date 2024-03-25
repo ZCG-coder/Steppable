@@ -20,6 +20,15 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file multiplyReport.cpp
+ * @brief This file contains the implementation of the reportMultiply function, which reports the product of two number
+ * strings together.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #include "multiplyReport.hpp"
 
 #include "symbols.hpp"
@@ -39,7 +48,7 @@ std::string reportMultiply(const std::string& a,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
                            const bool resultIsNegative,
-                           const size_t numberDecimals,
+                           const long long scale,
                            const int steps)
 {
     std::stringstream ss;
@@ -99,14 +108,9 @@ std::string reportMultiply(const std::string& a,
     for (const int i : vector)
         if (i >= 0)
             out += std::to_string(i);
-    if (long long numberIntegers =
-            static_cast<long long>(out.length()) - numberDecimals; // NOLINT(*-narrowing-conversions)
-        numberIntegers < 0)
-        out = std::string(-numberIntegers, '0') + "." + out;
-    else if (numberIntegers == 0)
-        out = "0." + out;
-    else
-        out.insert(numberIntegers, ".");
+
+    // Add the decimal point.
+    auto numberDecimals = out.length() - scale;
 
     ss << standardizeNumber(out);
     return ss.str();

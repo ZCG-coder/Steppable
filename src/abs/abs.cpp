@@ -20,6 +20,14 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file abs.cpp
+ * @brief This file contains the implementation of the abs function, which gets the absolute value of a number string.
+ *
+ * @author Andy Zhang
+ * @date 12th January 2024
+ */
+
 #include "absReport.hpp"
 #include "argParse.hpp"
 #include "output.hpp"

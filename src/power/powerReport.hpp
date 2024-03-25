@@ -19,8 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                  *
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
+
+/**
+ * @file powerReport.hpp
+ * @brief This file contains the declaration for the function reportPower, which reports the result of raising a
+ * number to a power to the user.
+ */
 #pragma once
 
 #include <string>
 
+/**
+ * @brief Reports a power operation.
+ *
+ * @param[in] _number The number to raise to.
+ * @param[in] raiseTo The power of the number.
+ * @param[in] negative Whether the result should be negative.
+ * @param[in] steps The steps to show.
+ *
+ * @return The formatted power report.
+ */
 std::string reportPower(std::string_view _number, const std::string_view& raiseTo, bool negative, int steps);

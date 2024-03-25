@@ -20,6 +20,15 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file powerReport.cpp
+ * @brief This file contains the implementation for the function reportPower, which reports the result of raising a
+ * number to a power to the user.
+ *
+ * @author Andy Zhang
+ * @date 8rd November 2023
+ */
+
 #include "powerReport.hpp"
 
 #include "fn/basicArithm.hpp"

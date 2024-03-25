@@ -44,7 +44,7 @@
 #ifndef TIC
     /**
      * @brief Starts a timer for profiling code execution time.
-     * @param ... The name of the section to profile.
+     * @param[in] ... The name of the section to profile.
      */
     #define TIC(...)                                                                                  \
         {                                                                                             \
@@ -110,7 +110,7 @@ inline DWORD enableVtMode()
 /**
  * @brief Restores the VT mode to the original mode.
  *
- * @param dwModeOrig The original mode to restore.
+ * @param[in] dwModeOrig The original mode to restore.
  * @return true if the VT mode is successfully restored, false otherwise.
  */
 inline bool restoreVtMode(const DWORD dwModeOrig)
@@ -181,14 +181,14 @@ class Utf8CodePage
  * This function takes a string that represents a number with a zero polarity and simplifies it to a standard polarity.
  * E.g. "-0" is simplified to "0".
  *
- * @param string The input string to be simplified.
+ * @param[in] string The input string to be simplified.
  * @return A simplified string with standard polarity.
  */
 std::string simplifyZeroPolarity(const std::string_view& string);
 
 /**
  * @brief Simplifies a string with non-standard polarity (e.g., --1, ---1, etc.).
- * @param _string A string to simplify.
+ * @param[in] _string A string to simplify.
  * @return A simplified string with correct polarity.
  */
 std::string simplifyPolarity(const std::string_view& _string);
@@ -196,7 +196,7 @@ std::string simplifyPolarity(const std::string_view& _string);
 /**
  * @brief Standardizes a number string.
  *
- * @param _number The number string to standardize.
+ * @param[in] _number The number string to standardize.
  * @return The standardized number string.
  */
 std::string standardizeNumber(const std::string_view& _number);
@@ -207,7 +207,7 @@ std::string standardizeNumber(const std::string_view& _number);
  *
  * A zero string is defined as a string that contains only the character '0'.
  *
- * @param string The string to check.
+ * @param[in] string The string to check.
  * @return True if the string is a zero string, false otherwise.
  */
 constexpr bool isZeroString(const std::string_view& string)
@@ -218,7 +218,7 @@ constexpr bool isZeroString(const std::string_view& string)
 /**
  * @brief Checks if a given string is a valid number.
  *
- * @param s The string to be checked.
+ * @param[in] s The string to be checked.
  * @return True if the string is a valid number, false otherwise.
  */
 constexpr bool isNumber(const std::string_view& s)
@@ -250,8 +250,8 @@ constexpr bool isNumber(const std::string_view& s)
 /**
  * @brief Splits a string into substrings based on a separator.
  *
- * @param s The string to be split.
- * @param separator The separator to split the string by.
+ * @param[in] s The string to be split.
+ * @param[in] separator The separator to split the string by.
  * @return A vector of substrings.
  */
 template<typename CharT>
@@ -270,8 +270,8 @@ auto split(std::basic_string<CharT> s, const CharT separator)
 /**
  * @brief Splits a string view into substrings based on a separator.
  *
- * @param s The string view to be split.
- * @param separator The separator to split the string view by.
+ * @param[in] s The string view to be split.
+ * @param[in] separator The separator to split the string view by.
  * @return A vector of substrings.
  */
 template<typename CharT>
@@ -295,11 +295,11 @@ auto split(std::basic_string_view<CharT> s, const CharT separator)
 /**
  * Splits two numbers represented as strings and returns the result.
  *
- * @param a The first number as a string.
- * @param b The second number as a string.
- * @param padInteger Flag indicating whether to pad the integer part with spaces of the result.
- * @param padDecimal Flag indicating whether to pad the decimal part with zeros of the result.
- * @param properlyFormat
+ * @param[in] a The first number as a string.
+ * @param[in] b The second number as a string.
+ * @param[in] padInteger Flag indicating whether to pad the integer part with spaces of the result.
+ * @param[in] padDecimal Flag indicating whether to pad the decimal part with zeros of the result.
+ * @param[in] properlyFormat
  * @return The result of splitting the two numbers.
  *
  * @see SplitNumberResult
@@ -317,9 +317,9 @@ SplitNumberResult splitNumber(const std::string_view& a,
  * `replacement`. If `replacement` is not provided, the trailing occurrences of `t` are simply removed.
  *
  * @tparam CharT The character type of the string.
- * @param s The input string.
- * @param t The character to be replaced.
- * @param replacement The character to replace `t` with. Default is '\0' (null character).
+ * @param[in] s The input string.
+ * @param[in] t The character to be replaced.
+ * @param[in] replacement The character to replace `t` with. Default is '\0' (null character).
  * @return The modified string with trailing occurrences of `t` replaced by `replacement`.
  *
  * @see lReplace
@@ -343,9 +343,9 @@ auto rReplace(const std::basic_string<CharT> s, const CharT t, const CharT repla
  * @brief Replaces the leading occurrences of a character in a string with a replacement character.
  *
  * @tparam CharT The character type of the string.
- * @param s The input string.
- * @param t The character to be replaced.
- * @param replacement The replacement character (default is '\0').
+ * @param[in] s The input string.
+ * @param[in] t The character to be replaced.
+ * @param[in] replacement The replacement character (default is '\0').
  * @return The modified string with leading occurrences replaced.
  *
  * @see rReplace
@@ -369,9 +369,9 @@ auto lReplace(const std::basic_string<CharT> s, const CharT t, const CharT repla
  * @brief Replaces the leading and trailing occurrences of a character in a string with a replacement character.
  *
  * @tparam CharT The character type of the string.
- * @param s The input string.
- * @param t The character to be replaced.
- * @param replacement The replacement character (default is '\0').
+ * @param[in] s The input string.
+ * @param[in] t The character to be replaced.
+ * @param[in] replacement The replacement character (default is '\0').
  * @return The modified string with leading and trailing occurrences replaced.
  *
  * @note This function is equivalent to calling `lReplace(rReplace(s, t, replacement), t, replacement)`.
@@ -388,7 +388,7 @@ auto bothEndsReplace(const std::basic_string<CharT> s, const CharT t, const Char
 /**
  * Replaces leading zeros in the given vector with -2.
  *
- * @param vector The vector to modify.
+ * @param[in] vector The vector to modify.
  * @return The modified vector with leading zeros replaced.
  */
 auto replaceLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
@@ -396,7 +396,7 @@ auto replaceLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltyp
 /**
  * Removes leading zeros from a vector of integers.
  *
- * @param vector The input vector.
+ * @param[in] vector The input vector.
  * @return The vector with leading zeros removed.
  */
 auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>;
@@ -404,7 +404,7 @@ auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype
 /**
  * Removes leading zeros from a string.
  *
- * @param string The input string.
+ * @param[in] string The input string.
  * @return The string with leading zeros removed.
  */
 auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>;
@@ -413,8 +413,8 @@ auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(stri
  * @brief Joins a vector of elements into a single string using a delimiter.
  *
  * @tparam T The type of the vector elements.
- * @param vector The vector of strings to join.
- * @param delimiter The delimiter to join the strings with.
+ * @param[in] vector The vector of strings to join.
+ * @param[in] delimiter The delimiter to join the strings with.
  * @return The joined string.
  */
 template<typename T>
@@ -428,7 +428,7 @@ auto join(const std::vector<T>& vector, const std::string& delimiter)
 /**
  * @brief Makes the given string wider by adding 2 spaces between each character.
  *
- * @param orig The original string.
+ * @param[in] orig The original string.
  * @return The widened string.
  */
 std::string makeWider(const std::string& orig);
@@ -436,7 +436,7 @@ std::string makeWider(const std::string& orig);
 /**
  * @brief Converts a UTF-8 encoded string to a Unicode string.
  *
- * @param utf8_code The UTF-8 encoded string to convert.
+ * @param[in] utf8_code The UTF-8 encoded string to convert.
  * @return The converted Unicode string.
  */
 [[maybe_unused]] int utf8ToUnicode(const std::string& utf8_code);
@@ -444,7 +444,7 @@ std::string makeWider(const std::string& orig);
 /**
  * @brief Converts a Unicode character to UTF-8 encoding.
  *
- * @param unicode The Unicode character to be converted.
+ * @param[in] unicode The Unicode character to be converted.
  * @return The UTF-8 encoded string representation of the Unicode character.
  *
  * @note When output goes wrong, make sure to call this function when printing!
@@ -455,7 +455,7 @@ std::string unicodeToUtf8(int unicode);
 /**
  * Removes trailing zeros from a vector of integers.
  *
- * @param _vector The input vector.
+ * @param[in] _vector The input vector.
  * @return The vector with trailing zeros removed.
  */
 auto removeTrailingZeros(const std::vector<int>& _vector) -> std::decay_t<decltype(_vector)>;
@@ -463,7 +463,7 @@ auto removeTrailingZeros(const std::vector<int>& _vector) -> std::decay_t<declty
 /**
  * Removes trailing zeros from a string.
  *
- * @param numStr The input string.
+ * @param[in] numStr The input string.
  * @return The string with trailing zeros removed.
  */
 auto removeTrailingZeros(const std::string& numStr) -> std::decay_t<decltype(numStr)>;
@@ -471,7 +471,7 @@ auto removeTrailingZeros(const std::string& numStr) -> std::decay_t<decltype(num
 /**
  * @brief Determines the scale of a number, i.e., the power of 10 when it is expressed in
  * scientific notation.
- * @param number The number to be processed.
+ * @param[in] number The number to be processed.
  * @return The scale of the number
  */
 long long determineScale(const std::string_view& number);

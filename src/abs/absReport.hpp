@@ -20,9 +20,26 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file absReport.hpp
+ * @brief This file contains the declaration of the reportAbs function, which reports the absolute value of a number
+ * string to the user.
+ *
+ * @author Andy Zhang
+ * @date 12th January 2024
+ */
+
 #pragma once
 
 #include <string>
 #include <string_view>
 
+/**
+ * @brief Reports the absolute value of a number string to the user.
+ *
+ * @param[in] number The number to take absolute value of.
+ * @param[in] steps The steps to take to calculate the absolute value.
+ *
+ * @return The absolute value of the number.
+ */
 std::string reportAbs(const std::string_view& number, int steps = 2);

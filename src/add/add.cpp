@@ -20,6 +20,14 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file add.cpp
+ * @brief This file contains the implementation of the add function, which add two number strings together.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #include "addReport.hpp"
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"

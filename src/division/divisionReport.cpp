@@ -20,6 +20,15 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file divisionReport.cpp
+ * @brief This file contains the implementations for functions reportDivision and reportDivisionStep, which reports the
+ * result of a division operation to the user.
+ *
+ * @author Andy Zhang
+ * @date 23rd November 2023
+ */
+
 #include "divisionReport.hpp"
 
 #include "fn/basicArithm.hpp"

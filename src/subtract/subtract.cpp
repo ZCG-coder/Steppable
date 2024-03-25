@@ -20,6 +20,15 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file subtract.cpp
+ * @brief This file contains the implementation of the subtract function, which subtracts two numbers using the column
+ * method.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
 #include "subtractReport.hpp"

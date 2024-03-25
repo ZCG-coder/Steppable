@@ -63,7 +63,7 @@ public:
      * @brief Adds two fractions together.
      * This function does it by doing a simple fraction addition and returns the sum.
      *
-     * @param rhs The other fraction.
+     * @param[in] rhs The other fraction.
      * @return The sum of fractions.
      */
     Fraction operator+(const Fraction& rhs);
@@ -72,7 +72,7 @@ public:
      * @brief Subtracts a fraction from another fraction.
      * This function does it by doing a simple fraction subtraction and returns the difference.
      *
-     * @param rhs The other fraction.
+     * @param[in] rhs The other fraction.
      * @return The difference of fractions.
      */
     Fraction operator-(const Fraction& rhs);
@@ -81,7 +81,7 @@ public:
      * @brief Multiplies two fractions together.
      * This function does it by doing a simple fraction multiplication and returns the sum.
      *
-     * @param rhs The other fraction.
+     * @param[in] rhs The other fraction.
      * @return The product of fractions.
      */
     Fraction operator*(const Fraction& rhs);
@@ -91,7 +91,7 @@ public:
      * This function does it by doing a simple fraction division (multiply by inverse) and
      * returns the sum.
      *
-     * @param rhs The other fraction.
+     * @param[in] rhs The other fraction.
      * @return The sum of fractions.
      */
     Fraction operator/(const Fraction& rhs);
@@ -100,7 +100,7 @@ public:
      * @brief Adds two fractions together and stores the result in the current one.
      * This function does it by doing a simple fraction addition and returns the sum.
      *
-     * @param rhs The other fraction.
+     * @param[in] rhs The other fraction.
      * @return The current fraction.
      */
     Fraction& operator+=(const Fraction& rhs);
@@ -109,7 +109,7 @@ public:
      * @brief Subtracts a fraction from another fraction and stores the result in the current one.
      * This function does it by doing a simple fraction subtraction and returns the difference.
      *
-     * @param rhs The other fraction.
+     * @param[in] rhs The other fraction.
      * @return The current fraction.
      */
     Fraction& operator-=(const Fraction& rhs);
@@ -118,7 +118,7 @@ public:
      * @brief Multiplies two fractions together and stores the result in the current one.
      * This function does it by doing a simple fraction multiplication and returns the sum.
      *
-     * @param rhs The other fraction.
+     * @param[in] rhs The other fraction.
      * @return The current fraction.
      */
     Fraction& operator*=(const Fraction& rhs);
@@ -128,7 +128,7 @@ public:
      * This function does it by doing a simple fraction division (multiply by inverse) and
      * returns the sum.
      *
-     * @param rhs The other fraction.
+     * @param[in] rhs The other fraction.
      * @return The sum of fractions.
      */
     Fraction& operator/=(const Fraction& rhs);

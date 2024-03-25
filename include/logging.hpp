@@ -79,9 +79,9 @@ namespace logging
     public:
 /**
  * @brief Constructs a Logger object.
- * @param name The name of the logger.
- * @param filename The name of the log file.
- * @param level The logging level (default: Level::INFO).
+ * @param[in] name The name of the logger.
+ * @param[in] filename The name of the log file.
+ * @param[in] level The logging level (default: Level::INFO).
  */
 #if DEBUG
         Logger(const std::string& name, const std::string& filename, const Level level = Level::DBG);
@@ -96,14 +96,14 @@ namespace logging
 
         /**
          * @brief Logs an error message.
-         * @param message The error message to be logged.
+         * @param[in] message The error message to be logged.
          */
         void error(const std::string& message);
 
         /**
          * @brief Logs an error message with additional arguments.
-         * @param message The error message to be logged.
-         * @param args The additional arguments.
+         * @param[in] message The error message to be logged.
+         * @param[in] args The additional arguments.
          */
         template<typename... Args>
         void error(const std::string& message, Args&&... args)
@@ -114,14 +114,14 @@ namespace logging
 
         /**
          * @brief Logs a warning message.
-         * @param message The warning message to be logged.
+         * @param[in] message The warning message to be logged.
          */
         void warning(const std::string& message);
 
         /**
          * @brief Logs a warning message with additional arguments.
-         * @param message The warning message to be logged.
-         * @param args The additional arguments.
+         * @param[in] message The warning message to be logged.
+         * @param[in] args The additional arguments.
          */
         template<typename... Args>
         void warning(const std::string& message, Args&&... args)
@@ -132,20 +132,20 @@ namespace logging
 
         /**
          * @brief Logs an info message.
-         * @param message The info message to be logged.
+         * @param[in] message The info message to be logged.
          */
         void info(const std::string& message);
 
         /**
          * @brief Logs a debug message.
-         * @param message The debug message to be logged.
+         * @param[in] message The debug message to be logged.
          */
         void debug(const std::string& message);
 
         /**
          * @brief Logs a debug message with additional arguments.
-         * @param message The debug message to be logged.
-         * @param args The additional arguments.
+         * @param[in] message The debug message to be logged.
+         * @param[in] args The additional arguments.
          */
         template<typename... Args>
         void debug(const std::string& message, Args&&... args)
@@ -168,7 +168,7 @@ namespace logging
 
         /**
          * @brief Logs a message.
-         * @param message The message to be logged.
+         * @param[in] message The message to be logged.
          * @note This function is private and should not be called directly.
          */
         void log(const std::string& message);

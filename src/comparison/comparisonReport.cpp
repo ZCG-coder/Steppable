@@ -20,6 +20,16 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file comparisionReport.cpp
+ * @brief This file contains the implementation of functions reportComparisonAtInteger, reportComparisonByPolarity and
+ * reportComparisonByDigit, which reports the result of the comparision from the integer part, polarity and digit
+ * respectively.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #include "comparisonReport.hpp"
 
 #include "symbols.hpp"
@@ -57,9 +67,9 @@ std::string reportComparisonAtInteger(const std::string_view& a,
 }
 
 std::string reportComparisonByPolarity(const std::string_view& a,
-                                        const std::string_view& b,
-                                        const bool bigger,
-                                        const int steps)
+                                       const std::string_view& b,
+                                       const bool bigger,
+                                       const int steps)
 {
     std::stringstream ss;
 

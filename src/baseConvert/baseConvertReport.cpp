@@ -20,6 +20,16 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file baseConvertReport.cpp
+ * @brief This file contains the implementation of the reportBaseConvert function, which reports the converted number to the
+ * user.
+ * @warning Still work-in-progress.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #include "baseConvertReport.hpp"
 
 #include "symbols.hpp"

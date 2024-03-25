@@ -41,9 +41,9 @@
 
 /**
  * @brief An ANSI Escape Sequence to set a custom RGB color code for the text.
- * @param r The red component of the color.
- * @param g The green component of the color.
- * @param b The blue component of the color.
+ * @param[in] r The red component of the color.
+ * @param[in] g The green component of the color.
+ * @param[in] b The blue component of the color.
  * @warning The color code should be from 0 to 255. No error checking is performed.
  */
 // RGB Text Colors (8-bit)
@@ -51,9 +51,9 @@
 
 /**
  * @brief An ANSI Escape Sequence to set a custom RGB color code for the background.
- * @param r The red component of the color.
- * @param g The green component of the color.
- * @param b The blue component of the color.
+ * @param[in] r The red component of the color.
+ * @param[in] g The green component of the color.
+ * @param[in] b The blue component of the color.
  * @warning The color code should be from 0 to 255. No error checking is performed.
  */
 // RGB Background Colors (8-bit)
@@ -64,7 +64,7 @@
  *
  * This function checks if the given output stream is associated with a terminal.
  *
- * @param stream The output stream to check.
+ * @param[in] stream The output stream to check.
  * @return true if the output stream is a terminal, false otherwise.
  */
 bool isTerminal(const std::ostream& stream);
@@ -74,7 +74,7 @@ bool isTerminal(const std::ostream& stream);
  *
  * This function resets the text color and format to the default values.
  *
- * @param stream The output stream to reset.
+ * @param[in] stream The output stream to reset.
  * @return The modified output stream.
  */
 std::ostream& reset(std::ostream& stream);
@@ -88,7 +88,7 @@ namespace colors
     /**
      * @brief Set the text color to black.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& black(std::ostream& stream);
@@ -96,7 +96,7 @@ namespace colors
     /**
      * @brief Set the text color to red.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& red(std::ostream& stream);
@@ -104,7 +104,7 @@ namespace colors
     /**
      * @brief Set the text color to green.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& green(std::ostream& stream);
@@ -112,7 +112,7 @@ namespace colors
     /**
      * @brief Set the text color to yellow.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& yellow(std::ostream& stream);
@@ -120,7 +120,7 @@ namespace colors
     /**
      * @brief Set the text color to blue.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& blue(std::ostream& stream);
@@ -128,7 +128,7 @@ namespace colors
     /**
      * @brief Set the text color to magenta.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& magenta(std::ostream& stream);
@@ -136,7 +136,7 @@ namespace colors
     /**
      * @brief Set the text color to cyan.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& cyan(std::ostream& stream);
@@ -144,7 +144,7 @@ namespace colors
     /**
      * @brief Set the text color to white.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& white(std::ostream& stream);
@@ -152,7 +152,7 @@ namespace colors
     /**
      * @brief Set the text color to bright black.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightBlack(std::ostream& stream);
@@ -160,7 +160,7 @@ namespace colors
     /**
      * @brief Set the text color to bright red.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightRed(std::ostream& stream);
@@ -168,7 +168,7 @@ namespace colors
     /**
      * @brief Set the text color to bright green.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightGreen(std::ostream& stream);
@@ -176,7 +176,7 @@ namespace colors
     /**
      * @brief Set the text color to bright yellow.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightYellow(std::ostream& stream);
@@ -184,7 +184,7 @@ namespace colors
     /**
      * @brief Set the text color to bright blue.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightBlue(std::ostream& stream);
@@ -192,7 +192,7 @@ namespace colors
     /**
      * @brief Set the text color to bright magenta.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightMagenta(std::ostream& stream);
@@ -200,7 +200,7 @@ namespace colors
     /**
      * @brief Set the text color to bright cyan.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightCyan(std::ostream& stream);
@@ -208,7 +208,7 @@ namespace colors
     /**
      * @brief Set the text color to bright white.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightWhite(std::ostream& stream);
@@ -223,7 +223,7 @@ namespace colorsBg
     /**
      * @brief Set the background color to bright black.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightBlack(std::ostream& stream);
@@ -231,7 +231,7 @@ namespace colorsBg
     /**
      * @brief Set the background color to bright red.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightRed(std::ostream& stream);
@@ -239,7 +239,7 @@ namespace colorsBg
     /**
      * @brief Set the background color to bright green.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightGreen(std::ostream& stream);
@@ -247,7 +247,7 @@ namespace colorsBg
     /**
      * @brief Set the background color to bright yellow.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightYellow(std::ostream& stream);
@@ -255,7 +255,7 @@ namespace colorsBg
     /**
      * @brief Set the background color to bright blue.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightBlue(std::ostream& stream);
@@ -263,7 +263,7 @@ namespace colorsBg
     /**
      * @brief Set the background color to bright cyan.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightCyan(std::ostream& stream);
@@ -271,7 +271,7 @@ namespace colorsBg
     /**
      * @brief Set the background color to bright white.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& brightWhite(std::ostream& stream);
@@ -286,7 +286,7 @@ namespace formats
     /**
      * @brief Set the text format to bold.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& bold(std::ostream& stream);
@@ -294,7 +294,7 @@ namespace formats
     /**
      * @brief Set the text format to dim.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& dim(std::ostream& stream);
@@ -302,7 +302,7 @@ namespace formats
     /**
      * @brief Set the text format to underline.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& underline(std::ostream& stream);
@@ -310,7 +310,7 @@ namespace formats
     /**
      * @brief Set the text format to blink.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& blink(std::ostream& stream);
@@ -318,7 +318,7 @@ namespace formats
     /**
      * @brief Set the text format to reverse.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& reverse(std::ostream& stream);
@@ -326,7 +326,7 @@ namespace formats
     /**
      * @brief Set the text format to hidden.
      *
-     * @param stream The output stream to modify.
+     * @param[in] stream The output stream to modify.
      * @return The modified output stream.
      */
     std::ostream& hidden(std::ostream& stream);

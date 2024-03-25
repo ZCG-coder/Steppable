@@ -20,6 +20,14 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file division.cpp
+ * @brief Performs division of two numbers represented in strings.
+ *
+ * @author Andy Zhang
+ * @date 23rd November 2023
+ */
+
 #include "argParse.hpp"
 #include "divisionReport.hpp"
 #include "fn/basicArithm.hpp"
@@ -55,8 +63,8 @@ QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto
 
 /**
  * @brief Determines the scale of the quotient of division.
- * @param _number The number to be divided.
- * @param _divisor The divisor of the division.
+ * @param[in] _number The number to be divided.
+ * @param[in] _divisor The divisor of the division.
  * @return The scale of the result.
  * @see https://worldmentalcalculation.com/how-to-divide-by-long-numbers-in-mental-math/
  */

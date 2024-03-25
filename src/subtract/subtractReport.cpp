@@ -20,6 +20,15 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file subtractReport.cpp
+ * @brief This file contains the implementation of the reportSubtract function, which reports the result of a
+ * subtraction to the user.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #include "subtractReport.hpp"
 
 #include "symbols.hpp"

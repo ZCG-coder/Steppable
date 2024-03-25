@@ -20,17 +20,46 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file baseConvertReport.hpp
+ * @brief This file contains the declaration of the reportBaseConvert function, which reports the converted number to
+ * the user.
+ * @warning Still work-in-progress.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
+ */
+
 #pragma once
 
 #include <string>
 #include <string_view>
 #include <vector>
 
+/**
+ * @brief Reports the base conversion step to the user.
+ *
+ * @param[in] _number The number to convert.
+ * @param[in] _base The base to convert to.
+ * @param[in] _quotient The quotient of the division.
+ * @param[in] _remainder The remainder of the division.
+ *
+ * @return The report of the base conversion step.
+ */
 std::string reportBaseConvertStep(const std::string& _number,
                                   const std::string& _base,
                                   const std::string& _quotient,
                                   const std::string& _remainder);
 
+/**
+ * @brief Reports the base conversion to the user.
+ *
+ * @param[in] _number The number to convert.
+ * @param[in] _base The base to convert to.
+ * @param[in] _result The result of the base conversion.
+ *
+ * @return The report of the base conversion.
+ */
 std::string reportBaseConvert(const std::string_view& _number,
                               const std::string_view& _base,
                               const std::vector<std::string>& _result);
