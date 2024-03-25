@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('decimalConvert_8cpp.html',''); initRes
 <div class="title">decimalConvert.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the implementation of the decimalConvert function, which converts a number from one base to decimal.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="argParse_8hpp_source.html">argParse.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="decimalConvertReport_8hpp_source.html">decimalConvertReport.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="basicArithm_8hpp_source.html">fn/basicArithm.hpp</a>&quot;</code><br />
@@ -106,6 +109,7 @@ Include dependency graph for decimalConvert.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae999c7b3ae6117d5e807502b2c5d038d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decimalConvert_8cpp.html#ae999c7b3ae6117d5e807502b2c5d038d">toNumber</a> (const char _input)</td></tr>
+<tr class="memdesc:ae999c7b3ae6117d5e807502b2c5d038d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a numeral character to a number string.  <a href="decimalConvert_8cpp.html#ae999c7b3ae6117d5e807502b2c5d038d">More...</a><br /></td></tr>
 <tr class="separator:ae999c7b3ae6117d5e807502b2c5d038d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab48d6eec4a0053875a5c13696eb99cde"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decimalConvert_8cpp.html#ab48d6eec4a0053875a5c13696eb99cde">decimalConvert</a> (const std::string_view &amp;_inputString, const std::string_view &amp;baseString, int steps)</td></tr>
 <tr class="memdesc:ab48d6eec4a0053875a5c13696eb99cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string representation of a number from one base to another.  <a href="decimalConvert_8cpp.html#ab48d6eec4a0053875a5c13696eb99cde">More...</a><br /></td></tr>
@@ -113,7 +117,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac2c7bcd6d73ca32ee42312d0fa0b1aa9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decimalConvert_8cpp.html#ac2c7bcd6d73ca32ee42312d0fa0b1aa9">main</a> (int _argc, const char *_argv[])</td></tr>
 <tr class="separator:ac2c7bcd6d73ca32ee42312d0fa0b1aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the implementation of the decimalConvert function, which converts a number from one base to decimal. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="ab48d6eec4a0053875a5c13696eb99cde"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab48d6eec4a0053875a5c13696eb99cde">&#9670;&nbsp;</a></span>decimalConvert()</h2>
 
@@ -149,9 +155,9 @@ Functions</h2></td></tr>
 <p>Converts a string representation of a number from one base to another. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_inputString</td><td>The string representation of the number. </td></tr>
-    <tr><td class="paramname">baseString</td><td>The base of the input number. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the conversion. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_inputString</td><td>The string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">baseString</td><td>The base of the input number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the conversion. </td></tr>
   </table>
   </dd>
 </dl>
@@ -221,6 +227,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Converts a numeral character to a number string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_input</td><td>The character to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number string. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

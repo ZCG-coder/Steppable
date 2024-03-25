@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('powerReport_8hpp.html',''); initResiza
 <div class="title">powerReport.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the declaration for the function reportPower, which reports the result of raising a number to a power to the user.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for powerReport.hpp:</div>
@@ -109,9 +112,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3983fa7e3f0ac4977f27439fb574b389"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="powerReport_8hpp.html#a3983fa7e3f0ac4977f27439fb574b389">reportPower</a> (std::string_view _number, const std::string_view &amp;raiseTo, bool negative, int steps)</td></tr>
+<tr class="memdesc:a3983fa7e3f0ac4977f27439fb574b389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports a power operation.  <a href="powerReport_8hpp.html#a3983fa7e3f0ac4977f27439fb574b389">More...</a><br /></td></tr>
 <tr class="separator:a3983fa7e3f0ac4977f27439fb574b389"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the declaration for the function reportPower, which reports the result of raising a number to a power to the user. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a3983fa7e3f0ac4977f27439fb574b389"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3983fa7e3f0ac4977f27439fb574b389">&#9670;&nbsp;</a></span>reportPower()</h2>
 
@@ -149,6 +155,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports a power operation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The number to raise to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">raiseTo</td><td>The power of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">negative</td><td>Whether the result should be negative. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The steps to show.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The formatted power report. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

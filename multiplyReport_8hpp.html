@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('multiplyReport_8hpp.html',''); initRes
 <div class="title">multiplyReport.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the declaration for function reportMultiply, which reports the result of a multiplication operation to the user.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -109,12 +112,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a41ff432aedaeb02bdd7dd1afe16bf105"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiplyReport_8hpp.html#a41ff432aedaeb02bdd7dd1afe16bf105">reportMultiply</a> (const std::string &amp;a, const std::string &amp;b, const std::string &amp;aStr, const std::string &amp;bStr, const std::vector&lt; int &gt; &amp;finalProdDigits, const std::vector&lt; int &gt; &amp;finalProdCarries, const std::vector&lt; std::vector&lt; int &gt;&gt; &amp;prodDigitsOut, const std::vector&lt; std::vector&lt; int &gt;&gt; &amp;carries, bool resultIsNegative=false, size_t numberDecimals=0, int steps=2)</td></tr>
-<tr class="separator:a41ff432aedaeb02bdd7dd1afe16bf105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf5e4d327c5931c506452b5fb35ac382"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiplyReport_8hpp.html#abf5e4d327c5931c506452b5fb35ac382">reportMultiply</a> (const std::string &amp;a, const std::string &amp;b, const std::string &amp;aStr, const std::string &amp;bStr, const std::vector&lt; int &gt; &amp;finalProdDigits, const std::vector&lt; int &gt; &amp;finalProdCarries, const std::vector&lt; std::vector&lt; int &gt;&gt; &amp;prodDigitsOut, const std::vector&lt; std::vector&lt; int &gt;&gt; &amp;carries, bool resultIsNegative=false, long long scale=0, int steps=2)</td></tr>
+<tr class="memdesc:abf5e4d327c5931c506452b5fb35ac382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports a multiplication operation to the user.  <a href="multiplyReport_8hpp.html#abf5e4d327c5931c506452b5fb35ac382">More...</a><br /></td></tr>
+<tr class="separator:abf5e4d327c5931c506452b5fb35ac382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a41ff432aedaeb02bdd7dd1afe16bf105"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41ff432aedaeb02bdd7dd1afe16bf105">&#9670;&nbsp;</a></span>reportMultiply()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the declaration for function reportMultiply, which reports the result of a multiplication operation to the user. </p>
+<dl class="section author"><dt>Author</dt><dd>Andy Zhang </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>9th October 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="abf5e4d327c5931c506452b5fb35ac382"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf5e4d327c5931c506452b5fb35ac382">&#9670;&nbsp;</a></span>reportMultiply()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -176,8 +184,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>numberDecimals</em> = <code>0</code>, </td>
+          <td class="paramtype">long long&#160;</td>
+          <td class="paramname"><em>scale</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -192,16 +200,35 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports a multiplication operation to the user. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Number 1. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Number 2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aStr</td><td>Modified number 1. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bStr</td><td>Modified number 2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">finalProdDigits</td><td>The final product digits. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">finalProdCarries</td><td>The final product's carries. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prodDigitsOut</td><td>The product digits for each step. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">carries</td><td>The carries for each step. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">resultIsNegative</td><td>Whether the result should be negative. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">scale</td><td>The scale of the result. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The steps to show while reporting.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The formatted multiplication report. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="multiplyReport_8hpp_a41ff432aedaeb02bdd7dd1afe16bf105_cgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="multiplyReport_8hpp_abf5e4d327c5931c506452b5fb35ac382_cgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="multiplyReport_8hpp_a41ff432aedaeb02bdd7dd1afe16bf105_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="multiplyReport_8hpp_abf5e4d327c5931c506452b5fb35ac382_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

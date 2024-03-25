@@ -104,10 +104,13 @@ Include dependency graph for comparisonReport.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a9837660fa80278748f7f9bc397f5fba4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comparisonReport_8cpp.html#a9837660fa80278748f7f9bc397f5fba4">reportComparisonAtInteger</a> (const std::string_view &amp;a, const std::string_view &amp;b, const bool bigger, const int steps)</td></tr>
+<tr class="memdesc:a9837660fa80278748f7f9bc397f5fba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the comparison based on the integer. If the integer parts are of different length, the one with longer length is larger than that with shorter length.  <a href="comparisonReport_8cpp.html#a9837660fa80278748f7f9bc397f5fba4">More...</a><br /></td></tr>
 <tr class="separator:a9837660fa80278748f7f9bc397f5fba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bdddfcaa5a1d0339df5705ec6ff2aff"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comparisonReport_8cpp.html#a8bdddfcaa5a1d0339df5705ec6ff2aff">reportComparisonByPolarity</a> (const std::string_view &amp;a, const std::string_view &amp;b, const bool bigger, const int steps)</td></tr>
+<tr class="memdesc:a8bdddfcaa5a1d0339df5705ec6ff2aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the comparison based on the polarity. If they are of different polarity, the one that is positive is larger than the negative one.  <a href="comparisonReport_8cpp.html#a8bdddfcaa5a1d0339df5705ec6ff2aff">More...</a><br /></td></tr>
 <tr class="separator:a8bdddfcaa5a1d0339df5705ec6ff2aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc6ac398c16b4d30ab55b0ec5ceef9f3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comparisonReport_8cpp.html#adc6ac398c16b4d30ab55b0ec5ceef9f3">reportComparisonByDigit</a> (const std::string_view &amp;a, const std::string_view &amp;b, const size_t _digit, const bool bigger, const bool bothNegative, const int steps)</td></tr>
+<tr class="memdesc:adc6ac398c16b4d30ab55b0ec5ceef9f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares each digit and see if one is larger.  <a href="comparisonReport_8cpp.html#adc6ac398c16b4d30ab55b0ec5ceef9f3">More...</a><br /></td></tr>
 <tr class="separator:adc6ac398c16b4d30ab55b0ec5ceef9f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -132,14 +135,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>bigger</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>steps</em>&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>steps</em> = <code>2</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -148,6 +151,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports the comparison based on the integer. If the integer parts are of different length, the one with longer length is larger than that with shorter length. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Number a. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Number b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bigger</td><td>Whether a is longer than b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The steps to show while comparing.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The comparison result. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -178,26 +193,26 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const size_t&#160;</td>
-          <td class="paramname"><em>_digit</em>, </td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>digit</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>bigger</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>bothNegative</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>steps</em>&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>steps</em> = <code>2</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -206,6 +221,20 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Compares each digit and see if one is larger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Number a. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Number b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_digit</td><td>The digit where a is bigger than b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bigger</td><td>Whether a is longer than b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bothNegative</td><td>Whether both a and b are negative. If they are both negative, the result needs to be inverted. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The steps to show while comparing.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The comparison result. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -236,14 +265,14 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool&#160;</td>
-          <td class="paramname"><em>bigger</em>, </td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>greater</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>steps</em>&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>steps</em> = <code>2</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -252,6 +281,18 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports the comparison based on the polarity. If they are of different polarity, the one that is positive is larger than the negative one. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Number a. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Number b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bigger</td><td>Whether a is larger than b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The steps to show while comparing.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The comparison result. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('addReport_8cpp.html',''); initResizabl
 <div class="title">addReport.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the implementation of the reportAdd function, which reports the sum of two number strings together.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="addReport_8hpp_source.html">addReport.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="symbols_8hpp_source.html">symbols.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="util_8hpp_source.html">util.hpp</a>&quot;</code><br />
@@ -106,9 +109,14 @@ Include dependency graph for addReport.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad77bd53c675044525fecd7273407c4a6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="addReport_8cpp.html#ad77bd53c675044525fecd7273407c4a6">reportAdd</a> (const std::string &amp;aInteger, const std::string &amp;aDecimal, const std::string &amp;bInteger, const std::string &amp;bDecimal, const std::vector&lt; int &gt; &amp;sumDigits, const std::vector&lt; bool &gt; &amp;carries, const bool resultIsNegative, const int steps, const bool properlyFormat)</td></tr>
+<tr class="memdesc:ad77bd53c675044525fecd7273407c4a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the sum of two number strings.  <a href="addReport_8cpp.html#ad77bd53c675044525fecd7273407c4a6">More...</a><br /></td></tr>
 <tr class="separator:ad77bd53c675044525fecd7273407c4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the implementation of the reportAdd function, which reports the sum of two number strings together. </p>
+<dl class="section author"><dt>Author</dt><dd>Andy Zhang </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>9th October 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="ad77bd53c675044525fecd7273407c4a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad77bd53c675044525fecd7273407c4a6">&#9670;&nbsp;</a></span>reportAdd()</h2>
 
@@ -154,19 +162,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>resultIsNegative</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>steps</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>properlyFormat</em>&#160;</td>
         </tr>
         <tr>
@@ -176,6 +184,23 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports the sum of two number strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aInteger</td><td>The integer part of the first number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aDecimal</td><td>The decimal part of the first number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bInteger</td><td>The integer part of the second number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bDecimal</td><td>The decimal part of the second number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sumDigits</td><td>The digits of the sum. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">carries</td><td>The carries of the sum. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">resultIsNegative</td><td>Whether the result is negative. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to show. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">properlyFormat</td><td>Whether to properly format the output.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The reported string. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

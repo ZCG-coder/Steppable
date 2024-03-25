@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('comparisonReport_8hpp.html',''); initR
 <div class="title">comparisonReport.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the declarations of the functions reportComparisonAtInteger, reportComparisonByPolarity and reportComparisonByDigit, which reports the result of the comparision from the integer part, polarity and digit respectively.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
@@ -111,13 +114,20 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aadc831ed553ca52c918c942e50a1e2a6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comparisonReport_8hpp.html#aadc831ed553ca52c918c942e50a1e2a6">reportComparisonAtInteger</a> (const std::string_view &amp;a, const std::string_view &amp;b, bool bigger, int steps=2)</td></tr>
+<tr class="memdesc:aadc831ed553ca52c918c942e50a1e2a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the comparison based on the integer. If the integer parts are of different length, the one with longer length is larger than that with shorter length.  <a href="comparisonReport_8hpp.html#aadc831ed553ca52c918c942e50a1e2a6">More...</a><br /></td></tr>
 <tr class="separator:aadc831ed553ca52c918c942e50a1e2a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d8e360e5845468ad9de413dea6b7a85"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comparisonReport_8hpp.html#a4d8e360e5845468ad9de413dea6b7a85">reportComparisonByPolarity</a> (const std::string_view &amp;a, const std::string_view &amp;b, bool greater, int steps=2)</td></tr>
+<tr class="memdesc:a4d8e360e5845468ad9de413dea6b7a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the comparison based on the polarity. If they are of different polarity, the one that is positive is larger than the negative one.  <a href="comparisonReport_8hpp.html#a4d8e360e5845468ad9de413dea6b7a85">More...</a><br /></td></tr>
 <tr class="separator:a4d8e360e5845468ad9de413dea6b7a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e43eb78652f586664ae0fada1844576"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comparisonReport_8hpp.html#a1e43eb78652f586664ae0fada1844576">reportComparisonByDigit</a> (const std::string_view &amp;a, const std::string_view &amp;b, size_t digit, bool bigger, bool bothNegative, int steps=2)</td></tr>
+<tr class="memdesc:a1e43eb78652f586664ae0fada1844576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares each digit and see if one is larger.  <a href="comparisonReport_8hpp.html#a1e43eb78652f586664ae0fada1844576">More...</a><br /></td></tr>
 <tr class="separator:a1e43eb78652f586664ae0fada1844576"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the declarations of the functions reportComparisonAtInteger, reportComparisonByPolarity and reportComparisonByDigit, which reports the result of the comparision from the integer part, polarity and digit respectively. </p>
+<dl class="section author"><dt>Author</dt><dd>Andy Zhang </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>9th October 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="aadc831ed553ca52c918c942e50a1e2a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aadc831ed553ca52c918c942e50a1e2a6">&#9670;&nbsp;</a></span>reportComparisonAtInteger()</h2>
 
@@ -155,6 +165,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports the comparison based on the integer. If the integer parts are of different length, the one with longer length is larger than that with shorter length. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Number a. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Number b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bigger</td><td>Whether a is longer than b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The steps to show while comparing.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The comparison result. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -213,6 +235,20 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Compares each digit and see if one is larger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Number a. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Number b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_digit</td><td>The digit where a is bigger than b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bigger</td><td>Whether a is longer than b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bothNegative</td><td>Whether both a and b are negative. If they are both negative, the result needs to be inverted. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The steps to show while comparing.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The comparison result. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -259,6 +295,18 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports the comparison based on the polarity. If they are of different polarity, the one that is positive is larger than the negative one. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Number a. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Number b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bigger</td><td>Whether a is larger than b. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The steps to show while comparing.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The comparison result. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

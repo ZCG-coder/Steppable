@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('multiply_8cpp.html',''); initResizable
 <div class="title">multiply.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the implementation of the multiply function, which can multiply two strings together.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="argParse_8hpp_source.html">argParse.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="basicArithm_8hpp_source.html">fn/basicArithm.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="multiplyReport_8hpp_source.html">multiplyReport.hpp</a>&quot;</code><br />
@@ -107,6 +110,7 @@ Include dependency graph for multiply.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a599800c0e265121b8977d06a4d14a945"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiply_8cpp.html#a599800c0e265121b8977d06a4d14a945">determineProductScale</a> (const std::string &amp;a, const std::string &amp;b)</td></tr>
+<tr class="memdesc:a599800c0e265121b8977d06a4d14a945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the scale for a product of two numbers.  <a href="multiply_8cpp.html#a599800c0e265121b8977d06a4d14a945">More...</a><br /></td></tr>
 <tr class="separator:a599800c0e265121b8977d06a4d14a945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af14e9c547649b0788b3733d9553502cd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiply_8cpp.html#af14e9c547649b0788b3733d9553502cd">multiply</a> (const std::string_view &amp;a, const std::string_view &amp;b, const int steps)</td></tr>
 <tr class="memdesc:af14e9c547649b0788b3733d9553502cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies two string representations of numbers.  <a href="multiply_8cpp.html#af14e9c547649b0788b3733d9553502cd">More...</a><br /></td></tr>
@@ -114,7 +118,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiply_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a> (const int _argc, const char *_argv[])</td></tr>
 <tr class="separator:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the implementation of the multiply function, which can multiply two strings together. </p>
+<dl class="section author"><dt>Author</dt><dd>Andy Zhang </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>9th October 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a599800c0e265121b8977d06a4d14a945"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a599800c0e265121b8977d06a4d14a945">&#9670;&nbsp;</a></span>determineProductScale()</h2>
 
@@ -140,10 +148,26 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Determines the scale for a product of two numbers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Number 1, </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Number 2.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The correct scale for their product. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="multiply_8cpp_a599800c0e265121b8977d06a4d14a945_cgraph.svg" width="100%" height="534"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="multiply_8cpp_a599800c0e265121b8977d06a4d14a945_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -218,9 +242,9 @@ Here is the call graph for this function:</div>
 <p>Multiplies two string representations of numbers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>The first string representation of the number. </td></tr>
-    <tr><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the multiplication. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>The first string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the multiplication. </td></tr>
   </table>
   </dd>
 </dl>

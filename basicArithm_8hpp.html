@@ -185,8 +185,8 @@ Functions</h2></td></tr>
 <p>Calculates the absolute value of a string representation of a number. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_number</td><td>The string representation of the number. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the calculation. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the calculation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -253,11 +253,11 @@ Here is the caller graph for this function:</div>
 <p>Adds two string representations of numbers, and performs with the column method. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>The first string representation of the number. </td></tr>
-    <tr><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the addition. 2 = column method, 1 = normal addition, 0 = result only. Default is 2. </td></tr>
-    <tr><td class="paramname">negative</td><td>Flag indicating whether the result should be negative. </td></tr>
-    <tr><td class="paramname">properlyFormat</td><td>Flag indicating whether to properly format the output. Default true. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>The first string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the addition. 2 = column method, 1 = normal addition, 0 = result only. Default is 2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">negative</td><td>Flag indicating whether the result should be negative. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">properlyFormat</td><td>Flag indicating whether to properly format the output. Default true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -312,9 +312,9 @@ Here is the caller graph for this function:</div>
 <p>Compares two string representations of numbers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>The first string representation of the number. </td></tr>
-    <tr><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the comparison. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>The first string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the comparison. </td></tr>
   </table>
   </dd>
 </dl>
@@ -369,9 +369,9 @@ Here is the caller graph for this function:</div>
 <p>Converts a string representation of a number from one base to another. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_inputString</td><td>The string representation of the number. </td></tr>
-    <tr><td class="paramname">baseString</td><td>The base of the input number. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the conversion. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_inputString</td><td>The string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">baseString</td><td>The base of the input number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the conversion. </td></tr>
   </table>
   </dd>
 </dl>
@@ -433,10 +433,10 @@ Here is the caller graph for this function:</div>
 <p>Divides a string representation of a number by another string representation of a number. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">number</td><td>The string representation of the dividend. </td></tr>
-    <tr><td class="paramname">divisor</td><td>The string representation of the divisor. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the division. </td></tr>
-    <tr><td class="paramname">decimals</td><td>The number of decimal places in the result. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">number</td><td>The string representation of the dividend. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">divisor</td><td>The string representation of the divisor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the division. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">decimals</td><td>The number of decimal places in the result. </td></tr>
   </table>
   </dd>
 </dl>
@@ -484,8 +484,8 @@ Here is the caller graph for this function:</div>
 <p>Calculates the quotient and remainder of dividing the current remainder by the divisor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_currentRemainder</td><td>The current remainder. </td></tr>
-    <tr><td class="paramname">divisor</td><td>The divisor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_currentRemainder</td><td>The current remainder. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">divisor</td><td>The divisor. </td></tr>
   </table>
   </dd>
 </dl>
@@ -536,8 +536,8 @@ template&lt;typename Pred &gt; </div>
 <p>Executes a given predicate function a specified number of times. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">times</td><td>The number of times to execute the predicate function. </td></tr>
-    <tr><td class="paramname">predicate</td><td>The predicate function to execute. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">times</td><td>The number of times to execute the predicate function. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">predicate</td><td>The predicate function to execute. </td></tr>
   </table>
   </dd>
 </dl>
@@ -591,9 +591,9 @@ Here is the caller graph for this function:</div>
 <p>Multiplies two string representations of numbers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>The first string representation of the number. </td></tr>
-    <tr><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the multiplication. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>The first string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the multiplication. </td></tr>
   </table>
   </dd>
 </dl>
@@ -648,9 +648,9 @@ Here is the caller graph for this function:</div>
 <p>Raises a string representation of a number to a power. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_number</td><td>The string representation of the number. </td></tr>
-    <tr><td class="paramname">raiseTo</td><td>The string representation of the power to raise the number to. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the power operation. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The string representation of the number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">raiseTo</td><td>The string representation of the power to raise the number to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the power operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -711,10 +711,10 @@ Here is the caller graph for this function:</div>
 <p>Subtracts one string representation of a number from another string representation of a number. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>The string representation of the minuend. </td></tr>
-    <tr><td class="paramname">b</td><td>The string representation of the subtrahend. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the subtraction. </td></tr>
-    <tr><td class="paramname">noMinus</td><td>Flag indicating whether to display a minus sign or not. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>The string representation of the minuend. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>The string representation of the subtrahend. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the subtraction. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">noMinus</td><td>Flag indicating whether to display a minus sign or not. </td></tr>
   </table>
   </dd>
 </dl>

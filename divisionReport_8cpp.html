@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('divisionReport_8cpp.html',''); initRes
 <div class="title">divisionReport.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the implementations for functions reportDivision and reportDivisionStep, which reports the result of a division operation to the user.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="divisionReport_8hpp_source.html">divisionReport.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="basicArithm_8hpp_source.html">fn/basicArithm.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="internals_8hpp_source.html">internals.hpp</a>&quot;</code><br />
@@ -108,11 +111,18 @@ Include dependency graph for divisionReport.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a37e4e7cb6fe42ae3131cdc071b038687"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="divisionReport_8cpp.html#a37e4e7cb6fe42ae3131cdc071b038687">reportDivision</a> (std::stringstream &amp;tempFormattedAns, const std::string_view &amp;temp, const std::string_view &amp;ans, const std::string_view &amp;divisor, const std::string_view &amp;_divisor, const std::string_view &amp;_number, const int steps, const int width, const bool resultIsNegative)</td></tr>
+<tr class="memdesc:a37e4e7cb6fe42ae3131cdc071b038687"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports a division operation to the user.  <a href="divisionReport_8cpp.html#a37e4e7cb6fe42ae3131cdc071b038687">More...</a><br /></td></tr>
 <tr class="separator:a37e4e7cb6fe42ae3131cdc071b038687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaebd1f284f6703b7629aa18d21f7ccf2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2">reportDivisionStep</a> (const std::string_view &amp;temp, const std::string_view &amp;quotient, const std::string_view &amp;divisor, size_t width, size_t index, const std::string_view lastRemainder)</td></tr>
+<tr class="memdesc:aaebd1f284f6703b7629aa18d21f7ccf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports a division step.  <a href="divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2">More...</a><br /></td></tr>
 <tr class="separator:aaebd1f284f6703b7629aa18d21f7ccf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the implementations for functions reportDivision and reportDivisionStep, which reports the result of a division operation to the user. </p>
+<p>This file contains the declaration for function reportDivision, which reports the result of a division operation to the user.</p>
+<dl class="section author"><dt>Author</dt><dd>Andy Zhang </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>23rd November 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a37e4e7cb6fe42ae3131cdc071b038687"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37e4e7cb6fe42ae3131cdc071b038687">&#9670;&nbsp;</a></span>reportDivision()</h2>
 
@@ -180,6 +190,23 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports a division operation to the user. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">tempFormattedAns</td><td>The temporary formatted answer object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">temp</td><td>The remainder. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ans</td><td>The quotient. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">divisor</td><td>The modified divisor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_divisor</td><td>The original divisor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The original number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The steps to show. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">width</td><td>The width for the output. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">resultIsNegative</td><td>Whether the result is negative.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The formatted report. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -234,7 +261,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string_view&#160;</td>
+          <td class="paramtype">std::string_view&#160;</td>
           <td class="paramname"><em>lastRemainder</em>&#160;</td>
         </tr>
         <tr>
@@ -244,6 +271,20 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports a division step. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">temp</td><td>The remainder. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">quotient</td><td>The quptient. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">divisor</td><td>The divisor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">width</td><td>The width for the output. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>The index of the step. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lastRemainder</td><td>The previous remainder. Used to determine the width.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The formatted division step report. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

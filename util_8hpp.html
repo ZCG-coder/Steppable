@@ -232,7 +232,7 @@ Functions</h2></td></tr>
 <p>Starts a timer for profiling code execution time. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">...</td><td>The name of the section to profile. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>The name of the section to profile. </td></tr>
   </table>
   </dd>
 </dl>
@@ -310,9 +310,9 @@ template&lt;typename CharT &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>The input string. </td></tr>
-    <tr><td class="paramname">t</td><td>The character to be replaced. </td></tr>
-    <tr><td class="paramname">replacement</td><td>The replacement character (default is '\0'). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The input string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The character to be replaced. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">replacement</td><td>The replacement character (default is '\0'). </td></tr>
   </table>
   </dd>
 </dl>
@@ -349,7 +349,7 @@ Here is the call graph for this function:</div>
 <p>Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">number</td><td>The number to be processed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">number</td><td>The number to be processed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -363,7 +363,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8hpp_a5ae4861eefaae75d07eaa4228cdf94d0_icgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8hpp_a5ae4861eefaae75d07eaa4228cdf94d0_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -396,7 +396,7 @@ Here is the caller graph for this function:</div>
 <p>Checks if a given string is a valid number. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>The string to be checked. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string to be checked. </td></tr>
   </table>
   </dd>
 </dl>
@@ -432,7 +432,7 @@ Here is the caller graph for this function:</div>
 <p>A zero string is defined as a string that contains only the character '0'.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">string</td><td>The string to check. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string</td><td>The string to check. </td></tr>
   </table>
   </dd>
 </dl>
@@ -483,8 +483,8 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vector</td><td>The vector of strings to join. </td></tr>
-    <tr><td class="paramname">delimiter</td><td>The delimiter to join the strings with. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vector</td><td>The vector of strings to join. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">delimiter</td><td>The delimiter to join the strings with. </td></tr>
   </table>
   </dd>
 </dl>
@@ -541,9 +541,9 @@ template&lt;typename CharT &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>The input string. </td></tr>
-    <tr><td class="paramname">t</td><td>The character to be replaced. </td></tr>
-    <tr><td class="paramname">replacement</td><td>The replacement character (default is '\0'). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The input string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The character to be replaced. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">replacement</td><td>The replacement character (default is '\0'). </td></tr>
   </table>
   </dd>
 </dl>
@@ -577,7 +577,7 @@ Here is the caller graph for this function:</div>
 <p>Makes the given string wider by adding 2 spaces between each character. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">orig</td><td>The original string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">orig</td><td>The original string. </td></tr>
   </table>
   </dd>
 </dl>
@@ -609,7 +609,7 @@ Here is the caller graph for this function:</div>
 <p>Removes leading zeros from a string.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">string</td><td>The input string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string</td><td>The input string. </td></tr>
   </table>
   </dd>
 </dl>
@@ -635,7 +635,7 @@ Here is the caller graph for this function:</div>
 <p>Removes leading zeros from a vector of integers.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vector</td><td>The input vector. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vector</td><td>The input vector. </td></tr>
   </table>
   </dd>
 </dl>
@@ -667,7 +667,7 @@ Here is the caller graph for this function:</div>
 <p>Removes trailing zeros from a string.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">numStr</td><td>The input string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">numStr</td><td>The input string. </td></tr>
   </table>
   </dd>
 </dl>
@@ -693,7 +693,7 @@ Here is the caller graph for this function:</div>
 <p>Removes trailing zeros from a vector of integers.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_vector</td><td>The input vector. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_vector</td><td>The input vector. </td></tr>
   </table>
   </dd>
 </dl>
@@ -725,7 +725,7 @@ Here is the caller graph for this function:</div>
 <p>Replaces leading zeros in the given vector with -2.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vector</td><td>The vector to modify. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vector</td><td>The vector to modify. </td></tr>
   </table>
   </dd>
 </dl>
@@ -783,9 +783,9 @@ template&lt;typename CharT &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>The input string. </td></tr>
-    <tr><td class="paramname">t</td><td>The character to be replaced. </td></tr>
-    <tr><td class="paramname">replacement</td><td>The character to replace <code>t</code> with. Default is '\0' (null character). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The input string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The character to be replaced. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">replacement</td><td>The character to replace <code>t</code> with. Default is '\0' (null character). </td></tr>
   </table>
   </dd>
 </dl>
@@ -819,7 +819,7 @@ Here is the caller graph for this function:</div>
 <p>Simplifies a string with non-standard polarity (e.g., &ndash;1, &mdash;1, etc.). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_string</td><td>A string to simplify. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_string</td><td>A string to simplify. </td></tr>
   </table>
   </dd>
 </dl>
@@ -859,7 +859,7 @@ Here is the caller graph for this function:</div>
 <p>This function takes a string that represents a number with a zero polarity and simplifies it to a standard polarity. E.g. "-0" is simplified to "0".</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">string</td><td>The input string to be simplified. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string</td><td>The input string to be simplified. </td></tr>
   </table>
   </dd>
 </dl>
@@ -910,8 +910,8 @@ template&lt;typename CharT &gt; </div>
 <p>Splits a string into substrings based on a separator. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>The string to be split. </td></tr>
-    <tr><td class="paramname">separator</td><td>The separator to split the string by. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string to be split. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">separator</td><td>The separator to split the string by. </td></tr>
   </table>
   </dd>
 </dl>
@@ -956,8 +956,8 @@ template&lt;typename CharT &gt; </div>
 <p>Splits a string view into substrings based on a separator. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>The string view to be split. </td></tr>
-    <tr><td class="paramname">separator</td><td>The separator to split the string view by. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string view to be split. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">separator</td><td>The separator to split the string view by. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1011,11 +1011,11 @@ template&lt;typename CharT &gt; </div>
 <p>Splits two numbers represented as strings and returns the result.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>The first number as a string. </td></tr>
-    <tr><td class="paramname">b</td><td>The second number as a string. </td></tr>
-    <tr><td class="paramname">padInteger</td><td>Flag indicating whether to pad the integer part with spaces of the result. </td></tr>
-    <tr><td class="paramname">padDecimal</td><td>Flag indicating whether to pad the decimal part with zeros of the result. </td></tr>
-    <tr><td class="paramname">properlyFormat</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>The first number as a string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>The second number as a string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">padInteger</td><td>Flag indicating whether to pad the integer part with spaces of the result. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">padDecimal</td><td>Flag indicating whether to pad the decimal part with zeros of the result. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">properlyFormat</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -1055,7 +1055,7 @@ Here is the caller graph for this function:</div>
 <p>Standardizes a number string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_number</td><td>The number string to standardize. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The number string to standardize. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1094,7 +1094,7 @@ Here is the caller graph for this function:</div>
 <p>Converts a Unicode character to UTF-8 encoding. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">unicode</td><td>The Unicode character to be converted. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">unicode</td><td>The Unicode character to be converted. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1129,7 +1129,7 @@ Here is the caller graph for this function:</div>
 <p>Converts a UTF-8 encoded string to a Unicode string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">utf8_code</td><td>The UTF-8 encoded string to convert. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">utf8_code</td><td>The UTF-8 encoded string to convert. </td></tr>
   </table>
   </dd>
 </dl>

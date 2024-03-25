@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('baseConvertReport_8hpp.html',''); init
 <div class="title">baseConvertReport.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the declaration of the reportBaseConvert function, which reports the converted number to the user.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -111,11 +114,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac1b7cbfa5848d3fdd2c0e3b8a63c380b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="baseConvertReport_8hpp.html#ac1b7cbfa5848d3fdd2c0e3b8a63c380b">reportBaseConvertStep</a> (const std::string &amp;_number, const std::string &amp;_base, const std::string &amp;_quotient, const std::string &amp;_remainder)</td></tr>
+<tr class="memdesc:ac1b7cbfa5848d3fdd2c0e3b8a63c380b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the base conversion step to the user.  <a href="baseConvertReport_8hpp.html#ac1b7cbfa5848d3fdd2c0e3b8a63c380b">More...</a><br /></td></tr>
 <tr class="separator:ac1b7cbfa5848d3fdd2c0e3b8a63c380b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d845da92aca7ce960ade28f30b76697"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="baseConvertReport_8hpp.html#a6d845da92aca7ce960ade28f30b76697">reportBaseConvert</a> (const std::string_view &amp;_number, const std::string_view &amp;_base, const std::vector&lt; std::string &gt; &amp;_result)</td></tr>
+<tr class="memdesc:a6d845da92aca7ce960ade28f30b76697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the base conversion to the user.  <a href="baseConvertReport_8hpp.html#a6d845da92aca7ce960ade28f30b76697">More...</a><br /></td></tr>
 <tr class="separator:a6d845da92aca7ce960ade28f30b76697"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the declaration of the reportBaseConvert function, which reports the converted number to the user. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Still work-in-progress.</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Andy Zhang </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>9th October 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a6d845da92aca7ce960ade28f30b76697"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d845da92aca7ce960ade28f30b76697">&#9670;&nbsp;</a></span>reportBaseConvert()</h2>
 
@@ -147,6 +157,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports the base conversion to the user. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The number to convert. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_base</td><td>The base to convert to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_result</td><td>The result of the base conversion.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The report of the base conversion. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -193,6 +214,18 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reports the base conversion step to the user. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The number to convert. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_base</td><td>The base to convert to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_quotient</td><td>The quotient of the division. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_remainder</td><td>The remainder of the division.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The report of the base conversion step. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

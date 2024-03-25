@@ -206,8 +206,8 @@ is "-name:value". They are optional and can be in any order. </dd></dl>
 <p>The constructor of the <a class="el" href="classProgramArgs.html" title="This class is used by the program to parse command-line arguments. The class uses regular expressions...">ProgramArgs</a> class, which copies the arguments passed to the program to the class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_argc</td><td>The number of arguments passed to the program. </td></tr>
-    <tr><td class="paramname">argv</td><td>The arguments passed to the program. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_argc</td><td>The number of arguments passed to the program. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">argv</td><td>The arguments passed to the program. </td></tr>
   </table>
   </dd>
 </dl>
@@ -250,9 +250,9 @@ is "-name:value". They are optional and can be in any order. </dd></dl>
 <p>This function is used to add a keyword argument to the class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the keyword argument. </td></tr>
-    <tr><td class="paramname">defaultValue</td><td>The default value of the keyword argument. The value is stored as an integer. </td></tr>
-    <tr><td class="paramname">description</td><td>The description of the keyword argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The name of the keyword argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">defaultValue</td><td>The default value of the keyword argument. The value is stored as an integer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">description</td><td>The description of the keyword argument. </td></tr>
   </table>
   </dd>
 </dl>
@@ -294,9 +294,9 @@ is "-name:value". They are optional and can be in any order. </dd></dl>
 <p>This function is used to add a positional argument to the class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the positional argument. Only one character is allowed. </td></tr>
-    <tr><td class="paramname">description</td><td>The description of the positional argument. </td></tr>
-    <tr><td class="paramname">requiresNumber</td><td>Whether the positional argument requires to be a number.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The name of the positional argument. Only one character is allowed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">description</td><td>The description of the positional argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">requiresNumber</td><td>Whether the positional argument requires to be a number.</td></tr>
   </table>
   </dd>
 </dl>
@@ -341,9 +341,9 @@ the command-line arguments. </dd></dl>
 <p>This function is used to add a switch to the class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the switch. </td></tr>
-    <tr><td class="paramname">defaultValue</td><td>The default value of the switch. True = enabled, False = disabled. </td></tr>
-    <tr><td class="paramname">description</td><td>The description of the switch. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The name of the switch. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">defaultValue</td><td>The default value of the switch. True = enabled, False = disabled. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">description</td><td>The description of the switch. </td></tr>
   </table>
   </dd>
 </dl>
@@ -369,7 +369,7 @@ the command-line arguments. </dd></dl>
 <p>This function is used to get the value of a keyword argument. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the keyword argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The name of the keyword argument. </td></tr>
   </table>
   </dd>
 </dl>
@@ -397,7 +397,7 @@ the command-line arguments. </dd></dl>
 <p>This function is used to get the value of a positional argument. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the positional argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>The index of the positional argument. </td></tr>
   </table>
   </dd>
 </dl>
@@ -425,7 +425,7 @@ the command-line arguments. </dd></dl>
 <p>This function is used to get the value of a switch. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the switch. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The name of the switch. </td></tr>
   </table>
   </dd>
 </dl>
@@ -473,7 +473,7 @@ the command-line arguments. </dd></dl>
 <p>This function is used to print the possible command-line arguments. Usually called when the user specifies the wrong arguments. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reason</td><td>The reason for printing the usage. If specified, the reason will be printed after the usage.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reason</td><td>The reason for printing the usage. If specified, the reason will be printed after the usage.</td></tr>
   </table>
   </dd>
 </dl>

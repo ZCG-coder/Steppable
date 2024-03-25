@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('division_8cpp.html',''); initResizable
 <div class="title">division.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Performs division of two numbers represented in strings.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="argParse_8hpp_source.html">argParse.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="divisionReport_8hpp_source.html">divisionReport.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="basicArithm_8hpp_source.html">fn/basicArithm.hpp</a>&quot;</code><br />
@@ -122,7 +125,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="division_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a> (const int _argc, const char *_argv[])</td></tr>
 <tr class="separator:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Performs division of two numbers represented in strings. </p>
+<dl class="section author"><dt>Author</dt><dd>Andy Zhang </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>23rd November 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a222752517a35fde0e4de4bb32cbaa9be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a222752517a35fde0e4de4bb32cbaa9be">&#9670;&nbsp;</a></span>determineResultScale()</h2>
 
@@ -152,8 +159,8 @@ Functions</h2></td></tr>
 <p>Determines the scale of the quotient of division. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_number</td><td>The number to be divided. </td></tr>
-    <tr><td class="paramname">_divisor</td><td>The divisor of the division. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The number to be divided. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_divisor</td><td>The divisor of the division. </td></tr>
   </table>
   </dd>
 </dl>
@@ -215,10 +222,10 @@ Here is the caller graph for this function:</div>
 <p>Divides a string representation of a number by another string representation of a number. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">number</td><td>The string representation of the dividend. </td></tr>
-    <tr><td class="paramname">divisor</td><td>The string representation of the divisor. </td></tr>
-    <tr><td class="paramname">steps</td><td>The number of steps to perform the division. </td></tr>
-    <tr><td class="paramname">decimals</td><td>The number of decimal places in the result. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">number</td><td>The string representation of the dividend. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">divisor</td><td>The string representation of the divisor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the division. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">decimals</td><td>The number of decimal places in the result. </td></tr>
   </table>
   </dd>
 </dl>
@@ -266,8 +273,8 @@ Here is the caller graph for this function:</div>
 <p>Calculates the quotient and remainder of dividing the current remainder by the divisor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_currentRemainder</td><td>The current remainder. </td></tr>
-    <tr><td class="paramname">divisor</td><td>The divisor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_currentRemainder</td><td>The current remainder. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">divisor</td><td>The divisor. </td></tr>
   </table>
   </dd>
 </dl>
