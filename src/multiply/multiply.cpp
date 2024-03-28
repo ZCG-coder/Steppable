@@ -31,6 +31,7 @@
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
 #include "multiplyReport.hpp"
+#include "rounding.hpp"
 #include "util.hpp"
 
 #include <string>
