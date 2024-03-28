@@ -40,6 +40,8 @@
  * @param[in] b Number 2.
  * @param[in] aStr Modified number 1.
  * @param[in] bStr Modified number 2.
+ * @param[in] aStr Decimal part of number 1.
+ * @param[in] bStr Decimal part of number 2.
  * @param[in] finalProdDigits The final product digits.
  * @param[in] finalProdCarries The final product's carries.
  * @param[in] prodDigitsOut The product digits for each step.
@@ -54,6 +56,8 @@ std::string reportMultiply(const std::string& a,
                            const std::string& b,
                            const std::string& aStr,
                            const std::string& bStr,
+                           const std::string& aDecimal,
+                           const std::string& bDecimal,
                            const std::vector<int>& finalProdDigits,
                            const std::vector<int>& finalProdCarries,
                            const std::vector<std::vector<int>>& prodDigitsOut,

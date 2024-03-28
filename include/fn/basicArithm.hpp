@@ -76,15 +76,15 @@ std::string add(const std::string_view& a,
 /**
  * @brief Compares two string representations of numbers.
  *
- * @param[in] a The first string representation of the number.
- * @param[in] b The second string representation of the number.
+ * @param[in] _a The first string representation of the number.
+ * @param[in] _b The second string representation of the number.
  * @param[in] steps The number of steps to perform the comparison.
  * @return A string indicating the result of the comparison:
  *         "2" if a and b are equal,
  *         "1" if a is greater than b,
  *         "0" if a is less than b.
  */
-std::string compare(const std::string_view& a, const std::string_view& b, int steps = 2);
+std::string compare(const std::string_view& _a, const std::string_view& _b, int steps = 2);
 
 /**
  * @brief Converts a string representation of a number from one base to another.

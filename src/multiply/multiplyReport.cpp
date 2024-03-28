@@ -31,6 +31,7 @@
 
 #include "multiplyReport.hpp"
 
+#include "fn/basicArithm.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
@@ -43,6 +44,8 @@ std::string reportMultiply(const std::string& a,
                            const std::string& b,
                            const std::string& aStr,
                            const std::string& bStr,
+                           const std::string& aDecimal,
+                           const std::string& bDecimal,
                            const std::vector<int>& finalProdDigits,
                            const std::vector<int>& finalProdCarries,
                            const std::vector<std::vector<int>>& prodDigitsOut,
@@ -110,7 +113,30 @@ std::string reportMultiply(const std::string& a,
             out += std::to_string(i);
 
     // Add the decimal point.
-    auto numberDecimals = out.length() - scale;
+    auto biggerNumber = (compare(a, b, 0) == "1") ? a : b;
+    auto smallerNumber = (compare(a, b, 0) == "0") ? a : b;
+    if (scale > 0)
+    {
+        auto numberIntegers = out.length() - (aDecimal.length() + bDecimal.length());
+        if (numberIntegers < out.length())
+            out.insert(numberIntegers, 1, '.');
+    }
+    else if (scale == 0)
+    {
+        auto numberIntegers = 0;
+        if ((compare(biggerNumber, "5", 0) == "0" and compare(add(biggerNumber, smallerNumber, 0), "7", 0) != "0") or
+            compare(smallerNumber, "1", 0) == "1")
+            numberIntegers++;
+
+        if (numberIntegers < out.size())
+            out.insert(numberIntegers + 1, 1, '.');
+    }
+    else if (scale < 0)
+    {
+        // auto numberIntegers = -scale;
+        out = "0" + out;
+        out.insert(out.length() + scale - 1, 1, '.');
+    }
 
     ss << standardizeNumber(out);
     return ss.str();

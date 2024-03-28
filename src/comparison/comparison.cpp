@@ -36,26 +36,27 @@
 #include <string>
 #include <string_view>
 
-std::string compare(const std::string_view& a, const std::string_view& b, const int steps)
+std::string compare(const std::string_view& _a, const std::string_view& _b, const int steps)
 {
-    if (standardizeNumber(a) == standardizeNumber(b))
+    if (standardizeNumber(_a) == standardizeNumber(_b))
     {
         if (steps == 2)
-            return BECAUSE " " + static_cast<std::string>(a) + " is identical to " + static_cast<std::string>(b) +
+            return BECAUSE " " + static_cast<std::string>(_a) + " is identical to " + static_cast<std::string>(_b) +
                    ", " THEREFORE " a = b";
         if (steps == 1)
-            return static_cast<std::string>(a) + " = " + static_cast<std::string>(b);
+            return static_cast<std::string>(_a) + " = " + static_cast<std::string>(_b);
         return "2";
     }
-    const auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, true);
+    const auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(_a, _b, false, true);
     const auto result = splitNumberArray;
     const bool bothNegative = aIsNegative and bIsNegative;
-    auto aIntegerReal = result[0];
+    auto [aIntegerReal, aDecimalReal, bIntegerReal, bDecimalReal] = result;
     if (aIntegerReal.empty())
         aIntegerReal = "0";
-    auto bIntegerReal = result[2];
     if (bIntegerReal.empty())
         bIntegerReal = "0";
+
+    auto a = aIntegerReal + "." + aDecimalReal, b = bIntegerReal + "." + bDecimalReal;
     if (
         // a is longer than b and is of different polarities
         aIntegerReal.length() != bIntegerReal.length() and aIsNegative == bIsNegative)

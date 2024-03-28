@@ -20,9 +20,10 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from random_test_base import RandomTest
 from pathlib import Path
 
+from random_test_base import RandomTest
+
 TOOL_PATH = Path(__file__).parent.parent.parent / "build" / "bin" / "multiply"
-r = RandomTest(TOOL_PATH.as_posix(), expression="{} * {}", rounding=True)
+r = RandomTest(TOOL_PATH.as_posix(), expression="{} * {}", rounding=False)
 r.random_test()

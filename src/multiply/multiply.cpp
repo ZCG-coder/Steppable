@@ -47,8 +47,8 @@
  */
 long long determineProductScale(const std::string& a, const std::string& b)
 {
-    auto aScale = determineScale(a);
-    auto bScale = determineScale(b);
+    auto aScale = determineScale(roundOff(a));
+    auto bScale = determineScale(roundOff(b));
 
     return aScale + bScale;
 }
@@ -135,6 +135,8 @@ std::string multiply(const std::string_view& a, const std::string_view& b, const
                           static_cast<std::string>(b),
                           aStr,
                           bStr,
+                          aDecimal,
+                          bDecimal,
                           finalProdDigits,
                           finalProdCarries,
                           prodDigitsOut,

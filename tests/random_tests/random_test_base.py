@@ -31,7 +31,7 @@ def green():
     Changes the output color to green, only if the output console is a terminal.
     """
     if os.isatty(0):
-        return '\033[92m'
+        return "\033[92m"
     return ""
 
 
@@ -40,7 +40,7 @@ def red():
     Changes the output color to red, only if the output console is a terminal.
     """
     if os.isatty(0):
-        return '\033[91m'
+        return "\033[91m"
     return ""
 
 
@@ -58,7 +58,7 @@ def bold():
     Changes the output color to bold, only if the output console is a terminal.
     """
     if os.isatty(0):
-        return '\033[1m'
+        return "\033[1m"
     return ""
 
 
@@ -67,7 +67,13 @@ class RandomTest:
     Gives a program a series of numbers, and test it against the numbers to see if it works.
     """
 
-    def __init__(self, executable="", times: int = 100, expression: str = "{} / {}", rounding: bool = True):
+    def __init__(
+            self,
+            executable="",
+            times: int = 100,
+            expression: str = "{} / {}",
+            rounding: bool = True,
+    ):
         self.times = times
         if executable == "":
             raise RuntimeError("Executable cannot be empty")
@@ -88,10 +94,18 @@ class RandomTest:
             output = None
             if self.rounding:
                 output = subprocess.check_output(
-                    [self.executable, str(number1), str(number2), "-steps:0", "-decimals:2"])
+                    [
+                        self.executable,
+                        f"{number1:.20f}",
+                        f"{number2:.20f}",
+                        "-steps:0",
+                        "-decimals:2",
+                    ]
+                )
             else:
                 output = subprocess.check_output(
-                    [self.executable, str(number1), str(number2), "-steps:0"])
+                    [self.executable, f"{number1:.20f}", f"{number2:.20f}", "-steps:0"]
+                )
 
             output = float(output.decode("utf-8")[:-1])
 
@@ -101,7 +115,9 @@ class RandomTest:
                 python_output = round(eval(expression), 2)
             else:
                 python_output = eval(expression)
-            print(f"== For {expression},\n-> Steppable gives {output} while Python gives {python_output}")
+            print(
+                f"== For {expression},\n-> Steppable gives {output} while Python gives {python_output}"
+            )
 
             diff = abs(python_output - output)
             try:
@@ -124,8 +140,15 @@ class RandomTest:
     def summary(self):
         print(bold() + "==== SUMMARY OF ALL TESTS ====" + reset())
         if len(self.failed) > 0:
-            print(red() + bold() + f"Failed {len(self.failed)}/{self.times} tests" + reset())
-            for idx, (number1, number2, output, python_output) in enumerate(self.failed):
+            print(
+                red()
+                + bold()
+                + f"Failed {len(self.failed)}/{self.times} tests"
+                + reset()
+            )
+            for idx, (number1, number2, output, python_output) in enumerate(
+                    self.failed
+            ):
                 print(f"TEST {idx + 1}")
                 print(f"  {self.expression.format(number1, number2)}")
                 print(f"  - Python gives {python_output}")

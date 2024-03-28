@@ -22,6 +22,8 @@
 
 #include "util.hpp"
 
+#include "fn/basicArithm.hpp"
+
 #ifdef WINDOWS
     #undef min
     #undef max
@@ -124,6 +126,20 @@ SplitNumberResult splitNumber(const std::string_view& _a,
     }
     std::array splitNumberResult{ aInteger, aDecimal, bInteger, bDecimal };
     return SplitNumberResult{ splitNumberResult, aIsNegative, bIsNegative };
+}
+
+std::string roundOff(const std::string& number)
+{
+    if (number.empty())
+        return "0";
+    auto num = number;
+    if (num.find('.') == std::string::npos)
+        return num;
+    auto splitNum = split(num, '.');
+    auto integer = splitNum[0], decimal = splitNum[1];
+    if (compare(decimal, "5", 0) != "1")
+        return integer + "." + decimal;
+    return add(integer, "1", 0) + "." + decimal;
 }
 
 std::string makeWider(const std::string& orig)
