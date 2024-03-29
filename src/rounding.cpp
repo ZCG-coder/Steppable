@@ -25,15 +25,16 @@
 #include "util.hpp"
 #include <string>
 
-std::string roundOff(const std::string& number)
+std::string roundOff(const std::string& _number)
 {
+    auto number = _number;
     if (number.empty())
         return "0";
-    auto num = number;
-    if (num.find('.') == std::string::npos)
-        return num;
-    auto splitNum = split(num, '.');
-    auto integer = splitNum[0], decimal = splitNum[1];
+    if (number.find('.') == std::string::npos)
+        return number;
+    auto splitNumberResult = splitNumber(number, "0", false, false, true).splitNumberArray;
+    auto integer = splitNumberResult[0], decimal = splitNumberResult[1];
+
     if (compare(decimal, "5", 0) != "1")
         return integer + "." + decimal;
     return add(integer, "1", 0) + "." + decimal;

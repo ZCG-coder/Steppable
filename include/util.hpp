@@ -316,7 +316,8 @@ SplitNumberResult splitNumber(const std::string_view& a,
                               const std::string_view& b,
                               bool padInteger = true,
                               bool padDecimal = true,
-                              bool properlyFormat = true);
+                              bool properlyFormat = true,
+                              bool preserveNegative = false);
 
 /**
  * @brief Replaces the trailing occurrences of a character in a string with another character.

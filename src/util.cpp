@@ -73,7 +73,8 @@ SplitNumberResult splitNumber(const std::string_view& _a,
                               const std::string_view& _b,
                               const bool padInteger,
                               const bool padDecimal,
-                              bool properlyFormat)
+                              bool properlyFormat,
+                              bool preserveNegative)
 {
     bool aIsNegative = false, bIsNegative = false;
 
@@ -84,12 +85,14 @@ SplitNumberResult splitNumber(const std::string_view& _a,
         if (a.front() == '-')
         {
             aIsNegative = true;
-            a.erase(a.begin());
+            if (not preserveNegative)
+                a.erase(a.begin());
         }
         if (b.front() == '-')
         {
             bIsNegative = true;
-            b.erase(b.begin());
+            if (not preserveNegative)
+                b.erase(b.begin());
         }
         a = removeLeadingZeros(a);
         b = removeLeadingZeros(b);
