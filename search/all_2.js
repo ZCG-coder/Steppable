@@ -6,7 +6,7 @@ var searchData=
   ['colors_2ecpp_46',['colors.cpp',['../colors_8cpp.html',1,'']]],
   ['colors_2ehpp_47',['colors.hpp',['../colors_8hpp.html',1,'']]],
   ['colorsbg_48',['colorsBg',['../namespacecolorsBg.html',1,'']]],
-  ['compare_49',['compare',['../comparison_8cpp.html#ab8e238141ad9dccebdfa92f0a095c5ae',1,'compare(const std::string_view &amp;a, const std::string_view &amp;b, const int steps):&#160;comparison.cpp'],['../basicArithm_8hpp.html#aabb709fcb471467879352bf51bb0030a',1,'compare(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2):&#160;comparison.cpp']]],
+  ['compare_49',['compare',['../comparison_8cpp.html#a50f42b045a56b9281aa72b313cd846e4',1,'compare(const std::string_view &amp;_a, const std::string_view &amp;_b, const int steps):&#160;comparison.cpp'],['../basicArithm_8hpp.html#ad245e4f72a78f746e7e16ae14f21f2e1',1,'compare(const std::string_view &amp;_a, const std::string_view &amp;_b, int steps=2):&#160;comparison.cpp']]],
   ['comparison_2ecpp_50',['comparison.cpp',['../comparison_8cpp.html',1,'']]],
   ['comparisonreport_2ecpp_51',['comparisonReport.cpp',['../comparisonReport_8cpp.html',1,'']]],
   ['comparisonreport_2ehpp_52',['comparisonReport.hpp',['../comparisonReport_8hpp.html',1,'']]],

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['colors_261',['colors',['../namespacecolors.html',1,'']]],
-  ['colorsbg_262',['colorsBg',['../namespacecolorsBg.html',1,'']]]
+  ['colors_262',['colors',['../namespacecolors.html',1,'']]],
+  ['colorsbg_263',['colorsBg',['../namespacecolorsBg.html',1,'']]]
 ];

@@ -9,7 +9,7 @@ var util_8cpp =
     [ "replaceLeadingZeros", "util_8cpp.html#ac87bf229222a2a4f32b8626281c6c282", null ],
     [ "simplifyPolarity", "util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742", null ],
     [ "simplifyZeroPolarity", "util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b", null ],
-    [ "splitNumber", "util_8cpp.html#af391dcb35601f4af79349bec28aeb379", null ],
+    [ "splitNumber", "util_8cpp.html#a9b8bdd090e70683287d8d6dbf4ab27ff", null ],
     [ "standardizeNumber", "util_8cpp.html#afbed3096b7064ba07c83c6c15212b793", null ],
     [ "unicodeToUtf8", "util_8cpp.html#a5d3673801816ad366e92dc0f27b529f7", null ],
     [ "utf8ToUnicode", "util_8cpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3", null ]

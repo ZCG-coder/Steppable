@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,6 +90,7 @@ $(document).ready(function(){initNavTree('util_8cpp.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="util_8hpp_source.html">util.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="basicArithm_8hpp_source.html">fn/basicArithm.hpp</a>&quot;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('util_8cpp.html',''); initResizable(); 
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for util.cpp:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp__incl.svg" width="100%" height="496"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp__incl.svg" width="100%" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -114,8 +114,8 @@ Functions</h2></td></tr>
 <tr class="memitem:afbed3096b7064ba07c83c6c15212b793"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#afbed3096b7064ba07c83c6c15212b793">standardizeNumber</a> (const std::string_view &amp;_number)</td></tr>
 <tr class="memdesc:afbed3096b7064ba07c83c6c15212b793"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standardizes a number string.  <a href="util_8cpp.html#afbed3096b7064ba07c83c6c15212b793">More...</a><br /></td></tr>
 <tr class="separator:afbed3096b7064ba07c83c6c15212b793"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af391dcb35601f4af79349bec28aeb379"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#af391dcb35601f4af79349bec28aeb379">splitNumber</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal, bool properlyFormat)</td></tr>
-<tr class="separator:af391dcb35601f4af79349bec28aeb379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b8bdd090e70683287d8d6dbf4ab27ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a9b8bdd090e70683287d8d6dbf4ab27ff">splitNumber</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal, bool properlyFormat, bool preserveNegative)</td></tr>
+<tr class="separator:a9b8bdd090e70683287d8d6dbf4ab27ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93b9ba3fe803c8e3fa1b128f4e83924f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f">makeWider</a> (const std::string &amp;orig)</td></tr>
 <tr class="memdesc:a93b9ba3fe803c8e3fa1b128f4e83924f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes the given string wider by adding 2 spaces between each character.  <a href="util_8cpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f">More...</a><br /></td></tr>
 <tr class="separator:a93b9ba3fe803c8e3fa1b128f4e83924f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -439,8 +439,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="af391dcb35601f4af79349bec28aeb379"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af391dcb35601f4af79349bec28aeb379">&#9670;&nbsp;</a></span>splitNumber()</h2>
+<a id="a9b8bdd090e70683287d8d6dbf4ab27ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b8bdd090e70683287d8d6dbf4ab27ff">&#9670;&nbsp;</a></span>splitNumber()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -473,7 +473,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>properlyFormat</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>properlyFormat</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>preserveNegative</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -498,13 +504,13 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_af391dcb35601f4af79349bec28aeb379_cgraph.svg" width="100%" height="509"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a9b8bdd090e70683287d8d6dbf4ab27ff_cgraph.svg" width="100%" height="509"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_af391dcb35601f4af79349bec28aeb379_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8cpp_a9b8bdd090e70683287d8d6dbf4ab27ff_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

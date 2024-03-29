@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['compare_343',['compare',['../basicArithm_8hpp.html#aabb709fcb471467879352bf51bb0030a',1,'compare(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2):&#160;comparison.cpp'],['../comparison_8cpp.html#ab8e238141ad9dccebdfa92f0a095c5ae',1,'compare(const std::string_view &amp;a, const std::string_view &amp;b, const int steps):&#160;comparison.cpp']]],
-  ['cyan_344',['cyan',['../namespacecolors.html#a33d7e6bac58f3a3df6736b2cda660c39',1,'colors']]]
+  ['compare_346',['compare',['../basicArithm_8hpp.html#ad245e4f72a78f746e7e16ae14f21f2e1',1,'compare(const std::string_view &amp;_a, const std::string_view &amp;_b, int steps=2):&#160;comparison.cpp'],['../comparison_8cpp.html#a50f42b045a56b9281aa72b313cd846e4',1,'compare(const std::string_view &amp;_a, const std::string_view &amp;_b, const int steps):&#160;comparison.cpp']]],
+  ['cyan_347',['cyan',['../namespacecolors.html#a33d7e6bac58f3a3df6736b2cda660c39',1,'colors']]]
 ];

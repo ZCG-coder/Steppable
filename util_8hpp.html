@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -147,6 +146,9 @@ Functions</h2></td></tr>
 <tr class="memitem:afbed3096b7064ba07c83c6c15212b793"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8hpp.html#afbed3096b7064ba07c83c6c15212b793">standardizeNumber</a> (const std::string_view &amp;_number)</td></tr>
 <tr class="memdesc:afbed3096b7064ba07c83c6c15212b793"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standardizes a number string.  <a href="util_8hpp.html#afbed3096b7064ba07c83c6c15212b793">More...</a><br /></td></tr>
 <tr class="separator:afbed3096b7064ba07c83c6c15212b793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa05ce060a3ec8886eb076cd9829e317"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8hpp.html#afa05ce060a3ec8886eb076cd9829e317">roundOff</a> (const std::string &amp;number)</td></tr>
+<tr class="memdesc:afa05ce060a3ec8886eb076cd9829e317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Round off a number to the nearest integer.  <a href="util_8hpp.html#afa05ce060a3ec8886eb076cd9829e317">More...</a><br /></td></tr>
+<tr class="separator:afa05ce060a3ec8886eb076cd9829e317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a183c024df291889f90106e47bb64fe0b"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8hpp.html#a183c024df291889f90106e47bb64fe0b">isZeroString</a> (const std::string_view &amp;string)</td></tr>
 <tr class="memdesc:a183c024df291889f90106e47bb64fe0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given string is a zero string.  <a href="util_8hpp.html#a183c024df291889f90106e47bb64fe0b">More...</a><br /></td></tr>
 <tr class="separator:a183c024df291889f90106e47bb64fe0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,8 +163,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a4bd2c04ff3c3cf1dfddb3fb97da971c0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="util_8hpp.html#a4bd2c04ff3c3cf1dfddb3fb97da971c0">split</a> (std::basic_string_view&lt; CharT &gt; s, const CharT separator)</td></tr>
 <tr class="memdesc:a4bd2c04ff3c3cf1dfddb3fb97da971c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits a string view into substrings based on a separator.  <a href="util_8hpp.html#a4bd2c04ff3c3cf1dfddb3fb97da971c0">More...</a><br /></td></tr>
 <tr class="separator:a4bd2c04ff3c3cf1dfddb3fb97da971c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac76b4ec861cbb199d3349f225f969b82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8hpp.html#ac76b4ec861cbb199d3349f225f969b82">splitNumber</a> (const std::string_view &amp;a, const std::string_view &amp;b, bool padInteger=true, bool padDecimal=true, bool properlyFormat=true)</td></tr>
-<tr class="separator:ac76b4ec861cbb199d3349f225f969b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd8277bb803a7241ab377e88d8c6876"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8hpp.html#a3cd8277bb803a7241ab377e88d8c6876">splitNumber</a> (const std::string_view &amp;a, const std::string_view &amp;b, bool padInteger=true, bool padDecimal=true, bool properlyFormat=true, bool preserveNegative=false)</td></tr>
+<tr class="separator:a3cd8277bb803a7241ab377e88d8c6876"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad0ced1dffb5cde8bcff9ad90823da9a"><td class="memTemplParams" colspan="2">template&lt;typename CharT &gt; </td></tr>
 <tr class="memitem:aad0ced1dffb5cde8bcff9ad90823da9a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">rReplace</a> (const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</td></tr>
 <tr class="memdesc:aad0ced1dffb5cde8bcff9ad90823da9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces the trailing occurrences of a character in a string with another character.  <a href="util_8hpp.html#aad0ced1dffb5cde8bcff9ad90823da9a">More...</a><br /></td></tr>
@@ -739,6 +741,33 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="afa05ce060a3ec8886eb076cd9829e317"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa05ce060a3ec8886eb076cd9829e317">&#9670;&nbsp;</a></span>roundOff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string roundOff </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Round off a number to the nearest integer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">number</td><td>The number to round. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The rounded number. </dd></dl>
+
+</div>
+</div>
 <a id="aad0ced1dffb5cde8bcff9ad90823da9a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad0ced1dffb5cde8bcff9ad90823da9a">&#9670;&nbsp;</a></span>rReplace()</h2>
 
@@ -965,8 +994,8 @@ template&lt;typename CharT &gt; </div>
 
 </div>
 </div>
-<a id="ac76b4ec861cbb199d3349f225f969b82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac76b4ec861cbb199d3349f225f969b82">&#9670;&nbsp;</a></span>splitNumber()</h2>
+<a id="a3cd8277bb803a7241ab377e88d8c6876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cd8277bb803a7241ab377e88d8c6876">&#9670;&nbsp;</a></span>splitNumber()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -999,7 +1028,13 @@ template&lt;typename CharT &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>properlyFormat</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>properlyFormat</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>preserveNegative</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1024,13 +1059,13 @@ template&lt;typename CharT &gt; </div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8hpp_ac76b4ec861cbb199d3349f225f969b82_cgraph.svg" width="100%" height="509"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8hpp_a3cd8277bb803a7241ab377e88d8c6876_cgraph.svg" width="100%" height="509"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8hpp_ac76b4ec861cbb199d3349f225f969b82_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="util_8hpp_a3cd8277bb803a7241ab377e88d8c6876_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

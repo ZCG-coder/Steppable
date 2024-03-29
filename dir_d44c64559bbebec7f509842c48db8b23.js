@@ -17,6 +17,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "logging.hpp", "logging_8hpp.html", "logging_8hpp" ],
     [ "output.hpp", "output_8hpp.html", "output_8hpp" ],
     [ "platform.hpp", "platform_8hpp.html", "platform_8hpp" ],
+    [ "rounding.hpp", "rounding_8hpp.html", "rounding_8hpp" ],
     [ "symbols.hpp", "symbols_8hpp.html", "symbols_8hpp" ],
     [ "testing.hpp", "testing_8hpp.html", "testing_8hpp" ],
     [ "util.hpp", "util_8hpp.html", "util_8hpp" ]
