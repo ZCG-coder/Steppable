@@ -84,3 +84,9 @@ jobs:
                     name: Build ${{ matrix.os }}-${{ matrix.cpp_compiler }}
                     # A file, directory or wildcard pattern that describes what to upload
                     path: ${{ steps.strings.outputs.build-output-dir }}
+                    
+            - name: Upload coverage reports to Codecov
+              uses: codecov/codecov-action@v4.0.1
+              with:
+                token: ${{ secrets.CODECOV_TOKEN }}
+                slug: ZCG-coder/Steppable
