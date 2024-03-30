@@ -58,7 +58,7 @@ namespace logging
     enum Level
     {
         /// @brief Logs ONLY error messages.
-        ERROR = 3,
+        ERR = 3,
         /// @brief Logs error and warning messages.
         WARNING = 2,
         /// @brief Logs error, warning, and info messages. Recommended for release.

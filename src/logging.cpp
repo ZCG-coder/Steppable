@@ -21,6 +21,7 @@
  **************************************************************************************************/
 
 #include "logging.hpp"
+
 #include "platform.hpp"
 
 #include <chrono>
@@ -55,7 +56,7 @@ namespace logging
 
     void Logger::error(const std::string& message)
     {
-        if (level <= Level::ERROR)
+        if (level <= Level::ERR)
             log(name + " - ERROR: " + message);
     }
 
