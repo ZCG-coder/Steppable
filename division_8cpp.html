@@ -122,6 +122,11 @@ Functions</h2></td></tr>
 <tr class="memitem:ad8fb7bec6096894294df4c15d498dab7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="division_8cpp.html#ad8fb7bec6096894294df4c15d498dab7">divide</a> (const std::string_view &amp;_number, const std::string_view &amp;_divisor, const int steps, const int _decimals)</td></tr>
 <tr class="memdesc:ad8fb7bec6096894294df4c15d498dab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divides a string representation of a number by another string representation of a number.  <a href="division_8cpp.html#ad8fb7bec6096894294df4c15d498dab7">More...</a><br /></td></tr>
 <tr class="separator:ad8fb7bec6096894294df4c15d498dab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b20eba6c9046b375489c668443c165d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structQuotientRemainder.html">QuotientRemainder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="division_8cpp.html#a3b20eba6c9046b375489c668443c165d">divideWithQuotient</a> (const std::string &amp;number, const std::string &amp;divisor)</td></tr>
+<tr class="separator:a3b20eba6c9046b375489c668443c165d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b131aff3518e538acc7c87b822e70d2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="division_8cpp.html#a7b131aff3518e538acc7c87b822e70d2">getGCD</a> (const std::string_view &amp;_a, const std::string_view &amp;_b)</td></tr>
+<tr class="memdesc:a7b131aff3518e538acc7c87b822e70d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the greatest common divisor of two string representations of numbers.  <a href="division_8cpp.html#a7b131aff3518e538acc7c87b822e70d2">More...</a><br /></td></tr>
+<tr class="separator:a7b131aff3518e538acc7c87b822e70d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="division_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a> (const int _argc, const char *_argv[])</td></tr>
 <tr class="separator:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -175,7 +180,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="division_8cpp_a222752517a35fde0e4de4bb32cbaa9be_icgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="division_8cpp_a222752517a35fde0e4de4bb32cbaa9be_icgraph.svg" width="100%" height="499"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -239,7 +244,100 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="division_8cpp_ad8fb7bec6096894294df4c15d498dab7_icgraph.svg" width="100%" height="498"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="division_8cpp_ad8fb7bec6096894294df4c15d498dab7_icgraph.svg" width="100%" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a3b20eba6c9046b375489c668443c165d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b20eba6c9046b375489c668443c165d">&#9670;&nbsp;</a></span>divideWithQuotient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structQuotientRemainder.html">QuotientRemainder</a> divideWithQuotient </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>divisor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculates the quotient and remainder of dividing the current remainder by the divisor.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">number</td><td>The number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">divisor</td><td>The divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="structQuotientRemainder.html">QuotientRemainder</a> object containing the quotient and remainder. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="division_8cpp_a3b20eba6c9046b375489c668443c165d_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a7b131aff3518e538acc7c87b822e70d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b131aff3518e538acc7c87b822e70d2">&#9670;&nbsp;</a></span>getGCD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string getGCD </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view &amp;&#160;</td>
+          <td class="paramname"><em>_a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string_view &amp;&#160;</td>
+          <td class="paramname"><em>_b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the greatest common divisor of two string representations of numbers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_a</td><td>Number 1. </td></tr>
+    <tr><td class="paramname">_b</td><td>Number 2.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The greatest common divisor of the two numbers. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="division_8cpp_a7b131aff3518e538acc7c87b822e70d2_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="division_8cpp_a7b131aff3518e538acc7c87b822e70d2_icgraph.svg" width="386" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -270,15 +368,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculates the quotient and remainder of dividing the current remainder by the divisor.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_currentRemainder</td><td>The current remainder. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">divisor</td><td>The divisor. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="structQuotientRemainder.html">QuotientRemainder</a> object containing the quotient and remainder. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -288,7 +377,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="division_8cpp_afe2f9d37fbb1090dfb3af32476b43fca_icgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="division_8cpp_afe2f9d37fbb1090dfb3af32476b43fca_icgraph.svg" width="100%" height="556"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -348,7 +437,7 @@ Here is the call graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Sun Mar 31 2024 01:30:02"; // Will get replaced by Doxygen
+        const dateStr = "Sun Mar 31 2024 14:48:48"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

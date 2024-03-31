@@ -130,6 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2f92ff208c733cbd53e268c710f885d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFraction.html">Fraction</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFraction.html#a2f92ff208c733cbd53e268c710f885d9">operator/=</a> (const <a class="el" href="classFraction.html">Fraction</a> &amp;rhs)</td></tr>
 <tr class="memdesc:a2f92ff208c733cbd53e268c710f885d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divides a fraction by abother fraction and stores the result in the current one. This function does it by doing a simple fraction division (multiply by inverse) and returns the sum.  <a href="classFraction.html#a2f92ff208c733cbd53e268c710f885d9">More...</a><br /></td></tr>
 <tr class="separator:a2f92ff208c733cbd53e268c710f885d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5092eb855dac602718b19eb7fe0d6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFraction.html#a6a5092eb855dac602718b19eb7fe0d6d">simplify</a> ()</td></tr>
+<tr class="memdesc:a6a5092eb855dac602718b19eb7fe0d6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom components by their greatest common divisor.  <a href="classFraction.html#a6a5092eb855dac602718b19eb7fe0d6d">More...</a><br /></td></tr>
+<tr class="separator:a6a5092eb855dac602718b19eb7fe0d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -452,6 +455,32 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a6a5092eb855dac602718b19eb7fe0d6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a5092eb855dac602718b19eb7fe0d6d">&#9670;&nbsp;</a></span>simplify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Fraction::simplify </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom components by their greatest common divisor. </p>
+<dl class="section note"><dt>Note</dt><dd>The fraction will be simplified in-place. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classFraction_a6a5092eb855dac602718b19eb7fe0d6d_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a3a4f852f20e5093dc71f20aebdf46c91"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3a4f852f20e5093dc71f20aebdf46c91">&#9670;&nbsp;</a></span>bottom</h2>
@@ -525,7 +554,7 @@ Here is the call graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Sun Mar 31 2024 01:30:03"; // Will get replaced by Doxygen
+        const dateStr = "Sun Mar 31 2024 14:48:48"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();
