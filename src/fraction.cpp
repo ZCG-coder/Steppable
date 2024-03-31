@@ -20,10 +20,12 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+#include "fraction.hpp"
+
 #include "exceptions.hpp"
 #include "fn/basicArithm.hpp"
-#include "fraction.hpp"
 #include "util.hpp"
+
 #include <string>
 
 Fraction::Fraction()
@@ -44,7 +46,7 @@ Fraction Fraction::operator+(const Fraction& rhs)
 {
     auto newTop = add(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
     auto newBottom = multiply(bottom, rhs.bottom, 0);
-    
+
     return Fraction(newTop, newBottom);
 }
 
@@ -52,7 +54,7 @@ Fraction Fraction::operator-(const Fraction& rhs)
 {
     auto newTop = subtract(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
     auto newBottom = multiply(bottom, rhs.bottom, 0);
-    
+
     return Fraction(newTop, newBottom);
 }
 
@@ -60,7 +62,7 @@ Fraction Fraction::operator*(const Fraction& rhs)
 {
     auto newTop = multiply(top, rhs.top, 0);
     auto newBottom = multiply(bottom, rhs.bottom, 0);
-    
+
     return Fraction(newTop, newBottom);
 }
 
@@ -68,7 +70,7 @@ Fraction Fraction::operator/(const Fraction& rhs)
 {
     auto newTop = multiply(top, rhs.bottom, 0);
     auto newBottom = multiply(bottom, rhs.top, 0);
-    
+
     return Fraction(newTop, newBottom);
 }
 
@@ -94,4 +96,11 @@ Fraction& Fraction::operator/=(const Fraction& rhs)
 {
     *this = *this / rhs;
     return *this;
+}
+
+void Fraction::simplify()
+{
+    auto gcd = getGCD(top, bottom);
+    top = divide(top, gcd, 0);
+    bottom = divide(bottom, gcd, 0);
 }

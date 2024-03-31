@@ -61,8 +61,8 @@ std::string abs(const std::string_view& _number, int steps);
  *
  * @param[in] a The first string representation of the number.
  * @param[in] b The second string representation of the number.
- * @param[in] steps The number of steps to perform the addition. 2 = column method, 1 = normal addition, 0 = result only.
- * Default is 2.
+ * @param[in] steps The number of steps to perform the addition. 2 = column method, 1 = normal addition, 0 = result
+ * only. Default is 2.
  * @param[in] negative Flag indicating whether the result should be negative.
  * @param[in] properlyFormat Flag indicating whether to properly format the output. Default true.
  * @return The sum of the two numbers as a string.
@@ -112,11 +112,21 @@ std::string divide(const std::string_view& number, const std::string_view& divis
 /**
  * Calculates the quotient and remainder of dividing the current remainder by the divisor.
  *
- * @param[in] _currentRemainder The current remainder.
+ * @param[in] number The number.
  * @param[in] divisor The divisor.
  * @return A QuotientRemainder object containing the quotient and remainder.
  */
-QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto& divisor);
+QuotientRemainder divideWithQuotient(const std::string& number, const std::string& divisor);
+
+/**
+ * @brief Gets the greatest common divisor of two string representations of numbers.
+ *
+ * @param _a Number 1.
+ * @param _b Number 2.
+ *
+ * @return The greatest common divisor of the two numbers.
+ */
+std::string getGCD(const std::string_view& _a, const std::string_view& _b);
 
 /**
  * @brief Multiplies two string representations of numbers.

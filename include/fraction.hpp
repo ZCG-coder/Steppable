@@ -27,7 +27,7 @@
  * @author Andy Zhang
  * @date 13th March 2024
  */
- 
+
 #pragma once
 
 #include <string>
@@ -41,7 +41,7 @@ class Fraction
 private:
     /// @brief The numerator. (Top component)
     std::string top;
-    
+
     /// @brief The denominator. (Bottom component)
     std::string bottom;
 
@@ -52,7 +52,7 @@ public:
      * @throws ZeroDenominatorException when the bottom component is zero.
      */
     Fraction(const std::string& top = "1", const std::string& bottom = "1");
-    
+
     /**
      * @brief Initializes a fraction with no top component and bottom component specified.
      * By default, this fraction equals to 1.
@@ -132,4 +132,11 @@ public:
      * @return The sum of fractions.
      */
     Fraction& operator/=(const Fraction& rhs);
+
+    /**
+     * @brief Simplifies a fraction.
+     * This function simplifies the fraction by dividing the top and bottom components by their greatest common divisor.
+     * @note The fraction will be simplified in-place.
+     */
+    void simplify();
 };

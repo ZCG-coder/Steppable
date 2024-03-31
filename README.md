@@ -49,7 +49,7 @@ we are planning to implement next (and in the near future):
     - [x] Addition of fractions
     - [x] Subtraction of fractions
     - [x] Multiplication of fractions
-    - [ ] Simplification of fractions
+    - [X] Simplification of fractions
     - [x] Division of fractions
     - [ ] Conversion between fractions and decimals
     - [ ] Expansion of polynomials

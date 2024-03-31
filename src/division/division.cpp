@@ -277,6 +277,37 @@ std::string divide(const std::string_view& _number,
         tempFormattedAns, remainder, finalQuotient, divisor, _divisor, _number, steps, width, resultIsNegative);
 }
 
+QuotientRemainder divideWithQuotient(const std::string& number, const std::string& divisor)
+{
+    const auto& divisionResult = divide(number, divisor, 0);
+    const auto& splitNumberResult = splitNumber(divisionResult, "0", false, false, true, true).splitNumberArray;
+
+    const auto &quotient = splitNumberResult[0], nearestResult = multiply(divisor, quotient, 0),
+               remainder = subtract(number, nearestResult, 0);
+
+    return { quotient, remainder };
+}
+
+std::string getGCD(const std::string_view& _a, const std::string_view& _b)
+{
+    auto a = static_cast<std::string>(_a), b = static_cast<std::string>(_b);
+
+    // Ensure that a is greater than or equal to b
+    if (b > a)
+        return getGCD(b, a);
+
+    // Euclidean algorithm
+    while (compare(b, "0", 0) != "2")
+    {
+        auto temp = b;
+        b = getQuotientRemainder(a, b).remainder;
+        a = temp;
+    }
+
+    // The GCD is the absolute value of a
+    return abs(a, 0);
+}
+
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
@@ -295,6 +326,11 @@ int main(const int _argc, const char* _argv[])
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
 
+    if (steps == 5)
+    {
+        std::cout << getGCD(aStr, bStr) << std::endl;
+        return 0;
+    }
     if (profile)
     {
         TIC(Column Method Division)
