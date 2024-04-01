@@ -51,6 +51,8 @@ we are planning to implement next (and in the near future):
     - [x] Multiplication of fractions
     - [X] Simplification of fractions
     - [x] Division of fractions
+    - [X] API for numbers
+    - [X] API for fractions
     - [ ] Conversion between fractions and decimals
     - [ ] Expansion of polynomials
     - [ ] Factoring of polynomials
@@ -156,8 +158,11 @@ To add a new feature, `a`:
     - `a.cpp` - The main file. The `main` function should be present, as it is the entry point of the executable.
     - `aReport.cpp` - The report file to show the results.
     - `aReport.hpp` - A header that contains optional definition.
-   > **Note**:
-   > Only the above-mentioned three files will be added to CMake.
+
+> [!NOTE]
+>
+> Only the above-mentioned three files will be added to CMake.
+   
 2. Make sure to document the code. Please use Doxygen to document this project.
 3. Add an entry to `CMakeLists.txt` at the root of the repository.
 
