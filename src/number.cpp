@@ -23,10 +23,16 @@
 #include "number.hpp"
 
 #include "fn/basicArithm.hpp"
+#include "output.hpp"
 
 Number::Number() { value = "0"; }
 
-Number::Number(const std::string& value) { this->value = value; }
+Number::Number(const std::string& value, size_t prec, RoundingMode mode)
+{
+    this->value = value;
+    this->prec = prec;
+    this->mode = mode;
+}
 
 Number Number::operator+(const Number& rhs) { return add(value, rhs.value, 0); }
 
@@ -34,7 +40,26 @@ Number Number::operator-(const Number& rhs) { return subtract(value, rhs.value, 
 
 Number Number::operator*(const Number& rhs) { return multiply(value, rhs.value, 0); }
 
-Number Number::operator/(const Number& rhs) { return divide(value, rhs.value, 0); }
+Number Number::operator/(const Number& rhs)
+{
+    size_t usePrec;
+    if (mode == USE_MAXIMUM_PREC)
+        usePrec = std::max(prec, rhs.prec);
+    else if (mode == USE_MINIMUM_PREC)
+        usePrec = std::min(prec, rhs.prec);
+    else if (mode == USE_CURRENT_PREC)
+        usePrec = prec;
+    else if (mode == USE_OTHER_PREC)
+        usePrec = rhs.prec;
+    else if (mode == DISCARD_ALL_DECIMALS)
+        usePrec = 0;
+    else
+    {
+        usePrec = 0;
+        warning("Invalid precision specified");
+    }
+    return divide(value, rhs.value, 0, usePrec);
+}
 
 Number Number::operator%(const Number& rhs) { return divideWithQuotient(value, rhs.value).remainder; }
 
@@ -78,42 +103,42 @@ Number& Number::operator^=(const Number& rhs)
 
 bool Number::operator==(const Number& rhs)
 {
-    if (compare(value, rhs.value) == "2")
+    if (compare(value, rhs.value, 0) == "2")
         return true;
     return false;
 }
 
 bool Number::operator!=(const Number& rhs)
 {
-    if (compare(value, rhs.value) != "2")
+    if (compare(value, rhs.value, 0) != "2")
         return true;
     return false;
 }
 
 bool Number::operator<(const Number& rhs)
 {
-    if (compare(value, rhs.value) == "0")
+    if (compare(value, rhs.value, 0) == "0")
         return true;
     return false;
 }
 
 bool Number::operator>(const Number& rhs)
 {
-    if (compare(value, rhs.value) == "1")
+    if (compare(value, rhs.value, 0) == "1")
         return true;
     return false;
 }
 
 bool Number::operator<=(const Number& rhs)
 {
-    if (compare(value, rhs.value) != "1")
+    if (compare(value, rhs.value, 0) != "1")
         return true;
     return false;
 }
 
 bool Number::operator>=(const Number& rhs)
 {
-    if (compare(value, rhs.value) != "0")
+    if (compare(value, rhs.value, 0) != "0")
         return true;
     return false;
 }

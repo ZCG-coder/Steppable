@@ -21,7 +21,7 @@
  **************************************************************************************************/
 
 #include "colors.hpp"
-#include "fraction.hpp"
+#include "number.hpp"
 #include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"
@@ -30,25 +30,40 @@
 #include <iostream>
 
 TEST_START()
-
-SECTION(Fraction Add)
-_.assertIsEqual((Fraction("13122", "54251") + Fraction("22451", "3423")).present(), "1262905807/185701173");
-_.assertIsEqual((Fraction("22451", "3423") + Fraction("13122", "54251")).present(), "1262905807/185701173");
+SECTION(Test Addition)
+_.assertIsEqual((Number("123") + Number("456")).present(), "579");
+_.assertIsEqual((Number("456") + Number("123")).present(), "579");
 SECTION_END()
 
-SECTION(Fraction Subtract)
-_.assertIsEqual((Fraction("13122", "54251") - Fraction("22451", "3423")).present(), "-1173072595/185701173");
-_.assertIsEqual((Fraction("22451", "3423") - Fraction("13122", "54251")).present(), "1173072595/185701173");
+SECTION(Test Subtraction)
+_.assertIsEqual((Number("123") - Number("456")).present(), "-333");
+_.assertIsEqual((Number("456") - Number("123")).present(), "333");
 SECTION_END()
 
-SECTION(Fraction Multiply)
-_.assertIsEqual((Fraction("13122", "54251") * Fraction("22451", "3423")).present(), "98200674/61900391");
-_.assertIsEqual((Fraction("22451", "3423") * Fraction("13122", "54251")).present(), "98200674/61900391");
+SECTION(Test Multiplication)
+_.assertIsEqual((Number("123") * Number("456")).present(), "56088");
+_.assertIsEqual((Number("456") * Number("123")).present(), "56088");
 SECTION_END()
 
-SECTION(Fraction Division)
-_.assertIsEqual((Fraction("13122", "54251") / Fraction("22451", "3423")).present(), "44916606/1217989201");
-_.assertIsEqual((Fraction("22451", "3423") / Fraction("13122", "54251")).present(), "1217989201/44916606");
+SECTION(Test Division)
+_.assertIsEqual((Number("123", 4, USE_CURRENT_PREC) / Number("456")).present(), "0.2697");
+SECTION_END()
+
+SECTION(Test Remainder)
+_.assertIsEqual((Number("456") % Number("123")).present(), "87");
+SECTION_END()
+
+SECTION(Test Power)
+_.assertIsEqual((Number("12") ^ Number("45")).present(), "3657261988008837196714082302655030834027437228032");
+SECTION_END()
+
+SECTION(Test Equalities and Inequalities)
+_.assertTrue(Number("123") == Number("123"));
+_.assertTrue(Number("123") != Number("456"));
+_.assertTrue(Number("123") < Number("456"));
+_.assertTrue(Number("456") > Number("123"));
+_.assertTrue(Number("123") <= Number("456"));
+_.assertTrue(Number("456") >= Number("123"));
 SECTION_END()
 
 TEST_END()

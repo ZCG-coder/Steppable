@@ -22,11 +22,26 @@
 
 #include <string>
 
+enum RoundingMode
+{
+    USE_MAXIMUM_PREC = 0xFF,
+    USE_MINIMUM_PREC = 0x01,
+    USE_CURRENT_PREC = 0x02,
+    USE_OTHER_PREC = 0x03,
+    DISCARD_ALL_DECIMALS = 0x00
+};
+
 class Number
 {
 private:
     /// @brief The value of the number.
     std::string value;
+
+    /// @brief The precision of the number.
+    size_t prec;
+
+    /// @brief The rounding mode of the number.
+    RoundingMode mode = USE_CURRENT_PREC;
 
 public:
     /// @brief The default constructor. Initializes the number with a value of 0.
@@ -36,7 +51,7 @@ public:
      * @brief Initializes a number with a specified value.
      * @note By default, the value is 0.
      */
-    Number(const std::string& value = "0");
+    Number(const std::string& value = "0", size_t prec = 0, RoundingMode mode = USE_CURRENT_PREC);
 
     /**
      * @brief Adds two numbers together.

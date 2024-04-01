@@ -290,7 +290,10 @@ QuotientRemainder divideWithQuotient(const std::string& number, const std::strin
 
 std::string getGCD(const std::string_view& _a, const std::string_view& _b)
 {
-    auto a = static_cast<std::string>(_a), b = static_cast<std::string>(_b);
+    // Sign for GCD does not matter.
+    // https://proofwiki.org/wiki/GCD_for_Negative_Integers
+    auto splitNumberResult = splitNumber(_a, _b, false, false, true, false).splitNumberArray;
+    auto a = splitNumberResult[0] + splitNumberResult[1], b = splitNumberResult[2] + splitNumberResult[3];
 
     // Ensure that a is greater than or equal to b
     if (b > a)
