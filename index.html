@@ -125,6 +125,8 @@ How does it work?</h1>
 <li>[x] Multiplication of fractions</li>
 <li>[X] Simplification of fractions</li>
 <li>[x] Division of fractions</li>
+<li>[X] API for numbers</li>
+<li>[X] API for fractions</li>
 <li>[ ] Conversion between fractions and decimals</li>
 <li>[ ] Expansion of polynomials</li>
 <li>[ ] Factoring of polynomials</li>
@@ -200,12 +202,17 @@ How to add a new feature</h2>
 <li>Add a directory called <code>src/a</code>, with at least three files:<ul>
 <li><code>a.cpp</code> - The main file. The <code>main</code> function should be present, as it is the entry point of the executable.</li>
 <li><code>aReport.cpp</code> - The report file to show the results.</li>
-<li><code>aReport.hpp</code> - A header that contains optional definition. <blockquote class="doxtable">
-<p><b>Note</b>: Only the above-mentioned three files will be added to CMake. </p>
-</blockquote>
-2. Make sure to document the code. Please use Doxygen to document this project.</li>
+<li><code>aReport.hpp</code> - A header that contains optional definition.</li>
 </ul>
 </li>
+</ol>
+<blockquote class="doxtable">
+<p>[!NOTE]</p>
+<p>Only the above-mentioned three files will be added to CMake. </p>
+</blockquote>
+<p><br  />
+</p><ol type="1">
+<li>Make sure to document the code. Please use Doxygen to document this project.</li>
 <li><p class="startli">Add an entry to <code>CMakeLists.txt</code> at the root of the repository.</p>
 <p class="startli">```cmake set(COMPONENTS add ... a # Replace with yours ) ```</p>
 </li>
@@ -232,7 +239,7 @@ How to add a new feature</h2>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 1 2024 15:32:40"; // Will get replaced by Doxygen
+        const dateStr = "Mon Apr 1 2024 15:43:08"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();
