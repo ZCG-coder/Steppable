@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['value_260',['value',['../classNumber.html#a8a95175ffec0ca002c884c658ce35ff3',1,'Number']]],
-  ['vformat_261',['vFormat',['../format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8',1,'vFormat(const std::basic_string&lt; CharT &gt; sFormat,...):&#160;format.hpp'],['../format_8hpp.html#a145f187acb1003d20b7eb30331d65d4e',1,'vFormat(const CharT *sFormat,...):&#160;format.hpp']]]
+  ['value_268',['value',['../classNumber.html#a8a95175ffec0ca002c884c658ce35ff3',1,'Number']]],
+  ['vformat_269',['vFormat',['../format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8',1,'vFormat(const std::basic_string&lt; CharT &gt; sFormat,...):&#160;format.hpp'],['../format_8hpp.html#a145f187acb1003d20b7eb30331d65d4e',1,'vFormat(const CharT *sFormat,...):&#160;format.hpp']]]
 ];

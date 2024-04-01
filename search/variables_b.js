@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['remainder_502',['remainder',['../structQuotientRemainder.html#a37fffae7c6980c69cc04937461b0f9b0',1,'QuotientRemainder']]]
+  ['quotient_510',['quotient',['../structQuotientRemainder.html#ae22ca67bf6b0a2dff5dba7d0bbeb5155',1,'QuotientRemainder']]]
 ];

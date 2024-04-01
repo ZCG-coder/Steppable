@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['testcasename_507',['testCaseName',['../classTestCase.html#afbe493a0502c89eeb564e1ffc4f86f49',1,'TestCase']]],
-  ['top_508',['top',['../classFraction.html#a10589e482dd8e89f228a94b27cc8df5b',1,'Fraction']]]
+  ['splitnumberarray_512',['splitNumberArray',['../structSplitNumberResult.html#ae2dbc7553b8528acab3adcd0bcb13f88',1,'SplitNumberResult']]],
+  ['superscripts_513',['SUPERSCRIPTS',['../symbols_8hpp.html#ae7f9945c578c5cf042d74580ee7cff38',1,'SUPERSCRIPTS():&#160;symbols.cpp'],['../symbols_8cpp.html#ae7f9945c578c5cf042d74580ee7cff38',1,'SUPERSCRIPTS():&#160;symbols.cpp']]],
+  ['switchdescriptions_514',['switchDescriptions',['../classProgramArgs.html#a4023c0453d94632ea56da0850601b723',1,'ProgramArgs']]],
+  ['switches_515',['switches',['../classProgramArgs.html#acd63e57b63dd86a3b68a269a8dd7ef95',1,'ProgramArgs']]]
 ];

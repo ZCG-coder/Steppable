@@ -15,9 +15,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
       [ "setw", "structinternals_1_1setw.html", "structinternals_1_1setw" ]
     ] ],
     [ "logging.hpp", "logging_8hpp.html", "logging_8hpp" ],
-    [ "number.hpp", "number_8hpp.html", [
-      [ "Number", "classNumber.html", "classNumber" ]
-    ] ],
+    [ "number.hpp", "number_8hpp.html", "number_8hpp" ],
     [ "output.hpp", "output_8hpp.html", "output_8hpp" ],
     [ "platform.hpp", "platform_8hpp.html", "platform_8hpp" ],
     [ "rounding.hpp", "rounding_8hpp.html", "rounding_8hpp" ],

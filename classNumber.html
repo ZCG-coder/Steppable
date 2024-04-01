@@ -100,9 +100,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5a596a2f86f33fb48493ce0d19e48b34"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumber.html#a5a596a2f86f33fb48493ce0d19e48b34">Number</a> ()</td></tr>
 <tr class="memdesc:a5a596a2f86f33fb48493ce0d19e48b34"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default constructor. Initializes the number with a value of 0.  <a href="classNumber.html#a5a596a2f86f33fb48493ce0d19e48b34">More...</a><br /></td></tr>
 <tr class="separator:a5a596a2f86f33fb48493ce0d19e48b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42bdace0d7765a385684df0e4c41d607"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumber.html#a42bdace0d7765a385684df0e4c41d607">Number</a> (const std::string &amp;<a class="el" href="classNumber.html#a8a95175ffec0ca002c884c658ce35ff3">value</a>=&quot;0&quot;)</td></tr>
-<tr class="memdesc:a42bdace0d7765a385684df0e4c41d607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a number with a specified value.  <a href="classNumber.html#a42bdace0d7765a385684df0e4c41d607">More...</a><br /></td></tr>
-<tr class="separator:a42bdace0d7765a385684df0e4c41d607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a166049c73e7ebaa18e33da7acffc012f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumber.html#a166049c73e7ebaa18e33da7acffc012f">Number</a> (const std::string &amp;<a class="el" href="classNumber.html#a8a95175ffec0ca002c884c658ce35ff3">value</a>=&quot;0&quot;, size_t <a class="el" href="classNumber.html#a41734ae79b8bc15031346800481f9343">prec</a>=0, <a class="el" href="number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101">RoundingMode</a> <a class="el" href="classNumber.html#a0dd799de388b7d4a4d5df896ff03c09b">mode</a>=<a class="el" href="number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a6cc88e1d0aaf8b43d68a7e9ee216387e">USE_CURRENT_PREC</a>)</td></tr>
+<tr class="memdesc:a166049c73e7ebaa18e33da7acffc012f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a number with a specified value.  <a href="classNumber.html#a166049c73e7ebaa18e33da7acffc012f">More...</a><br /></td></tr>
+<tr class="separator:a166049c73e7ebaa18e33da7acffc012f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45a837413b701688971b3e21f6b81aa8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classNumber.html">Number</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumber.html#a45a837413b701688971b3e21f6b81aa8">operator+</a> (const <a class="el" href="classNumber.html">Number</a> &amp;rhs)</td></tr>
 <tr class="memdesc:a45a837413b701688971b3e21f6b81aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two numbers together.  <a href="classNumber.html#a45a837413b701688971b3e21f6b81aa8">More...</a><br /></td></tr>
 <tr class="separator:a45a837413b701688971b3e21f6b81aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,6 +172,12 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8a95175ffec0ca002c884c658ce35ff3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumber.html#a8a95175ffec0ca002c884c658ce35ff3">value</a></td></tr>
 <tr class="memdesc:a8a95175ffec0ca002c884c658ce35ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value of the number.  <a href="classNumber.html#a8a95175ffec0ca002c884c658ce35ff3">More...</a><br /></td></tr>
 <tr class="separator:a8a95175ffec0ca002c884c658ce35ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41734ae79b8bc15031346800481f9343"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumber.html#a41734ae79b8bc15031346800481f9343">prec</a></td></tr>
+<tr class="memdesc:a41734ae79b8bc15031346800481f9343"><td class="mdescLeft">&#160;</td><td class="mdescRight">The precision of the number.  <a href="classNumber.html#a41734ae79b8bc15031346800481f9343">More...</a><br /></td></tr>
+<tr class="separator:a41734ae79b8bc15031346800481f9343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dd799de388b7d4a4d5df896ff03c09b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101">RoundingMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumber.html#a0dd799de388b7d4a4d5df896ff03c09b">mode</a> = <a class="el" href="number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a6cc88e1d0aaf8b43d68a7e9ee216387e">USE_CURRENT_PREC</a></td></tr>
+<tr class="memdesc:a0dd799de388b7d4a4d5df896ff03c09b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The rounding mode of the number.  <a href="classNumber.html#a0dd799de388b7d4a4d5df896ff03c09b">More...</a><br /></td></tr>
+<tr class="separator:a0dd799de388b7d4a4d5df896ff03c09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5a596a2f86f33fb48493ce0d19e48b34"></a>
@@ -199,8 +205,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a42bdace0d7765a385684df0e4c41d607"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42bdace0d7765a385684df0e4c41d607">&#9670;&nbsp;</a></span>Number() <span class="overload">[2/2]</span></h2>
+<a id="a166049c73e7ebaa18e33da7acffc012f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a166049c73e7ebaa18e33da7acffc012f">&#9670;&nbsp;</a></span>Number() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -209,8 +215,24 @@ Here is the caller graph for this function:</div>
           <td class="memname">Number::Number </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>value</em> = <code>&quot;0&quot;</code></td><td>)</td>
+          <td class="paramname"><em>value</em> = <code>&quot;0&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>prec</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101">RoundingMode</a>&#160;</td>
+          <td class="paramname"><em>mode</em> = <code><a class="el" href="number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a6cc88e1d0aaf8b43d68a7e9ee216387e">USE_CURRENT_PREC</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -852,6 +874,54 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0dd799de388b7d4a4d5df896ff03c09b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dd799de388b7d4a4d5df896ff03c09b">&#9670;&nbsp;</a></span>mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101">RoundingMode</a> Number::mode = <a class="el" href="number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a6cc88e1d0aaf8b43d68a7e9ee216387e">USE_CURRENT_PREC</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The rounding mode of the number. </p>
+
+</div>
+</div>
+<a id="a41734ae79b8bc15031346800481f9343"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41734ae79b8bc15031346800481f9343">&#9670;&nbsp;</a></span>prec</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Number::prec</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The precision of the number. </p>
+
+</div>
+</div>
 <a id="a8a95175ffec0ca002c884c658ce35ff3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8a95175ffec0ca002c884c658ce35ff3">&#9670;&nbsp;</a></span>value</h2>
 
@@ -900,7 +970,7 @@ Here is the call graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 1 2024 05:57:55"; // Will get replaced by Doxygen
+        const dateStr = "Mon Apr 1 2024 14:48:16"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

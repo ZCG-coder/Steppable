@@ -1,7 +1,7 @@
 var classNumber =
 [
     [ "Number", "classNumber.html#a5a596a2f86f33fb48493ce0d19e48b34", null ],
-    [ "Number", "classNumber.html#a42bdace0d7765a385684df0e4c41d607", null ],
+    [ "Number", "classNumber.html#a166049c73e7ebaa18e33da7acffc012f", null ],
     [ "operator!=", "classNumber.html#ae44610bdbd2d5c691059df4677459d82", null ],
     [ "operator%", "classNumber.html#ad8409f892bbe8cb1be5b4385914b40b2", null ],
     [ "operator%=", "classNumber.html#a6060dfa16a276f15886823c5fe9e49b5", null ],
@@ -23,5 +23,7 @@ var classNumber =
     [ "operator^", "classNumber.html#a98a2fe6b66184133f1261d2825875cd9", null ],
     [ "operator^=", "classNumber.html#aa40a9586fa00454371268393a7cd7515", null ],
     [ "present", "classNumber.html#a35c35a00e490f47dda32f34fd6acdf66", null ],
+    [ "mode", "classNumber.html#a0dd799de388b7d4a4d5df896ff03c09b", null ],
+    [ "prec", "classNumber.html#a41734ae79b8bc15031346800481f9343", null ],
     [ "value", "classNumber.html#a8a95175ffec0ca002c884c658ce35ff3", null ]
 ];
