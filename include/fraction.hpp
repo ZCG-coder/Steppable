@@ -59,6 +59,8 @@ public:
      */
     Fraction();
 
+    std::string present();
+
     /**
      * @brief Adds two fractions together.
      * This function does it by doing a simple fraction addition and returns the sum.

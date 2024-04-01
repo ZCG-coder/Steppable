@@ -20,105 +20,114 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "fraction.hpp"
+#include "number.hpp"
 
-#include "exceptions.hpp"
 #include "fn/basicArithm.hpp"
-#include "util.hpp"
 
-#include <string>
+Number::Number() { value = "0"; }
 
-Fraction::Fraction()
-{
-    this->top = "1";
-    this->bottom = "1";
-}
+Number::Number(const std::string& value) { this->value = value; }
 
-Fraction::Fraction(const std::string& top, const std::string& bottom)
-{
-    if (isZeroString(bottom))
-        throw ZeroDenominatorException();
-    this->top = top;
-    this->bottom = bottom;
-}
+Number Number::operator+(const Number& rhs) { return add(value, rhs.value, 0); }
 
-std::string Fraction::present()
-{
-    simplify();
-    return top + "/" + bottom;
-}
+Number Number::operator-(const Number& rhs) { return subtract(value, rhs.value, 0); }
 
-Fraction Fraction::operator+(const Fraction& rhs)
-{
-    auto newTop = add(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
-    auto newBottom = multiply(bottom, rhs.bottom, 0);
+Number Number::operator*(const Number& rhs) { return multiply(value, rhs.value, 0); }
 
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
+Number Number::operator/(const Number& rhs) { return divide(value, rhs.value, 0); }
 
-Fraction Fraction::operator-(const Fraction& rhs)
-{
-    auto newTop = subtract(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
-    auto newBottom = multiply(bottom, rhs.bottom, 0);
+Number Number::operator%(const Number& rhs) { return divideWithQuotient(value, rhs.value).remainder; }
 
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
+Number Number::operator^(const Number& rhs) { return power(value, rhs.value, 0); }
 
-Fraction Fraction::operator*(const Fraction& rhs)
-{
-    auto newTop = multiply(top, rhs.top, 0);
-    auto newBottom = multiply(bottom, rhs.bottom, 0);
-
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
-
-Fraction Fraction::operator/(const Fraction& rhs)
-{
-    auto newTop = multiply(top, rhs.bottom, 0);
-    auto newBottom = multiply(bottom, rhs.top, 0);
-
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
-
-Fraction& Fraction::operator+=(const Fraction& rhs)
+Number& Number::operator+=(const Number& rhs)
 {
     *this = *this + rhs;
-    simplify();
     return *this;
 }
 
-Fraction& Fraction::operator-=(const Fraction& rhs)
+Number& Number::operator-=(const Number& rhs)
 {
     *this = *this - rhs;
-    simplify();
     return *this;
 }
 
-Fraction& Fraction::operator*=(const Fraction& rhs)
+Number& Number::operator*=(const Number& rhs)
 {
     *this = *this * rhs;
-    simplify();
     return *this;
 }
 
-Fraction& Fraction::operator/=(const Fraction& rhs)
+Number& Number::operator/=(const Number& rhs)
 {
     *this = *this / rhs;
-    simplify();
     return *this;
 }
 
-void Fraction::simplify()
+Number& Number::operator%=(const Number& rhs)
 {
-    auto gcd = getGCD(top, bottom);
-    top = divide(top, gcd, 0, 0);
-    bottom = divide(bottom, gcd, 0, 0);
+    *this = *this % rhs;
+    return *this;
 }
+
+Number& Number::operator^=(const Number& rhs)
+{
+    *this = *this ^ rhs;
+    return *this;
+}
+
+bool Number::operator==(const Number& rhs)
+{
+    if (compare(value, rhs.value) == "2")
+        return true;
+    return false;
+}
+
+bool Number::operator!=(const Number& rhs)
+{
+    if (compare(value, rhs.value) != "2")
+        return true;
+    return false;
+}
+
+bool Number::operator<(const Number& rhs)
+{
+    if (compare(value, rhs.value) == "0")
+        return true;
+    return false;
+}
+
+bool Number::operator>(const Number& rhs)
+{
+    if (compare(value, rhs.value) == "1")
+        return true;
+    return false;
+}
+
+bool Number::operator<=(const Number& rhs)
+{
+    if (compare(value, rhs.value) != "1")
+        return true;
+    return false;
+}
+
+bool Number::operator>=(const Number& rhs)
+{
+    if (compare(value, rhs.value) != "0")
+        return true;
+    return false;
+}
+
+Number Number::operator++()
+{
+    *this += Number("1");
+    return *this;
+}
+
+Number Number::operator--()
+{
+    *this -= Number("1");
+    return *this;
+}
+
+std::string Number::present() { return value; }

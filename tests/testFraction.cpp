@@ -20,105 +20,17 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+#include "colors.hpp"
 #include "fraction.hpp"
-
-#include "exceptions.hpp"
-#include "fn/basicArithm.hpp"
+#include "output.hpp"
+#include "testing.hpp"
 #include "util.hpp"
 
-#include <string>
+#include <iomanip>
+#include <iostream>
 
-Fraction::Fraction()
-{
-    this->top = "1";
-    this->bottom = "1";
-}
+TEST_START()
 
-Fraction::Fraction(const std::string& top, const std::string& bottom)
-{
-    if (isZeroString(bottom))
-        throw ZeroDenominatorException();
-    this->top = top;
-    this->bottom = bottom;
-}
+std::cout << (Fraction("13122", "54251") + Fraction("22451", "3423")).present() << std::endl;
 
-std::string Fraction::present()
-{
-    simplify();
-    return top + "/" + bottom;
-}
-
-Fraction Fraction::operator+(const Fraction& rhs)
-{
-    auto newTop = add(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
-    auto newBottom = multiply(bottom, rhs.bottom, 0);
-
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
-
-Fraction Fraction::operator-(const Fraction& rhs)
-{
-    auto newTop = subtract(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
-    auto newBottom = multiply(bottom, rhs.bottom, 0);
-
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
-
-Fraction Fraction::operator*(const Fraction& rhs)
-{
-    auto newTop = multiply(top, rhs.top, 0);
-    auto newBottom = multiply(bottom, rhs.bottom, 0);
-
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
-
-Fraction Fraction::operator/(const Fraction& rhs)
-{
-    auto newTop = multiply(top, rhs.bottom, 0);
-    auto newBottom = multiply(bottom, rhs.top, 0);
-
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
-
-Fraction& Fraction::operator+=(const Fraction& rhs)
-{
-    *this = *this + rhs;
-    simplify();
-    return *this;
-}
-
-Fraction& Fraction::operator-=(const Fraction& rhs)
-{
-    *this = *this - rhs;
-    simplify();
-    return *this;
-}
-
-Fraction& Fraction::operator*=(const Fraction& rhs)
-{
-    *this = *this * rhs;
-    simplify();
-    return *this;
-}
-
-Fraction& Fraction::operator/=(const Fraction& rhs)
-{
-    *this = *this / rhs;
-    simplify();
-    return *this;
-}
-
-void Fraction::simplify()
-{
-    auto gcd = getGCD(top, bottom);
-    top = divide(top, gcd, 0, 0);
-    bottom = divide(bottom, gcd, 0, 0);
-}
+TEST_END()
