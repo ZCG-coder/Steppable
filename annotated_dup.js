@@ -9,6 +9,7 @@ var annotated_dup =
     [ "Fraction", "classFraction.html", "classFraction" ],
     [ "Key", "structKey.html", "structKey" ],
     [ "MultiLengthLetterException", "classMultiLengthLetterException.html", "classMultiLengthLetterException" ],
+    [ "Number", "classNumber.html", "classNumber" ],
     [ "Program", "structProgram.html", "structProgram" ],
     [ "ProgramArgs", "classProgramArgs.html", "classProgramArgs" ],
     [ "QuotientRemainder", "structQuotientRemainder.html", "structQuotientRemainder" ],

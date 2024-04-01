@@ -7,6 +7,7 @@ var hierarchy =
     [ "Fraction", "classFraction.html", null ],
     [ "Key", "structKey.html", null ],
     [ "logging::Logger", "classlogging_1_1Logger.html", null ],
+    [ "Number", "classNumber.html", null ],
     [ "Program", "structProgram.html", null ],
     [ "ProgramArgs", "classProgramArgs.html", null ],
     [ "QuotientRemainder", "structQuotientRemainder.html", null ],

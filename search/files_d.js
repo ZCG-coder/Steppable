@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['security_2emd_315',['SECURITY.md',['../SECURITY_8md.html',1,'']]],
-  ['subtract_2ecpp_316',['subtract.cpp',['../subtract_8cpp.html',1,'']]],
-  ['subtractreport_2ecpp_317',['subtractReport.cpp',['../subtractReport_8cpp.html',1,'']]],
-  ['subtractreport_2ehpp_318',['subtractReport.hpp',['../subtractReport_8hpp.html',1,'']]],
-  ['symbols_2ecpp_319',['symbols.cpp',['../symbols_8cpp.html',1,'']]],
-  ['symbols_2ehpp_320',['symbols.hpp',['../symbols_8hpp.html',1,'']]]
+  ['readme_2emd_332',['README.md',['../README_8md.html',1,'']]],
+  ['rounding_2ecpp_333',['rounding.cpp',['../rounding_8cpp.html',1,'']]],
+  ['rounding_2ehpp_334',['rounding.hpp',['../rounding_8hpp.html',1,'']]]
 ];

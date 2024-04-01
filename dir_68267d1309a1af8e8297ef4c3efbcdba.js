@@ -15,6 +15,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "colors.cpp", "colors_8cpp.html", "colors_8cpp" ],
     [ "fraction.cpp", "fraction_8cpp.html", null ],
     [ "logging.cpp", "logging_8cpp.html", null ],
+    [ "number.cpp", "number_8cpp.html", null ],
     [ "rounding.cpp", "rounding_8cpp.html", "rounding_8cpp" ],
     [ "symbols.cpp", "symbols_8cpp.html", "symbols_8cpp" ],
     [ "testing.cpp", "testing_8cpp.html", null ],

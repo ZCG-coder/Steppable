@@ -1,22 +1,31 @@
 <map id="reportMultiply" name="reportMultiply">
-<area shape="rect" id="node1" title="Reports a multiplication operation to the user." alt="" coords="1036,289,1151,316"/>
-<area shape="rect" id="node2" href="$basicArithm_8hpp.html#ac99d69ea51545fe30da4a36290f3fedc" title="Multiplies two string representations of numbers." alt="" coords="912,289,988,316"/>
-<area shape="rect" id="node3" href="$baseConvert_8cpp.html#a6443634f54179f61c6e58098cbb32210" title=" " alt="" coords="414,11,518,37"/>
-<area shape="rect" id="node5" href="$basicArithm_8hpp.html#aedf78136562346db852758c848f8e83d" title="Converts a string representation of a number from one base to another." alt="" coords="108,315,233,341"/>
-<area shape="rect" id="node7" href="$division_8cpp.html#a222752517a35fde0e4de4bb32cbaa9be" title="Determines the scale of the quotient of division." alt="" coords="699,264,864,291"/>
-<area shape="rect" id="node8" href="$basicArithm_8hpp.html#acb4215189a8d1cfd37f4f6fe13890a8f" title="Divides a string representation of a number by another string representation of a number." alt="" coords="588,112,651,139"/>
-<area shape="rect" id="node9" href="$basicArithm_8hpp.html#a3b20eba6c9046b375489c668443c165d" title=" " alt="" coords="392,163,540,189"/>
-<area shape="rect" id="node11" href="$powerReport_8cpp.html#afff5f8aa771cf432836ef03f6f442dae" title="Reports a power operation." alt="" coords="415,213,517,240"/>
-<area shape="rect" id="node15" href="$multiply_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="754,365,809,392"/>
-<area shape="rect" id="node16" href="$classFraction.html#a76d9c8cbd0d7442c1c78cab88eb29cb2" title="Multiplies two fractions together. This function does it by doing a simple fraction multiplication an..." alt="" coords="709,416,853,443"/>
-<area shape="rect" id="node17" href="$classFraction.html#abf6c69e3adc859e25d9040583f3ca1d5" title="Adds two fractions together. This function does it by doing a simple fraction addition and returns th..." alt="" coords="707,467,855,493"/>
-<area shape="rect" id="node18" href="$classFraction.html#a4f19125df2684e17c9a9f439eb38261d" title="Subtracts a fraction from another fraction. This function does it by doing a simple fraction subtract..." alt="" coords="710,517,853,544"/>
-<area shape="rect" id="node19" href="$classFraction.html#a6ed047b2c1c281d348f4358da6d62f2b" title="Divides a fraction by abother fraction. This function does it by doing a simple fraction division (mu..." alt="" coords="711,568,852,595"/>
-<area shape="rect" id="node20" href="$divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2" title="Reports a division step." alt="" coords="710,112,853,139"/>
-<area shape="rect" id="node4" href="$baseConvert_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="285,11,340,37"/>
-<area shape="rect" id="node6" href="$decimalConvert_8cpp.html#ac2c7bcd6d73ca32ee42312d0fa0b1aa9" title=" " alt="" coords="5,315,60,341"/>
-<area shape="rect" id="node10" href="$division_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="439,112,493,139"/>
-<area shape="rect" id="node14" href="$classFraction.html#a6a5092eb855dac602718b19eb7fe0d6d" title="Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom component..." alt="" coords="399,61,533,88"/>
-<area shape="rect" id="node12" href="$basicArithm_8hpp.html#a5967cef8aeb4f6ea90014159becd286d" title="Raises a string representation of a number to a power." alt="" coords="281,264,344,291"/>
-<area shape="rect" id="node13" href="$power_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="143,264,198,291"/>
+<area shape="rect" id="node1" title="Reports a multiplication operation to the user." alt="" coords="1155,411,1269,437"/>
+<area shape="rect" id="node2" href="$basicArithm_8hpp.html#ac99d69ea51545fe30da4a36290f3fedc" title="Multiplies two string representations of numbers." alt="" coords="1031,411,1107,437"/>
+<area shape="rect" id="node3" href="$baseConvert_8cpp.html#a6443634f54179f61c6e58098cbb32210" title=" " alt="" coords="533,56,637,83"/>
+<area shape="rect" id="node5" href="$basicArithm_8hpp.html#aedf78136562346db852758c848f8e83d" title="Converts a string representation of a number from one base to another." alt="" coords="119,411,245,437"/>
+<area shape="rect" id="node7" href="$division_8cpp.html#a222752517a35fde0e4de4bb32cbaa9be" title="Determines the scale of the quotient of division." alt="" coords="817,360,983,387"/>
+<area shape="rect" id="node8" href="$basicArithm_8hpp.html#acb4215189a8d1cfd37f4f6fe13890a8f" title="Divides a string representation of a number by another string representation of a number." alt="" coords="707,208,769,235"/>
+<area shape="rect" id="node9" href="$basicArithm_8hpp.html#a3b20eba6c9046b375489c668443c165d" title=" " alt="" coords="511,259,659,285"/>
+<area shape="rect" id="node13" href="$powerReport_8cpp.html#afff5f8aa771cf432836ef03f6f442dae" title="Reports a power operation." alt="" coords="534,309,635,336"/>
+<area shape="rect" id="node23" href="$multiply_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="873,461,927,488"/>
+<area shape="rect" id="node24" href="$classFraction.html#a76d9c8cbd0d7442c1c78cab88eb29cb2" title="Multiplies two fractions together. This function does it by doing a simple fraction multiplication an..." alt="" coords="828,512,972,539"/>
+<area shape="rect" id="node25" href="$classNumber.html#a47423bd207498e887d574180e1f73b52" title="Multiplies two numbers." alt="" coords="828,563,972,589"/>
+<area shape="rect" id="node26" href="$classFraction.html#abf6c69e3adc859e25d9040583f3ca1d5" title="Adds two fractions together. This function does it by doing a simple fraction addition and returns th..." alt="" coords="826,613,974,640"/>
+<area shape="rect" id="node27" href="$classFraction.html#a4f19125df2684e17c9a9f439eb38261d" title="Subtracts a fraction from another fraction. This function does it by doing a simple fraction subtract..." alt="" coords="829,664,971,691"/>
+<area shape="rect" id="node28" href="$classFraction.html#a6ed047b2c1c281d348f4358da6d62f2b" title="Divides a fraction by abother fraction. This function does it by doing a simple fraction division (mu..." alt="" coords="829,715,971,741"/>
+<area shape="rect" id="node29" href="$divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2" title="Reports a division step." alt="" coords="829,157,971,184"/>
+<area shape="rect" id="node4" href="$baseConvert_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="356,5,411,32"/>
+<area shape="rect" id="node6" href="$decimalConvert_8cpp.html#ac2c7bcd6d73ca32ee42312d0fa0b1aa9" title=" " alt="" coords="5,411,60,437"/>
+<area shape="rect" id="node11" href="$division_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="557,107,612,133"/>
+<area shape="rect" id="node12" href="$classNumber.html#a149a0b50f21e5e73af612d3d7b8fecb7" title="Divides two numbers." alt="" coords="514,157,655,184"/>
+<area shape="rect" id="node17" href="$classFraction.html#a6a5092eb855dac602718b19eb7fe0d6d" title="Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom component..." alt="" coords="517,208,652,235"/>
+<area shape="rect" id="node10" href="$classNumber.html#ad8409f892bbe8cb1be5b4385914b40b2" title="Calculates the remainder of two numbers. (Modulus)" alt="" coords="308,309,459,336"/>
+<area shape="rect" id="node14" href="$basicArithm_8hpp.html#a5967cef8aeb4f6ea90014159becd286d" title="Raises a string representation of a number to a power." alt="" coords="352,360,415,387"/>
+<area shape="rect" id="node15" href="$power_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="155,360,209,387"/>
+<area shape="rect" id="node16" href="$classNumber.html#a98a2fe6b66184133f1261d2825875cd9" title="Raises the number to a power." alt="" coords="108,309,256,336"/>
+<area shape="rect" id="node18" href="$classFraction.html#a260e2faf8062c854a286b79591f87b65" title="Multiplies two fractions together and stores the result in the current one. This function does it by ..." alt="" coords="306,157,461,184"/>
+<area shape="rect" id="node19" href="$classFraction.html#a2c891f9bf7f6dbed8e5a8b4386ce3688" title="Adds two fractions together and stores the result in the current one. This function does it by doing ..." alt="" coords="304,208,463,235"/>
+<area shape="rect" id="node20" href="$classFraction.html#a2e3544fa85d66736287a981fe24bed1b" title="Subtracts a fraction from another fraction and stores the result in the current one...." alt="" coords="307,259,460,285"/>
+<area shape="rect" id="node21" href="$classFraction.html#a2f92ff208c733cbd53e268c710f885d9" title="Divides a fraction by abother fraction and stores the result in the current one. This function does i..." alt="" coords="307,56,459,83"/>
+<area shape="rect" id="node22" href="$classFraction.html#a166ddec943ec4f6ded679ab8d29ebe68" title=" " alt="" coords="318,107,449,133"/>
 </map>
