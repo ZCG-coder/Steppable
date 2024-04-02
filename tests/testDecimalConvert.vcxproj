@@ -160,6 +160,9 @@
     <ClCompile Include="testDecimalConvert.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\base.vcxproj">
+      <Project>{867a7b37-c961-4581-ae5b-067fd464cc7c}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\calc.vcxproj">
       <Project>{0a900aaa-ac12-48cf-85cf-8bb0c0130512}</Project>
     </ProjectReference>

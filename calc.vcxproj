@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\abs\abs.cpp" />
+    <ClCompile Include="src\abs\absReport.cpp" />
     <ClCompile Include="src\add\add.cpp" />
     <ClCompile Include="src\add\addReport.cpp" />
     <ClCompile Include="src\comparison\comparison.cpp" />
@@ -27,14 +29,18 @@
     <ClCompile Include="src\division\divisionReport.cpp" />
     <ClCompile Include="src\multiply\multiply.cpp" />
     <ClCompile Include="src\multiply\multiplyReport.cpp" />
+    <ClCompile Include="src\power\power.cpp" />
+    <ClCompile Include="src\power\powerReport.cpp" />
     <ClCompile Include="src\subtract\subtract.cpp" />
     <ClCompile Include="src\subtract\subtractReport.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\abs\absReport.hpp" />
     <ClInclude Include="src\add\addReport.hpp" />
     <ClInclude Include="src\comparison\comparisonReport.hpp" />
     <ClInclude Include="src\division\divisionReport.hpp" />
     <ClInclude Include="src\multiply\multiplyReport.hpp" />
+    <ClInclude Include="src\power\powerReport.hpp" />
     <ClInclude Include="src\subtract\subtractReport.hpp" />
   </ItemGroup>
   <ItemGroup>

@@ -25,14 +25,14 @@
 #include <ostream>
 
 #ifdef WINDOWS
-    #include <cstdio>
-    #include <io.h>
-    #include <versionhelpers.h>
-    #include <windows.h>
-    // ReSharper disable once CppInconsistentNaming
-    #define isatty _isatty
-    // ReSharper disable once CppInconsistentNaming
-    #define fileno _fileno
+#include <windows.h>
+#include <cstdio>
+#include <io.h>
+#include <versionhelpers.h>
+// ReSharper disable once CppInconsistentNaming
+#define isatty _isatty
+// ReSharper disable once CppInconsistentNaming
+#define fileno _fileno
 #else
     #include <unistd.h>
 #endif
@@ -41,13 +41,13 @@ namespace steppable::__internals::utils
 {
     bool isTerminal(const std::ostream& stream)
     {
-#ifdef WINDOWS
+        #ifdef WINDOWS
         if (IsWindows10OrGreater())
             return isatty(fileno(stdout)) != 0;
         return false; // The Windows console in Windows 7 does not support ANSI escapes
-#else
+        #else
         return isatty(STDOUT_FILENO) != 0;
-#endif
+        #endif
     }
 
     std::ostream& reset(std::ostream& stream)

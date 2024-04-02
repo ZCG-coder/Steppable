@@ -25,8 +25,8 @@
 #include "fn/basicArithm.hpp"
 
 #ifdef WINDOWS
-    #undef min
-    #undef max
+#undef min
+#undef max
 #endif
 
 #include <algorithm>
@@ -80,7 +80,7 @@ namespace steppable::__internals::numUtils
     {
         bool aIsNegative = false, bIsNegative = false;
 
-        std::string a = static_cast<std::string>(_a), b = static_cast<std::string>(_b);
+        auto a = static_cast<std::string>(_a), b = static_cast<std::string>(_b);
         if (properlyFormat)
         {
             a = simplifyPolarity(_a), b = simplifyPolarity(_b);
@@ -144,7 +144,10 @@ namespace steppable::__internals::numUtils
             out.begin() != firstNonZero && out.front() == 0)
         {
             std::replace_if(
-                out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
+                out.begin(),
+                firstNonZero,
+                [](const int num) { return num == 0; },
+                -2);
         }
 
         return out;
@@ -182,6 +185,8 @@ namespace steppable::__internals::numUtils
 
     auto removeTrailingZeros(const std::string& numStr) -> std::decay_t<decltype(numStr)>
     {
+        if (numStr.empty())
+            return "";
         size_t i = numStr.size() - 1;
         while (i > 0 && numStr[i] == '0')
             i--;
@@ -206,7 +211,6 @@ namespace steppable::__internals::numUtils
         long long numberOfZeros = static_cast<long long>(numberDecimal.length()) - newNumberDecimal.length();
         return -(numberOfZeros + 1);
     }
-
 } // namespace steppable::__internals::numUtils
 
 namespace steppable::__internals::stringUtils

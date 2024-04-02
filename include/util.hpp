@@ -42,11 +42,11 @@
 #include <vector>
 
 #ifndef TIC
-    /**
-     * @brief Starts a timer for profiling code execution time.
-     * @param[in] ... The name of the section to profile.
-     */
-    #define TIC(...)                                                                                  \
+/**
+ * @brief Starts a timer for profiling code execution time.
+ * @param[in] ... The name of the section to profile.
+ */
+#define TIC(...)                                                                                  \
         {                                                                                             \
             const char* nameSection = #__VA_ARGS__;                                                   \
             std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << '\n';   \
@@ -55,8 +55,8 @@
 #endif
 
 #ifndef TOC
-    /// @brief Stops the timer and prints the time taken to execute the section.
-    #define TOC()                                                                                                     \
+/// @brief Stops the timer and prints the time taken to execute the section.
+#define TOC()                                                                                                     \
         auto duration =                                                                                               \
             std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start)  \
                 .count();                                                                                             \
@@ -69,8 +69,8 @@
 
 namespace steppable::__internals::utils
 {
-#ifdef WINDOWS
-    #include <Windows.h>
+    #ifdef WINDOWS
+    #include <windows.h>
     #include <fcntl.h>
 
     /**
@@ -129,9 +129,10 @@ namespace steppable::__internals::utils
          * This constructor sets the console output code page to UTF-8 and enables VT mode.
          * It also saves the original code page and VT mode for restoration later.
          */
-        Utf8CodePage() : oldCodePage(::GetConsoleOutputCP())
+        Utf8CodePage() :
+            oldCodePage(GetConsoleOutputCP())
         {
-            ::SetConsoleOutputCP(CP_UTF8);
+            SetConsoleOutputCP(CP_UTF8);
             dwModeOrig = enableVtMode();
         }
 
@@ -142,7 +143,7 @@ namespace steppable::__internals::utils
          */
         ~Utf8CodePage()
         {
-            ::SetConsoleOutputCP(oldCodePage);
+            SetConsoleOutputCP(oldCodePage);
             restoreVtMode(dwModeOrig);
         }
 
@@ -150,7 +151,7 @@ namespace steppable::__internals::utils
         UINT oldCodePage; ///< The original console output code page.
         DWORD dwModeOrig; ///< The original VT mode.
     };
-#else
+    #else
 
     /**
      * @class Utf8CodePage
@@ -162,7 +163,7 @@ namespace steppable::__internals::utils
     class Utf8CodePage
     {
     };
-#endif
+    #endif
 } // namespace steppable::__internals::utils
 
 namespace steppable::__internals::numUtils
@@ -326,7 +327,6 @@ namespace steppable::__internals::numUtils
      * @return The scale of the number
      */
     long long determineScale(const std::string_view& number);
-
 } // namespace steppable::__internals::numUtils
 
 namespace steppable::__internals::stringUtils
@@ -467,6 +467,7 @@ namespace steppable::__internals::stringUtils
             result << item << delimiter;
         return result.str();
     }
+
     /**
      * @brief Makes the given string wider by adding 2 spaces between each character.
      *

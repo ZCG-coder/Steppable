@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{44806C65-F872-4C72-A8F4-6CDEF6AD44A2}</ProjectGuid>
+    <ProjectGuid>{AD080EEA-19BA-4944-B8ED-2B21F1E5F0D7}</ProjectGuid>
     <RootNamespace>testAdd</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -157,15 +157,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="testPower.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\src\power\power.vcxproj">
-      <Project>{0c2c224a-06f4-44f2-847f-b3870608f1ef}</Project>
+    <ProjectReference Include="..\calc.vcxproj">
+      <Project>{0a900aaa-ac12-48cf-85cf-8bb0c0130512}</Project>
     </ProjectReference>
     <ProjectReference Include="..\util.vcxproj">
       <Project>{f6af63f8-9e0f-4da2-89b3-3096b56ba251}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="testPower.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
