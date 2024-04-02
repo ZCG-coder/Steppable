@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['abs_352',['abs',['../basicArithm_8hpp.html#a0bf76a4df6c2748fbcb5b33b3e8166b3',1,'abs(const std::string_view &amp;_number, int steps):&#160;abs.cpp'],['../abs_8cpp.html#a1930a867676803950db773f157663770',1,'abs(const std::string_view &amp;_number, const int steps):&#160;abs.cpp']]],
-  ['add_353',['add',['../basicArithm_8hpp.html#a22524b6e1ea1e62b578978978521148e',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false, bool properlyFormat=true):&#160;add.cpp'],['../add_8cpp.html#a9dab42e311b982887e521b7ef2dc6ad1',1,'add(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool negative, const bool properlyFormat):&#160;add.cpp']]],
-  ['addkeywordarg_354',['addKeywordArg',['../classProgramArgs.html#a8cfadc3e489780e1411ef0807ee6f336',1,'ProgramArgs']]],
-  ['addposarg_355',['addPosArg',['../classProgramArgs.html#a419988f156cdd89651c16c65e6d26c14',1,'ProgramArgs']]],
-  ['addswitch_356',['addSwitch',['../classProgramArgs.html#a1517bda6763b0efc42b5a6ca579a3412',1,'ProgramArgs']]],
-  ['assert_357',['assert',['../classTestCase.html#a0d11e5a480783f9a30c443c28a6a7cae',1,'TestCase']]],
-  ['assertfalse_358',['assertFalse',['../classTestCase.html#ad85adf6c1abe41b1f6577905e7a78b76',1,'TestCase']]],
-  ['assertisequal_359',['assertIsEqual',['../classTestCase.html#abecee8f4e5536c81da631de091f49d3d',1,'TestCase::assertIsEqual(const std::string &amp;a, const std::string &amp;b)'],['../classTestCase.html#ae5c768fcd2922227869145cace1d29b1',1,'TestCase::assertIsEqual(int a, int b)']]],
-  ['assertisnotequal_360',['assertIsNotEqual',['../classTestCase.html#a14aa13de91243652b103aa0e68990bd2',1,'TestCase::assertIsNotEqual(const std::string &amp;a, const std::string &amp;b)'],['../classTestCase.html#a92da43b3cdddf6fa14af5bbf748dd22a',1,'TestCase::assertIsNotEqual(int a, int b)']]],
-  ['asserttrue_361',['assertTrue',['../classTestCase.html#aa22816a3159d8ca22cdfa5f6b15b3789',1,'TestCase']]]
+  ['abs_378',['abs',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a37bfff2d022f3dd5e5a15e800ecfd5d6',1,'steppable::__internals::arithmetic']]],
+  ['add_379',['add',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca',1,'steppable::__internals::arithmetic']]],
+  ['addkeywordarg_380',['addKeywordArg',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a7e42c3d791cd01bb49566b341865f525',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['addposarg_381',['addPosArg',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ab0090c50f11a473ffd6b410c82a73333',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['addswitch_382',['addSwitch',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a00f504dc3e9595c51b921021f8daef0a',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['assert_383',['assert',['../classsteppable_1_1testing_1_1TestCase.html#a72a291251c17f79279ad7235120b7e2c',1,'steppable::testing::TestCase']]],
+  ['assertfalse_384',['assertFalse',['../classsteppable_1_1testing_1_1TestCase.html#a2d411e579a2e94888801e5c86ce0a1c1',1,'steppable::testing::TestCase']]],
+  ['assertisequal_385',['assertIsEqual',['../classsteppable_1_1testing_1_1TestCase.html#a3156df668add7e3abe7c0b47fa1f9cfd',1,'steppable::testing::TestCase::assertIsEqual(const std::string &amp;a, const std::string &amp;b)'],['../classsteppable_1_1testing_1_1TestCase.html#a04f2b690d739f3d1c35a3ee7bc62df5f',1,'steppable::testing::TestCase::assertIsEqual(int a, int b)']]],
+  ['assertisnotequal_386',['assertIsNotEqual',['../classsteppable_1_1testing_1_1TestCase.html#a61790bb36fd5283cec131d81df83aa0e',1,'steppable::testing::TestCase::assertIsNotEqual(const std::string &amp;a, const std::string &amp;b)'],['../classsteppable_1_1testing_1_1TestCase.html#a5b2c520e1adfc9dcd388736b55f36aea',1,'steppable::testing::TestCase::assertIsNotEqual(int a, int b)']]],
+  ['asserttrue_387',['assertTrue',['../classsteppable_1_1testing_1_1TestCase.html#a2eb654185b127e9c62f4fdda127beac1',1,'steppable::testing::TestCase']]]
 ];

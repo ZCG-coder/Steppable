@@ -1,9 +1,9 @@
 var division_8cpp =
 [
-    [ "determineResultScale", "division_8cpp.html#a222752517a35fde0e4de4bb32cbaa9be", null ],
-    [ "divide", "division_8cpp.html#ad8fb7bec6096894294df4c15d498dab7", null ],
-    [ "divideWithQuotient", "division_8cpp.html#a3b20eba6c9046b375489c668443c165d", null ],
-    [ "getGCD", "division_8cpp.html#a7b131aff3518e538acc7c87b822e70d2", null ],
-    [ "getQuotientRemainder", "division_8cpp.html#afe2f9d37fbb1090dfb3af32476b43fca", null ],
+    [ "determineResultScale", "division_8cpp.html#aa150ef39a272f7228ae239679247fab3", null ],
+    [ "divide", "division_8cpp.html#a26194ae8ddb44afb942fbf8335ae1730", null ],
+    [ "divideWithQuotient", "division_8cpp.html#ac9102075acd398b3bdf388f6cc2ef978", null ],
+    [ "getGCD", "division_8cpp.html#a7ff9976bf48df9c832d7489e88004813", null ],
+    [ "getQuotientRemainder", "division_8cpp.html#a677f253d71524a9d500e980dc159c79c", null ],
     [ "main", "division_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17", null ]
 ];

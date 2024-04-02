@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fraction_387',['Fraction',['../classFraction.html#aaa00cc84e0bddbabb44f776a4fe9bf1a',1,'Fraction::Fraction(const std::string &amp;top=&quot;1&quot;, const std::string &amp;bottom=&quot;1&quot;)'],['../classFraction.html#a29efaf0ef03cceab0bfa637e9eea2b7b',1,'Fraction::Fraction()']]]
+  ['fraction_413',['Fraction',['../classsteppable_1_1Fraction.html#a1fa38ab4cede78e19fa478242f6e5b46',1,'steppable::Fraction::Fraction(const std::string &amp;top=&quot;1&quot;, const std::string &amp;bottom=&quot;1&quot;)'],['../classsteppable_1_1Fraction.html#ab5b4a2bd2c9223f2ea7bc5c699857aee',1,'steppable::Fraction::Fraction()']]]
 ];

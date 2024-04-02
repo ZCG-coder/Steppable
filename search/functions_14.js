@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vformat_478',['vFormat',['../format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8',1,'vFormat(const std::basic_string&lt; CharT &gt; sFormat,...):&#160;format.hpp'],['../format_8hpp.html#a145f187acb1003d20b7eb30331d65d4e',1,'vFormat(const CharT *sFormat,...):&#160;format.hpp']]]
+  ['vformat_504',['vFormat',['../namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5',1,'steppable::__internals::format::vFormat(const std::basic_string&lt; CharT &gt; sFormat,...)'],['../namespacesteppable_1_1____internals_1_1format.html#ab2b491e1997d7dc8f996533aadb1d7e3',1,'steppable::__internals::format::vFormat(const CharT *sFormat,...)']]]
 ];

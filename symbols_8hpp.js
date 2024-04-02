@@ -11,9 +11,9 @@ var symbols_8hpp =
     [ "SUP_MAGIC_NUMBER", "symbols_8hpp.html#a21252b83f28c102101dac8095cd47877", null ],
     [ "SUP_Z", "symbols_8hpp.html#aeaa2257a9072b75ea4480a546f2506de", null ],
     [ "THEREFORE", "symbols_8hpp.html#af22000bf74c5aa00bd3d368280700000", null ],
-    [ "makeSubscript", "symbols_8hpp.html#a4c2486dd425b34a3a7b6f64db79add2c", null ],
-    [ "makeSubscript", "symbols_8hpp.html#a28a2b96885d3d1843b836704de48e605", null ],
-    [ "makeSuperscript", "symbols_8hpp.html#ab2a6b7e2d4fcf339ef131d8f335a0690", null ],
-    [ "makeSuperscript", "symbols_8hpp.html#acf67793c16f9f196c7aafa5228649e36", null ],
-    [ "SUPERSCRIPTS", "symbols_8hpp.html#ae7f9945c578c5cf042d74580ee7cff38", null ]
+    [ "makeSubscript", "symbols_8hpp.html#a69d3b3d195d72c87d2e9038acc4e8143", null ],
+    [ "makeSubscript", "symbols_8hpp.html#a993dd4e293dff0986f46f231e35ea5a0", null ],
+    [ "makeSuperscript", "symbols_8hpp.html#a6d577e67e6e7d6ffa1e878308eda0c08", null ],
+    [ "makeSuperscript", "symbols_8hpp.html#a746f88878c7cf9b2390e5836ff30ef40", null ],
+    [ "SUPERSCRIPTS", "symbols_8hpp.html#a525f77652c8df0a7a7512992e3408522", null ]
 ];

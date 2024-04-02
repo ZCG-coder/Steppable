@@ -1,15 +1,15 @@
 var basicArithm_8hpp =
 [
-    [ "QuotientRemainder", "structQuotientRemainder.html", "structQuotientRemainder" ],
-    [ "abs", "basicArithm_8hpp.html#a0bf76a4df6c2748fbcb5b33b3e8166b3", null ],
-    [ "add", "basicArithm_8hpp.html#a22524b6e1ea1e62b578978978521148e", null ],
-    [ "compare", "basicArithm_8hpp.html#ad245e4f72a78f746e7e16ae14f21f2e1", null ],
-    [ "decimalConvert", "basicArithm_8hpp.html#aedf78136562346db852758c848f8e83d", null ],
-    [ "divide", "basicArithm_8hpp.html#acb4215189a8d1cfd37f4f6fe13890a8f", null ],
-    [ "divideWithQuotient", "basicArithm_8hpp.html#a3b20eba6c9046b375489c668443c165d", null ],
-    [ "getGCD", "basicArithm_8hpp.html#a7b131aff3518e538acc7c87b822e70d2", null ],
-    [ "loop", "basicArithm_8hpp.html#a4e1bb2f02ee5d9df627a57d0899ac07b", null ],
-    [ "multiply", "basicArithm_8hpp.html#ac99d69ea51545fe30da4a36290f3fedc", null ],
-    [ "power", "basicArithm_8hpp.html#a5967cef8aeb4f6ea90014159becd286d", null ],
-    [ "subtract", "basicArithm_8hpp.html#a08faec0b8e863df19e3f978758166482", null ]
+    [ "QuotientRemainder", "structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html", "structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder" ],
+    [ "abs", "basicArithm_8hpp.html#a37bfff2d022f3dd5e5a15e800ecfd5d6", null ],
+    [ "add", "basicArithm_8hpp.html#a1deb38d5027df01a66b6c3efd57aedca", null ],
+    [ "compare", "basicArithm_8hpp.html#a5e20e50f3da461a8f9d50b14afd68ea8", null ],
+    [ "decimalConvert", "basicArithm_8hpp.html#afc4c4f319dadbb5b1ff481132f008374", null ],
+    [ "divide", "basicArithm_8hpp.html#a26194ae8ddb44afb942fbf8335ae1730", null ],
+    [ "divideWithQuotient", "basicArithm_8hpp.html#ac9102075acd398b3bdf388f6cc2ef978", null ],
+    [ "getGCD", "basicArithm_8hpp.html#a7ff9976bf48df9c832d7489e88004813", null ],
+    [ "loop", "basicArithm_8hpp.html#a210c635ae60eaa54f65bc82a0f3c953a", null ],
+    [ "multiply", "basicArithm_8hpp.html#a59c559ff2ec84dc1964531893a457c66", null ],
+    [ "power", "basicArithm_8hpp.html#a50acfa1ad06ce385943ddd207146c9e0", null ],
+    [ "subtract", "basicArithm_8hpp.html#ae61ae2915786a49aebb7025105cf058e", null ]
 ];

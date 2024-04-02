@@ -6,7 +6,7 @@ var searchData=
   ['colors_2ecpp_46',['colors.cpp',['../colors_8cpp.html',1,'']]],
   ['colors_2ehpp_47',['colors.hpp',['../colors_8hpp.html',1,'']]],
   ['colorsbg_48',['colorsBg',['../namespacecolorsBg.html',1,'']]],
-  ['compare_49',['compare',['../comparison_8cpp.html#a50f42b045a56b9281aa72b313cd846e4',1,'compare(const std::string_view &amp;_a, const std::string_view &amp;_b, const int steps):&#160;comparison.cpp'],['../basicArithm_8hpp.html#ad245e4f72a78f746e7e16ae14f21f2e1',1,'compare(const std::string_view &amp;_a, const std::string_view &amp;_b, int steps=2):&#160;comparison.cpp']]],
+  ['compare_49',['compare',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8',1,'steppable::__internals::arithmetic']]],
   ['comparison_2ecpp_50',['comparison.cpp',['../comparison_8cpp.html',1,'']]],
   ['comparisonreport_2ecpp_51',['comparisonReport.cpp',['../comparisonReport_8cpp.html',1,'']]],
   ['comparisonreport_2ehpp_52',['comparisonReport.hpp',['../comparisonReport_8hpp.html',1,'']]],
@@ -15,5 +15,5 @@ var searchData=
   ['contributor_20covenant_20code_20of_20conduct_55',['Contributor Covenant Code of Conduct',['../md_CODE_OF_CONDUCT.html',1,'']]],
   ['ctrl_56',['ctrl',['../structKey.html#a97f85d429912bf65561ea8d3bc5dae2e',1,'Key']]],
   ['ctrlccount_57',['ctrlCCount',['../structProgram.html#a5830c07b31c5cc926615c8502149e7f4',1,'Program']]],
-  ['cyan_58',['cyan',['../namespacecolors.html#a33d7e6bac58f3a3df6736b2cda660c39',1,'colors']]]
+  ['cyan_58',['cyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a71b169724de6cde942ccf6caba218e16',1,'steppable::__internals::utils::colors']]]
 ];

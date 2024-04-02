@@ -1,17 +1,17 @@
 var searchData=
 [
-  ['baseconvert_362',['baseConvert',['../baseConvert_8cpp.html#a6443634f54179f61c6e58098cbb32210',1,'baseConvert.cpp']]],
-  ['black_363',['black',['../namespacecolors.html#a0fa6e59a3122b1dc005a7cc85b202196',1,'colors']]],
-  ['blink_364',['blink',['../namespaceformats.html#a5b9020d2a206a316fac6d161c042393f',1,'formats']]],
-  ['blue_365',['blue',['../namespacecolors.html#a593947660481fa3761b887b7f74d07fe',1,'colors']]],
-  ['bold_366',['bold',['../namespaceformats.html#a02e589d39c7fb74bc6095fffeb1480fb',1,'formats']]],
-  ['bothendsreplace_367',['bothEndsReplace',['../util_8hpp.html#abcb0e591d56d9eee835f0eb199557635',1,'util.hpp']]],
-  ['brightblack_368',['brightBlack',['../namespacecolors.html#a84fccc7276503965cb236132f32a46af',1,'colors::brightBlack()'],['../namespacecolorsBg.html#a5b801b38de80db3c5dcb9dd9a631f660',1,'colorsBg::brightBlack()']]],
-  ['brightblue_369',['brightBlue',['../namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b',1,'colors::brightBlue()'],['../namespacecolorsBg.html#a12983f2c421e5524f2948804b97259ec',1,'colorsBg::brightBlue()']]],
-  ['brightcyan_370',['brightCyan',['../namespacecolors.html#aa80b645acaa1035a635a3e3f4851192f',1,'colors::brightCyan()'],['../namespacecolorsBg.html#a211c9272a12ac00454da338e09f09bac',1,'colorsBg::brightCyan()']]],
-  ['brightgreen_371',['brightGreen',['../namespacecolors.html#a42277c9cca5e0b31995c90e72ca4717b',1,'colors::brightGreen()'],['../namespacecolorsBg.html#a2dd327a88936a6e31df09df3d25a2ad4',1,'colorsBg::brightGreen()']]],
-  ['brightmagenta_372',['brightMagenta',['../namespacecolors.html#abf2084fd285d2eaf81304d0e15b5e0a2',1,'colors']]],
-  ['brightred_373',['brightRed',['../namespacecolors.html#a4b3fcd850810456e0b1afc5c83d4652d',1,'colors::brightRed()'],['../namespacecolorsBg.html#a15bae1a6e8a0000cb905daf2cd784eb1',1,'colorsBg::brightRed()']]],
-  ['brightwhite_374',['brightWhite',['../namespacecolors.html#a9d9ae3d80c0496ac1d30022f70e72b14',1,'colors::brightWhite()'],['../namespacecolorsBg.html#acf394c98b88d305d1cf39c3e0cbe111d',1,'colorsBg::brightWhite()']]],
-  ['brightyellow_375',['brightYellow',['../namespacecolors.html#affa7563d5c850674498708e7a3f2137e',1,'colors::brightYellow()'],['../namespacecolorsBg.html#afe3da9410841ee447058e7facfd69d19',1,'colorsBg::brightYellow()']]]
+  ['baseconvert_388',['baseConvert',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a7e727b70fed2eba6324a6e41d1a1fe03',1,'steppable::__internals::arithmetic']]],
+  ['black_389',['black',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad336a4a15381fd18dfef501bb8a18659',1,'steppable::__internals::utils::colors']]],
+  ['blink_390',['blink',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a81741a5947da47cf70427e92cef9fb3c',1,'steppable::__internals::utils::formats']]],
+  ['blue_391',['blue',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a60e405320c8f162ff41ad8e3cde071a8',1,'steppable::__internals::utils::colors']]],
+  ['bold_392',['bold',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a020bdff691dad4ade1a65f76bef6bfd0',1,'steppable::__internals::utils::formats']]],
+  ['bothendsreplace_393',['bothEndsReplace',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ae02cbf753dc057728813546bd80336da',1,'steppable::__internals::stringUtils']]],
+  ['brightblack_394',['brightBlack',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a58dd1f4567462d8571dd024ea2d5d483',1,'steppable::__internals::utils::colors::brightBlack()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a94a98cf9653f1890743181c4c76e1bc1',1,'steppable::__internals::utils::colorsBg::brightBlack()']]],
+  ['brightblue_395',['brightBlue',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad218e37dd295aeff04ca94c2ea4e7cfd',1,'steppable::__internals::utils::colors::brightBlue()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#aa16d7262258186b45188a5f57d968662',1,'steppable::__internals::utils::colorsBg::brightBlue()']]],
+  ['brightcyan_396',['brightCyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4c441d71252273750960c63b9a1c70e1',1,'steppable::__internals::utils::colors::brightCyan()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#ab43a36a214b76652fdffdfa14f6541a3',1,'steppable::__internals::utils::colorsBg::brightCyan()']]],
+  ['brightgreen_397',['brightGreen',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a0c81a57789690db931ec76b0407d1e17',1,'steppable::__internals::utils::colors::brightGreen()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a19fc39336d006e1c63e43539d3ea64cd',1,'steppable::__internals::utils::colorsBg::brightGreen()']]],
+  ['brightmagenta_398',['brightMagenta',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a303aa7d08bab0337d289b9b5aa60b494',1,'steppable::__internals::utils::colors']]],
+  ['brightred_399',['brightRed',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ab5c01595115bcd6cbb49f3184c33ff89',1,'steppable::__internals::utils::colors::brightRed()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#acb2ba6677f337e49e2d600356cd881b2',1,'steppable::__internals::utils::colorsBg::brightRed()']]],
+  ['brightwhite_400',['brightWhite',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a08de55f887db0083edef018dbdbf0fce',1,'steppable::__internals::utils::colors::brightWhite()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a217842b1e467813034a1c6b4d49ce7d8',1,'steppable::__internals::utils::colorsBg::brightWhite()']]],
+  ['brightyellow_401',['brightYellow',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a54e47b365870a35d50a00044ff37b2cc',1,'steppable::__internals::utils::colors::brightYellow()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a13dc19a90f0f88e436e7d4fa26e5cf84',1,'steppable::__internals::utils::colorsBg::brightYellow()']]]
 ];

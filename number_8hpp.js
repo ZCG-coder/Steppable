@@ -1,11 +1,11 @@
 var number_8hpp =
 [
-    [ "Number", "classNumber.html", "classNumber" ],
-    [ "RoundingMode", "number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101", [
-      [ "USE_MAXIMUM_PREC", "number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a14cd01456d899d2e25a95dcf3f1db683", null ],
-      [ "USE_MINIMUM_PREC", "number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a593013e42fe3e5cf3821ebfd309157c7", null ],
-      [ "USE_CURRENT_PREC", "number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a6cc88e1d0aaf8b43d68a7e9ee216387e", null ],
-      [ "USE_OTHER_PREC", "number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101af9b3ff50b319d3944ba0694219d62869", null ],
-      [ "DISCARD_ALL_DECIMALS", "number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a6c51b24d765ee9c58ca614db192d4d23", null ]
+    [ "Number", "classsteppable_1_1Number.html", "classsteppable_1_1Number" ],
+    [ "RoundingMode", "number_8hpp.html#a61949411cf477d12b3d15472d5b83092", [
+      [ "USE_MAXIMUM_PREC", "number_8hpp.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba", null ],
+      [ "USE_MINIMUM_PREC", "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb", null ],
+      [ "USE_CURRENT_PREC", "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64", null ],
+      [ "USE_OTHER_PREC", "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda", null ],
+      [ "DISCARD_ALL_DECIMALS", "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320", null ]
     ] ]
 ];

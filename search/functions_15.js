@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['warning_479',['warning',['../classlogging_1_1Logger.html#a0a39b4bb48441b231c2785daa5dcf047',1,'logging::Logger::warning(const std::string &amp;message)'],['../classlogging_1_1Logger.html#af60b9846b37367a61e68b115ead98c9f',1,'logging::Logger::warning(const std::string &amp;message, Args &amp;&amp;... args)'],['../output_8hpp.html#a4a49ff5b1e760d5e8b77261236222156',1,'warning():&#160;output.hpp']]],
-  ['what_480',['what',['../classZeroDenominatorException.html#a602926a93b2e84020db1f0fc8984a3e8',1,'ZeroDenominatorException::what()'],['../classMultiLengthLetterException.html#ae1e814c31d2d20dd1193f67d429dc65e',1,'MultiLengthLetterException::what()']]],
-  ['white_481',['white',['../namespacecolors.html#ac68589f5d088261050ac4981a2cb9bc9',1,'colors']]]
+  ['warning_505',['warning',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#ae1f860b54fd4b6676147b75623bcae62',1,'steppable::__internals::logging::Logger::warning(const std::string &amp;message)'],['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#ad7e980e57cb9ef5437083e43851b3594',1,'steppable::__internals::logging::Logger::warning(const std::string &amp;message, Args &amp;&amp;... args)'],['../namespacesteppable_1_1output.html#a79984a569aee130e0b145359a404754e',1,'steppable::output::warning()']]],
+  ['what_506',['what',['../classsteppable_1_1exceptions_1_1ZeroDenominatorException.html#a112d7bb248abb14c434386f1d5b07a9e',1,'steppable::exceptions::ZeroDenominatorException::what()'],['../classsteppable_1_1exceptions_1_1MultiLengthLetterException.html#ad4af8d8d226625910b92a0440bf3fcb7',1,'steppable::exceptions::MultiLengthLetterException::what()']]],
+  ['white_507',['white',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a161aa6bc9866ba4759f8cefd64fed151',1,'steppable::__internals::utils::colors']]]
 ];

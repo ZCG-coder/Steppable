@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('comparison_8cpp.html',''); initResizab
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">comparison.cpp File Reference</div>  </div>
@@ -104,72 +105,20 @@ Include dependency graph for comparison.cpp:</div>
 </div>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacesteppable_1_1____internals_1_1arithmetic"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html">steppable::__internals::arithmetic</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a50f42b045a56b9281aa72b313cd846e4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comparison_8cpp.html#a50f42b045a56b9281aa72b313cd846e4">compare</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, const int steps)</td></tr>
-<tr class="memdesc:a50f42b045a56b9281aa72b313cd846e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two string representations of numbers.  <a href="comparison_8cpp.html#a50f42b045a56b9281aa72b313cd846e4">More...</a><br /></td></tr>
-<tr class="separator:a50f42b045a56b9281aa72b313cd846e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">steppable::__internals::arithmetic::compare</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, int steps=2)</td></tr>
+<tr class="memdesc:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two string representations of numbers.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">More...</a><br /></td></tr>
+<tr class="separator:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01b8b8bd5868995ae4a51d8c87cc82dd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comparison_8cpp.html#a01b8b8bd5868995ae4a51d8c87cc82dd">main</a> (int _argc, const char **_argv)</td></tr>
 <tr class="separator:a01b8b8bd5868995ae4a51d8c87cc82dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a50f42b045a56b9281aa72b313cd846e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50f42b045a56b9281aa72b313cd846e4">&#9670;&nbsp;</a></span>compare()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string compare </td>
-          <td>(</td>
-          <td class="paramtype">const std::string_view &amp;&#160;</td>
-          <td class="paramname"><em>_a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string_view &amp;&#160;</td>
-          <td class="paramname"><em>_b</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>steps</em> = <code>2</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Compares two string representations of numbers. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_a</td><td>The first string representation of the number. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">_b</td><td>The second string representation of the number. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the comparison. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A string indicating the result of the comparison: "2" if a and b are equal, "1" if a is greater than b, "0" if a is less than b. </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="comparison_8cpp_a50f42b045a56b9281aa72b313cd846e4_cgraph.svg" width="100%" height="518"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="comparison_8cpp_a50f42b045a56b9281aa72b313cd846e4_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-
-</div>
-</div>
 <a id="a01b8b8bd5868995ae4a51d8c87cc82dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a01b8b8bd5868995ae4a51d8c87cc82dd">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -198,7 +147,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="comparison_8cpp_a01b8b8bd5868995ae4a51d8c87cc82dd_cgraph.svg" width="100%" height="518"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="comparison_8cpp_a01b8b8bd5868995ae4a51d8c87cc82dd_cgraph.svg" width="100%" height="579"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -224,7 +173,7 @@ Here is the call graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 1 2024 15:43:08"; // Will get replaced by Doxygen
+        const dateStr = "Tue Apr 2 2024 01:23:31"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

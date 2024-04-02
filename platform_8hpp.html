@@ -96,10 +96,11 @@ $(document).ready(function(){initNavTree('platform_8hpp.html',''); initResizable
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdlib&gt;</code><br />
 <code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for platform.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="platform_8hpp__incl.svg" width="168" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="platform_8hpp__incl.svg" width="248" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -116,14 +117,17 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceinternals"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinternals.html">internals</a></td></tr>
 <tr class="memdesc:namespaceinternals"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace for internal functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacesteppable_1_1____internals_1_1utils"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></td></tr>
+<tr class="memdesc:namespacesteppable_1_1____internals_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">The namespace containing utility functions for the Steppable library. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1e32c90e4c076ff4eaa2ac510e1d586e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e">internals::programSafeExit</a> (const int status)</td></tr>
-<tr class="memdesc:a1e32c90e4c076ff4eaa2ac510e1d586e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit the program safely.  <a href="namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e">More...</a><br /></td></tr>
-<tr class="separator:a1e32c90e4c076ff4eaa2ac510e1d586e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27d06fa2d5220c9128fdbb6674cf79c0"><td class="memItemLeft" align="right" valign="top">std::tm&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinternals.html#a27d06fa2d5220c9128fdbb6674cf79c0">internals::localtime_xp</a> (std::time_t *timer)</td></tr>
-<tr class="separator:a27d06fa2d5220c9128fdbb6674cf79c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265f606a0e1f8eb0fc678593f7f44be7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">steppable::__internals::utils::programSafeExit</a> (const int status)</td></tr>
+<tr class="memdesc:a265f606a0e1f8eb0fc678593f7f44be7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit the program safely.  <a href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">More...</a><br /></td></tr>
+<tr class="separator:a265f606a0e1f8eb0fc678593f7f44be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52bb814d5639116caa0b4a53b7f53e5e"><td class="memItemLeft" align="right" valign="top">std::tm&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e">steppable::__internals::utils::localtime_xp</a> (std::time_t *timer)</td></tr>
+<tr class="separator:a52bb814d5639116caa0b4a53b7f53e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains platform-specific functions As the name suggests, this file contains functions that are specific to a certain platform. For example, the programSafeExit function uses std::quick_exit on Windows and exit on macOS, because std::quick_exit is not implemented on macOS. </p>
@@ -149,7 +153,7 @@ Functions</h2></td></tr>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 1 2024 15:43:08"; // Will get replaced by Doxygen
+        const dateStr = "Tue Apr 2 2024 01:23:31"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

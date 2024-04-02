@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['setw_464',['setw',['../structinternals_1_1setw.html#a350c69e417ce0b9fd405ff2ac7c294e2',1,'internals::setw']]],
-  ['simplify_465',['simplify',['../classFraction.html#a6a5092eb855dac602718b19eb7fe0d6d',1,'Fraction']]],
-  ['simplifypolarity_466',['simplifyPolarity',['../util_8hpp.html#a32344e51c6ae485367b4fbf6bb535742',1,'simplifyPolarity(const std::string_view &amp;_string):&#160;util.cpp'],['../util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742',1,'simplifyPolarity(const std::string_view &amp;_string):&#160;util.cpp']]],
-  ['simplifyzeropolarity_467',['simplifyZeroPolarity',['../util_8hpp.html#a70584872ee14fa0befa8f25788f98a2b',1,'simplifyZeroPolarity(const std::string_view &amp;string):&#160;util.cpp'],['../util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b',1,'simplifyZeroPolarity(const std::string_view &amp;string):&#160;util.cpp']]],
-  ['split_468',['split',['../util_8hpp.html#a771e8f4ac1c095d4c0fef2c966cd69d7',1,'split(std::basic_string&lt; CharT &gt; s, const CharT separator):&#160;util.hpp'],['../util_8hpp.html#a4bd2c04ff3c3cf1dfddb3fb97da971c0',1,'split(std::basic_string_view&lt; CharT &gt; s, const CharT separator):&#160;util.hpp']]],
-  ['splitnumber_469',['splitNumber',['../util_8hpp.html#a3cd8277bb803a7241ab377e88d8c6876',1,'splitNumber(const std::string_view &amp;a, const std::string_view &amp;b, bool padInteger=true, bool padDecimal=true, bool properlyFormat=true, bool preserveNegative=false):&#160;util.cpp'],['../util_8cpp.html#a9b8bdd090e70683287d8d6dbf4ab27ff',1,'splitNumber(const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal, bool properlyFormat, bool preserveNegative):&#160;util.cpp']]],
-  ['standardizenumber_470',['standardizeNumber',['../util_8hpp.html#afbed3096b7064ba07c83c6c15212b793',1,'standardizeNumber(const std::string_view &amp;_number):&#160;util.cpp'],['../util_8cpp.html#afbed3096b7064ba07c83c6c15212b793',1,'standardizeNumber(const std::string_view &amp;_number):&#160;util.cpp']]],
-  ['subtract_471',['subtract',['../basicArithm_8hpp.html#a08faec0b8e863df19e3f978758166482',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false):&#160;subtract.cpp'],['../subtract_8cpp.html#ac94acf58b23f19e226b9263fa3a2b0da',1,'subtract(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool noMinus):&#160;subtract.cpp']]],
-  ['summarize_472',['summarize',['../classTestCase.html#a066fd61f7f3693cdd821d7057611cf61',1,'TestCase']]]
+  ['setw_490',['setw',['../structsteppable_1_1____internals_1_1utils_1_1setw.html#a01b3deb613465b162ac58e8c59ad84ab',1,'steppable::__internals::utils::setw']]],
+  ['simplify_491',['simplify',['../classsteppable_1_1Fraction.html#a9cf64d847c268d9334775c572ef75dfa',1,'steppable::Fraction']]],
+  ['simplifypolarity_492',['simplifyPolarity',['../namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472',1,'steppable::__internals::numUtils']]],
+  ['simplifyzeropolarity_493',['simplifyZeroPolarity',['../namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066',1,'steppable::__internals::numUtils']]],
+  ['split_494',['split',['../namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7',1,'steppable::__internals::stringUtils::split(std::basic_string&lt; CharT &gt; s, const CharT separator)'],['../namespacesteppable_1_1____internals_1_1stringUtils.html#a2c413d8a2ab72da0854f746f3a3d6178',1,'steppable::__internals::stringUtils::split(std::basic_string_view&lt; CharT &gt; s, const CharT separator)']]],
+  ['splitnumber_495',['splitNumber',['../namespacesteppable_1_1____internals_1_1numUtils.html#ad13b8651b0d069d596f7e25f78a8b4ed',1,'steppable::__internals::numUtils']]],
+  ['standardizenumber_496',['standardizeNumber',['../namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9',1,'steppable::__internals::numUtils']]],
+  ['subtract_497',['subtract',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e',1,'steppable::__internals::arithmetic']]],
+  ['summarize_498',['summarize',['../classsteppable_1_1testing_1_1TestCase.html#a2cb156d120e70f37ceb5421fbf04f8f7',1,'steppable::testing::TestCase']]]
 ];

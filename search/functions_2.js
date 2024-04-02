@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['compare_376',['compare',['../basicArithm_8hpp.html#ad245e4f72a78f746e7e16ae14f21f2e1',1,'compare(const std::string_view &amp;_a, const std::string_view &amp;_b, int steps=2):&#160;comparison.cpp'],['../comparison_8cpp.html#a50f42b045a56b9281aa72b313cd846e4',1,'compare(const std::string_view &amp;_a, const std::string_view &amp;_b, const int steps):&#160;comparison.cpp']]],
-  ['cyan_377',['cyan',['../namespacecolors.html#a33d7e6bac58f3a3df6736b2cda660c39',1,'colors']]]
+  ['compare_402',['compare',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8',1,'steppable::__internals::arithmetic']]],
+  ['cyan_403',['cyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a71b169724de6cde942ccf6caba218e16',1,'steppable::__internals::utils::colors']]]
 ];

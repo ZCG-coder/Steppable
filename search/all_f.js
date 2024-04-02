@@ -1,21 +1,21 @@
 var searchData=
 [
-  ['parseargs_164',['parseArgs',['../classProgramArgs.html#a849066672f4caced42480a76dec02fdd',1,'ProgramArgs']]],
+  ['parseargs_164',['parseArgs',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a1e29a694f062b4975a737c2519a98d89',1,'steppable::__internals::utils::ProgramArgs']]],
   ['platform_2ehpp_165',['platform.hpp',['../platform_8hpp.html',1,'']]],
-  ['posargdescriptions_166',['posArgDescriptions',['../classProgramArgs.html#a4ce40731d055aa61933de73dff8a5505',1,'ProgramArgs']]],
-  ['posargisnumber_167',['posArgIsNumber',['../classProgramArgs.html#a2bd740f77e5b15c7b047a85f3721373c',1,'ProgramArgs']]],
-  ['posargs_168',['PosArgs',['../argParse_8hpp.html#abcc0e9a7c3b8fc77562a1b471ab29390',1,'argParse.hpp']]],
-  ['posargs_169',['posArgs',['../classProgramArgs.html#a40242eb883e363f5dc861da07830a0c2',1,'ProgramArgs']]],
-  ['power_170',['power',['../basicArithm_8hpp.html#a5967cef8aeb4f6ea90014159becd286d',1,'power(std::string_view _number, const std::string_view &amp;raiseTo, int steps=2):&#160;power.cpp'],['../power_8cpp.html#af89984cd69aac63fd697b9cdcc548020',1,'power(const std::string_view _number, const std::string_view &amp;_raiseTo, const int steps):&#160;power.cpp']]],
+  ['posargdescriptions_166',['posArgDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ad7aaf0bfbd5e6f71b10c5d201b4d745f',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['posargisnumber_167',['posArgIsNumber',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a6056f31e29c7d75aefa766be61546869',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['posargs_168',['PosArgs',['../namespacesteppable_1_1____internals_1_1utils.html#a043e3488d3b78bc81e9997872f3381e2',1,'steppable::__internals::utils']]],
+  ['posargs_169',['posArgs',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ad6cb9dcbc093aa862459b47cf5a67285',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['power_170',['power',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0',1,'steppable::__internals::arithmetic']]],
   ['power_2ecpp_171',['power.cpp',['../power_8cpp.html',1,'']]],
   ['powerreport_2ecpp_172',['powerReport.cpp',['../powerReport_8cpp.html',1,'']]],
   ['powerreport_2ehpp_173',['powerReport.hpp',['../powerReport_8hpp.html',1,'']]],
-  ['prec_174',['prec',['../classNumber.html#a41734ae79b8bc15031346800481f9343',1,'Number']]],
-  ['present_175',['present',['../classFraction.html#a166ddec943ec4f6ded679ab8d29ebe68',1,'Fraction::present()'],['../classNumber.html#a35c35a00e490f47dda32f34fd6acdf66',1,'Number::present()']]],
-  ['printusage_176',['printUsage',['../classProgramArgs.html#a37d6e46cb7b30f1a93a8455b7ce192f0',1,'ProgramArgs']]],
+  ['prec_174',['prec',['../classsteppable_1_1Number.html#a2e23e169025f1308a248a0d508d2e33c',1,'steppable::Number']]],
+  ['present_175',['present',['../classsteppable_1_1Fraction.html#a9a892820854af33b0eabc6b6ec43b389',1,'steppable::Fraction::present()'],['../classsteppable_1_1Number.html#a53336a206658f92db7191ec3b4a21f7c',1,'steppable::Number::present()']]],
+  ['printusage_176',['printUsage',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af3703e67d1a580ec98788508de89af45',1,'steppable::__internals::utils::ProgramArgs']]],
   ['program_177',['program',['../guiBase_8cpp.html#a4d68e7b5d27fdd7e85a328b3261c013f',1,'guiBase.cpp']]],
   ['program_178',['Program',['../structProgram.html',1,'']]],
-  ['programargs_179',['ProgramArgs',['../classProgramArgs.html',1,'ProgramArgs'],['../classProgramArgs.html#aa22388f97b615afd8fdf86a9ee96841c',1,'ProgramArgs::ProgramArgs(int _argc, const char **argv)']]],
-  ['programname_180',['programName',['../classProgramArgs.html#a9f5e13b1fd67d6fbb1bba8e4d1abd085',1,'ProgramArgs']]],
-  ['programsafeexit_181',['programSafeExit',['../namespaceinternals.html#a1e32c90e4c076ff4eaa2ac510e1d586e',1,'internals']]]
+  ['programargs_179',['ProgramArgs',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ae0808db6f62b2b091eb1f5aa6749adcd',1,'steppable::__internals::utils::ProgramArgs::ProgramArgs()'],['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['programname_180',['programName',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a50039f2d6bfcbca1bf3b589a04669891',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['programsafeexit_181',['programSafeExit',['../namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7',1,'steppable::__internals::utils']]]
 ];

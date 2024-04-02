@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('format_8hpp.html',''); initResizable()
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">format.hpp File Reference</div>  </div>
@@ -111,126 +112,30 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="format_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacesteppable_1_1____internals_1_1format"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1format.html">steppable::__internals::format</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aec7a78e0e53305094ec38dc8bd038de8"><td class="memTemplParams" colspan="2">template&lt;typename CharT &gt; </td></tr>
-<tr class="memitem:aec7a78e0e53305094ec38dc8bd038de8"><td class="memTemplItemLeft" align="right" valign="top">std::basic_string&lt; CharT &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">vFormat</a> (const std::basic_string&lt; CharT &gt; sFormat,...)</td></tr>
-<tr class="memdesc:aec7a78e0e53305094ec38dc8bd038de8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a string using a variable number of arguments.  <a href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">More...</a><br /></td></tr>
-<tr class="separator:aec7a78e0e53305094ec38dc8bd038de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a145f187acb1003d20b7eb30331d65d4e"><td class="memTemplParams" colspan="2">template&lt;typename CharT &gt; </td></tr>
-<tr class="memitem:a145f187acb1003d20b7eb30331d65d4e"><td class="memTemplItemLeft" align="right" valign="top">std::basic_string&lt; CharT &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="format_8hpp.html#a145f187acb1003d20b7eb30331d65d4e">vFormat</a> (const CharT *sFormat,...)</td></tr>
-<tr class="memdesc:a145f187acb1003d20b7eb30331d65d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a string using a format specifier and variable arguments.  <a href="format_8hpp.html#a145f187acb1003d20b7eb30331d65d4e">More...</a><br /></td></tr>
-<tr class="separator:a145f187acb1003d20b7eb30331d65d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ce7e3333d78668b52ce033ea3307ce5"><td class="memTemplParams" colspan="2">template&lt;typename CharT &gt; </td></tr>
+<tr class="memitem:a4ce7e3333d78668b52ce033ea3307ce5"><td class="memTemplItemLeft" align="right" valign="top">std::basic_string&lt; CharT &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5">steppable::__internals::format::vFormat</a> (const std::basic_string&lt; CharT &gt; sFormat,...)</td></tr>
+<tr class="memdesc:a4ce7e3333d78668b52ce033ea3307ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a string using a variable number of arguments.  <a href="namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5">More...</a><br /></td></tr>
+<tr class="separator:a4ce7e3333d78668b52ce033ea3307ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b491e1997d7dc8f996533aadb1d7e3"><td class="memTemplParams" colspan="2">template&lt;typename CharT &gt; </td></tr>
+<tr class="memitem:ab2b491e1997d7dc8f996533aadb1d7e3"><td class="memTemplItemLeft" align="right" valign="top">std::basic_string&lt; CharT &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1format.html#ab2b491e1997d7dc8f996533aadb1d7e3">steppable::__internals::format::vFormat</a> (const CharT *sFormat,...)</td></tr>
+<tr class="memdesc:ab2b491e1997d7dc8f996533aadb1d7e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a string using a format specifier and variable arguments.  <a href="namespacesteppable_1_1____internals_1_1format.html#ab2b491e1997d7dc8f996533aadb1d7e3">More...</a><br /></td></tr>
+<tr class="separator:ab2b491e1997d7dc8f996533aadb1d7e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains the definition of the vFormat function template. </p>
 <p>The vFormat function template provides a convenient way to format strings using variable arguments. It supports both C-style format strings and std::basic_string format strings. The formatted string is returned as a std::basic_string object.</p>
-<p>Example usage: </p><div class="fragment"><div class="line">std::string formatted = <a class="code" href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">vFormat</a>(<span class="stringliteral">&quot;Hello, %s!&quot;</span>, <span class="stringliteral">&quot;world&quot;</span>);</div>
-<div class="ttc" id="aformat_8hpp_html_aec7a78e0e53305094ec38dc8bd038de8"><div class="ttname"><a href="format_8hpp.html#aec7a78e0e53305094ec38dc8bd038de8">vFormat</a></div><div class="ttdeci">std::basic_string&lt; CharT &gt; vFormat(const std::basic_string&lt; CharT &gt; sFormat,...)</div><div class="ttdoc">Formats a string using a variable number of arguments.</div><div class="ttdef"><b>Definition:</b> format.hpp:60</div></div>
+<p>Example usage: </p><div class="fragment"><div class="line">std::string formatted = <a class="code" href="namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5">vFormat</a>(<span class="stringliteral">&quot;Hello, %s!&quot;</span>, <span class="stringliteral">&quot;world&quot;</span>);</div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1format_html_a4ce7e3333d78668b52ce033ea3307ce5"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5">steppable::__internals::format::vFormat</a></div><div class="ttdeci">std::basic_string&lt; CharT &gt; vFormat(const std::basic_string&lt; CharT &gt; sFormat,...)</div><div class="ttdoc">Formats a string using a variable number of arguments.</div><div class="ttdef"><b>Definition:</b> format.hpp:62</div></div>
 </div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>Andy Zhang </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>27th November 2023 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a145f187acb1003d20b7eb30331d65d4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a145f187acb1003d20b7eb30331d65d4e">&#9670;&nbsp;</a></span>vFormat() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CharT &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::basic_string&lt;CharT&gt; vFormat </td>
-          <td>(</td>
-          <td class="paramtype">const CharT *&#160;</td>
-          <td class="paramname"><em>sFormat</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Formats a string using a format specifier and variable arguments. </p>
-<p>This function takes a format specifier and variable arguments, similar to the printf function, and returns a formatted string. The format specifier is a string that may contain placeholders for the variable arguments. The function uses the vsnprintf function to perform the formatting.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">CharT</td><td>The character type of the string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">sFormat</td><td>The format specifier string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>The variable arguments. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The formatted string. </dd></dl>
-
-</div>
-</div>
-<a id="aec7a78e0e53305094ec38dc8bd038de8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec7a78e0e53305094ec38dc8bd038de8">&#9670;&nbsp;</a></span>vFormat() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CharT &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::basic_string&lt;CharT&gt; vFormat </td>
-          <td>(</td>
-          <td class="paramtype">const std::basic_string&lt; CharT &gt;&#160;</td>
-          <td class="paramname"><em>sFormat</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Formats a string using a variable number of arguments. </p>
-<p>This function takes a format string and a variable number of arguments, and returns a formatted string. It uses the same format specifiers as the standard library's <code>printf</code> function.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">CharT</td><td>The character type of the string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">sFormat</td><td>The format string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>The variable arguments. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The formatted string. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="format_8hpp_aec7a78e0e53305094ec38dc8bd038de8_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
@@ -250,7 +155,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 1 2024 15:43:08"; // Will get replaced by Doxygen
+        const dateStr = "Tue Apr 2 2024 01:23:31"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

@@ -1,16 +1,16 @@
 var util_8cpp =
 [
-    [ "determineScale", "util_8cpp.html#a5ae4861eefaae75d07eaa4228cdf94d0", null ],
-    [ "makeWider", "util_8cpp.html#a93b9ba3fe803c8e3fa1b128f4e83924f", null ],
-    [ "removeLeadingZeros", "util_8cpp.html#a8db0b6516cd43653a22f81a36140b658", null ],
-    [ "removeLeadingZeros", "util_8cpp.html#a8056dcad90ba9582ba25405a95c2f1e4", null ],
-    [ "removeTrailingZeros", "util_8cpp.html#a5d42f48c477c78fe45f36569d709c068", null ],
-    [ "removeTrailingZeros", "util_8cpp.html#a7f0f5e18cd1b1507ace9b814e6286dda", null ],
-    [ "replaceLeadingZeros", "util_8cpp.html#ac87bf229222a2a4f32b8626281c6c282", null ],
-    [ "simplifyPolarity", "util_8cpp.html#a32344e51c6ae485367b4fbf6bb535742", null ],
-    [ "simplifyZeroPolarity", "util_8cpp.html#a70584872ee14fa0befa8f25788f98a2b", null ],
-    [ "splitNumber", "util_8cpp.html#a9b8bdd090e70683287d8d6dbf4ab27ff", null ],
-    [ "standardizeNumber", "util_8cpp.html#afbed3096b7064ba07c83c6c15212b793", null ],
-    [ "unicodeToUtf8", "util_8cpp.html#a5d3673801816ad366e92dc0f27b529f7", null ],
-    [ "utf8ToUnicode", "util_8cpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3", null ]
+    [ "determineScale", "util_8cpp.html#a21f487d47d06ba1a7acf19091c8edc13", null ],
+    [ "makeWider", "util_8cpp.html#ad4fca9a20e9a831347b0c71200f0448d", null ],
+    [ "removeLeadingZeros", "util_8cpp.html#a8d5637338641568af53f46a993400130", null ],
+    [ "removeLeadingZeros", "util_8cpp.html#a3d4e1e21ccf1afecd766d3152df87212", null ],
+    [ "removeTrailingZeros", "util_8cpp.html#a01d87095fb8502339f72173ecfca1419", null ],
+    [ "removeTrailingZeros", "util_8cpp.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae", null ],
+    [ "replaceLeadingZeros", "util_8cpp.html#ae8dde3fc958f32009443d1aeaa2c0900", null ],
+    [ "simplifyPolarity", "util_8cpp.html#a32fc3a968fc9629ed8616c539e840472", null ],
+    [ "simplifyZeroPolarity", "util_8cpp.html#a5e6d1c6139edf65f76c0bd6aeba82066", null ],
+    [ "splitNumber", "util_8cpp.html#ad13b8651b0d069d596f7e25f78a8b4ed", null ],
+    [ "standardizeNumber", "util_8cpp.html#a97316c4c4bc4640d519cec4841c7b0e9", null ],
+    [ "unicodeToUtf8", "util_8cpp.html#a5dcad3b5c7b08e6541b5ae68cdf4ef0b", null ],
+    [ "utf8ToUnicode", "util_8cpp.html#ae06e20fa11641400422ac7cbc6ed9f7f", null ]
 ];

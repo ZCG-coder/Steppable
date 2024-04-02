@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['underline_475',['underline',['../namespaceformats.html#a221fbf978f90ffb8aa76e92bef0da498',1,'formats']]],
-  ['unicodetoutf8_476',['unicodeToUtf8',['../util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e',1,'unicodeToUtf8(int unicode):&#160;util.cpp'],['../util_8cpp.html#a5d3673801816ad366e92dc0f27b529f7',1,'unicodeToUtf8(const int unicode):&#160;util.cpp']]],
-  ['utf8tounicode_477',['utf8ToUnicode',['../util_8hpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3',1,'utf8ToUnicode(const std::string &amp;utf8_code):&#160;util.cpp'],['../util_8cpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3',1,'utf8ToUnicode(const std::string &amp;utf8_code):&#160;util.cpp']]]
+  ['underline_501',['underline',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a7306cc6022b8e470d8e0dc8f7e2abb97',1,'steppable::__internals::utils::formats']]],
+  ['unicodetoutf8_502',['unicodeToUtf8',['../namespacesteppable_1_1____internals_1_1stringUtils.html#a5dcad3b5c7b08e6541b5ae68cdf4ef0b',1,'steppable::__internals::stringUtils']]],
+  ['utf8tounicode_503',['utf8ToUnicode',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ae06e20fa11641400422ac7cbc6ed9f7f',1,'steppable::__internals::stringUtils']]]
 ];

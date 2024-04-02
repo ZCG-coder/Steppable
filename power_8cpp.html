@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('power_8cpp.html',''); initResizable();
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">power.cpp File Reference</div>  </div>
@@ -104,11 +105,16 @@ Include dependency graph for power.cpp:</div>
 </div>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacesteppable_1_1____internals_1_1arithmetic"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html">steppable::__internals::arithmetic</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af89984cd69aac63fd697b9cdcc548020"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="power_8cpp.html#af89984cd69aac63fd697b9cdcc548020">power</a> (const std::string_view _number, const std::string_view &amp;_raiseTo, const int steps)</td></tr>
-<tr class="memdesc:af89984cd69aac63fd697b9cdcc548020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a string representation of a number to a power.  <a href="power_8cpp.html#af89984cd69aac63fd697b9cdcc548020">More...</a><br /></td></tr>
-<tr class="separator:af89984cd69aac63fd697b9cdcc548020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50acfa1ad06ce385943ddd207146c9e0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0">steppable::__internals::arithmetic::power</a> (std::string_view _number, const std::string_view &amp;raiseTo, int steps=2)</td></tr>
+<tr class="memdesc:a50acfa1ad06ce385943ddd207146c9e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a string representation of a number to a power.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0">More...</a><br /></td></tr>
+<tr class="separator:a50acfa1ad06ce385943ddd207146c9e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="power_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a> (const int _argc, const char *_argv[])</td></tr>
 <tr class="separator:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -151,63 +157,6 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="af89984cd69aac63fd697b9cdcc548020"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af89984cd69aac63fd697b9cdcc548020">&#9670;&nbsp;</a></span>power()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string power </td>
-          <td>(</td>
-          <td class="paramtype">std::string_view&#160;</td>
-          <td class="paramname"><em>_number</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string_view &amp;&#160;</td>
-          <td class="paramname"><em>raiseTo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>steps</em> = <code>2</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Raises a string representation of a number to a power. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The string representation of the number. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">raiseTo</td><td>The string representation of the power to raise the number to. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the power operation. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The result of the power operation as a string. </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="power_8cpp_af89984cd69aac63fd697b9cdcc548020_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="power_8cpp_af89984cd69aac63fd697b9cdcc548020_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!DOCTYPE html>
@@ -228,7 +177,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 1 2024 15:43:08"; // Will get replaced by Doxygen
+        const dateStr = "Tue Apr 2 2024 01:23:31"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

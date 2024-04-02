@@ -86,13 +86,14 @@ $(document).ready(function(){initNavTree('testing_8hpp.html',''); initResizable(
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">testing.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This file contains the declaration of the <a class="el" href="classTestCase.html" title="Represents a test case for unit testing.">TestCase</a> class and macros for testing.  
+<p>This file contains the declaration of the TestCase class and macros for testing.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string_view&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -112,14 +113,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestCase.html">TestCase</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a test case for unit testing.  <a href="classTestCase.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsteppable_1_1testing_1_1TestCase.html">steppable::testing::TestCase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a test case for unit testing.  <a href="classsteppable_1_1testing_1_1TestCase.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacesteppable_1_1testing"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1testing.html">steppable::testing</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a688216c3227582c2d3387a4eca8b745b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8hpp.html#a688216c3227582c2d3387a4eca8b745b">TEST_START</a>()</td></tr>
-<tr class="memdesc:a688216c3227582c2d3387a4eca8b745b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro defines the main function and initializes the <a class="el" href="classUtf8CodePage.html" title="A class that sets the console output code page to UTF-8 and enables VT mode.">Utf8CodePage</a> object, and prepares the error counter.  <a href="testing_8hpp.html#a688216c3227582c2d3387a4eca8b745b">More...</a><br /></td></tr>
+<tr class="memdesc:a688216c3227582c2d3387a4eca8b745b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro defines the main function and initializes the Utf8CodePage object, and prepares the error counter.  <a href="testing_8hpp.html#a688216c3227582c2d3387a4eca8b745b">More...</a><br /></td></tr>
 <tr class="separator:a688216c3227582c2d3387a4eca8b745b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad512fd95a78b95770b9759823f8fbc21"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testing_8hpp.html#ad512fd95a78b95770b9759823f8fbc21">SECTION</a>(...)</td></tr>
 <tr class="memdesc:ad512fd95a78b95770b9759823f8fbc21"><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro defines a test section with the given name.  <a href="testing_8hpp.html#ad512fd95a78b95770b9759823f8fbc21">More...</a><br /></td></tr>
@@ -132,8 +138,8 @@ Macros</h2></td></tr>
 <tr class="separator:a878cf7c1251c636b56789fb6782e9ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file contains the declaration of the <a class="el" href="classTestCase.html" title="Represents a test case for unit testing.">TestCase</a> class and macros for testing. </p>
-<p>The <a class="el" href="classTestCase.html" title="Represents a test case for unit testing.">TestCase</a> class provides methods for asserting test conditions and summarizing test results. The macros TEST_START, SECTION, SECTION_END, and TEST_END are used to define test sections and execute tests. </p>
+<div class="textblock"><p>This file contains the declaration of the TestCase class and macros for testing. </p>
+<p>The TestCase class provides methods for asserting test conditions and summarizing test results. The macros TEST_START, SECTION, SECTION_END, and TEST_END are used to define test sections and execute tests. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ad512fd95a78b95770b9759823f8fbc21"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad512fd95a78b95770b9759823f8fbc21">&#9670;&nbsp;</a></span>SECTION</h2>
@@ -152,13 +158,12 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    {                                                                                           \</div>
 <div class="line">        const std::string&amp; nameSection = #__VA_ARGS__;                                          \</div>
-<div class="line">        std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; std::setw(80) &lt;&lt; std::setfill(<span class="charliteral">&#39;-&#39;</span>) &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
-<div class="line">        std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; <span class="stringliteral">&quot;[Testing: &quot;</span> &lt;&lt; nameSection &lt;&lt; <span class="charliteral">&#39;]&#39;</span> &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
+<div class="line">        std::cout &lt;&lt; <a class="code" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad218e37dd295aeff04ca94c2ea4e7cfd">colors::brightBlue</a> &lt;&lt; std::setw(80) &lt;&lt; std::setfill(<span class="charliteral">&#39;-&#39;</span>) &lt;&lt; <a class="code" href="namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
+<div class="line">        std::cout &lt;&lt; <a class="code" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad218e37dd295aeff04ca94c2ea4e7cfd">colors::brightBlue</a> &lt;&lt; <span class="stringliteral">&quot;[Testing: &quot;</span> &lt;&lt; nameSection &lt;&lt; <span class="charliteral">&#39;]&#39;</span> &lt;&lt; <a class="code" href="namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
 <div class="line">        auto start = std::chrono::high_resolution_clock::now();                                 \</div>
-<div class="line">        auto _ = <a class="code" href="classTestCase.html">TestCase</a>(nameSection);</div>
-<div class="ttc" id="aclassTestCase_html"><div class="ttname"><a href="classTestCase.html">TestCase</a></div><div class="ttdoc">Represents a test case for unit testing.</div><div class="ttdef"><b>Definition:</b> testing.hpp:82</div></div>
-<div class="ttc" id="acolors_8hpp_html_a4661597771a019efa3f0f92cfb0c6e02"><div class="ttname"><a href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a></div><div class="ttdeci">std::ostream &amp; reset(std::ostream &amp;stream)</div><div class="ttdoc">Reset the text color and format to the default values.</div><div class="ttdef"><b>Definition:</b> colors.cpp:51</div></div>
-<div class="ttc" id="anamespacecolors_html_aad9ae24338f510c8faf9e8f395e0ee4b"><div class="ttname"><a href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a></div><div class="ttdeci">std::ostream &amp; brightBlue(std::ostream &amp;stream)</div><div class="ttdoc">Set the text color to bright blue.</div><div class="ttdef"><b>Definition:</b> colors.cpp:144</div></div>
+<div class="line">        auto _ = TestCase(nameSection);</div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_1_1colors_html_ad218e37dd295aeff04ca94c2ea4e7cfd"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad218e37dd295aeff04ca94c2ea4e7cfd">steppable::__internals::utils::colors::brightBlue</a></div><div class="ttdeci">std::ostream &amp; brightBlue(std::ostream &amp;stream)</div><div class="ttdoc">Set the text color to bright blue.</div><div class="ttdef"><b>Definition:</b> colors.cpp:146</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a1d55e037764ba41ec8682f00b30701ff"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff">steppable::__internals::utils::reset</a></div><div class="ttdeci">std::ostream &amp; reset(std::ostream &amp;stream)</div><div class="ttdoc">Reset the text color and format to the default values.</div><div class="ttdef"><b>Definition:</b> colors.cpp:53</div></div>
 </div><!-- fragment -->
 <p>This macro defines a test section with the given name. </p>
 
@@ -183,9 +188,9 @@ Macros</h2></td></tr>
 <div class="line">        std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(std::chrono::high_resolution_clock::now() - start) \</div>
 <div class="line">            .count();                                                                                            \</div>
 <div class="line">    _.summarize();                                                                                               \</div>
-<div class="line">    std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; <span class="charliteral">&#39;[&#39;</span> &lt;&lt; nameSection &lt;&lt; <span class="stringliteral">&quot; took &quot;</span> &lt;&lt; duration &lt;&lt; <span class="stringliteral">&quot;(microseconds) to finish]&quot;</span> \</div>
-<div class="line">              &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;                                                                                  \</div>
-<div class="line">    std::cout &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;                                                                                  \</div>
+<div class="line">    std::cout &lt;&lt; <a class="code" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad218e37dd295aeff04ca94c2ea4e7cfd">colors::brightBlue</a> &lt;&lt; <span class="charliteral">&#39;[&#39;</span> &lt;&lt; nameSection &lt;&lt; <span class="stringliteral">&quot; took &quot;</span> &lt;&lt; duration &lt;&lt; <span class="stringliteral">&quot;(microseconds) to finish]&quot;</span> \</div>
+<div class="line">              &lt;&lt; <a class="code" href="namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;                                                                                  \</div>
+<div class="line">    std::cout &lt;&lt; <a class="code" href="namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;                                                                                  \</div>
 <div class="line">    errors += _.errorCount;                                                                                      \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
@@ -208,14 +213,14 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (errors)                                                                             \</div>
-<div class="line">        error(<span class="stringliteral">&quot;TEST_END&quot;</span>, <span class="stringliteral">&quot;Not all tests passed. There are %i errors.&quot;</span>s, errors);           <a class="code" href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">\</a></div>
-<div class="line"><a class="code" href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">    else                                                                                    \</a></div>
-<div class="line"><a class="code" href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">        info</a>(<span class="stringliteral">&quot;All tests passed.&quot;</span>);                                                          \</div>
-<div class="line">    std::cout &lt;&lt; <a class="code" href="namespacecolors.html#aad9ae24338f510c8faf9e8f395e0ee4b">colors::brightBlue</a> &lt;&lt; std::setw(80) &lt;&lt; std::setfill(<span class="charliteral">&#39;=&#39;</span>) &lt;&lt; <a class="code" href="colors_8hpp.html#a4661597771a019efa3f0f92cfb0c6e02">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
+<div class="line">        error(<span class="stringliteral">&quot;TEST_END&quot;</span>, <span class="stringliteral">&quot;Not all tests passed. There are %i errors.&quot;</span>s, errors);           <a class="code" href="namespacesteppable_1_1output.html#a0fdf81583afe2caa95d7e8fbb6c456b4">\</a></div>
+<div class="line"><a class="code" href="namespacesteppable_1_1output.html#a0fdf81583afe2caa95d7e8fbb6c456b4">    else                                                                                    \</a></div>
+<div class="line"><a class="code" href="namespacesteppable_1_1output.html#a0fdf81583afe2caa95d7e8fbb6c456b4">        info</a>(<span class="stringliteral">&quot;All tests passed.&quot;</span>);                                                          \</div>
+<div class="line">    std::cout &lt;&lt; <a class="code" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad218e37dd295aeff04ca94c2ea4e7cfd">colors::brightBlue</a> &lt;&lt; std::setw(80) &lt;&lt; std::setfill(<span class="charliteral">&#39;=&#39;</span>) &lt;&lt; <a class="code" href="namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff">reset</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; \</div>
 <div class="line">    if (errors)                                                                             \</div>
 <div class="line">        return 1;                                                                           \</div>
 <div class="line">    }</div>
-<div class="ttc" id="aoutput_8hpp_html_afa50372fb14acf84c371c61d2cc6585a"><div class="ttname"><a href="output_8hpp.html#afa50372fb14acf84c371c61d2cc6585a">info</a></div><div class="ttdeci">void info(T msg, Args &amp;&amp;... args)</div><div class="ttdoc">Prints an info message.</div><div class="ttdef"><b>Definition:</b> output.hpp:147</div></div>
+<div class="ttc" id="anamespacesteppable_1_1output_html_a0fdf81583afe2caa95d7e8fbb6c456b4"><div class="ttname"><a href="namespacesteppable_1_1output.html#a0fdf81583afe2caa95d7e8fbb6c456b4">steppable::output::info</a></div><div class="ttdeci">void info(T msg, Args &amp;&amp;... args)</div><div class="ttdoc">Prints an info message.</div><div class="ttdef"><b>Definition:</b> output.hpp:152</div></div>
 </div><!-- fragment -->
 <p>This macro ends the main function and prints the number of errors encountered. </p>
 
@@ -235,13 +240,21 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordtype">int</span> <a class="code" href="abs_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a>()                 \</div>
-<div class="line">    {                          \</div>
-<div class="line">        Utf8CodePage use_utf8; \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordtype">int</span> <a class="code" href="abs_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a>()                                               \</div>
+<div class="line">    {                                                        \</div>
+<div class="line">        using <span class="keyword">namespace </span><a class="code" href="namespacesteppable_1_1____internals_1_1stringUtils.html">steppable::__internals::stringUtils</a>; \</div>
+<div class="line">        using <span class="keyword">namespace </span><a class="code" href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a>;       \</div>
+<div class="line">        using <span class="keyword">namespace </span><a class="code" href="namespacesteppable_1_1testing.html">steppable::testing</a>;                  \</div>
+<div class="line">        using <span class="keyword">namespace </span><a class="code" href="namespacesteppable_1_1output.html">steppable::output</a>;                   \</div>
+<div class="line">        Utf8CodePage use_utf8;                               \</div>
 <div class="line">        int errors = 0;</div>
-<div class="ttc" id="aabs_8cpp_html_a065a3ee9a7ec43a06ab2fddbc3019a17"><div class="ttname"><a href="abs_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a></div><div class="ttdeci">int main(const int _argc, const char *_argv[])</div><div class="ttdef"><b>Definition:</b> abs.cpp:47</div></div>
+<div class="ttc" id="aabs_8cpp_html_a065a3ee9a7ec43a06ab2fddbc3019a17"><div class="ttname"><a href="abs_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a></div><div class="ttdeci">int main(const int _argc, const char *_argv[])</div><div class="ttdef"><b>Definition:</b> abs.cpp:53</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html">steppable::__internals::stringUtils</a></div><div class="ttdef"><b>Definition:</b> util.hpp:333</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div><div class="ttdoc">The namespace containing utility functions for the Steppable library.</div></div>
+<div class="ttc" id="anamespacesteppable_1_1output_html"><div class="ttname"><a href="namespacesteppable_1_1output.html">steppable::output</a></div><div class="ttdef"><b>Definition:</b> output.hpp:55</div></div>
+<div class="ttc" id="anamespacesteppable_1_1testing_html"><div class="ttname"><a href="namespacesteppable_1_1testing.html">steppable::testing</a></div><div class="ttdef"><b>Definition:</b> testing.hpp:82</div></div>
 </div><!-- fragment -->
-<p>This macro defines the main function and initializes the <a class="el" href="classUtf8CodePage.html" title="A class that sets the console output code page to UTF-8 and enables VT mode.">Utf8CodePage</a> object, and prepares the error counter. </p>
+<p>This macro defines the main function and initializes the Utf8CodePage object, and prepares the error counter. </p>
 
 </div>
 </div>
@@ -265,7 +278,7 @@ Macros</h2></td></tr>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 1 2024 15:43:08"; // Will get replaced by Doxygen
+        const dateStr = "Tue Apr 2 2024 01:23:31"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

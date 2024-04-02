@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('add_8cpp.html',''); initResizable(); }
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">add.cpp File Reference</div>  </div>
@@ -108,11 +109,16 @@ Include dependency graph for add.cpp:</div>
 </div>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacesteppable_1_1____internals_1_1arithmetic"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html">steppable::__internals::arithmetic</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9dab42e311b982887e521b7ef2dc6ad1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="add_8cpp.html#a9dab42e311b982887e521b7ef2dc6ad1">add</a> (const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool negative, const bool properlyFormat)</td></tr>
-<tr class="memdesc:a9dab42e311b982887e521b7ef2dc6ad1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two string representations of numbers, and performs with the column method.  <a href="add_8cpp.html#a9dab42e311b982887e521b7ef2dc6ad1">More...</a><br /></td></tr>
-<tr class="separator:a9dab42e311b982887e521b7ef2dc6ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1deb38d5027df01a66b6c3efd57aedca"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">steppable::__internals::arithmetic::add</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false, bool properlyFormat=true)</td></tr>
+<tr class="memdesc:a1deb38d5027df01a66b6c3efd57aedca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two string representations of numbers, and performs with the column method.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">More...</a><br /></td></tr>
+<tr class="separator:a1deb38d5027df01a66b6c3efd57aedca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="add_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17">main</a> (const int _argc, const char *_argv[])</td></tr>
 <tr class="separator:a065a3ee9a7ec43a06ab2fddbc3019a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -121,77 +127,6 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Andy Zhang </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>9th October 2023 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a9dab42e311b982887e521b7ef2dc6ad1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dab42e311b982887e521b7ef2dc6ad1">&#9670;&nbsp;</a></span>add()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string add </td>
-          <td>(</td>
-          <td class="paramtype">const std::string_view &amp;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string_view &amp;&#160;</td>
-          <td class="paramname"><em>b</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>steps</em> = <code>2</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>negative</em> = <code>false</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>properlyFormat</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Adds two string representations of numbers, and performs with the column method. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>The first string representation of the number. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>The second string representation of the number. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">steps</td><td>The number of steps to perform the addition. 2 = column method, 1 = normal addition, 0 = result only. Default is 2. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">negative</td><td>Flag indicating whether the result should be negative. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">properlyFormat</td><td>Flag indicating whether to properly format the output. Default true. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The sum of the two numbers as a string. </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="add_8cpp_a9dab42e311b982887e521b7ef2dc6ad1_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="add_8cpp_a9dab42e311b982887e521b7ef2dc6ad1_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-
-</div>
-</div>
 <a id="a065a3ee9a7ec43a06ab2fddbc3019a17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a065a3ee9a7ec43a06ab2fddbc3019a17">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -246,7 +181,7 @@ Here is the call graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 1 2024 15:43:08"; // Will get replaced by Doxygen
+        const dateStr = "Tue Apr 2 2024 01:23:31"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

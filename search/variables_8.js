@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mode_501',['mode',['../classNumber.html#a0dd799de388b7d4a4d5df896ff03c09b',1,'Number']]]
+  ['mode_527',['mode',['../classsteppable_1_1Number.html#a8f789d22f723c1957ad6a38c42075eed',1,'steppable::Number']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7elogger_483',['~Logger',['../classlogging_1_1Logger.html#a7128c47e95497ef7851e65ab10132e99',1,'logging::Logger']]]
+  ['_7elogger_509',['~Logger',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a5283de51df21749ce5c3f7c4772c8bc2',1,'steppable::__internals::logging::Logger']]]
 ];

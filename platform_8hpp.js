@@ -1,5 +1,5 @@
 var platform_8hpp =
 [
-    [ "localtime_xp", "platform_8hpp.html#a27d06fa2d5220c9128fdbb6674cf79c0", null ],
-    [ "programSafeExit", "platform_8hpp.html#a1e32c90e4c076ff4eaa2ac510e1d586e", null ]
+    [ "localtime_xp", "platform_8hpp.html#a52bb814d5639116caa0b4a53b7f53e5e", null ],
+    [ "programSafeExit", "platform_8hpp.html#a265f606a0e1f8eb0fc678593f7f44be7", null ]
 ];

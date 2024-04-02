@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['debug_378',['debug',['../classlogging_1_1Logger.html#aff412257f46c000960791c9d1ff6e6e5',1,'logging::Logger::debug(const std::string &amp;message)'],['../classlogging_1_1Logger.html#ae837458cd97c046dd97154e213935a1e',1,'logging::Logger::debug(const std::string &amp;message, Args &amp;&amp;... args)']]],
-  ['decimalconvert_379',['decimalConvert',['../basicArithm_8hpp.html#aedf78136562346db852758c848f8e83d',1,'decimalConvert(const std::string_view &amp;_inputString, const std::string_view &amp;baseString, int steps=2):&#160;decimalConvert.cpp'],['../decimalConvert_8cpp.html#ab48d6eec4a0053875a5c13696eb99cde',1,'decimalConvert(const std::string_view &amp;_inputString, const std::string_view &amp;baseString, int steps):&#160;decimalConvert.cpp']]],
-  ['determineproductscale_380',['determineProductScale',['../multiply_8cpp.html#a599800c0e265121b8977d06a4d14a945',1,'multiply.cpp']]],
-  ['determineresultscale_381',['determineResultScale',['../division_8cpp.html#a222752517a35fde0e4de4bb32cbaa9be',1,'division.cpp']]],
-  ['determinescale_382',['determineScale',['../util_8hpp.html#a5ae4861eefaae75d07eaa4228cdf94d0',1,'determineScale(const std::string_view &amp;number):&#160;util.cpp'],['../util_8cpp.html#a5ae4861eefaae75d07eaa4228cdf94d0',1,'determineScale(const std::string_view &amp;number):&#160;util.cpp']]],
-  ['dim_383',['dim',['../namespaceformats.html#aaf26eea63e92d7189ffbb52688d2e6d1',1,'formats']]],
-  ['divide_384',['divide',['../basicArithm_8hpp.html#acb4215189a8d1cfd37f4f6fe13890a8f',1,'divide(const std::string_view &amp;number, const std::string_view &amp;divisor, int steps=2, int decimals=5):&#160;division.cpp'],['../division_8cpp.html#ad8fb7bec6096894294df4c15d498dab7',1,'divide(const std::string_view &amp;_number, const std::string_view &amp;_divisor, const int steps, const int _decimals):&#160;division.cpp']]],
-  ['dividewithquotient_385',['divideWithQuotient',['../basicArithm_8hpp.html#a3b20eba6c9046b375489c668443c165d',1,'divideWithQuotient(const std::string &amp;number, const std::string &amp;divisor):&#160;division.cpp'],['../division_8cpp.html#a3b20eba6c9046b375489c668443c165d',1,'divideWithQuotient(const std::string &amp;number, const std::string &amp;divisor):&#160;division.cpp']]]
+  ['debug_404',['debug',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#aea7bddd607595f37fe9f09624dea23d8',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message)'],['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a7c1ba1b264a4998a9bdf7eff926b1eac',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message, Args &amp;&amp;... args)']]],
+  ['decimalconvert_405',['decimalConvert',['../namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374',1,'steppable::__internals::arithmetic']]],
+  ['determineproductscale_406',['determineProductScale',['../namespacesteppable_1_1____internals_1_1arithmetic.html#af7183da49ccdfb5a58325e6017ebd7c6',1,'steppable::__internals::arithmetic']]],
+  ['determineresultscale_407',['determineResultScale',['../namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3',1,'steppable::__internals::arithmetic']]],
+  ['determinescale_408',['determineScale',['../namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13',1,'steppable::__internals::numUtils']]],
+  ['dim_409',['dim',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#ace928d552abe20aa441fb499a7c605fe',1,'steppable::__internals::utils::formats']]],
+  ['divide_410',['divide',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730',1,'steppable::__internals::arithmetic']]],
+  ['dividewithquotient_411',['divideWithQuotient',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978',1,'steppable::__internals::arithmetic']]]
 ];

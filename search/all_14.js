@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['underline_257',['underline',['../namespaceformats.html#a221fbf978f90ffb8aa76e92bef0da498',1,'formats']]],
-  ['unicodetoutf8_258',['unicodeToUtf8',['../util_8hpp.html#a2c093cfa77eddb403db19eaecf57fa6e',1,'unicodeToUtf8(int unicode):&#160;util.cpp'],['../util_8cpp.html#a5d3673801816ad366e92dc0f27b529f7',1,'unicodeToUtf8(const int unicode):&#160;util.cpp']]],
-  ['up_259',['UP',['../guiBase_8cpp.html#a224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa',1,'guiBase.cpp']]],
-  ['use_5fcurrent_5fprec_260',['USE_CURRENT_PREC',['../number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a6cc88e1d0aaf8b43d68a7e9ee216387e',1,'number.hpp']]],
-  ['use_5fmaximum_5fprec_261',['USE_MAXIMUM_PREC',['../number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a14cd01456d899d2e25a95dcf3f1db683',1,'number.hpp']]],
-  ['use_5fminimum_5fprec_262',['USE_MINIMUM_PREC',['../number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101a593013e42fe3e5cf3821ebfd309157c7',1,'number.hpp']]],
-  ['use_5fother_5fprec_263',['USE_OTHER_PREC',['../number_8hpp.html#a5959c934b204c7bcb6766cfaea8ae101af9b3ff50b319d3944ba0694219d62869',1,'number.hpp']]],
-  ['utf8codepage_264',['Utf8CodePage',['../classUtf8CodePage.html',1,'']]],
-  ['utf8tounicode_265',['utf8ToUnicode',['../util_8hpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3',1,'utf8ToUnicode(const std::string &amp;utf8_code):&#160;util.cpp'],['../util_8cpp.html#abefee7cd9b9e06f03aeec9bb1e934ef3',1,'utf8ToUnicode(const std::string &amp;utf8_code):&#160;util.cpp']]],
-  ['util_2ecpp_266',['util.cpp',['../util_8cpp.html',1,'']]],
-  ['util_2ehpp_267',['util.hpp',['../util_8hpp.html',1,'']]]
+  ['underline_270',['underline',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a7306cc6022b8e470d8e0dc8f7e2abb97',1,'steppable::__internals::utils::formats']]],
+  ['unicodetoutf8_271',['unicodeToUtf8',['../namespacesteppable_1_1____internals_1_1stringUtils.html#a5dcad3b5c7b08e6541b5ae68cdf4ef0b',1,'steppable::__internals::stringUtils']]],
+  ['up_272',['UP',['../guiBase_8cpp.html#a224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa',1,'guiBase.cpp']]],
+  ['use_5fcurrent_5fprec_273',['USE_CURRENT_PREC',['../number_8hpp.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64',1,'steppable']]],
+  ['use_5fmaximum_5fprec_274',['USE_MAXIMUM_PREC',['../number_8hpp.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba',1,'steppable']]],
+  ['use_5fminimum_5fprec_275',['USE_MINIMUM_PREC',['../number_8hpp.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb',1,'steppable']]],
+  ['use_5fother_5fprec_276',['USE_OTHER_PREC',['../number_8hpp.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda',1,'steppable']]],
+  ['utf8codepage_277',['Utf8CodePage',['../classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html',1,'steppable::__internals::utils']]],
+  ['utf8tounicode_278',['utf8ToUnicode',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ae06e20fa11641400422ac7cbc6ed9f7f',1,'steppable::__internals::stringUtils']]],
+  ['util_2ecpp_279',['util.cpp',['../util_8cpp.html',1,'']]],
+  ['util_2ehpp_280',['util.hpp',['../util_8hpp.html',1,'']]]
 ];
