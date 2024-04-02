@@ -31,6 +31,8 @@
 
 TEST_START()
 
+using namespace steppable;
+
 SECTION(Fraction Add)
 _.assertIsEqual((Fraction("13122", "54251") + Fraction("22451", "3423")).present(), "1262905807/185701173");
 _.assertIsEqual((Fraction("22451", "3423") + Fraction("13122", "54251")).present(), "1262905807/185701173");

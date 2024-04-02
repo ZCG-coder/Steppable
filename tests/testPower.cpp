@@ -30,6 +30,9 @@
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable::__internals::arithmetic;
+
 SECTION(Power)
 const std::string_view &number = "47", &raiseTo = "10";
 const auto& result = power(number, raiseTo, 0);

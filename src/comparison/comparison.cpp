@@ -36,77 +36,84 @@
 #include <string>
 #include <string_view>
 
-std::string compare(const std::string_view& _a, const std::string_view& _b, const int steps)
+using namespace steppable::__internals::numUtils;
+using namespace steppable::__internals::utils;
+using namespace steppable::__internals::arithmetic;
+
+namespace steppable::__internals::arithmetic
 {
-    if (standardizeNumber(_a) == standardizeNumber(_b))
+    std::string compare(const std::string_view& _a, const std::string_view& _b, const int steps)
     {
-        if (steps == 2)
-            return BECAUSE " " + static_cast<std::string>(_a) + " is identical to " + static_cast<std::string>(_b) +
-                   ", " THEREFORE " a = b";
+        if (standardizeNumber(_a) == standardizeNumber(_b))
+        {
+            if (steps == 2)
+                return BECAUSE " " + static_cast<std::string>(_a) + " is identical to " + static_cast<std::string>(_b) +
+                       ", " THEREFORE " a = b";
+            if (steps == 1)
+                return static_cast<std::string>(_a) + " = " + static_cast<std::string>(_b);
+            return "2";
+        }
+        const auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(_a, _b, false, true);
+        const auto result = splitNumberArray;
+        const bool bothNegative = aIsNegative and bIsNegative;
+        auto [aIntegerReal, aDecimalReal, bIntegerReal, bDecimalReal] = result;
+        if (aIntegerReal.empty())
+            aIntegerReal = "0";
+        if (bIntegerReal.empty())
+            bIntegerReal = "0";
+
+        auto a = aIntegerReal + "." + aDecimalReal, b = bIntegerReal + "." + bDecimalReal;
+        if (
+            // a is longer than b and is of different polarities
+            aIntegerReal.length() != bIntegerReal.length() and aIsNegative == bIsNegative)
+        {
+            if (bothNegative)
+                return reportComparisonAtInteger(a, b, aIntegerReal.length() < bIntegerReal.length(), steps);
+            return reportComparisonAtInteger(a, b, aIntegerReal.length() > bIntegerReal.length(), steps);
+        }
+
+        // Here, we try to determine whether a or b is greater based on their polarities
+        // Scenario 1: a and b are both positive
+        // Action    : Continue, cannot determine
+        //
+        // Scenario 2: a and b are both negative
+        // Action    : Continue, cannot determine
+        //
+        // Scenario 3: a is positive and b is negative
+        // Action    : Return a > b
+        //
+        // Scenario 4: a is negative and b is positive
+        // Action    : Return a < b
+        if (not aIsNegative and bIsNegative)
+            return reportComparisonByPolarity(a, b, true, steps);
+        if (aIsNegative and not bIsNegative)
+            return reportComparisonByPolarity(a, b, false, steps);
+
+        for (long i = 0; static_cast<size_t>(i) < a.length(); i++)
+        {
+            if (a[i] == b[i] or not isdigit(a[i]) or not isdigit(b[i]))
+                continue; // Negative sign, decimal point or equals
+            if (a[i] > b[i] and not bothNegative)
+                return reportComparisonByDigit(a, b, i, true, false, steps);
+            if (a[i] < b[i] and not bothNegative)
+                return reportComparisonByDigit(a, b, i, false, false, steps);
+            if (a[i] > b[i] and bothNegative) // First digit is the negative sign
+                return reportComparisonByDigit(a, b, i - 1, false, false, steps);
+            if (a[i] < b[i] and bothNegative)
+                return reportComparisonByDigit(a, b, i - 1, true, false, steps);
+        }
+
         if (steps == 1)
-            return static_cast<std::string>(_a) + " = " + static_cast<std::string>(_b);
+            return "Equal";
+        if (steps == 2)
+        {
+            std::stringstream ss;
+            ss << a << " = " << b;
+            return ss.str();
+        }
         return "2";
     }
-    const auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(_a, _b, false, true);
-    const auto result = splitNumberArray;
-    const bool bothNegative = aIsNegative and bIsNegative;
-    auto [aIntegerReal, aDecimalReal, bIntegerReal, bDecimalReal] = result;
-    if (aIntegerReal.empty())
-        aIntegerReal = "0";
-    if (bIntegerReal.empty())
-        bIntegerReal = "0";
-
-    auto a = aIntegerReal + "." + aDecimalReal, b = bIntegerReal + "." + bDecimalReal;
-    if (
-        // a is longer than b and is of different polarities
-        aIntegerReal.length() != bIntegerReal.length() and aIsNegative == bIsNegative)
-    {
-        if (bothNegative)
-            return reportComparisonAtInteger(a, b, aIntegerReal.length() < bIntegerReal.length(), steps);
-        return reportComparisonAtInteger(a, b, aIntegerReal.length() > bIntegerReal.length(), steps);
-    }
-
-    // Here, we try to determine whether a or b is greater based on their polarities
-    // Scenario 1: a and b are both positive
-    // Action    : Continue, cannot determine
-    //
-    // Scenario 2: a and b are both negative
-    // Action    : Continue, cannot determine
-    //
-    // Scenario 3: a is positive and b is negative
-    // Action    : Return a > b
-    //
-    // Scenario 4: a is negative and b is positive
-    // Action    : Return a < b
-    if (not aIsNegative and bIsNegative)
-        return reportComparisonByPolarity(a, b, true, steps);
-    if (aIsNegative and not bIsNegative)
-        return reportComparisonByPolarity(a, b, false, steps);
-
-    for (long i = 0; static_cast<size_t>(i) < a.length(); i++)
-    {
-        if (a[i] == b[i] or not isdigit(a[i]) or not isdigit(b[i]))
-            continue; // Negative sign, decimal point or equals
-        if (a[i] > b[i] and not bothNegative)
-            return reportComparisonByDigit(a, b, i, true, false, steps);
-        if (a[i] < b[i] and not bothNegative)
-            return reportComparisonByDigit(a, b, i, false, false, steps);
-        if (a[i] > b[i] and bothNegative) // First digit is the negative sign
-            return reportComparisonByDigit(a, b, i - 1, false, false, steps);
-        if (a[i] < b[i] and bothNegative)
-            return reportComparisonByDigit(a, b, i - 1, true, false, steps);
-    }
-
-    if (steps == 1)
-        return "Equal";
-    if (steps == 2)
-    {
-        std::stringstream ss;
-        ss << a << " = " << b;
-        return ss.str();
-    }
-    return "2";
-}
+} // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
 int main(int _argc, const char** _argv)

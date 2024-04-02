@@ -28,97 +28,103 @@
 
 #include <string>
 
-Fraction::Fraction()
+using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::numUtils;
+
+namespace steppable
 {
-    this->top = "1";
-    this->bottom = "1";
-}
+    Fraction::Fraction()
+    {
+        this->top = "1";
+        this->bottom = "1";
+    }
 
-Fraction::Fraction(const std::string& top, const std::string& bottom)
-{
-    if (isZeroString(bottom))
-        throw ZeroDenominatorException();
-    this->top = top;
-    this->bottom = bottom;
-}
+    Fraction::Fraction(const std::string& top, const std::string& bottom)
+    {
+        if (isZeroString(bottom))
+            throw exceptions::ZeroDenominatorException();
+        this->top = top;
+        this->bottom = bottom;
+    }
 
-std::string Fraction::present()
-{
-    simplify();
-    return top + "/" + bottom;
-}
+    std::string Fraction::present()
+    {
+        simplify();
+        return top + "/" + bottom;
+    }
 
-Fraction Fraction::operator+(const Fraction& rhs)
-{
-    auto newTop = add(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
-    auto newBottom = multiply(bottom, rhs.bottom, 0);
+    Fraction Fraction::operator+(const Fraction& rhs)
+    {
+        auto newTop = add(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
+        auto newBottom = multiply(bottom, rhs.bottom, 0);
 
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
+        auto newFrac = Fraction(newTop, newBottom);
+        newFrac.simplify();
+        return newFrac;
+    }
 
-Fraction Fraction::operator-(const Fraction& rhs)
-{
-    auto newTop = subtract(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
-    auto newBottom = multiply(bottom, rhs.bottom, 0);
+    Fraction Fraction::operator-(const Fraction& rhs)
+    {
+        auto newTop = subtract(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
+        auto newBottom = multiply(bottom, rhs.bottom, 0);
 
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
+        auto newFrac = Fraction(newTop, newBottom);
+        newFrac.simplify();
+        return newFrac;
+    }
 
-Fraction Fraction::operator*(const Fraction& rhs)
-{
-    auto newTop = multiply(top, rhs.top, 0);
-    auto newBottom = multiply(bottom, rhs.bottom, 0);
+    Fraction Fraction::operator*(const Fraction& rhs)
+    {
+        auto newTop = multiply(top, rhs.top, 0);
+        auto newBottom = multiply(bottom, rhs.bottom, 0);
 
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
+        auto newFrac = Fraction(newTop, newBottom);
+        newFrac.simplify();
+        return newFrac;
+    }
 
-Fraction Fraction::operator/(const Fraction& rhs)
-{
-    auto newTop = multiply(top, rhs.bottom, 0);
-    auto newBottom = multiply(bottom, rhs.top, 0);
+    Fraction Fraction::operator/(const Fraction& rhs)
+    {
+        auto newTop = multiply(top, rhs.bottom, 0);
+        auto newBottom = multiply(bottom, rhs.top, 0);
 
-    auto newFrac = Fraction(newTop, newBottom);
-    newFrac.simplify();
-    return newFrac;
-}
+        auto newFrac = Fraction(newTop, newBottom);
+        newFrac.simplify();
+        return newFrac;
+    }
 
-Fraction& Fraction::operator+=(const Fraction& rhs)
-{
-    *this = *this + rhs;
-    simplify();
-    return *this;
-}
+    Fraction& Fraction::operator+=(const Fraction& rhs)
+    {
+        *this = *this + rhs;
+        simplify();
+        return *this;
+    }
 
-Fraction& Fraction::operator-=(const Fraction& rhs)
-{
-    *this = *this - rhs;
-    simplify();
-    return *this;
-}
+    Fraction& Fraction::operator-=(const Fraction& rhs)
+    {
+        *this = *this - rhs;
+        simplify();
+        return *this;
+    }
 
-Fraction& Fraction::operator*=(const Fraction& rhs)
-{
-    *this = *this * rhs;
-    simplify();
-    return *this;
-}
+    Fraction& Fraction::operator*=(const Fraction& rhs)
+    {
+        *this = *this * rhs;
+        simplify();
+        return *this;
+    }
 
-Fraction& Fraction::operator/=(const Fraction& rhs)
-{
-    *this = *this / rhs;
-    simplify();
-    return *this;
-}
+    Fraction& Fraction::operator/=(const Fraction& rhs)
+    {
+        *this = *this / rhs;
+        simplify();
+        return *this;
+    }
 
-void Fraction::simplify()
-{
-    auto gcd = getGCD(top, bottom);
-    top = divide(top, gcd, 0, 0);
-    bottom = divide(bottom, gcd, 0, 0);
-}
+    void Fraction::simplify()
+    {
+        auto gcd = getGCD(top, bottom);
+        top = divide(top, gcd, 0, 0);
+        bottom = divide(bottom, gcd, 0, 0);
+    }
+} // namespace steppable

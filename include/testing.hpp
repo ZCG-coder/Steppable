@@ -35,10 +35,14 @@
 using namespace std::literals;
 
 /// @brief This macro defines the main function and initializes the Utf8CodePage object, and prepares the error counter.
-#define TEST_START()           \
-    int main()                 \
-    {                          \
-        Utf8CodePage use_utf8; \
+#define TEST_START()                                         \
+    int main()                                               \
+    {                                                        \
+        using namespace steppable::__internals::stringUtils; \
+        using namespace steppable::__internals::utils;       \
+        using namespace steppable::testing;                  \
+        using namespace steppable::output;                   \
+        Utf8CodePage use_utf8;                               \
         int errors = 0;
 
 /// @brief This macro defines a test section with the given name.
@@ -74,73 +78,76 @@ using namespace std::literals;
         return 1;                                                                           \
     }
 
-/**
- * @class TestCase
- * @brief Represents a test case for unit testing.
- */
-class TestCase
+namespace steppable::testing
 {
-private:
     /**
-     * @brief Asserts a given condition and logs the condition name if it fails.
-     * @param[in] condition The condition to be checked.
-     * @param[in] conditionName The name of the condition.
+     * @class TestCase
+     * @brief Represents a test case for unit testing.
      */
-    void assert(bool condition, const std::string& conditionName);
+    class TestCase
+    {
+    private:
+        /**
+         * @brief Asserts a given condition and logs the condition name if it fails.
+         * @param[in] condition The condition to be checked.
+         * @param[in] conditionName The name of the condition.
+         */
+        void assert(bool condition, const std::string& conditionName);
 
-    std::string_view testCaseName;
+        std::string_view testCaseName;
 
-public:
-    int errorCount = 0;
+    public:
+        int errorCount = 0;
 
-    /**
-     * @brief Constructs a new TestCase object with the given name.
-     * @param[in] testCaseName The name of the test case.
-     */
-    explicit TestCase(const std::string& testCaseName);
+        /**
+         * @brief Constructs a new TestCase object with the given name.
+         * @param[in] testCaseName The name of the test case.
+         */
+        explicit TestCase(const std::string& testCaseName);
 
-    /**
-     * @brief Asserts that two strings are equal.
-     * @param[in] a The first string.
-     * @param[in] b The second string.
-     */
-    void assertIsEqual(const std::string& a, const std::string& b);
+        /**
+         * @brief Asserts that two strings are equal.
+         * @param[in] a The first string.
+         * @param[in] b The second string.
+         */
+        void assertIsEqual(const std::string& a, const std::string& b);
 
-    /**
-     * @brief Asserts that two strings are not equal.
-     * @param[in] a The first string.
-     * @param[in] b The second string.
-     */
-    void assertIsNotEqual(const std::string& a, const std::string& b);
+        /**
+         * @brief Asserts that two strings are not equal.
+         * @param[in] a The first string.
+         * @param[in] b The second string.
+         */
+        void assertIsNotEqual(const std::string& a, const std::string& b);
 
-    /**
-     * @brief Asserts that two integers are equal.
-     * @param[in] a The first integer.
-     * @param[in] b The second integer.
-     */
-    void assertIsEqual(int a, int b);
+        /**
+         * @brief Asserts that two integers are equal.
+         * @param[in] a The first integer.
+         * @param[in] b The second integer.
+         */
+        void assertIsEqual(int a, int b);
 
-    /**
-     * @brief Asserts that two integers are not equal.
-     * @param[in] a The first integer.
-     * @param[in] b The second integer.
-     */
-    void assertIsNotEqual(int a, int b);
+        /**
+         * @brief Asserts that two integers are not equal.
+         * @param[in] a The first integer.
+         * @param[in] b The second integer.
+         */
+        void assertIsNotEqual(int a, int b);
 
-    /**
-     * @brief Asserts that a boolean value is true.
-     * @param[in] value The boolean value to be checked.
-     */
-    void assertTrue(bool value);
+        /**
+         * @brief Asserts that a boolean value is true.
+         * @param[in] value The boolean value to be checked.
+         */
+        void assertTrue(bool value);
 
-    /**
-     * @brief Asserts that a boolean value is false.
-     * @param[in] value The boolean value to be checked.
-     */
-    void assertFalse(bool value);
+        /**
+         * @brief Asserts that a boolean value is false.
+         * @param[in] value The boolean value to be checked.
+         */
+        void assertFalse(bool value);
 
-    /**
-     * @brief Prints a summary of the test case, including the number of errors encountered.
-     */
-    void summarize() const;
-};
+        /**
+         * @brief Prints a summary of the test case, including the number of errors encountered.
+         */
+        void summarize() const;
+    };
+} // namespace steppable::testing

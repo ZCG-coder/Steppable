@@ -30,6 +30,9 @@
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable::__internals::arithmetic;
+
 SECTION(Comparison at integer)
 const std::string &a = "6453.55", &b = "54329.334";
 const auto& compareResult1 = compare(a, b, 0);

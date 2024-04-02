@@ -29,6 +29,8 @@
 #include <string>
 #include <string_view>
 
+using namespace steppable::__internals::symbols;
+
 std::string reportDecimalConvertStep(const std::string_view& baseString,
                                      const std::string_view& digit,
                                      const size_t powerIndex,

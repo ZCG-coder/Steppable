@@ -30,6 +30,9 @@
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable::__internals::arithmetic;
+
 SECTION(Decimal Convert without letters)
 const std::string &a = "46432231133131", &b = "8";
 const auto& result = decimalConvert(a, b, 0);

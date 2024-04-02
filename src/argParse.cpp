@@ -35,140 +35,145 @@
 
 using namespace std::literals;
 
-void ProgramArgs::addSwitch(const std::string_view& name, const bool defaultValue, const std::string_view& description)
+namespace steppable::__internals::utils
 {
-    switches.insert({ name, defaultValue });
-    switchDescriptions.insert_or_assign(name, description);
-}
-
-void ProgramArgs::addKeywordArg(const std::string_view& name, int defaultValue, const std::string_view description)
-{
-    keywordArgs.insert({ name, defaultValue });
-    keywordArgDescriptions.insert({ name, description });
-}
-
-void ProgramArgs::addPosArg(const char name, const std::string_view& description, const bool requiresNumber)
-{
-    posArgDescriptions.insert({ name, description });
-    posArgIsNumber.push_back(requiresNumber);
-}
-
-void ProgramArgs::printUsage(const std::string_view& reason) const
-{
-    std::cout << "Usage: " << formats::bold << programName << reset << " ";
-
-    if (not posArgDescriptions.empty())
-        for (const auto& posArg : posArgDescriptions | std::views::keys)
-            std::cout << colors::brightGreen << '<' << posArg << '>' << " ";
-
-    if (not switchDescriptions.empty())
-        std::cout << colors::brightGreen << "[switches] " << reset;
-    if (not keywordArgDescriptions.empty())
-        std::cout << colors::brightGreen << "[keywordArguments] " << reset;
-    std::cout << '\n';
-
-    if (not posArgDescriptions.empty())
+    void ProgramArgs::addSwitch(const std::string_view& name,
+                                const bool defaultValue,
+                                const std::string_view& description)
     {
-        std::cout << formats::bold << "Available positional arguments:" << reset << '\n';
-        for (const auto& [posArgName, posArgDescription] : posArgDescriptions)
-        {
-            std::cout << colors::brightGreen << formats::bold << '<' << posArgName << '>' << reset;
-            std::cout << ": " << posArgDescription << '\n';
-        }
-        std::cout << reset << '\n';
+        switches.insert({ name, defaultValue });
+        switchDescriptions.insert_or_assign(name, description);
     }
 
-    if (not switchDescriptions.empty())
+    void ProgramArgs::addKeywordArg(const std::string_view& name, int defaultValue, const std::string_view description)
     {
-        std::cout << formats::bold << "Available switches:" << reset << '\n';
-        for (const auto& [switchName, switchDescription] : switchDescriptions)
-        {
-            std::cout << colors::brightGreen << formats::bold << '[' << '-' << switchName << "] ";
-            std::cout << '[' << '+' << switchName << "]" << reset << '\n';
-            std::cout << "  Enables/Disables " << switchDescription << '\n';
-        }
-        std::cout << reset << '\n';
+        keywordArgs.insert({ name, defaultValue });
+        keywordArgDescriptions.insert({ name, description });
     }
 
-    if (not keywordArgDescriptions.empty())
+    void ProgramArgs::addPosArg(const char name, const std::string_view& description, const bool requiresNumber)
     {
-        std::cout << formats::bold << "Available keyword arguments:" << reset << '\n';
-        for (const auto& [keywordArgName, keywordArgDescription] : keywordArgDescriptions)
-        {
-            std::cout << colors::brightGreen << formats::bold << '[' << '-' << keywordArgName << ": <VALUE>]" << reset
-                      << '\n';
-            std::cout << "  " << keywordArgDescription << reset << '\n';
-        }
-        std::cout << reset;
+        posArgDescriptions.insert({ name, description });
+        posArgIsNumber.push_back(requiresNumber);
     }
 
-    if (not reason.empty())
+    void ProgramArgs::printUsage(const std::string_view& reason) const
     {
-        std::cerr << '\n';
-        error("ProgramArgs::printUsage", std::string(reason));
-    }
-    internals::programSafeExit(-1);
-}
+        std::cout << "Usage: " << formats::bold << programName << reset << " ";
 
-std::string_view ProgramArgs::getPosArg(const size_t index) const
-{
-    if (posArgs.size() <= index)
-        printUsage("Missing positional argument: " + std::to_string(index));
-    return posArgs[index];
-}
+        if (not posArgDescriptions.empty())
+            for (const auto& posArg : posArgDescriptions | std::views::keys)
+                std::cout << colors::brightGreen << '<' << posArg << '>' << " ";
 
-int ProgramArgs::getKeywordArgument(const std::string_view& name)
-{
-    if (not keywordArgs.contains(name))
-        printUsage("Missing switch: " + static_cast<std::string>(name));
-    return keywordArgs[name];
-}
+        if (not switchDescriptions.empty())
+            std::cout << colors::brightGreen << "[switches] " << reset;
+        if (not keywordArgDescriptions.empty())
+            std::cout << colors::brightGreen << "[keywordArguments] " << reset;
+        std::cout << '\n';
 
-bool ProgramArgs::getSwitch(const std::string_view& name)
-{
-    if (not switches.contains(name))
-        printUsage("Missing switch: " + static_cast<std::string>(name));
-    return switches[name];
-}
-
-ProgramArgs::ProgramArgs(const int _argc, const char** _argv)
-{
-    argc = _argc - 1;
-    programName = _argv[0]; // Call this program whatever the user calls it
-    PosArgs pos;
-
-    // Copy the arguments into a vector
-    for (int i = 0; i <= argc; i++)
-        argv.emplace_back(_argv[i]);
-    argv.erase(argv.begin());
-}
-
-void ProgramArgs::parseArgs()
-{
-    for (auto _arg : argv)
-    {
-        auto arg = static_cast<std::string>(_arg);
-        if (std::smatch match; std::regex_match(arg, match, KEYWORD_ARG_REGEX))
+        if (not posArgDescriptions.empty())
         {
-            std::string name = match[1];
-            int value = std::stoi(match[2]);
-            keywordArgs.insert_or_assign(name, value);
-        }
-        else if (std::regex_match(arg, match, SWITCH_REGEX))
-        {
-            bool enabled = match[1] == "+";
-            std::string name = match[2];
-
-            switches.insert_or_assign(name, enabled);
-        }
-        else
-        {
-            if (not isNumber(_arg) and posArgIsNumber[posArgs.size()])
+            std::cout << formats::bold << "Available positional arguments:" << reset << '\n';
+            for (const auto& [posArgName, posArgDescription] : posArgDescriptions)
             {
-                error("ProgramArgs::parseArgs", "Invalid argument: %s"s, _arg);
-                internals::programSafeExit(-1);
+                std::cout << colors::brightGreen << formats::bold << '<' << posArgName << '>' << reset;
+                std::cout << ": " << posArgDescription << '\n';
             }
-            posArgs.push_back(_arg);
+            std::cout << reset << '\n';
+        }
+
+        if (not switchDescriptions.empty())
+        {
+            std::cout << formats::bold << "Available switches:" << reset << '\n';
+            for (const auto& [switchName, switchDescription] : switchDescriptions)
+            {
+                std::cout << colors::brightGreen << formats::bold << '[' << '-' << switchName << "] ";
+                std::cout << '[' << '+' << switchName << "]" << reset << '\n';
+                std::cout << "  Enables/Disables " << switchDescription << '\n';
+            }
+            std::cout << reset << '\n';
+        }
+
+        if (not keywordArgDescriptions.empty())
+        {
+            std::cout << formats::bold << "Available keyword arguments:" << reset << '\n';
+            for (const auto& [keywordArgName, keywordArgDescription] : keywordArgDescriptions)
+            {
+                std::cout << colors::brightGreen << formats::bold << '[' << '-' << keywordArgName << ": <VALUE>]"
+                          << reset << '\n';
+                std::cout << "  " << keywordArgDescription << reset << '\n';
+            }
+            std::cout << reset;
+        }
+
+        if (not reason.empty())
+        {
+            std::cerr << '\n';
+            output::error("ProgramArgs::printUsage", std::string(reason));
+        }
+        programSafeExit(-1);
+    }
+
+    std::string_view ProgramArgs::getPosArg(const size_t index) const
+    {
+        if (posArgs.size() <= index)
+            printUsage("Missing positional argument: " + std::to_string(index));
+        return posArgs[index];
+    }
+
+    int ProgramArgs::getKeywordArgument(const std::string_view& name)
+    {
+        if (not keywordArgs.contains(name))
+            printUsage("Missing switch: " + static_cast<std::string>(name));
+        return keywordArgs[name];
+    }
+
+    bool ProgramArgs::getSwitch(const std::string_view& name)
+    {
+        if (not switches.contains(name))
+            printUsage("Missing switch: " + static_cast<std::string>(name));
+        return switches[name];
+    }
+
+    ProgramArgs::ProgramArgs(const int _argc, const char** _argv)
+    {
+        argc = _argc - 1;
+        programName = _argv[0]; // Call this program whatever the user calls it
+        PosArgs pos;
+
+        // Copy the arguments into a vector
+        for (int i = 0; i <= argc; i++)
+            argv.emplace_back(_argv[i]);
+        argv.erase(argv.begin());
+    }
+
+    void ProgramArgs::parseArgs()
+    {
+        for (auto _arg : argv)
+        {
+            auto arg = static_cast<std::string>(_arg);
+            if (std::smatch match; std::regex_match(arg, match, KEYWORD_ARG_REGEX))
+            {
+                std::string name = match[1];
+                int value = std::stoi(match[2]);
+                keywordArgs.insert_or_assign(name, value);
+            }
+            else if (std::regex_match(arg, match, SWITCH_REGEX))
+            {
+                bool enabled = match[1] == "+";
+                std::string name = match[2];
+
+                switches.insert_or_assign(name, enabled);
+            }
+            else
+            {
+                if (not numUtils::isNumber(_arg) and posArgIsNumber[posArgs.size()])
+                {
+                    output::error("ProgramArgs::parseArgs", "Invalid argument: %s"s, _arg);
+                    programSafeExit(-1);
+                }
+                posArgs.push_back(_arg);
+            }
         }
     }
-}
+} // namespace steppable::__internals::utils

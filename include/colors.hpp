@@ -59,275 +59,278 @@
 // RGB Background Colors (8-bit)
 #define RGB_BG(r, g, b) "\x1b[48;2;" #r ";" #g ";" #b "m"
 
-/**
- * @brief Check if the output stream is a terminal.
- *
- * This function checks if the given output stream is associated with a terminal.
- *
- * @param[in] stream The output stream to check.
- * @return true if the output stream is a terminal, false otherwise.
- */
-bool isTerminal(const std::ostream& stream);
-
-/**
- * @brief Reset the text color and format to the default values.
- *
- * This function resets the text color and format to the default values.
- *
- * @param[in] stream The output stream to reset.
- * @return The modified output stream.
- */
-std::ostream& reset(std::ostream& stream);
-
-/**
- * @namespace colors
- * @brief A namespace containing functions to set the text color in an output stream.
- */
-namespace colors
+namespace steppable::__internals::utils
 {
     /**
-     * @brief Set the text color to black.
+     * @brief Check if the output stream is a terminal.
      *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
+     * This function checks if the given output stream is associated with a terminal.
+     *
+     * @param[in] stream The output stream to check.
+     * @return true if the output stream is a terminal, false otherwise.
      */
-    std::ostream& black(std::ostream& stream);
+    bool isTerminal(const std::ostream& stream);
 
     /**
-     * @brief Set the text color to red.
+     * @brief Reset the text color and format to the default values.
      *
-     * @param[in] stream The output stream to modify.
+     * This function resets the text color and format to the default values.
+     *
+     * @param[in] stream The output stream to reset.
      * @return The modified output stream.
      */
-    std::ostream& red(std::ostream& stream);
+    std::ostream& reset(std::ostream& stream);
 
     /**
-     * @brief Set the text color to green.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
+     * @namespace colors
+     * @brief A namespace containing functions to set the text color in an output stream.
      */
-    std::ostream& green(std::ostream& stream);
+    namespace colors
+    {
+        /**
+         * @brief Set the text color to black.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& black(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to red.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& red(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to green.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& green(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to yellow.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& yellow(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to blue.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& blue(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to magenta.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& magenta(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to cyan.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& cyan(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to white.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& white(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to bright black.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightBlack(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to bright red.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightRed(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to bright green.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightGreen(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to bright yellow.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightYellow(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to bright blue.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightBlue(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to bright magenta.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightMagenta(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to bright cyan.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightCyan(std::ostream& stream);
+
+        /**
+         * @brief Set the text color to bright white.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightWhite(std::ostream& stream);
+    } // namespace colors
 
     /**
-     * @brief Set the text color to yellow.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
+     * @namespace colorsBg
+     * @brief A namespace containing functions to set the background color in an output stream.
      */
-    std::ostream& yellow(std::ostream& stream);
+    namespace colorsBg
+    {
+        /**
+         * @brief Set the background color to bright black.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightBlack(std::ostream& stream);
+
+        /**
+         * @brief Set the background color to bright red.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightRed(std::ostream& stream);
+
+        /**
+         * @brief Set the background color to bright green.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightGreen(std::ostream& stream);
+
+        /**
+         * @brief Set the background color to bright yellow.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightYellow(std::ostream& stream);
+
+        /**
+         * @brief Set the background color to bright blue.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightBlue(std::ostream& stream);
+
+        /**
+         * @brief Set the background color to bright cyan.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightCyan(std::ostream& stream);
+
+        /**
+         * @brief Set the background color to bright white.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& brightWhite(std::ostream& stream);
+    } // namespace colorsBg
 
     /**
-     * @brief Set the text color to blue.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
+     * @namespace formats
+     * @brief A namespace containing functions to set the text format in an output stream.
      */
-    std::ostream& blue(std::ostream& stream);
+    namespace formats
+    {
+        /**
+         * @brief Set the text format to bold.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& bold(std::ostream& stream);
 
-    /**
-     * @brief Set the text color to magenta.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& magenta(std::ostream& stream);
+        /**
+         * @brief Set the text format to dim.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& dim(std::ostream& stream);
 
-    /**
-     * @brief Set the text color to cyan.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& cyan(std::ostream& stream);
+        /**
+         * @brief Set the text format to underline.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& underline(std::ostream& stream);
 
-    /**
-     * @brief Set the text color to white.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& white(std::ostream& stream);
+        /**
+         * @brief Set the text format to blink.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& blink(std::ostream& stream);
 
-    /**
-     * @brief Set the text color to bright black.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightBlack(std::ostream& stream);
+        /**
+         * @brief Set the text format to reverse.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& reverse(std::ostream& stream);
 
-    /**
-     * @brief Set the text color to bright red.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightRed(std::ostream& stream);
-
-    /**
-     * @brief Set the text color to bright green.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightGreen(std::ostream& stream);
-
-    /**
-     * @brief Set the text color to bright yellow.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightYellow(std::ostream& stream);
-
-    /**
-     * @brief Set the text color to bright blue.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightBlue(std::ostream& stream);
-
-    /**
-     * @brief Set the text color to bright magenta.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightMagenta(std::ostream& stream);
-
-    /**
-     * @brief Set the text color to bright cyan.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightCyan(std::ostream& stream);
-
-    /**
-     * @brief Set the text color to bright white.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightWhite(std::ostream& stream);
-} // namespace colors
-
-/**
- * @namespace colorsBg
- * @brief A namespace containing functions to set the background color in an output stream.
- */
-namespace colorsBg
-{
-    /**
-     * @brief Set the background color to bright black.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightBlack(std::ostream& stream);
-
-    /**
-     * @brief Set the background color to bright red.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightRed(std::ostream& stream);
-
-    /**
-     * @brief Set the background color to bright green.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightGreen(std::ostream& stream);
-
-    /**
-     * @brief Set the background color to bright yellow.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightYellow(std::ostream& stream);
-
-    /**
-     * @brief Set the background color to bright blue.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightBlue(std::ostream& stream);
-
-    /**
-     * @brief Set the background color to bright cyan.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightCyan(std::ostream& stream);
-
-    /**
-     * @brief Set the background color to bright white.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& brightWhite(std::ostream& stream);
-} // namespace colorsBg
-
-/**
- * @namespace formats
- * @brief A namespace containing functions to set the text format in an output stream.
- */
-namespace formats
-{
-    /**
-     * @brief Set the text format to bold.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& bold(std::ostream& stream);
-
-    /**
-     * @brief Set the text format to dim.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& dim(std::ostream& stream);
-
-    /**
-     * @brief Set the text format to underline.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& underline(std::ostream& stream);
-
-    /**
-     * @brief Set the text format to blink.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& blink(std::ostream& stream);
-
-    /**
-     * @brief Set the text format to reverse.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& reverse(std::ostream& stream);
-
-    /**
-     * @brief Set the text format to hidden.
-     *
-     * @param[in] stream The output stream to modify.
-     * @return The modified output stream.
-     */
-    std::ostream& hidden(std::ostream& stream);
-} // namespace formats
+        /**
+         * @brief Set the text format to hidden.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& hidden(std::ostream& stream);
+    } // namespace formats
+} // namespace steppable::__internals::utils

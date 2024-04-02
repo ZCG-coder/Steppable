@@ -43,71 +43,74 @@
 #include <string>
 #include <vector>
 
-// https://stackoverflow.com/a/49812356/14868780
-/**
- * @brief Formats a string using a variable number of arguments.
- *
- * This function takes a format string and a variable number of arguments,
- * and returns a formatted string. It uses the same format specifiers as
- * the standard library's `printf` function.
- *
- * @tparam CharT The character type of the string.
- * @param[in] sFormat The format string.
- * @param[in] ... The variable arguments.
- * @return The formatted string.
- */
-template<typename CharT>
-std::basic_string<CharT> vFormat(const std::basic_string<CharT> sFormat, ...)
+namespace steppable::__internals::format
 {
-    const CharT* const zcFormat = sFormat.c_str();
+    // https://stackoverflow.com/a/49812356/14868780
+    /**
+     * @brief Formats a string using a variable number of arguments.
+     *
+     * This function takes a format string and a variable number of arguments,
+     * and returns a formatted string. It uses the same format specifiers as
+     * the standard library's `printf` function.
+     *
+     * @tparam CharT The character type of the string.
+     * @param[in] sFormat The format string.
+     * @param[in] ... The variable arguments.
+     * @return The formatted string.
+     */
+    template<typename CharT>
+    std::basic_string<CharT> vFormat(const std::basic_string<CharT> sFormat, ...)
+    {
+        const CharT* const zcFormat = sFormat.c_str();
 
-    // Initialize a variable argument array
-    va_list vaArgs;
-    va_start(vaArgs, sFormat);
+        // Initialize a variable argument array
+        va_list vaArgs;
+        va_start(vaArgs, sFormat);
 
-    // Reliably acquire the size from a copy of the variable argument array
-    // and a functionally reliable call to mock the formatting
-    va_list vaCopy;
-    va_copy(vaCopy, vaArgs);
-    const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy);
-    va_end(vaCopy);
+        // Reliably acquire the size from a copy of the variable argument array
+        // and a functionally reliable call to mock the formatting
+        va_list vaCopy;
+        va_copy(vaCopy, vaArgs);
+        const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy);
+        va_end(vaCopy);
 
-    // Return a formatted string without risking memory mismanagement
-    // and without assuming any compiler or platform specific behavior
-    std::vector<CharT> zc(iLen + 1);
-    std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs);
-    va_end(vaArgs);
-    return std::string(zc.data(), zc.size());
-}
+        // Return a formatted string without risking memory mismanagement
+        // and without assuming any compiler or platform specific behavior
+        std::vector<CharT> zc(iLen + 1);
+        std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs);
+        va_end(vaArgs);
+        return std::string(zc.data(), zc.size());
+    }
 
-/**
- * @brief Formats a string using a format specifier and variable arguments.
- *
- * This function takes a format specifier and variable arguments, similar to the printf function,
- * and returns a formatted string. The format specifier is a string that may contain placeholders
- * for the variable arguments. The function uses the vsnprintf function to perform the formatting.
- *
- * @tparam CharT The character type of the string.
- * @param[in] sFormat The format specifier string.
- * @param[in] ... The variable arguments.
- * @return The formatted string.
- */
-template<typename CharT>
-std::basic_string<CharT> vFormat(const CharT* sFormat, ...)
-{
-    const CharT* const zcFormat = sFormat;
+    /**
+     * @brief Formats a string using a format specifier and variable arguments.
+     *
+     * This function takes a format specifier and variable arguments, similar to the printf function,
+     * and returns a formatted string. The format specifier is a string that may contain placeholders
+     * for the variable arguments. The function uses the vsnprintf function to perform the formatting.
+     *
+     * @tparam CharT The character type of the string.
+     * @param[in] sFormat The format specifier string.
+     * @param[in] ... The variable arguments.
+     * @return The formatted string.
+     */
+    template<typename CharT>
+    std::basic_string<CharT> vFormat(const CharT* sFormat, ...)
+    {
+        const CharT* const zcFormat = sFormat;
 
-    va_list vaArgs;
-    va_start(vaArgs, sFormat);
+        va_list vaArgs;
+        va_start(vaArgs, sFormat);
 
-    va_list vaCopy;
-    va_copy(vaCopy, vaArgs);
-    const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy); // NOLINT(clang-diagnostic-format-nonliteral)
-    va_end(vaCopy);
+        va_list vaCopy;
+        va_copy(vaCopy, vaArgs);
+        const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy); // NOLINT(clang-diagnostic-format-nonliteral)
+        va_end(vaCopy);
 
-    std::vector<CharT> zc(iLen + 1);
-    static_cast<void>(
-        std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs)); // NOLINT(clang-diagnostic-format-nonliteral)
-    va_end(vaArgs);
-    return std::string(zc.data(), zc.size());
-}
+        std::vector<CharT> zc(iLen + 1);
+        static_cast<void>(
+            std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs)); // NOLINT(clang-diagnostic-format-nonliteral)
+        va_end(vaArgs);
+        return std::string(zc.data(), zc.size());
+    }
+} // namespace steppable::__internals::format

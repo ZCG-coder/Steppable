@@ -30,14 +30,17 @@
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable::__internals::arithmetic;
+
 SECTION(Absolute value with positive number)
-const std::string &a = "6453.55";
+const std::string& a = "6453.55";
 const auto& absResult = abs(a, 0);
 _.assertIsEqual(absResult, "6453.55");
 SECTION_END()
 
 SECTION(Absolute value with negative number)
-const std::string &a = "-6453.55";
+const std::string& a = "-6453.55";
 const auto& absResult = abs(a, 0);
 _.assertIsEqual(absResult, "6453.55");
 SECTION_END()

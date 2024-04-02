@@ -32,19 +32,26 @@
 #include "powerReport.hpp"
 #include "util.hpp"
 
-std::string power(const std::string_view _number, const std::string_view& _raiseTo, const int steps)
+using namespace steppable::__internals::numUtils;
+using namespace steppable::output;
+using namespace steppable::__internals::arithmetic;
+
+namespace steppable::__internals::arithmetic
 {
-    std::string raiseTo = static_cast<std::string>(_raiseTo);
-    bool negative = false;
-    if (compare(raiseTo, "0", 0) == "0")
+    std::string power(const std::string_view _number, const std::string_view& _raiseTo, const int steps)
     {
-        // raiseTo is negative
-        raiseTo = raiseTo.substr(1);
-        negative = true;
+        std::string raiseTo = static_cast<std::string>(_raiseTo);
+        bool negative = false;
+        if (compare(raiseTo, "0", 0) == "0")
+        {
+            // raiseTo is negative
+            raiseTo = raiseTo.substr(1);
+            negative = true;
+        }
+        std::string numberOrig = static_cast<std::string>(_number), number = "1";
+        return reportPower(_number, raiseTo, negative, steps);
     }
-    std::string numberOrig = static_cast<std::string>(_number), number = "1";
-    return reportPower(_number, raiseTo, negative, steps);
-}
+} // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

@@ -35,12 +35,13 @@
 #include "internals.hpp"
 #include "util.hpp"
 
-#include <iomanip>
 #include <sstream>
 #include <string>
 #include <string_view>
 
 using namespace std::literals;
+using namespace steppable::__internals::stringUtils;
+using namespace steppable::__internals::arithmetic;
 
 std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string_view& temp,

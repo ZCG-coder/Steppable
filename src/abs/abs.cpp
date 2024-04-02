@@ -37,11 +37,17 @@
 #include <string>
 #include <string_view>
 
-std::string abs(const std::string_view& _number, const int steps)
+using namespace steppable::__internals::utils;
+using namespace steppable::__internals::arithmetic;
+
+namespace steppable::__internals::arithmetic
 {
-    std::string number = static_cast<std::string>(_number);
-    return reportAbs(number, steps);
-}
+    std::string abs(const std::string_view& _number, const int steps)
+    {
+        std::string number = static_cast<std::string>(_number);
+        return reportAbs(number, steps);
+    }
+} // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

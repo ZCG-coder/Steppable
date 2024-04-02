@@ -23,6 +23,8 @@
 #include "fn/basicArithm.hpp"
 #include "util.hpp"
 
+using namespace steppable::__internals::utils;
+
 int main()
 {
     Utf8CodePage();

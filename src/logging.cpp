@@ -28,7 +28,7 @@
 #include <fstream>
 #include <iomanip>
 
-namespace logging
+namespace steppable::__internals::logging
 {
 #if DEBUG
     Logger::Logger(const std::string& name, const std::string& filename, const Level level)
@@ -49,7 +49,7 @@ namespace logging
     {
         auto const now = std::chrono::system_clock::now();
         auto now_time = std::chrono::system_clock::to_time_t(now);
-        auto localTime = internals::localtime_xp(&now_time);
+        auto localTime = utils::localtime_xp(&now_time);
         auto timestamp = std::put_time(&localTime, "%F %T %Z");
         file << '[' << timestamp << "] " << message << '\n';
     }
@@ -77,4 +77,4 @@ namespace logging
         if (level <= Level::DBG)
             log(name + " - DEBUG: " + message);
     }
-} // namespace logging
+} // namespace steppable::__internals::logging

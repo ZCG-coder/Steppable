@@ -35,6 +35,8 @@
 #include <array>
 #include <string>
 
+namespace steppable::__internals::symbols
+{
 /// @brief The because symbol (3 dots in a triangle, Unicode U+2235)
 #define BECAUSE "\u2235"
 /// @brief The therefore symbol (3 dots in a triangle, Unicode U+2234)
@@ -65,24 +67,24 @@
  */
 #define SUB_MAGIC_NUMBER 8272
 
-/// @brief A list of subscript characters.
-extern const std::array<std::string_view, 10>& SUPERSCRIPTS;
+    /// @brief A list of subscript characters.
+    extern const std::array<std::string_view, 10>& SUPERSCRIPTS;
 
-/**
- * @brief Create a subscript string from a normal string.
- *
- * @param[in] normal The normal string.
- * @return The subscript string.
- */
-std::string makeSubscript(const std::string& normal);
+    /**
+     * @brief Create a subscript string from a normal string.
+     *
+     * @param[in] normal The normal string.
+     * @return The subscript string.
+     */
+    std::string makeSubscript(const std::string& normal);
 
-/**
- * @brief Create a subscript string from a normal integer.
- *
- * @param[in] normal The normal integer.
- * @return The subscript string.
- */
-std::string makeSubscript(int normal);
+    /**
+     * @brief Create a subscript string from a normal integer.
+     *
+     * @param[in] normal The normal integer.
+     * @return The subscript string.
+     */
+    std::string makeSubscript(int normal);
 
 // Superscripts
 /**
@@ -101,18 +103,19 @@ std::string makeSubscript(int normal);
  */
 #define SUP_MAGIC_NUMBER 8304
 
-/**
- * @brief Create a superscript string from a normal string.
- *
- * @param[in] normal The normal string.
- * @return The superscript string.
- */
-std::string makeSuperscript(const std::string& normal);
+    /**
+     * @brief Create a superscript string from a normal string.
+     *
+     * @param[in] normal The normal string.
+     * @return The superscript string.
+     */
+    std::string makeSuperscript(const std::string& normal);
 
-/**
- * @brief Create a superscript string from a normal character.
- *
- * @param[in] normal The normal character.
- * @return The superscript string.
- */
-std::string_view makeSuperscript(char normal);
+    /**
+     * @brief Create a superscript string from a normal character.
+     *
+     * @param[in] normal The normal character.
+     * @return The superscript string.
+     */
+    std::string_view makeSuperscript(char normal);
+} // namespace steppable::__internals::symbols

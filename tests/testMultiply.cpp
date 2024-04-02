@@ -30,6 +30,9 @@
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable::__internals::arithmetic;
+
 SECTION(Multiplication without carry)
 const std::string &a = "2", &b = "4";
 const auto& multiplyResult1 = multiply(a, b, 0);

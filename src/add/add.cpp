@@ -38,112 +38,119 @@
 #include <string_view>
 #include <vector>
 
-std::string add(const std::string_view& a,
-                const std::string_view& b,
-                const int steps,
-                const bool negative,
-                const bool properlyFormat)
+using namespace steppable::__internals::numUtils;
+using namespace steppable::__internals::utils;
+using namespace steppable::__internals::arithmetic;
+
+namespace steppable::__internals::arithmetic
 {
-    if (isZeroString(a))
+    std::string add(const std::string_view& a,
+                    const std::string_view& b,
+                    const int steps,
+                    const bool negative,
+                    const bool properlyFormat)
     {
-        std::stringstream ss;
-        if (steps == 2)
+        if (isZeroString(a))
         {
-            ss << BECAUSE " a = 0, the result is " << b << '\n';
-            ss << THEREFORE " " << a << " + " << b << " = " << b;
+            std::stringstream ss;
+            if (steps == 2)
+            {
+                ss << BECAUSE " a = 0, the result is " << b << '\n';
+                ss << THEREFORE " " << a << " + " << b << " = " << b;
+            }
+            else if (steps == 1)
+                ss << a << " + " << b << " = " << b;
+            else
+                ss << b;
+
+            return ss.str();
         }
-        else if (steps == 1)
-            ss << a << " + " << b << " = " << b;
-        else
-            ss << b;
 
-        return ss.str();
-    }
-
-    if (isZeroString(b))
-    {
-        std::stringstream ss;
-        if (steps == 2)
+        if (isZeroString(b))
         {
-            ss << BECAUSE " b = 0, the result is " << a << '\n';
-            ss << THEREFORE " " << a << " + " << b << " = " << a;
+            std::stringstream ss;
+            if (steps == 2)
+            {
+                ss << BECAUSE " b = 0, the result is " << a << '\n';
+                ss << THEREFORE " " << a << " + " << b << " = " << a;
+            }
+            else if (steps == 1)
+                ss << a << " + " << b << " = " << a;
+            else
+                ss << a;
+
+            return ss.str();
         }
-        else if (steps == 1)
-            ss << a << " + " << b << " = " << a;
-        else
-            ss << a;
+        auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, true, true, properlyFormat);
+        auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
+        bool resultIsNegative = false;
+        const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
 
-        return ss.str();
-    }
-    auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, true, true, properlyFormat);
-    auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
-    bool resultIsNegative = false;
-    const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
-
-    if (negative)
-        resultIsNegative = true;
-    else if (aIsNegative and bIsNegative)
-    {
-        resultIsNegative = true;
-        aIsNegative = false;
-        bIsNegative = false;
-    }
-    else if (aIsNegative)
-    {
-        if (steps == 2)
-            std::cout << "Subtracting " << b << " from " << a << " since " << a << " is negative.\n";
-        return subtract(b, a.substr(1), steps);
-    }
-    else if (bIsNegative)
-    {
-        if (steps == 2)
-            std::cout << "Subtracting " << a << " from " << b << " since " << b << " is negative.\n";
-        return subtract(a, b.substr(1), steps);
-    }
-
-    auto aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
-    std::ranges::reverse(aStr);
-    std::ranges::reverse(bStr);
-
-    std::vector sumDigits(aStr.length() + 1, 0);
-    std::vector carries(aStr.length() + 1, false);
-    for (size_t index = 0; index < aStr.length(); index++)
-    {
-        int aDigit = aStr[index] - '0', bDigit = bStr[index] - '0';
-        if (aStr[index] == ' ')
-            aDigit = 0;
-        if (bStr[index] == ' ')
-            bDigit = 0;
-
-        const int sumDigit = aDigit + bDigit;
-        sumDigits[index] += sumDigit;
-        if (sumDigits[index] >= 10)
+        if (negative)
+            resultIsNegative = true;
+        else if (aIsNegative and bIsNegative)
         {
-            sumDigits[index] -= 10;
-            sumDigits[index + 1] += 1;
-            carries[index + 1] = true;
+            resultIsNegative = true;
+            aIsNegative = false;
+            bIsNegative = false;
         }
+        else if (aIsNegative)
+        {
+            if (steps == 2)
+                std::cout << "Subtracting " << b << " from " << a << " since " << a << " is negative.\n";
+            return subtract(b, a.substr(1), steps);
+        }
+        else if (bIsNegative)
+        {
+            if (steps == 2)
+                std::cout << "Subtracting " << a << " from " << b << " since " << b << " is negative.\n";
+            return subtract(a, b.substr(1), steps);
+        }
+
+        auto aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
+        std::ranges::reverse(aStr);
+        std::ranges::reverse(bStr);
+
+        std::vector sumDigits(aStr.length() + 1, 0);
+        std::vector carries(aStr.length() + 1, false);
+        for (size_t index = 0; index < aStr.length(); index++)
+        {
+            int aDigit = aStr[index] - '0', bDigit = bStr[index] - '0';
+            if (aStr[index] == ' ')
+                aDigit = 0;
+            if (bStr[index] == ' ')
+                bDigit = 0;
+
+            const int sumDigit = aDigit + bDigit;
+            sumDigits[index] += sumDigit;
+            if (sumDigits[index] >= 10)
+            {
+                sumDigits[index] -= 10;
+                sumDigits[index + 1] += 1;
+                carries[index + 1] = true;
+            }
+        }
+
+        // Add a decimal point
+        if (aIsDecimal or bIsDecimal)
+        {
+            const auto decimalPos = aDecimal.length();
+            const auto& itSumDigits = sumDigits.begin();
+            const auto& itCarries = carries.begin();
+
+            sumDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
+            carries.insert(itCarries + static_cast<long>(decimalPos), false); // Reserve the space
+        }
+
+        std::reverse(carries.begin(), carries.end());
+        std::ranges::reverse(sumDigits);
+        if (sumDigits.front() == 0 and properlyFormat)
+            sumDigits.erase(sumDigits.begin());
+
+        return reportAdd(
+            aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, resultIsNegative, steps, properlyFormat);
     }
-
-    // Add a decimal point
-    if (aIsDecimal or bIsDecimal)
-    {
-        const auto decimalPos = aDecimal.length();
-        const auto& itSumDigits = sumDigits.begin();
-        const auto& itCarries = carries.begin();
-
-        sumDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
-        carries.insert(itCarries + static_cast<long>(decimalPos), false); // Reserve the space
-    }
-
-    std::reverse(carries.begin(), carries.end());
-    std::ranges::reverse(sumDigits);
-    if (sumDigits.front() == 0 and properlyFormat)
-        sumDigits.erase(sumDigits.begin());
-
-    return reportAdd(
-        aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, resultIsNegative, steps, properlyFormat);
-}
+} // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

@@ -37,6 +37,9 @@
 #include <sstream>
 
 using namespace std::literals;
+using namespace steppable::output;
+using namespace steppable::__internals::symbols;
+using namespace steppable::__internals::arithmetic;
 
 std::string reportPower(const std::string_view _number,
                         const std::string_view& raiseTo,

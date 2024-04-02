@@ -23,4 +23,7 @@
 #pragma once
 #include <string>
 
-std::string roundOff(const std::string& number);
+namespace steppable::__internals::numUtils
+{
+    std::string roundOff(const std::string& number);
+}

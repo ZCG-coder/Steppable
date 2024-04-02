@@ -42,139 +42,146 @@
 #include <string_view>
 #include <vector>
 
-std::string subtract(const std::string_view& a, const std::string_view& b, const int steps, const bool noMinus)
+using namespace steppable::__internals::numUtils;
+using namespace steppable::output;
+using namespace steppable::__internals::arithmetic;
+
+namespace steppable::__internals::arithmetic
 {
-    auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b);
-    auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
-    bool resultIsNegative;
-    const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
-
-    // Here, we try to determine if the result is negative or not
-    // Scenario 1: a is negative and b is positive
-    // Polarity  : Negative
-    // Action    : Add a and b, negate the result
-    //
-    // Scenario 2: a is positive and b is negative
-    // Polarity  : Positive
-    // Action    : Add a and b
-    //
-    // Scenario 3: Both a and b are negative
-    // Polarity  : Negative
-    // Action    : Subtract positive b from positive a
-    resultIsNegative = aIsNegative and bIsNegative or compare(a, b, 0) == "0";
-
-    if (aIsNegative and not bIsNegative)
+    std::string subtract(const std::string_view& a, const std::string_view& b, const int steps, const bool noMinus)
     {
-        resultIsNegative = true;
-        if (steps == 2)
-            std::cout << "Adding " << a.substr(1) << " and " << b << " since " << a << " is negative\n";
-        auto addResult = add(a.substr(1), b, steps, true);
-        auto res = addResult.substr(addResult.find_last_of(' ') + 1);
-        if (steps == 2)
+        auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b);
+        auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
+        bool resultIsNegative;
+        const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
+
+        // Here, we try to determine if the result is negative or not
+        // Scenario 1: a is negative and b is positive
+        // Polarity  : Negative
+        // Action    : Add a and b, negate the result
+        //
+        // Scenario 2: a is positive and b is negative
+        // Polarity  : Positive
+        // Action    : Add a and b
+        //
+        // Scenario 3: Both a and b are negative
+        // Polarity  : Negative
+        // Action    : Subtract positive b from positive a
+        resultIsNegative = aIsNegative and bIsNegative or compare(a, b, 0) == "0";
+
+        if (aIsNegative and not bIsNegative)
         {
-            // Replace last line with a subtraction report
-            std::stringstream ss;
-            ss << addResult.substr(0, addResult.find_last_of('\n')) << '\n';
-            ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
-            return ss.str();
+            resultIsNegative = true;
+            if (steps == 2)
+                std::cout << "Adding " << a.substr(1) << " and " << b << " since " << a << " is negative\n";
+            auto addResult = add(a.substr(1), b, steps, true);
+            auto res = addResult.substr(addResult.find_last_of(' ') + 1);
+            if (steps == 2)
+            {
+                // Replace last line with a subtraction report
+                std::stringstream ss;
+                ss << addResult.substr(0, addResult.find_last_of('\n')) << '\n';
+                ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
+                return ss.str();
+            }
+            if (steps == 1)
+            {
+                std::stringstream ss;
+                ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
+                return ss.str();
+            }
+            return "-" + addResult;
         }
-        if (steps == 1)
+        if (bIsNegative)
         {
-            std::stringstream ss;
-            ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
-            return ss.str();
+            if (steps == 2)
+                std::cout << "Adding " << a << " and " << b.substr(1) << " since " << b << " is negative\n";
+            resultIsNegative = false;
+            return add(a, b.substr(1), steps);
         }
-        return "-" + addResult;
-    }
-    if (bIsNegative)
-    {
-        if (steps == 2)
-            std::cout << "Adding " << a << " and " << b.substr(1) << " since " << b << " is negative\n";
-        resultIsNegative = false;
-        return add(a, b.substr(1), steps);
-    }
-    if (compare(a, b, 0) == "0")
-    {
-        auto subtractResult = subtract(b, a, steps);
-        if (steps == 2)
+        if (compare(a, b, 0) == "0")
         {
-            // Replace last line with a subtraction report
-            std::stringstream ss;
-            ss << subtractResult.substr(0, subtractResult.find_last_of('\n')) << '\n';
-            ss << THEREFORE << ' ' << a << " - " << b << " = -"
-               << subtractResult.substr(subtractResult.find_last_of(' ') + 1);
-            return ss.str();
+            auto subtractResult = subtract(b, a, steps);
+            if (steps == 2)
+            {
+                // Replace last line with a subtraction report
+                std::stringstream ss;
+                ss << subtractResult.substr(0, subtractResult.find_last_of('\n')) << '\n';
+                ss << THEREFORE << ' ' << a << " - " << b << " = -"
+                   << subtractResult.substr(subtractResult.find_last_of(' ') + 1);
+                return ss.str();
+            }
+            if (steps == 1)
+            {
+                std::stringstream ss;
+                ss << THEREFORE << ' ' << a << " - " << b << " = -"
+                   << subtractResult.substr(subtractResult.find_last_of(' ') + 1);
+                return ss.str();
+            }
+            return "-" + subtractResult;
         }
-        if (steps == 1)
+
+        std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
+        std::ranges::reverse(aStr);
+        std::ranges::reverse(bStr);
+
+        std::vector<int> diffDigits(aStr.length(), 0);
+        std::vector<int> borrows(aStr.length());
+        std::ranges::copy(aStr, borrows.begin());
+        std::ranges::for_each(borrows, [](int& c) { c -= '0'; });
+        for (int index = 0; index < aStr.length(); index++)
         {
-            std::stringstream ss;
-            ss << THEREFORE << ' ' << a << " - " << b << " = -"
-               << subtractResult.substr(subtractResult.find_last_of(' ') + 1);
-            return ss.str();
+            int aDigit = borrows[index], bDigit = bStr[index] - '0';
+            if (aStr[index] == ' ')
+                aDigit = 0;
+            if (bStr[index] == ' ')
+                bDigit = 0;
+
+            const int diffDigit = aDigit - bDigit;
+            diffDigits[index] = diffDigit;
+            if (diffDigits[index] < 0)
+            {
+                diffDigits[index] += 10;
+                borrows[index] += 10;
+                diffDigits[index + 1]--;
+                borrows[index + 1]--;
+            }
         }
-        return "-" + subtractResult;
-    }
 
-    std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
-    std::ranges::reverse(aStr);
-    std::ranges::reverse(bStr);
-
-    std::vector<int> diffDigits(aStr.length(), 0);
-    std::vector<int> borrows(aStr.length());
-    std::ranges::copy(aStr, borrows.begin());
-    std::ranges::for_each(borrows, [](int& c) { c -= '0'; });
-    for (int index = 0; index < aStr.length(); index++)
-    {
-        int aDigit = borrows[index], bDigit = bStr[index] - '0';
-        if (aStr[index] == ' ')
-            aDigit = 0;
-        if (bStr[index] == ' ')
-            bDigit = 0;
-
-        const int diffDigit = aDigit - bDigit;
-        diffDigits[index] = diffDigit;
-        if (diffDigits[index] < 0)
+        // Add a decimal point
+        if (aIsDecimal or bIsDecimal)
         {
-            diffDigits[index] += 10;
-            borrows[index] += 10;
-            diffDigits[index + 1]--;
-            borrows[index + 1]--;
+            const auto decimalPos = aDecimal.length();
+            const auto itSumDigits = diffDigits.cbegin();
+            const auto itCarries = borrows.cbegin();
+
+            diffDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
+            borrows.insert(itCarries + static_cast<long>(decimalPos), -1); // Reserve the space
         }
+
+        std::ranges::reverse(borrows);
+        std::ranges::reverse(diffDigits);
+        if (diffDigits.empty())
+            diffDigits.push_back(0);
+        if (diffDigits.front() == -1)
+        {
+            diffDigits.insert(diffDigits.cbegin(), -2);
+            borrows.insert(borrows.cbegin(), -2);
+        }
+
+        return reportSubtract(aInteger,
+                              aDecimal,
+                              bInteger,
+                              bDecimal,
+                              aIsDecimal,
+                              bIsDecimal,
+                              diffDigits,
+                              borrows,
+                              steps,
+                              resultIsNegative,
+                              noMinus);
     }
-
-    // Add a decimal point
-    if (aIsDecimal or bIsDecimal)
-    {
-        const auto decimalPos = aDecimal.length();
-        const auto itSumDigits = diffDigits.cbegin();
-        const auto itCarries = borrows.cbegin();
-
-        diffDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
-        borrows.insert(itCarries + static_cast<long>(decimalPos), -1); // Reserve the space
-    }
-
-    std::ranges::reverse(borrows);
-    std::ranges::reverse(diffDigits);
-    if (diffDigits.empty())
-        diffDigits.push_back(0);
-    if (diffDigits.front() == -1)
-    {
-        diffDigits.insert(diffDigits.cbegin(), -2);
-        borrows.insert(borrows.cbegin(), -2);
-    }
-
-    return reportSubtract(aInteger,
-                          aDecimal,
-                          bInteger,
-                          bDecimal,
-                          aIsDecimal,
-                          bIsDecimal,
-                          diffDigits,
-                          borrows,
-                          steps,
-                          resultIsNegative,
-                          noMinus);
-}
+} // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])

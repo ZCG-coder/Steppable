@@ -20,22 +20,27 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "fn/basicArithm.hpp"
 #include "rounding.hpp"
+
+#include "fn/basicArithm.hpp"
 #include "util.hpp"
+
 #include <string>
 
-std::string roundOff(const std::string& _number)
+namespace steppable::__internals::numUtils
 {
-    auto number = _number;
-    if (number.empty())
-        return "0";
-    if (number.find('.') == std::string::npos)
-        return number;
-    auto splitNumberResult = splitNumber(number, "0", false, false, true).splitNumberArray;
-    auto integer = splitNumberResult[0], decimal = splitNumberResult[1];
+    std::string roundOff(const std::string& _number)
+    {
+        auto number = _number;
+        if (number.empty())
+            return "0";
+        if (number.find('.') == std::string::npos)
+            return number;
+        auto splitNumberResult = splitNumber(number, "0", false, false, true).splitNumberArray;
+        auto integer = splitNumberResult[0], decimal = splitNumberResult[1];
 
-    if (compare(decimal, "5", 0) != "1")
-        return integer + "." + decimal;
-    return add(integer, "1", 0) + "." + decimal;
-}
+        if (arithmetic::compare(decimal, "5", 0) != "1")
+            return integer + "." + decimal;
+        return arithmetic::add(integer, "1", 0) + "." + decimal;
+    }
+} // namespace steppable::__internals::numUtils

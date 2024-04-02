@@ -22,8 +22,8 @@
 
 /**
  * @file baseConvertReport.cpp
- * @brief This file contains the implementation of the reportBaseConvert function, which reports the converted number to the
- * user.
+ * @brief This file contains the implementation of the reportBaseConvert function, which reports the converted number to
+ * the user.
  * @warning Still work-in-progress.
  *
  * @author Andy Zhang
@@ -41,6 +41,7 @@
 #include <vector>
 
 using namespace std::string_literals;
+using namespace steppable::__internals::stringUtils;
 
 std::string reportBaseConvertStep(const std::string& _number,
                                   const std::string& _base,

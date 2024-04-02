@@ -32,22 +32,25 @@
 
 #include <exception>
 
-/**
- * @class ZeroDenominatorException
- * @brief Thrown when initializing a fraction with zero as denominator.
- */
-class ZeroDenominatorException : public std::exception
+namespace steppable::exceptions
 {
-public:
-    const char* what() const throw() { return "The denominator is zero, which is not allowed."; }
-};
+    /**
+     * @class ZeroDenominatorException
+     * @brief Thrown when initializing a fraction with zero as denominator.
+     */
+    class ZeroDenominatorException : public std::exception
+    {
+    public:
+        const char* what() const throw() { return "The denominator is zero, which is not allowed."; }
+    };
 
-/**
- * @class MultiLengthLetterException
- * @brief Thrown when initializing a Key object with two or more letters.
- */
-class MultiLengthLetterException : public std::exception
-{
-public:
-    const char* what() const throw() { return "The length of letter exceeds the 1 limit."; }
-};
+    /**
+     * @class MultiLengthLetterException
+     * @brief Thrown when initializing a Key object with two or more letters.
+     */
+    class MultiLengthLetterException : public std::exception
+    {
+    public:
+        const char* what() const throw() { return "The length of letter exceeds the 1 limit."; }
+    };
+} // namespace steppable::exceptions

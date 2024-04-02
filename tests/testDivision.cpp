@@ -30,6 +30,9 @@
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable::__internals::arithmetic;
+
 SECTION(Integer division)
 // A gogol divided by 50
 const std::string

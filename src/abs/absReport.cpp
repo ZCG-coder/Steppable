@@ -36,6 +36,8 @@
 #include <string_view>
 #include <util.hpp>
 
+using namespace steppable::__internals::numUtils;
+
 std::string reportAbs(const std::string_view& number, int steps = 2)
 {
     std::stringstream ss;

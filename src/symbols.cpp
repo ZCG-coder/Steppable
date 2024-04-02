@@ -27,32 +27,37 @@
 #include <sstream>
 #include <string>
 
-const std::array<std::string_view, 10>& SUPERSCRIPTS = { "\u2070", "\u00b9", "\u00b2", "\u00b3", "\u2074",
-                                                         "\u2075", "\u2076", "\u2077", "\u2078", "\u2079" };
-
-std::string makeSubscript(const std::string& normal)
+namespace steppable::__internals::symbols
 {
-    std::string out;
-    for (const char c : normal)
-        out += unicodeToUtf8(c + SUB_MAGIC_NUMBER);
-    return out;
-}
+    using namespace steppable::__internals::stringUtils;
 
-std::string makeSubscript(const int normal) { return unicodeToUtf8(normal + SUB_MAGIC_NUMBER); }
+    const std::array<std::string_view, 10>& SUPERSCRIPTS = { "\u2070", "\u00b9", "\u00b2", "\u00b3", "\u2074",
+                                                             "\u2075", "\u2076", "\u2077", "\u2078", "\u2079" };
 
-std::string makeSuperscript(const std::string& normal)
-{
-    std::stringstream ss;
-    for (const char c : normal)
-        ss << SUPERSCRIPTS[c - '0'];
-    std::string string = ss.str();
-    return string;
-}
+    std::string makeSubscript(const std::string& normal)
+    {
+        std::string out;
+        for (const char c : normal)
+            out += unicodeToUtf8(c + SUB_MAGIC_NUMBER);
+        return out;
+    }
 
-std::string_view makeSuperscript(const char normal)
-{
-    if (normal == '-')
-        return "\u207B";
+    std::string makeSubscript(const int normal) { return unicodeToUtf8(normal + SUB_MAGIC_NUMBER); }
 
-    return SUPERSCRIPTS[normal - '0'];
-}
+    std::string makeSuperscript(const std::string& normal)
+    {
+        std::stringstream ss;
+        for (const char c : normal)
+            ss << SUPERSCRIPTS[c - '0'];
+        std::string string = ss.str();
+        return string;
+    }
+
+    std::string_view makeSuperscript(const char normal)
+    {
+        if (normal == '-')
+            return "\u207B";
+
+        return SUPERSCRIPTS[normal - '0'];
+    }
+} // namespace steppable::__internals::symbols

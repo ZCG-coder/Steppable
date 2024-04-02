@@ -40,6 +40,11 @@
 #include <string>
 #include <vector>
 
+using namespace steppable::__internals::symbols;
+using namespace steppable::__internals::numUtils;
+using namespace steppable::__internals::stringUtils;
+using namespace steppable::__internals::arithmetic;
+
 std::string reportMultiply(const std::string& a,
                            const std::string& b,
                            const std::string& aStr,

@@ -35,13 +35,14 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <mutex>
 
 /**
  * @namespace internals
  * @brief Namespace for internal functions
  * @note This namespace should not be used by other programs outside of the Steppable core.
  */
-namespace internals
+namespace steppable::__internals::utils
 {
     /**
      * @brief Exit the program safely
@@ -75,4 +76,4 @@ namespace internals
 #endif
         return bt;
     }
-} // namespace internals
+} // namespace steppable::__internals::utils

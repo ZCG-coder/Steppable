@@ -30,6 +30,9 @@
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable;
+
 SECTION(Test Addition)
 _.assertIsEqual((Number("123") + Number("456")).present(), "579");
 _.assertIsEqual((Number("456") + Number("123")).present(), "579");

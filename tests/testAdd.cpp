@@ -30,6 +30,9 @@
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable::__internals::arithmetic;
+
 SECTION(Addition with multiple digits of different length)
 const std::string &a = "6453.55", &b = "54329.334";
 const auto& addResult1 = add(a, b, 0);

@@ -32,113 +32,117 @@
 
 #include <string>
 
-/**
- * @class Fraction
- * @brief Acts as a fraction in math. It can be added, subtracted, multiplied and divided.
- */
-class Fraction
+namespace steppable
 {
-private:
-    /// @brief The numerator. (Top component)
-    std::string top;
-
-    /// @brief The denominator. (Bottom component)
-    std::string bottom;
-
-public:
     /**
-     * @brief Initializes a fraction with a specified top component and bottom component.
-     * @note By default, the top and bottom components are 1.
-     * @throws ZeroDenominatorException when the bottom component is zero.
+     * @class Fraction
+     * @brief Acts as a fraction in math. It can be added, subtracted, multiplied and divided.
      */
-    Fraction(const std::string& top = "1", const std::string& bottom = "1");
+    class Fraction
+    {
+    private:
+        /// @brief The numerator. (Top component)
+        std::string top;
 
-    /**
-     * @brief Initializes a fraction with no top component and bottom component specified.
-     * By default, this fraction equals to 1.
-     */
-    Fraction();
+        /// @brief The denominator. (Bottom component)
+        std::string bottom;
 
-    std::string present();
+    public:
+        /**
+         * @brief Initializes a fraction with a specified top component and bottom component.
+         * @note By default, the top and bottom components are 1.
+         * @throws ZeroDenominatorException when the bottom component is zero.
+         */
+        Fraction(const std::string& top = "1", const std::string& bottom = "1");
 
-    /**
-     * @brief Adds two fractions together.
-     * This function does it by doing a simple fraction addition and returns the sum.
-     *
-     * @param[in] rhs The other fraction.
-     * @return The sum of fractions.
-     */
-    Fraction operator+(const Fraction& rhs);
+        /**
+         * @brief Initializes a fraction with no top component and bottom component specified.
+         * By default, this fraction equals to 1.
+         */
+        Fraction();
 
-    /**
-     * @brief Subtracts a fraction from another fraction.
-     * This function does it by doing a simple fraction subtraction and returns the difference.
-     *
-     * @param[in] rhs The other fraction.
-     * @return The difference of fractions.
-     */
-    Fraction operator-(const Fraction& rhs);
+        std::string present();
 
-    /**
-     * @brief Multiplies two fractions together.
-     * This function does it by doing a simple fraction multiplication and returns the sum.
-     *
-     * @param[in] rhs The other fraction.
-     * @return The product of fractions.
-     */
-    Fraction operator*(const Fraction& rhs);
+        /**
+         * @brief Adds two fractions together.
+         * This function does it by doing a simple fraction addition and returns the sum.
+         *
+         * @param[in] rhs The other fraction.
+         * @return The sum of fractions.
+         */
+        Fraction operator+(const Fraction& rhs);
 
-    /**
-     * @brief Divides a fraction by abother fraction.
-     * This function does it by doing a simple fraction division (multiply by inverse) and
-     * returns the sum.
-     *
-     * @param[in] rhs The other fraction.
-     * @return The sum of fractions.
-     */
-    Fraction operator/(const Fraction& rhs);
+        /**
+         * @brief Subtracts a fraction from another fraction.
+         * This function does it by doing a simple fraction subtraction and returns the difference.
+         *
+         * @param[in] rhs The other fraction.
+         * @return The difference of fractions.
+         */
+        Fraction operator-(const Fraction& rhs);
 
-    /**
-     * @brief Adds two fractions together and stores the result in the current one.
-     * This function does it by doing a simple fraction addition and returns the sum.
-     *
-     * @param[in] rhs The other fraction.
-     * @return The current fraction.
-     */
-    Fraction& operator+=(const Fraction& rhs);
+        /**
+         * @brief Multiplies two fractions together.
+         * This function does it by doing a simple fraction multiplication and returns the sum.
+         *
+         * @param[in] rhs The other fraction.
+         * @return The product of fractions.
+         */
+        Fraction operator*(const Fraction& rhs);
 
-    /**
-     * @brief Subtracts a fraction from another fraction and stores the result in the current one.
-     * This function does it by doing a simple fraction subtraction and returns the difference.
-     *
-     * @param[in] rhs The other fraction.
-     * @return The current fraction.
-     */
-    Fraction& operator-=(const Fraction& rhs);
+        /**
+         * @brief Divides a fraction by abother fraction.
+         * This function does it by doing a simple fraction division (multiply by inverse) and
+         * returns the sum.
+         *
+         * @param[in] rhs The other fraction.
+         * @return The sum of fractions.
+         */
+        Fraction operator/(const Fraction& rhs);
 
-    /**
-     * @brief Multiplies two fractions together and stores the result in the current one.
-     * This function does it by doing a simple fraction multiplication and returns the sum.
-     *
-     * @param[in] rhs The other fraction.
-     * @return The current fraction.
-     */
-    Fraction& operator*=(const Fraction& rhs);
+        /**
+         * @brief Adds two fractions together and stores the result in the current one.
+         * This function does it by doing a simple fraction addition and returns the sum.
+         *
+         * @param[in] rhs The other fraction.
+         * @return The current fraction.
+         */
+        Fraction& operator+=(const Fraction& rhs);
 
-    /**
-     * @brief Divides a fraction by abother fraction and stores the result in the current one.
-     * This function does it by doing a simple fraction division (multiply by inverse) and
-     * returns the sum.
-     *
-     * @param[in] rhs The other fraction.
-     * @return The sum of fractions.
-     */
-    Fraction& operator/=(const Fraction& rhs);
+        /**
+         * @brief Subtracts a fraction from another fraction and stores the result in the current one.
+         * This function does it by doing a simple fraction subtraction and returns the difference.
+         *
+         * @param[in] rhs The other fraction.
+         * @return The current fraction.
+         */
+        Fraction& operator-=(const Fraction& rhs);
 
-    /**
-     * @brief Simplifies a fraction.
-     * This function simplifies the fraction by dividing the top and bottom components by their greatest common divisor.
-     * @note The fraction will be simplified in-place.
-     */
-    void simplify();
-};
+        /**
+         * @brief Multiplies two fractions together and stores the result in the current one.
+         * This function does it by doing a simple fraction multiplication and returns the sum.
+         *
+         * @param[in] rhs The other fraction.
+         * @return The current fraction.
+         */
+        Fraction& operator*=(const Fraction& rhs);
+
+        /**
+         * @brief Divides a fraction by abother fraction and stores the result in the current one.
+         * This function does it by doing a simple fraction division (multiply by inverse) and
+         * returns the sum.
+         *
+         * @param[in] rhs The other fraction.
+         * @return The sum of fractions.
+         */
+        Fraction& operator/=(const Fraction& rhs);
+
+        /**
+         * @brief Simplifies a fraction.
+         * This function simplifies the fraction by dividing the top and bottom components by their greatest common
+         * divisor.
+         * @note The fraction will be simplified in-place.
+         */
+        void simplify();
+    };
+} // namespace steppable
