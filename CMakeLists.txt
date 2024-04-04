@@ -59,7 +59,7 @@ function(capitalize IN OUT)
 endfunction()
 set(COMPONENTS abs add baseConvert subtract multiply decimalConvert comparison power division)
 set(TARGETS ${COMPONENTS} util)
-set(TEST_TARGETS_TEMP util fraction number ${COMPONENTS})
+set(TEST_TARGETS_TEMP util fraction number expression ${COMPONENTS})
 
 foreach (TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
     set(TARGET_NAME "test")
