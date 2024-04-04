@@ -62,7 +62,8 @@ var NAVTREE =
     [ "Security Policy", "md_SECURITY.html", [
       [ "Introduction", "md_SECURITY.html#autotoc_md29", null ],
       [ "Reporting a Vulnerability", "md_SECURITY.html#autotoc_md30", null ],
-      [ "Questions?", "md_SECURITY.html#autotoc_md31", null ]
+      [ "Fixing a Vulnerability", "md_SECURITY.html#autotoc_md31", null ],
+      [ "Questions?", "md_SECURITY.html#autotoc_md32", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -102,9 +103,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"",
-"divisionReport_8hpp.html#a37e4e7cb6fe42ae3131cdc071b038687",
-"rounding_8cpp.html#ac634c8aea297b7e8f5cc251041089c5b"
+"absReport_8cpp.html",
+"division_8cpp.html",
+"rounding_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
