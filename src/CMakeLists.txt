@@ -20,9 +20,8 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-file(GLOB UTILS *.cpp)
-add_library(util ${UTILS})
-
+add_library(util argParse.cpp colors.cpp logging.cpp rounding.cpp symbols.cpp testing.cpp util.cpp)
+add_library(steppable number.cpp fraction.cpp expression.cpp)
 # file(GLOB GUIS gui/*.cpp)
 # add_executable(gui ${GUIS})
 
@@ -46,8 +45,9 @@ foreach (COMPONENT IN LISTS COMPONENTS)
     list(APPEND CALCULATOR_FILES ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
 endforeach ()
 
-add_library(calc ${CALCULATOR_FILES} fraction.cpp number.cpp)
-target_link_libraries(calc util)
+add_library(calc ${CALCULATOR_FILES} fraction.cpp number.cpp expression.cpp)
+target_link_libraries(steppable util)
+target_link_libraries(calc steppable)
 # target_link_libraries(gui util)
 target_include_directories(calc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 # target_include_directories(gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
