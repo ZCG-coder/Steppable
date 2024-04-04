@@ -4,5 +4,8 @@ var searchData=
   ['error_80',['error',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#ae885985fe5bac5fca8db6a48d3da6488',1,'steppable::__internals::logging::Logger::error(const std::string &amp;message)'],['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a676f416e329994f615fcb2b1a80b2352',1,'steppable::__internals::logging::Logger::error(const std::string &amp;message, Args &amp;&amp;... args)'],['../namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7',1,'steppable::output::error(const std::string &amp;name, std::basic_string&lt; T &gt; msg, Args &amp;&amp;... args)'],['../namespacesteppable_1_1output.html#a4dbb7442362aa32fbb09dcdd755b07d2',1,'steppable::output::error(const std::string &amp;name, std::basic_string&lt; CharT &gt; msg)']]],
   ['errorcount_81',['errorCount',['../classsteppable_1_1testing_1_1TestCase.html#a18cb39c2028bb236ac7059f1dae7fc2d',1,'steppable::testing::TestCase']]],
   ['escape_82',['escape',['../structKey.html#a6700b9af3feaefe1691b19ea9ab6d627',1,'Key']]],
-  ['exceptions_2ehpp_83',['exceptions.hpp',['../exceptions_8hpp.html',1,'']]]
+  ['evaluate_83',['evaluate',['../expression_8hpp.html#a1287d352a93ea80391f20a865cf46daa',1,'evaluate(std::string tokens):&#160;expression.cpp'],['../expression_8cpp.html#a1287d352a93ea80391f20a865cf46daa',1,'evaluate(std::string tokens):&#160;expression.cpp']]],
+  ['exceptions_2ehpp_84',['exceptions.hpp',['../exceptions_8hpp.html',1,'']]],
+  ['expression_2ecpp_85',['expression.cpp',['../expression_8cpp.html',1,'']]],
+  ['expression_2ehpp_86',['expression.hpp',['../expression_8hpp.html',1,'']]]
 ];

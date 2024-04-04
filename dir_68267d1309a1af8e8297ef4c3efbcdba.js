@@ -13,6 +13,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "subtract", "dir_fcd1616905467347a0d6d145ee01dc72.html", "dir_fcd1616905467347a0d6d145ee01dc72" ],
     [ "argParse.cpp", "argParse_8cpp.html", null ],
     [ "colors.cpp", "colors_8cpp.html", "colors_8cpp" ],
+    [ "expression.cpp", "expression_8cpp.html", "expression_8cpp" ],
     [ "fraction.cpp", "fraction_8cpp.html", null ],
     [ "logging.cpp", "logging_8cpp.html", null ],
     [ "number.cpp", "number_8cpp.html", null ],

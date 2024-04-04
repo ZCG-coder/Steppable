@@ -7,6 +7,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
       [ "ZeroDenominatorException", "classsteppable_1_1exceptions_1_1ZeroDenominatorException.html", "classsteppable_1_1exceptions_1_1ZeroDenominatorException" ],
       [ "MultiLengthLetterException", "classsteppable_1_1exceptions_1_1MultiLengthLetterException.html", "classsteppable_1_1exceptions_1_1MultiLengthLetterException" ]
     ] ],
+    [ "expression.hpp", "expression_8hpp.html", "expression_8hpp" ],
     [ "format.hpp", "format_8hpp.html", "format_8hpp" ],
     [ "fraction.hpp", "fraction_8hpp.html", [
       [ "Fraction", "classsteppable_1_1Fraction.html", "classsteppable_1_1Fraction" ]
