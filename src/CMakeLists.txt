@@ -42,7 +42,15 @@ function(COPY_TO_BIN TARGET_NAME)
 endfunction()
 
 foreach (COMPONENT IN LISTS COMPONENTS)
-    list(APPEND CALCULATOR_FILES ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
+    message(STATUS "Adding component: ${COMPONENT}: ${COMPONENT}/${COMPONENT}.cpp, ${COMPONENT}/${COMPONENT}Report.cpp")
+
+    add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
+    target_link_libraries(${COMPONENT} calc)
+
+    list(APPEND CALCULATOR_FILES ${CMAKE_CURRENT_SOURCE_DIR}/${COMPONENT}/${COMPONENT}.cpp
+                                 ${CMAKE_CURRENT_SOURCE_DIR}/${COMPONENT}/${COMPONENT}Report.cpp)
+
+    COPY_TO_BIN(${COMPONENT})
 endforeach ()
 
 add_library(calc ${CALCULATOR_FILES} fraction.cpp number.cpp expression.cpp)
@@ -53,17 +61,11 @@ target_include_directories(calc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 # target_include_directories(gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 target_compile_definitions(calc PRIVATE NO_MAIN)
 
-foreach (COMPONENT IN LISTS COMPONENTS)
-    message(STATUS "Adding component: ${COMPONENT}: ${COMPONENT}/${COMPONENT}.cpp, ${COMPONENT}/${COMPONENT}Report.cpp")
-
-    add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
-    target_link_libraries(${COMPONENT} calc)
-
-    list(APPEND CALCULATOR_FILES ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
-
-    COPY_TO_BIN(${COMPONENT})
-endforeach ()
-
 add_executable(main main/main.cpp)
 target_link_libraries(main calc)
 target_include_directories(main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+
+set(G_CALCULATOR_FILES ${CALCULATOR_FILES} ${CMAKE_CURRENT_SOURCE_DIR}/fraction.cpp
+                                           ${CMAKE_CURRENT_SOURCE_DIR}/number.cpp
+                                           ${CMAKE_CURRENT_SOURCE_DIR}/expression.cpp
+                                           CACHE INTERNAL "Calculator files" FORCE)

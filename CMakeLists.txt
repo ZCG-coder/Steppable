@@ -23,6 +23,9 @@
 cmake_minimum_required(VERSION 3.20)
 project(Steppable)
 
+# Ensure that Python is available to run the development scripts, and build with bindings.
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -71,14 +74,13 @@ endforeach ()
 add_subdirectory(src/)
 add_subdirectory(tests/)
 add_subdirectory(include/) # The CMakeLists file there adds the include/ directory to everything
+add_subdirectory(lib/)
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
-if (DEBUG)
-    # Ensure that Python is available to run the development scripts
-    find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
+if (DEBUG)
     # Patch the compile_commands.json using the Python script
     add_custom_target(
             fix_ccjson ALL
