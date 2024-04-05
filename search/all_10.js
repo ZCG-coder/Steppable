@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['quotient_188',['quotient',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#ae02205a4a9283f5df34a455b575fd60c',1,'steppable::__internals::arithmetic::QuotientRemainder']]],
-  ['quotientremainder_189',['QuotientRemainder',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html',1,'steppable::__internals::arithmetic']]]
+  ['quotient_190',['quotient',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#ae02205a4a9283f5df34a455b575fd60c',1,'steppable::__internals::arithmetic::QuotientRemainder']]],
+  ['quotientremainder_191',['QuotientRemainder',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html',1,'steppable::__internals::arithmetic']]]
 ];
