@@ -20,8 +20,8 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-add_library(util argParse.cpp colors.cpp logging.cpp rounding.cpp symbols.cpp testing.cpp util.cpp)
-add_library(steppable number.cpp fraction.cpp expression.cpp)
+add_library(util SHARED argParse.cpp colors.cpp logging.cpp rounding.cpp symbols.cpp testing.cpp util.cpp)
+add_library(steppable SHARED number.cpp fraction.cpp expression.cpp)
 # file(GLOB GUIS gui/*.cpp)
 # add_executable(gui ${GUIS})
 
@@ -53,7 +53,7 @@ foreach (COMPONENT IN LISTS COMPONENTS)
     COPY_TO_BIN(${COMPONENT})
 endforeach ()
 
-add_library(calc ${CALCULATOR_FILES} fraction.cpp number.cpp expression.cpp)
+add_library(calc SHARED ${CALCULATOR_FILES} fraction.cpp number.cpp expression.cpp)
 target_link_libraries(steppable util)
 target_link_libraries(calc steppable)
 # target_link_libraries(gui util)

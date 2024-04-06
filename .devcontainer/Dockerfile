@@ -16,7 +16,7 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
 # [Optional] Uncomment this section to install additional packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && wget https://apt.llvm.org/llvm.sh \
-    && apt-get -y install --no-install-recommends doxygen graphviz software-properties-common \
+    && apt-get -y install --no-install-recommends doxygen graphviz python3 python3-dev python3-pip python3-virtualenv software-properties-common \
     && chmod +x llvm.sh \
     && ./llvm.sh all \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
