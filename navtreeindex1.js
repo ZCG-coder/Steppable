@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2":[6,0,2,5,1,1],
-"divisionReport_8hpp.html":[6,0,2,5,2],
 "divisionReport_8hpp.html#a3010ab5571a71e2c6493b47afc4eb9ed":[6,0,2,5,2,1],
 "divisionReport_8hpp.html#a37e4e7cb6fe42ae3131cdc071b038687":[6,0,2,5,2,0],
 "divisionReport_8hpp_source.html":[6,0,2,5,2],
@@ -221,8 +219,8 @@ var NAVTREEINDEX1 =
 "namespacesteppable_1_1testing.html":[4,0,5,3],
 "number_8cpp.html":[6,0,2,16],
 "number_8hpp.html":[6,0,0,9],
-"number_8hpp.html#a61949411cf477d12b3d15472d5b83092":[4,0,5,6],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092":[6,0,0,9,1],
+"number_8hpp.html#a61949411cf477d12b3d15472d5b83092":[4,0,5,6],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320":[4,0,5,6,4],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320":[6,0,0,9,1,4],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64":[4,0,5,6,2],
@@ -231,8 +229,8 @@ var NAVTREEINDEX1 =
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda":[6,0,0,9,1,3],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb":[4,0,5,6,1],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb":[6,0,0,9,1,1],
-"number_8hpp.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba":[4,0,5,6,0],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba":[6,0,0,9,1,0],
+"number_8hpp.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba":[4,0,5,6,0],
 "number_8hpp_source.html":[6,0,0,9],
 "output_8hpp.html":[6,0,0,10],
 "output_8hpp.html#a076ed2ffbc6d17c02f91f3b9cb4026b7":[6,0,0,10,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX1 =
 "powerReport_8cpp.html#afff5f8aa771cf432836ef03f6f442dae":[6,0,2,9,1,0],
 "powerReport_8hpp.html":[6,0,2,9,2],
 "powerReport_8hpp.html#a3983fa7e3f0ac4977f27439fb574b389":[6,0,2,9,2,0],
-"powerReport_8hpp_source.html":[6,0,2,9,2]
+"powerReport_8hpp_source.html":[6,0,2,9,2],
+"power_8cpp.html":[6,0,2,9,0],
+"power_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17":[6,0,2,9,0,0]
 };
