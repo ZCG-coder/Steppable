@@ -1,52 +1,52 @@
 <map id="steppable::__internals::numUtils::simplifyZeroPolarity" name="steppable::__internals::numUtils::simplifyZeroPolarity">
-<area shape="rect" id="node1" title="Simplifies a string that represents a number with non&#45;standard polarity." alt="" coords="3031,1550,3260,1591"/>
-<area shape="rect" id="node2" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472" title="Simplifies a string with non&#45;standard polarity (e.g., –1, —1, etc.)." alt="" coords="2784,1521,2983,1562"/>
-<area shape="rect" id="node3" href="$namespacesteppable_1_1____internals_1_1numUtils.html#ad13b8651b0d069d596f7e25f78a8b4ed" title=" " alt="" coords="2285,1579,2463,1621"/>
-<area shape="rect" id="node47" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9" title="Standardizes a number string." alt="" coords="2511,1025,2736,1066"/>
-<area shape="rect" id="node4" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca" title="Adds two string representations of numbers, and performs with the column method." alt="" coords="2072,370,2237,411"/>
-<area shape="rect" id="node8" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730" title="Divides a string representation of a number by another string representation of a number." alt="" coords="793,1179,959,1221"/>
-<area shape="rect" id="node9" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978" title=" " alt="" coords="515,1274,745,1315"/>
-<area shape="rect" id="node23" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66" title="Multiplies two string representations of numbers." alt="" coords="1308,1471,1473,1513"/>
-<area shape="rect" id="node30" href="$namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b" title="Round off a number to the nearest integer." alt="" coords="1842,621,2007,662"/>
-<area shape="rect" id="node32" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e" title="Subtracts one string representation of a number from another string representation of a number." alt="" coords="1308,870,1473,911"/>
-<area shape="rect" id="node34" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a7ff9976bf48df9c832d7489e88004813" title="Gets the greatest common divisor of two string representations of numbers." alt="" coords="793,1909,959,1950"/>
-<area shape="rect" id="node37" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8" title="Compares two string representations of numbers." alt="" coords="2072,1025,2237,1066"/>
-<area shape="rect" id="node46" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13" title="Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation." alt="" coords="1825,1858,2024,1899"/>
-<area shape="rect" id="node5" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a7e727b70fed2eba6324a6e41d1a1fe03" title=" " alt="" coords="537,690,723,731"/>
-<area shape="rect" id="node7" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374" title="Converts a string representation of a number from one base to another." alt="" coords="25,449,233,490"/>
-<area shape="rect" id="node10" href="$bindings_8cpp.html#af434d7fc3eaa11448eece320b8a7d90e" title=" " alt="" coords="77,1069,182,1096"/>
-<area shape="rect" id="node14" href="$powerReport_8cpp.html#afff5f8aa771cf432836ef03f6f442dae" title="Reports a power operation." alt="" coords="579,584,681,611"/>
-<area shape="rect" id="node18" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a" title="Executes a given predicate function a specified number of times." alt="" coords="1842,429,2007,470"/>
-<area shape="rect" id="node19" href="$add_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="1897,209,1952,236"/>
-<area shape="rect" id="node20" href="$classsteppable_1_1Fraction.html#a1262c8eeceb0325f49d5e9305ef166c6" title="Adds two fractions together. This function does it by doing a simple fraction addition and returns th..." alt="" coords="1060,581,1207,622"/>
-<area shape="rect" id="node21" href="$classsteppable_1_1Number.html#a6e565a933a6295abd720d6ab8f9c6eb7" title="Adds two numbers together." alt="" coords="1847,261,2002,302"/>
-<area shape="rect" id="node22" href="$multiplyReport_8cpp.html#a551f62010399287bf016fd805c5d4cd3" title="Reports a multiplication operation to the user." alt="" coords="1867,569,1982,596"/>
-<area shape="rect" id="node6" href="$baseConvert_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="357,697,411,724"/>
-<area shape="rect" id="node12" href="$division_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="603,1912,657,1939"/>
-<area shape="rect" id="node13" href="$classsteppable_1_1Number.html#aa66cc95056779a87d04caaf621b662bb" title="Divides two numbers." alt="" coords="553,1082,707,1123"/>
-<area shape="rect" id="node17" href="$classsteppable_1_1Fraction.html#a9cf64d847c268d9334775c572ef75dfa" title="Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom component..." alt="" coords="557,1386,703,1427"/>
-<area shape="rect" id="node11" href="$classsteppable_1_1Number.html#a6e98fb3dedfd70f3956e9d299733a58d" title="Calculates the remainder of two numbers. (Modulus)" alt="" coords="307,1301,461,1342"/>
-<area shape="rect" id="node15" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0" title="Raises a string representation of a number to a power." alt="" coords="301,577,467,618"/>
-<area shape="rect" id="node16" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3" title="Determines the scale of the quotient of division." alt="" coords="5,1926,253,1967"/>
-<area shape="rect" id="node24" href="$multiply_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="1106,1639,1161,1665"/>
-<area shape="rect" id="node25" href="$classsteppable_1_1Fraction.html#a284bd42053126042231a5841f9198a98" title="Multiplies two fractions together. This function does it by doing a simple fraction multiplication an..." alt="" coords="1060,1690,1207,1731"/>
-<area shape="rect" id="node26" href="$classsteppable_1_1Number.html#a3b71d87a5d1f7858ec8f80a4df84cc09" title="Multiplies two numbers." alt="" coords="1056,1405,1211,1446"/>
-<area shape="rect" id="node27" href="$classsteppable_1_1Fraction.html#a1b01ec2d3eceef4e566970b464cda13f" title="Subtracts a fraction from another fraction. This function does it by doing a simple fraction subtract..." alt="" coords="1060,967,1207,1009"/>
-<area shape="rect" id="node28" href="$classsteppable_1_1Fraction.html#a6323244f0b10242c2044f3f920f4be0b" title="Divides a fraction by abother fraction. This function does it by doing a simple fraction division (mu..." alt="" coords="1060,1522,1207,1563"/>
-<area shape="rect" id="node29" href="$divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2" title="Reports a division step." alt="" coords="1062,1135,1205,1161"/>
-<area shape="rect" id="node31" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#af7183da49ccdfb5a58325e6017ebd7c6" title="Determines the scale for a product of two numbers." alt="" coords="1521,1538,1777,1579"/>
-<area shape="rect" id="node33" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a677f253d71524a9d500e980dc159c79c" title=" " alt="" coords="1007,1186,1260,1227"/>
-<area shape="rect" id="node35" href="$subtract_8cpp.html#ac2c7bcd6d73ca32ee42312d0fa0b1aa9" title=" " alt="" coords="1106,748,1161,775"/>
-<area shape="rect" id="node36" href="$classsteppable_1_1Number.html#ab110d50402005abc3675dc3ba170ee53" title="Subtracts two numbers." alt="" coords="1056,799,1211,841"/>
-<area shape="rect" id="node38" href="$comparison_8cpp.html#a01b8b8bd5868995ae4a51d8c87cc82dd" title=" " alt="" coords="1897,940,1952,967"/>
-<area shape="rect" id="node39" href="$classsteppable_1_1Number.html#ae26faaf0145ecbbe6a90ed59542f8734" title="Compares two numbers for inequality." alt="" coords="1847,991,2002,1033"/>
-<area shape="rect" id="node40" href="$classsteppable_1_1Number.html#a8ab4a5bf36bd61ac9fa590c0a970aed1" title="Compares two numbers for less than." alt="" coords="1847,1057,2002,1098"/>
-<area shape="rect" id="node41" href="$classsteppable_1_1Number.html#aecd7f14eff1cf8b4ec2eed3dc66f2faa" title="Compares two numbers for less than or equal to." alt="" coords="1847,1122,2002,1163"/>
-<area shape="rect" id="node42" href="$classsteppable_1_1Number.html#a15105c305beea56b722fd899553cca54" title="Compares two numbers for equality." alt="" coords="1847,1187,2002,1229"/>
-<area shape="rect" id="node43" href="$classsteppable_1_1Number.html#a86580f874979c2c8f9ba86d9fcc02d51" title="Compares two numbers for greater than." alt="" coords="1847,1253,2002,1294"/>
-<area shape="rect" id="node44" href="$classsteppable_1_1Number.html#a14e64fdcef497a625e0bef1bf601183d" title="Compares two numbers for greater than or equal to." alt="" coords="1847,1318,2002,1359"/>
-<area shape="rect" id="node45" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0" title="Represents a number using alphabets and numberals." alt="" coords="1540,809,1759,850"/>
-<area shape="rect" id="node48" href="$absReport_8cpp.html#a7e44e3e84696a88d84e6d9e3331ea6a3" title="Reports the absolute value of a number string to the user." alt="" coords="2331,1852,2417,1879"/>
-<area shape="rect" id="node50" href="$addReport_8cpp.html#ad77bd53c675044525fecd7273407c4a6" title="Reports the sum of two number strings." alt="" coords="2331,465,2417,492"/>
-<area shape="rect" id="node49" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a37bfff2d022f3dd5e5a15e800ecfd5d6" title="Calculates the absolute value of a string representation of a number." alt="" coords="1051,2061,1216,2102"/>
+<area shape="rect" id="node1" title="Simplifies a string that represents a number with non&#45;standard polarity." alt="" coords="3031,1540,3260,1581"/>
+<area shape="rect" id="node2" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472" title="Simplifies a string with non&#45;standard polarity (e.g., –1, —1, etc.)." alt="" coords="2784,1510,2983,1552"/>
+<area shape="rect" id="node3" href="$namespacesteppable_1_1____internals_1_1numUtils.html#ad13b8651b0d069d596f7e25f78a8b4ed" title=" " alt="" coords="2285,1569,2463,1610"/>
+<area shape="rect" id="node47" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9" title="Standardizes a number string." alt="" coords="2511,1033,2736,1074"/>
+<area shape="rect" id="node4" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca" title="Adds two string representations of numbers, and performs with the column method." alt="" coords="2072,378,2237,420"/>
+<area shape="rect" id="node8" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730" title="Divides a string representation of a number by another string representation of a number." alt="" coords="793,1261,959,1302"/>
+<area shape="rect" id="node9" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978" title=" " alt="" coords="515,1413,745,1454"/>
+<area shape="rect" id="node23" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66" title="Multiplies two string representations of numbers." alt="" coords="1308,1481,1473,1522"/>
+<area shape="rect" id="node30" href="$namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b" title="Round off a number to the nearest integer." alt="" coords="1842,629,2007,670"/>
+<area shape="rect" id="node32" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e" title="Subtracts one string representation of a number from another string representation of a number." alt="" coords="1308,878,1473,920"/>
+<area shape="rect" id="node34" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a7ff9976bf48df9c832d7489e88004813" title="Gets the greatest common divisor of two string representations of numbers." alt="" coords="793,1813,959,1854"/>
+<area shape="rect" id="node37" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8" title="Compares two string representations of numbers." alt="" coords="2072,1033,2237,1074"/>
+<area shape="rect" id="node46" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13" title="Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation." alt="" coords="1825,1957,2024,1998"/>
+<area shape="rect" id="node5" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a7e727b70fed2eba6324a6e41d1a1fe03" title=" " alt="" coords="537,606,723,648"/>
+<area shape="rect" id="node7" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374" title="Converts a string representation of a number from one base to another." alt="" coords="25,338,233,380"/>
+<area shape="rect" id="node10" href="$bindings_8cpp.html#af434d7fc3eaa11448eece320b8a7d90e" title=" " alt="" coords="77,1260,182,1287"/>
+<area shape="rect" id="node14" href="$powerReport_8cpp.html#afff5f8aa771cf432836ef03f6f442dae" title="Reports a power operation." alt="" coords="579,483,681,510"/>
+<area shape="rect" id="node18" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a" title="Executes a given predicate function a specified number of times." alt="" coords="1842,512,2007,553"/>
+<area shape="rect" id="node19" href="$add_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="1897,167,1952,194"/>
+<area shape="rect" id="node20" href="$classsteppable_1_1Fraction.html#a1262c8eeceb0325f49d5e9305ef166c6" title="Adds two fractions together. This function does it by doing a simple fraction addition and returns th..." alt="" coords="1060,690,1207,732"/>
+<area shape="rect" id="node21" href="$classsteppable_1_1Number.html#a6e565a933a6295abd720d6ab8f9c6eb7" title="Adds two numbers together." alt="" coords="1847,218,2002,260"/>
+<area shape="rect" id="node22" href="$multiplyReport_8cpp.html#a551f62010399287bf016fd805c5d4cd3" title="Reports a multiplication operation to the user." alt="" coords="1867,578,1982,604"/>
+<area shape="rect" id="node6" href="$baseConvert_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="357,614,411,640"/>
+<area shape="rect" id="node12" href="$division_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="603,1819,657,1846"/>
+<area shape="rect" id="node13" href="$classsteppable_1_1Number.html#aa66cc95056779a87d04caaf621b662bb" title="Divides two numbers." alt="" coords="553,1194,707,1236"/>
+<area shape="rect" id="node17" href="$classsteppable_1_1Fraction.html#a9cf64d847c268d9334775c572ef75dfa" title="Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom component..." alt="" coords="557,1478,703,1520"/>
+<area shape="rect" id="node11" href="$classsteppable_1_1Number.html#a6e98fb3dedfd70f3956e9d299733a58d" title="Calculates the remainder of two numbers. (Modulus)" alt="" coords="307,1464,461,1505"/>
+<area shape="rect" id="node15" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0" title="Raises a string representation of a number to a power." alt="" coords="301,476,467,517"/>
+<area shape="rect" id="node16" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3" title="Determines the scale of the quotient of division." alt="" coords="5,1904,253,1945"/>
+<area shape="rect" id="node24" href="$multiply_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" title=" " alt="" coords="1106,1514,1161,1540"/>
+<area shape="rect" id="node25" href="$classsteppable_1_1Fraction.html#a284bd42053126042231a5841f9198a98" title="Multiplies two fractions together. This function does it by doing a simple fraction multiplication an..." alt="" coords="1060,1565,1207,1606"/>
+<area shape="rect" id="node26" href="$classsteppable_1_1Number.html#a3b71d87a5d1f7858ec8f80a4df84cc09" title="Multiplies two numbers." alt="" coords="1056,1630,1211,1672"/>
+<area shape="rect" id="node27" href="$classsteppable_1_1Fraction.html#a1b01ec2d3eceef4e566970b464cda13f" title="Subtracts a fraction from another fraction. This function does it by doing a simple fraction subtract..." alt="" coords="1060,1026,1207,1068"/>
+<area shape="rect" id="node28" href="$classsteppable_1_1Fraction.html#a6323244f0b10242c2044f3f920f4be0b" title="Divides a fraction by abother fraction. This function does it by doing a simple fraction division (mu..." alt="" coords="1060,1696,1207,1737"/>
+<area shape="rect" id="node29" href="$divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2" title="Reports a division step." alt="" coords="1062,1260,1205,1287"/>
+<area shape="rect" id="node31" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#af7183da49ccdfb5a58325e6017ebd7c6" title="Determines the scale for a product of two numbers." alt="" coords="1521,1545,1777,1586"/>
+<area shape="rect" id="node33" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a677f253d71524a9d500e980dc159c79c" title=" " alt="" coords="1007,1144,1260,1185"/>
+<area shape="rect" id="node35" href="$subtract_8cpp.html#ac2c7bcd6d73ca32ee42312d0fa0b1aa9" title=" " alt="" coords="1106,756,1161,783"/>
+<area shape="rect" id="node36" href="$classsteppable_1_1Number.html#ab110d50402005abc3675dc3ba170ee53" title="Subtracts two numbers." alt="" coords="1056,808,1211,849"/>
+<area shape="rect" id="node38" href="$comparison_8cpp.html#a01b8b8bd5868995ae4a51d8c87cc82dd" title=" " alt="" coords="1897,948,1952,975"/>
+<area shape="rect" id="node39" href="$classsteppable_1_1Number.html#ae26faaf0145ecbbe6a90ed59542f8734" title="Compares two numbers for inequality." alt="" coords="1847,1000,2002,1041"/>
+<area shape="rect" id="node40" href="$classsteppable_1_1Number.html#a8ab4a5bf36bd61ac9fa590c0a970aed1" title="Compares two numbers for less than." alt="" coords="1847,1065,2002,1106"/>
+<area shape="rect" id="node41" href="$classsteppable_1_1Number.html#aecd7f14eff1cf8b4ec2eed3dc66f2faa" title="Compares two numbers for less than or equal to." alt="" coords="1847,1130,2002,1172"/>
+<area shape="rect" id="node42" href="$classsteppable_1_1Number.html#a15105c305beea56b722fd899553cca54" title="Compares two numbers for equality." alt="" coords="1847,1196,2002,1237"/>
+<area shape="rect" id="node43" href="$classsteppable_1_1Number.html#a86580f874979c2c8f9ba86d9fcc02d51" title="Compares two numbers for greater than." alt="" coords="1847,1261,2002,1302"/>
+<area shape="rect" id="node44" href="$classsteppable_1_1Number.html#a14e64fdcef497a625e0bef1bf601183d" title="Compares two numbers for greater than or equal to." alt="" coords="1847,1326,2002,1368"/>
+<area shape="rect" id="node45" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0" title="Represents a number using alphabets and numberals." alt="" coords="1540,822,1759,864"/>
+<area shape="rect" id="node48" href="$absReport_8cpp.html#a7e44e3e84696a88d84e6d9e3331ea6a3" title="Reports the absolute value of a number string to the user." alt="" coords="2331,1942,2417,1968"/>
+<area shape="rect" id="node50" href="$addReport_8cpp.html#ad77bd53c675044525fecd7273407c4a6" title="Reports the sum of two number strings." alt="" coords="2331,474,2417,500"/>
+<area shape="rect" id="node49" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a37bfff2d022f3dd5e5a15e800ecfd5d6" title="Calculates the absolute value of a string representation of a number." alt="" coords="1051,2016,1216,2057"/>
 </map>
