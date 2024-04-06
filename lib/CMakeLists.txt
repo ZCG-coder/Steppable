@@ -1,21 +1,16 @@
-find_package(Python3 COMPONENTS Interpreter REQUIRED Development)
-find_package(pybind11 CONFIG REQUIRED)
+set (Python_FIND_VIRTUALENV FIRST)
+unset (Python_EXECUTABLE)
+find_package (Python COMPONENTS Interpreter Development REQUIRED)
 
-pybind11_add_module(bindings bindings.cpp ${G_CALCULATOR_FILES})
-target_link_libraries(bindings PRIVATE steppable)
-target_link_libraries(bindings PRIVATE calc)
-target_link_libraries(bindings PRIVATE util)
-target_include_directories(bindings PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+# # Detect the installed nanobind package and import it into CMake
+execute_process(
+  COMMAND "${Python_EXECUTABLE}" -m nanobind --cmake_dir
+  OUTPUT_STRIP_TRAILING_WHITESPACE OUTPUT_VARIABLE NB_DIR)
+message(STATUS "Found nanobind: ${Python_EXECUTABLE}")
+list(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
+find_package(nanobind CONFIG REQUIRED)
+
+nanobind_add_module(bindings bindings.cpp)
+target_link_libraries(bindings PRIVATE calc util steppable)
 target_compile_definitions(bindings PRIVATE NO_MAIN)
-
-set_target_properties(bindings PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
-set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall --std=c++11 -O3 -fPIC")
-set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -Wall -O3 -fPIC")
-
-if(APPLE)
-    set_target_properties(bindings PROPERTIES LINK_FLAGS
-                          "-undefined dynamic_lookup -F/Library/Frameworks -F/opt/homebrew/Frameworks \
-                          -L/opt/homebrew/Frameworks/Python.framework/Versions/Current/lib            \
-                          -L/Library/Frameworks/Python.framework/Versions/CurrentVersion/lib          \
-                          -framework Python")
-endif(APPLE)
+target_include_directories(bindings PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
