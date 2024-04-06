@@ -111,19 +111,19 @@ var sectionId = 'dynsection-4';
 <path fill="none" stroke="midnightblue" d="M704.86,-205.83C686.08,-221.95 658.8,-243.5 632,-257.95 621.34,-263.7 609.36,-268.71 597.81,-272.9"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="707.37,-208.28 712.6,-199.07 702.77,-203.01 707.37,-208.28"/>
 </g>
-<!-- Node7 -->
-<g id="node7" class="node">
-<title>Node7</title>
-<g id="a_node7"><a xlink:href="bindings_8cpp.html#a666bdddd9974c5edbfc711175806eccd" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="113.5,-234.45 113.5,-253.45 226.5,-253.45 226.5,-234.45 113.5,-234.45"/>
-<text text-anchor="middle" x="170" y="-241.45" font-family="Helvetica,sans-Serif" font-size="10.00">PYBIND11_MODULE</text>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="bindings_8cpp.html#af434d7fc3eaa11448eece320b8a7d90e" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="130.5,-234.45 130.5,-253.45 209.5,-253.45 209.5,-234.45 130.5,-234.45"/>
+<text text-anchor="middle" x="170" y="-241.45" font-family="Helvetica,sans-Serif" font-size="10.00">NB_MODULE</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node7 -->
-<g id="edge9" class="edge">
-<title>Node2&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M691.3,-203.62C673.76,-211.78 652.32,-220.4 632,-224.95 488.77,-257.07 314.38,-252.94 226.83,-248"/>
+<!-- Node2&#45;&gt;Node6 -->
+<g id="edge8" class="edge">
+<title>Node2&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M691.3,-203.62C673.76,-211.78 652.32,-220.4 632,-224.95 478.61,-259.34 289.48,-252.17 209.55,-246.95"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="693.11,-206.63 700.62,-199.16 690.09,-200.32 693.11,-206.63"/>
 </g>
 <!-- Node8 -->
@@ -152,7 +152,7 @@ var sectionId = 'dynsection-4';
 </g>
 </g>
 <!-- Node2&#45;&gt;Node9 -->
-<g id="edge8" class="edge">
+<g id="edge9" class="edge">
 <title>Node2&#45;&gt;Node9</title>
 <path fill="none" stroke="midnightblue" d="M657.86,-175.38C639.93,-173.22 620.91,-170.92 603.76,-168.86"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="657.63,-178.88 667.98,-176.6 658.47,-171.93 657.63,-178.88"/>
@@ -203,27 +203,27 @@ var sectionId = 'dynsection-4';
 <path fill="none" stroke="midnightblue" d="M464.93,-360.93C434.27,-363.62 401.82,-366.46 381.74,-368.22"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="465.59,-364.39 475.24,-360.03 464.98,-357.41 465.59,-364.39"/>
 </g>
-<!-- Node6 -->
-<g id="node6" class="node">
-<title>Node6</title>
-<g id="a_node6"><a xlink:href="classsteppable_1_1Number.html#a6e98fb3dedfd70f3956e9d299733a58d" target="_top" xlink:title="Calculates the remainder of two numbers. (Modulus)">
-<polygon fill="none" stroke="black" points="303,-310.95 303,-340.95 419,-340.95 419,-310.95 303,-310.95"/>
-<text text-anchor="start" x="311" y="-328.95" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
-<text text-anchor="middle" x="361" y="-317.95" font-family="Helvetica,sans-Serif" font-size="10.00">operator%</text>
-</a>
-</g>
-</g>
 <!-- Node5&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M462.36,-305.06C447.81,-308.09 432.95,-311.18 419.27,-314.03"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="463.29,-308.44 472.37,-302.97 461.87,-301.58 463.29,-308.44"/>
+<path fill="none" stroke="midnightblue" d="M484.66,-305.46C434.43,-317.46 361.11,-328.63 299,-312.95 252.98,-301.34 205.52,-269.57 183.56,-253.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="485.52,-308.86 494.39,-303.06 483.84,-302.06 485.52,-308.86"/>
+</g>
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="classsteppable_1_1Number.html#a6e98fb3dedfd70f3956e9d299733a58d" target="_top" xlink:title="Calculates the remainder of two numbers. (Modulus)">
+<polygon fill="none" stroke="black" points="303,-272.95 303,-302.95 419,-302.95 419,-272.95 303,-272.95"/>
+<text text-anchor="start" x="311" y="-290.95" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
+<text text-anchor="middle" x="361" y="-279.95" font-family="Helvetica,sans-Serif" font-size="10.00">operator%</text>
+</a>
+</g>
 </g>
 <!-- Node5&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node5&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M448.61,-276.66C378.29,-268.37 285.24,-257.41 226.75,-250.52"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="448.47,-280.17 458.81,-277.86 449.29,-273.21 448.47,-280.17"/>
+<path fill="none" stroke="midnightblue" d="M448.78,-287.95C438.7,-287.95 428.7,-287.95 419.26,-287.95"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="448.86,-291.45 458.86,-287.95 448.86,-284.45 448.86,-291.45"/>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node">
@@ -241,9 +241,9 @@ var sectionId = 'dynsection-4';
 <path fill="none" stroke="midnightblue" d="M497.1,-118.47C474.49,-118.72 447.17,-119.02 423.03,-119.29"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="497.17,-121.97 507.13,-118.36 497.09,-114.97 497.17,-121.97"/>
 </g>
-<!-- Node11&#45;&gt;Node7 -->
-<g id="edge18" class="edge">
-<title>Node11&#45;&gt;Node7</title>
+<!-- Node11&#45;&gt;Node6 -->
+<g id="edge17" class="edge">
+<title>Node11&#45;&gt;Node6</title>
 <path fill="none" stroke="midnightblue" d="M333.21,-141.25C314.08,-156.1 287.51,-176.02 263,-191.95 238.24,-208.06 208.23,-224.47 189.37,-234.44"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="335.45,-143.93 341.18,-135.02 331.14,-138.42 335.45,-143.93"/>
 </g>
@@ -305,7 +305,7 @@ var sectionId = 'dynsection-4';
 </g>
 </g>
 <!-- Node11&#45;&gt;Node16 -->
-<g id="edge17" class="edge">
+<g id="edge18" class="edge">
 <title>Node11&#45;&gt;Node16</title>
 <path fill="none" stroke="midnightblue" d="M288.86,-104.52C268.78,-100.16 247.19,-95.48 228.04,-91.33"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="288.38,-108 298.9,-106.7 289.87,-101.16 288.38,-108"/>

@@ -66,19 +66,19 @@
 <path fill="none" stroke="midnightblue" d="M674.86,-176.56C656.08,-192.69 628.8,-214.24 602,-228.69 591.34,-234.44 579.36,-239.44 567.81,-243.63"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="677.37,-179.01 682.6,-169.8 672.77,-173.74 677.37,-179.01"/>
 </g>
-<!-- Node7 -->
-<g id="node7" class="node">
-<title>Node7</title>
-<g id="a_node7"><a xlink:href="bindings_8cpp.html#a666bdddd9974c5edbfc711175806eccd" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="98.5,-205.19 98.5,-224.19 211.5,-224.19 211.5,-205.19 98.5,-205.19"/>
-<text text-anchor="middle" x="155" y="-212.19" font-family="Helvetica,sans-Serif" font-size="10.00">PYBIND11_MODULE</text>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="bindings_8cpp.html#af434d7fc3eaa11448eece320b8a7d90e" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="115.5,-205.19 115.5,-224.19 194.5,-224.19 194.5,-205.19 115.5,-205.19"/>
+<text text-anchor="middle" x="155" y="-212.19" font-family="Helvetica,sans-Serif" font-size="10.00">NB_MODULE</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node7 -->
-<g id="edge9" class="edge">
-<title>Node2&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M661.3,-174.34C643.76,-182.5 622.32,-191.12 602,-195.69 464.39,-226.64 297.02,-223.18 211.76,-218.6"/>
+<!-- Node2&#45;&gt;Node6 -->
+<g id="edge8" class="edge">
+<title>Node2&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M661.3,-174.34C643.76,-182.5 622.32,-191.12 602,-195.69 454.56,-228.85 272.96,-222.52 194.79,-217.61"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="663.11,-177.35 670.61,-169.88 660.08,-171.04 663.11,-177.35"/>
 </g>
 <!-- Node8 -->
@@ -107,7 +107,7 @@
 </g>
 </g>
 <!-- Node2&#45;&gt;Node9 -->
-<g id="edge8" class="edge">
+<g id="edge9" class="edge">
 <title>Node2&#45;&gt;Node9</title>
 <path fill="none" stroke="midnightblue" d="M627.86,-146.11C609.93,-143.95 590.91,-141.66 573.76,-139.59"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="627.63,-149.61 637.98,-147.33 628.47,-142.66 627.63,-149.61"/>
@@ -158,27 +158,27 @@
 <path fill="none" stroke="midnightblue" d="M434.93,-331.66C404.27,-334.35 371.82,-337.2 351.74,-338.96"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="435.59,-335.12 445.24,-330.76 434.98,-328.15 435.59,-335.12"/>
 </g>
-<!-- Node6 -->
-<g id="node6" class="node">
-<title>Node6</title>
-<g id="a_node6"><a xlink:href="classsteppable_1_1Number.html#a6e98fb3dedfd70f3956e9d299733a58d" target="_top" xlink:title="Calculates the remainder of two numbers. (Modulus)">
-<polygon fill="none" stroke="black" points="273,-281.69 273,-311.69 389,-311.69 389,-281.69 273,-281.69"/>
-<text text-anchor="start" x="281" y="-299.69" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
-<text text-anchor="middle" x="331" y="-288.69" font-family="Helvetica,sans-Serif" font-size="10.00">operator%</text>
-</a>
-</g>
-</g>
 <!-- Node5&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M432.36,-275.79C417.81,-278.82 402.95,-281.91 389.27,-284.76"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="433.29,-279.17 442.37,-273.71 431.87,-272.32 433.29,-279.17"/>
+<path fill="none" stroke="midnightblue" d="M457.25,-276.35C406.82,-289.14 331.83,-301.35 269,-283.69 227.4,-271.99 185.96,-240.26 166.88,-224.23"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="458.21,-279.72 467,-273.8 456.44,-272.95 458.21,-279.72"/>
+</g>
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="classsteppable_1_1Number.html#a6e98fb3dedfd70f3956e9d299733a58d" target="_top" xlink:title="Calculates the remainder of two numbers. (Modulus)">
+<polygon fill="none" stroke="black" points="273,-243.69 273,-273.69 389,-273.69 389,-243.69 273,-243.69"/>
+<text text-anchor="start" x="281" y="-261.69" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
+<text text-anchor="middle" x="331" y="-250.69" font-family="Helvetica,sans-Serif" font-size="10.00">operator%</text>
+</a>
+</g>
 </g>
 <!-- Node5&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node5&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M418.6,-247C373.24,-241.47 318.33,-234.76 269,-228.69 250.36,-226.39 229.99,-223.87 211.75,-221.61"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="418.37,-250.5 428.72,-248.24 419.21,-243.55 418.37,-250.5"/>
+<path fill="none" stroke="midnightblue" d="M418.78,-258.69C408.7,-258.69 398.7,-258.69 389.26,-258.69"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="418.86,-262.19 428.86,-258.69 418.86,-255.19 418.86,-262.19"/>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node">
@@ -202,9 +202,9 @@
 <path fill="none" stroke="midnightblue" d="M354.53,-66.4C372.87,-49.93 400.32,-28.85 429,-19.69 578.06,27.92 766.73,-23.94 848.77,-51.61"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="351.74,-64.21 346.78,-73.58 356.5,-69.35 351.74,-64.21"/>
 </g>
-<!-- Node11&#45;&gt;Node7 -->
-<g id="edge17" class="edge">
-<title>Node11&#45;&gt;Node7</title>
+<!-- Node11&#45;&gt;Node6 -->
+<g id="edge16" class="edge">
+<title>Node11&#45;&gt;Node6</title>
 <path fill="none" stroke="midnightblue" d="M300.82,-109.82C262.54,-137.54 196.97,-185.02 169.12,-205.18"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="302.96,-112.59 309.01,-103.89 298.86,-106.92 302.96,-112.59"/>
 </g>
@@ -250,7 +250,7 @@
 </g>
 </g>
 <!-- Node11&#45;&gt;Node15 -->
-<g id="edge16" class="edge">
+<g id="edge17" class="edge">
 <title>Node11&#45;&gt;Node15</title>
 <path fill="none" stroke="midnightblue" d="M260.86,-71.2C245.02,-67.2 228.34,-62.98 213.07,-59.12"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="260.05,-74.61 270.61,-73.67 261.77,-67.82 260.05,-74.61"/>

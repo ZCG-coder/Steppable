@@ -12,42 +12,42 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="152,-17 152,-47 325,-47 325,-17 152,-17"/>
-<text text-anchor="start" x="160" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
-<text text-anchor="middle" x="238.5" y="-24" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::divideWithQuotient</text>
+<polygon fill="#bfbfbf" stroke="black" points="152,-22.5 152,-52.5 325,-52.5 325,-22.5 152,-22.5"/>
+<text text-anchor="start" x="160" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
+<text text-anchor="middle" x="238.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::divideWithQuotient</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classsteppable_1_1Number.html#a6e98fb3dedfd70f3956e9d299733a58d" target="_top" xlink:title="Calculates the remainder of two numbers. (Modulus)">
-<polygon fill="none" stroke="black" points="0,-39 0,-69 116,-69 116,-39 0,-39"/>
-<text text-anchor="start" x="8" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
-<text text-anchor="middle" x="58" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">operator%</text>
+<g id="a_node2"><a xlink:href="bindings_8cpp.html#af434d7fc3eaa11448eece320b8a7d90e" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="18.5,-50 18.5,-69 97.5,-69 97.5,-50 18.5,-50"/>
+<text text-anchor="middle" x="58" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">NB_MODULE</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M141.93,-43.78C133.1,-44.87 124.35,-45.95 116.04,-46.97"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="142.41,-47.25 151.91,-42.55 141.56,-40.3 142.41,-47.25"/>
+<path fill="none" stroke="midnightblue" d="M141.68,-49.31C126.15,-51.22 110.88,-53.11 97.78,-54.72"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="142.41,-52.75 151.91,-48.05 141.56,-45.8 142.41,-52.75"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="bindings_8cpp.html#a666bdddd9974c5edbfc711175806eccd" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1.5,-0.5 1.5,-19.5 114.5,-19.5 114.5,-0.5 1.5,-0.5"/>
-<text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">PYBIND11_MODULE</text>
+<g id="a_node3"><a xlink:href="classsteppable_1_1Number.html#a6e98fb3dedfd70f3956e9d299733a58d" target="_top" xlink:title="Calculates the remainder of two numbers. (Modulus)">
+<polygon fill="none" stroke="black" points="0,-0.5 0,-30.5 116,-30.5 116,-0.5 0,-0.5"/>
+<text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
+<text text-anchor="middle" x="58" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">operator%</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node1&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M141.78,-20.2C132.47,-19.05 123.25,-17.92 114.53,-16.84"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="141.56,-23.7 151.91,-21.45 142.41,-16.75 141.56,-23.7"/>
+<path fill="none" stroke="midnightblue" d="M141.93,-25.72C133.1,-24.63 124.35,-23.55 116.04,-22.53"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="141.56,-29.2 151.91,-26.95 142.41,-22.25 141.56,-29.2"/>
 </g>
 </g>
 </svg>
