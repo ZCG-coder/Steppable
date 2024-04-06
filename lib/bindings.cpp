@@ -12,6 +12,7 @@ using namespace nb::literals;
 NB_MODULE(bindings, mod)
 {
     auto internals = mod.def_submodule("_internals", "Internal functions.");
+    mod.doc() = "The Python bindings for Steppable.";
 
     internals.def("abs",
                   &steppable::__internals::arithmetic::abs,

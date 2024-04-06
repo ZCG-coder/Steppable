@@ -21,7 +21,9 @@
 #####################################################################################################
 
 add_library(util STATIC argParse.cpp colors.cpp logging.cpp rounding.cpp symbols.cpp testing.cpp util.cpp)
+set_target_properties(util PROPERTIES POSITION_INDEPENDENT_CODE ON)
 add_library(steppable STATIC number.cpp fraction.cpp expression.cpp)
+set_target_properties(steppable PROPERTIES POSITION_INDEPENDENT_CODE ON)
 # file(GLOB GUIS gui/*.cpp)
 # add_executable(gui ${GUIS})
 
@@ -54,6 +56,7 @@ foreach (COMPONENT IN LISTS COMPONENTS)
 endforeach ()
 
 add_library(calc STATIC ${CALCULATOR_FILES} fraction.cpp number.cpp expression.cpp)
+set_target_properties(calc PROPERTIES POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(steppable util)
 target_link_libraries(calc steppable)
 # target_link_libraries(gui util)
