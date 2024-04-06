@@ -11,6 +11,6 @@ list(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
 find_package(nanobind CONFIG REQUIRED)
 
 nanobind_add_module(bindings bindings.cpp)
-target_link_libraries(bindings PRIVATE calc util steppable)
+target_link_libraries(bindings PRIVATE calc steppable)
 target_compile_definitions(bindings PRIVATE NO_MAIN)
 target_include_directories(bindings PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
