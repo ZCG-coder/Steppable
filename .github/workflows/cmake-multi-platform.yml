@@ -23,29 +23,29 @@ jobs:
             #
             # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
             matrix:
-                os: [ ubuntu-latest, windows-latest ]
+                os: [ ubuntu-latest, windows-latest, macos-latest ]
                 build_type: [ Release ]
-                c_compiler: [ gcc, cl ]
+                c_compiler: [ clang, cl ]
                 include:
                     -   os: windows-latest
                         c_compiler: cl
                         cpp_compiler: cl
                     -   os: ubuntu-latest
-                        c_compiler: gcc
-                        cpp_compiler: g++
+                        c_compiler: clang
+                        cpp_compiler: clang++
                     # - os: macos-latest
                     #   c_compiler: gcc
                     #   cpp_compiler: g++
-                    # - os: macos-latest
-                    #   c_compiler: clang
-                    #   cpp_compiler: clang++
+                    -   os: macos-latest
+                        c_compiler: clang
+                        cpp_compiler: clang++
                 exclude:
                     -   os: windows-latest
-                        c_compiler: gcc
+                        c_compiler: clang
                     -   os: ubuntu-latest
                         c_compiler: cl
-                    # - os: macos-latest
-                    #   c_compiler: cl
+                    -   os: macos-latest
+                        c_compiler: cl
 
         steps:
             -   uses: actions/checkout@v4
@@ -57,10 +57,25 @@ jobs:
                 run: |
                     echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
+            -   name: Set up Homebrew
+                if: ${{ matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest'}}
+                id: set-up-homebrew
+                uses: Homebrew/actions/setup-homebrew@master
+
+            -   name: Install LLVM
+                if: ${{ matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest' }}
+                run: |
+                    brew install llvm
+                    echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
+
             -   name: Set up Python
                 uses: actions/setup-python@v5
                 with:
-                    python-version: '3.10'
+                    python-version: |
+                        3.9
+                        3.10
+                        3.11
+                        3.12
 
             -   name: Install packages
                 run: pip install -r requirements.txt
