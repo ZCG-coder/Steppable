@@ -22,32 +22,37 @@
 
 add_library(util STATIC argParse.cpp colors.cpp logging.cpp rounding.cpp symbols.cpp testing.cpp util.cpp)
 set_target_properties(util PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
 add_library(steppable STATIC number.cpp fraction.cpp expression.cpp)
 set_target_properties(steppable PROPERTIES POSITION_INDEPENDENT_CODE ON)
-# file(GLOB GUIS gui/*.cpp)
-# add_executable(gui ${GUIS})
 
 set(CALCULATOR_FILES)
 
 function(COPY_TO_BIN TARGET_NAME)
-    if (WINDOWS)
-        add_custom_command(TARGET ${TARGET_NAME}
-                POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
-                ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME}.exe)
-    else ()
-        add_custom_command(TARGET ${TARGET_NAME}
-                POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
-                ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME})
+    if (DEFINED STP_BUILD_COMPONENT_EXECUTABLE)
+        if (WINDOWS)
+            add_custom_command(TARGET ${TARGET_NAME}
+                    POST_BUILD
+                    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
+                    ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME}.exe)
+        else ()
+            add_custom_command(TARGET ${TARGET_NAME}
+                    POST_BUILD
+                    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
+                    ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME})
+        endif ()
     endif ()
 endfunction()
 
 foreach (COMPONENT IN LISTS COMPONENTS)
-    message(STATUS "Adding component: ${COMPONENT}: ${COMPONENT}/${COMPONENT}.cpp, ${COMPONENT}/${COMPONENT}Report.cpp")
+    message(TRACE "Adding component: ${COMPONENT}: ${COMPONENT}/${COMPONENT}.cpp, ${COMPONENT}/${COMPONENT}Report.cpp")
 
-    add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
-    target_link_libraries(${COMPONENT} calc)
+    # No longer offering executables for each component automatically.
+
+    if (DEFINED STP_BUILD_COMPONENT_EXECUTABLE)
+        add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
+        target_link_libraries(${COMPONENT} calc)
+    endif ()
 
     list(APPEND CALCULATOR_FILES ${CMAKE_CURRENT_SOURCE_DIR}/${COMPONENT}/${COMPONENT}.cpp
                                  ${CMAKE_CURRENT_SOURCE_DIR}/${COMPONENT}/${COMPONENT}Report.cpp)
@@ -57,18 +62,11 @@ endforeach ()
 
 add_library(calc STATIC ${CALCULATOR_FILES} fraction.cpp number.cpp expression.cpp)
 set_target_properties(calc PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+target_include_directories(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
+target_include_directories(calc PRIVATE ${STP_BASE_DIRECTORY}/include/)
+target_include_directories(util PRIVATE ${STP_BASE_DIRECTORY}/include/)
+
 target_link_libraries(steppable util)
 target_link_libraries(calc steppable)
-# target_link_libraries(gui util)
-target_include_directories(calc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
-# target_include_directories(gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 target_compile_definitions(calc PRIVATE NO_MAIN)
-
-add_executable(main main/main.cpp)
-target_link_libraries(main calc)
-target_include_directories(main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
-
-set(G_CALCULATOR_FILES ${CALCULATOR_FILES} ${CMAKE_CURRENT_SOURCE_DIR}/fraction.cpp
-                                           ${CMAKE_CURRENT_SOURCE_DIR}/number.cpp
-                                           ${CMAKE_CURRENT_SOURCE_DIR}/expression.cpp
-                                           CACHE INTERNAL "Calculator files" FORCE)

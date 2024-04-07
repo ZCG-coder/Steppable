@@ -32,6 +32,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+set(STP_BASE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} CACHE STRING "The source directory of Steppable")
+
 if (WIN32)
     add_compile_definitions(WINDOWS)
     if (MSVC) # MSVC Has no UTF-8 support by default
@@ -77,7 +79,6 @@ add_subdirectory(include/) # The CMakeLists file there adds the include/ directo
 add_subdirectory(lib/)
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 
 if (DEBUG)

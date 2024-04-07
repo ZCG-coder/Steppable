@@ -166,16 +166,14 @@ def process(file: Path):
 def walk_into_directory(path: Path):
     for subpath in path.rglob("*"):
         if subpath.is_file():
-            print(f"Processing {subpath}")
             process(subpath)
-
-    print("DONE!")
 
 
 if __name__ == '__main__':
     process(PROJECT_PATH / "CMakeLists.txt")
     process(PROJECT_PATH / "cpp.hint")
-    walk_into_directory(PROJECT_PATH / "src")
     walk_into_directory(PROJECT_PATH / "include")
+    walk_into_directory(PROJECT_PATH / "lib")
+    walk_into_directory(PROJECT_PATH / "src")
     walk_into_directory(PROJECT_PATH / "tests")
     walk_into_directory(PROJECT_PATH / "tools")

@@ -76,7 +76,6 @@ def patch():
 
     with open(file, "w") as f:
         json.dump(modified_objs, f, indent=4)
-        print(f"Wrote {file} successfully!")
 
 
 if __name__ == '__main__':
