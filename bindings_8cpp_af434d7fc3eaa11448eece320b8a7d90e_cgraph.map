@@ -1,12 +1,14 @@
 <map id="NB_MODULE" name="NB_MODULE">
-<area shape="rect" id="node1" title=" " alt="" coords="5,841,111,868"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,1179,111,1205"/>
 <area shape="rect" id="node2" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a37bfff2d022f3dd5e5a15e800ecfd5d6" title="Calculates the absolute value of a string representation of a number." alt="" coords="947,1393,1112,1434"/>
 <area shape="rect" id="node8" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca" title="Adds two string representations of numbers, and performs with the column method." alt="" coords="2163,382,2328,423"/>
 <area shape="rect" id="node18" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e" title="Subtracts one string representation of a number from another string representation of a number." alt="" coords="2420,414,2585,455"/>
-<area shape="rect" id="node25" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730" title="Divides a string representation of a number by another string representation of a number." alt="" coords="437,863,603,905"/>
+<area shape="rect" id="node25" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730" title="Divides a string representation of a number by another string representation of a number." alt="" coords="437,929,603,970"/>
 <area shape="rect" id="node28" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66" title="Multiplies two string representations of numbers." alt="" coords="1369,1186,1535,1227"/>
-<area shape="rect" id="node33" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0" title="Raises a string representation of a number to a power." alt="" coords="947,703,1112,745"/>
-<area shape="rect" id="node45" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978" title=" " alt="" coords="159,893,389,934"/>
+<area shape="rect" id="node33" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0" title="Raises a string representation of a number to a power." alt="" coords="947,710,1112,751"/>
+<area shape="rect" id="node45" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978" title=" " alt="" coords="159,1171,389,1213"/>
+<area shape="rect" id="node46" href="$classsteppable_1_1Fraction.html#a9a892820854af33b0eabc6b6ec43b389" title=" " alt="" coords="201,1494,347,1535"/>
+<area shape="rect" id="node47" href="$classsteppable_1_1Number.html#aa512ee40e93e4cd6b891fb6d6f76be2c" title="Presents the number in a human&#45;readable format." alt="" coords="197,1559,351,1601"/>
 <area shape="rect" id="node3" href="$absReport_8cpp.html#a7e44e3e84696a88d84e6d9e3331ea6a3" title="Reports the absolute value of a number string to the user." alt="" coords="1409,1371,1495,1397"/>
 <area shape="rect" id="node4" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9" title="Standardizes a number string." alt="" coords="2884,1030,3109,1071"/>
 <area shape="rect" id="node5" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472" title="Simplifies a string with non&#45;standard polarity (e.g., –1, —1, etc.)." alt="" coords="3179,1291,3378,1333"/>
@@ -32,14 +34,14 @@
 <area shape="rect" id="node36" href="$namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7" title="Prints an error message." alt="" coords="2431,173,2575,214"/>
 <area shape="rect" id="node42" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a677f253d71524a9d500e980dc159c79c" title=" " alt="" coords="2119,499,2372,541"/>
 <area shape="rect" id="node43" href="$divisionReport_8cpp.html#a37e4e7cb6fe42ae3131cdc071b038687" title="Reports a division operation to the user." alt="" coords="1672,809,1787,836"/>
-<area shape="rect" id="node44" href="$divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2" title="Reports a division step." alt="" coords="1160,653,1303,680"/>
+<area shape="rect" id="node44" href="$divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2" title="Reports a division step." alt="" coords="1160,659,1303,685"/>
 <area shape="rect" id="node27" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13" title="Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation." alt="" coords="2633,1291,2832,1333"/>
 <area shape="rect" id="node29" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#af7183da49ccdfb5a58325e6017ebd7c6" title="Determines the scale for a product of two numbers." alt="" coords="1601,1190,1857,1231"/>
 <area shape="rect" id="node31" href="$multiplyReport_8cpp.html#a551f62010399287bf016fd805c5d4cd3" title="Reports a multiplication operation to the user." alt="" coords="1931,835,2045,861"/>
 <area shape="rect" id="node30" href="$namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b" title="Round off a number to the nearest integer." alt="" coords="1905,1073,2071,1114"/>
-<area shape="rect" id="node34" href="$powerReport_8cpp.html#afff5f8aa771cf432836ef03f6f442dae" title="Reports a power operation." alt="" coords="1181,547,1282,573"/>
+<area shape="rect" id="node34" href="$powerReport_8cpp.html#afff5f8aa771cf432836ef03f6f442dae" title="Reports a power operation." alt="" coords="1181,553,1282,580"/>
 <area shape="rect" id="node35" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a" title="Executes a given predicate function a specified number of times." alt="" coords="1905,433,2071,474"/>
-<area shape="rect" id="node41" href="$namespacesteppable_1_1____internals_1_1symbols.html#a746f88878c7cf9b2390e5836ff30ef40" title="Create a superscript string from a normal string." alt="" coords="1351,538,1553,579"/>
+<area shape="rect" id="node41" href="$namespacesteppable_1_1____internals_1_1symbols.html#a746f88878c7cf9b2390e5836ff30ef40" title="Create a superscript string from a normal string." alt="" coords="1351,542,1553,583"/>
 <area shape="rect" id="node37" href="$namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a020bdff691dad4ade1a65f76bef6bfd0" title="Set the text format to bold." alt="" coords="2650,239,2815,281"/>
 <area shape="rect" id="node38" href="$namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a36cc73ec1844a03d7cba5b409109c999" title="Set the text color to red." alt="" coords="2650,43,2815,85"/>
 <area shape="rect" id="node39" href="$namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff" title="Reset the text color and format to the default values." alt="" coords="2650,174,2815,215"/>

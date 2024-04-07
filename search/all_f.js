@@ -11,7 +11,7 @@ var searchData=
   ['powerreport_2ecpp_180',['powerReport.cpp',['../powerReport_8cpp.html',1,'']]],
   ['powerreport_2ehpp_181',['powerReport.hpp',['../powerReport_8hpp.html',1,'']]],
   ['prec_182',['prec',['../classsteppable_1_1Number.html#a2e23e169025f1308a248a0d508d2e33c',1,'steppable::Number']]],
-  ['present_183',['present',['../classsteppable_1_1Fraction.html#a9a892820854af33b0eabc6b6ec43b389',1,'steppable::Fraction::present()'],['../classsteppable_1_1Number.html#a53336a206658f92db7191ec3b4a21f7c',1,'steppable::Number::present()']]],
+  ['present_183',['present',['../classsteppable_1_1Fraction.html#a9a892820854af33b0eabc6b6ec43b389',1,'steppable::Fraction::present()'],['../classsteppable_1_1Number.html#aa512ee40e93e4cd6b891fb6d6f76be2c',1,'steppable::Number::present()']]],
   ['printusage_184',['printUsage',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af3703e67d1a580ec98788508de89af45',1,'steppable::__internals::utils::ProgramArgs']]],
   ['program_185',['program',['../guiBase_8cpp.html#a4d68e7b5d27fdd7e85a328b3261c013f',1,'guiBase.cpp']]],
   ['program_186',['Program',['../structProgram.html',1,'']]],
