@@ -1,7 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#a6b2431c269b09e854d33a09bd31f00e6":[5,0,0,0,0,0,1],
-"structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#ae02205a4a9283f5df34a455b575fd60c":[5,0,0,0,0,0,0],
 "structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html":[5,0,0,0,2,0],
 "structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a2528f46d7bbfe1dd8ac10bfa9487903d":[5,0,0,0,2,0,0],
 "structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793":[5,0,0,0,2,0,2],
@@ -87,5 +85,7 @@ var NAVTREEINDEX2 =
 "util_8hpp.html#ae8dde3fc958f32009443d1aeaa2c0900":[6,0,0,15,15],
 "util_8hpp.html#aeb09b3077689c00cd9d9856491211261":[6,0,0,15,2],
 "util_8hpp.html#afce13d9dd949a08a7e75b27246a276b2":[6,0,0,15,7],
-"util_8hpp_source.html":[6,0,0,15]
+"util_8hpp_source.html":[6,0,0,15],
+"":[4,0,5],
+"":[4,0,5,0]
 };

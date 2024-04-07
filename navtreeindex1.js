@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"dir_85bd4ac275e88803c89ad172608108b6.html":[6,0,2,0],
-"dir_97aefd0d527b934f1d99a682da8fe6a9.html":[6,0,1],
 "dir_d44c64559bbebec7f509842c48db8b23.html":[6,0,0],
 "dir_fcd1616905467347a0d6d145ee01dc72.html":[6,0,2,8],
 "divisionReport_8cpp.html":[6,0,2,5,1],
@@ -43,8 +41,8 @@ var NAVTREEINDEX1 =
 "globals_defs.html":[6,1,2],
 "globals_func.html":[6,1,1],
 "hierarchy.html":[5,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md21":[0,0],
 "index.html#autotoc_md22":[0,1],
 "index.html#autotoc_md23":[0,2],
@@ -249,5 +247,7 @@ var NAVTREEINDEX1 =
 "rounding_8hpp.html":[6,0,0,12],
 "rounding_8hpp.html#ac634c8aea297b7e8f5cc251041089c5b":[6,0,0,12,0],
 "rounding_8hpp_source.html":[6,0,0,12],
-"structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html":[5,0,0,0,0,0]
+"structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html":[5,0,0,0,0,0],
+"structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#a6b2431c269b09e854d33a09bd31f00e6":[5,0,0,0,0,0,1],
+"structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#ae02205a4a9283f5df34a455b575fd60c":[5,0,0,0,0,0,0]
 };
