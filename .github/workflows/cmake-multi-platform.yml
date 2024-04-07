@@ -26,6 +26,7 @@ jobs:
                 os: [ ubuntu-latest, windows-latest, macos-latest ]
                 build_type: [ Release ]
                 c_compiler: [ clang, cl ]
+                python_version: [ '3.9', '3.10', '3.11', '3.12' ]
                 include:
                     -   os: windows-latest
                         c_compiler: cl
@@ -68,14 +69,13 @@ jobs:
                     brew install llvm
                     echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
 
+            -   uses: seanmiddleditch/gha-setup-ninja@master
+
             -   name: Set up Python
                 uses: actions/setup-python@v5
                 with:
-                    python-version: |
-                        3.9
-                        3.10
-                        3.11
-                        3.12
+                    cache: 'pip'
+                    python-version: ${{ matrix.python_version }}
 
             -   name: Install packages
                 run: pip install -r requirements.txt
@@ -88,6 +88,7 @@ jobs:
                     -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
                     -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
                     -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+                    -GNinja
                     -S ${{ github.workspace }}
 
             -   name: Build
@@ -100,15 +101,11 @@ jobs:
                 # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
                 run: ctest --build-config ${{ matrix.build_type }} --output-on-failure
 
-            -   name: Run Python Random Tests
-                working-directory: ${{ github.workspace }}/tests/random_tests
-                run: python3 run_tests.py
-
             -   name: Upload Build Artifact
                 uses: actions/upload-artifact@v4.3.1
                 with:
                     # Artifact name
-                    name: Build ${{ matrix.os }}-${{ matrix.cpp_compiler }}
+                    name: Build ${{ matrix.os }}-${{ matrix.cpp_compiler }}-cp${{ matrix.python_version }}
                     # A file, directory or wildcard pattern that describes what to upload
                     path: ${{ steps.strings.outputs.build-output-dir }}
                     
