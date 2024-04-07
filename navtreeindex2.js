@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"platform_8hpp.html#a265f606a0e1f8eb0fc678593f7f44be7":[6,0,0,11,1],
+"platform_8hpp.html#a52bb814d5639116caa0b4a53b7f53e5e":[6,0,0,11,0],
 "platform_8hpp_source.html":[6,0,0,11],
 "powerReport_8cpp.html":[6,0,2,9,1],
 "powerReport_8cpp.html#afff5f8aa771cf432836ef03f6f442dae":[6,0,2,9,1,0],
@@ -115,7 +117,5 @@ var NAVTREEINDEX2 =
 "util_8hpp.html#ae8dde3fc958f32009443d1aeaa2c0900":[6,0,0,15,15],
 "util_8hpp.html#aeb09b3077689c00cd9d9856491211261":[6,0,0,15,2],
 "util_8hpp.html#afce13d9dd949a08a7e75b27246a276b2":[6,0,0,15,7],
-"util_8hpp_source.html":[6,0,0,15],
-"":[4,0,5],
-"":[4,0,5,0]
+"util_8hpp_source.html":[6,0,0,15]
 };
