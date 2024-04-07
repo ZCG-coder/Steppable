@@ -58,12 +58,12 @@ jobs:
                     echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
             -   name: Set up Homebrew
-                if: ${{ matrix.os == "macos-latest" }}
+                if: ${{ matrix.os == 'macos-latest' }}
                 id: set-up-homebrew
                 uses: Homebrew/actions/setup-homebrew@master
 
             -   name: Install GCC
-                if: ${{ matrix.os == "macos-latest" }}
+                if: ${{ matrix.os == 'macos-latest' }}
                 run: brew install gcc
 
             -   name: Set up Python
