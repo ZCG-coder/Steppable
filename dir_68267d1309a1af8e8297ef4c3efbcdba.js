@@ -6,8 +6,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "comparison", "dir_0101af5023e0510c4f016780c9f68691.html", "dir_0101af5023e0510c4f016780c9f68691" ],
     [ "decimalConvert", "dir_34dae3d60d1e3ea69fae42e4dbb3f7f0.html", "dir_34dae3d60d1e3ea69fae42e4dbb3f7f0" ],
     [ "division", "dir_73ea60f773d485a215a60e85baf64b8e.html", "dir_73ea60f773d485a215a60e85baf64b8e" ],
-    [ "gui", "dir_99d0482cf009f9d97a0877749b817f19.html", "dir_99d0482cf009f9d97a0877749b817f19" ],
-    [ "main", "dir_5eb159725f84c66aafd839904a4acdd0.html", "dir_5eb159725f84c66aafd839904a4acdd0" ],
     [ "multiply", "dir_3f453bd6fc70a9fed1d2ea19af063286.html", "dir_3f453bd6fc70a9fed1d2ea19af063286" ],
     [ "power", "dir_74c51feede9763246476d18de5c76811.html", "dir_74c51feede9763246476d18de5c76811" ],
     [ "subtract", "dir_fcd1616905467347a0d6d145ee01dc72.html", "dir_fcd1616905467347a0d6d145ee01dc72" ],

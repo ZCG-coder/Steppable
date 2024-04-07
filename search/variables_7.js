@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['letter_541',['letter',['../structKey.html#a918fe16b276df6f895275589996ed16b',1,'Key']]],
-  ['level_542',['level',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a486fe08ea44ef0cfd84447ed4f29e99c',1,'steppable::__internals::logging::Logger']]]
+  ['n_509',['n',['../structsteppable_1_1____internals_1_1utils_1_1setw.html#a83c4bcbba23d95886abe90487c78c61e',1,'steppable::__internals::utils::setw']]],
+  ['name_510',['name',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a877f550eb3f956a743951251a9104827',1,'steppable::__internals::logging::Logger']]]
 ];

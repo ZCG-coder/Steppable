@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['platform_2ehpp_373',['platform.hpp',['../platform_8hpp.html',1,'']]],
-  ['power_2ecpp_374',['power.cpp',['../power_8cpp.html',1,'']]],
-  ['powerreport_2ecpp_375',['powerReport.cpp',['../powerReport_8cpp.html',1,'']]],
-  ['powerreport_2ehpp_376',['powerReport.hpp',['../powerReport_8hpp.html',1,'']]]
+  ['readme_2emd_352',['README.md',['../README_8md.html',1,'']]],
+  ['rounding_2ecpp_353',['rounding.cpp',['../rounding_8cpp.html',1,'']]],
+  ['rounding_2ehpp_354',['rounding.hpp',['../rounding_8hpp.html',1,'']]]
 ];

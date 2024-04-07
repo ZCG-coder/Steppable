@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['level_563',['Level',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7',1,'steppable::__internals::logging']]]
+  ['roundingmode_527',['RoundingMode',['../number_8hpp.html#a61949411cf477d12b3d15472d5b83092',1,'steppable']]]
 ];

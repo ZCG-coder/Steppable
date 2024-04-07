@@ -26,7 +26,5 @@ var annotated_dup =
       ] ],
       [ "Fraction", "classsteppable_1_1Fraction.html", "classsteppable_1_1Fraction" ],
       [ "Number", "classsteppable_1_1Number.html", "classsteppable_1_1Number" ]
-    ] ],
-    [ "Key", "structKey.html", "structKey" ],
-    [ "Program", "structProgram.html", "structProgram" ]
+    ] ]
 ];

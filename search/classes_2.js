@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_301',['Logger',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html',1,'steppable::__internals::logging']]]
+  ['multilengthletterexception_280',['MultiLengthLetterException',['../classsteppable_1_1exceptions_1_1MultiLengthLetterException.html',1,'steppable::exceptions']]]
 ];

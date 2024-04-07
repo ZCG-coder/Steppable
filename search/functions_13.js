@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['underline_517',['underline',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a7306cc6022b8e470d8e0dc8f7e2abb97',1,'steppable::__internals::utils::formats']]],
-  ['unicodetoutf8_518',['unicodeToUtf8',['../namespacesteppable_1_1____internals_1_1stringUtils.html#a5dcad3b5c7b08e6541b5ae68cdf4ef0b',1,'steppable::__internals::stringUtils']]],
-  ['utf8tounicode_519',['utf8ToUnicode',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ae06e20fa11641400422ac7cbc6ed9f7f',1,'steppable::__internals::stringUtils']]]
+  ['vformat_492',['vFormat',['../namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5',1,'steppable::__internals::format::vFormat(const std::basic_string&lt; CharT &gt; sFormat,...)'],['../namespacesteppable_1_1____internals_1_1format.html#ab2b491e1997d7dc8f996533aadb1d7e3',1,'steppable::__internals::format::vFormat(const CharT *sFormat,...)']]]
 ];
