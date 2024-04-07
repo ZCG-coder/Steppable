@@ -24,7 +24,7 @@ set(Python_FIND_VIRTUALENV ONLY)
 unset(Python_EXECUTABLE)
 find_package(
     Python
-    COMPONENTS Development Development.SABIModule
+    COMPONENTS Development Interpreter
     REQUIRED)
 
 # Detect the installed nanobind package and import it into CMake
