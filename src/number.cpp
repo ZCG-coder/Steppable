@@ -38,13 +38,13 @@ namespace steppable
         this->mode = mode;
     }
 
-    Number Number::operator+(const Number& rhs) { return add(value, rhs.value, 0); }
+    Number Number::operator+(const Number& rhs) const { return add(value, rhs.value, 0); }
 
-    Number Number::operator-(const Number& rhs) { return subtract(value, rhs.value, 0); }
+    Number Number::operator-(const Number& rhs) const { return subtract(value, rhs.value, 0); }
 
-    Number Number::operator*(const Number& rhs) { return multiply(value, rhs.value, 0); }
+    Number Number::operator*(const Number& rhs) const { return multiply(value, rhs.value, 0); }
 
-    Number Number::operator/(const Number& rhs)
+    Number Number::operator/(const Number& rhs) const
     {
         size_t usePrec;
         if (mode == USE_MAXIMUM_PREC)
@@ -65,9 +65,9 @@ namespace steppable
         return divide(value, rhs.value, 0, usePrec);
     }
 
-    Number Number::operator%(const Number& rhs) { return divideWithQuotient(value, rhs.value).remainder; }
+    Number Number::operator%(const Number& rhs) const { return divideWithQuotient(value, rhs.value).remainder; }
 
-    Number Number::operator^(const Number& rhs) { return power(value, rhs.value, 0); }
+    Number Number::operator^(const Number& rhs) const { return power(value, rhs.value, 0); }
 
     Number& Number::operator+=(const Number& rhs)
     {
@@ -105,42 +105,42 @@ namespace steppable
         return *this;
     }
 
-    bool Number::operator==(const Number& rhs)
+    bool Number::operator==(const Number& rhs) const
     {
         if (compare(value, rhs.value, 0) == "2")
             return true;
         return false;
     }
 
-    bool Number::operator!=(const Number& rhs)
+    bool Number::operator!=(const Number& rhs) const
     {
         if (compare(value, rhs.value, 0) != "2")
             return true;
         return false;
     }
 
-    bool Number::operator<(const Number& rhs)
+    bool Number::operator<(const Number& rhs) const
     {
         if (compare(value, rhs.value, 0) == "0")
             return true;
         return false;
     }
 
-    bool Number::operator>(const Number& rhs)
+    bool Number::operator>(const Number& rhs) const
     {
         if (compare(value, rhs.value, 0) == "1")
             return true;
         return false;
     }
 
-    bool Number::operator<=(const Number& rhs)
+    bool Number::operator<=(const Number& rhs) const
     {
         if (compare(value, rhs.value, 0) != "1")
             return true;
         return false;
     }
 
-    bool Number::operator>=(const Number& rhs)
+    bool Number::operator>=(const Number& rhs) const
     {
         if (compare(value, rhs.value, 0) != "0")
             return true;
@@ -159,5 +159,5 @@ namespace steppable
         return *this;
     }
 
-    std::string Number::present() { return value; }
+    std::string Number::present() const { return value; }
 } // namespace steppable

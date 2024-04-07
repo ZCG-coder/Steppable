@@ -24,6 +24,7 @@
 
 #include "exceptions.hpp"
 #include "fn/basicArithm.hpp"
+#include "number.hpp"
 #include "util.hpp"
 
 #include <string>
@@ -53,7 +54,7 @@ namespace steppable
         return top + "/" + bottom;
     }
 
-    Fraction Fraction::operator+(const Fraction& rhs)
+    Fraction Fraction::operator+(const Fraction& rhs) const
     {
         auto newTop = add(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
         auto newBottom = multiply(bottom, rhs.bottom, 0);
@@ -63,7 +64,7 @@ namespace steppable
         return newFrac;
     }
 
-    Fraction Fraction::operator-(const Fraction& rhs)
+    Fraction Fraction::operator-(const Fraction& rhs) const
     {
         auto newTop = subtract(multiply(top, rhs.bottom, 0), multiply(rhs.top, bottom, 0), 0);
         auto newBottom = multiply(bottom, rhs.bottom, 0);
@@ -73,7 +74,7 @@ namespace steppable
         return newFrac;
     }
 
-    Fraction Fraction::operator*(const Fraction& rhs)
+    Fraction Fraction::operator*(const Fraction& rhs) const
     {
         auto newTop = multiply(top, rhs.top, 0);
         auto newBottom = multiply(bottom, rhs.bottom, 0);
@@ -83,10 +84,20 @@ namespace steppable
         return newFrac;
     }
 
-    Fraction Fraction::operator/(const Fraction& rhs)
+    Fraction Fraction::operator/(const Fraction& rhs) const
     {
         auto newTop = multiply(top, rhs.bottom, 0);
         auto newBottom = multiply(bottom, rhs.top, 0);
+
+        auto newFrac = Fraction(newTop, newBottom);
+        newFrac.simplify();
+        return newFrac;
+    }
+
+    Fraction Fraction::operator^(const Number& rhs)
+    {
+        auto newTop = power(top, rhs.present(), 0);
+        auto newBottom = power(bottom, rhs.present(), 0);
 
         auto newFrac = Fraction(newTop, newBottom);
         newFrac.simplify();
@@ -119,6 +130,67 @@ namespace steppable
         *this = *this / rhs;
         simplify();
         return *this;
+    }
+
+    Fraction& Fraction::operator^=(const Number& rhs)
+    {
+        *this = *this ^ rhs;
+        simplify();
+        return *this;
+    }
+
+    bool Fraction::operator==(const Fraction& rhs) const
+    {
+        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
+        const auto& thisNewTop = multiply(top, rhs.bottom, 0);
+        const auto& otherNewTop = multiply(rhs.top, bottom, 0);
+
+        return compare(thisNewTop, otherNewTop, 0) == "2";
+    }
+
+    bool Fraction::operator!=(const Fraction& rhs) const
+    {
+        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
+        const auto& thisNewTop = multiply(top, rhs.bottom, 0);
+        const auto& otherNewTop = multiply(rhs.top, bottom, 0);
+
+        return compare(thisNewTop, otherNewTop, 0) != "2";
+    }
+
+    bool Fraction::operator>(const Fraction& rhs) const
+    {
+        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
+        const auto& thisNewTop = multiply(top, rhs.bottom, 0);
+        const auto& otherNewTop = multiply(rhs.top, bottom, 0);
+
+        return compare(thisNewTop, otherNewTop, 0) == "1";
+    }
+
+    bool Fraction::operator<(const Fraction& rhs) const
+    {
+        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
+        const auto& thisNewTop = multiply(top, rhs.bottom, 0);
+        const auto& otherNewTop = multiply(rhs.top, bottom, 0);
+
+        return compare(thisNewTop, otherNewTop, 0) == "0";
+    }
+
+    bool Fraction::operator<=(const Fraction& rhs) const
+    {
+        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
+        const auto& thisNewTop = multiply(top, rhs.bottom, 0);
+        const auto& otherNewTop = multiply(rhs.top, bottom, 0);
+
+        return compare(thisNewTop, otherNewTop, 0) != "1";
+    }
+
+    bool Fraction::operator>=(const Fraction& rhs) const
+    {
+        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
+        const auto& thisNewTop = multiply(top, rhs.bottom, 0);
+        const auto& otherNewTop = multiply(rhs.top, bottom, 0);
+
+        return compare(thisNewTop, otherNewTop, 0) != "0";
     }
 
     void Fraction::simplify()

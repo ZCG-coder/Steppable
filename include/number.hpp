@@ -20,6 +20,8 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+#pragma once
+
 #include <string>
 
 namespace steppable
@@ -73,42 +75,42 @@ namespace steppable
          * @param rhs The number to add.
          * @return The sum of the two numbers.
          */
-        Number operator+(const Number& rhs);
+        Number operator+(const Number& rhs) const;
 
         /**
          * @brief Subtracts two numbers.
          * @param rhs The number to subtract.
          * @return The difference of the two numbers.
          */
-        Number operator-(const Number& rhs);
+        Number operator-(const Number& rhs) const;
 
         /**
          * @brief Multiplies two numbers.
          * @param rhs The number to multiply.
          * @return The product of the two numbers.
          */
-        Number operator*(const Number& rhs);
+        Number operator*(const Number& rhs) const;
 
         /**
          * @brief Divides two numbers.
          * @param rhs The number to divide.
          * @return The quotient of the two numbers.
          */
-        Number operator/(const Number& rhs);
+        Number operator/(const Number& rhs) const;
 
         /**
          * @brief Calculates the remainder of two numbers. (Modulus)
          * @param rhs The number to divide.
          * @return The remainder of the two numbers.
          */
-        Number operator%(const Number& rhs);
+        Number operator%(const Number& rhs) const;
 
         /**
          * @brief Raises the number to a power.
          * @param rhs The power to raise the number to.
          * @return The result of the power operation.
          */
-        Number operator^(const Number& rhs);
+        Number operator^(const Number& rhs) const;
 
         /**
          * @brief Adds the number to another number and assigns the result to the current number.
@@ -157,42 +159,42 @@ namespace steppable
          * @param rhs The number to compare.
          * @return True if the numbers are equal, false otherwise.
          */
-        bool operator==(const Number& rhs);
+        bool operator==(const Number& rhs) const;
 
         /**
          * @brief Compares two numbers for inequality.
          * @param rhs The number to compare.
          * @return True if the numbers are not equal, false otherwise.
          */
-        bool operator!=(const Number& rhs);
+        bool operator!=(const Number& rhs) const;
 
         /**
          * @brief Compares two numbers for less than.
          * @param rhs The number to compare.
          * @return True if the current number is less than the other number, false otherwise.
          */
-        bool operator<(const Number& rhs);
+        bool operator<(const Number& rhs) const;
 
         /**
          * @brief Compares two numbers for greater than.
          * @param rhs The number to compare.
          * @return True if the current number is greater than the other number, false otherwise.
          */
-        bool operator>(const Number& rhs);
+        bool operator>(const Number& rhs) const;
 
         /**
          * @brief Compares two numbers for less than or equal to.
          * @param rhs The number to compare.
          * @return True if the current number is less than or equal to the other number, false otherwise.
          */
-        bool operator<=(const Number& rhs);
+        bool operator<=(const Number& rhs) const;
 
         /**
          * @brief Compares two numbers for greater than or equal to.
          * @param rhs The number to compare.
          * @return True if the current number is greater than or equal to the other number, false otherwise.
          */
-        bool operator>=(const Number& rhs);
+        bool operator>=(const Number& rhs) const;
 
         /**
          * @brief Increments the number by one.
@@ -210,6 +212,6 @@ namespace steppable
          * @brief Presents the number in a human-readable format.
          * @return The number as a string.
          */
-        std::string present();
+        std::string present() const;
     };
 } // namespace steppable

@@ -30,6 +30,8 @@
 
 #pragma once
 
+#include "number.hpp"
+
 #include <string>
 
 namespace steppable
@@ -70,7 +72,7 @@ namespace steppable
          * @param[in] rhs The other fraction.
          * @return The sum of fractions.
          */
-        Fraction operator+(const Fraction& rhs);
+        Fraction operator+(const Fraction& rhs) const;
 
         /**
          * @brief Subtracts a fraction from another fraction.
@@ -79,7 +81,7 @@ namespace steppable
          * @param[in] rhs The other fraction.
          * @return The difference of fractions.
          */
-        Fraction operator-(const Fraction& rhs);
+        Fraction operator-(const Fraction& rhs) const;
 
         /**
          * @brief Multiplies two fractions together.
@@ -88,7 +90,7 @@ namespace steppable
          * @param[in] rhs The other fraction.
          * @return The product of fractions.
          */
-        Fraction operator*(const Fraction& rhs);
+        Fraction operator*(const Fraction& rhs) const;
 
         /**
          * @brief Divides a fraction by abother fraction.
@@ -98,7 +100,15 @@ namespace steppable
          * @param[in] rhs The other fraction.
          * @return The sum of fractions.
          */
-        Fraction operator/(const Fraction& rhs);
+        Fraction operator/(const Fraction& rhs) const;
+
+        /**
+         * @brief Raises the fraction to a power.
+         *
+         * @param rhs Any number.
+         * @return The result of the power operation.
+         */
+        Fraction operator^(const Number& rhs);
 
         /**
          * @brief Adds two fractions together and stores the result in the current one.
@@ -136,6 +146,62 @@ namespace steppable
          * @return The sum of fractions.
          */
         Fraction& operator/=(const Fraction& rhs);
+
+        /**
+         * @brief Raises the fraction to a power and stores the result in the current one.
+         *
+         * @param rhs Any number.
+         * @return The current fraction.
+         */
+        Fraction& operator^=(const Number& rhs);
+
+        /**
+         * @brief Compares two numbers for equality.
+         *
+         * @param rhs Another fraction.
+         * @return True if the fractions are equal, false otherwise.
+         */
+        bool operator==(const Fraction& rhs) const;
+
+        /**
+         * @briefCompares two numbers for inequality.
+         *
+         * @param rhs Another fraction.
+         * @return True if the numbers are not equal, false otherwise.
+         */
+        bool operator!=(const Fraction& rhs) const;
+
+        /**
+         * @brief Compares two numbers for greater than.
+         *
+         * @param rhs Another fraction.
+         * @return True if the the fraction is greater than the other, false otherwise.
+         */
+        bool operator<(const Fraction& rhs) const;
+
+        /**
+         * @brief Compare two fractions for less than.
+         *
+         * @param rhs Another fraction.
+         * @return True if the the fraction is less than the other, false otherwise.
+         */
+        bool operator>(const Fraction& rhs) const;
+
+        /**
+         * @brief Compare two fractions for less or equal than.
+         *
+         * @param rhs Another fraction.
+         * @return True if the the fraction is less or equal than the other, false otherwise.
+         */
+        bool operator<=(const Fraction& rhs) const;
+
+        /**
+         * @brief Compare two fractions for greater or equal than.
+         *
+         * @param rhs Another fraction.
+         * @return True if the the fraction is greater or equal than the other, false otherwise.
+         */
+        bool operator>=(const Fraction& rhs) const;
 
         /**
          * @brief Simplifies a fraction.

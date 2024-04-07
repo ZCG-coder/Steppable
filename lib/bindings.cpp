@@ -1,7 +1,10 @@
 #include "fn/basicArithm.hpp"
+#include "fraction.hpp"
+#include "number.hpp"
 
 #include <Python.h>
 #include <nanobind/nanobind.h>
+#include <nanobind/operators.h>
 #include <nanobind/stl/string.h>
 #include <nanobind/stl/string_view.h>
 
@@ -12,6 +15,57 @@ using namespace nb::literals;
 NB_MODULE(bindings, mod)
 {
     auto internals = mod.def_submodule("_internals", "Internal functions.");
+
+    nb::enum_<steppable::RoundingMode>(mod, "RoundingMode")
+        .value("USE_MAXIMUM_PREC", steppable::RoundingMode::USE_MAXIMUM_PREC)
+        .value("USE_MINIMUM_PREC", steppable::RoundingMode::USE_MINIMUM_PREC)
+        .value("USE_CURRENT_PREC", steppable::RoundingMode::USE_CURRENT_PREC)
+        .value("USE_OTHER_PREC", steppable::RoundingMode::USE_OTHER_PREC)
+        .value("DISCARD_ALL_DECIMALS", steppable::RoundingMode::DISCARD_ALL_DECIMALS);
+
+    nb::class_<steppable::Number>(mod, "Number")
+        .def(nb::init<std::string, size_t, steppable::RoundingMode>(),
+             "value"_a = "0",
+             "prec"_a = 5,
+             "roundingMode"_a = steppable::USE_CURRENT_PREC)
+        .def(nb::self + nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self += nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self - nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self -= nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self * nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self *= nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self / nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self /= nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self % nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self %= nb::self, nb::rv_policy::automatic_reference)
+        .def("__pow__", &steppable::Number::operator^)
+        .def(nb::self == nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self != nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self < nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self > nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self <= nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self >= nb::self, nb::rv_policy::automatic_reference)
+        .def("__repr__", &steppable::Number::present);
+
+    nb::class_<steppable::Fraction>(mod, "Fraction")
+        .def(nb::init<std::string, std::string>(), "top"_a = "1", "bottom"_a = "1")
+        .def(nb::self + nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self += nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self - nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self -= nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self * nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self *= nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self / nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self /= nb::self, nb::rv_policy::automatic_reference)
+        .def("__pow__", &steppable::Fraction::operator^)
+        .def(nb::self == nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self != nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self < nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self > nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self <= nb::self, nb::rv_policy::automatic_reference)
+        .def(nb::self >= nb::self, nb::rv_policy::automatic_reference)
+        .def("__repr__", &steppable::Fraction::present);
+
     mod.doc() = "The Python bindings for Steppable.";
 
     internals.def("abs",
