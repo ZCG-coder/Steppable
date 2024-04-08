@@ -86,11 +86,10 @@ namespace steppable::__internals::arithmetic
         for (size_t indexB = 0; indexB < bStr.length(); indexB++)
         {
             const int bDigit = static_cast<int>(bStr[indexB]) - '0';
-            // Skip if the digit is 0. This seems to cause issues (#5), so it's commented out for now.
-            // if (bDigit == 0)
-            //     continue;
             std::vector<int> currentProdDigits(aStr.length() + bStr.length() + 1, 0),
                 currentCarries(aStr.length() + bStr.length() + 1, 0);
+            if (bDigit == 0)
+                goto skip;
             for (long long indexA = static_cast<long long>(aStr.length()) - 1; indexA != -1; indexA--)
             {
                 const int aDigit = aStr[indexA] - '0';
@@ -104,6 +103,8 @@ namespace steppable::__internals::arithmetic
                 prodDigit %= 10;
                 currentProdDigits[indexA + 1] = prodDigit; // Move back 1 to make room for carry
             }
+
+        skip:
             currentProdDigits[0] =
                 currentCarries[0]; // The digit at index 0 is the carry, but was never added in the loop
             prodDigits.push_back(currentProdDigits);
