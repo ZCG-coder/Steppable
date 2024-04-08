@@ -114,8 +114,12 @@ $(document).ready(function(){initNavTree('powerReport_8hpp_source.html',''); ini
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;std::string <a class="code" href="powerReport_8hpp.html#a3983fa7e3f0ac4977f27439fb574b389">reportPower</a>(std::string_view _number, <span class="keyword">const</span> std::string_view&amp; raiseTo, <span class="keywordtype">bool</span> negative, <span class="keywordtype">int</span> steps);</div>
-<div class="ttc" id="apowerReport_8hpp_html_a3983fa7e3f0ac4977f27439fb574b389"><div class="ttname"><a href="powerReport_8hpp.html#a3983fa7e3f0ac4977f27439fb574b389">reportPower</a></div><div class="ttdeci">std::string reportPower(std::string_view _number, const std::string_view &amp;raiseTo, bool negative, int steps)</div><div class="ttdoc">Reports a power operation.</div><div class="ttdef"><b>Definition:</b> powerReport.cpp:44</div></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;std::string <a class="code" href="powerReport_8hpp.html#a313053d8232850bdcca6d6b88ab53778">reportPower</a>(<span class="keyword">const</span> std::string_view _number,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        <span class="keyword">const</span> std::string_view&amp; raiseTo,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">size_t</span> numberTrailingZeros,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">bool</span> negative,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">int</span> steps);</div>
+<div class="ttc" id="apowerReport_8hpp_html_a313053d8232850bdcca6d6b88ab53778"><div class="ttname"><a href="powerReport_8hpp.html#a313053d8232850bdcca6d6b88ab53778">reportPower</a></div><div class="ttdeci">std::string reportPower(const std::string_view _number, const std::string_view &amp;raiseTo, const size_t numberTrailingZeros, const bool negative, const int steps)</div><div class="ttdoc">Reports a power operation.</div><div class="ttdef"><b>Definition:</b> powerReport.cpp:44</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!DOCTYPE html>
@@ -136,7 +140,7 @@ $(document).ready(function(){initNavTree('powerReport_8hpp_source.html',''); ini
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 8 2024 04:38:31"; // Will get replaced by Doxygen
+        const dateStr = "Mon Apr 8 2024 09:00:18"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

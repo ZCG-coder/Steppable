@@ -157,26 +157,32 @@ $(document).ready(function(){initNavTree('basicArithm_8hpp_source.html',''); ini
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Pred&gt;</div>
 <div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a">  182</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a">loop</a>(<span class="keyword">const</span> std::string_view&amp; times, Pred predicate)</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        std::string current = <span class="stringliteral">&quot;0&quot;</span>;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keyword">auto</span> result = <a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">compare</a>(current, times, 0);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordflow">while</span> (result == <span class="stringliteral">&quot;0&quot;</span>)</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            {</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                predicate(current);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">catch</span> (std::exception&amp; e)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <a class="code" href="namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7">output::error</a>(<span class="stringliteral">&quot;loop&quot;</span>, <span class="stringliteral">&quot;Exception occurred in predicate.&quot;</span>s);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <a class="code" href="namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7">output::error</a>(<span class="stringliteral">&quot;loop&quot;</span>, <span class="stringliteral">&quot;Exception message: %s&quot;</span>s, e.what());</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            current = <a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">add</a>(current, <span class="stringliteral">&quot;1&quot;</span>, 0);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            result = <a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">compare</a>(current, times, 0);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        }</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;} <span class="comment">// namespace steppable::__internals::arithmetic</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="comment">// We&#39;re done already!</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">if</span> (times == <span class="stringliteral">&quot;0&quot;</span>)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordflow">if</span> (times == <span class="stringliteral">&quot;1&quot;</span>)</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">return</span> predicate(<span class="stringliteral">&quot;1&quot;</span>);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        std::string current = <span class="stringliteral">&quot;0&quot;</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keyword">auto</span> result = <a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">compare</a>(current, times, 0);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">while</span> (result == <span class="stringliteral">&quot;0&quot;</span>)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                predicate(current);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">catch</span> (std::exception&amp; e)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <a class="code" href="namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7">output::error</a>(<span class="stringliteral">&quot;loop&quot;</span>, <span class="stringliteral">&quot;Exception occurred in predicate.&quot;</span>s);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                <a class="code" href="namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7">output::error</a>(<span class="stringliteral">&quot;loop&quot;</span>, <span class="stringliteral">&quot;Exception message: %s&quot;</span>s, e.what());</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            current = <a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">add</a>(current, <span class="stringliteral">&quot;1&quot;</span>, 0);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            result = <a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">compare</a>(current, times, 0);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;} <span class="comment">// namespace steppable::__internals::arithmetic</span></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html">steppable::__internals::arithmetic</a></div><div class="ttdef"><b>Definition:</b> basicArithm.hpp:50</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a1deb38d5027df01a66b6c3efd57aedca"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">steppable::__internals::arithmetic::add</a></div><div class="ttdeci">std::string add(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false, bool properlyFormat=true)</div><div class="ttdoc">Adds two string representations of numbers, and performs with the column method.</div><div class="ttdef"><b>Definition:</b> add.cpp:47</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a210c635ae60eaa54f65bc82a0f3c953a"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a">steppable::__internals::arithmetic::loop</a></div><div class="ttdeci">void loop(const std::string_view &amp;times, Pred predicate)</div><div class="ttdoc">Executes a given predicate function a specified number of times.</div><div class="ttdef"><b>Definition:</b> basicArithm.hpp:182</div></div>
@@ -214,7 +220,7 @@ $(document).ready(function(){initNavTree('basicArithm_8hpp_source.html',''); ini
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 8 2024 04:38:31"; // Will get replaced by Doxygen
+        const dateStr = "Mon Apr 8 2024 09:00:18"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

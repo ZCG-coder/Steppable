@@ -1,4 +1,4 @@
 var powerReport_8hpp =
 [
-    [ "reportPower", "powerReport_8hpp.html#a3983fa7e3f0ac4977f27439fb574b389", null ]
+    [ "reportPower", "powerReport_8hpp.html#a313053d8232850bdcca6d6b88ab53778", null ]
 ];
