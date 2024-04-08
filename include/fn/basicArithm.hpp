@@ -181,6 +181,12 @@ namespace steppable::__internals::arithmetic
     template<typename Pred>
     void loop(const std::string_view& times, Pred predicate)
     {
+        // We're done already!
+        if (times == "0")
+            return;
+        if (times == "1")
+            return predicate("1");
+
         std::string current = "0";
         auto result = compare(current, times, 0);
 

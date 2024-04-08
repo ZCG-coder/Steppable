@@ -43,12 +43,27 @@ using namespace steppable::__internals::arithmetic;
 
 std::string reportPower(const std::string_view _number,
                         const std::string_view& raiseTo,
+                        const size_t numberTrailingZeros,
                         const bool negative,
                         const int steps)
 {
     std::stringstream ss;
     const auto numberOrig = static_cast<std::string>(_number);
+
     auto number = "1"s;
+
+    // Here, we attempt to give a quick answer, instead of doing pointless iterations.
+    if (numberOrig == "1")
+        goto finish;
+    else if (numberOrig == "0")
+    {
+        if (steps == 2)
+            return "Since the number is 0, the result is 0.";
+        else if (steps == 1)
+            return "0"s + makeSuperscript(static_cast<std::string>(raiseTo)) + " = 0";
+        else
+            return "0";
+    }
 
     loop(raiseTo, [&](const auto& i) {
         if (not negative)
@@ -69,6 +84,7 @@ std::string reportPower(const std::string_view _number,
         }
     });
 
+finish:
     if (negative)
     {
         if (steps == 2)
@@ -87,6 +103,8 @@ std::string reportPower(const std::string_view _number,
         ss << numberOrig << makeSuperscript(static_cast<std::string>(raiseTo)) << " = " << number;
     else if (steps == 0)
         ss << number;
+
+    loop(multiply(raiseTo, std::to_string(numberTrailingZeros), 0), [&](const auto& _) { ss << "0"; });
 
     return ss.str();
 }

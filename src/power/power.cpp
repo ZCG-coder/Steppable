@@ -40,7 +40,33 @@ namespace steppable::__internals::arithmetic
 {
     std::string power(const std::string_view _number, const std::string_view& _raiseTo, const int steps)
     {
-        std::string raiseTo = static_cast<std::string>(_raiseTo);
+        std::string raiseTo = static_cast<std::string>(_raiseTo), number = static_cast<std::string>(_number);
+
+        // Here, we attempt to give a quick answer, instead of doing pointless iterations.
+        if (number == "1")
+        {
+            if (steps == 2)
+                return "Since the number is 1, the result is 1.";
+            else if (steps == 1)
+                return "1"s + symbols::makeSuperscript(static_cast<std::string>(raiseTo)) + " = 1";
+            else
+                return "1";
+        }
+        else if (number == "0")
+        {
+            if (steps == 2)
+                return "Since the number is 0, the result is 0.";
+            else if (steps == 1)
+                return "0"s + symbols::makeSuperscript(static_cast<std::string>(raiseTo)) + " = 0";
+            else
+                return "0";
+        }
+
+        auto numberNoTrailingZeros = removeTrailingZeros(number);
+        size_t numberTrailingZeros = number.length() - numberNoTrailingZeros.length();
+        // Remove the zeros to reduce the workload.
+        number = numberNoTrailingZeros;
+
         bool negative = false;
         if (compare(raiseTo, "0", 0) == "0")
         {
@@ -48,8 +74,7 @@ namespace steppable::__internals::arithmetic
             raiseTo = raiseTo.substr(1);
             negative = true;
         }
-        std::string numberOrig = static_cast<std::string>(_number), number = "1";
-        return reportPower(_number, raiseTo, negative, steps);
+        return reportPower(number, raiseTo, numberTrailingZeros, negative, steps);
     }
 } // namespace steppable::__internals::arithmetic
 
