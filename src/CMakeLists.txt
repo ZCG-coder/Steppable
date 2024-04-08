@@ -51,6 +51,7 @@ foreach (COMPONENT IN LISTS COMPONENTS)
 
     if (DEFINED STP_BUILD_COMPONENT_EXECUTABLE)
         add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
+        target_include_directories(${COMPONENT} PRIVATE ${STP_BASE_DIRECTORY}/include/)
         target_link_libraries(${COMPONENT} calc)
     endif ()
 
