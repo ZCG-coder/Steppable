@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"dir_85bd4ac275e88803c89ad172608108b6.html":[6,0,2,0],
-"dir_97aefd0d527b934f1d99a682da8fe6a9.html":[6,0,1],
 "dir_d44c64559bbebec7f509842c48db8b23.html":[6,0,0],
 "dir_fcd1616905467347a0d6d145ee01dc72.html":[6,0,2,8],
 "divisionReport_8cpp.html":[6,0,2,5,1],
@@ -36,8 +34,8 @@ var NAVTREEINDEX1 =
 "globals_defs.html":[6,1,2],
 "globals_func.html":[6,1,1],
 "hierarchy.html":[5,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md21":[0,0],
 "index.html#autotoc_md22":[0,1],
 "index.html#autotoc_md23":[0,2],
@@ -207,8 +205,8 @@ var NAVTREEINDEX1 =
 "number_8hpp.html":[6,0,0,8],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092":[4,0,5,6],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092":[6,0,0,8,1],
-"number_8hpp.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320":[6,0,0,8,1,4],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320":[4,0,5,6,4],
+"number_8hpp.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320":[6,0,0,8,1,4],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64":[4,0,5,6,2],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64":[6,0,0,8,1,2],
 "number_8hpp.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda":[4,0,5,6,3],
@@ -249,5 +247,7 @@ var NAVTREEINDEX1 =
 "structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a2528f46d7bbfe1dd8ac10bfa9487903d":[5,0,0,0,2,0,0],
 "structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793":[5,0,0,0,2,0,2],
 "structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#aafe32bc0840b6b99ed2e57a065ec55f0":[5,0,0,0,2,0,1],
-"structsteppable_1_1____internals_1_1utils_1_1setw.html":[5,0,0,0,3,1]
+"structsteppable_1_1____internals_1_1utils_1_1setw.html":[5,0,0,0,3,1],
+"structsteppable_1_1____internals_1_1utils_1_1setw.html#a01b3deb613465b162ac58e8c59ad84ab":[5,0,0,0,3,1,0],
+"structsteppable_1_1____internals_1_1utils_1_1setw.html#a25816cede65bec5196c279bf254afc25":[5,0,0,0,3,1,1]
 };
