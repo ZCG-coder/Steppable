@@ -20,10 +20,22 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file number.hpp
+ * @brief Contains the definition of the Number class, which offers an API for arbitrary precision arithmetic.
+ *
+ * @author Andy Zhang
+ * @date 1st April 2024
+ */
+
 #pragma once
 
 #include <string>
 
+/**
+ * @namespace steppable
+ * @brief The public namespace for the Steppable library.
+ */
 namespace steppable
 {
     /**
@@ -48,6 +60,10 @@ namespace steppable
         DISCARD_ALL_DECIMALS = 0x00
     };
 
+    /**
+     * @class Number
+     * @brief Represents a number with arbitrary precision. It basically stores the value as a string.
+     */
     class Number
     {
     private:

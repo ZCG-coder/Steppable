@@ -22,7 +22,7 @@
 
 /**
  * @file fraction.hpp
- * @brief This file contains the definition of the Fraction class.
+ * @brief This file contains the definition of the Fraction class, which represents a fraction in math.
  *
  * @author Andy Zhang
  * @date 13th March 2024
@@ -63,6 +63,10 @@ namespace steppable
          */
         Fraction();
 
+        /**
+         * @brief Returns the fraction as a string.
+         * The string is formatted as "top/bottom", and it will automatically simplify the fraction.
+         */
         std::string present();
 
         /**

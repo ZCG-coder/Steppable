@@ -41,13 +41,13 @@ namespace steppable::__internals::utils
 {
     bool isTerminal(const std::ostream& stream)
     {
-        #ifdef WINDOWS
+#ifdef WINDOWS
         if (IsWindows10OrGreater())
             return isatty(fileno(stdout)) != 0;
         return false; // The Windows console in Windows 7 does not support ANSI escapes
-        #else
+#else
         return isatty(STDOUT_FILENO) != 0;
-        #endif
+#endif
     }
 
     std::ostream& reset(std::ostream& stream)

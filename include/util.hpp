@@ -27,6 +27,9 @@
  * The functions and macros in this file provide various utility functionalities such as profiling code execution time,
  * string manipulation, and Unicode conversion. It also includes a structure for storing split numbers and a class for
  * handling UTF-8 code page settings.
+ *
+ * @author Andy Zhang
+ * @date 9th October 2023
  */
 
 #pragma once
@@ -42,11 +45,11 @@
 #include <vector>
 
 #ifndef TIC
-/**
- * @brief Starts a timer for profiling code execution time.
- * @param[in] ... The name of the section to profile.
- */
-#define TIC(...)                                                                                  \
+    /**
+     * @brief Starts a timer for profiling code execution time.
+     * @param[in] ... The name of the section to profile.
+     */
+    #define TIC(...)                                                                                  \
         {                                                                                             \
             const char* nameSection = #__VA_ARGS__;                                                   \
             std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << '\n';   \
@@ -55,8 +58,8 @@
 #endif
 
 #ifndef TOC
-/// @brief Stops the timer and prints the time taken to execute the section.
-#define TOC()                                                                                                     \
+    /// @brief Stops the timer and prints the time taken to execute the section.
+    #define TOC()                                                                                                     \
         auto duration =                                                                                               \
             std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start)  \
                 .count();                                                                                             \
@@ -69,9 +72,9 @@
 
 namespace steppable::__internals::utils
 {
-    #ifdef WINDOWS
-    #include <windows.h>
+#ifdef WINDOWS
     #include <fcntl.h>
+    #include <windows.h>
 
     /**
      * @brief Enables VT mode.
@@ -129,8 +132,7 @@ namespace steppable::__internals::utils
          * This constructor sets the console output code page to UTF-8 and enables VT mode.
          * It also saves the original code page and VT mode for restoration later.
          */
-        Utf8CodePage() :
-            oldCodePage(GetConsoleOutputCP())
+        Utf8CodePage() : oldCodePage(GetConsoleOutputCP())
         {
             SetConsoleOutputCP(CP_UTF8);
             dwModeOrig = enableVtMode();
@@ -151,7 +153,7 @@ namespace steppable::__internals::utils
         UINT oldCodePage; ///< The original console output code page.
         DWORD dwModeOrig; ///< The original VT mode.
     };
-    #else
+#else
 
     /**
      * @class Utf8CodePage
@@ -163,7 +165,7 @@ namespace steppable::__internals::utils
     class Utf8CodePage
     {
     };
-    #endif
+#endif
 } // namespace steppable::__internals::utils
 
 namespace steppable::__internals::numUtils

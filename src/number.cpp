@@ -20,6 +20,14 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file number.cpp
+ * @brief This file contains the implementation of the Number class, which represents a number in math.
+ *
+ * @author Andy Zhang
+ * @date 1st April 2024
+ */
+
 #include "number.hpp"
 
 #include "fn/basicArithm.hpp"

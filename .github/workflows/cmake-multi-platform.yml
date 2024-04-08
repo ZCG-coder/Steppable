@@ -23,29 +23,45 @@ jobs:
             #
             # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
             matrix:
-                os: [ ubuntu-latest, windows-latest, macos-latest ]
+                os: [ ubuntu-latest, windows-latest, macos-12, macos-13, macos-14 ]
                 build_type: [ Release ]
                 c_compiler: [ clang, cl ]
-                python_version: [ '3.9', '3.10', '3.11', '3.12' ]
+                python_version: [ '3.10', '3.11', '3.12' ]
                 include:
                     -   os: windows-latest
                         c_compiler: cl
                         cpp_compiler: cl
+                        cmake_extra_options: ''
                     -   os: ubuntu-latest
                         c_compiler: clang
                         cpp_compiler: clang++
+                        cmake_extra_options: '-GNinja'
                     # - os: macos-latest
                     #   c_compiler: gcc
                     #   cpp_compiler: g++
-                    -   os: macos-latest
+                    -   os: macos-12
                         c_compiler: clang
                         cpp_compiler: clang++
+                        cmake_extra_options: '-GNinja'
+                    -   os: macos-13
+                        c_compiler: clang
+                        cpp_compiler: clang++
+                        cmake_extra_options: '-GNinja'
+                    -   os: macos-14
+                        c_compiler: clang
+                        cpp_compiler: clang++
+                        cmake_extra_options: '-GNinja'
+
                 exclude:
                     -   os: windows-latest
                         c_compiler: clang
                     -   os: ubuntu-latest
                         c_compiler: cl
-                    -   os: macos-latest
+                    -   os: macos-12
+                        c_compiler: cl
+                    -   os: macos-13
+                        c_compiler: cl
+                    -   os: macos-14
                         c_compiler: cl
 
         steps:
@@ -59,17 +75,22 @@ jobs:
                     echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
             -   name: Set up Homebrew
-                if: ${{ matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest'}}
+                if: ${{ matrix.os == 'macos-12' || matrix.os == 'macos-13' || matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest'}}
                 id: set-up-homebrew
                 uses: Homebrew/actions/setup-homebrew@master
 
             -   name: Install LLVM
-                if: ${{ matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest' }}
+                if: ${{ matrix.os == 'macos-12' || matrix.os == 'macos-13' || matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest' }}
                 run: |
-                    brew install llvm
+                    brew install llvm ninja
                     echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
 
-            -   uses: seanmiddleditch/gha-setup-ninja@master
+            -   name: Install Ninja (Windows)
+                if: ${{ matrix.os == 'windows-latest' }}
+                shell: pwsh
+                run: |
+                    choco install -y ninja
+                    Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\ninja\tools"
 
             -   name: Set up Python
                 uses: actions/setup-python@v5
@@ -88,7 +109,7 @@ jobs:
                     -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
                     -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
                     -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-                    -GNinja
+                    ${{ matrix.cmake_extra_options }}
                     -S ${{ github.workspace }}
 
             -   name: Build

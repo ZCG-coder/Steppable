@@ -955,6 +955,7 @@ RECURSIVE              = YES
 EXCLUDE                = build/ \
                          cmake-build-*/ \
                          doxygen-awesome-css/ \
+                         venv/ \
                          tests/
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or

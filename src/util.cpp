@@ -25,8 +25,8 @@
 #include "fn/basicArithm.hpp"
 
 #ifdef WINDOWS
-#undef min
-#undef max
+    #undef min
+    #undef max
 #endif
 
 #include <algorithm>
@@ -143,11 +143,7 @@ namespace steppable::__internals::numUtils
         if (const auto firstNonZero = std::ranges::find_if(out, [](const int num) { return num != 0; });
             out.begin() != firstNonZero && out.front() == 0)
         {
-            std::replace_if(
-                out.begin(),
-                firstNonZero,
-                [](const int num) { return num == 0; },
-                -2);
+            std::replace_if(out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
         }
 
         return out;

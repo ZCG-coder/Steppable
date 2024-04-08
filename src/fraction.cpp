@@ -20,6 +20,14 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @file fraction.cpp
+ * @brief This file contains the implementation of the Fraction class, which represents a fraction in math.
+ *
+ * @author Andy Zhang
+ * @date 13th March 2024
+ */
+
 #include "fraction.hpp"
 
 #include "exceptions.hpp"
