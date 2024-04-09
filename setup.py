@@ -60,9 +60,9 @@ class CMakeBuild(build_ext):
         # auxiliary "native" libs
 
         debug = int(os.environ.get("DEBUG", 0)) if self.debug is None else self.debug
-        cxx_compiler = os.environ.get("CMAKE_CXX_COMPILER", 0) else "clang"
-        c_compiler = os.environ.get("CMAKE_C_COMPILER", 0) else "gcc"
-        cmake_options = os.environ.get("CMAKE_OPTIONS", 0) else ""
+        cxx_compiler = os.environ.get("CMAKE_CXX_COMPILER", "g++")
+        c_compiler = os.environ.get("CMAKE_C_COMPILER", "gcc")
+        cmake_options = os.environ.get("CMAKE_OPTIONS", "")
         cfg = "Debug" if debug else "Release"
 
         # CMake lets you override the generator - we need to check this.
@@ -164,6 +164,22 @@ setup(
     license="MIT",
     author="Andy Zhang",
     author_email="z-c-ge@outlook.com",
+    classifiers=[
+        "Development Status :: 2 - Pre-Alpha",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Programming Language :: C++",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Topic :: Education",
+        "Topic :: Education :: Computer Aided Instruction (CAI)",
+        "Topic :: Scientific/Engineering :: Mathematics",
+        "Topic :: Software Development :: Libraries"
+    ], 
     description="Python bindings for Steppable.",
     long_description="Python bindings for Steppable, written using nanobind.",
     ext_modules=[CMakeExtension("steppyble")],
