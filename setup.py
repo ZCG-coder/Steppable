@@ -1,3 +1,25 @@
+#####################################################################################################
+#  Copyright (c) 2023-2024 NWSOFT                                                                   #
+#                                                                                                   #
+#  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
+#  of this software and associated documentation files (the "Software"), to deal                    #
+#  in the Software without restriction, including without limitation the rights                     #
+#  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                        #
+#  copies of the Software, and to permit persons to whom the Software is                            #
+#  furnished to do so, subject to the following conditions:                                         #
+#                                                                                                   #
+#  The above copyright notice and this permission notice shall be included in all                   #
+#  copies or substantial portions of the Software.                                                  #
+#                                                                                                   #
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                       #
+#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                         #
+#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE                      #
+#  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                           #
+#  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,                    #
+#  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                    #
+#  SOFTWARE.                                                                                        #
+#####################################################################################################
+
 import os
 import re
 import subprocess
@@ -17,16 +39,18 @@ PLAT_TO_CMAKE = {
 }
 
 
-# A CMakeExtension needs a sourcedir instead of a file list.
-# The name must be the _single_ output extension from the CMake build.
-# If you need multiple extensions, see scikit-build.
 class CMakeExtension(Extension):
+    """A CMakeExtension needs a sourcedir instead of a file list.
+    The name must be the _single_ output extension from the CMake build.
+    If you need multiple extensions, see scikit-build."""
     def __init__(self, name: str, sourcedir: str = "") -> None:
         super().__init__(name, sources=[])
         self.sourcedir = os.fspath(Path(sourcedir).resolve())
 
 
 class CMakeBuild(build_ext):
+    """Builds a _single_ CMake target, specified by ext."""
+ 
     def build_extension(self, ext: CMakeExtension) -> None:
         # Must be in this form due to bug in .resolve() only fixed in Python 3.10+
         ext_fullpath = Path.cwd() / self.get_ext_fullpath(ext.name)
