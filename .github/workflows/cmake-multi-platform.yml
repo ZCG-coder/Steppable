@@ -72,7 +72,11 @@ jobs:
                 id: strings
                 shell: bash
                 run: |
-                    echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+                    echo "build-output-dir=${{ github.workspace }}/cmake-build" >> "$GITHUB_OUTPUT"
+                    echo "py-build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+                    echo "CMAKE_C_COMPILER=${{ matrix.c_compiler }}" >> "$GITHUB_ENV"
+                    echo "CMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}" >> "$GITHUB_ENV"
+                    echo "CMAKE_OPTIONS=${{ matrix.cmake_extra_options }}" >> "$GITHUB_ENV"
 
             -   name: Set up Homebrew
                 if: ${{ matrix.os == 'macos-12' || matrix.os == 'macos-13' || matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest'}}
@@ -84,13 +88,6 @@ jobs:
                 run: |
                     brew install llvm ninja
                     echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
-
-            -   name: Install Ninja (Windows)
-                if: ${{ matrix.os == 'windows-latest' }}
-                shell: pwsh
-                run: |
-                    choco install -y ninja
-                    Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\ninja\tools"
 
             -   name: Set up Python
                 uses: actions/setup-python@v5
@@ -112,9 +109,12 @@ jobs:
                     ${{ matrix.cmake_extra_options }}
                     -S ${{ github.workspace }}
 
-            -   name: Build
+            -   name: CMake Build
                 # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
                 run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
+                
+            -   name: Python Build
+                run: python setup.py build 
 
             -   name: CTest
                 working-directory: ${{ steps.strings.outputs.build-output-dir }}/tests
@@ -129,6 +129,14 @@ jobs:
                     name: Build ${{ matrix.os }}-${{ matrix.cpp_compiler }}-cp${{ matrix.python_version }}
                     # A file, directory or wildcard pattern that describes what to upload
                     path: ${{ steps.strings.outputs.build-output-dir }}
+                    
+            -   name: Upload Build Artifact (Python)
+                uses: actions/upload-artifact@v4.3.1
+                with:
+                    # Artifact name
+                    name: PyBuild ${{ matrix.os }}-${{ matrix.cpp_compiler }}-cp${{ matrix.python_version }}
+                    # A file, directory or wildcard pattern that describes what to upload
+                    path: ${{ steps.strings.outputs.py-build-output-dir }} 
                     
             -   name: Upload coverage reports to Codecov
                 uses: codecov/codecov-action@v4.0.1
