@@ -60,9 +60,9 @@ class CMakeBuild(build_ext):
         # auxiliary "native" libs
 
         debug = int(os.environ.get("DEBUG", 0)) if self.debug is None else self.debug
-        cxx_compiler = os.environ.get("CMAKE_CXX_COMPILER", 0)
-        c_compiler = os.environ.get("CMAKE_C_COMPILER", 0)
-        cmake_options = os.environ.get("CMAKE_OPTIONS", 0)
+        cxx_compiler = os.environ.get("CMAKE_CXX_COMPILER", 0) else "clang"
+        c_compiler = os.environ.get("CMAKE_C_COMPILER", 0) else "gcc"
+        cmake_options = os.environ.get("CMAKE_OPTIONS", 0) else ""
         cfg = "Debug" if debug else "Release"
 
         # CMake lets you override the generator - we need to check this.
