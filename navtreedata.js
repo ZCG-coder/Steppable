@@ -25,16 +25,7 @@
 var NAVTREE =
 [
   [ "Steppable", "index.html", [
-    [ "The Steppable Project", "index.html", [
-      [ "What is this?", "index.html#autotoc_md21", null ],
-      [ "What this is not?", "index.html#autotoc_md22", null ],
-      [ "Why another CAS?", "index.html#autotoc_md23", null ],
-      [ "How does it work?", "index.html#autotoc_md24", null ],
-      [ "How to get it running?", "index.html#autotoc_md25", null ],
-      [ "How to contribute?", "index.html#autotoc_md26", [
-        [ "How to add a new feature", "index.html#autotoc_md27", null ]
-      ] ]
-    ] ],
+    [ "The Steppable Project", "index.html", null ],
     [ "Contributor Covenant Code of Conduct", "md_CODE_OF_CONDUCT.html", [
       [ "Our Pledge", "md_CODE_OF_CONDUCT.html#autotoc_md1", null ],
       [ "Our Standards", "md_CODE_OF_CONDUCT.html#autotoc_md2", null ],
@@ -60,10 +51,10 @@ var NAVTREE =
       [ "Contacts and inquiries", "md_CONTRIBUTING.html#autotoc_md19", null ]
     ] ],
     [ "Security Policy", "md_SECURITY.html", [
-      [ "Introduction", "md_SECURITY.html#autotoc_md29", null ],
-      [ "Reporting a Vulnerability", "md_SECURITY.html#autotoc_md30", null ],
-      [ "Fixing a Vulnerability", "md_SECURITY.html#autotoc_md31", null ],
-      [ "Questions?", "md_SECURITY.html#autotoc_md32", null ]
+      [ "Introduction", "md_SECURITY.html#autotoc_md22", null ],
+      [ "Reporting a Vulnerability", "md_SECURITY.html#autotoc_md23", null ],
+      [ "Fixing a Vulnerability", "md_SECURITY.html#autotoc_md24", null ],
+      [ "Questions?", "md_SECURITY.html#autotoc_md25", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -100,9 +91,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"",
-"dir_85bd4ac275e88803c89ad172608108b6.html",
-"structsteppable_1_1____internals_1_1utils_1_1setw.html#a01b3deb613465b162ac58e8c59ad84ab"
+"absReport_8cpp.html",
+"dir_d44c64559bbebec7f509842c48db8b23.html",
+"subtract_8cpp.html#ac2c7bcd6d73ca32ee42312d0fa0b1aa9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

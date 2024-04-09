@@ -91,133 +91,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/ZCG-coder/Steppable/actions/workflows/cmake-multi-platform.yml"><img src="https://github.com/ZCG-coder/Steppable/actions/workflows/cmake-multi-platform.yml/badge.svg" alt="CMake Build" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/ZCG-coder/Steppable/actions/workflows/doxygen-gh-pages.yml"><img src="https://github.com/ZCG-coder/Steppable/actions/workflows/doxygen-gh-pages.yml/badge.svg" alt="Doxygen Deploy" style="pointer-events: none;" class="inline"/></a></p>
 <p><img src="https://img.shields.io/github/stars/ZCG-Coder/Steppable" alt="GitHub Repo stars" class="inline"/></p>
 <p><img src="https://repobeats.axiom.co/api/embed/96b5654dbd10a4c759deff9d9f6ef6421b6c41e3.svg" alt="Repository Stats" style="pointer-events: none;" title="Repobeats analytics image" class="inline"/></p>
-<p>This project tries to make a Computer Algebra System (CAS) out of scratch, and without any external libraries.</p>
-<h1><a class="anchor" id="autotoc_md21"></a>
-What is this?</h1>
-<p>This project attempts to make a CAS that solves problems like a human does. It even adds, subtracts, multiplies, and divides using the column method. This is because we believe that a CAS should be able to solve problems step by step, so that the user can understand how the problem is solved.</p>
-<h1><a class="anchor" id="autotoc_md22"></a>
-What this is not?</h1>
-<p>This is not a CAS intended for high-performance computing. This is because the basic arithmetic operations are much more time-consuming than the plain old <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code> (around 10 times slower).</p>
-<h1><a class="anchor" id="autotoc_md23"></a>
-Why another CAS?</h1>
-<p>Out of <a href="https://en.wikipedia.org/wiki/List_of_computer_algebra_systems">this list</a>, we could not find a CAS that is:</p>
-<ul>
-<li>Free and open source</li>
-<li>Solves step by step</li>
-<li>Runs even without internet connection</li>
-<li>Has no external dependencies (including BigNum libraries)</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md24"></a>
-How does it work?</h1>
-<p>We found that there is no simpler method of writing a step-by-step solver than imitating how a human solves it. So we wrote a parser that converts the input into a tree, and then we wrote a calculator that solves the tree step by step. Finally, the reporter shows the steps and results to the user in a human-readable format.</p>
-<p>Currently, only the calculator and the reporter are implemented, with very limited functionality. Here is a list of what we are planning to implement next (and in the near future):</p>
-<ul>
-<li>[ ] Parser</li>
-<li>[ ] Calculator and reporter (all the major functions)<ul>
-<li>[x] Comparison of integers and decimal</li>
-<li>[x] Addition of integers and decimals</li>
-<li>[x] Subtraction of integers and decimals</li>
-<li>[x] Multiplication of integers and decimals</li>
-<li>[x] Powers of integers</li>
-<li>[x] Division of integers and decimals</li>
-<li>[x] Addition of fractions</li>
-<li>[x] Subtraction of fractions</li>
-<li>[x] Multiplication of fractions</li>
-<li>[X] Simplification of fractions</li>
-<li>[x] Division of fractions</li>
-<li>[X] API for numbers</li>
-<li>[X] API for fractions</li>
-<li>[ ] Conversion between fractions and decimals</li>
-<li>[ ] Expansion of polynomials</li>
-<li>[ ] Factoring of polynomials</li>
-</ul>
-</li>
-</ul>
-<p>The parser is the most difficult part of the project, so we will probably start with the calculator and reporter first. When implemented, it will probably call the calculator(s) (which is/are compiled into executable format together with the reporter) and then show the result to the user.</p>
-<h1><a class="anchor" id="autotoc_md25"></a>
-How to get it running?</h1>
-<p>First, you will need:</p>
-<ul>
-<li><a href="https://cmake.org/">CMake</a> (version 3.8 or higher, latest version preferred) to generate the build files.</li>
-<li>A working C++ compiler (GCC and Clang are preferred) to generate the executable.</li>
-<li>A build system (<a href="https://www.gnu.org/software/make/">GNU Make</a>, <a href="https://ninja-build.org/">Ninja</a>, etc.), as long as it gets along with CMake.</li>
-<li><a href="https://git-scm.com/">Git</a> (optional, but recommended) to download the project and commit changes.</li>
-</ul>
-<p>Then, you can clone this repository by running the following command, or <a href="https://github.com/ZCG-Coder">download</a> it from GitHub (if you don't have Git installed):</p>
-<div class="fragment"><div class="line">git clone https://github.com/ZCG-Coder/Steppable.git</div>
-</div><!-- fragment --><p>Then, you can build the project by running the following commands:</p>
-<div class="fragment"><div class="line">cd &lt;path/to/this/repo&gt;</div>
-<div class="line">mkdir build</div>
-<div class="line">cd build</div>
-<div class="line">cmake .. -G &lt;your build system&gt;</div>
-<div class="line"># Replace &lt;your build system&gt; with your build system of choice. Default is Make.</div>
-</div><!-- fragment --><p>Alternatively, you may generate a differently optimized build by replacing adding with one of the following options:</p>
-<ul>
-<li><code>-DCMAKE_BUILD_TYPE=Debug</code> for a debug build (has debug symbols, no optimizations). This is perfect for running with a debugger, such as <a href="https://www.gnu.org/software/gdb/">GDB</a>, <a href="https://lldb.llvm.org/">LLDB</a>, or your IDE.</li>
-<li><code>-DCMAKE_BUILD_TYPE=Release</code> for a release build (no debug symbols, full optimizations). This is perfect for running the program normally and redistributing it.</li>
-<li><code>-DCMAKE_BUILD_TYPE=RelWithDebInfo</code> for a release build with debug symbols (has debug symbols, full optimizations).</li>
-<li><code>-DCMAKE_BUILD_TYPE=MinSizeRel</code> for a release build with minimum size (no debug symbols, minimum executable size).</li>
-</ul>
-<p>Finally, you can build the project by running the following command:</p>
-<div class="fragment"><div class="line">cmake --build .</div>
-</div><!-- fragment --><p>The different calculators can be run by specifying the necessary arguments, and optionally, switches. For example:</p>
-<div class="fragment"><div class="line"># Add 4 and 5.677 via the column method</div>
-<div class="line">./add 4 5.677</div>
-<div class="line"># Output:</div>
-<div class="line">#       4              </div>
-<div class="line"># +     5  .  6  7  7  </div>
-<div class="line">#                     </div>
-<div class="line"># _____________________</div>
-<div class="line">#       9  .  6  7  7  </div>
-<div class="line"> </div>
-<div class="line"># Add 4 and 5.677, but do not show the steps</div>
-<div class="line">./add 4 5.677 -steps:0</div>
-<div class="line"># Output:</div>
-<div class="line"># 9.677</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md26"></a>
-How to contribute?</h1>
-<p>Welcome to our project! We are glad that you are interested in contributing to our project. Please make a <a href="https://github.com/ZCG-Coder/">pull request</a> in order to contribute to the project, and we will review it as soon as possible.</p>
-<p>The project is structured as follows:</p>
-<div class="fragment"><div class="line">Steppable</div>
-<div class="line">├── CMakeLists.txt</div>
-<div class="line">├── README.md</div>
-<div class="line">├── Steppable.sublime-project</div>
-<div class="line">├── include</div>
-<div class="line">│   ├── argParse.hpp ─────────────────────────────────────────────┐</div>
-<div class="line">│   ├── colors.hpp &lt;- Console colors                              │</div>
-<div class="line">│   └── util.hpp ─────────────────────────────────────────────────┼─┐</div>
-<div class="line">└── src                                                           │ │</div>
-<div class="line">    ├── CMakeLists.txt                                            │ │</div>
-<div class="line">    ├── [Calculator Name (camelCase is recommended)]              │ │</div>
-<div class="line">    │   ├── [Calculator Name (same as directory name)].cpp        │ │</div>
-<div class="line">    │   ├── [Calculator Name (same as directory name)]Report.cpp  │ │</div>
-<div class="line">    │   └── [Calculator Name (same as directory name)]Report.hpp  │ │</div>
-<div class="line">    ├── ...                                                       │ │</div>
-<div class="line">    ├── argParse.cpp &lt;-───── [Function Definition] ───────────────┘ │</div>
-<div class="line">    └── util.cpp &lt;-───────── [Function Definition] ─────────────────┘</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
-How to add a new feature</h2>
-<p>To add a new feature, <code>a</code>:</p>
-<ol type="1">
-<li>Add a directory called <code>src/a</code>, with at least three files:<ul>
-<li><code>a.cpp</code> - The main file. The <code>main</code> function should be present, as it is the entry point of the executable.</li>
-<li><code>aReport.cpp</code> - The report file to show the results.</li>
-<li><code>aReport.hpp</code> - A header that contains optional definition.</li>
-</ul>
-</li>
-</ol>
-<blockquote class="doxtable">
-<p>[!NOTE]</p>
-<p>Only the above-mentioned three files will be added to CMake. </p>
-</blockquote>
-<p><br  />
-</p><ol type="1">
-<li>Make sure to document the code. Please use Doxygen to document this project.</li>
-<li><p class="startli">Add an entry to <code>CMakeLists.txt</code> at the root of the repository.</p>
-<p class="startli">```cmake set(COMPONENTS add ... a # Replace with yours ) ```</p>
-</li>
-<li>Create a pull request. </li>
-</ol>
+<p><img src="img/Title.jpeg" alt="Title" class="inline"/></p>
+<p>This project tries to make a Computer Algebra System (CAS) out of scratch, and without any external libraries. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -239,7 +114,7 @@ How to add a new feature</h2>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon Apr 8 2024 22:35:30"; // Will get replaced by Doxygen
+        const dateStr = "Tue Apr 9 2024 01:48:36"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();
