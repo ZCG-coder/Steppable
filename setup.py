@@ -20,11 +20,11 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
+import glob
 import os
 import re
 import subprocess
 import sys
-import glob
 from pathlib import Path
 
 from setuptools import Extension, setup
@@ -43,6 +43,7 @@ class CMakeExtension(Extension):
     """A CMakeExtension needs a sourcedir instead of a file list.
     The name must be the _single_ output extension from the CMake build.
     If you need multiple extensions, see scikit-build."""
+
     def __init__(self, name: str, sourcedir: str = "") -> None:
         super().__init__(name, sources=[])
         self.sourcedir = os.fspath(Path(sourcedir).resolve())
@@ -50,7 +51,7 @@ class CMakeExtension(Extension):
 
 class CMakeBuild(build_ext):
     """Builds a _single_ CMake target, specified by ext."""
- 
+
     def build_extension(self, ext: CMakeExtension) -> None:
         # Must be in this form due to bug in .resolve() only fixed in Python 3.10+
         ext_fullpath = Path.cwd() / self.get_ext_fullpath(ext.name)
@@ -144,9 +145,9 @@ class CMakeBuild(build_ext):
         build_temp = Path(self.build_temp) / ext.name
         if not build_temp.exists():
             build_temp.mkdir(parents=True)
-            
+
         for item in cmake_options.split(" "):
-            cmake_args.append(item) 
+            cmake_args.append(item)
 
         subprocess.run(
             ["cmake", ext.sourcedir, *cmake_args], cwd=build_temp, check=True
@@ -166,9 +167,11 @@ setup(
     author_email="z-c-ge@outlook.com",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
+        "Environment :: Console",
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
+        "Operating System :: OS Independent",
         "Programming Language :: C++",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.10",
@@ -178,16 +181,18 @@ setup(
         "Topic :: Education",
         "Topic :: Education :: Computer Aided Instruction (CAI)",
         "Topic :: Scientific/Engineering :: Mathematics",
-        "Topic :: Software Development :: Libraries"
-    ], 
+        "Topic :: Software Development :: Libraries",
+    ],
     description="Python bindings for Steppable.",
     long_description="Python bindings for Steppable, written using nanobind.",
     ext_modules=[CMakeExtension("steppyble")],
-    data_files=[("src", glob.glob("src/**/*.*", recursive=True)),
-                ("include", glob.glob("include/fn/*.*", recursive=True)),
-                ("lib", glob.glob("lib/*.*", recursive=True)),
-                ("tests", glob.glob("tests/**/*.*", recursive=True)),
-                "CMakeLists.txt"],
+    data_files=[
+        ("src", glob.glob("src/**/*.*", recursive=True)),
+        ("include", glob.glob("include/fn/*.*", recursive=True)),
+        ("lib", glob.glob("lib/*.*", recursive=True)),
+        ("tests", glob.glob("tests/**/*.*", recursive=True)),
+        "CMakeLists.txt",
+    ],
     include_package_data=True,
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
