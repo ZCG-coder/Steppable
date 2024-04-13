@@ -97,16 +97,24 @@ namespace steppable::__internals::arithmetic
     std::string compare(const std::string_view& _a, const std::string_view& _b, int steps = 2);
 
     /**
-     * @brief Converts a string representation of a number from one base to another.
+     * @brief Converts a string representation of a number from any base to decimal.
      *
      * @param[in] _inputString The string representation of the number.
      * @param[in] baseString The base of the input number.
      * @param[in] steps The number of steps to perform the conversion.
      * @return The converted number as a string.
-     *
-     * @warning Still in development.
      */
     std::string decimalConvert(const std::string_view& _inputString, const std::string_view& baseString, int steps = 2);
+
+    /**
+     * @brief Converts a string representation of a number from decimal to another one.
+     *
+     * @param[in] _number The string representation of the number.
+     * @param[in] baseString The desired base.
+     * @param[in] steps The number of steps to perform the conversion.
+     * @return The converted number as a string.
+     */
+    std::string baseConvert(const std::string_view& _number, const std::string_view& baseStr, const int steps = 2);
 
     /**
      * @brief Divides a string representation of a number by another string representation of a number.

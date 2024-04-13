@@ -60,6 +60,7 @@ std::string reportBaseConvertStep(const std::string& _number,
  *
  * @return The report of the base conversion.
  */
-std::string reportBaseConvert(const std::string_view& _number,
-                              const std::string_view& _base,
-                              const std::vector<std::string>& _result);
+std::string reportBaseConvert(const std::string& _number,
+                              const std::string& _base,
+                              const std::vector<std::string>& _result,
+                              const int steps);
