@@ -171,6 +171,7 @@ def walk_into_directory(path: Path):
 
 if __name__ == '__main__':
     process(PROJECT_PATH / "CMakeLists.txt")
+    process(PROJECT_PATH / "setup.py")
     process(PROJECT_PATH / "cpp.hint")
     walk_into_directory(PROJECT_PATH / "include")
     walk_into_directory(PROJECT_PATH / "lib")

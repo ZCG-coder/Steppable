@@ -1,8 +1,30 @@
+#####################################################################################################
+#  Copyright (c) 2023-2024 NWSOFT                                                                   #
+#                                                                                                   #
+#  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
+#  of this software and associated documentation files (the "Software"), to deal                    #
+#  in the Software without restriction, including without limitation the rights                     #
+#  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                        #
+#  copies of the Software, and to permit persons to whom the Software is                            #
+#  furnished to do so, subject to the following conditions:                                         #
+#                                                                                                   #
+#  The above copyright notice and this permission notice shall be included in all                   #
+#  copies or substantial portions of the Software.                                                  #
+#                                                                                                   #
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                       #
+#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                         #
+#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE                      #
+#  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                           #
+#  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,                    #
+#  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                    #
+#  SOFTWARE.                                                                                        #
+#####################################################################################################
+
+import glob
 import os
 import re
 import subprocess
 import sys
-import glob
 from pathlib import Path
 
 from setuptools import Extension, setup
@@ -17,16 +39,19 @@ PLAT_TO_CMAKE = {
 }
 
 
-# A CMakeExtension needs a sourcedir instead of a file list.
-# The name must be the _single_ output extension from the CMake build.
-# If you need multiple extensions, see scikit-build.
 class CMakeExtension(Extension):
+    """A CMakeExtension needs a sourcedir instead of a file list.
+    The name must be the _single_ output extension from the CMake build.
+    If you need multiple extensions, see scikit-build."""
+
     def __init__(self, name: str, sourcedir: str = "") -> None:
         super().__init__(name, sources=[])
         self.sourcedir = os.fspath(Path(sourcedir).resolve())
 
 
 class CMakeBuild(build_ext):
+    """Builds a _single_ CMake target, specified by ext."""
+
     def build_extension(self, ext: CMakeExtension) -> None:
         # Must be in this form due to bug in .resolve() only fixed in Python 3.10+
         ext_fullpath = Path.cwd() / self.get_ext_fullpath(ext.name)
@@ -36,9 +61,9 @@ class CMakeBuild(build_ext):
         # auxiliary "native" libs
 
         debug = int(os.environ.get("DEBUG", 0)) if self.debug is None else self.debug
-        cxx_compiler = os.environ.get("CMAKE_CXX_COMPILER", 0)
-        c_compiler = os.environ.get("CMAKE_C_COMPILER", 0)
-        cmake_options = os.environ.get("CMAKE_OPTIONS", 0)
+        cxx_compiler = os.environ.get("CMAKE_CXX_COMPILER", "g++")
+        c_compiler = os.environ.get("CMAKE_C_COMPILER", "gcc")
+        cmake_options = os.environ.get("CMAKE_OPTIONS", "")
         cfg = "Debug" if debug else "Release"
 
         # CMake lets you override the generator - we need to check this.
@@ -120,9 +145,9 @@ class CMakeBuild(build_ext):
         build_temp = Path(self.build_temp) / ext.name
         if not build_temp.exists():
             build_temp.mkdir(parents=True)
-            
+
         for item in cmake_options.split(" "):
-            cmake_args.append(item) 
+            cmake_args.append(item)
 
         subprocess.run(
             ["cmake", ext.sourcedir, *cmake_args], cwd=build_temp, check=True
@@ -140,14 +165,34 @@ setup(
     license="MIT",
     author="Andy Zhang",
     author_email="z-c-ge@outlook.com",
+    classifiers=[
+        "Development Status :: 2 - Pre-Alpha",
+        "Environment :: Console",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Operating System :: OS Independent",
+        "Programming Language :: C++",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Topic :: Education",
+        "Topic :: Education :: Computer Aided Instruction (CAI)",
+        "Topic :: Scientific/Engineering :: Mathematics",
+        "Topic :: Software Development :: Libraries",
+    ],
     description="Python bindings for Steppable.",
     long_description="Python bindings for Steppable, written using nanobind.",
     ext_modules=[CMakeExtension("steppyble")],
-    data_files=[("src", glob.glob("src/**/*.*", recursive=True)),
-                ("include", glob.glob("include/fn/*.*", recursive=True)),
-                ("lib", glob.glob("lib/*.*", recursive=True)),
-                ("tests", glob.glob("tests/**/*.*", recursive=True)),
-                "CMakeLists.txt"],
+    data_files=[
+        ("src", glob.glob("src/**/*.*", recursive=True)),
+        ("include", glob.glob("include/fn/*.*", recursive=True)),
+        ("lib", glob.glob("lib/*.*", recursive=True)),
+        ("tests", glob.glob("tests/**/*.*", recursive=True)),
+        "CMakeLists.txt",
+    ],
     include_package_data=True,
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,

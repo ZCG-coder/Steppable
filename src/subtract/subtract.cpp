@@ -202,8 +202,8 @@ int main(int _argc, const char* _argv[])
 
     if (profile)
     {
-        TIC(Column Method Addition)
-        std::cout << "Column Method Addition :\n" << subtract(aStr, bStr, steps, noMinus) << '\n';
+        TIC(Column Method Subtraction)
+        std::cout << "Column Method Subtraction :\n" << subtract(aStr, bStr, steps, noMinus) << '\n';
         TOC()
     }
     else

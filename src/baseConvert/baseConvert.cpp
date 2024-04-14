@@ -29,12 +29,15 @@
  * @date 9th October 2023
  */
 
+#include "argParse.hpp"
 #include "baseConvertReport.hpp"
 #include "fn/basicArithm.hpp"
 #include "output.hpp"
 #include "util.hpp"
 
+#include <sstream>
 #include <string>
+#include <string_view>
 #include <vector>
 
 using namespace std::literals;
@@ -64,9 +67,12 @@ namespace steppable::__internals::arithmetic
         return { 1, static_cast<char>(letter) };
     }
 
-    std::string baseConvert(const std::string& inputStr, const std::string& baseStr, const int steps = 2)
+    std::string baseConvert(const std::string_view& _number, const std::string_view& baseStr, const int steps)
     {
-        const int base = std::stoi(baseStr);
+        const size_t base = std::stoll(static_cast<std::string>(baseStr));
+        auto numberOrig = static_cast<std::string>(_number);
+        auto number = static_cast<std::string>(_number);
+
         if (base > 36)
         {
             error("baseConvert"s, "It is impossilbe to represent a number in base greater than 36"s);
@@ -79,7 +85,6 @@ namespace steppable::__internals::arithmetic
         }
 
         std::vector<std::string> digits;
-        std::string number = inputStr;
         while (compare(number, "0", 0) != "2")
         {
             auto quotient = divide(number, baseStr, 0);
@@ -92,13 +97,41 @@ namespace steppable::__internals::arithmetic
             }
 
             if (steps == 2)
-                std::cout << reportBaseConvertStep(number, baseStr, quotient, representNumber(remainder)) << '\n';
+                std::cout << reportBaseConvertStep(
+                                 number, static_cast<std::string>(baseStr), quotient, representNumber(remainder))
+                          << '\n';
 
             number = quotient;
             digits.push_back(remainder);
         }
-        return join(digits, "");
+
+        return reportBaseConvert(numberOrig, static_cast<std::string>(baseStr), digits, steps);
     }
 } // namespace steppable::__internals::arithmetic
 
-int main() { baseConvert("10", "2"); }
+#ifndef NO_MAIN
+int main(const int _argc, const char* _argv[])
+{
+    Utf8CodePage _;
+    ProgramArgs program(_argc, _argv);
+    program.addPosArg('a', "Number to convert");
+    program.addPosArg('b', "Base of the number");
+    program.addKeywordArg("steps", 2, "Amount of steps while converting. 0 = No steps, 2 = All steps.");
+    program.addSwitch("profile", false, "profiling the program");
+    program.parseArgs();
+
+    const int steps = program.getKeywordArgument("steps");
+    const bool profile = program.getSwitch("profile");
+    const auto& aStr = program.getPosArg(0);
+    const auto& bStr = program.getPosArg(1);
+
+    if (profile)
+    {
+        TIC(baseConvert)
+        std::cout << "baseConvert :\n" << baseConvert(aStr, bStr) << '\n';
+        TOC()
+    }
+    else
+        std::cout << baseConvert(aStr, bStr, steps) << '\n';
+}
+#endif
