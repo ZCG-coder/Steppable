@@ -121,10 +121,11 @@ $(document).ready(function(){initNavTree('baseConvertReport_8hpp_source.html',''
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                  <span class="keyword">const</span> std::string&amp; _quotient,</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                  <span class="keyword">const</span> std::string&amp; _remainder);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;std::string <a class="code" href="baseConvertReport_8hpp.html#a6d845da92aca7ce960ade28f30b76697">reportBaseConvert</a>(<span class="keyword">const</span> std::string_view&amp; _number,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                              <span class="keyword">const</span> std::string_view&amp; _base,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                              <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; _result);</div>
-<div class="ttc" id="abaseConvertReport_8hpp_html_a6d845da92aca7ce960ade28f30b76697"><div class="ttname"><a href="baseConvertReport_8hpp.html#a6d845da92aca7ce960ade28f30b76697">reportBaseConvert</a></div><div class="ttdeci">std::string reportBaseConvert(const std::string_view &amp;_number, const std::string_view &amp;_base, const std::vector&lt; std::string &gt; &amp;_result)</div><div class="ttdoc">Reports the base conversion to the user.</div><div class="ttdef"><b>Definition:</b> baseConvertReport.cpp:56</div></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;std::string <a class="code" href="baseConvertReport_8hpp.html#a8ec46cae1c06bc1d0f10058c274a8e93">reportBaseConvert</a>(<span class="keyword">const</span> std::string&amp; _number,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                              <span class="keyword">const</span> std::string&amp; _base,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                              <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; _result,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                              <span class="keyword">const</span> <span class="keywordtype">int</span> steps);</div>
+<div class="ttc" id="abaseConvertReport_8hpp_html_a8ec46cae1c06bc1d0f10058c274a8e93"><div class="ttname"><a href="baseConvertReport_8hpp.html#a8ec46cae1c06bc1d0f10058c274a8e93">reportBaseConvert</a></div><div class="ttdeci">std::string reportBaseConvert(const std::string &amp;_number, const std::string &amp;_base, const std::vector&lt; std::string &gt; &amp;_result, const int steps)</div><div class="ttdoc">Reports the base conversion to the user.</div><div class="ttdef"><b>Definition:</b> baseConvertReport.cpp:56</div></div>
 <div class="ttc" id="abaseConvertReport_8hpp_html_ac1b7cbfa5848d3fdd2c0e3b8a63c380b"><div class="ttname"><a href="baseConvertReport_8hpp.html#ac1b7cbfa5848d3fdd2c0e3b8a63c380b">reportBaseConvertStep</a></div><div class="ttdeci">std::string reportBaseConvertStep(const std::string &amp;_number, const std::string &amp;_base, const std::string &amp;_quotient, const std::string &amp;_remainder)</div><div class="ttdoc">Reports the base conversion step to the user.</div><div class="ttdef"><b>Definition:</b> baseConvertReport.cpp:46</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -146,7 +147,7 @@ $(document).ready(function(){initNavTree('baseConvertReport_8hpp_source.html',''
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed Apr 10 2024 04:00:58"; // Will get replaced by Doxygen
+        const dateStr = "Sun Apr 14 2024 14:45:10"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

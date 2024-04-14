@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 1404;
 var viewHeight = 965;
-var sectionId = 'dynsection-3';
+var sectionId = 'dynsection-2';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
@@ -113,7 +113,7 @@ var sectionId = 'dynsection-3';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a7e727b70fed2eba6324a6e41d1a1fe03" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5b80b731e3e2c0d16dcbe5d52b08ffd5" target="_top" xlink:title="Converts a string representation of a number from decimal to another one.">
 <polygon fill="none" stroke="black" points="475.5,-547.5 475.5,-577.5 615.5,-577.5 615.5,-547.5 475.5,-547.5"/>
 <text text-anchor="start" x="483.5" y="-565.5" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="545.5" y="-554.5" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::baseConvert</text>
@@ -222,7 +222,7 @@ var sectionId = 'dynsection-3';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="baseConvert_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="baseConvert_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="340.5,-562 340.5,-581 381.5,-581 381.5,-562 340.5,-562"/>
 <text text-anchor="middle" x="361" y="-569" font-family="Helvetica,sans-Serif" font-size="10.00">main</text>
 </a>
@@ -281,7 +281,7 @@ var sectionId = 'dynsection-3';
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374" target="_top" xlink:title="Converts a string representation of a number from one base to another.">
+<g id="a_node12"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374" target="_top" xlink:title="Converts a string representation of a number from any base to decimal.">
 <polygon fill="none" stroke="black" points="92,-214.5 92,-244.5 248,-244.5 248,-214.5 92,-214.5"/>
 <text text-anchor="start" x="100" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="170" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::decimalConvert</text>

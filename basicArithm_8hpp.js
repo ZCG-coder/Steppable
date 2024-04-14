@@ -3,6 +3,7 @@ var basicArithm_8hpp =
     [ "QuotientRemainder", "structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html", "structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder" ],
     [ "abs", "basicArithm_8hpp.html#a37bfff2d022f3dd5e5a15e800ecfd5d6", null ],
     [ "add", "basicArithm_8hpp.html#a1deb38d5027df01a66b6c3efd57aedca", null ],
+    [ "baseConvert", "basicArithm_8hpp.html#a5b80b731e3e2c0d16dcbe5d52b08ffd5", null ],
     [ "compare", "basicArithm_8hpp.html#a5e20e50f3da461a8f9d50b14afd68ea8", null ],
     [ "decimalConvert", "basicArithm_8hpp.html#afc4c4f319dadbb5b1ff481132f008374", null ],
     [ "divide", "basicArithm_8hpp.html#a26194ae8ddb44afb942fbf8335ae1730", null ],
