@@ -50,7 +50,8 @@ COPYRIGHT_CPP = """\
  **************************************************************************************************/\
 """
 
-REGEX_CPP = re.compile(r"""/\*+
+REGEX_CPP = re.compile(
+    r"""/\*+
  \* Copyright \(c\) 2023-(....) NWSOFT {65}\*
  \* {96}\*
  \* Permission is hereby granted, free of charge, to any person obtaining a copy {19}\*
@@ -71,7 +72,9 @@ REGEX_CPP = re.compile(r"""/\*+
  \* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE {18}\*
  \* SOFTWARE\. {86}\*
  \*+/
-""", flags=re.MULTILINE)
+""",
+    flags=re.MULTILINE,
+)
 
 COPYRIGHT_PY_CMAKE = """\
 #####################################################################################################
@@ -97,7 +100,8 @@ COPYRIGHT_PY_CMAKE = """\
 #####################################################################################################\
 """
 
-REGEX_PY_CMAKE = re.compile(r"""#{101}
+REGEX_PY_CMAKE = re.compile(
+    r"""#{101}
 # {2}Copyright \(c\) 2023-(....) NWSOFT {67}#
 # {99}#
 # {2}Permission is hereby granted, free of charge, to any person obtaining a copy {21}#
@@ -118,7 +122,9 @@ REGEX_PY_CMAKE = re.compile(r"""#{101}
 # {2}OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE {20}#
 # {2}SOFTWARE\. {88}#
 #{101}
-""", flags=re.MULTILINE)
+""",
+    flags=re.MULTILINE,
+)
 
 
 def count_lines(text: str) -> int:
@@ -131,13 +137,21 @@ def first_n_lines(text: str, n: int) -> str:
 
 
 def process(file: Path):
-    if file.suffix in [".cpp", ".hpp"] or file.name == "cpp.hint":  # C++ Source / Header
+    if (
+        file.suffix in [".cpp", ".hpp"] or file.name == "cpp.hint"
+    ):  # C++ Source / Header
         with open(file, "r") as f:
             contents = f.read()
-            results = re.match(REGEX_CPP, first_n_lines(contents, count_lines(COPYRIGHT_CPP) + 1))
+            results = re.match(
+                REGEX_CPP, first_n_lines(contents, count_lines(COPYRIGHT_CPP) + 1)
+            )
             year = results.group(1) if results is not None else None
             if results is None:
-                contents = COPYRIGHT_CPP.format(year=datetime.datetime.now().year) + "\n\n" + contents
+                contents = (
+                    COPYRIGHT_CPP.format(year=datetime.datetime.now().year)
+                    + "\n\n"
+                    + contents
+                )
                 print(f"Added header to {file}")
             elif year != str(datetime.datetime.now().year):
                 header = COPYRIGHT_CPP.format(year=datetime.datetime.now().year)
@@ -146,13 +160,22 @@ def process(file: Path):
 
         with open(file, "w") as f:
             f.write(contents)
-    elif file.suffix == ".py" or file.name == "CMakeLists.txt":  # Python File or CMake file
+    elif (
+        file.suffix == ".py" or file.name == "CMakeLists.txt"
+    ):  # Python File or CMake file
         with open(file, "r") as f:
             contents = f.read()
-            results = re.match(REGEX_PY_CMAKE, first_n_lines(contents, count_lines(COPYRIGHT_PY_CMAKE) + 1))
+            results = re.match(
+                REGEX_PY_CMAKE,
+                first_n_lines(contents, count_lines(COPYRIGHT_PY_CMAKE) + 1),
+            )
             year = results.group(1) if results is not None else None
             if results is None:
-                contents = COPYRIGHT_PY_CMAKE.format(year=datetime.datetime.now().year) + "\n\n" + contents
+                contents = (
+                    COPYRIGHT_PY_CMAKE.format(year=datetime.datetime.now().year)
+                    + "\n\n"
+                    + contents
+                )
                 print(f"Added header to {file}")
             elif year != str(datetime.datetime.now().year):
                 header = COPYRIGHT_PY_CMAKE.format(year=datetime.datetime.now().year)
@@ -169,7 +192,7 @@ def walk_into_directory(path: Path):
             process(subpath)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     process(PROJECT_PATH / "CMakeLists.txt")
     process(PROJECT_PATH / "setup.py")
     process(PROJECT_PATH / "cpp.hint")
