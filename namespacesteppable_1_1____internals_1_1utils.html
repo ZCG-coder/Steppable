@@ -1,14 +1,21 @@
+<!-- HTML header for doxygen 1.10.0-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$langISO">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Steppable: steppable::__internals::utils Namespace Reference</title>
+<!--BEGIN PROJECT_ICON-->
+<link rel="icon" href="$projecticon" type="image/x-icon" />
+<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<!--BEGIN COPY_CLIPBOARD-->
+<script type="text/javascript" src="clipboard.js"></script>
+<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
@@ -16,22 +23,59 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+$darkmode
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+       <script type="text/javascript">
+           DoxygenAwesomeParagraphLink.init()
+       </script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+       <script type="text/javascript">
+           DoxygenAwesomeTabs.init()
+       </script>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
- <tr style="height: 56px;">
-  <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Steppable
-   &#160;<span id="projectnumber">0.0.1</span>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Steppable<span id="projectnumber">&#160;0.0.1</span>
    </div>
    <div id="projectbrief">A CAS project written from scratch in C++</div>
   </td>
  </tr>
+   <!--BEGIN FULL_SIDEBAR-->
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td></tr>
+   <!--END FULL_SIDEBAR-->
  </tbody>
 </table>
 </div>
@@ -125,6 +169,12 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:afbf5cff932cfda276cae801261c5d1f0"><td class="memItemLeft" align="right" valign="top">static const std::regex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#afbf5cff932cfda276cae801261c5d1f0">KEYWORD_ARG_REGEX</a> (R&quot;(^-([a-zA-Z]*):(-?[0-9]+)$)&quot;)</td></tr>
+<tr class="memdesc:afbf5cff932cfda276cae801261c5d1f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the correct format of a keyword argument.  <a href="namespacesteppable_1_1____internals_1_1utils.html#afbf5cff932cfda276cae801261c5d1f0">More...</a><br /></td></tr>
+<tr class="separator:afbf5cff932cfda276cae801261c5d1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588ee3de79a5de23fa7dfbb398f77e12"><td class="memItemLeft" align="right" valign="top">static const std::regex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a588ee3de79a5de23fa7dfbb398f77e12">SWITCH_REGEX</a> (R&quot;(^([-+])([a-zA-Z]*)$)&quot;)</td></tr>
+<tr class="memdesc:a588ee3de79a5de23fa7dfbb398f77e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the correct format of a switch.  <a href="namespacesteppable_1_1____internals_1_1utils.html#a588ee3de79a5de23fa7dfbb398f77e12">More...</a><br /></td></tr>
+<tr class="separator:a588ee3de79a5de23fa7dfbb398f77e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65d6e9f0b589e6d5eab0da73a4ebb16c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a65d6e9f0b589e6d5eab0da73a4ebb16c">isTerminal</a> (const std::ostream &amp;stream)</td></tr>
 <tr class="memdesc:a65d6e9f0b589e6d5eab0da73a4ebb16c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the output stream is a terminal.  <a href="namespacesteppable_1_1____internals_1_1utils.html#a65d6e9f0b589e6d5eab0da73a4ebb16c">More...</a><br /></td></tr>
 <tr class="separator:a65d6e9f0b589e6d5eab0da73a4ebb16c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,6 +238,34 @@ Here is the caller graph for this function:</div>
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1utils_a65d6e9f0b589e6d5eab0da73a4ebb16c_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
+
+</div>
+</div>
+<a id="afbf5cff932cfda276cae801261c5d1f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbf5cff932cfda276cae801261c5d1f0">&#9670;&nbsp;</a></span>KEYWORD_ARG_REGEX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const std::regex steppable::__internals::utils::KEYWORD_ARG_REGEX </td>
+          <td>(</td>
+          <td class="paramtype">R&quot;(^-([a-zA-Z]*):(-?[0-9]+)$)&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This is the correct format of a keyword argument. </p>
 
 </div>
 </div>
@@ -298,6 +376,34 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a588ee3de79a5de23fa7dfbb398f77e12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a588ee3de79a5de23fa7dfbb398f77e12">&#9670;&nbsp;</a></span>SWITCH_REGEX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const std::regex steppable::__internals::utils::SWITCH_REGEX </td>
+          <td>(</td>
+          <td class="paramtype">R&quot;(^([-+])([a-zA-Z]*)$)&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This is the correct format of a switch. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!DOCTYPE html>
@@ -318,7 +424,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Sun Apr 14 2024 14:45:10"; // Will get replaced by Doxygen
+        const dateStr = "Mon Apr 15 2024 06:20:19"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

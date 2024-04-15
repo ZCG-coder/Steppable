@@ -40,7 +40,9 @@ var namespacesteppable_1_1____internals_1_1utils =
     [ "Utf8CodePage", "classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html", null ],
     [ "PosArgs", "namespacesteppable_1_1____internals_1_1utils.html#a043e3488d3b78bc81e9997872f3381e2", null ],
     [ "isTerminal", "namespacesteppable_1_1____internals_1_1utils.html#a65d6e9f0b589e6d5eab0da73a4ebb16c", null ],
+    [ "KEYWORD_ARG_REGEX", "namespacesteppable_1_1____internals_1_1utils.html#afbf5cff932cfda276cae801261c5d1f0", null ],
     [ "localtime_xp", "namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e", null ],
     [ "programSafeExit", "namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7", null ],
-    [ "reset", "namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff", null ]
+    [ "reset", "namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff", null ],
+    [ "SWITCH_REGEX", "namespacesteppable_1_1____internals_1_1utils.html#a588ee3de79a5de23fa7dfbb398f77e12", null ]
 ];

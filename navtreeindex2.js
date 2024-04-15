@@ -1,5 +1,9 @@
 var NAVTREEINDEX2 =
 {
+"structsteppable_1_1____internals_1_1utils_1_1setw.html#a83c4bcbba23d95886abe90487c78c61e":[5,0,0,0,3,1,2],
+"subtractReport_8cpp.html":[6,0,2,8,1],
+"subtractReport_8cpp.html#ad21f3d209885b1c419ff73800bb3b33b":[6,0,2,8,1,0],
+"subtractReport_8hpp.html":[6,0,2,8,2],
 "subtractReport_8hpp.html#a9bff6a6b185789209249282856b766c2":[6,0,2,8,2,0],
 "subtractReport_8hpp_source.html":[6,0,2,8,2],
 "subtract_8cpp.html":[6,0,2,8,0],
