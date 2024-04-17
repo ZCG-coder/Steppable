@@ -50,12 +50,17 @@ class _GetchUnix:
         import tty, termios
 
         fd = sys.stdin.fileno()
-        old_settings = termios.tcgetattr(fd)
         try:
+            old_settings = termios.tcgetattr(fd)
             tty.setraw(sys.stdin.fileno())
             ch = sys.stdin.read(1)
+            error = False
+        except termios.error:
+            ch = input()
+            error = True
         finally:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+            if not error:
+                termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
 
 
@@ -131,10 +136,13 @@ raise any concers on contributing, using and more there.
 """,
 ]
 
-SRC_PATH = Path(__file__).parent.parent / "src"
+ROOT_DIR = Path(__file__).parent.parent
+SRC_PATH = ROOT_DIR / "src"
+TESTS_PATH = ROOT_DIR / "tests"
 
 BRACE = "{"
 END_BRACE = "}"
+PATCH_COMMENT = "# NEW_COMPONENT: PATCH"
 
 
 def show_help() -> None:
@@ -222,6 +230,7 @@ std::string {name}(/* Arguments... */)
 {END_BRACE}
 """
         )
+    print(f"- Added {name}.cpp")
 
     with open(path / f"{name}Report.cpp", "w") as f:
         f.write(
@@ -265,6 +274,7 @@ std::string report{name.capitalize()}()
 {END_BRACE}
 """
         )
+    print(f"- Added {name}Report.cpp")
 
     with open(path / f"{name}Report.hpp", "w") as f:
         f.write(
@@ -304,6 +314,59 @@ std::string report{name.capitalize()}()
 std::string report{name.capitalize()}();
 """
         )
+    print(f"- Added {name}Report.hpp")
+
+    with open(TESTS_PATH / f"test{name.capitalize()}.cpp", "w") as f:
+        f.write(
+            """\
+/**************************************************************************************************
+ * Copyright (c) 2023-2024 NWSOFT                                                                 *
+ *                                                                                                *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
+ * of this software and associated documentation files (the "Software"), to deal                  *
+ * in the Software without restriction, including without limitation the rights                   *
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                      *
+ * copies of the Software, and to permit persons to whom the Software is                          *
+ * furnished to do so, subject to the following conditions:                                       *
+ *                                                                                                *
+ * The above copyright notice and this permission notice shall be included in all                 *
+ * copies or substantial portions of the Software.                                                *
+ *                                                                                                *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                     *
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                       *
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE                    *
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                         *
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,                  *
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                  *
+ * SOFTWARE.                                                                                      *
+ **************************************************************************************************/
+
+#include "colors.hpp"
+#include "output.hpp"
+#include "testing.hpp"
+#include "util.hpp"
+
+#include <iomanip>
+#include <iostream>
+
+TEST_START()
+TEST_END()
+"""
+        )
+    print(f"- Added test{name.capitalize()}.cpp")
+
+    patch_cmakelists(name)
+
+
+def patch_cmakelists(name: str) -> None:
+    with open(ROOT_DIR / "CMakeLists.txt") as f:
+        contents = f.read()
+
+    pos = contents.find(PATCH_COMMENT)
+    contents = contents[:pos - 2] + f" {name}" + contents[pos - 2:]
+    with open(ROOT_DIR / "CMakeLists.txt", "w") as f:
+        f.write(contents)
+        print(f"- Added {name} to CMakeLists.txt.")
 
 
 def ordinal(n: int) -> str:

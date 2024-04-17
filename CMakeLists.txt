@@ -34,6 +34,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(STP_BASE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} CACHE STRING "The source directory of Steppable")
 
+
+execute_process(COMMAND uname -o COMMAND tr -d '\n' OUTPUT_VARIABLE OPERATING_SYSTEM)
+if (${OPERATING_SYSTEM} MATCHES "Android")
+    set(ANDROID 1)
+    message(STATUS "Building for Android.")
+    set(LINUX CACHE INTERNAL "Is Linux or Android" 1)
+endif ()
+
 if (WIN32)
     add_compile_definitions(WINDOWS)
     if (MSVC) # MSVC Has no UTF-8 support by default
@@ -62,7 +70,11 @@ function(capitalize IN OUT)
             ${CAPITALIZED}
             PARENT_SCOPE)
 endfunction()
+
 set(COMPONENTS abs add baseConvert subtract multiply decimalConvert comparison power division)
+# NEW_COMPONENT: PATCH
+# Do NOT remove the previous comment.
+
 set(TARGETS ${COMPONENTS} util)
 set(TEST_TARGETS_TEMP util fraction number ${COMPONENTS})
 
