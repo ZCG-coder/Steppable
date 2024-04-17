@@ -72,8 +72,3 @@ target_link_libraries(steppable util)
 target_link_libraries(calc steppable)
 target_compile_definitions(calc PRIVATE NO_MAIN)
 
-execute_process(COMMAND uname -o COMMAND tr -d '\n' OUTPUT_VARIABLE OPERATING_SYSTEM)
-if (${OPERATING_SYSTEM} MATCHES "Android")
-    set(ANDROID 1)
-    message(STATUS "Building for Android.")
-endif ()

@@ -39,7 +39,9 @@ from pathlib import Path
 
 PROJECT_PATH = Path(__file__).parent.parent
 NO_MAIN_PATTERN = re.compile(r"\s-DNO_MAIN\s")
-I_SYS_ROOT_PATTERN = re.compile(r"\s/Library/Developer/CommandLineTools/SDKs/MacOSX\d\d\.\d\.sdk\s")
+I_SYS_ROOT_PATTERN = re.compile(
+    r"\s/Library/Developer/CommandLineTools/SDKs/MacOSX\d\d\.\d\.sdk\s"
+)
 
 
 def get_compile_commands() -> Path:
@@ -49,11 +51,21 @@ def get_compile_commands() -> Path:
     :raises RuntimeError: if the build directory cannot be found.
     """
 
-    if (compile_commands_file := PROJECT_PATH / "build" / "compile_commands.json").is_file:
+    if (
+        compile_commands_file := PROJECT_PATH / "build" / "compile_commands.json"
+    ).is_file:
         return compile_commands_file
-    elif (compile_commands_file := PROJECT_PATH / "cmake-build-debug" / "compile_commands.json").is_file:
+    elif (
+        compile_commands_file := PROJECT_PATH
+        / "cmake-build-debug"
+        / "compile_commands.json"
+    ).is_file:
         return compile_commands_file
-    elif (compile_commands_file := PROJECT_PATH / "cmake-build-release" / "compile_commands.json").is_file:
+    elif (
+        compile_commands_file := PROJECT_PATH
+        / "cmake-build-release"
+        / "compile_commands.json"
+    ).is_file:
         return compile_commands_file
 
     raise RuntimeError("Cannot get the CMake build directory")
@@ -70,7 +82,11 @@ def patch():
     for obj in objs:
         command: str = obj["command"]
         command = re.sub(NO_MAIN_PATTERN, " ", command)
-        command = re.sub(I_SYS_ROOT_PATTERN, " /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk ", command)
+        command = re.sub(
+            I_SYS_ROOT_PATTERN,
+            " /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk ",
+            command,
+        )
         obj["command"] = command
         modified_objs.append(obj)
 
@@ -78,5 +94,5 @@ def patch():
         json.dump(modified_objs, f, indent=4)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     patch()
