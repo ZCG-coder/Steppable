@@ -20,9 +20,9 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from pathlib import Path
-import sys
 import datetime
+import sys
+from pathlib import Path
 
 
 class _Getch:
@@ -47,7 +47,8 @@ class _GetchUnix:
         import tty
 
     def __call__(self) -> str:
-        import tty, termios
+        import termios
+        import tty
 
         fd = sys.stdin.fileno()
         try:
@@ -363,7 +364,7 @@ def patch_cmakelists(name: str) -> None:
         contents = f.read()
 
     pos = contents.find(PATCH_COMMENT)
-    contents = contents[:pos - 2] + f" {name}" + contents[pos - 2:]
+    contents = contents[: pos - 2] + f" {name}" + contents[pos - 2 :]
     with open(ROOT_DIR / "CMakeLists.txt", "w") as f:
         f.write(contents)
         print(f"- Added {name} to CMakeLists.txt.")
