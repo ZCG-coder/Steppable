@@ -2,7 +2,9 @@ var namespacesteppable_1_1____internals_1_1numUtils =
 [
     [ "SplitNumberResult", "structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html", "structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult" ],
     [ "determineScale", "namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13", null ],
-    [ "isNumber", "namespacesteppable_1_1____internals_1_1numUtils.html#a43f952e5b3433020346960744b9ef190", null ],
+    [ "isDecimal", "namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe", null ],
+    [ "isInteger", "namespacesteppable_1_1____internals_1_1numUtils.html#acc0d8c2dcee479d9b8c4b5b4585c70d8", null ],
+    [ "isNumber", "namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e", null ],
     [ "isZeroString", "namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2", null ],
     [ "removeLeadingZeros", "namespacesteppable_1_1____internals_1_1numUtils.html#a8d5637338641568af53f46a993400130", null ],
     [ "removeLeadingZeros", "namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212", null ],

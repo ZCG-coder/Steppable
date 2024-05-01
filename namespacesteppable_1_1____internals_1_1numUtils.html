@@ -162,9 +162,9 @@ Functions</h2></td></tr>
 <tr class="memitem:afce13d9dd949a08a7e75b27246a276b2"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">isZeroString</a> (const std::string_view &amp;string)</td></tr>
 <tr class="memdesc:afce13d9dd949a08a7e75b27246a276b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given string is a zero string.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">More...</a><br /></td></tr>
 <tr class="separator:afce13d9dd949a08a7e75b27246a276b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43f952e5b3433020346960744b9ef190"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a43f952e5b3433020346960744b9ef190">isNumber</a> (const std::string_view &amp;s)</td></tr>
-<tr class="memdesc:a43f952e5b3433020346960744b9ef190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given string is a valid number.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a43f952e5b3433020346960744b9ef190">More...</a><br /></td></tr>
-<tr class="separator:a43f952e5b3433020346960744b9ef190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2415d3f7e66937d62bae10c9515ee94e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e">isNumber</a> (const std::string_view &amp;s)</td></tr>
+<tr class="memdesc:a2415d3f7e66937d62bae10c9515ee94e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given string is a valid number.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e">More...</a><br /></td></tr>
+<tr class="separator:a2415d3f7e66937d62bae10c9515ee94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad13b8651b0d069d596f7e25f78a8b4ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#ad13b8651b0d069d596f7e25f78a8b4ed">splitNumber</a> (const std::string_view &amp;a, const std::string_view &amp;b, bool padInteger=true, bool padDecimal=true, bool properlyFormat=true, bool preserveNegative=false)</td></tr>
 <tr class="separator:ad13b8651b0d069d596f7e25f78a8b4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8dde3fc958f32009443d1aeaa2c0900"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#ae8dde3fc958f32009443d1aeaa2c0900">replaceLeadingZeros</a> (const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</td></tr>
@@ -180,6 +180,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a21f487d47d06ba1a7acf19091c8edc13"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13">determineScale</a> (const std::string_view &amp;number)</td></tr>
 <tr class="memdesc:a21f487d47d06ba1a7acf19091c8edc13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13">More...</a><br /></td></tr>
 <tr class="separator:a21f487d47d06ba1a7acf19091c8edc13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc0d8c2dcee479d9b8c4b5b4585c70d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#acc0d8c2dcee479d9b8c4b5b4585c70d8">isInteger</a> (const std::string &amp;number)</td></tr>
+<tr class="memdesc:acc0d8c2dcee479d9b8c4b5b4585c70d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the number is an integer or not.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#acc0d8c2dcee479d9b8c4b5b4585c70d8">More...</a><br /></td></tr>
+<tr class="separator:acc0d8c2dcee479d9b8c4b5b4585c70d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa516a42a17fc99b2f9c04171ed1b4fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">isDecimal</a> (const std::string &amp;number)</td></tr>
+<tr class="memdesc:afa516a42a17fc99b2f9c04171ed1b4fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the number is a decimal or not.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">More...</a><br /></td></tr>
+<tr class="separator:afa516a42a17fc99b2f9c04171ed1b4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a21f487d47d06ba1a7acf19091c8edc13"></a>
@@ -221,28 +227,92 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a43f952e5b3433020346960744b9ef190"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43f952e5b3433020346960744b9ef190">&#9670;&nbsp;</a></span>isNumber()</h2>
+<a id="afa516a42a17fc99b2f9c04171ed1b4fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa516a42a17fc99b2f9c04171ed1b4fe">&#9670;&nbsp;</a></span>isDecimal()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool steppable::__internals::numUtils::isNumber </td>
+          <td class="memname">bool steppable::__internals::numUtils::isDecimal </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines whether the number is a decimal or not. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>The number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>False if it is an integer, true otherwise. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_afa516a42a17fc99b2f9c04171ed1b4fe_cgraph.svg" width="100%" height="586"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="acc0d8c2dcee479d9b8c4b5b4585c70d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc0d8c2dcee479d9b8c4b5b4585c70d8">&#9670;&nbsp;</a></span>isInteger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool steppable::__internals::numUtils::isInteger </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines whether the number is an integer or not. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>The number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if it is an integer, false otherwise. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_acc0d8c2dcee479d9b8c4b5b4585c70d8_cgraph.svg" width="100%" height="586"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_acc0d8c2dcee479d9b8c4b5b4585c70d8_icgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a2415d3f7e66937d62bae10c9515ee94e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2415d3f7e66937d62bae10c9515ee94e">&#9670;&nbsp;</a></span>isNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool steppable::__internals::numUtils::isNumber </td>
           <td>(</td>
           <td class="paramtype">const std::string_view &amp;&#160;</td>
           <td class="paramname"><em>s</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Checks if a given string is a valid number. </p>
@@ -700,7 +770,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 1 2024 14:16:05"; // Will get replaced by Doxygen
+        const dateStr = "Wed May 1 2024 14:43:37"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();
