@@ -37,6 +37,32 @@
 
 namespace steppable::__internals::numUtils
 {
+    bool isNumber(const std::string_view& s)
+    {
+        if (s.empty())
+            return false;
+        int decimalPointCount = 0, minusCount = 0;
+
+        for (const char c : s)
+        {
+            if (c == '.')
+            {
+                if (decimalPointCount > 0)
+                    return false;
+                decimalPointCount++;
+            }
+            else if (c == '-')
+            {
+                if (minusCount > 0)
+                    return false;
+                minusCount++;
+            }
+            else if (not isdigit(c))
+                return false;
+        }
+        return true;
+    }
+
     std::string simplifyZeroPolarity(const std::string_view& string)
     {
         // Check if the string is zero
@@ -143,7 +169,8 @@ namespace steppable::__internals::numUtils
         if (const auto firstNonZero = std::ranges::find_if(out, [](const int num) { return num != 0; });
             out.begin() != firstNonZero && out.front() == 0)
         {
-            std::replace_if(out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
+            std::replace_if(
+                out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
         }
 
         return out;
@@ -207,6 +234,17 @@ namespace steppable::__internals::numUtils
         long long numberOfZeros = static_cast<long long>(numberDecimal.length()) - newNumberDecimal.length();
         return -(numberOfZeros + 1);
     }
+
+    bool isInteger(const std::string& number)
+    {
+        auto splitNumberResult = splitNumber(number, "0", false, false, false).splitNumberArray;
+        // If the decimal part is zero, it is an integer.
+        if (isZeroString(splitNumberResult[1]))
+            return true;
+        return false;
+    }
+
+    bool isDecimal(const std::string& number) { return not isInteger(number); }
 } // namespace steppable::__internals::numUtils
 
 namespace steppable::__internals::stringUtils

@@ -237,31 +237,7 @@ namespace steppable::__internals::numUtils
      * @param[in] s The string to be checked.
      * @return True if the string is a valid number, false otherwise.
      */
-    constexpr bool isNumber(const std::string_view& s)
-    {
-        if (s.empty())
-            return false;
-        int decimalPointCount = 0, minusCount = 0;
-
-        for (const char c : s)
-        {
-            if (c == '.')
-            {
-                if (decimalPointCount > 0)
-                    return false;
-                decimalPointCount++;
-            }
-            else if (c == '-')
-            {
-                if (minusCount > 0)
-                    return false;
-                minusCount++;
-            }
-            else if (not isdigit(c))
-                return false;
-        }
-        return true;
-    }
+    bool isNumber(const std::string_view& s);
 
     /**
      * Splits two numbers represented as strings and returns the result.
@@ -329,6 +305,22 @@ namespace steppable::__internals::numUtils
      * @return The scale of the number
      */
     long long determineScale(const std::string_view& number);
+
+    /**
+     * @brief Determines whether the number is an integer or not.
+     *
+     * @param number The number.
+     * @return True if it is an integer, false otherwise.
+     */
+    bool isInteger(const std::string& number);
+
+    /**
+     * @brief Determines whether the number is a decimal or not.
+     *
+     * @param number The number.
+     * @return False if it is an integer, true otherwise.
+     */
+    bool isDecimal(const std::string& number);
 } // namespace steppable::__internals::numUtils
 
 namespace steppable::__internals::stringUtils
