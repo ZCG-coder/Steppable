@@ -24,7 +24,8 @@ cmake_minimum_required(VERSION 3.20)
 project(Steppable)
 
 # Ensure that Python is available to run the development scripts, and build with bindings.
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
+find_package(Python COMPONENTS Interpreter Development REQUIRED)
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_EXTENSIONS OFF)
