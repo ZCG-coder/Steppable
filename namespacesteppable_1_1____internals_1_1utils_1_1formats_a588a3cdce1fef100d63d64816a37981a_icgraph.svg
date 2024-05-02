@@ -58,9 +58,9 @@ var sectionId = 'dynsection-6';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="Set the text format to reverse.">
-<polygon fill="#bfbfbf" stroke="black" points="1762,-635 1762,-665 1893,-665 1893,-635 1762,-635"/>
-<text text-anchor="start" x="1770" y="-653" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
-<text text-anchor="middle" x="1827.5" y="-642" font-family="Helvetica,sans-Serif" font-size="10.00">::utils::formats::reverse</text>
+<polygon fill="#bfbfbf" stroke="black" points="1762,-597 1762,-627 1893,-627 1893,-597 1762,-597"/>
+<text text-anchor="start" x="1770" y="-615" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
+<text text-anchor="middle" x="1827.5" y="-604" font-family="Helvetica,sans-Serif" font-size="10.00">::utils::formats::reverse</text>
 </a>
 </g>
 </g>
@@ -68,17 +68,17 @@ var sectionId = 'dynsection-6';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca" target="_top" xlink:title="Adds two string representations of numbers, and performs with the column method.">
-<polygon fill="none" stroke="black" points="1602,-635 1602,-665 1726,-665 1726,-635 1602,-635"/>
-<text text-anchor="start" x="1610" y="-653" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
-<text text-anchor="middle" x="1664" y="-642" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::add</text>
+<polygon fill="none" stroke="black" points="1602,-597 1602,-627 1726,-627 1726,-597 1602,-597"/>
+<text text-anchor="start" x="1610" y="-615" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
+<text text-anchor="middle" x="1664" y="-604" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::add</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M1751.73,-650C1743.15,-650 1734.48,-650 1726.1,-650"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1751.74,-653.5 1761.74,-650 1751.74,-646.5 1751.74,-653.5"/>
+<path fill="none" stroke="midnightblue" d="M1751.73,-612C1743.15,-612 1734.48,-612 1726.1,-612"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1751.74,-615.5 1761.74,-612 1751.74,-608.5 1751.74,-615.5"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
@@ -91,26 +91,26 @@ var sectionId = 'dynsection-6';
 </g>
 </g>
 <!-- Node1&#45;&gt;Node5 -->
-<g id="edge71" class="edge">
+<g id="edge69" class="edge">
 <title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M1826,-624.84C1822.16,-505.26 1789.15,0 1505,0 1505,0 1505,0 544.5,0 433.15,0 305.25,-25.06 231.7,-41.95"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1822.5,-624.99 1826.28,-634.89 1829.5,-624.8 1822.5,-624.99"/>
+<path fill="none" stroke="midnightblue" d="M1825.36,-586.87C1818.65,-471.71 1774.74,0 1505,0 1505,0 1505,0 544.5,0 433.15,0 305.25,-25.06 231.7,-41.95"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1821.86,-587.07 1825.89,-596.87 1828.85,-586.7 1821.86,-587.07"/>
 </g>
-<!-- Node40 -->
-<g id="node40" class="node">
-<title>Node40</title>
-<g id="a_node40"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e" target="_top" xlink:title="Subtracts one string representation of a number from another string representation of a number.">
+<!-- Node39 -->
+<g id="node39" class="node">
+<title>Node39</title>
+<g id="a_node39"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e" target="_top" xlink:title="Subtracts one string representation of a number from another string representation of a number.">
 <polygon fill="none" stroke="black" points="1054,-1143 1054,-1173 1178,-1173 1178,-1143 1054,-1143"/>
 <text text-anchor="start" x="1062" y="-1161" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="1116" y="-1150" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::subtract</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node40 -->
-<g id="edge72" class="edge">
-<title>Node1&#45;&gt;Node40</title>
-<path fill="none" stroke="midnightblue" d="M1822.19,-675.07C1806.13,-760.08 1741.45,-1039.05 1566,-1165 1441.08,-1254.68 1242.1,-1202.01 1157.35,-1173.11"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1825.66,-675.51 1824.02,-665.04 1818.78,-674.25 1825.66,-675.51"/>
+<!-- Node1&#45;&gt;Node39 -->
+<g id="edge70" class="edge">
+<title>Node1&#45;&gt;Node39</title>
+<path fill="none" stroke="midnightblue" d="M1823.09,-637.12C1809.57,-726.08 1751.13,-1028.12 1566,-1165 1441.88,-1256.77 1241.16,-1202.4 1156.59,-1173.05"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1826.57,-637.53 1824.55,-627.13 1819.64,-636.52 1826.57,-637.53"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
@@ -125,14 +125,14 @@ var sectionId = 'dynsection-6';
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M1658.84,-675.05C1649.73,-723.22 1624.02,-829.98 1566,-898 1512.48,-960.75 1483.55,-963.93 1406,-992 1126.12,-1093.32 765.02,-1100.72 615.77,-1098.87"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1662.29,-675.63 1660.63,-665.17 1655.4,-674.39 1662.29,-675.63"/>
+<path fill="none" stroke="midnightblue" d="M1659.85,-637.31C1652.21,-689.63 1628.52,-811.37 1566,-890 1513.67,-955.83 1484.57,-961.02 1406,-991 1127.69,-1097.2 765.36,-1102.51 615.75,-1099.48"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1663.34,-637.63 1661.24,-627.24 1656.4,-636.67 1663.34,-637.63"/>
 </g>
 <!-- Node2&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node2&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M1661.7,-624.71C1656.34,-530.14 1633.02,-198.86 1566,-122 1487.58,-32.07 1430.32,-38 1311,-38 1311,-38 1311,-38 544.5,-38 441.91,-38 323.68,-45.24 248.2,-50.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1658.21,-625 1662.25,-634.8 1665.2,-624.62 1658.21,-625"/>
+<path fill="none" stroke="midnightblue" d="M1661.37,-586.56C1655.07,-495.69 1629.39,-188.78 1566,-118 1486.76,-29.52 1429.78,-38 1311,-38 1311,-38 1311,-38 544.5,-38 441.91,-38 323.68,-45.24 248.2,-50.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1657.9,-587.03 1662.06,-596.77 1664.88,-586.56 1657.9,-587.03"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
@@ -147,8 +147,8 @@ var sectionId = 'dynsection-6';
 <!-- Node2&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node2&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M1652.01,-674.87C1615.7,-752.79 1491.56,-987 1311,-987 1311,-987 1311,-987 1115,-987 1001,-987 867.96,-987 792.19,-987"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1655.39,-675.91 1656.37,-665.36 1649.02,-672.99 1655.39,-675.91"/>
+<path fill="none" stroke="midnightblue" d="M1654.03,-636.61C1621.86,-720.05 1503.86,-987 1311,-987 1311,-987 1311,-987 1115,-987 1001,-987 867.96,-987 792.19,-987"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1657.34,-637.76 1657.6,-627.16 1650.79,-635.28 1657.34,-637.76"/>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
@@ -162,8 +162,8 @@ var sectionId = 'dynsection-6';
 <!-- Node2&#45;&gt;Node9 -->
 <g id="edge27" class="edge">
 <title>Node2&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M1662.56,-675.61C1658.9,-803.3 1624.94,-1365 1311,-1365 1311,-1365 1311,-1365 544.5,-1365 425.48,-1365 381.58,-1343.72 299,-1258 219.58,-1175.56 182.13,-1034.67 173.17,-996.68"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1666.07,-675.35 1662.81,-665.26 1659.07,-675.18 1666.07,-675.35"/>
+<path fill="none" stroke="midnightblue" d="M1663.09,-637.3C1662.16,-768.45 1639.82,-1365 1311,-1365 1311,-1365 1311,-1365 544.5,-1365 425.48,-1365 381.58,-1343.72 299,-1258 219.58,-1175.56 182.13,-1034.67 173.17,-996.68"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1666.6,-637.05 1663.13,-627.04 1659.6,-637.03 1666.6,-637.05"/>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node">
@@ -175,41 +175,41 @@ var sectionId = 'dynsection-6';
 </g>
 </g>
 <!-- Node2&#45;&gt;Node13 -->
-<g id="edge53" class="edge">
+<g id="edge30" class="edge">
 <title>Node2&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M1660.07,-624.7C1645.68,-513.79 1572.35,-76 1311,-76 1311,-76 1311,-76 1115,-76 914.99,-76 855.16,-57.48 668,-128 621.69,-145.45 576.15,-184.33 556.54,-202.41"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1656.63,-625.45 1661.35,-634.94 1663.58,-624.59 1656.63,-625.45"/>
+<path fill="none" stroke="midnightblue" d="M1659.19,-586.69C1641.64,-480.46 1558.57,-76 1311,-76 1311,-76 1311,-76 1115,-76 914.99,-76 855.16,-57.48 668,-128 621.69,-145.45 576.15,-184.33 556.54,-202.41"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1655.78,-587.5 1660.81,-596.82 1662.69,-586.39 1655.78,-587.5"/>
 </g>
 <!-- Node20 -->
 <g id="node20" class="node">
 <title>Node20</title>
 <g id="a_node20"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a" target="_top" xlink:title="Executes a given predicate function a specified number of times.">
-<polygon fill="none" stroke="black" points="1248,-304 1248,-334 1372,-334 1372,-304 1248,-304"/>
-<text text-anchor="start" x="1256" y="-322" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
-<text text-anchor="middle" x="1310" y="-311" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::loop</text>
+<polygon fill="none" stroke="black" points="1248,-313 1248,-343 1372,-343 1372,-313 1248,-313"/>
+<text text-anchor="start" x="1256" y="-331" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
+<text text-anchor="middle" x="1310" y="-320" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::loop</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node20 -->
 <g id="edge24" class="edge">
 <title>Node2&#45;&gt;Node20</title>
-<path fill="none" stroke="midnightblue" d="M1646.01,-626.54C1628.34,-603.64 1598.72,-569.24 1566,-548 1516.95,-516.16 1488.63,-539.29 1442,-504 1378.77,-456.15 1333.92,-369.01 1317.69,-334.08"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1643.36,-628.83 1652.18,-634.7 1648.95,-624.61 1643.36,-628.83"/>
+<path fill="none" stroke="midnightblue" d="M1638.84,-590.15C1620.06,-574.04 1592.77,-552.5 1566,-538 1514.58,-510.15 1489.53,-528.07 1442,-494 1382.92,-451.66 1336.86,-375.51 1319.03,-343.18"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1636.75,-592.97 1646.59,-596.91 1641.35,-587.7 1636.75,-592.97"/>
 </g>
 <!-- Node21 -->
 <g id="node21" class="node">
 <title>Node21</title>
 <g id="a_node21"><a xlink:href="add_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1483.5,-640.5 1483.5,-659.5 1524.5,-659.5 1524.5,-640.5 1483.5,-640.5"/>
-<text text-anchor="middle" x="1504" y="-647.5" font-family="Helvetica,sans-Serif" font-size="10.00">main</text>
+<polygon fill="none" stroke="black" points="1483.5,-580.5 1483.5,-599.5 1524.5,-599.5 1524.5,-580.5 1483.5,-580.5"/>
+<text text-anchor="middle" x="1504" y="-587.5" font-family="Helvetica,sans-Serif" font-size="10.00">main</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node21 -->
 <g id="edge26" class="edge">
 <title>Node2&#45;&gt;Node21</title>
-<path fill="none" stroke="midnightblue" d="M1591.84,-650C1567.25,-650 1541.65,-650 1524.67,-650"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1591.91,-653.5 1601.91,-650 1591.91,-646.5 1591.91,-653.5"/>
+<path fill="none" stroke="midnightblue" d="M1591.84,-602.09C1567.25,-598.67 1541.65,-595.1 1524.67,-592.74"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1591.53,-605.58 1601.91,-603.49 1592.49,-598.65 1591.53,-605.58"/>
 </g>
 <!-- Node22 -->
 <g id="node22" class="node">
@@ -224,61 +224,46 @@ var sectionId = 'dynsection-6';
 <!-- Node2&#45;&gt;Node22 -->
 <g id="edge28" class="edge">
 <title>Node2&#45;&gt;Node22</title>
-<path fill="none" stroke="midnightblue" d="M1637.3,-628.47C1618.49,-613.55 1591.86,-594.1 1566,-581 1514.22,-554.77 1492.77,-568.14 1442,-540 1227.78,-421.27 1232.83,-305.62 1018,-188 1005.68,-181.25 991.61,-175.75 978.17,-171.39"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1635.12,-631.21 1645.1,-634.76 1639.51,-625.76 1635.12,-631.21"/>
+<path fill="none" stroke="midnightblue" d="M1619.68,-592.81C1603.02,-585.66 1583.74,-577.67 1566,-571 1511.67,-550.57 1493.19,-557.37 1442,-530 1328.64,-469.37 1313.98,-432.82 1214,-352 1125.67,-280.6 1117.52,-242.74 1018,-188 1005.69,-181.23 991.62,-175.72 978.19,-171.36"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1618.58,-596.15 1629.15,-596.9 1621.36,-589.72 1618.58,-596.15"/>
 </g>
 <!-- Node23 -->
 <g id="node23" class="node">
 <title>Node23</title>
 <g id="a_node23"><a xlink:href="classsteppable_1_1Number.html#ab92bf92daec1e2db8c9b4ccd985159b3" target="_top" xlink:title="Adds two numbers together.">
-<polygon fill="none" stroke="black" points="1446,-465 1446,-495 1562,-495 1562,-465 1446,-465"/>
-<text text-anchor="start" x="1454" y="-483" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
-<text text-anchor="middle" x="1504" y="-472" font-family="Helvetica,sans-Serif" font-size="10.00">operator+</text>
+<polygon fill="none" stroke="black" points="1446,-455 1446,-485 1562,-485 1562,-455 1446,-455"/>
+<text text-anchor="start" x="1454" y="-473" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
+<text text-anchor="middle" x="1504" y="-462" font-family="Helvetica,sans-Serif" font-size="10.00">operator+</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node23 -->
 <g id="edge29" class="edge">
 <title>Node2&#45;&gt;Node23</title>
-<path fill="none" stroke="midnightblue" d="M1651.07,-625.58C1635.2,-595.19 1604.62,-543.26 1566,-510 1559.29,-504.22 1551.28,-499.26 1543.3,-495.12"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1648.03,-627.32 1655.69,-634.63 1654.26,-624.14 1648.03,-627.32"/>
+<path fill="none" stroke="midnightblue" d="M1647.04,-588.53C1629.44,-564.01 1599.2,-525.61 1566,-500 1558.62,-494.31 1549.98,-489.27 1541.57,-485.03"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1644.31,-590.73 1652.93,-596.89 1650.03,-586.7 1644.31,-590.73"/>
 </g>
 <!-- Node24 -->
 <g id="node24" class="node">
 <title>Node24</title>
-<g id="a_node24"><a xlink:href="multiplyReport_8cpp.html#a551f62010399287bf016fd805c5d4cd3" target="_top" xlink:title="Reports a multiplication operation to the user.">
-<polygon fill="none" stroke="black" points="1267,-659.5 1267,-678.5 1353,-678.5 1353,-659.5 1267,-659.5"/>
-<text text-anchor="middle" x="1310" y="-666.5" font-family="Helvetica,sans-Serif" font-size="10.00">reportMultiply</text>
+<g id="a_node24"><a xlink:href="namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b" target="_top" xlink:title="Round off a number to the nearest integer.">
+<polygon fill="none" stroke="black" points="1442,-619 1442,-649 1566,-649 1566,-619 1442,-619"/>
+<text text-anchor="start" x="1450" y="-637" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
+<text text-anchor="middle" x="1504" y="-626" font-family="Helvetica,sans-Serif" font-size="10.00">::numUtils::roundOff</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node24 -->
-<g id="edge30" class="edge">
+<g id="edge31" class="edge">
 <title>Node2&#45;&gt;Node24</title>
-<path fill="none" stroke="midnightblue" d="M1591.84,-665.57C1583.17,-666.98 1574.41,-668.18 1566,-669 1491.31,-676.25 1403.74,-673.9 1353.08,-671.48"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1592.69,-668.97 1601.95,-663.82 1591.5,-662.07 1592.69,-668.97"/>
+<path fill="none" stroke="midnightblue" d="M1591.91,-621.9C1583.33,-623.09 1574.61,-624.31 1566.18,-625.48"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1592.49,-625.35 1601.91,-620.51 1591.53,-618.42 1592.49,-625.35"/>
 </g>
-<!-- Node38 -->
-<g id="node38" class="node">
-<title>Node38</title>
-<g id="a_node38"><a xlink:href="namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b" target="_top" xlink:title="Round off a number to the nearest integer.">
-<polygon fill="none" stroke="black" points="1442,-591 1442,-621 1566,-621 1566,-591 1442,-591"/>
-<text text-anchor="start" x="1450" y="-609" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
-<text text-anchor="middle" x="1504" y="-598" font-family="Helvetica,sans-Serif" font-size="10.00">::numUtils::roundOff</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node38 -->
-<g id="edge54" class="edge">
-<title>Node2&#45;&gt;Node38</title>
-<path fill="none" stroke="midnightblue" d="M1599.43,-632.3C1586.01,-628.56 1571.98,-624.65 1558.96,-621.03"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1598.49,-635.67 1609.07,-634.98 1600.37,-628.93 1598.49,-635.67"/>
-</g>
-<!-- Node2&#45;&gt;Node40 -->
-<g id="edge57" class="edge">
-<title>Node2&#45;&gt;Node40</title>
-<path fill="none" stroke="midnightblue" d="M1661.51,-675.2C1656.04,-763.65 1633.73,-1056.43 1566,-1116 1509.95,-1165.3 1287.6,-1159.4 1178.3,-1156.97"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1665.02,-675.2 1662.12,-665.01 1658.03,-674.78 1665.02,-675.2"/>
+<!-- Node2&#45;&gt;Node39 -->
+<g id="edge55" class="edge">
+<title>Node2&#45;&gt;Node39</title>
+<path fill="none" stroke="midnightblue" d="M1661.98,-637.33C1657.87,-730.51 1639.03,-1050.83 1566,-1116 1510.31,-1165.7 1287.78,-1159.61 1178.37,-1157.05"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1665.49,-637.26 1662.41,-627.12 1658.5,-636.97 1665.49,-637.26"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
@@ -513,405 +498,399 @@ var sectionId = 'dynsection-6';
 <!-- Node20&#45;&gt;Node13 -->
 <g id="edge25" class="edge">
 <title>Node20&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M1285.56,-297.16C1238.96,-255.43 1129.53,-165.6 1018,-133 847.52,-83.17 632.58,-171.85 566.64,-202.29"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1283.24,-299.78 1293,-303.9 1287.94,-294.6 1283.24,-299.78"/>
+<path fill="none" stroke="midnightblue" d="M1286.45,-305.76C1240.62,-262.32 1131.31,-167.45 1018,-133 847.67,-81.21 631.75,-171.67 566.23,-202.36"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1284.11,-308.37 1293.75,-312.76 1288.95,-303.31 1284.11,-308.37"/>
 </g>
 <!-- Node25 -->
 <g id="node25" class="node">
 <title>Node25</title>
-<g id="a_node25"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66" target="_top" xlink:title="Multiplies two string representations of numbers.">
+<g id="a_node25"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#af7183da49ccdfb5a58325e6017ebd7c6" target="_top" xlink:title="Determines the scale for a product of two numbers.">
+<polygon fill="none" stroke="black" points="1214,-610 1214,-640 1406,-640 1406,-610 1214,-610"/>
+<text text-anchor="start" x="1222" y="-628" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
+<text text-anchor="middle" x="1310" y="-617" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::determineProductScale</text>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node25 -->
+<g id="edge32" class="edge">
+<title>Node24&#45;&gt;Node25</title>
+<path fill="none" stroke="midnightblue" d="M1431.91,-630.67C1423.52,-630.27 1414.86,-629.87 1406.21,-629.46"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1431.83,-634.17 1441.99,-631.14 1432.16,-627.18 1431.83,-634.17"/>
+</g>
+<!-- Node26 -->
+<g id="node26" class="node">
+<title>Node26</title>
+<g id="a_node26"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66" target="_top" xlink:title="Multiplies two string representations of numbers.">
 <polygon fill="none" stroke="black" points="1054,-591 1054,-621 1178,-621 1178,-591 1054,-591"/>
 <text text-anchor="start" x="1062" y="-609" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="1116" y="-598" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::multiply</text>
 </a>
 </g>
 </g>
-<!-- Node24&#45;&gt;Node25 -->
-<g id="edge31" class="edge">
-<title>Node24&#45;&gt;Node25</title>
-<path fill="none" stroke="midnightblue" d="M1270.24,-656.28C1239.23,-646.11 1195.67,-631.81 1162.91,-621.07"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1269.25,-659.64 1279.84,-659.43 1271.43,-652.99 1269.25,-659.64"/>
+<!-- Node25&#45;&gt;Node26 -->
+<g id="edge33" class="edge">
+<title>Node25&#45;&gt;Node26</title>
+<path fill="none" stroke="midnightblue" d="M1203.88,-614.6C1195.07,-613.73 1186.37,-612.87 1178.08,-612.04"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1203.55,-618.08 1213.84,-615.58 1204.24,-611.12 1203.55,-618.08"/>
 </g>
-<!-- Node25&#45;&gt;Node3 -->
-<g id="edge32" class="edge">
-<title>Node25&#45;&gt;Node3</title>
+<!-- Node26&#45;&gt;Node3 -->
+<g id="edge34" class="edge">
+<title>Node26&#45;&gt;Node3</title>
 <path fill="none" stroke="midnightblue" d="M1114.76,-631.3C1112.8,-691.29 1099.6,-843.6 1018,-930 1002.68,-946.22 708.13,-1044.01 592.52,-1081.96"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1118.26,-631.29 1115,-621.21 1111.26,-631.12 1118.26,-631.29"/>
 </g>
-<!-- Node25&#45;&gt;Node5 -->
-<g id="edge33" class="edge">
-<title>Node25&#45;&gt;Node5</title>
+<!-- Node26&#45;&gt;Node5 -->
+<g id="edge35" class="edge">
+<title>Node26&#45;&gt;Node5</title>
 <path fill="none" stroke="midnightblue" d="M1112.04,-580.66C1102.54,-503.82 1070.39,-275.68 1018,-226 1003.86,-212.59 454.2,-109.53 248.05,-71.25"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1108.6,-581.35 1113.28,-590.86 1115.55,-580.51 1108.6,-581.35"/>
 </g>
-<!-- Node25&#45;&gt;Node7 -->
-<g id="edge35" class="edge">
-<title>Node25&#45;&gt;Node7</title>
+<!-- Node26&#45;&gt;Node7 -->
+<g id="edge37" class="edge">
+<title>Node26&#45;&gt;Node7</title>
 <path fill="none" stroke="midnightblue" d="M1112.55,-631.19C1106.33,-680.86 1085.28,-791.55 1018,-849 952.16,-905.22 904.03,-850.58 828,-892 790.95,-912.18 758.29,-950.59 741.99,-971.86"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1116.06,-631.36 1113.72,-621.02 1109.1,-630.56 1116.06,-631.36"/>
 </g>
-<!-- Node25&#45;&gt;Node8 -->
-<g id="edge36" class="edge">
-<title>Node25&#45;&gt;Node8</title>
+<!-- Node26&#45;&gt;Node8 -->
+<g id="edge38" class="edge">
+<title>Node26&#45;&gt;Node8</title>
 <path fill="none" stroke="midnightblue" d="M1110.65,-631.09C1101.67,-674.92 1076.76,-765.1 1018,-811 950.13,-864.01 909.56,-821.37 828,-849 728.76,-882.61 619.6,-943.71 571.55,-971.94"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1114.09,-631.73 1112.56,-621.25 1107.22,-630.4 1114.09,-631.73"/>
 </g>
-<!-- Node25&#45;&gt;Node9 -->
-<g id="edge38" class="edge">
-<title>Node25&#45;&gt;Node9</title>
+<!-- Node26&#45;&gt;Node9 -->
+<g id="edge40" class="edge">
+<title>Node26&#45;&gt;Node9</title>
 <path fill="none" stroke="midnightblue" d="M1108.86,-631.2C1097.92,-670.05 1071.06,-743.57 1018,-777 963.91,-811.08 794.93,-797 731,-797 731,-797 731,-797 544.5,-797 383.72,-797 222.18,-938.6 181.02,-977.32"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1112.32,-631.79 1111.53,-621.22 1105.56,-629.98 1112.32,-631.79"/>
 </g>
-<!-- Node25&#45;&gt;Node13 -->
-<g id="edge52" class="edge">
-<title>Node25&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M1062.28,-584.95C1059.16,-582.29 1056.34,-579.32 1054,-576 1013.77,-518.97 1067.48,-313.23 1018,-264 987.35,-233.5 689.71,-218.05 583.73,-213.48"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1060.41,-587.91 1070.57,-590.92 1064.5,-582.23 1060.41,-587.91"/>
+<!-- Node26&#45;&gt;Node13 -->
+<g id="edge54" class="edge">
+<title>Node26&#45;&gt;Node13</title>
+<path fill="none" stroke="midnightblue" d="M1072.49,-585.21C1065.29,-579.89 1058.65,-573.51 1054,-566 1018.41,-508.54 1066,-311.58 1018,-264 987.29,-233.56 689.69,-218.07 583.73,-213.49"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1070.86,-588.33 1081.12,-590.96 1074.74,-582.5 1070.86,-588.33"/>
 </g>
-<!-- Node25&#45;&gt;Node15 -->
-<g id="edge34" class="edge">
-<title>Node25&#45;&gt;Node15</title>
+<!-- Node26&#45;&gt;Node15 -->
+<g id="edge36" class="edge">
+<title>Node26&#45;&gt;Node15</title>
 <path fill="none" stroke="midnightblue" d="M1115.79,-580.71C1116.13,-520.32 1107.67,-367.51 1018,-297 967.76,-257.49 794.92,-278 731,-278 731,-278 731,-278 544.5,-278 448.49,-278 338.66,-281.68 263.07,-284.78"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1112.28,-580.82 1115.64,-590.87 1119.28,-580.92 1112.28,-580.82"/>
 </g>
-<!-- Node25&#45;&gt;Node22 -->
-<g id="edge42" class="edge">
-<title>Node25&#45;&gt;Node22</title>
-<path fill="none" stroke="midnightblue" d="M1062.2,-585.01C1059.1,-582.34 1056.31,-579.35 1054,-576 1004.88,-504.69 1072.26,-255.48 1018,-188 1008.12,-175.72 993.21,-168.39 978.15,-164.04"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1060.31,-587.96 1070.46,-591 1064.42,-582.29 1060.31,-587.96"/>
+<!-- Node26&#45;&gt;Node22 -->
+<g id="edge44" class="edge">
+<title>Node26&#45;&gt;Node22</title>
+<path fill="none" stroke="midnightblue" d="M1072.13,-585.13C1065.02,-579.84 1058.51,-573.48 1054,-566 1010.42,-493.74 1070.95,-253.7 1018,-188 1008.11,-175.73 993.19,-168.4 978.13,-164.05"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1070.41,-588.19 1080.66,-590.86 1074.31,-582.38 1070.41,-588.19"/>
 </g>
-<!-- Node26 -->
-<g id="node26" class="node">
-<title>Node26</title>
-<g id="a_node26"><a xlink:href="multiply_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" target="_top" xlink:title=" ">
+<!-- Node27 -->
+<g id="node27" class="node">
+<title>Node27</title>
+<g id="a_node27"><a xlink:href="multiply_8cpp.html#a065a3ee9a7ec43a06ab2fddbc3019a17" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="902.5,-552.5 902.5,-571.5 943.5,-571.5 943.5,-552.5 902.5,-552.5"/>
 <text text-anchor="middle" x="923" y="-559.5" font-family="Helvetica,sans-Serif" font-size="10.00">main</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node26 -->
-<g id="edge37" class="edge">
-<title>Node25&#45;&gt;Node26</title>
+<!-- Node26&#45;&gt;Node27 -->
+<g id="edge39" class="edge">
+<title>Node26&#45;&gt;Node27</title>
 <path fill="none" stroke="midnightblue" d="M1048.9,-588.47C1038.58,-585.87 1028.02,-583.3 1018,-581 992.36,-575.11 962.56,-569.25 943.51,-565.63"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1048.15,-591.89 1058.7,-590.95 1049.87,-585.1 1048.15,-591.89"/>
 </g>
-<!-- Node27 -->
-<g id="node27" class="node">
-<title>Node27</title>
-<g id="a_node27"><a xlink:href="classsteppable_1_1Fraction.html#abb223edd73fc68820e151fac052d2fef" target="_top" xlink:title=" ">
+<!-- Node28 -->
+<g id="node28" class="node">
+<title>Node28</title>
+<g id="a_node28"><a xlink:href="classsteppable_1_1Fraction.html#abb223edd73fc68820e151fac052d2fef" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="868,-503 868,-533 978,-533 978,-503 868,-503"/>
 <text text-anchor="start" x="876" y="-521" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Fraction</text>
 <text text-anchor="middle" x="923" y="-510" font-family="Helvetica,sans-Serif" font-size="10.00">::operator!=</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node27 -->
-<g id="edge39" class="edge">
-<title>Node25&#45;&gt;Node27</title>
-<path fill="none" stroke="midnightblue" d="M1070.98,-586.24C1065.12,-583.07 1059.31,-579.63 1054,-576 1036.08,-563.75 1037.04,-553.42 1018,-543 1005.85,-536.35 991.84,-531.39 978.41,-527.73"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1069.67,-589.5 1080.16,-590.99 1072.88,-583.29 1069.67,-589.5"/>
+<!-- Node26&#45;&gt;Node28 -->
+<g id="edge41" class="edge">
+<title>Node26&#45;&gt;Node28</title>
+<path fill="none" stroke="midnightblue" d="M1083.04,-585.07C1055.47,-567.05 1019.79,-543.8 1018,-543 1005.5,-537.45 991.5,-532.91 978.2,-529.29"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1081.36,-588.16 1091.65,-590.7 1085.2,-582.3 1081.36,-588.16"/>
 </g>
-<!-- Node28 -->
-<g id="node28" class="node">
-<title>Node28</title>
-<g id="a_node28"><a xlink:href="classsteppable_1_1Fraction.html#ab6f8e1e49b31aa3ddcc096eb1876dce3" target="_top" xlink:title="Multiplies two fractions together. This function does it by doing a simple fraction multiplication an...">
+<!-- Node29 -->
+<g id="node29" class="node">
+<title>Node29</title>
+<g id="a_node29"><a xlink:href="classsteppable_1_1Fraction.html#ab6f8e1e49b31aa3ddcc096eb1876dce3" target="_top" xlink:title="Multiplies two fractions together. This function does it by doing a simple fraction multiplication an...">
 <polygon fill="none" stroke="black" points="868,-454 868,-484 978,-484 978,-454 868,-454"/>
 <text text-anchor="start" x="876" y="-472" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Fraction</text>
 <text text-anchor="middle" x="923" y="-461" font-family="Helvetica,sans-Serif" font-size="10.00">::operator*</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node28 -->
-<g id="edge40" class="edge">
-<title>Node25&#45;&gt;Node28</title>
-<path fill="none" stroke="midnightblue" d="M1065.43,-585.59C1061.28,-582.74 1057.38,-579.55 1054,-576 1026.26,-546.9 1048.6,-519.08 1018,-493 1006.85,-483.5 992.42,-477.68 978.23,-474.14"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1063.86,-588.73 1074.22,-590.97 1067.52,-582.76 1063.86,-588.73"/>
+<!-- Node26&#45;&gt;Node29 -->
+<g id="edge42" class="edge">
+<title>Node26&#45;&gt;Node29</title>
+<path fill="none" stroke="midnightblue" d="M1076.77,-585.43C1068.59,-579.86 1060.48,-573.32 1054,-566 1030.03,-538.91 1046.1,-515.78 1018,-493 1006.75,-483.88 992.45,-478.18 978.42,-474.63"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1074.95,-588.42 1085.25,-590.87 1078.73,-582.53 1074.95,-588.42"/>
 </g>
-<!-- Node29 -->
-<g id="node29" class="node">
-<title>Node29</title>
-<g id="a_node29"><a xlink:href="classsteppable_1_1Number.html#a0430996b9851a38aadb19206718d7d91" target="_top" xlink:title="Multiplies two numbers.">
+<!-- Node30 -->
+<g id="node30" class="node">
+<title>Node30</title>
+<g id="a_node30"><a xlink:href="classsteppable_1_1Number.html#a0430996b9851a38aadb19206718d7d91" target="_top" xlink:title="Multiplies two numbers.">
 <polygon fill="none" stroke="black" points="865,-405 865,-435 981,-435 981,-405 865,-405"/>
 <text text-anchor="start" x="873" y="-423" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
 <text text-anchor="middle" x="923" y="-412" font-family="Helvetica,sans-Serif" font-size="10.00">operator*</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node29 -->
-<g id="edge41" class="edge">
-<title>Node25&#45;&gt;Node29</title>
-<path fill="none" stroke="midnightblue" d="M1063.89,-585.35C1060.23,-582.58 1056.87,-579.47 1054,-576 1015.29,-529.1 1061.35,-486.65 1018,-444 1008.03,-434.2 994.65,-428.23 981.11,-424.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1061.99,-588.29 1072.27,-590.88 1065.85,-582.45 1061.99,-588.29"/>
+<!-- Node26&#45;&gt;Node30 -->
+<g id="edge43" class="edge">
+<title>Node26&#45;&gt;Node30</title>
+<path fill="none" stroke="midnightblue" d="M1074.64,-585.38C1066.93,-579.94 1059.54,-573.47 1054,-566 1020.3,-520.61 1058.71,-483.23 1018,-444 1008.06,-434.42 994.84,-428.51 981.46,-424.91"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1072.77,-588.34 1083.06,-590.87 1076.6,-582.48 1072.77,-588.34"/>
 </g>
-<!-- Node30 -->
-<g id="node30" class="node">
-<title>Node30</title>
-<g id="a_node30"><a xlink:href="classsteppable_1_1Fraction.html#a0220c31296f34e81e58d3b57c1aefe62" target="_top" xlink:title="Subtracts a fraction from another fraction. This function does it by doing a simple fraction subtract...">
+<!-- Node31 -->
+<g id="node31" class="node">
+<title>Node31</title>
+<g id="a_node31"><a xlink:href="classsteppable_1_1Fraction.html#a0220c31296f34e81e58d3b57c1aefe62" target="_top" xlink:title="Subtracts a fraction from another fraction. This function does it by doing a simple fraction subtract...">
 <polygon fill="none" stroke="black" points="868,-1016 868,-1046 978,-1046 978,-1016 868,-1016"/>
 <text text-anchor="start" x="876" y="-1034" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Fraction</text>
 <text text-anchor="middle" x="923" y="-1023" font-family="Helvetica,sans-Serif" font-size="10.00">::operator&#45;</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node30 -->
-<g id="edge43" class="edge">
-<title>Node25&#45;&gt;Node30</title>
+<!-- Node26&#45;&gt;Node31 -->
+<g id="edge45" class="edge">
+<title>Node26&#45;&gt;Node31</title>
 <path fill="none" stroke="midnightblue" d="M1113.83,-631.08C1109.83,-692.89 1092.43,-855.35 1018,-963 1002.08,-986.03 975.73,-1004.1 954.98,-1015.8"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1117.32,-631.25 1114.41,-621.07 1110.34,-630.84 1117.32,-631.25"/>
 </g>
-<!-- Node31 -->
-<g id="node31" class="node">
-<title>Node31</title>
-<g id="a_node31"><a xlink:href="classsteppable_1_1Fraction.html#aab6ff2672317acf3302bfb988cfb3c26" target="_top" xlink:title="Divides a fraction by abother fraction. This function does it by doing a simple fraction division (mu...">
+<!-- Node32 -->
+<g id="node32" class="node">
+<title>Node32</title>
+<g id="a_node32"><a xlink:href="classsteppable_1_1Fraction.html#aab6ff2672317acf3302bfb988cfb3c26" target="_top" xlink:title="Divides a fraction by abother fraction. This function does it by doing a simple fraction division (mu...">
 <polygon fill="none" stroke="black" points="868,-356 868,-386 978,-386 978,-356 868,-356"/>
 <text text-anchor="start" x="876" y="-374" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Fraction</text>
 <text text-anchor="middle" x="923" y="-363" font-family="Helvetica,sans-Serif" font-size="10.00">::operator/</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node31 -->
-<g id="edge44" class="edge">
-<title>Node25&#45;&gt;Node31</title>
-<path fill="none" stroke="midnightblue" d="M1063.17,-585.2C1059.75,-582.48 1056.63,-579.42 1054,-576 1004.03,-510.96 1074.42,-454.53 1018,-395 1007.57,-384 992.86,-377.76 978.16,-374.31"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1061.38,-588.22 1071.6,-590.98 1065.33,-582.44 1061.38,-588.22"/>
+<!-- Node26&#45;&gt;Node32 -->
+<g id="edge46" class="edge">
+<title>Node26&#45;&gt;Node32</title>
+<path fill="none" stroke="midnightblue" d="M1073.24,-585.03C1065.91,-579.71 1059.03,-573.37 1054,-566 1010.21,-501.85 1071.74,-451.07 1018,-395 1007.51,-384.06 992.78,-377.84 978.08,-374.38"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1071.7,-588.21 1081.97,-590.81 1075.56,-582.37 1071.7,-588.21"/>
 </g>
-<!-- Node32 -->
-<g id="node32" class="node">
-<title>Node32</title>
-<g id="a_node32"><a xlink:href="classsteppable_1_1Fraction.html#a5f88141a1ecd042a1934ebbb6f2af612" target="_top" xlink:title="Compares two numbers for greater than.">
+<!-- Node33 -->
+<g id="node33" class="node">
+<title>Node33</title>
+<g id="a_node33"><a xlink:href="classsteppable_1_1Fraction.html#a5f88141a1ecd042a1934ebbb6f2af612" target="_top" xlink:title="Compares two numbers for greater than.">
 <polygon fill="none" stroke="black" points="868,-307 868,-337 978,-337 978,-307 868,-307"/>
 <text text-anchor="start" x="876" y="-325" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Fraction</text>
 <text text-anchor="middle" x="923" y="-314" font-family="Helvetica,sans-Serif" font-size="10.00">::operator&lt;</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node32 -->
-<g id="edge45" class="edge">
-<title>Node25&#45;&gt;Node32</title>
-<path fill="none" stroke="midnightblue" d="M1062.86,-585.19C1059.53,-582.47 1056.52,-579.42 1054,-576 992.67,-492.67 1087.62,-422.54 1018,-346 1007.8,-334.79 993.15,-328.49 978.45,-325.04"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1060.89,-588.09 1071.09,-590.95 1064.9,-582.35 1060.89,-588.09"/>
+<!-- Node26&#45;&gt;Node33 -->
+<g id="edge47" class="edge">
+<title>Node26&#45;&gt;Node33</title>
+<path fill="none" stroke="midnightblue" d="M1072.97,-585.21C1065.66,-579.87 1058.86,-573.48 1054,-566 1000.01,-482.92 1084.92,-419.07 1018,-346 1007.76,-334.82 993.1,-328.54 978.4,-325.09"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1071.43,-588.38 1081.7,-590.99 1075.3,-582.55 1071.43,-588.38"/>
 </g>
-<!-- Node33 -->
-<g id="node33" class="node">
-<title>Node33</title>
-<g id="a_node33"><a xlink:href="classsteppable_1_1Fraction.html#a1eb79b99d24d94067e2adf2e65c9df9d" target="_top" xlink:title="Compare two fractions for less or equal than.">
+<!-- Node34 -->
+<g id="node34" class="node">
+<title>Node34</title>
+<g id="a_node34"><a xlink:href="classsteppable_1_1Fraction.html#a1eb79b99d24d94067e2adf2e65c9df9d" target="_top" xlink:title="Compare two fractions for less or equal than.">
 <polygon fill="none" stroke="black" points="868,-738 868,-768 978,-768 978,-738 868,-738"/>
 <text text-anchor="start" x="876" y="-756" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Fraction</text>
 <text text-anchor="middle" x="923" y="-745" font-family="Helvetica,sans-Serif" font-size="10.00">::operator&lt;=</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node33 -->
-<g id="edge46" class="edge">
-<title>Node25&#45;&gt;Node33</title>
+<!-- Node26&#45;&gt;Node34 -->
+<g id="edge48" class="edge">
+<title>Node26&#45;&gt;Node34</title>
 <path fill="none" stroke="midnightblue" d="M1102.03,-630.43C1085.99,-658.25 1056.08,-703.08 1018,-728 1006.13,-735.77 991.93,-741.13 978.21,-744.83"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1105.28,-631.79 1107.11,-621.35 1099.17,-628.37 1105.28,-631.79"/>
 </g>
-<!-- Node34 -->
-<g id="node34" class="node">
-<title>Node34</title>
-<g id="a_node34"><a xlink:href="classsteppable_1_1Fraction.html#ad943d28a7e9c4860a1f4abc25a68b83b" target="_top" xlink:title="Compares two numbers for equality.">
+<!-- Node35 -->
+<g id="node35" class="node">
+<title>Node35</title>
+<g id="a_node35"><a xlink:href="classsteppable_1_1Fraction.html#ad943d28a7e9c4860a1f4abc25a68b83b" target="_top" xlink:title="Compares two numbers for equality.">
 <polygon fill="none" stroke="black" points="868,-689 868,-719 978,-719 978,-689 868,-689"/>
 <text text-anchor="start" x="876" y="-707" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Fraction</text>
 <text text-anchor="middle" x="923" y="-696" font-family="Helvetica,sans-Serif" font-size="10.00">::operator==</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node34 -->
-<g id="edge47" class="edge">
-<title>Node25&#45;&gt;Node34</title>
+<!-- Node26&#45;&gt;Node35 -->
+<g id="edge49" class="edge">
+<title>Node26&#45;&gt;Node35</title>
 <path fill="none" stroke="midnightblue" d="M1091.45,-627.87C1072.8,-644.11 1045.41,-665.67 1018,-679 1005.7,-684.98 991.77,-689.68 978.48,-693.31"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1093.98,-630.31 1099.13,-621.05 1089.33,-625.07 1093.98,-630.31"/>
 </g>
-<!-- Node35 -->
-<g id="node35" class="node">
-<title>Node35</title>
-<g id="a_node35"><a xlink:href="classsteppable_1_1Fraction.html#ac93887d285e9ffcb813a47600a2e7b0c" target="_top" xlink:title="Compare two fractions for less than.">
+<!-- Node36 -->
+<g id="node36" class="node">
+<title>Node36</title>
+<g id="a_node36"><a xlink:href="classsteppable_1_1Fraction.html#ac93887d285e9ffcb813a47600a2e7b0c" target="_top" xlink:title="Compare two fractions for less than.">
 <polygon fill="none" stroke="black" points="868,-640 868,-670 978,-670 978,-640 868,-640"/>
 <text text-anchor="start" x="876" y="-658" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Fraction</text>
 <text text-anchor="middle" x="923" y="-647" font-family="Helvetica,sans-Serif" font-size="10.00">::operator&gt;</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node35 -->
-<g id="edge48" class="edge">
-<title>Node25&#45;&gt;Node35</title>
+<!-- Node26&#45;&gt;Node36 -->
+<g id="edge50" class="edge">
+<title>Node26&#45;&gt;Node36</title>
 <path fill="none" stroke="midnightblue" d="M1046.59,-623.55C1024.14,-629.31 999.51,-635.63 978.26,-641.08"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1047.58,-626.91 1056.4,-621.03 1045.84,-620.13 1047.58,-626.91"/>
 </g>
-<!-- Node36 -->
-<g id="node36" class="node">
-<title>Node36</title>
-<g id="a_node36"><a xlink:href="classsteppable_1_1Fraction.html#a3d70552b75ec8c4bca5101e885e69eab" target="_top" xlink:title="Compare two fractions for greater or equal than.">
+<!-- Node37 -->
+<g id="node37" class="node">
+<title>Node37</title>
+<g id="a_node37"><a xlink:href="classsteppable_1_1Fraction.html#a3d70552b75ec8c4bca5101e885e69eab" target="_top" xlink:title="Compare two fractions for greater or equal than.">
 <polygon fill="none" stroke="black" points="868,-591 868,-621 978,-621 978,-591 868,-591"/>
 <text text-anchor="start" x="876" y="-609" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Fraction</text>
 <text text-anchor="middle" x="923" y="-598" font-family="Helvetica,sans-Serif" font-size="10.00">::operator&gt;=</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node36 -->
-<g id="edge49" class="edge">
-<title>Node25&#45;&gt;Node36</title>
+<!-- Node26&#45;&gt;Node37 -->
+<g id="edge51" class="edge">
+<title>Node26&#45;&gt;Node37</title>
 <path fill="none" stroke="midnightblue" d="M1043.63,-606C1021.93,-606 998.47,-606 978.11,-606"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1043.78,-609.5 1053.78,-606 1043.78,-602.5 1043.78,-609.5"/>
 </g>
-<!-- Node37 -->
-<g id="node37" class="node">
-<title>Node37</title>
-<g id="a_node37"><a xlink:href="divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2" target="_top" xlink:title="Reports a division step.">
+<!-- Node38 -->
+<g id="node38" class="node">
+<title>Node38</title>
+<g id="a_node38"><a xlink:href="divisionReport_8cpp.html#aaebd1f284f6703b7629aa18d21f7ccf2" target="_top" xlink:title="Reports a division step.">
 <polygon fill="none" stroke="black" points="869.5,-901.5 869.5,-920.5 976.5,-920.5 976.5,-901.5 869.5,-901.5"/>
 <text text-anchor="middle" x="923" y="-908.5" font-family="Helvetica,sans-Serif" font-size="10.00">reportDivisionStep</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node37 -->
-<g id="edge50" class="edge">
-<title>Node25&#45;&gt;Node37</title>
+<!-- Node26&#45;&gt;Node38 -->
+<g id="edge52" class="edge">
+<title>Node26&#45;&gt;Node38</title>
 <path fill="none" stroke="midnightblue" d="M1113.94,-631.4C1110.22,-686.48 1093.48,-817.5 1018,-887 1006.72,-897.38 991.59,-903.42 976.76,-906.88"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1117.45,-631.33 1114.54,-621.15 1110.46,-630.93 1117.45,-631.33"/>
 </g>
-<!-- Node37&#45;&gt;Node7 -->
-<g id="edge51" class="edge">
-<title>Node37&#45;&gt;Node7</title>
+<!-- Node38&#45;&gt;Node7 -->
+<g id="edge53" class="edge">
+<title>Node38&#45;&gt;Node7</title>
 <path fill="none" stroke="midnightblue" d="M865.5,-923.06C852.97,-926.38 839.89,-930.37 828,-935 802.18,-945.05 774.49,-960.39 755.33,-971.82"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="866.58,-926.4 875.4,-920.54 864.85,-919.62 866.58,-926.4"/>
 </g>
-<!-- Node39 -->
-<g id="node39" class="node">
-<title>Node39</title>
-<g id="a_node39"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#af7183da49ccdfb5a58325e6017ebd7c6" target="_top" xlink:title="Determines the scale for a product of two numbers.">
-<polygon fill="none" stroke="black" points="1214,-591 1214,-621 1406,-621 1406,-591 1214,-591"/>
-<text text-anchor="start" x="1222" y="-609" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
-<text text-anchor="middle" x="1310" y="-598" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::determineProductScale</text>
-</a>
-</g>
-</g>
-<!-- Node38&#45;&gt;Node39 -->
-<g id="edge55" class="edge">
-<title>Node38&#45;&gt;Node39</title>
-<path fill="none" stroke="midnightblue" d="M1431.91,-606C1423.52,-606 1414.86,-606 1406.21,-606"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1431.99,-609.5 1441.99,-606 1431.99,-602.5 1431.99,-609.5"/>
-</g>
-<!-- Node39&#45;&gt;Node25 -->
+<!-- Node39&#45;&gt;Node2 -->
 <g id="edge56" class="edge">
-<title>Node39&#45;&gt;Node25</title>
-<path fill="none" stroke="midnightblue" d="M1203.59,-606C1194.89,-606 1186.29,-606 1178.08,-606"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1203.84,-609.5 1213.84,-606 1203.84,-602.5 1203.84,-609.5"/>
+<title>Node39&#45;&gt;Node2</title>
+<path fill="none" stroke="midnightblue" d="M1188.61,-1168.47C1301.1,-1177.93 1512,-1182.2 1566,-1134 1643.77,-1064.59 1660.09,-705.81 1662.61,-627.13"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1188.64,-1164.96 1178.37,-1167.57 1188.02,-1171.93 1188.64,-1164.96"/>
 </g>
-<!-- Node40&#45;&gt;Node2 -->
-<g id="edge58" class="edge">
-<title>Node40&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M1188.53,-1168.38C1300.91,-1177.71 1511.65,-1181.8 1566,-1134 1638.37,-1070.36 1658.88,-740.49 1662.41,-665.17"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1188.56,-1164.87 1178.3,-1167.49 1187.96,-1171.85 1188.56,-1164.87"/>
-</g>
-<!-- Node40&#45;&gt;Node3 -->
-<g id="edge59" class="edge">
-<title>Node40&#45;&gt;Node3</title>
+<!-- Node39&#45;&gt;Node3 -->
+<g id="edge57" class="edge">
+<title>Node39&#45;&gt;Node3</title>
 <path fill="none" stroke="midnightblue" d="M1054.23,-1175.42C1042.32,-1178.16 1029.84,-1180.56 1018,-1182 934.18,-1192.22 911.54,-1194.34 828,-1182 781.73,-1175.17 657.46,-1134.56 590.57,-1112.04"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1055.18,-1178.79 1064.08,-1173.06 1053.54,-1171.99 1055.18,-1178.79"/>
 </g>
-<!-- Node40&#45;&gt;Node8 -->
-<g id="edge60" class="edge">
-<title>Node40&#45;&gt;Node8</title>
+<!-- Node39&#45;&gt;Node8 -->
+<g id="edge58" class="edge">
+<title>Node39&#45;&gt;Node8</title>
 <path fill="none" stroke="midnightblue" d="M1056.1,-1140.01C965.18,-1112.28 785.12,-1057.53 632,-1012 621.18,-1008.78 609.58,-1005.37 598.52,-1002.13"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1055.09,-1143.36 1065.68,-1142.93 1057.13,-1136.66 1055.09,-1143.36"/>
 </g>
-<!-- Node40&#45;&gt;Node9 -->
-<g id="edge67" class="edge">
-<title>Node40&#45;&gt;Node9</title>
+<!-- Node39&#45;&gt;Node9 -->
+<g id="edge65" class="edge">
+<title>Node39&#45;&gt;Node9</title>
 <path fill="none" stroke="midnightblue" d="M1107,-1182.74C1094.31,-1217.53 1065.94,-1279.82 1018,-1308 907.8,-1372.78 858.83,-1327 731,-1327 731,-1327 731,-1327 544.5,-1327 342.82,-1327 202.05,-1052.56 175.53,-996.81"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1110.31,-1183.89 1110.31,-1173.3 1103.7,-1181.58 1110.31,-1183.89"/>
 </g>
-<!-- Node40&#45;&gt;Node30 -->
-<g id="edge68" class="edge">
-<title>Node40&#45;&gt;Node30</title>
+<!-- Node39&#45;&gt;Node31 -->
+<g id="edge66" class="edge">
+<title>Node39&#45;&gt;Node31</title>
 <path fill="none" stroke="midnightblue" d="M1097.37,-1134.86C1079.56,-1112.95 1050.14,-1080.58 1018,-1061 1005.86,-1053.6 991.71,-1047.85 978.13,-1043.45"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1094.87,-1137.33 1103.83,-1142.97 1100.35,-1132.97 1094.87,-1137.33"/>
 </g>
-<!-- Node40&#45;&gt;Node37 -->
-<g id="edge70" class="edge">
-<title>Node40&#45;&gt;Node37</title>
+<!-- Node39&#45;&gt;Node38 -->
+<g id="edge68" class="edge">
+<title>Node39&#45;&gt;Node38</title>
 <path fill="none" stroke="midnightblue" d="M1101.65,-1134.02C1084.12,-1103.35 1051.62,-1049.18 1018,-1007 990.81,-972.89 953.19,-937.39 934.88,-920.73"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1098.61,-1135.77 1106.59,-1142.74 1104.7,-1132.31 1098.61,-1135.77"/>
 </g>
-<!-- Node41 -->
-<g id="node41" class="node">
-<title>Node41</title>
-<g id="a_node41"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a677f253d71524a9d500e980dc159c79c" target="_top" xlink:title=" ">
+<!-- Node40 -->
+<g id="node40" class="node">
+<title>Node40</title>
+<g id="a_node40"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a677f253d71524a9d500e980dc159c79c" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="828,-1142 828,-1172 1018,-1172 1018,-1142 828,-1142"/>
 <text text-anchor="start" x="836" y="-1160" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="923" y="-1149" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::getQuotientRemainder</text>
 </a>
 </g>
 </g>
-<!-- Node40&#45;&gt;Node41 -->
-<g id="edge61" class="edge">
-<title>Node40&#45;&gt;Node41</title>
+<!-- Node39&#45;&gt;Node40 -->
+<g id="edge59" class="edge">
+<title>Node39&#45;&gt;Node40</title>
 <path fill="none" stroke="midnightblue" d="M1043.77,-1157.63C1035.44,-1157.58 1026.85,-1157.54 1018.27,-1157.49"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1043.76,-1161.13 1053.78,-1157.68 1043.8,-1154.13 1043.76,-1161.13"/>
 </g>
-<!-- Node43 -->
-<g id="node43" class="node">
-<title>Node43</title>
-<g id="a_node43"><a xlink:href="subtract_8cpp.html#ac2c7bcd6d73ca32ee42312d0fa0b1aa9" target="_top" xlink:title=" ">
+<!-- Node42 -->
+<g id="node42" class="node">
+<title>Node42</title>
+<g id="a_node42"><a xlink:href="subtract_8cpp.html#ac2c7bcd6d73ca32ee42312d0fa0b1aa9" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="902.5,-1279.5 902.5,-1298.5 943.5,-1298.5 943.5,-1279.5 902.5,-1279.5"/>
 <text text-anchor="middle" x="923" y="-1286.5" font-family="Helvetica,sans-Serif" font-size="10.00">main</text>
 </a>
 </g>
 </g>
-<!-- Node40&#45;&gt;Node43 -->
-<g id="edge66" class="edge">
-<title>Node40&#45;&gt;Node43</title>
+<!-- Node39&#45;&gt;Node42 -->
+<g id="edge64" class="edge">
+<title>Node39&#45;&gt;Node42</title>
 <path fill="none" stroke="midnightblue" d="M1101.04,-1181.98C1084.59,-1207.94 1054.8,-1248.52 1018,-1270 994.85,-1283.51 963.64,-1287.54 943.66,-1288.67"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1104.22,-1183.48 1106.48,-1173.13 1098.26,-1179.82 1104.22,-1183.48"/>
 </g>
-<!-- Node44 -->
-<g id="node44" class="node">
-<title>Node44</title>
-<g id="a_node44"><a xlink:href="classsteppable_1_1Number.html#ae839c653cf0ceaca2c76f44374a44fe3" target="_top" xlink:title="Subtracts two numbers.">
+<!-- Node43 -->
+<g id="node43" class="node">
+<title>Node43</title>
+<g id="a_node43"><a xlink:href="classsteppable_1_1Number.html#ae839c653cf0ceaca2c76f44374a44fe3" target="_top" xlink:title="Subtracts two numbers.">
 <polygon fill="none" stroke="black" points="865,-1230 865,-1260 981,-1260 981,-1230 865,-1230"/>
 <text text-anchor="start" x="873" y="-1248" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::Number::</text>
 <text text-anchor="middle" x="923" y="-1237" font-family="Helvetica,sans-Serif" font-size="10.00">operator&#45;</text>
 </a>
 </g>
 </g>
-<!-- Node40&#45;&gt;Node44 -->
-<g id="edge69" class="edge">
-<title>Node40&#45;&gt;Node44</title>
+<!-- Node39&#45;&gt;Node43 -->
+<g id="edge67" class="edge">
+<title>Node39&#45;&gt;Node43</title>
 <path fill="none" stroke="midnightblue" d="M1084.01,-1178.6C1065.42,-1190.35 1040.99,-1204.73 1018,-1215 1005.49,-1220.59 991.62,-1225.62 978.46,-1229.88"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1086.11,-1181.42 1092.64,-1173.08 1082.33,-1175.53 1086.11,-1181.42"/>
 </g>
-<!-- Node41&#45;&gt;Node7 -->
-<g id="edge62" class="edge">
-<title>Node41&#45;&gt;Node7</title>
+<!-- Node40&#45;&gt;Node7 -->
+<g id="edge60" class="edge">
+<title>Node40&#45;&gt;Node7</title>
 <path fill="none" stroke="midnightblue" d="M897.22,-1134.94C857.77,-1099.83 781.72,-1032.14 747.91,-1002.05"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="895.25,-1137.88 905.05,-1141.91 899.91,-1132.65 895.25,-1137.88"/>
 </g>
-<!-- Node42 -->
-<g id="node42" class="node">
-<title>Node42</title>
-<g id="a_node42"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a7ff9976bf48df9c832d7489e88004813" target="_top" xlink:title="Gets the greatest common divisor of two string representations of numbers.">
+<!-- Node41 -->
+<g id="node41" class="node">
+<title>Node41</title>
+<g id="a_node41"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a7ff9976bf48df9c832d7489e88004813" target="_top" xlink:title="Gets the greatest common divisor of two string representations of numbers.">
 <polygon fill="none" stroke="black" points="668,-1205 668,-1235 792,-1235 792,-1205 668,-1205"/>
 <text text-anchor="start" x="676" y="-1223" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="730" y="-1212" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::getGCD</text>
 </a>
 </g>
 </g>
-<!-- Node41&#45;&gt;Node42 -->
-<g id="edge63" class="edge">
-<title>Node41&#45;&gt;Node42</title>
+<!-- Node40&#45;&gt;Node41 -->
+<g id="edge61" class="edge">
+<title>Node40&#45;&gt;Node41</title>
 <path fill="none" stroke="midnightblue" d="M866.43,-1175.33C837.94,-1184.73 803.65,-1196.04 776.71,-1204.92"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="867.85,-1178.55 876.25,-1172.09 865.66,-1171.9 867.85,-1178.55"/>
 </g>
-<!-- Node42&#45;&gt;Node11 -->
-<g id="edge64" class="edge">
-<title>Node42&#45;&gt;Node11</title>
+<!-- Node41&#45;&gt;Node11 -->
+<g id="edge62" class="edge">
+<title>Node41&#45;&gt;Node11</title>
 <path fill="none" stroke="midnightblue" d="M689.47,-1200.49C665.33,-1188.63 637.97,-1175.34 632,-1173 609.9,-1164.35 583.67,-1156.75 566.15,-1152.04"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="688,-1203.66 698.52,-1204.94 691.09,-1197.38 688,-1203.66"/>
 </g>
-<!-- Node42&#45;&gt;Node19 -->
-<g id="edge65" class="edge">
-<title>Node42&#45;&gt;Node19</title>
+<!-- Node41&#45;&gt;Node19 -->
+<g id="edge63" class="edge">
+<title>Node41&#45;&gt;Node19</title>
 <path fill="none" stroke="midnightblue" d="M657.87,-1211.04C638.87,-1208.64 618.65,-1206.09 600.72,-1203.83"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="657.62,-1214.53 667.98,-1212.31 658.49,-1207.59 657.62,-1214.53"/>
 </g>
