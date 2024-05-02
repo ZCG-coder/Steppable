@@ -118,29 +118,11 @@ std::string reportMultiply(const std::string& a,
             out += std::to_string(i);
 
     // Add the decimal point.
-    auto biggerNumber = (compare(a, b, 0) == "1") ? a : b;
-    auto smallerNumber = (compare(a, b, 0) == "0") ? a : b;
-    if (scale > 0)
+    auto aDecimals = aDecimal.length(), bDecimals = bDecimal.length();
+    if (aDecimals + bDecimals > 0)
     {
-        auto numberIntegers = out.length() - (aDecimal.length() + bDecimal.length());
-        if (numberIntegers < out.length())
-            out.insert(numberIntegers, 1, '.');
-    }
-    else if (scale == 0)
-    {
-        auto numberIntegers = 0;
-        if ((compare(biggerNumber, "5", 0) == "0" and compare(add(biggerNumber, smallerNumber, 0), "7", 0) != "0") or
-            compare(smallerNumber, "1", 0) == "1")
-            numberIntegers++;
-
-        if (numberIntegers < out.size())
-            out.insert(numberIntegers + 1, 1, '.');
-    }
-    else if (scale < 0)
-    {
-        // auto numberIntegers = -scale;
-        out = "0" + out;
-        out.insert(out.length() + scale - 1, 1, '.');
+        out.insert(out.end() - aDecimals - bDecimals, '.');
+        out = removeTrailingZeros(out);
     }
 
     ss << standardizeNumber(out);

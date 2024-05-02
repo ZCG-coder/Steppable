@@ -47,19 +47,17 @@ namespace steppable::__internals::arithmetic
         {
             if (steps == 2)
                 return "Since the number is 1, the result is 1.";
-            else if (steps == 1)
-                return "1"s + symbols::makeSuperscript(static_cast<std::string>(raiseTo)) + " = 1";
-            else
-                return "1";
+            if (steps == 1)
+                return "1"s + symbols::makeSuperscript(raiseTo) + " = 1";
+            return "1";
         }
-        else if (number == "0")
+        if (number == "0")
         {
             if (steps == 2)
                 return "Since the number is 0, the result is 0.";
-            else if (steps == 1)
-                return "0"s + symbols::makeSuperscript(static_cast<std::string>(raiseTo)) + " = 0";
-            else
-                return "0";
+            if (steps == 1)
+                return "0"s + symbols::makeSuperscript(raiseTo) + " = 0";
+            return "0";
         }
 
         auto numberNoTrailingZeros = removeTrailingZeros(number);
