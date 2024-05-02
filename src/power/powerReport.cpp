@@ -55,14 +55,13 @@ std::string reportPower(const std::string_view _number,
     // Here, we attempt to give a quick answer, instead of doing pointless iterations.
     if (numberOrig == "1")
         goto finish;
-    else if (numberOrig == "0")
+    if (numberOrig == "0")
     {
         if (steps == 2)
             return "Since the number is 0, the result is 0.";
-        else if (steps == 1)
+        if (steps == 1)
             return "0"s + makeSuperscript(static_cast<std::string>(raiseTo)) + " = 0";
-        else
-            return "0";
+        return "0";
     }
 
     loop(raiseTo, [&](const auto& i) {
