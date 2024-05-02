@@ -50,9 +50,9 @@ foreach (COMPONENT IN LISTS COMPONENTS)
     # No longer offering executables for each component automatically.
 
     if (DEFINED STP_BUILD_COMPONENT_EXECUTABLE)
-        add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
+        add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}Report.cpp)
         target_include_directories(${COMPONENT} PRIVATE ${STP_BASE_DIRECTORY}/include/)
-        target_link_libraries(${COMPONENT} calc)
+        target_link_libraries(${COMPONENT} PRIVATE calc)
     endif ()
 
     list(APPEND CALCULATOR_FILES ${CMAKE_CURRENT_SOURCE_DIR}/${COMPONENT}/${COMPONENT}.cpp
@@ -71,4 +71,5 @@ target_include_directories(util PRIVATE ${STP_BASE_DIRECTORY}/include/)
 target_link_libraries(steppable util)
 target_link_libraries(calc steppable)
 target_compile_definitions(calc PRIVATE NO_MAIN)
+target_compile_definitions(steppable PRIVATE NO_MAIN)
 

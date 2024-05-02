@@ -20,6 +20,7 @@ docs/
 # Compiled Object files
 build/
 cmake-build-*/
+*.build/
 Debug/
 Release/
 x64/
