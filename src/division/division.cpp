@@ -212,10 +212,14 @@ namespace steppable::__internals::arithmetic
         // Note: It can be negative!
         auto numberIntegers = determineResultScale(numberIntegerOrig + "." + numberDecimalOrig,
                                                    divisorIntegerOrig + "." + divisorDecimalOrig);
-
         auto numberDecimals = quotient.length() - numberIntegers;
         quotient = removeLeadingZeros(quotient);
         std::string finalQuotient = quotient;
+        if ((numberIntegers < 0) and (-numberIntegers + 1 >= decimals))
+        {
+            warning("The result is inaccurate, as the decimals you specified is not enough to display the result.");
+            return "0";
+        }
 
         // Scenario 1: No decimal places returned
         // Solution  : Do nothing
