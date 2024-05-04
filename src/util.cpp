@@ -22,7 +22,7 @@
 
 #include "util.hpp"
 
-#include "fn/basicArithm.hpp"
+#include <cstddef>
 
 #ifdef WINDOWS
     #undef min
@@ -178,11 +178,15 @@ namespace steppable::__internals::numUtils
 
     auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>
     {
-        const auto firstNonZero = std::ranges::find_if(vector, [](const int num) { return num != 0; });
+        long idx = 0;
+        for (auto item : vector)
+            if (item != 0)
+                idx++;
+            else
+                break;
 
-        // Create a new vector with the non-zero elements
-        std::vector result(firstNonZero, vector.end());
-        return result;
+        auto newBegin = vector.cbegin() + idx;
+        return {newBegin, vector.cend()};
     }
 
     auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>

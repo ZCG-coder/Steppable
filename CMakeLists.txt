@@ -72,7 +72,7 @@ function(capitalize IN OUT)
             PARENT_SCOPE)
 endfunction()
 
-set(COMPONENTS abs add baseConvert subtract multiply decimalConvert comparison power division)
+set(COMPONENTS abs add baseConvert subtract multiply decimalConvert comparison power division root)
 # NEW_COMPONENT: PATCH
 # Do NOT remove the previous comment.
 

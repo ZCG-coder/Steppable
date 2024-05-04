@@ -181,6 +181,16 @@ namespace steppable::__internals::arithmetic
     std::string subtract(const std::string_view& a, const std::string_view& b, int steps = 2, bool noMinus = false);
 
     /**
+     * @brief Takes the n-th root of a numer.
+     *
+     * @param _number The number to take root of.
+     * @param base The base of the root.
+     * @param decimals The decimals of the operation.
+     * @return The result of the root operation.
+     */
+    std::string root(const std::string& _number, const std::string& base, const size_t decimals);
+
+    /**
      * @brief Executes a given predicate function a specified number of times.
      *
      * @param[in] times The number of times to execute the predicate function.
