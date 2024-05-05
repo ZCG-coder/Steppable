@@ -217,7 +217,8 @@ namespace steppable::__internals::arithmetic
         std::string finalQuotient = quotient;
         if ((numberIntegers < 0) and (-numberIntegers + 1 >= decimals))
         {
-            warning("The result is inaccurate, as the decimals you specified is not enough to display the result.");
+            if (steps != 0)
+                warning("The result is inaccurate, as the decimals you specified is not enough to display the result.");
             return "0";
         }
 

@@ -30,7 +30,6 @@
 
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
-#include "rootReport.hpp"
 #include "util.hpp"
 
 #include <string>
@@ -61,8 +60,7 @@ namespace steppable::__internals::arithmetic
             auto radicand = add(y, newAvg, 0);
             auto test = power(radicand, base, 0);
 
-            auto error = abs(subtract(test, number, 0), 0);
-            if (compare(error, allowedError, 0) == "0")
+            if (compare(newAvg, "0", 0) == "2")
                 return divide(radicand, denominator, 0, decimals);
             if (compare(test, number, 0) == "1")
                 x = radicand;
@@ -93,8 +91,8 @@ int main(const int _argc, const char* _argv[])
 
     if (profile)
     {
-        TIC(Column Method Addition)
-        std::cout << "Taking absolute value :\n" << root(number, base, decimals) << '\n';
+        TIC(Nth root)
+        std::cout << "Taking n-th root :\n" << root(number, base, decimals) << '\n';
         TOC()
     }
     else
