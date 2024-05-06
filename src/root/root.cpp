@@ -40,8 +40,9 @@ using namespace std::literals;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string root(const std::string& _number, const std::string& base, const size_t decimals)
+    std::string root(const std::string& _number, const std::string& base, const size_t _decimals)
     {
+        auto decimals = _decimals + 1;
         size_t raised_times = 0;
         std::string number = static_cast<std::string>(_number);
         while (compare(number, "1", 0) == "0")
@@ -61,7 +62,7 @@ namespace steppable::__internals::arithmetic
             auto test = power(radicand, base, 0);
 
             if (compare(newAvg, "0", 0) == "2")
-                return divide(radicand, denominator, 0, decimals);
+                return divide(radicand, denominator, 0, _decimals);
             if (compare(test, number, 0) == "1")
                 x = radicand;
             else if (compare(test, number, 0) == "0")
