@@ -8,6 +8,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "division", "dir_73ea60f773d485a215a60e85baf64b8e.html", "dir_73ea60f773d485a215a60e85baf64b8e" ],
     [ "multiply", "dir_3f453bd6fc70a9fed1d2ea19af063286.html", "dir_3f453bd6fc70a9fed1d2ea19af063286" ],
     [ "power", "dir_74c51feede9763246476d18de5c76811.html", "dir_74c51feede9763246476d18de5c76811" ],
+    [ "root", "dir_d0e0ccfc4ecd86719b4ff0ce52e55104.html", "dir_d0e0ccfc4ecd86719b4ff0ce52e55104" ],
     [ "subtract", "dir_fcd1616905467347a0d6d145ee01dc72.html", "dir_fcd1616905467347a0d6d145ee01dc72" ],
     [ "argParse.cpp", "argParse_8cpp.html", null ],
     [ "colors.cpp", "colors_8cpp.html", "colors_8cpp" ],

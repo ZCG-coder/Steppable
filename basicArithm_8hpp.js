@@ -12,5 +12,6 @@ var basicArithm_8hpp =
     [ "loop", "basicArithm_8hpp.html#a210c635ae60eaa54f65bc82a0f3c953a", null ],
     [ "multiply", "basicArithm_8hpp.html#a59c559ff2ec84dc1964531893a457c66", null ],
     [ "power", "basicArithm_8hpp.html#a50acfa1ad06ce385943ddd207146c9e0", null ],
+    [ "root", "basicArithm_8hpp.html#a8c20a75a55d968bd679a1a550a46a497", null ],
     [ "subtract", "basicArithm_8hpp.html#ae61ae2915786a49aebb7025105cf058e", null ]
 ];

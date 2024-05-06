@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 2407;
+var viewWidth = 2433;
 var viewHeight = 95;
 var sectionId = 'dynsection-1';
 </script>
@@ -277,9 +277,9 @@ var sectionId = 'dynsection-1';
 <!-- Node16 -->
 <g id="node16" class="node">
 <title>Node16</title>
-<g id="a_node16"><a xlink:href="rounding_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="2058,-6 2058,-25 2155,-25 2155,-6 2058,-6"/>
-<text text-anchor="middle" x="2106.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">src/rounding.cpp</text>
+<g id="a_node16"><a xlink:href="root_8cpp.html" target="_top" xlink:title="Takes the n&#45;th root of a number represented as a string.">
+<polygon fill="none" stroke="black" points="2058.5,-6 2058.5,-25 2154.5,-25 2154.5,-6 2058.5,-6"/>
+<text text-anchor="middle" x="2106.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">src/root/root.cpp</text>
 </a>
 </g>
 </g>
@@ -292,32 +292,32 @@ var sectionId = 'dynsection-1';
 <!-- Node17 -->
 <g id="node17" class="node">
 <title>Node17</title>
-<g id="a_node17"><a xlink:href="subtract_8cpp.html" target="_top" xlink:title="This file contains the implementation of the subtract function, which subtracts two numbers using the...">
-<polygon fill="none" stroke="black" points="2173,-6 2173,-25 2310,-25 2310,-6 2173,-6"/>
-<text text-anchor="middle" x="2241.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">src/subtract/subtract.cpp</text>
+<g id="a_node17"><a xlink:href="rounding_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="2173,-6 2173,-25 2270,-25 2270,-6 2173,-6"/>
+<text text-anchor="middle" x="2221.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">src/rounding.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node17 -->
 <g id="edge16" class="edge">
 <title>Node1&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M1322.44,-75.78C1485.36,-74.5 1855.59,-67.42 2164.5,-31 2176.66,-29.57 2189.78,-27.35 2201.7,-25.08"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1321.98,-72.28 1312.01,-75.85 1322.03,-79.28 1321.98,-72.28"/>
+<path fill="none" stroke="midnightblue" d="M1322.42,-74.03C1518.58,-69.07 2002.65,-54.78 2163.5,-31 2172.95,-29.6 2183.09,-27.34 2192.22,-25.01"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1322.08,-70.53 1312.17,-74.28 1322.25,-77.53 1322.08,-70.53"/>
 </g>
 <!-- Node18 -->
 <g id="node18" class="node">
 <title>Node18</title>
-<g id="a_node18"><a xlink:href="util_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="2328.5,-6 2328.5,-25 2398.5,-25 2398.5,-6 2328.5,-6"/>
-<text text-anchor="middle" x="2363.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">src/util.cpp</text>
+<g id="a_node18"><a xlink:href="subtract_8cpp.html" target="_top" xlink:title="This file contains the implementation of the subtract function, which subtracts two numbers using the...">
+<polygon fill="none" stroke="black" points="2288,-6 2288,-25 2425,-25 2425,-6 2288,-6"/>
+<text text-anchor="middle" x="2356.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">src/subtract/subtract.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node18 -->
 <g id="edge17" class="edge">
 <title>Node1&#45;&gt;Node18</title>
-<path fill="none" stroke="midnightblue" d="M1322.41,-75.5C1541.79,-73.71 2128.6,-65.73 2319.5,-31 2326.78,-29.68 2334.51,-27.43 2341.43,-25.1"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1322.22,-72 1312.25,-75.58 1322.27,-79 1322.22,-72"/>
+<path fill="none" stroke="midnightblue" d="M1322.35,-76.43C1499.64,-76.44 1925.38,-71.78 2279.5,-31 2291.8,-29.58 2305.08,-27.34 2317.1,-25.04"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1322.31,-72.93 1312.3,-76.42 1322.3,-79.93 1322.31,-72.93"/>
 </g>
 </g>
 </svg>

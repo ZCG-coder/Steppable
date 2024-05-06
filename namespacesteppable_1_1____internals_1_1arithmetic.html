@@ -179,6 +179,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae61ae2915786a49aebb7025105cf058e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e">subtract</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false)</td></tr>
 <tr class="memdesc:ae61ae2915786a49aebb7025105cf058e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts one string representation of a number from another string representation of a number.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e">More...</a><br /></td></tr>
 <tr class="separator:ae61ae2915786a49aebb7025105cf058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c20a75a55d968bd679a1a550a46a497"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a8c20a75a55d968bd679a1a550a46a497">root</a> (const std::string &amp;_number, const std::string &amp;base, const size_t decimals=8)</td></tr>
+<tr class="memdesc:a8c20a75a55d968bd679a1a550a46a497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the n-th root of a numer.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a8c20a75a55d968bd679a1a550a46a497">More...</a><br /></td></tr>
+<tr class="separator:a8c20a75a55d968bd679a1a550a46a497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a210c635ae60eaa54f65bc82a0f3c953a"><td class="memTemplParams" colspan="2">template&lt;typename Pred &gt; </td></tr>
 <tr class="memitem:a210c635ae60eaa54f65bc82a0f3c953a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a">loop</a> (const std::string_view &amp;times, Pred predicate)</td></tr>
 <tr class="memdesc:a210c635ae60eaa54f65bc82a0f3c953a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a given predicate function a specified number of times.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a">More...</a><br /></td></tr>
@@ -999,6 +1002,63 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a8c20a75a55d968bd679a1a550a46a497"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c20a75a55d968bd679a1a550a46a497">&#9670;&nbsp;</a></span>root()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string steppable::__internals::arithmetic::root </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>decimals</em> = <code>8</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Takes the n-th root of a numer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_number</td><td>The number to take root of. </td></tr>
+    <tr><td class="paramname">base</td><td>The base of the root. </td></tr>
+    <tr><td class="paramname">decimals</td><td>The decimals of the operation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the root operation. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a8c20a75a55d968bd679a1a550a46a497_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a8c20a75a55d968bd679a1a550a46a497_icgraph.svg" width="279" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="ae61ae2915786a49aebb7025105cf058e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae61ae2915786a49aebb7025105cf058e">&#9670;&nbsp;</a></span>subtract()</h2>
 
@@ -1116,7 +1176,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Thu May 2 2024 07:29:26"; // Will get replaced by Doxygen
+        const dateStr = "Mon May 6 2024 09:51:24"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

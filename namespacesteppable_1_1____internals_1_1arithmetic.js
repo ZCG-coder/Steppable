@@ -16,6 +16,7 @@ var namespacesteppable_1_1____internals_1_1arithmetic =
     [ "multiply", "namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66", null ],
     [ "power", "namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0", null ],
     [ "representNumber", "namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0", null ],
+    [ "root", "namespacesteppable_1_1____internals_1_1arithmetic.html#a8c20a75a55d968bd679a1a550a46a497", null ],
     [ "subtract", "namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e", null ],
     [ "toNumber", "namespacesteppable_1_1____internals_1_1arithmetic.html#acbdfe1847efd604f5b982690debca864", null ]
 ];
