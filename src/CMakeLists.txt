@@ -20,7 +20,7 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-add_library(util STATIC argParse.cpp colors.cpp logging.cpp rounding.cpp symbols.cpp testing.cpp util.cpp)
+add_library(util STATIC argParse.cpp colors.cpp logging.cpp symbols.cpp testing.cpp util.cpp)
 set_target_properties(util PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 add_library(steppable STATIC number.cpp fraction.cpp)
@@ -50,7 +50,7 @@ foreach (COMPONENT IN LISTS COMPONENTS)
     # No longer offering executables for each component automatically.
 
     if (DEFINED STP_BUILD_COMPONENT_EXECUTABLE)
-        add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}Report.cpp)
+        add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
         target_include_directories(${COMPONENT} PRIVATE ${STP_BASE_DIRECTORY}/include/)
         target_link_libraries(${COMPONENT} PRIVATE calc)
     endif ()
@@ -61,15 +61,15 @@ foreach (COMPONENT IN LISTS COMPONENTS)
     COPY_TO_BIN(${COMPONENT})
 endforeach ()
 
-add_library(calc STATIC ${CALCULATOR_FILES} fraction.cpp number.cpp)
+add_library(calc STATIC ${CALCULATOR_FILES} fraction.cpp rounding.cpp number.cpp)
 set_target_properties(calc PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
 target_include_directories(calc PRIVATE ${STP_BASE_DIRECTORY}/include/)
 target_include_directories(util PRIVATE ${STP_BASE_DIRECTORY}/include/)
 
-target_link_libraries(steppable util)
-target_link_libraries(calc steppable)
+target_link_libraries(steppable PRIVATE util)
+target_link_libraries(calc PRIVATE steppable)
 target_compile_definitions(calc PRIVATE NO_MAIN)
 target_compile_definitions(steppable PRIVATE NO_MAIN)
 

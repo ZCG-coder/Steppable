@@ -72,7 +72,7 @@ function(capitalize IN OUT)
             PARENT_SCOPE)
 endfunction()
 
-set(COMPONENTS abs add baseConvert subtract multiply decimalConvert comparison power division)
+set(COMPONENTS abs add baseConvert subtract multiply decimalConvert comparison power division root)
 # NEW_COMPONENT: PATCH
 # Do NOT remove the previous comment.
 
@@ -87,9 +87,9 @@ foreach (TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
 endforeach ()
 
 add_subdirectory(src/)
+add_subdirectory(lib/)
 add_subdirectory(tests/)
 add_subdirectory(include/) # The CMakeLists file there adds the include/ directory to everything
-add_subdirectory(lib/)
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 

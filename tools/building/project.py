@@ -363,7 +363,7 @@ class BuildSteppable(Project):
             self.add_executable(name, files, ["calc", "util"])
 
         # Add the test executable
-        test_name = f"test{name.capitalize()}"
+        test_name = f"test{name[0].upper()}{name[1:]}"
         self.add_executable(
             test_name,
             [*files, TESTS_DIR / f"{test_name}.cpp"],

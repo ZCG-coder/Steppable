@@ -212,10 +212,15 @@ namespace steppable::__internals::arithmetic
         // Note: It can be negative!
         auto numberIntegers = determineResultScale(numberIntegerOrig + "." + numberDecimalOrig,
                                                    divisorIntegerOrig + "." + divisorDecimalOrig);
-
         auto numberDecimals = quotient.length() - numberIntegers;
         quotient = removeLeadingZeros(quotient);
         std::string finalQuotient = quotient;
+        if ((numberIntegers < 0) and (-numberIntegers + 1 >= decimals))
+        {
+            if (steps != 0)
+                warning("The result is inaccurate, as the decimals you specified is not enough to display the result.");
+            return "0";
+        }
 
         // Scenario 1: No decimal places returned
         // Solution  : Do nothing
@@ -291,7 +296,7 @@ namespace steppable::__internals::arithmetic
         const auto& splitNumberResult = splitNumber(divisionResult, "0", false, false, true, true).splitNumberArray;
 
         const auto &quotient = splitNumberResult[0], nearestResult = multiply(divisor, quotient, 0),
-                   remainder = subtract(number, nearestResult, 0);
+                   &remainder = removeLeadingZeros(subtract(number, nearestResult, 0));
 
         return { quotient, remainder };
     }

@@ -22,7 +22,7 @@
 
 #include "util.hpp"
 
-#include "fn/basicArithm.hpp"
+#include <cstddef>
 
 #ifdef WINDOWS
     #undef min
@@ -177,7 +177,7 @@ namespace steppable::__internals::numUtils
     }
 
     auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>
-    {
+    {     
         const auto firstNonZero = std::ranges::find_if(vector, [](const int num) { return num != 0; });
 
         // Create a new vector with the non-zero elements
