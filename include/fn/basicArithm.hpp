@@ -188,7 +188,7 @@ namespace steppable::__internals::arithmetic
      * @param decimals The decimals of the operation.
      * @return The result of the root operation.
      */
-    std::string root(const std::string& _number, const std::string& base, const size_t decimals);
+    std::string root(const std::string& _number, const std::string& base, const size_t decimals = 8);
 
     /**
      * @brief Executes a given predicate function a specified number of times.

@@ -296,7 +296,7 @@ namespace steppable::__internals::arithmetic
         const auto& splitNumberResult = splitNumber(divisionResult, "0", false, false, true, true).splitNumberArray;
 
         const auto &quotient = splitNumberResult[0], nearestResult = multiply(divisor, quotient, 0),
-                   remainder = subtract(number, nearestResult, 0);
+                   &remainder = removeLeadingZeros(subtract(number, nearestResult, 0));
 
         return { quotient, remainder };
     }

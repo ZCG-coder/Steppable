@@ -68,8 +68,8 @@ target_include_directories(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
 target_include_directories(calc PRIVATE ${STP_BASE_DIRECTORY}/include/)
 target_include_directories(util PRIVATE ${STP_BASE_DIRECTORY}/include/)
 
-target_link_libraries(steppable util)
-target_link_libraries(calc steppable)
+target_link_libraries(steppable PRIVATE util)
+target_link_libraries(calc PRIVATE steppable)
 target_compile_definitions(calc PRIVATE NO_MAIN)
 target_compile_definitions(steppable PRIVATE NO_MAIN)
 

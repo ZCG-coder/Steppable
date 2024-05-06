@@ -177,16 +177,12 @@ namespace steppable::__internals::numUtils
     }
 
     auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>
-    {
-        long idx = 0;
-        for (auto item : vector)
-            if (item != 0)
-                idx++;
-            else
-                break;
+    {     
+        const auto firstNonZero = std::ranges::find_if(vector, [](const int num) { return num != 0; });
 
-        auto newBegin = vector.cbegin() + idx;
-        return {newBegin, vector.cend()};
+        // Create a new vector with the non-zero elements
+        std::vector result(firstNonZero, vector.end());
+        return result;
     }
 
     auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>

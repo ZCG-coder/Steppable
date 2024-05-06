@@ -20,6 +20,7 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+#include "fn/basicArithm.hpp"
 #include "colors.hpp"
 #include "output.hpp"
 #include "testing.hpp"
@@ -29,4 +30,8 @@
 #include <iostream>
 
 TEST_START()
+SECTION(Root with a sqare number)
+using namespace steppable::__internals::arithmetic;
+_.assertIsEqual(root("4", "2"), "2");
+SECTION_END()
 TEST_END()

@@ -40,7 +40,7 @@ using namespace std::literals;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string root(const std::string_view& _number, const std::string_view& base, const size_t decimals)
+    std::string root(const std::string& _number, const std::string& base, const size_t decimals)
     {
         size_t raised_times = 0;
         std::string number = static_cast<std::string>(_number);
@@ -86,8 +86,8 @@ int main(const int _argc, const char* _argv[])
 
     const int decimals = program.getKeywordArgument("decimals");
     const bool profile = program.getSwitch("profile");
-    const auto& number = program.getPosArg(0);
-    const auto& base = program.getPosArg(1);
+    const auto& number = static_cast<std::string>(program.getPosArg(0));
+    const auto& base = static_cast<std::string>(program.getPosArg(1));
 
     if (profile)
     {
