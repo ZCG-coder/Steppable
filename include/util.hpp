@@ -210,14 +210,6 @@ namespace steppable::__internals::numUtils
     std::string standardizeNumber(const std::string_view& _number);
 
     /**
-     * @brief Round off a number to the nearest integer.
-     *
-     * @param[in] number The number to round.
-     * @return The rounded number.
-     */
-    std::string roundOff(const std::string& number);
-
-    /**
      * @fn constexpr bool isZeroString(const std::string_view& string)
      * @brief Checks if a given string is a zero string.
      *
