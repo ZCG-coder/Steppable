@@ -150,6 +150,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac634c8aea297b7e8f5cc251041089c5b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b">roundOff</a> (const std::string &amp;number)</td></tr>
 <tr class="memdesc:ac634c8aea297b7e8f5cc251041089c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Round off a number to the nearest integer.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b">More...</a><br /></td></tr>
 <tr class="separator:ac634c8aea297b7e8f5cc251041089c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2564d0f1e7f1bd71ad9c497cf72fc118"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a2564d0f1e7f1bd71ad9c497cf72fc118">moveDecimalPlaces</a> (const std::string &amp;_number, const long places)</td></tr>
+<tr class="memdesc:a2564d0f1e7f1bd71ad9c497cf72fc118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the decimal places of a number.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a2564d0f1e7f1bd71ad9c497cf72fc118">More...</a><br /></td></tr>
+<tr class="separator:a2564d0f1e7f1bd71ad9c497cf72fc118"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e6d1c6139edf65f76c0bd6aeba82066"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066">simplifyZeroPolarity</a> (const std::string_view &amp;string)</td></tr>
 <tr class="memdesc:a5e6d1c6139edf65f76c0bd6aeba82066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplifies a string that represents a number with non-standard polarity.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066">More...</a><br /></td></tr>
 <tr class="separator:a5e6d1c6139edf65f76c0bd6aeba82066"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,6 +189,9 @@ Functions</h2></td></tr>
 <tr class="memitem:afa516a42a17fc99b2f9c04171ed1b4fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">isDecimal</a> (const std::string &amp;number)</td></tr>
 <tr class="memdesc:afa516a42a17fc99b2f9c04171ed1b4fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the number is a decimal or not.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">More...</a><br /></td></tr>
 <tr class="separator:afa516a42a17fc99b2f9c04171ed1b4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ce9e01517c4e53205ea82fc8ad1124b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">isPowerOfTen</a> (const std::string &amp;number)</td></tr>
+<tr class="memdesc:a8ce9e01517c4e53205ea82fc8ad1124b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the number is a power of 10.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">More...</a><br /></td></tr>
+<tr class="separator:a8ce9e01517c4e53205ea82fc8ad1124b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a21f487d47d06ba1a7acf19091c8edc13"></a>
@@ -293,7 +299,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_acc0d8c2dcee479d9b8c4b5b4585c70d8_icgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_acc0d8c2dcee479d9b8c4b5b4585c70d8_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -323,6 +329,39 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the string is a valid number, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a8ce9e01517c4e53205ea82fc8ad1124b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ce9e01517c4e53205ea82fc8ad1124b">&#9670;&nbsp;</a></span>isPowerOfTen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool steppable::__internals::numUtils::isPowerOfTen </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines whether the number is a power of 10. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>The number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if it is a power of 10, false otherwise. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a8ce9e01517c4e53205ea82fc8ad1124b_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -363,6 +402,56 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_afce13d9dd949a08a7e75b27246a276b2_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a2564d0f1e7f1bd71ad9c497cf72fc118"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2564d0f1e7f1bd71ad9c497cf72fc118">&#9670;&nbsp;</a></span>moveDecimalPlaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string steppable::__internals::numUtils::moveDecimalPlaces </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const long&#160;</td>
+          <td class="paramname"><em>places</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Move the decimal places of a number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_number</td><td>The number to process. </td></tr>
+    <tr><td class="paramname">places</td><td>The desired decimal places to move. A negative amount indicates moving to the left, while a positive amount indicates moving to the right.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The processed number. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a2564d0f1e7f1bd71ad9c497cf72fc118_cgraph.svg" width="100%" height="582"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a2564d0f1e7f1bd71ad9c497cf72fc118_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -544,12 +633,6 @@ Here is the caller graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_ac634c8aea297b7e8f5cc251041089c5b_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_ac634c8aea297b7e8f5cc251041089c5b_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -770,7 +853,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon May 6 2024 09:51:24"; // Will get replaced by Doxygen
+        const dateStr = "Wed May 8 2024 14:43:54"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

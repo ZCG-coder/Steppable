@@ -205,9 +205,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a97316c4c4bc4640d519cec4841c7b0e9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9">steppable::__internals::numUtils::standardizeNumber</a> (const std::string_view &amp;_number)</td></tr>
 <tr class="memdesc:a97316c4c4bc4640d519cec4841c7b0e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standardizes a number string.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9">More...</a><br /></td></tr>
 <tr class="separator:a97316c4c4bc4640d519cec4841c7b0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac634c8aea297b7e8f5cc251041089c5b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b">steppable::__internals::numUtils::roundOff</a> (const std::string &amp;number)</td></tr>
-<tr class="memdesc:ac634c8aea297b7e8f5cc251041089c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Round off a number to the nearest integer.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b">More...</a><br /></td></tr>
-<tr class="separator:ac634c8aea297b7e8f5cc251041089c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afce13d9dd949a08a7e75b27246a276b2"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">steppable::__internals::numUtils::isZeroString</a> (const std::string_view &amp;string)</td></tr>
 <tr class="memdesc:afce13d9dd949a08a7e75b27246a276b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given string is a zero string.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">More...</a><br /></td></tr>
 <tr class="separator:afce13d9dd949a08a7e75b27246a276b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,6 +232,9 @@ Functions</h2></td></tr>
 <tr class="memitem:afa516a42a17fc99b2f9c04171ed1b4fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">steppable::__internals::numUtils::isDecimal</a> (const std::string &amp;number)</td></tr>
 <tr class="memdesc:afa516a42a17fc99b2f9c04171ed1b4fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the number is a decimal or not.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">More...</a><br /></td></tr>
 <tr class="separator:afa516a42a17fc99b2f9c04171ed1b4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ce9e01517c4e53205ea82fc8ad1124b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">steppable::__internals::numUtils::isPowerOfTen</a> (const std::string &amp;number)</td></tr>
+<tr class="memdesc:a8ce9e01517c4e53205ea82fc8ad1124b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the number is a power of 10.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">More...</a><br /></td></tr>
+<tr class="separator:a8ce9e01517c4e53205ea82fc8ad1124b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2600efb348f0dd19cc0068946d06b1b7"><td class="memTemplParams" colspan="2">template&lt;typename CharT &gt; </td></tr>
 <tr class="memitem:a2600efb348f0dd19cc0068946d06b1b7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">steppable::__internals::stringUtils::split</a> (std::basic_string&lt; CharT &gt; s, const CharT separator)</td></tr>
 <tr class="memdesc:a2600efb348f0dd19cc0068946d06b1b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits a string into substrings based on a separator.  <a href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">More...</a><br /></td></tr>
@@ -355,7 +355,7 @@ Functions</h2></td></tr>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Mon May 6 2024 09:51:24"; // Will get replaced by Doxygen
+        const dateStr = "Wed May 8 2024 14:43:54"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

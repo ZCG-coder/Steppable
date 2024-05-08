@@ -4,6 +4,7 @@ var util_8cpp =
     [ "isDecimal", "util_8cpp.html#afa516a42a17fc99b2f9c04171ed1b4fe", null ],
     [ "isInteger", "util_8cpp.html#acc0d8c2dcee479d9b8c4b5b4585c70d8", null ],
     [ "isNumber", "util_8cpp.html#a2415d3f7e66937d62bae10c9515ee94e", null ],
+    [ "isPowerOfTen", "util_8cpp.html#a8ce9e01517c4e53205ea82fc8ad1124b", null ],
     [ "makeWider", "util_8cpp.html#ad4fca9a20e9a831347b0c71200f0448d", null ],
     [ "removeLeadingZeros", "util_8cpp.html#a8d5637338641568af53f46a993400130", null ],
     [ "removeLeadingZeros", "util_8cpp.html#a3d4e1e21ccf1afecd766d3152df87212", null ],

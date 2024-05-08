@@ -6,7 +6,6 @@ var namespacesteppable_1_1____internals_1_1arithmetic =
     [ "baseConvert", "namespacesteppable_1_1____internals_1_1arithmetic.html#a5b80b731e3e2c0d16dcbe5d52b08ffd5", null ],
     [ "compare", "namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8", null ],
     [ "decimalConvert", "namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374", null ],
-    [ "determineProductScale", "namespacesteppable_1_1____internals_1_1arithmetic.html#af7183da49ccdfb5a58325e6017ebd7c6", null ],
     [ "determineResultScale", "namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3", null ],
     [ "divide", "namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730", null ],
     [ "divideWithQuotient", "namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978", null ],
