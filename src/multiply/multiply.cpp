@@ -34,6 +34,7 @@
 #include "rounding.hpp"
 #include "util.hpp"
 
+#include <sstream>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -45,14 +46,48 @@ using namespace steppable::__internals::arithmetic;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string multiply(const std::string_view& a, const std::string_view& b, const int steps)
+    std::string multiply(const std::string_view& _a, const std::string_view& _b, const int steps)
     {
+        auto a = static_cast<std::string>(_a), b = static_cast<std::string>(_b);
+        std::stringstream out;
         if (isZeroString(a) or isZeroString(b))
-            return "0"; // Since a or b is zero, the result must be zero as well
+        {
+            if (steps == 2)
+                out << "Since any of a or b is zero, the result must be zero as well.\n";
+            out << "0"; // Since a or b is zero, the result must be zero as well
+        }
+
+        // Multiplying by 1 gives the another number.
         if (a == "1")
-            return static_cast<std::string>(b);
+        {
+            if (steps == 2)
+                out << "Since " << a << " is 1, the result is " << b << ".\n";
+            out << b;
+            return out.str();
+        }
         if (b == "1")
-            return static_cast<std::string>(a);
+        {
+            if (steps == 2)
+                out << "Since " << b << " is 1, the result is " << a << ".\n";
+            out << a;
+            return out.str();
+        }
+
+        // Multiplying by a power of ten means moving the decimal places.
+        if (isPowerOfTen(a))
+        {
+            if (steps == 2)
+                out << "Since " << a << " is a power of 10, we can move the decimal places to obtain the result.\n";
+            out << moveDecimalPlaces(b, a.length() - 1);
+            return out.str();
+        }
+        if (isPowerOfTen(b))
+        {
+            if (steps == 2)
+                out << "Since " << b << " is a power of 10, we can move the decimal places to obtain the result.\n";
+            out << moveDecimalPlaces(a, b.length() - 1);
+            return out.str();
+        }
 
         const auto& [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, false);
         bool resultIsNegative = false;
@@ -126,8 +161,8 @@ namespace steppable::__internals::arithmetic
             finalProdDigits[indexDigit] = sum;
         }
 
-        return reportMultiply(static_cast<std::string>(a),
-                              static_cast<std::string>(b),
+        return reportMultiply(a,
+                              b,
                               aStr,
                               bStr,
                               aDecimal,

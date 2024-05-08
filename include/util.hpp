@@ -313,6 +313,14 @@ namespace steppable::__internals::numUtils
      * @return False if it is an integer, true otherwise.
      */
     bool isDecimal(const std::string& number);
+
+    /**
+     * @brief Determines whether the number is a power of 10.
+     *
+     * @param number The number.
+     * @return True if it is a power of 10, false otherwise.
+     */
+    bool isPowerOfTen(const std::string& number);
 } // namespace steppable::__internals::numUtils
 
 namespace steppable::__internals::stringUtils

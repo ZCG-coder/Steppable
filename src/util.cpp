@@ -177,7 +177,7 @@ namespace steppable::__internals::numUtils
     }
 
     auto removeLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>
-    {     
+    {
         const auto firstNonZero = std::ranges::find_if(vector, [](const int num) { return num != 0; });
 
         // Create a new vector with the non-zero elements
@@ -245,6 +245,18 @@ namespace steppable::__internals::numUtils
     }
 
     bool isDecimal(const std::string& number) { return not isInteger(number); }
+
+    bool isPowerOfTen(const std::string& number)
+    {
+        if (number == "1")
+            return true; // 1 is a power of 10.
+        if (number.front() != '1')
+            return false; // The number must start with 1.
+        for (const char c : number.substr(1, number.length()))
+            if (c != '0' and c != '.')
+                return false; // The rest of the number must be zeros or decimal points.
+        return true;
+    }
 } // namespace steppable::__internals::numUtils
 
 namespace steppable::__internals::stringUtils
