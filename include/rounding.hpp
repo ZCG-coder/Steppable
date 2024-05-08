@@ -25,5 +25,22 @@
 
 namespace steppable::__internals::numUtils
 {
+    /**
+     * @brief Round off a number to the nearest integer.
+     *
+     * @param[in] number The number to round.
+     * @return The rounded number.
+     */
     std::string roundOff(const std::string& number);
-}
+
+    /**
+     * @brief Move the decimal places of a number.
+     *
+     * @param _number The number to process.
+     * @param places The desired decimal places to move. A negative amount indicates moving to the left, while a
+     * positive amount indicates moving to the right.
+     *
+     * @return The processed number.
+     */
+    std::string moveDecimalPlaces(const std::string& _number, const long places);
+} // namespace steppable::__internals::numUtils

@@ -31,7 +31,7 @@
 
 #include "multiplyReport.hpp"
 
-#include "fn/basicArithm.hpp"
+#include "rounding.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
@@ -43,7 +43,6 @@
 using namespace steppable::__internals::symbols;
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::stringUtils;
-using namespace steppable::__internals::arithmetic;
 
 std::string reportMultiply(const std::string& a,
                            const std::string& b,
@@ -56,7 +55,6 @@ std::string reportMultiply(const std::string& a,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
                            const bool resultIsNegative,
-                           const long long scale,
                            const int steps)
 {
     std::stringstream ss;
@@ -110,20 +108,15 @@ std::string reportMultiply(const std::string& a,
         ss << a << " " MULTIPLY " " << b << " = ";
     if (resultIsNegative)
         ss << '-';
-    const auto vector = replaceLeadingZeros(finalProdDigits);
+    const auto vector = removeLeadingZeros(finalProdDigits);
 
     std::string out;
     for (const int i : vector)
-        if (i >= 0)
-            out += std::to_string(i);
+        out += std::to_string(i);
 
     // Add the decimal point.
-    auto aDecimals = aDecimal.length(), bDecimals = bDecimal.length();
-    if (aDecimals + bDecimals > 0)
-    {
-        out.insert(out.end() - aDecimals - bDecimals, '.');
-        out = removeTrailingZeros(out);
-    }
+    auto places = aDecimal.length() + bDecimal.length();
+    out = moveDecimalPlaces(out, -places);
 
     ss << standardizeNumber(out);
     return ss.str();

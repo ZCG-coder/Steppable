@@ -43,4 +43,47 @@ namespace steppable::__internals::numUtils
             return integer + "." + decimal;
         return arithmetic::add(integer, "1", 0) + "." + decimal;
     }
+
+    std::string moveDecimalPlaces(const std::string& _number, const long places)
+    {
+        auto number = _number;
+        // No change
+        if (not places)
+            return number;
+
+        // Is the number an integer?
+        if (isInteger(number))
+            number += ".0";
+        auto splitNumberResult = splitNumber(number, "0", false, false, true, false).splitNumberArray;
+        auto integer = splitNumberResult[0], decimal = splitNumberResult[1];
+        auto repetitions = std::abs(places);
+
+        // Move decimal places to the right
+        if (places > 0)
+        {
+            for (size_t _ = 0; _ < repetitions; _++)
+                if (decimal.length() > 0)
+                {
+                    integer += decimal[0];
+                    decimal.erase(decimal.cbegin());
+                }
+                else
+                    integer += '0';
+        }
+        // Move decimal places to the left
+        else if (places < 0)
+        {
+            for (size_t _ = 0; _ < repetitions; _++)
+                if (integer.length() > 0)
+                {
+                    decimal = integer.back() + decimal;
+                    integer.pop_back();
+                }
+                else
+                    decimal = '0' + decimal;
+        }
+
+        auto result = integer + "." + decimal;
+        return standardizeNumber(result);
+    }
 } // namespace steppable::__internals::numUtils

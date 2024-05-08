@@ -63,5 +63,4 @@ std::string reportMultiply(const std::string& a,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
                            bool resultIsNegative = false,
-                           long long scale = 0,
                            int steps = 2);

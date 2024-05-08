@@ -3,7 +3,7 @@
     [
         {
             "path": ".",
-        }
+        },
     ],
     "debugger_configurations":
     [
@@ -81,6 +81,6 @@
         }
     ],
     "settings": {
-        "SublimeLinter.linters.clangtidy.compile_commands": "${project_path}/build"
-    }
+        "SublimeLinter.linters.clangtidy.compile_commands": "${project_path}/build",
+    },
 }

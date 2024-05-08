@@ -210,14 +210,6 @@ namespace steppable::__internals::numUtils
     std::string standardizeNumber(const std::string_view& _number);
 
     /**
-     * @brief Round off a number to the nearest integer.
-     *
-     * @param[in] number The number to round.
-     * @return The rounded number.
-     */
-    std::string roundOff(const std::string& number);
-
-    /**
      * @fn constexpr bool isZeroString(const std::string_view& string)
      * @brief Checks if a given string is a zero string.
      *
@@ -321,6 +313,14 @@ namespace steppable::__internals::numUtils
      * @return False if it is an integer, true otherwise.
      */
     bool isDecimal(const std::string& number);
+
+    /**
+     * @brief Determines whether the number is a power of 10.
+     *
+     * @param number The number.
+     * @return True if it is a power of 10, false otherwise.
+     */
+    bool isPowerOfTen(const std::string& number);
 } // namespace steppable::__internals::numUtils
 
 namespace steppable::__internals::stringUtils

@@ -43,17 +43,17 @@ namespace steppable::__internals::arithmetic
     std::string root(const std::string& _number, const std::string& base, const size_t _decimals)
     {
         auto decimals = _decimals + 1;
-        size_t raised_times = 0;
+        size_t raisedTimes = 0;
         std::string number = static_cast<std::string>(_number);
         while (compare(number, "1", 0) == "0")
         {
             number = multiply(number, power("10", base, 0), 0);
-            raised_times++;
+            raisedTimes++;
         }
 
         auto x = number, y = "0"s, allowedError = "0." + std::string(decimals - 1, '0') + "1";
         size_t idx = 0;
-        auto denominator = "1" + std::string(raised_times, '0');
+        auto denominator = "1" + std::string(raisedTimes, '0');
 
         while (true)
         {
