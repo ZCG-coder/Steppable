@@ -55,7 +55,6 @@ std::string reportMultiply(const std::string& a,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
                            const bool resultIsNegative,
-                           const long long scale,
                            const int steps)
 {
     std::stringstream ss;

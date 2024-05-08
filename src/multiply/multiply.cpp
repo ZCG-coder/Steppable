@@ -45,22 +45,6 @@ using namespace steppable::__internals::arithmetic;
 
 namespace steppable::__internals::arithmetic
 {
-    /**
-     * @brief Determines the scale for a product of two numbers.
-     *
-     * @param[in] a Number 1,
-     * @param[in] b Number 2.
-     *
-     * @return The correct scale for their product.
-     */
-    long long determineProductScale(const std::string& a, const std::string& b)
-    {
-        auto aScale = determineScale(roundOff(a));
-        auto bScale = determineScale(roundOff(b));
-
-        return aScale + bScale;
-    }
-
     std::string multiply(const std::string_view& a, const std::string_view& b, const int steps)
     {
         if (isZeroString(a) or isZeroString(b))
@@ -142,7 +126,6 @@ namespace steppable::__internals::arithmetic
             finalProdDigits[indexDigit] = sum;
         }
 
-        const auto scale = determineProductScale(static_cast<std::string>(a), static_cast<std::string>(b));
         return reportMultiply(static_cast<std::string>(a),
                               static_cast<std::string>(b),
                               aStr,
@@ -154,7 +137,6 @@ namespace steppable::__internals::arithmetic
                               prodDigitsOut,
                               carries,
                               resultIsNegative,
-                              scale,
                               steps);
     }
 } // namespace steppable::__internals::arithmetic
