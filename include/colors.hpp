@@ -82,7 +82,7 @@ namespace steppable::__internals::utils
     std::ostream& reset(std::ostream& stream);
 
     /**
-     * @namespace colors
+     * @namespace steppable::__internals::utils::colors
      * @brief A namespace containing functions to set the text color in an output stream.
      */
     namespace colors
@@ -217,7 +217,7 @@ namespace steppable::__internals::utils
     } // namespace colors
 
     /**
-     * @namespace colorsBg
+     * @namespace steppable::__internals::utils::colorsBg
      * @brief A namespace containing functions to set the background color in an output stream.
      */
     namespace colorsBg
@@ -280,7 +280,7 @@ namespace steppable::__internals::utils
     } // namespace colorsBg
 
     /**
-     * @namespace formats
+     * @namespace steppable::__internals::utils::formats
      * @brief A namespace containing functions to set the text format in an output stream.
      */
     namespace formats
