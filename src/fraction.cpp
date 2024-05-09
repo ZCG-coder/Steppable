@@ -54,6 +54,7 @@ namespace steppable
             throw exceptions::ZeroDenominatorException();
         this->top = top;
         this->bottom = bottom;
+        simplify();
     }
 
     Fraction::Fraction(const Number& number)
@@ -68,6 +69,8 @@ namespace steppable
         simplify();
         return top + "/" + bottom;
     }
+
+    std::array<std::string, 2> Fraction::asArray() const { return { top, bottom }; }
 
     Fraction Fraction::operator+(const Fraction& rhs) const
     {

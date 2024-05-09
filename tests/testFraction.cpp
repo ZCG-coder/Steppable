@@ -55,6 +55,7 @@ SECTION_END()
 
 SECTION(Fraction from Number)
 _.assertIsEqual(Fraction("0.25").present(), "1/4");
+_.assertIsEqual(Fraction("0.5").present(), "1/2");
 _.assertIsEqual(Fraction(Number("0.25")).present(), "1/4");
 SECTION_END()
 

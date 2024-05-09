@@ -27,7 +27,26 @@
  */
 #pragma once
 
+#include "fraction.hpp"
+
 #include <string>
+
+/**
+ * @brief Reports a power operation for a root.
+ *
+ * @param _number The number to raise.
+ * @param raiseTo The exponent to raise to.
+ * @param fraction The exponent as a fraction.
+ * @param result The root result.
+ * @param steps The steps to show.
+ *
+ * @return The forrmatted power report.
+ */
+std::string reportPowerRoot(const std::string& _number,
+                            const std::string& raiseTo,
+                            const steppable::Fraction& fraction,
+                            const std::string& result,
+                            const int steps);
 
 /**
  * @brief Reports a power operation.

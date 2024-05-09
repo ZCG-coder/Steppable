@@ -47,8 +47,12 @@ namespace steppable::__internals::symbols
 /// @brief The divide symbol (Unicode U+00F7)
 #define DIVIDED_BY "\u00F7"
 
+#define SURD "\u221A"
+#define COMBINE_MACRON "\u0305"
+
 /// @brief The large dot symbol (Unicode U+25C9)
 #define LARGE_DOT "\u25C9"
+#define ABOVE_DOT "\u02D9"
 
 // Subscripts
 /**
@@ -118,4 +122,12 @@ namespace steppable::__internals::symbols
      * @return The superscript string.
      */
     std::string_view makeSuperscript(char normal);
+
+    /**
+     * @brief Makes a surd expression from a radicand.
+     *
+     * @param radicand The radicand.
+     * @return The surd expression.
+     */
+    std::string makeSurd(const std::string& radicand);
 } // namespace steppable::__internals::symbols

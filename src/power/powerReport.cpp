@@ -32,6 +32,7 @@
 #include "powerReport.hpp"
 
 #include "fn/basicArithm.hpp"
+#include "fraction.hpp"
 #include "symbols.hpp"
 
 #include <sstream>
@@ -40,6 +41,26 @@ using namespace std::literals;
 using namespace steppable::output;
 using namespace steppable::__internals::symbols;
 using namespace steppable::__internals::arithmetic;
+
+std::string reportPowerRoot(const std::string& _number,
+                            const std::string& raiseTo,
+                            const steppable::Fraction& fraction,
+                            const std::string& result,
+                            const int steps)
+{
+    auto array = fraction.asArray();
+    std::stringstream ss;
+
+    if (steps == 2)
+        ss << "The exponent " << raiseTo << " is a decimal. Therefore, the result is a root." << '\n';
+    if (steps >= 1)
+    {
+        ss << _number << makeSuperscript(static_cast<std::string>(raiseTo));
+        ss << " = " << makeSuperscript(array[1]) << makeSurd(_number + makeSuperscript(array[0])) << " = ";
+    }
+    ss << result;
+    return ss.str();
+}
 
 std::string reportPower(const std::string_view _number,
                         const std::string_view& raiseTo,

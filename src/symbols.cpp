@@ -48,7 +48,10 @@ namespace steppable::__internals::symbols
     {
         std::stringstream ss;
         for (const char c : normal)
-            ss << SUPERSCRIPTS[c - '0'];
+            if (isnumber(c))
+                ss << SUPERSCRIPTS[c - '0'];
+            else
+                ss << ABOVE_DOT;
         std::string string = ss.str();
         return string;
     }
@@ -59,5 +62,15 @@ namespace steppable::__internals::symbols
             return "\u207B";
 
         return SUPERSCRIPTS[normal - '0'];
+    }
+
+    std::string makeSurd(const std::string& radicand)
+    {
+        std::stringstream ss;
+        ss << SURD;
+        for (char c : radicand)
+            ss << c << COMBINE_MACRON;
+
+        return ss.str();
     }
 } // namespace steppable::__internals::symbols

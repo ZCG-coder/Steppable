@@ -32,7 +32,9 @@
 
 #include "number.hpp"
 
+#include <array>
 #include <string>
+#include <string_view>
 
 namespace steppable
 {
@@ -75,6 +77,12 @@ namespace steppable
          * The string is formatted as "top/bottom", and it will automatically simplify the fraction.
          */
         std::string present();
+
+        /**
+         * @brief Returns the fraction as an array of its top and bottom components.
+         * @return The array of top and bottom components.
+         */
+        std::array<std::string, 2> asArray() const;
 
         /**
          * @brief Adds two fractions together.
