@@ -56,6 +56,13 @@ namespace steppable
         this->bottom = bottom;
     }
 
+    Fraction::Fraction(const Number& number)
+    {
+        this->top = number.present();
+        this->bottom = "1";
+        simplify();
+    }
+
     std::string Fraction::present()
     {
         simplify();
@@ -203,6 +210,12 @@ namespace steppable
 
     void Fraction::simplify()
     {
+        // Make sure the fraction does not contain decimal points.
+        while (isDecimal(top) or isDecimal(bottom))
+        {
+            top = multiply(top, "10", 0);
+            bottom = multiply(bottom, "10", 0);
+        }
         auto gcd = getGCD(top, bottom);
         top = divide(top, gcd, 0, 0);
         bottom = divide(bottom, gcd, 0, 0);

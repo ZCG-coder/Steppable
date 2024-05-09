@@ -42,6 +42,8 @@ namespace steppable::__internals::arithmetic
 {
     std::string root(const std::string& _number, const std::string& base, const size_t _decimals)
     {
+
+
         auto decimals = _decimals + 1;
         size_t raisedTimes = 0;
         std::string number = static_cast<std::string>(_number);

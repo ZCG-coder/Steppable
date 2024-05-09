@@ -58,6 +58,13 @@ namespace steppable
         Fraction(const std::string& top = "1", const std::string& bottom = "1");
 
         /**
+         * @brief Initialized a fraction from a number.
+         *
+         * @param number The number to convert to a fraction.
+         */
+        Fraction(const Number& number);
+
+        /**
          * @brief Initializes a fraction with no top component and bottom component specified.
          * By default, this fraction equals to 1.
          */

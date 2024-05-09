@@ -53,4 +53,9 @@ _.assertIsEqual((Fraction("13122", "54251") / Fraction("22451", "3423")).present
 _.assertIsEqual((Fraction("22451", "3423") / Fraction("13122", "54251")).present(), "1217989201/44916606");
 SECTION_END()
 
+SECTION(Fraction from Number)
+_.assertIsEqual(Fraction("0.25").present(), "1/4");
+_.assertIsEqual(Fraction(Number("0.25")).present(), "1/4");
+SECTION_END()
+
 TEST_END()
