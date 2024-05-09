@@ -743,7 +743,7 @@ SHOW_USED_FILES        = YES
 # (if specified).
 # The default value is: YES.
 
-SHOW_FILES             = YES
+SHOW_FILES             = NO
 
 # Set the SHOW_NAMESPACES tag to NO to disable the generation of the Namespaces
 # page. This will remove the Namespaces entry from the Quick Index and from the
@@ -864,7 +864,9 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  =
+INPUT                  = wiki/ \
+                         src/ \
+                         include/
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -924,8 +926,8 @@ FILE_PATTERNS          = *.c \
                          *.md \
                          *.mm \
                          *.dox \
-                        #  *.py \
-                        #  *.pyw \
+                         # *.py \
+                         # *.pyw \
                          *.f90 \
                          *.f95 \
                          *.f03 \
@@ -956,7 +958,8 @@ EXCLUDE                = build/ \
                          cmake-build-*/ \
                          doxygen-awesome-css/ \
                          venv/ \
-                         tests/
+                         wiki/_Footer.md \
+                         wiki/_Sidebar.md
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -1065,7 +1068,7 @@ FILTER_SOURCE_PATTERNS =
 # (index.html). This can be useful if you have a project on for instance GitHub
 # and want to reuse the introduction page also for the doxygen output.
 
-USE_MDFILE_AS_MAINPAGE = README.md
+USE_MDFILE_AS_MAINPAGE = wiki/Home.md
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
@@ -2667,7 +2670,7 @@ DOT_CLEANUP            = YES
 
 EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = YES
-GENERATE_TREEVIEW      = YES # optional. Also works without treeview
+GENERATE_TREEVIEW      = NO # optional. Also works without treeview
 DISABLE_INDEX = NO
 FULL_SIDEBAR = NO
 HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css

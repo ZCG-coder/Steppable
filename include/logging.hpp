@@ -42,7 +42,7 @@
 #include <string>
 
 /**
- * @namespace logging
+ * @namespace steppable::__internals::logging
  * @brief The logging namespace contains classes and functions for logging.
  * The logging namespace contains the Logger class, which provides logging functionality, including logging messages
  * at different levels, such as error, warning, info, and debug. It writes the log messages to a specified log file.
