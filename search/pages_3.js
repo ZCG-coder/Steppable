@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['getting_20the_20source_20code_379',['Getting the Source Code',['../md_wiki_Getting_the_Source.html',1,'']]]
+  ['faq_0',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]],
+  ['frequently_20asked_20questions_20faq_1',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]]
 ];
