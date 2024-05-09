@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('namespacesteppable_1_1____internals_1_1format.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,6 +109,11 @@ $(document).ready(function(){initNavTree('namespacesteppable_1_1____internals_1_
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesteppable.html">steppable</a></li><li class="navelem"><a class="el" href="namespacesteppable_1_1____internals.html">__internals</a></li><li class="navelem"><a class="el" href="namespacesteppable_1_1____internals_1_1format.html">format</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -244,14 +228,13 @@ template&lt;typename CharT &gt; </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1format_a4ce7e3333d78668b52ce033ea3307ce5_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1format_a4ce7e3333d78668b52ce033ea3307ce5_icgraph.svg" width="431" height="248"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -270,7 +253,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:54"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('namespacesteppable_1_1____internals_1_1numUtils.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,6 +109,11 @@ $(document).ready(function(){initNavTree('namespacesteppable_1_1____internals_1_
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesteppable.html">steppable</a></li><li class="navelem"><a class="el" href="namespacesteppable_1_1____internals.html">__internals</a></li><li class="navelem"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html">numUtils</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -153,6 +137,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a2564d0f1e7f1bd71ad9c497cf72fc118"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a2564d0f1e7f1bd71ad9c497cf72fc118">moveDecimalPlaces</a> (const std::string &amp;_number, const long places)</td></tr>
 <tr class="memdesc:a2564d0f1e7f1bd71ad9c497cf72fc118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the decimal places of a number.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a2564d0f1e7f1bd71ad9c497cf72fc118">More...</a><br /></td></tr>
 <tr class="separator:a2564d0f1e7f1bd71ad9c497cf72fc118"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2415d3f7e66937d62bae10c9515ee94e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e">isNumber</a> (const std::string_view &amp;s)</td></tr>
+<tr class="memdesc:a2415d3f7e66937d62bae10c9515ee94e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given string is a valid number.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e">More...</a><br /></td></tr>
+<tr class="separator:a2415d3f7e66937d62bae10c9515ee94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e6d1c6139edf65f76c0bd6aeba82066"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066">simplifyZeroPolarity</a> (const std::string_view &amp;string)</td></tr>
 <tr class="memdesc:a5e6d1c6139edf65f76c0bd6aeba82066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplifies a string that represents a number with non-standard polarity.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066">More...</a><br /></td></tr>
 <tr class="separator:a5e6d1c6139edf65f76c0bd6aeba82066"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,14 +149,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a97316c4c4bc4640d519cec4841c7b0e9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9">standardizeNumber</a> (const std::string_view &amp;_number)</td></tr>
 <tr class="memdesc:a97316c4c4bc4640d519cec4841c7b0e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standardizes a number string.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9">More...</a><br /></td></tr>
 <tr class="separator:a97316c4c4bc4640d519cec4841c7b0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afce13d9dd949a08a7e75b27246a276b2"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">isZeroString</a> (const std::string_view &amp;string)</td></tr>
-<tr class="memdesc:afce13d9dd949a08a7e75b27246a276b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given string is a zero string.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">More...</a><br /></td></tr>
-<tr class="separator:afce13d9dd949a08a7e75b27246a276b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2415d3f7e66937d62bae10c9515ee94e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e">isNumber</a> (const std::string_view &amp;s)</td></tr>
-<tr class="memdesc:a2415d3f7e66937d62bae10c9515ee94e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given string is a valid number.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e">More...</a><br /></td></tr>
-<tr class="separator:a2415d3f7e66937d62bae10c9515ee94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad13b8651b0d069d596f7e25f78a8b4ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#ad13b8651b0d069d596f7e25f78a8b4ed">splitNumber</a> (const std::string_view &amp;a, const std::string_view &amp;b, bool padInteger=true, bool padDecimal=true, bool properlyFormat=true, bool preserveNegative=false)</td></tr>
-<tr class="separator:ad13b8651b0d069d596f7e25f78a8b4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ec6b1fba5358e4335ddce9d58ad60ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html">SplitNumberResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a6ec6b1fba5358e4335ddce9d58ad60ff">splitNumber</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal, bool properlyFormat, bool preserveNegative)</td></tr>
+<tr class="separator:a6ec6b1fba5358e4335ddce9d58ad60ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8dde3fc958f32009443d1aeaa2c0900"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#ae8dde3fc958f32009443d1aeaa2c0900">replaceLeadingZeros</a> (const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</td></tr>
 <tr class="separator:ae8dde3fc958f32009443d1aeaa2c0900"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d4e1e21ccf1afecd766d3152df87212"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212">removeLeadingZeros</a> (const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</td></tr>
@@ -192,6 +173,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8ce9e01517c4e53205ea82fc8ad1124b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">isPowerOfTen</a> (const std::string &amp;number)</td></tr>
 <tr class="memdesc:a8ce9e01517c4e53205ea82fc8ad1124b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the number is a power of 10.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">More...</a><br /></td></tr>
 <tr class="separator:a8ce9e01517c4e53205ea82fc8ad1124b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afce13d9dd949a08a7e75b27246a276b2"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">isZeroString</a> (const std::string_view &amp;string)</td></tr>
+<tr class="memdesc:afce13d9dd949a08a7e75b27246a276b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given string is a zero string.  <a href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">More...</a><br /></td></tr>
+<tr class="separator:afce13d9dd949a08a7e75b27246a276b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a21f487d47d06ba1a7acf19091c8edc13"></a>
@@ -227,7 +211,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a21f487d47d06ba1a7acf19091c8edc13_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a21f487d47d06ba1a7acf19091c8edc13_icgraph.svg" width="100%" height="571"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -445,7 +429,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a2564d0f1e7f1bd71ad9c497cf72fc118_cgraph.svg" width="100%" height="582"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a2564d0f1e7f1bd71ad9c497cf72fc118_cgraph.svg" width="100%" height="592"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
@@ -468,7 +452,7 @@ Here is the caller graph for this function:</div>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>string</em></td><td>)</td>
-          <td> -&gt; std::decay_t&lt;decltype(string)&gt;</td>
+          <td> -&gt;  std::decay_t&lt; decltype(string)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -494,7 +478,7 @@ Here is the caller graph for this function:</div>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
           <td class="paramname"><em>vector</em></td><td>)</td>
-          <td> -&gt; std::decay_t&lt;decltype(vector)&gt;</td>
+          <td> -&gt;  std::decay_t&lt; decltype(vector)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -526,7 +510,7 @@ Here is the caller graph for this function:</div>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>numStr</em></td><td>)</td>
-          <td> -&gt; std::decay_t&lt;decltype(numStr)&gt;</td>
+          <td> -&gt;  std::decay_t&lt; decltype(numStr)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -552,7 +536,7 @@ Here is the caller graph for this function:</div>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
           <td class="paramname"><em>_vector</em></td><td>)</td>
-          <td> -&gt; std::decay_t&lt;decltype(_vector)&gt;</td>
+          <td> -&gt;  std::decay_t&lt; decltype(_vector)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -584,7 +568,7 @@ Here is the caller graph for this function:</div>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
           <td class="paramname"><em>vector</em></td><td>)</td>
-          <td> -&gt; std::decay_t&lt;decltype(vector)&gt;</td>
+          <td> -&gt;  std::decay_t&lt; decltype(vector)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -596,12 +580,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The modified vector with leading zeros replaced. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_ae8dde3fc958f32009443d1aeaa2c0900_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
 
 </div>
 </div>
@@ -717,8 +695,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ad13b8651b0d069d596f7e25f78a8b4ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad13b8651b0d069d596f7e25f78a8b4ed">&#9670;&nbsp;</a></span>splitNumber()</h2>
+<a id="a6ec6b1fba5358e4335ddce9d58ad60ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ec6b1fba5358e4335ddce9d58ad60ff">&#9670;&nbsp;</a></span>splitNumber()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -782,13 +760,13 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_ad13b8651b0d069d596f7e25f78a8b4ed_cgraph.svg" width="100%" height="561"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a6ec6b1fba5358e4335ddce9d58ad60ff_cgraph.svg" width="100%" height="561"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_ad13b8651b0d069d596f7e25f78a8b4ed_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a6ec6b1fba5358e4335ddce9d58ad60ff_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -834,7 +812,6 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -853,7 +830,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:54"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

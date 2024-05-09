@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('logging_8hpp_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,12 +109,17 @@ $(document).ready(function(){initNavTree('logging_8hpp_source.html',''); initRes
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">logging.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="logging_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2023-2024 NWSOFT                                                                 *</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                                                *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy                   *</span></div>
@@ -162,7 +146,7 @@ $(document).ready(function(){initNavTree('logging_8hpp_source.html',''); initRes
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1logging.html">   50</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesteppable_1_1____internals_1_1logging.html">steppable::__internals::logging</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesteppable_1_1____internals_1_1logging.html">steppable::__internals::logging</a></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
 <div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7">   58</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7">Level</a></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
@@ -176,9 +160,9 @@ $(document).ready(function(){initNavTree('logging_8hpp_source.html',''); initRes
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a3c66a92d73c0da631dcfcfe62e0c948e">Logger</a>(<span class="keyword">const</span> std::string&amp; <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a877f550eb3f956a743951251a9104827">name</a>, <span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> <a class="code" href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7">Level</a> <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a486fe08ea44ef0cfd84447ed4f29e99c">level</a> = <a class="code" href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7ad459851155e872145fe0ae3d79036991">Level::DBG</a>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a3c66a92d73c0da631dcfcfe62e0c948e">Logger</a>(<span class="keyword">const</span> std::string&amp; <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a877f550eb3f956a743951251a9104827">name</a>, <span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> <a class="code" href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7">Level</a> <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a486fe08ea44ef0cfd84447ed4f29e99c">level</a> = Level::DBG);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a3c66a92d73c0da631dcfcfe62e0c948e">Logger</a>(<span class="keyword">const</span> std::string&amp; <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a877f550eb3f956a743951251a9104827">name</a>, <span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> <a class="code" href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7">Level</a> <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a486fe08ea44ef0cfd84447ed4f29e99c">level</a> = <a class="code" href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7a0add0282959d7a8fb7af0dee9885198a">Level::INFO</a>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a3c66a92d73c0da631dcfcfe62e0c948e">Logger</a>(<span class="keyword">const</span> std::string&amp; <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a877f550eb3f956a743951251a9104827">name</a>, <span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> <a class="code" href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7">Level</a> <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a486fe08ea44ef0cfd84447ed4f29e99c">level</a> = Level::INFO);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a5283de51df21749ce5c3f7c4772c8bc2">~Logger</a>();</div>
@@ -188,7 +172,7 @@ $(document).ready(function(){initNavTree('logging_8hpp_source.html',''); initRes
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a676f416e329994f615fcb2b1a80b2352">  109</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a676f416e329994f615fcb2b1a80b2352">error</a>(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args)</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keyword">auto</span> formattedMsg = <a class="code" href="namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5">vFormat</a>(message, args...);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keyword">auto</span> formattedMsg = vFormat(message, args...);</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ae885985fe5bac5fca8db6a48d3da6488">error</a>(formattedMsg);</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
@@ -197,7 +181,7 @@ $(document).ready(function(){initNavTree('logging_8hpp_source.html',''); initRes
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ad7e980e57cb9ef5437083e43851b3594">  127</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ad7e980e57cb9ef5437083e43851b3594">warning</a>(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args)</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keyword">auto</span> formattedMsg = <a class="code" href="namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5">vFormat</a>(message, args...);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keyword">auto</span> formattedMsg = vFormat(message, args...);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ae1f860b54fd4b6676147b75623bcae62">warning</a>(formattedMsg);</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
@@ -208,7 +192,7 @@ $(document).ready(function(){initNavTree('logging_8hpp_source.html',''); initRes
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a7c1ba1b264a4998a9bdf7eff926b1eac">  151</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a7c1ba1b264a4998a9bdf7eff926b1eac">debug</a>(<span class="keyword">const</span> std::string&amp; message, Args&amp;&amp;... args)</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keyword">auto</span> formattedMsg = <a class="code" href="namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5">vFormat</a>(message, args...);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keyword">auto</span> formattedMsg = vFormat(message, args...);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <a class="code" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#aea7bddd607595f37fe9f09624dea23d8">debug</a>(formattedMsg);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
@@ -236,15 +220,13 @@ $(document).ready(function(){initNavTree('logging_8hpp_source.html',''); initRes
 <div class="ttc" id="aclasssteppable_1_1____internals_1_1logging_1_1Logger_html_ae885985fe5bac5fca8db6a48d3da6488"><div class="ttname"><a href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ae885985fe5bac5fca8db6a48d3da6488">steppable::__internals::logging::Logger::error</a></div><div class="ttdeci">void error(const std::string &amp;message)</div><div class="ttdoc">Logs an error message.</div><div class="ttdef"><b>Definition:</b> logging.cpp:57</div></div>
 <div class="ttc" id="aclasssteppable_1_1____internals_1_1logging_1_1Logger_html_aea7bddd607595f37fe9f09624dea23d8"><div class="ttname"><a href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#aea7bddd607595f37fe9f09624dea23d8">steppable::__internals::logging::Logger::debug</a></div><div class="ttdeci">void debug(const std::string &amp;message)</div><div class="ttdoc">Logs a debug message.</div><div class="ttdef"><b>Definition:</b> logging.cpp:75</div></div>
 <div class="ttc" id="aclasssteppable_1_1____internals_1_1logging_1_1Logger_html_afea3d5609d98fcdea3b2d76a6efba9f9"><div class="ttname"><a href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#afea3d5609d98fcdea3b2d76a6efba9f9">steppable::__internals::logging::Logger::info</a></div><div class="ttdeci">void info(const std::string &amp;message)</div><div class="ttdoc">Logs an info message.</div><div class="ttdef"><b>Definition:</b> logging.cpp:69</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1format_html_a4ce7e3333d78668b52ce033ea3307ce5"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1format.html#a4ce7e3333d78668b52ce033ea3307ce5">steppable::__internals::format::vFormat</a></div><div class="ttdeci">std::basic_string&lt; CharT &gt; vFormat(const std::basic_string&lt; CharT &gt; sFormat,...)</div><div class="ttdoc">Formats a string using a variable number of arguments.</div><div class="ttdef"><b>Definition:</b> format.hpp:62</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1logging_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1logging.html">steppable::__internals::logging</a></div><div class="ttdef"><b>Definition:</b> logging.hpp:51</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1logging_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1logging.html">steppable::__internals::logging</a></div><div class="ttdoc">The logging namespace contains classes and functions for logging. The logging namespace contains the ...</div><div class="ttdef"><b>Definition:</b> logging.cpp:32</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1logging_html_a77a14410520707abd5010749ff93ecb7"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7">steppable::__internals::logging::Level</a></div><div class="ttdeci">Level</div><div class="ttdoc">Enumeration of logging levels.</div><div class="ttdef"><b>Definition:</b> logging.hpp:59</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1logging_html_a77a14410520707abd5010749ff93ecb7a093f75d5c424d8a7019e01b939007ba8"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7a093f75d5c424d8a7019e01b939007ba8">steppable::__internals::logging::ERR</a></div><div class="ttdeci">@ ERR</div><div class="ttdoc">Logs ONLY error messages.</div><div class="ttdef"><b>Definition:</b> logging.hpp:61</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1logging_html_a77a14410520707abd5010749ff93ecb7a0add0282959d7a8fb7af0dee9885198a"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7a0add0282959d7a8fb7af0dee9885198a">steppable::__internals::logging::INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdoc">Logs error, warning, and info messages. Recommended for release.</div><div class="ttdef"><b>Definition:</b> logging.hpp:65</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1logging_html_a77a14410520707abd5010749ff93ecb7ad459851155e872145fe0ae3d79036991"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7ad459851155e872145fe0ae3d79036991">steppable::__internals::logging::DBG</a></div><div class="ttdeci">@ DBG</div><div class="ttdoc">Logs error, warning, info, and debug messages. Basically, logs everything.</div><div class="ttdef"><b>Definition:</b> logging.hpp:67</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1logging_html_a77a14410520707abd5010749ff93ecb7afb0cd1135b4fb39d6df4325a06d6ed71"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7afb0cd1135b4fb39d6df4325a06d6ed71">steppable::__internals::logging::WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdoc">Logs error and warning messages.</div><div class="ttdef"><b>Definition:</b> logging.hpp:63</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -263,7 +245,7 @@ $(document).ready(function(){initNavTree('logging_8hpp_source.html',''); initRes
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:53"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

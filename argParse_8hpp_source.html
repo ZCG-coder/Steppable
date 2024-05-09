@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('argParse_8hpp_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,12 +109,17 @@ $(document).ready(function(){initNavTree('argParse_8hpp_source.html',''); initRe
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">argParse.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="argParse_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2023-2024 NWSOFT                                                                 *</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                                                *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy                   *</span></div>
@@ -236,12 +220,11 @@ $(document).ready(function(){initNavTree('argParse_8hpp_source.html',''); initRe
 <div class="ttc" id="aclasssteppable_1_1____internals_1_1utils_1_1ProgramArgs_html_af34abdab3c9215e33e0ee4b630bd9b86"><div class="ttname"><a href="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af34abdab3c9215e33e0ee4b630bd9b86">steppable::__internals::utils::ProgramArgs::argv</a></div><div class="ttdeci">std::vector&lt; std::string_view &gt; argv</div><div class="ttdoc">This stores the arguments passed to the program.</div><div class="ttdef"><b>Definition:</b> argParse.hpp:108</div></div>
 <div class="ttc" id="aclasssteppable_1_1____internals_1_1utils_1_1ProgramArgs_html_af3703e67d1a580ec98788508de89af45"><div class="ttname"><a href="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af3703e67d1a580ec98788508de89af45">steppable::__internals::utils::ProgramArgs::printUsage</a></div><div class="ttdeci">void printUsage(const std::string_view &amp;reason=&quot;&quot;) const</div><div class="ttdoc">This function is used to print the possible command-line arguments. Usually called when the user spec...</div><div class="ttdef"><b>Definition:</b> argParse.cpp:60</div></div>
 <div class="ttc" id="aclasssteppable_1_1____internals_1_1utils_1_1ProgramArgs_html_aff971505a61f01fb89ed90aadb9f9df7"><div class="ttname"><a href="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#aff971505a61f01fb89ed90aadb9f9df7">steppable::__internals::utils::ProgramArgs::argc</a></div><div class="ttdeci">int argc</div><div class="ttdoc">This stores the number of arguments passed to the program.</div><div class="ttdef"><b>Definition:</b> argParse.hpp:105</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div><div class="ttdoc">The namespace containing utility functions for the Steppable library.</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div><div class="ttdoc">The namespace containing utility functions for the Steppable library.</div><div class="ttdef"><b>Definition:</b> argParse.cpp:39</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a043e3488d3b78bc81e9997872f3381e2"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a043e3488d3b78bc81e9997872f3381e2">steppable::__internals::utils::PosArgs</a></div><div class="ttdeci">std::vector&lt; std::string_view &gt; PosArgs</div><div class="ttdoc">This is the type of the positional arguments. It is equivalent to a vector of string_views.</div><div class="ttdef"><b>Definition:</b> argParse.hpp:53</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a588ee3de79a5de23fa7dfbb398f77e12"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a588ee3de79a5de23fa7dfbb398f77e12">steppable::__internals::utils::SWITCH_REGEX</a></div><div class="ttdeci">static const std::regex SWITCH_REGEX(R&quot;(^([-+])([a-zA-Z]*)$)&quot;)</div><div class="ttdoc">This is the correct format of a switch.</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_afbf5cff932cfda276cae801261c5d1f0"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#afbf5cff932cfda276cae801261c5d1f0">steppable::__internals::utils::KEYWORD_ARG_REGEX</a></div><div class="ttdeci">static const std::regex KEYWORD_ARG_REGEX(R&quot;(^-([a-zA-Z]*):(-?[0-9]+)$)&quot;)</div><div class="ttdoc">This is the correct format of a keyword argument.</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -260,7 +243,7 @@ $(document).ready(function(){initNavTree('argParse_8hpp_source.html',''); initRe
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:53"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

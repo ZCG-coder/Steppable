@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('namespacesteppable_1_1____internals_1_1arithmetic.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,6 +109,11 @@ $(document).ready(function(){initNavTree('namespacesteppable_1_1____internals_1_
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesteppable.html">steppable</a></li><li class="navelem"><a class="el" href="namespacesteppable_1_1____internals.html">__internals</a></li><li class="navelem"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html">arithmetic</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -153,15 +137,26 @@ Functions</h2></td></tr>
 <tr class="memitem:a1deb38d5027df01a66b6c3efd57aedca"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">add</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false, bool properlyFormat=true)</td></tr>
 <tr class="memdesc:a1deb38d5027df01a66b6c3efd57aedca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two string representations of numbers, and performs with the column method.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">More...</a><br /></td></tr>
 <tr class="separator:a1deb38d5027df01a66b6c3efd57aedca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">compare</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, int steps=2)</td></tr>
-<tr class="memdesc:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two string representations of numbers.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">More...</a><br /></td></tr>
-<tr class="separator:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc4c4f319dadbb5b1ff481132f008374"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374">decimalConvert</a> (const std::string_view &amp;_inputString, const std::string_view &amp;baseString, int steps=2)</td></tr>
-<tr class="memdesc:afc4c4f319dadbb5b1ff481132f008374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string representation of a number from any base to decimal.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374">More...</a><br /></td></tr>
-<tr class="separator:afc4c4f319dadbb5b1ff481132f008374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f4658ff66c0d02138acc2aa221856d0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0">representNumber</a> (const std::string_view &amp;_number)</td></tr>
+<tr class="memdesc:a6f4658ff66c0d02138acc2aa221856d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a number using alphabets and numberals.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0">More...</a><br /></td></tr>
+<tr class="separator:a6f4658ff66c0d02138acc2aa221856d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b80b731e3e2c0d16dcbe5d52b08ffd5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5b80b731e3e2c0d16dcbe5d52b08ffd5">baseConvert</a> (const std::string_view &amp;_number, const std::string_view &amp;baseStr, const int steps=2)</td></tr>
 <tr class="memdesc:a5b80b731e3e2c0d16dcbe5d52b08ffd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string representation of a number from decimal to another one.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5b80b731e3e2c0d16dcbe5d52b08ffd5">More...</a><br /></td></tr>
 <tr class="separator:a5b80b731e3e2c0d16dcbe5d52b08ffd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">compare</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, int steps=2)</td></tr>
+<tr class="memdesc:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two string representations of numbers.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">More...</a><br /></td></tr>
+<tr class="separator:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbdfe1847efd604f5b982690debca864"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#acbdfe1847efd604f5b982690debca864">toNumber</a> (const char _input)</td></tr>
+<tr class="memdesc:acbdfe1847efd604f5b982690debca864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a numeral character to a number string.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#acbdfe1847efd604f5b982690debca864">More...</a><br /></td></tr>
+<tr class="separator:acbdfe1847efd604f5b982690debca864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc4c4f319dadbb5b1ff481132f008374"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374">decimalConvert</a> (const std::string_view &amp;_inputString, const std::string_view &amp;baseString, int steps=2)</td></tr>
+<tr class="memdesc:afc4c4f319dadbb5b1ff481132f008374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string representation of a number from any base to decimal.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374">More...</a><br /></td></tr>
+<tr class="separator:afc4c4f319dadbb5b1ff481132f008374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a677f253d71524a9d500e980dc159c79c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html">QuotientRemainder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a677f253d71524a9d500e980dc159c79c">getQuotientRemainder</a> (const auto &amp;_currentRemainder, const auto &amp;divisor)</td></tr>
+<tr class="separator:a677f253d71524a9d500e980dc159c79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa150ef39a272f7228ae239679247fab3"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3">determineResultScale</a> (const std::string &amp;_number, const std::string &amp;_divisor)</td></tr>
+<tr class="memdesc:aa150ef39a272f7228ae239679247fab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the scale of the quotient of division.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3">More...</a><br /></td></tr>
+<tr class="separator:aa150ef39a272f7228ae239679247fab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26194ae8ddb44afb942fbf8335ae1730"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730">divide</a> (const std::string_view &amp;number, const std::string_view &amp;divisor, int steps=2, int decimals=5)</td></tr>
 <tr class="memdesc:a26194ae8ddb44afb942fbf8335ae1730"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divides a string representation of a number by another string representation of a number.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730">More...</a><br /></td></tr>
 <tr class="separator:a26194ae8ddb44afb942fbf8335ae1730"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,27 +171,16 @@ Functions</h2></td></tr>
 <tr class="memitem:a50acfa1ad06ce385943ddd207146c9e0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0">power</a> (std::string_view _number, const std::string_view &amp;raiseTo, int steps=2)</td></tr>
 <tr class="memdesc:a50acfa1ad06ce385943ddd207146c9e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a string representation of a number to a power.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0">More...</a><br /></td></tr>
 <tr class="separator:a50acfa1ad06ce385943ddd207146c9e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae61ae2915786a49aebb7025105cf058e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e">subtract</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false)</td></tr>
-<tr class="memdesc:ae61ae2915786a49aebb7025105cf058e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts one string representation of a number from another string representation of a number.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e">More...</a><br /></td></tr>
-<tr class="separator:ae61ae2915786a49aebb7025105cf058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c20a75a55d968bd679a1a550a46a497"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a8c20a75a55d968bd679a1a550a46a497">root</a> (const std::string &amp;_number, const std::string &amp;base, const size_t decimals=8)</td></tr>
 <tr class="memdesc:a8c20a75a55d968bd679a1a550a46a497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the n-th root of a numer.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a8c20a75a55d968bd679a1a550a46a497">More...</a><br /></td></tr>
 <tr class="separator:a8c20a75a55d968bd679a1a550a46a497"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae61ae2915786a49aebb7025105cf058e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e">subtract</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false)</td></tr>
+<tr class="memdesc:ae61ae2915786a49aebb7025105cf058e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts one string representation of a number from another string representation of a number.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e">More...</a><br /></td></tr>
+<tr class="separator:ae61ae2915786a49aebb7025105cf058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a210c635ae60eaa54f65bc82a0f3c953a"><td class="memTemplParams" colspan="2">template&lt;typename Pred &gt; </td></tr>
 <tr class="memitem:a210c635ae60eaa54f65bc82a0f3c953a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a">loop</a> (const std::string_view &amp;times, Pred predicate)</td></tr>
 <tr class="memdesc:a210c635ae60eaa54f65bc82a0f3c953a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a given predicate function a specified number of times.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a">More...</a><br /></td></tr>
 <tr class="separator:a210c635ae60eaa54f65bc82a0f3c953a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f4658ff66c0d02138acc2aa221856d0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0">representNumber</a> (const std::string_view &amp;_number)</td></tr>
-<tr class="memdesc:a6f4658ff66c0d02138acc2aa221856d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a number using alphabets and numberals.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0">More...</a><br /></td></tr>
-<tr class="separator:a6f4658ff66c0d02138acc2aa221856d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbdfe1847efd604f5b982690debca864"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#acbdfe1847efd604f5b982690debca864">toNumber</a> (const char _input)</td></tr>
-<tr class="memdesc:acbdfe1847efd604f5b982690debca864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a numeral character to a number string.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#acbdfe1847efd604f5b982690debca864">More...</a><br /></td></tr>
-<tr class="separator:acbdfe1847efd604f5b982690debca864"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a677f253d71524a9d500e980dc159c79c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html">QuotientRemainder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a677f253d71524a9d500e980dc159c79c">getQuotientRemainder</a> (const auto &amp;_currentRemainder, const auto &amp;divisor)</td></tr>
-<tr class="separator:a677f253d71524a9d500e980dc159c79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa150ef39a272f7228ae239679247fab3"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3">determineResultScale</a> (const std::string &amp;_number, const std::string &amp;_divisor)</td></tr>
-<tr class="memdesc:aa150ef39a272f7228ae239679247fab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the scale of the quotient of division.  <a href="namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3">More...</a><br /></td></tr>
-<tr class="separator:aa150ef39a272f7228ae239679247fab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a37bfff2d022f3dd5e5a15e800ecfd5d6"></a>
@@ -237,13 +221,13 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a37bfff2d022f3dd5e5a15e800ecfd5d6_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a37bfff2d022f3dd5e5a15e800ecfd5d6_cgraph.svg" width="176" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a37bfff2d022f3dd5e5a15e800ecfd5d6_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a37bfff2d022f3dd5e5a15e800ecfd5d6_icgraph.svg" width="584" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -371,7 +355,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a5b80b731e3e2c0d16dcbe5d52b08ffd5_icgraph.svg" width="300" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a5b80b731e3e2c0d16dcbe5d52b08ffd5_icgraph.svg" width="198" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -422,7 +406,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a5e20e50f3da461a8f9d50b14afd68ea8_cgraph.svg" width="100%" height="579"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a5e20e50f3da461a8f9d50b14afd68ea8_cgraph.svg" width="100%" height="562"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
@@ -485,7 +469,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_afc4c4f319dadbb5b1ff481132f008374_icgraph.svg" width="322" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_afc4c4f319dadbb5b1ff481132f008374_icgraph.svg" width="219" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -536,7 +520,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_aa150ef39a272f7228ae239679247fab3_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_aa150ef39a272f7228ae239679247fab3_icgraph.svg" width="100%" height="571"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -600,7 +584,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a26194ae8ddb44afb942fbf8335ae1730_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a26194ae8ddb44afb942fbf8335ae1730_icgraph.svg" width="658" height="362"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -649,7 +633,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_ac9102075acd398b3bdf388f6cc2ef978_icgraph.svg" width="444" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_ac9102075acd398b3bdf388f6cc2ef978_icgraph.svg" width="444" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -699,7 +683,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a7ff9976bf48df9c832d7489e88004813_icgraph.svg" width="371" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a7ff9976bf48df9c832d7489e88004813_icgraph.svg" width="371" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -739,7 +723,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a677f253d71524a9d500e980dc159c79c_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a677f253d71524a9d500e980dc159c79c_icgraph.svg" width="100%" height="571"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -790,7 +774,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a210c635ae60eaa54f65bc82a0f3c953a_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a210c635ae60eaa54f65bc82a0f3c953a_icgraph.svg" width="176" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -898,7 +882,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a50acfa1ad06ce385943ddd207146c9e0_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a50acfa1ad06ce385943ddd207146c9e0_cgraph.svg" width="100%" height="564"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
@@ -937,13 +921,13 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a6f4658ff66c0d02138acc2aa221856d0_cgraph.svg" width="100%" height="579"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a6f4658ff66c0d02138acc2aa221856d0_cgraph.svg" width="100%" height="562"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a6f4658ff66c0d02138acc2aa221856d0_icgraph.svg" width="567" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a6f4658ff66c0d02138acc2aa221856d0_icgraph.svg" width="464" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -995,12 +979,6 @@ Here is the caller graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a8c20a75a55d968bd679a1a550a46a497_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a8c20a75a55d968bd679a1a550a46a497_icgraph.svg" width="279" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1095,16 +1073,21 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number string. </dd></dl>
 <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_acbdfe1847efd604f5b982690debca864_cgraph.svg" width="182" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_acbdfe1847efd604f5b982690debca864_icgraph.svg" width="540" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_acbdfe1847efd604f5b982690debca864_icgraph.svg" width="438" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -1123,7 +1106,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:54"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

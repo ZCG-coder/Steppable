@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('platform_8hpp_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,12 +109,17 @@ $(document).ready(function(){initNavTree('platform_8hpp_source.html',''); initRe
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">platform.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="platform_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2023-2024 NWSOFT                                                                 *</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                                                *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy                   *</span></div>
@@ -189,11 +173,10 @@ $(document).ready(function(){initNavTree('platform_8hpp_source.html',''); initRe
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> bt;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// namespace steppable::__internals::utils</span></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div><div class="ttdoc">The namespace containing utility functions for the Steppable library.</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div><div class="ttdoc">The namespace containing utility functions for the Steppable library.</div><div class="ttdef"><b>Definition:</b> argParse.cpp:39</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a265f606a0e1f8eb0fc678593f7f44be7"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">steppable::__internals::utils::programSafeExit</a></div><div class="ttdeci">void programSafeExit(const int status)</div><div class="ttdoc">Exit the program safely.</div><div class="ttdef"><b>Definition:</b> platform.hpp:56</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a52bb814d5639116caa0b4a53b7f53e5e"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e">steppable::__internals::utils::localtime_xp</a></div><div class="ttdeci">std::tm localtime_xp(std::time_t *timer)</div><div class="ttdef"><b>Definition:</b> platform.hpp:65</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -212,7 +195,7 @@ $(document).ready(function(){initNavTree('platform_8hpp_source.html',''); initRe
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:53"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

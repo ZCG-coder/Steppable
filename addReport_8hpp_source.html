@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('addReport_8hpp_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,12 +109,17 @@ $(document).ready(function(){initNavTree('addReport_8hpp_source.html',''); initR
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1d5bdb0c0be0a89b98393651a919a599.html">add</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">addReport.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="addReport_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2023-2024 NWSOFT                                                                 *</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                                                *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy                   *</span></div>
@@ -162,7 +146,7 @@ $(document).ready(function(){initNavTree('addReport_8hpp_source.html',''); initR
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;std::string <a class="code" href="addReport_8hpp.html#a88d3fd7ce0a9f5b2a4d22123e270592f">reportAdd</a>(<span class="keyword">const</span> std::string&amp; aInteger,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;std::string reportAdd(<span class="keyword">const</span> std::string&amp; aInteger,</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                      <span class="keyword">const</span> std::string&amp; aDecimal,</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                      <span class="keyword">const</span> std::string&amp; bInteger,</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                      <span class="keyword">const</span> std::string&amp; bDecimal,</div>
@@ -171,9 +155,7 @@ $(document).ready(function(){initNavTree('addReport_8hpp_source.html',''); initR
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                      <span class="keywordtype">bool</span> resultIsNegative,</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                      <span class="keywordtype">int</span> steps,</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                      <span class="keywordtype">bool</span> properlyFormat);</div>
-<div class="ttc" id="aaddReport_8hpp_html_a88d3fd7ce0a9f5b2a4d22123e270592f"><div class="ttname"><a href="addReport_8hpp.html#a88d3fd7ce0a9f5b2a4d22123e270592f">reportAdd</a></div><div class="ttdeci">std::string reportAdd(const std::string &amp;aInteger, const std::string &amp;aDecimal, const std::string &amp;bInteger, const std::string &amp;bDecimal, const std::vector&lt; int &gt; &amp;sumDigits, const std::vector&lt; bool &gt; &amp;carries, bool resultIsNegative, int steps, bool properlyFormat)</div><div class="ttdoc">Reports the sum of two number strings.</div><div class="ttdef"><b>Definition:</b> addReport.cpp:45</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -192,7 +174,7 @@ $(document).ready(function(){initNavTree('addReport_8hpp_source.html',''); initR
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:53"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

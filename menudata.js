@@ -116,21 +116,4 @@ var menudata={children:[
 {text:"w",url:"functions_func.html#index_w"},
 {text:"~",url:"functions_func.html#index__7E"}]},
 {text:"Variables",url:"functions_vars.html"},
-{text:"Related Functions",url:"functions_rela.html"}]}]},
-{text:"Files",url:"files.html",children:[
-{text:"File List",url:"files.html"},
-{text:"File Members",url:"globals.html",children:[
-{text:"All",url:"globals.html",children:[
-{text:"b",url:"globals.html#index_b"},
-{text:"d",url:"globals.html#index_d"},
-{text:"l",url:"globals.html#index_l"},
-{text:"m",url:"globals.html#index_m"},
-{text:"n",url:"globals.html#index_n"},
-{text:"r",url:"globals.html#index_r"},
-{text:"s",url:"globals.html#index_s"},
-{text:"t",url:"globals.html#index_t"}]},
-{text:"Functions",url:"globals_func.html",children:[
-{text:"m",url:"globals_func.html#index_m"},
-{text:"n",url:"globals_func.html#index_n"},
-{text:"r",url:"globals_func.html#index_r"}]},
-{text:"Macros",url:"globals_defs.html"}]}]}]}
+{text:"Related Functions",url:"functions_rela.html"}]}]}]}

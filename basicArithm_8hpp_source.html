@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('basicArithm_8hpp_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,12 +109,17 @@ $(document).ready(function(){initNavTree('basicArithm_8hpp_source.html',''); ini
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_468765572d4c759fba87263a449f2bdd.html">fn</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">basicArithm.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="basicArithm_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2023-2024 NWSOFT                                                                 *</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                                                *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy                   *</span></div>
@@ -159,14 +143,14 @@ $(document).ready(function(){initNavTree('basicArithm_8hpp_source.html',''); ini
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="output_8hpp.html">output.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;output.hpp&quot;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">using namespace </span>std::literals;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1arithmetic.html">   49</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html">steppable::__internals::arithmetic</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html">steppable::__internals::arithmetic</a></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html">   54</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html">QuotientRemainder</a></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
@@ -225,8 +209,8 @@ $(document).ready(function(){initNavTree('basicArithm_8hpp_source.html',''); ini
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            }</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordflow">catch</span> (std::exception&amp; e)</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <a class="code" href="namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7">output::error</a>(<span class="stringliteral">&quot;loop&quot;</span>, <span class="stringliteral">&quot;Exception occurred in predicate.&quot;</span>s);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <a class="code" href="namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7">output::error</a>(<span class="stringliteral">&quot;loop&quot;</span>, <span class="stringliteral">&quot;Exception message: %s&quot;</span>s, e.what());</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                output::error(<span class="stringliteral">&quot;loop&quot;</span>, <span class="stringliteral">&quot;Exception occurred in predicate.&quot;</span>s);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                output::error(<span class="stringliteral">&quot;loop&quot;</span>, <span class="stringliteral">&quot;Exception message: %s&quot;</span>s, e.what());</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            }</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            current = <a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">add</a>(current, <span class="stringliteral">&quot;1&quot;</span>, 0);</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            result = <a class="code" href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">compare</a>(current, times, 0);</div>
@@ -234,27 +218,24 @@ $(document).ready(function(){initNavTree('basicArithm_8hpp_source.html',''); ini
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;} <span class="comment">// namespace steppable::__internals::arithmetic</span></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html">steppable::__internals::arithmetic</a></div><div class="ttdef"><b>Definition:</b> basicArithm.hpp:50</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a1deb38d5027df01a66b6c3efd57aedca"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">steppable::__internals::arithmetic::add</a></div><div class="ttdeci">std::string add(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool negative=false, bool properlyFormat=true)</div><div class="ttdoc">Adds two string representations of numbers, and performs with the column method.</div><div class="ttdef"><b>Definition:</b> add.cpp:47</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html">steppable::__internals::arithmetic</a></div><div class="ttdef"><b>Definition:</b> abs.cpp:44</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a1deb38d5027df01a66b6c3efd57aedca"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca">steppable::__internals::arithmetic::add</a></div><div class="ttdeci">std::string add(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool negative, const bool properlyFormat)</div><div class="ttdoc">Adds two string representations of numbers, and performs with the column method.</div><div class="ttdef"><b>Definition:</b> add.cpp:47</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a210c635ae60eaa54f65bc82a0f3c953a"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a">steppable::__internals::arithmetic::loop</a></div><div class="ttdeci">void loop(const std::string_view &amp;times, Pred predicate)</div><div class="ttdoc">Executes a given predicate function a specified number of times.</div><div class="ttdef"><b>Definition:</b> basicArithm.hpp:200</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a26194ae8ddb44afb942fbf8335ae1730"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730">steppable::__internals::arithmetic::divide</a></div><div class="ttdeci">std::string divide(const std::string_view &amp;number, const std::string_view &amp;divisor, int steps=2, int decimals=5)</div><div class="ttdoc">Divides a string representation of a number by another string representation of a number.</div><div class="ttdef"><b>Definition:</b> division.cpp:115</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a37bfff2d022f3dd5e5a15e800ecfd5d6"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a37bfff2d022f3dd5e5a15e800ecfd5d6">steppable::__internals::arithmetic::abs</a></div><div class="ttdeci">std::string abs(const std::string_view &amp;_number, int steps)</div><div class="ttdoc">Calculates the absolute value of a string representation of a number.</div><div class="ttdef"><b>Definition:</b> abs.cpp:45</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a50acfa1ad06ce385943ddd207146c9e0"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0">steppable::__internals::arithmetic::power</a></div><div class="ttdeci">std::string power(std::string_view _number, const std::string_view &amp;raiseTo, int steps=2)</div><div class="ttdoc">Raises a string representation of a number to a power.</div><div class="ttdef"><b>Definition:</b> power.cpp:41</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a59c559ff2ec84dc1964531893a457c66"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66">steppable::__internals::arithmetic::multiply</a></div><div class="ttdeci">std::string multiply(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2)</div><div class="ttdoc">Multiplies two string representations of numbers.</div><div class="ttdef"><b>Definition:</b> multiply.cpp:49</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a5b80b731e3e2c0d16dcbe5d52b08ffd5"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5b80b731e3e2c0d16dcbe5d52b08ffd5">steppable::__internals::arithmetic::baseConvert</a></div><div class="ttdeci">std::string baseConvert(const std::string_view &amp;_number, const std::string_view &amp;baseStr, const int steps=2)</div><div class="ttdoc">Converts a string representation of a number from decimal to another one.</div><div class="ttdef"><b>Definition:</b> baseConvert.cpp:70</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a5e20e50f3da461a8f9d50b14afd68ea8"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">steppable::__internals::arithmetic::compare</a></div><div class="ttdeci">std::string compare(const std::string_view &amp;_a, const std::string_view &amp;_b, int steps=2)</div><div class="ttdoc">Compares two string representations of numbers.</div><div class="ttdef"><b>Definition:</b> comparison.cpp:45</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a26194ae8ddb44afb942fbf8335ae1730"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730">steppable::__internals::arithmetic::divide</a></div><div class="ttdeci">std::string divide(const std::string_view &amp;_number, const std::string_view &amp;_divisor, const int steps, const int _decimals)</div><div class="ttdoc">Divides a string representation of a number by another string representation of a number.</div><div class="ttdef"><b>Definition:</b> division.cpp:115</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a37bfff2d022f3dd5e5a15e800ecfd5d6"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a37bfff2d022f3dd5e5a15e800ecfd5d6">steppable::__internals::arithmetic::abs</a></div><div class="ttdeci">std::string abs(const std::string_view &amp;_number, const int steps)</div><div class="ttdoc">Calculates the absolute value of a string representation of a number.</div><div class="ttdef"><b>Definition:</b> abs.cpp:45</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a50acfa1ad06ce385943ddd207146c9e0"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0">steppable::__internals::arithmetic::power</a></div><div class="ttdeci">std::string power(const std::string_view _number, const std::string_view &amp;_raiseTo, const int steps)</div><div class="ttdoc">Raises a string representation of a number to a power.</div><div class="ttdef"><b>Definition:</b> power.cpp:41</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a59c559ff2ec84dc1964531893a457c66"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66">steppable::__internals::arithmetic::multiply</a></div><div class="ttdeci">std::string multiply(const std::string_view &amp;_a, const std::string_view &amp;_b, const int steps)</div><div class="ttdoc">Multiplies two string representations of numbers.</div><div class="ttdef"><b>Definition:</b> multiply.cpp:49</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a5b80b731e3e2c0d16dcbe5d52b08ffd5"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5b80b731e3e2c0d16dcbe5d52b08ffd5">steppable::__internals::arithmetic::baseConvert</a></div><div class="ttdeci">std::string baseConvert(const std::string_view &amp;_number, const std::string_view &amp;baseStr, const int steps)</div><div class="ttdoc">Converts a string representation of a number from decimal to another one.</div><div class="ttdef"><b>Definition:</b> baseConvert.cpp:70</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a5e20e50f3da461a8f9d50b14afd68ea8"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8">steppable::__internals::arithmetic::compare</a></div><div class="ttdeci">std::string compare(const std::string_view &amp;_a, const std::string_view &amp;_b, const int steps)</div><div class="ttdoc">Compares two string representations of numbers.</div><div class="ttdef"><b>Definition:</b> comparison.cpp:45</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a7ff9976bf48df9c832d7489e88004813"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a7ff9976bf48df9c832d7489e88004813">steppable::__internals::arithmetic::getGCD</a></div><div class="ttdeci">std::string getGCD(const std::string_view &amp;_a, const std::string_view &amp;_b)</div><div class="ttdoc">Gets the greatest common divisor of two string representations of numbers.</div><div class="ttdef"><b>Definition:</b> division.cpp:304</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a8c20a75a55d968bd679a1a550a46a497"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a8c20a75a55d968bd679a1a550a46a497">steppable::__internals::arithmetic::root</a></div><div class="ttdeci">std::string root(const std::string &amp;_number, const std::string &amp;base, const size_t decimals=8)</div><div class="ttdoc">Takes the n-th root of a numer.</div><div class="ttdef"><b>Definition:</b> root.cpp:43</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_a8c20a75a55d968bd679a1a550a46a497"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#a8c20a75a55d968bd679a1a550a46a497">steppable::__internals::arithmetic::root</a></div><div class="ttdeci">std::string root(const std::string &amp;_number, const std::string &amp;base, const size_t _decimals)</div><div class="ttdoc">Takes the n-th root of a numer.</div><div class="ttdef"><b>Definition:</b> root.cpp:43</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_ac9102075acd398b3bdf388f6cc2ef978"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978">steppable::__internals::arithmetic::divideWithQuotient</a></div><div class="ttdeci">QuotientRemainder divideWithQuotient(const std::string &amp;number, const std::string &amp;divisor)</div><div class="ttdef"><b>Definition:</b> division.cpp:293</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_ae61ae2915786a49aebb7025105cf058e"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e">steppable::__internals::arithmetic::subtract</a></div><div class="ttdeci">std::string subtract(const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false)</div><div class="ttdoc">Subtracts one string representation of a number from another string representation of a number.</div><div class="ttdef"><b>Definition:</b> subtract.cpp:51</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_afc4c4f319dadbb5b1ff481132f008374"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374">steppable::__internals::arithmetic::decimalConvert</a></div><div class="ttdeci">std::string decimalConvert(const std::string_view &amp;_inputString, const std::string_view &amp;baseString, int steps=2)</div><div class="ttdoc">Converts a string representation of a number from any base to decimal.</div><div class="ttdef"><b>Definition:</b> decimalConvert.cpp:64</div></div>
-<div class="ttc" id="anamespacesteppable_1_1output_html_a076ed2ffbc6d17c02f91f3b9cb4026b7"><div class="ttname"><a href="namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7">steppable::output::error</a></div><div class="ttdeci">void error(const std::string &amp;name, std::basic_string&lt; T &gt; msg, Args &amp;&amp;... args)</div><div class="ttdoc">Prints an error message.</div><div class="ttdef"><b>Definition:</b> output.hpp:76</div></div>
-<div class="ttc" id="aoutput_8hpp_html"><div class="ttname"><a href="output_8hpp.html">output.hpp</a></div><div class="ttdoc">This file contains functions for displaying error, warning, and info messages.</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_ae61ae2915786a49aebb7025105cf058e"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e">steppable::__internals::arithmetic::subtract</a></div><div class="ttdeci">std::string subtract(const std::string_view &amp;a, const std::string_view &amp;b, const int steps, const bool noMinus)</div><div class="ttdoc">Subtracts one string representation of a number from another string representation of a number.</div><div class="ttdef"><b>Definition:</b> subtract.cpp:51</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1arithmetic_html_afc4c4f319dadbb5b1ff481132f008374"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374">steppable::__internals::arithmetic::decimalConvert</a></div><div class="ttdeci">std::string decimalConvert(const std::string_view &amp;_inputString, const std::string_view &amp;baseString, int steps)</div><div class="ttdoc">Converts a string representation of a number from any base to decimal.</div><div class="ttdef"><b>Definition:</b> decimalConvert.cpp:64</div></div>
 <div class="ttc" id="astructsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder_html"><div class="ttname"><a href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html">steppable::__internals::arithmetic::QuotientRemainder</a></div><div class="ttdoc">Represents the quotient and remainder of a division operation.</div><div class="ttdef"><b>Definition:</b> basicArithm.hpp:55</div></div>
 <div class="ttc" id="astructsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder_html_a6b2431c269b09e854d33a09bd31f00e6"><div class="ttname"><a href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#a6b2431c269b09e854d33a09bd31f00e6">steppable::__internals::arithmetic::QuotientRemainder::remainder</a></div><div class="ttdeci">std::string remainder</div><div class="ttdef"><b>Definition:</b> basicArithm.hpp:57</div></div>
 <div class="ttc" id="astructsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder_html_ae02205a4a9283f5df34a455b575fd60c"><div class="ttname"><a href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#ae02205a4a9283f5df34a455b575fd60c">steppable::__internals::arithmetic::QuotientRemainder::quotient</a></div><div class="ttdeci">std::string quotient</div><div class="ttdef"><b>Definition:</b> basicArithm.hpp:56</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -273,7 +254,7 @@ $(document).ready(function(){initNavTree('basicArithm_8hpp_source.html',''); ini
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:53"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

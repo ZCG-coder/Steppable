@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -100,22 +96,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('annotated.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -137,11 +117,11 @@ $(document).ready(function(){initNavTree('annotated.html',''); initResizable(); 
 <div class="contents">
 <div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><div class="directory">
 <div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span><span onclick="javascript:toggleLevel(3);">3</span><span onclick="javascript:toggleLevel(4);">4</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="toggleFolder('0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><b>steppable</b></td><td class="desc">The public namespace for the Steppable library </td></tr>
-<tr id="row_0_0_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span id="arr_0_0_" class="arrow" onclick="toggleFolder('0_0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><b>__internals</b></td><td class="desc">The namespace containing internal functions for the Steppable library </td></tr>
+<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="toggleFolder('0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacesteppable.html" target="_self">steppable</a></td><td class="desc">The public namespace for the Steppable library </td></tr>
+<tr id="row_0_0_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span id="arr_0_0_" class="arrow" onclick="toggleFolder('0_0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacesteppable_1_1____internals.html" target="_self">__internals</a></td><td class="desc">The namespace containing internal functions for the Steppable library </td></tr>
 <tr id="row_0_0_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span id="arr_0_0_0_" class="arrow" onclick="toggleFolder('0_0_0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacesteppable_1_1____internals_1_1arithmetic.html" target="_self">arithmetic</a></td><td class="desc"></td></tr>
 <tr id="row_0_0_0_0_"><td class="entry"><span style="width:64px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html" target="_self">QuotientRemainder</a></td><td class="desc">Represents the quotient and remainder of a division operation </td></tr>
-<tr id="row_0_0_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span id="arr_0_0_1_" class="arrow" onclick="toggleFolder('0_0_1_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacesteppable_1_1____internals_1_1logging.html" target="_self">logging</a></td><td class="desc"></td></tr>
+<tr id="row_0_0_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span id="arr_0_0_1_" class="arrow" onclick="toggleFolder('0_0_1_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacesteppable_1_1____internals_1_1logging.html" target="_self">logging</a></td><td class="desc">The logging namespace contains classes and functions for logging. The logging namespace contains the <a class="el" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html" title="The Logger class provides logging functionality.">Logger</a> class, which provides logging functionality, including logging messages at different levels, such as error, warning, info, and debug. It writes the log messages to a specified log file </td></tr>
 <tr id="row_0_0_1_0_"><td class="entry"><span style="width:64px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classsteppable_1_1____internals_1_1logging_1_1Logger.html" target="_self">Logger</a></td><td class="desc">Logging functionality </td></tr>
 <tr id="row_0_0_2_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span id="arr_0_0_2_" class="arrow" onclick="toggleFolder('0_0_2_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacesteppable_1_1____internals_1_1numUtils.html" target="_self">numUtils</a></td><td class="desc"></td></tr>
 <tr id="row_0_0_2_0_"><td class="entry"><span style="width:64px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html" target="_self">SplitNumberResult</a></td><td class="desc">A structure for storing split numbers </td></tr>
@@ -159,7 +139,6 @@ $(document).ready(function(){initNavTree('annotated.html',''); initResizable(); 
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,7 +157,7 @@ $(document).ready(function(){initNavTree('annotated.html',''); initResizable(); 
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:54"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('number_8hpp_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,12 +109,17 @@ $(document).ready(function(){initNavTree('number_8hpp_source.html',''); initResi
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">number.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="number_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2023-2024 NWSOFT                                                                 *</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                                                *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy                   *</span></div>
@@ -161,20 +145,20 @@ $(document).ready(function(){initNavTree('number_8hpp_source.html',''); initResi
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span>steppable</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesteppable.html">steppable</a></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092">   45</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092">RoundingMode</a></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092">   45</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092">RoundingMode</a></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba">   48</a></span>&#160;        <a class="code" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba">USE_MAXIMUM_PREC</a> = 0xFF,</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba">   48</a></span>&#160;        <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba">USE_MAXIMUM_PREC</a> = 0xFF,</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb">   51</a></span>&#160;        <a class="code" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb">USE_MINIMUM_PREC</a> = 0x01,</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb">   51</a></span>&#160;        <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb">USE_MINIMUM_PREC</a> = 0x01,</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64">   54</a></span>&#160;        <a class="code" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64">USE_CURRENT_PREC</a> = 0x02,</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64">   54</a></span>&#160;        <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64">USE_CURRENT_PREC</a> = 0x02,</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda">   57</a></span>&#160;        <a class="code" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda">USE_OTHER_PREC</a> = 0x03,</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda">   57</a></span>&#160;        <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda">USE_OTHER_PREC</a> = 0x03,</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320">DISCARD_ALL_DECIMALS</a> = 0x00</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320">   61</a></span>&#160;    };</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320">DISCARD_ALL_DECIMALS</a> = 0x00</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320">   61</a></span>&#160;    };</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classsteppable_1_1Number.html">   67</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classsteppable_1_1Number.html">Number</a></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
@@ -183,12 +167,12 @@ $(document).ready(function(){initNavTree('number_8hpp_source.html',''); initResi
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classsteppable_1_1Number.html#a2e23e169025f1308a248a0d508d2e33c">   74</a></span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="classsteppable_1_1Number.html#a2e23e169025f1308a248a0d508d2e33c">prec</a>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classsteppable_1_1Number.html#a8f789d22f723c1957ad6a38c42075eed">   77</a></span>&#160;        <a class="code" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092">RoundingMode</a> <a class="code" href="classsteppable_1_1Number.html#a8f789d22f723c1957ad6a38c42075eed">mode</a> = <a class="code" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64">USE_CURRENT_PREC</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classsteppable_1_1Number.html#a8f789d22f723c1957ad6a38c42075eed">   77</a></span>&#160;        <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092">RoundingMode</a> <a class="code" href="classsteppable_1_1Number.html#a8f789d22f723c1957ad6a38c42075eed">mode</a> = <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64">USE_CURRENT_PREC</a>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="classsteppable_1_1Number.html#aa0f61e0551226d672ce17f5b4af01ab5">Number</a>();</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classsteppable_1_1Number.html#aa0f61e0551226d672ce17f5b4af01ab5">Number</a>(<span class="keyword">const</span> std::string&amp; <a class="code" href="classsteppable_1_1Number.html#a8947c23837fd45577abcaf9e7f07d540">value</a> = <span class="stringliteral">&quot;0&quot;</span>, <span class="keywordtype">size_t</span> <a class="code" href="classsteppable_1_1Number.html#a2e23e169025f1308a248a0d508d2e33c">prec</a> = 0, <a class="code" href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092">RoundingMode</a> <a class="code" href="classsteppable_1_1Number.html#a8f789d22f723c1957ad6a38c42075eed">mode</a> = USE_CURRENT_PREC);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classsteppable_1_1Number.html#aa0f61e0551226d672ce17f5b4af01ab5">Number</a>(<span class="keyword">const</span> std::string&amp; <a class="code" href="classsteppable_1_1Number.html#a8947c23837fd45577abcaf9e7f07d540">value</a> = <span class="stringliteral">&quot;0&quot;</span>, <span class="keywordtype">size_t</span> <a class="code" href="classsteppable_1_1Number.html#a2e23e169025f1308a248a0d508d2e33c">prec</a> = 0, <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092">RoundingMode</a> <a class="code" href="classsteppable_1_1Number.html#a8f789d22f723c1957ad6a38c42075eed">mode</a> = <a class="code" href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64">USE_CURRENT_PREC</a>);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="classsteppable_1_1Number.html">Number</a> <a class="code" href="classsteppable_1_1Number.html#ab92bf92daec1e2db8c9b4ccd985159b3">operator+</a>(<span class="keyword">const</span> <a class="code" href="classsteppable_1_1Number.html">Number</a>&amp; rhs) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
@@ -259,14 +243,14 @@ $(document).ready(function(){initNavTree('number_8hpp_source.html',''); initResi
 <div class="ttc" id="aclasssteppable_1_1Number_html_ae3e13c5f73bc67cd464c84a8640e1387"><div class="ttname"><a href="classsteppable_1_1Number.html#ae3e13c5f73bc67cd464c84a8640e1387">steppable::Number::operator^</a></div><div class="ttdeci">Number operator^(const Number &amp;rhs) const</div><div class="ttdoc">Raises the number to a power.</div><div class="ttdef"><b>Definition:</b> number.cpp:78</div></div>
 <div class="ttc" id="aclasssteppable_1_1Number_html_ae839c653cf0ceaca2c76f44374a44fe3"><div class="ttname"><a href="classsteppable_1_1Number.html#ae839c653cf0ceaca2c76f44374a44fe3">steppable::Number::operator-</a></div><div class="ttdeci">Number operator-(const Number &amp;rhs) const</div><div class="ttdoc">Subtracts two numbers.</div><div class="ttdef"><b>Definition:</b> number.cpp:51</div></div>
 <div class="ttc" id="aclasssteppable_1_1Number_html_aebdaf5d342a2a897793556bd390bc184"><div class="ttname"><a href="classsteppable_1_1Number.html#aebdaf5d342a2a897793556bd390bc184">steppable::Number::operator/</a></div><div class="ttdeci">Number operator/(const Number &amp;rhs) const</div><div class="ttdoc">Divides two numbers.</div><div class="ttdef"><b>Definition:</b> number.cpp:55</div></div>
-<div class="ttc" id="anumber_8hpp_html_a61949411cf477d12b3d15472d5b83092"><div class="ttname"><a href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092">steppable::RoundingMode</a></div><div class="ttdeci">RoundingMode</div><div class="ttdoc">Specifies how Steppable should round the number in operations.</div><div class="ttdef"><b>Definition:</b> number.hpp:46</div></div>
-<div class="ttc" id="anumber_8hpp_html_a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320"><div class="ttname"><a href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320">steppable::DISCARD_ALL_DECIMALS</a></div><div class="ttdeci">@ DISCARD_ALL_DECIMALS</div><div class="ttdoc">Do not append any decimal places.</div><div class="ttdef"><b>Definition:</b> number.hpp:60</div></div>
-<div class="ttc" id="anumber_8hpp_html_a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64"><div class="ttname"><a href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64">steppable::USE_CURRENT_PREC</a></div><div class="ttdeci">@ USE_CURRENT_PREC</div><div class="ttdoc">Use the current precision.</div><div class="ttdef"><b>Definition:</b> number.hpp:54</div></div>
-<div class="ttc" id="anumber_8hpp_html_a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda"><div class="ttname"><a href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda">steppable::USE_OTHER_PREC</a></div><div class="ttdeci">@ USE_OTHER_PREC</div><div class="ttdoc">Use the other number's precision.</div><div class="ttdef"><b>Definition:</b> number.hpp:57</div></div>
-<div class="ttc" id="anumber_8hpp_html_a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb"><div class="ttname"><a href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb">steppable::USE_MINIMUM_PREC</a></div><div class="ttdeci">@ USE_MINIMUM_PREC</div><div class="ttdoc">Use the lower precision whenever possible.</div><div class="ttdef"><b>Definition:</b> number.hpp:51</div></div>
-<div class="ttc" id="anumber_8hpp_html_a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba"><div class="ttname"><a href="number_8hpp.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba">steppable::USE_MAXIMUM_PREC</a></div><div class="ttdeci">@ USE_MAXIMUM_PREC</div><div class="ttdoc">Use the higher precision whenever possible.</div><div class="ttdef"><b>Definition:</b> number.hpp:48</div></div>
+<div class="ttc" id="anamespacesteppable_html"><div class="ttname"><a href="namespacesteppable.html">steppable</a></div><div class="ttdoc">The public namespace for the Steppable library.</div><div class="ttdef"><b>Definition:</b> abs.cpp:44</div></div>
+<div class="ttc" id="anamespacesteppable_html_a61949411cf477d12b3d15472d5b83092"><div class="ttname"><a href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092">steppable::RoundingMode</a></div><div class="ttdeci">RoundingMode</div><div class="ttdoc">Specifies how Steppable should round the number in operations.</div><div class="ttdef"><b>Definition:</b> number.hpp:46</div></div>
+<div class="ttc" id="anamespacesteppable_html_a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320"><div class="ttname"><a href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320">steppable::DISCARD_ALL_DECIMALS</a></div><div class="ttdeci">@ DISCARD_ALL_DECIMALS</div><div class="ttdoc">Do not append any decimal places.</div><div class="ttdef"><b>Definition:</b> number.hpp:60</div></div>
+<div class="ttc" id="anamespacesteppable_html_a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64"><div class="ttname"><a href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64">steppable::USE_CURRENT_PREC</a></div><div class="ttdeci">@ USE_CURRENT_PREC</div><div class="ttdoc">Use the current precision.</div><div class="ttdef"><b>Definition:</b> number.hpp:54</div></div>
+<div class="ttc" id="anamespacesteppable_html_a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda"><div class="ttname"><a href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda">steppable::USE_OTHER_PREC</a></div><div class="ttdeci">@ USE_OTHER_PREC</div><div class="ttdoc">Use the other number's precision.</div><div class="ttdef"><b>Definition:</b> number.hpp:57</div></div>
+<div class="ttc" id="anamespacesteppable_html_a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb"><div class="ttname"><a href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb">steppable::USE_MINIMUM_PREC</a></div><div class="ttdeci">@ USE_MINIMUM_PREC</div><div class="ttdoc">Use the lower precision whenever possible.</div><div class="ttdef"><b>Definition:</b> number.hpp:51</div></div>
+<div class="ttc" id="anamespacesteppable_html_a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba"><div class="ttname"><a href="namespacesteppable.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba">steppable::USE_MAXIMUM_PREC</a></div><div class="ttdeci">@ USE_MAXIMUM_PREC</div><div class="ttdoc">Use the higher precision whenever possible.</div><div class="ttdef"><b>Definition:</b> number.hpp:48</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -285,7 +269,7 @@ $(document).ready(function(){initNavTree('number_8hpp_source.html',''); initResi
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:53"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

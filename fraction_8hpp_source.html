@@ -16,10 +16,6 @@
         <!--BEGIN COPY_CLIPBOARD-->
         <script type="text/javascript" src="clipboard.js"></script>
         <!--END COPY_CLIPBOARD-->
-        <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -99,23 +95,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('fraction_8hpp_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -130,12 +109,17 @@ $(document).ready(function(){initNavTree('fraction_8hpp_source.html',''); initRe
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">fraction.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="fraction_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2023-2024 NWSOFT                                                                 *</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                                                *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy                   *</span></div>
@@ -159,11 +143,11 @@ $(document).ready(function(){initNavTree('fraction_8hpp_source.html',''); initRe
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="number_8hpp.html">number.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;number.hpp&quot;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span>steppable</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesteppable.html">steppable</a></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classsteppable_1_1Fraction.html">   43</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classsteppable_1_1Fraction.html">Fraction</a></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
@@ -237,9 +221,8 @@ $(document).ready(function(){initNavTree('fraction_8hpp_source.html',''); initRe
 <div class="ttc" id="aclasssteppable_1_1Fraction_html_ac93887d285e9ffcb813a47600a2e7b0c"><div class="ttname"><a href="classsteppable_1_1Fraction.html#ac93887d285e9ffcb813a47600a2e7b0c">steppable::Fraction::operator&gt;</a></div><div class="ttdeci">bool operator&gt;(const Fraction &amp;rhs) const</div><div class="ttdoc">Compare two fractions for less than.</div><div class="ttdef"><b>Definition:</b> fraction.cpp:168</div></div>
 <div class="ttc" id="aclasssteppable_1_1Fraction_html_ad943d28a7e9c4860a1f4abc25a68b83b"><div class="ttname"><a href="classsteppable_1_1Fraction.html#ad943d28a7e9c4860a1f4abc25a68b83b">steppable::Fraction::operator==</a></div><div class="ttdeci">bool operator==(const Fraction &amp;rhs) const</div><div class="ttdoc">Compares two numbers for equality.</div><div class="ttdef"><b>Definition:</b> fraction.cpp:150</div></div>
 <div class="ttc" id="aclasssteppable_1_1Number_html"><div class="ttname"><a href="classsteppable_1_1Number.html">steppable::Number</a></div><div class="ttdoc">Represents a number with arbitrary precision. It basically stores the value as a string.</div><div class="ttdef"><b>Definition:</b> number.hpp:68</div></div>
-<div class="ttc" id="anumber_8hpp_html"><div class="ttname"><a href="number_8hpp.html">number.hpp</a></div><div class="ttdoc">Contains the definition of the Number class, which offers an API for arbitrary precision arithmetic.</div></div>
+<div class="ttc" id="anamespacesteppable_html"><div class="ttname"><a href="namespacesteppable.html">steppable</a></div><div class="ttdoc">The public namespace for the Steppable library.</div><div class="ttdef"><b>Definition:</b> abs.cpp:44</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -258,7 +241,7 @@ $(document).ready(function(){initNavTree('fraction_8hpp_source.html',''); initRe
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 8 2024 14:43:53"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 9 2024 02:09:40"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();
