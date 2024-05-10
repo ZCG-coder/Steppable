@@ -30,6 +30,8 @@
 
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
+#include "fraction.hpp"
+#include "rootReport.hpp"
 #include "util.hpp"
 
 #include <string>
@@ -40,9 +42,15 @@ using namespace std::literals;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string root(const std::string& _number, const std::string& base, const size_t _decimals)
+    std::string root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)
     {
-
+        if (numUtils::isDecimal(base))
+        {
+            const auto& fraction = Fraction(_number);
+            const auto& [top, bottom] = fraction.asArray();
+            const auto &powerResult = power(_number, bottom, 0), rootResult = root(powerResult, top, _decimals, 0);
+            return reportRootPower(_number, base, fraction, rootResult, steps);
+        }
 
         auto decimals = _decimals + 1;
         size_t raisedTimes = 0;

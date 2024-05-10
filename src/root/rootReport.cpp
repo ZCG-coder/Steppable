@@ -22,7 +22,32 @@
 
 #include "rootReport.hpp"
 
+#include "symbols.hpp"
+
+#include <sstream>
 #include <string>
+
+using namespace steppable::__internals::symbols;
+
+std::string reportRootPower(const std::string& _number,
+                            const std::string& base,
+                            const steppable::Fraction& fraction,
+                            const std::string& rootResult,
+                            const int steps)
+{
+    auto array = fraction.asArray();
+    std::stringstream ss;
+
+    if (steps == 2)
+        ss << "The base " << base << " is a decimal. Therefore, we need to perform a power operation first." << '\n';
+    if (steps >= 1)
+    {
+        ss << _number << makeSuperscript(static_cast<std::string>(base));
+        ss << " = " << makeSuperscript(array[1]) << makeSurd(_number + makeSuperscript(array[0])) << " = ";
+    }
+    ss << rootResult;
+    return ss.str();
+}
 
 std::string reportRoot()
 {

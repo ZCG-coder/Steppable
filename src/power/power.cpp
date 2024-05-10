@@ -52,7 +52,7 @@ namespace steppable::__internals::arithmetic
             // 3. Take the root of the number to the denominator of the fraction.
             const auto& fraction = Fraction(raiseTo);
             const auto& [top, bottom] = fraction.asArray();
-            const auto &powerResult = power(_number, top, 0), rootResult = root(powerResult, bottom);
+            const auto &powerResult = power(_number, top, 0), rootResult = root(powerResult, bottom, 8, 0);
             return reportPowerRoot(number, raiseTo, fraction, rootResult, steps);
         }
 

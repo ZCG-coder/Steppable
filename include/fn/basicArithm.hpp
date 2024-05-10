@@ -186,9 +186,11 @@ namespace steppable::__internals::arithmetic
      * @param _number The number to take root of.
      * @param base The base of the root.
      * @param decimals The decimals of the operation.
+     * @param steps The steps to show while taking the root.
+     *
      * @return The result of the root operation.
      */
-    std::string root(const std::string& _number, const std::string& base, const size_t decimals = 8);
+    std::string root(const std::string& _number, const std::string& base, const size_t decimals = 8, const int steps = 2);
 
     /**
      * @brief Executes a given predicate function a specified number of times.

@@ -22,6 +22,14 @@
 
 #pragma once
 
+#include "fraction.hpp"
+
 #include <string>
+
+std::string reportRootPower(const std::string& _number,
+                            const std::string& base,
+                            const steppable::Fraction& fraction,
+                            const std::string& rootResult,
+                            const int steps);
 
 std::string reportRoot();
