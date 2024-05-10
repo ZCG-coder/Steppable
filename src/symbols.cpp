@@ -48,7 +48,7 @@ namespace steppable::__internals::symbols
     {
         std::stringstream ss;
         for (const char c : normal)
-            if (isnumber(c))
+            if (isdigit(c))
                 ss << SUPERSCRIPTS[c - '0'];
             else
                 ss << ABOVE_DOT;
