@@ -9,8 +9,13 @@ updates:
     directory: "/.github" # Location of package manifests
     schedule:
       interval: "daily"
+    labels:
+      - "T-Dependencies"
   
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    labels:
+      - "T-Dependencies"
+      - "C-Python"
