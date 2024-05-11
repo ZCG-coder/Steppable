@@ -31,6 +31,8 @@
 #pragma once
 
 #include <exception>
+#include <string>
+#include <utility>
 
 namespace steppable::exceptions
 {
@@ -38,19 +40,22 @@ namespace steppable::exceptions
      * @class ZeroDenominatorException
      * @brief Thrown when initializing a fraction with zero as denominator.
      */
-    class ZeroDenominatorException : public std::exception
+    class ZeroDenominatorException final : public std::exception
     {
     public:
-        const char* what() const throw() { return "The denominator is zero, which is not allowed."; }
+        [[nodiscard]] const char* what() const noexcept override
+        {
+            return "The denominator is zero, which is not allowed.";
+        }
     };
 
     /**
      * @class MultiLengthLetterException
      * @brief Thrown when initializing a Key object with two or more letters.
      */
-    class MultiLengthLetterException : public std::exception
+    class MultiLengthLetterException final : public std::exception
     {
     public:
-        const char* what() const throw() { return "The length of letter exceeds the 1 limit."; }
+        [[nodiscard]] const char* what() const noexcept override { return "The length of letter exceeds the 1 limit."; }
     };
 } // namespace steppable::exceptions

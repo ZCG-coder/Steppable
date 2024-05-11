@@ -114,7 +114,7 @@ namespace steppable::__internals::arithmetic
             auto test = power(radicand, base, 0);
 
             if (compare(newAvg, "0", 0) == "2")
-                return divide(radicand, denominator, 0, _decimals);
+                return numUtils::standardizeNumber(divide(radicand, denominator, 0, _decimals));
             if (compare(test, number, 0) == "1")
                 x = radicand;
             else if (compare(test, number, 0) == "0")

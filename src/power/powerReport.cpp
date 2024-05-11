@@ -34,6 +34,7 @@
 #include "fn/basicArithm.hpp"
 #include "fraction.hpp"
 #include "symbols.hpp"
+#include "util.hpp"
 
 #include <sstream>
 
@@ -106,6 +107,8 @@ std::string reportPower(const std::string_view _number,
     });
 
 finish:
+    number = numUtils::standardizeNumber(number);
+
     if (negative)
     {
         if (steps == 2)

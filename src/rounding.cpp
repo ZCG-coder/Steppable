@@ -29,19 +29,56 @@
 
 namespace steppable::__internals::numUtils
 {
-    std::string roundOff(const std::string& _number)
+    std::string roundOff(const std::string& _number, const size_t digits)
     {
         auto number = _number;
         if (number.empty())
             return "0";
         if (number.find('.') == std::string::npos)
             return number;
-        auto splitNumberResult = splitNumber(number, "0", false, false, true).splitNumberArray;
+        // Round off the number
+        auto splitNumberResult = splitNumber(number, "0", false, false, true, false).splitNumberArray;
         auto integer = splitNumberResult[0], decimal = splitNumberResult[1];
 
-        if (arithmetic::compare(decimal, "5", 0) != "1")
-            return integer + "." + decimal;
-        return arithmetic::add(integer, "1", 0) + "." + decimal;
+        // Preserve one digit after the rounded digit
+        decimal = decimal.substr(0, digits + 1);
+        // Modify the integer part if the digit is greater than 5
+        if (decimal.front() >= '5' and digits == 0)
+        {
+            integer = arithmetic::add(integer, "1", 0);
+            return integer;
+        }
+        auto newDecimal = decimal.substr(0, digits);
+        std::ranges::reverse(newDecimal.begin(), newDecimal.end());
+
+        if (decimal.back() >= '5')
+        {
+            // Need to round up the digit
+            for (size_t i = 0; i < newDecimal.length(); i++)
+            {
+                if (newDecimal[i] == '.')
+                    continue;
+                if (newDecimal[i] == '9')
+                {
+                    newDecimal[i] = '0';
+                    if (i == newDecimal.length() - 1)
+                        integer = arithmetic::add(integer, "1", 0);
+                }
+                else
+                {
+                    newDecimal[i]++;
+                    break;
+                }
+            }
+        }
+        std::ranges::reverse(newDecimal.begin(), newDecimal.end());
+        decimal = newDecimal.substr(0, digits);
+        // decimal = newDecimal;
+        if (decimal.empty() and digits > 0)
+            return integer + "." + std::string(digits, '0');
+        if (decimal.empty())
+            return integer;
+        return integer + "." + decimal;
     }
 
     std::string moveDecimalPlaces(const std::string& _number, const long places)

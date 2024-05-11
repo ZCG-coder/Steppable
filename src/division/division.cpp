@@ -33,6 +33,7 @@
 #include "fn/basicArithm.hpp"
 #include "logging.hpp"
 #include "output.hpp"
+#include "rounding.hpp"
 #include "util.hpp"
 
 #include <cstddef>
@@ -145,6 +146,9 @@ namespace steppable::__internals::arithmetic
                 ss << "1";
             return ss.str();
         }
+
+        if (compare(_divisor, "1", 0) == "2")
+            return roundOff(static_cast<std::string>(_number), _decimals);
 
         auto splitNumberResult = splitNumber(_number, _divisor, false, true);
         bool numberIsNegative = splitNumberResult.aIsNegative, divisorIsNegative = splitNumberResult.bIsNegative;
