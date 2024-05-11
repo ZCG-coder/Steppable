@@ -33,12 +33,29 @@
 #include "exceptions.hpp"
 #include "fn/basicArithm.hpp"
 #include "number.hpp"
+#include "symbols.hpp"
 #include "util.hpp"
 
 #include <string>
 
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::numUtils;
+
+namespace steppable::prettyPrint::printers
+{
+    std::string ppFraction(const std::string& top, const std::string& bottom, const bool inLine)
+    {
+        // Output in single line
+        if (inLine)
+            return top + "/" + bottom;
+        // Output in three lines, with top and bottom aligned to center.
+        auto topWidth = prettyPrint::getStringWidth(top), bottomWidth = prettyPrint::getStringWidth(bottom);
+        auto width = std::max(topWidth, bottomWidth) + 2;
+        auto topSpacing = std::string((width - topWidth) / 2, ' '),
+             bottomSpacing = std::string((width - bottomWidth) / 2, ' ');
+        return topSpacing + top + '\n' + std::string(width, '-') + '\n' + bottomSpacing + bottom;
+    }
+} // namespace steppable::prettyPrint::printers
 
 namespace steppable
 {
@@ -64,10 +81,10 @@ namespace steppable
         simplify();
     }
 
-    std::string Fraction::present()
+    std::string Fraction::present(const bool inLine)
     {
         simplify();
-        return top + "/" + bottom;
+        return prettyPrint::printers::ppFraction(top, bottom, inLine);
     }
 
     std::array<std::string, 2> Fraction::asArray() const { return { top, bottom }; }

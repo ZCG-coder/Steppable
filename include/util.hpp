@@ -40,6 +40,9 @@
 #include <array>
 #include <chrono>
 #include <iomanip>
+#include <iostream>
+#include <locale.h>
+#include <locale>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -72,6 +75,20 @@
 
 namespace steppable::__internals::utils
 {
+#ifndef MS_STDLIB_BUGS
+    #if (_MSC_VER || __MINGW32__ || __MSVCRT__)
+        #define MS_STDLIB_BUGS 1
+    #else
+        #define MS_STDLIB_BUGS 0
+    #endif
+#endif
+
+#if MS_STDLIB_BUGS
+    #include <fcntl.h>
+    #include <io.h>
+#endif
+
+    void initLocale();
 #ifdef WINDOWS
     #include <fcntl.h>
     #include <windows.h>
@@ -134,6 +151,7 @@ namespace steppable::__internals::utils
          */
         Utf8CodePage() : oldCodePage(GetConsoleOutputCP())
         {
+            initLocale();
             SetConsoleOutputCP(CP_UTF8);
             dwModeOrig = enableVtMode();
         }
@@ -164,6 +182,8 @@ namespace steppable::__internals::utils
      */
     class Utf8CodePage
     {
+    public:
+        Utf8CodePage() { initLocale(); }
     };
 #endif
 } // namespace steppable::__internals::utils

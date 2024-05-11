@@ -31,11 +31,27 @@
 #include "fn/basicArithm.hpp"
 #include "fraction.hpp"
 #include "powerReport.hpp"
+#include "symbols.hpp"
 #include "util.hpp"
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::output;
 using namespace steppable::__internals::arithmetic;
+
+namespace steppable::prettyPrint::printers
+{
+    std::string ppSuperscript(const std::string& base, const std::string& superscript)
+    {
+        auto width = prettyPrint::getStringWidth(base) + 1,
+             height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
+
+        prettyPrint::ConsoleOutput output(height, width);
+        prettyPrint::Position pos{ static_cast<long long>(width - 1), 0 };
+        output.write(superscript, pos, false);
+        output.write(base, { 0, 1 }, false);
+        return output.asString();
+    }
+} // namespace steppable::prettyPrint::printers
 
 namespace steppable::__internals::arithmetic
 {

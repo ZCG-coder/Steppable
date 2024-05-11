@@ -75,8 +75,11 @@ namespace steppable
         /**
          * @brief Returns the fraction as a string.
          * The string is formatted as "top/bottom", and it will automatically simplify the fraction.
+         *
+         * @param inLine Whether to present the fraction in a single line.
+         * @return The fraction as a string.
          */
-        std::string present();
+        std::string present(const bool inLine = true);
 
         /**
          * @brief Returns the fraction as an array of its top and bottom components.

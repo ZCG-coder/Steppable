@@ -32,13 +32,47 @@
 #include "fn/basicArithm.hpp"
 #include "fraction.hpp"
 #include "rootReport.hpp"
+#include "symbols.hpp"
 #include "util.hpp"
 
 #include <string>
 
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::utils;
+using namespace steppable::__internals::stringUtils;
 using namespace std::literals;
+
+namespace steppable::prettyPrint::printers
+{
+    std::string ppRoot(const std::string& radicand, const std::string& index)
+    {
+        // Result looks something like:
+        //   3/---------
+        //   /        2
+        // \/ radicand
+        auto indexWidth = prettyPrint::getStringWidth(index);
+        auto width = prettyPrint::getStringWidth(radicand) + indexWidth + 3,
+             height = prettyPrint::getStringHeight(radicand) + 1;
+        auto spacingWidth = std::max(height, indexWidth), firstLineSpacingWidth = spacingWidth - indexWidth;
+        auto lines = split(radicand, '\n');
+        auto spacing = std::string(firstLineSpacingWidth, ' '),
+             topBar = std::string(prettyPrint::getStringWidth(radicand), '-');
+
+        prettyPrint::ConsoleOutput output(height, width);
+        prettyPrint::Position pos;
+        output.write(spacing + index + '/' + topBar + '\n', { 0, 0 }, false);
+        for (size_t i = 0; i < lines.size(); i++)
+        {
+            const auto& line = lines[i];
+            pos.y++;
+            pos.x = spacingWidth - i - 1;
+            output.write('/' + line, pos, true);
+        }
+        output.write("\\/"s, { pos.x - 1, pos.y }, true);
+
+        return output.asString();
+    }
+} // namespace steppable::prettyPrint::printers
 
 namespace steppable::__internals::arithmetic
 {
@@ -48,9 +82,12 @@ namespace steppable::__internals::arithmetic
         {
             const auto& fraction = Fraction(_number);
             const auto& [top, bottom] = fraction.asArray();
-            const auto &powerResult = power(_number, bottom, 0), rootResult = root(powerResult, top, _decimals, 0);
+            const auto &powerResult = power(_number, top, 0), rootResult = root(powerResult, bottom, _decimals, 0);
             return reportRootPower(_number, base, fraction, rootResult, steps);
         }
+
+        if (compare(base, "1", 0) == "2")
+            return _number;
 
         auto decimals = _decimals + 1;
         size_t raisedTimes = 0;

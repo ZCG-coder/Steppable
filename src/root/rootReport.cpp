@@ -28,6 +28,7 @@
 #include <string>
 
 using namespace steppable::__internals::symbols;
+using namespace steppable::prettyPrint::printers;
 
 std::string reportRootPower(const std::string& _number,
                             const std::string& base,
@@ -42,8 +43,8 @@ std::string reportRootPower(const std::string& _number,
         ss << "The base " << base << " is a decimal. Therefore, we need to perform a power operation first." << '\n';
     if (steps >= 1)
     {
-        ss << _number << makeSuperscript(static_cast<std::string>(base));
-        ss << " = " << makeSuperscript(array[1]) << makeSurd(_number + makeSuperscript(array[0])) << " = ";
+        ss << ppRoot(_number, base) << '\n';
+        ss << "= " << ppRoot(ppSuperscript(_number, array[0]), array[1]) << "\n= ";
     }
     ss << rootResult;
     return ss.str();
