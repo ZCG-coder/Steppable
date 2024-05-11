@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['testcasename_0',['testCaseName',['../classsteppable_1_1testing_1_1TestCase.html#af88107db78477ac1c1e28d0653312ee2',1,'steppable::testing::TestCase']]],
-  ['top_1',['top',['../classsteppable_1_1Fraction.html#ac2b4f9433a68b65dba12fdaf7d513d62',1,'steppable::Fraction']]]
+  ['remainder_0',['remainder',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#a6b2431c269b09e854d33a09bd31f00e6',1,'steppable::__internals::arithmetic::QuotientRemainder']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fraction_0',['Fraction',['../classsteppable_1_1Fraction.html',1,'steppable']]]
+  ['consoleoutput_0',['ConsoleOutput',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html',1,'steppable::prettyPrint']]]
 ];

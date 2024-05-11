@@ -11,11 +11,13 @@ var searchData=
   ['api_20reference_8',['API Reference',['../md_wiki_2API-Reference.html',1,'']]],
   ['argc_9',['argc',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#aff971505a61f01fb89ed90aadb9f9df7',1,'steppable::__internals::utils::ProgramArgs']]],
   ['argv_10',['argv',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af34abdab3c9215e33e0ee4b630bd9b86',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['asked_20questions_20faq_11',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]],
-  ['assert_12',['assert',['../classsteppable_1_1testing_1_1TestCase.html#a72a291251c17f79279ad7235120b7e2c',1,'steppable::testing::TestCase']]],
-  ['assertfalse_13',['assertFalse',['../classsteppable_1_1testing_1_1TestCase.html#a2d411e579a2e94888801e5c86ce0a1c1',1,'steppable::testing::TestCase']]],
-  ['assertisequal_14',['assertIsEqual',['../classsteppable_1_1testing_1_1TestCase.html#a3156df668add7e3abe7c0b47fa1f9cfd',1,'steppable::testing::TestCase::assertIsEqual(const std::string &amp;a, const std::string &amp;b)'],['../classsteppable_1_1testing_1_1TestCase.html#a04f2b690d739f3d1c35a3ee7bc62df5f',1,'steppable::testing::TestCase::assertIsEqual(int a, int b)']]],
-  ['assertisnotequal_15',['assertIsNotEqual',['../classsteppable_1_1testing_1_1TestCase.html#a61790bb36fd5283cec131d81df83aa0e',1,'steppable::testing::TestCase::assertIsNotEqual(const std::string &amp;a, const std::string &amp;b)'],['../classsteppable_1_1testing_1_1TestCase.html#a5b2c520e1adfc9dcd388736b55f36aea',1,'steppable::testing::TestCase::assertIsNotEqual(int a, int b)']]],
-  ['asserttrue_16',['assertTrue',['../classsteppable_1_1testing_1_1TestCase.html#a2eb654185b127e9c62f4fdda127beac1',1,'steppable::testing::TestCase']]],
-  ['available_20classes_17',['Available Classes',['../md_wiki_2API-Reference.html#autotoc_md6',1,'']]]
+  ['asarray_11',['asArray',['../classsteppable_1_1Fraction.html#a8b59c8e9a82d179640425cd4659d2179',1,'steppable::Fraction']]],
+  ['asked_20questions_20faq_12',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]],
+  ['assert_13',['assert',['../classsteppable_1_1testing_1_1TestCase.html#a72a291251c17f79279ad7235120b7e2c',1,'steppable::testing::TestCase']]],
+  ['assertfalse_14',['assertFalse',['../classsteppable_1_1testing_1_1TestCase.html#a2d411e579a2e94888801e5c86ce0a1c1',1,'steppable::testing::TestCase']]],
+  ['assertisequal_15',['assertIsEqual',['../classsteppable_1_1testing_1_1TestCase.html#a3156df668add7e3abe7c0b47fa1f9cfd',1,'steppable::testing::TestCase::assertIsEqual(const std::string &amp;a, const std::string &amp;b)'],['../classsteppable_1_1testing_1_1TestCase.html#a04f2b690d739f3d1c35a3ee7bc62df5f',1,'steppable::testing::TestCase::assertIsEqual(int a, int b)']]],
+  ['assertisnotequal_16',['assertIsNotEqual',['../classsteppable_1_1testing_1_1TestCase.html#a61790bb36fd5283cec131d81df83aa0e',1,'steppable::testing::TestCase::assertIsNotEqual(const std::string &amp;a, const std::string &amp;b)'],['../classsteppable_1_1testing_1_1TestCase.html#a5b2c520e1adfc9dcd388736b55f36aea',1,'steppable::testing::TestCase::assertIsNotEqual(int a, int b)']]],
+  ['asserttrue_17',['assertTrue',['../classsteppable_1_1testing_1_1TestCase.html#a2eb654185b127e9c62f4fdda127beac1',1,'steppable::testing::TestCase']]],
+  ['asstring_18',['asString',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#adbb3b6e09d869b825987871c61f4af32',1,'steppable::prettyPrint::ConsoleOutput']]],
+  ['available_20classes_19',['Available Classes',['../md_wiki_2API-Reference.html#autotoc_md6',1,'']]]
 ];

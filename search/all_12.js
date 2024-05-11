@@ -29,11 +29,13 @@ var searchData=
   ['steppable_3a_3a_5f_5finternals_3a_3autils_3a_3aformats_26',['formats',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html',1,'steppable::__internals::utils']]],
   ['steppable_3a_3aexceptions_27',['exceptions',['../namespacesteppable_1_1exceptions.html',1,'steppable']]],
   ['steppable_3a_3aoutput_28',['output',['../namespacesteppable_1_1output.html',1,'steppable']]],
-  ['steppable_3a_3atesting_29',['testing',['../namespacesteppable_1_1testing.html',1,'steppable']]],
-  ['subtract_30',['subtract',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e',1,'steppable::__internals::arithmetic']]],
-  ['summarize_31',['summarize',['../classsteppable_1_1testing_1_1TestCase.html#a2cb156d120e70f37ceb5421fbf04f8f7',1,'steppable::testing::TestCase']]],
-  ['superscripts_32',['SUPERSCRIPTS',['../namespacesteppable_1_1____internals_1_1symbols.html#a525f77652c8df0a7a7512992e3408522',1,'steppable::__internals::symbols']]],
-  ['switch_5fregex_33',['SWITCH_REGEX',['../namespacesteppable_1_1____internals_1_1utils.html#a588ee3de79a5de23fa7dfbb398f77e12',1,'steppable::__internals::utils']]],
-  ['switchdescriptions_34',['switchDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ab7f4c2cb0c67d1344455b853e44e7a77',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['switches_35',['switches',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a01d7dfb2f06c605ceb112932cf2d751a',1,'steppable::__internals::utils::ProgramArgs']]]
+  ['steppable_3a_3aprettyprint_29',['prettyPrint',['../namespacesteppable_1_1prettyPrint.html',1,'steppable']]],
+  ['steppable_3a_3aprettyprint_3a_3aprinters_30',['printers',['../namespacesteppable_1_1prettyPrint_1_1printers.html',1,'steppable::prettyPrint']]],
+  ['steppable_3a_3atesting_31',['testing',['../namespacesteppable_1_1testing.html',1,'steppable']]],
+  ['subtract_32',['subtract',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e',1,'steppable::__internals::arithmetic']]],
+  ['summarize_33',['summarize',['../classsteppable_1_1testing_1_1TestCase.html#a2cb156d120e70f37ceb5421fbf04f8f7',1,'steppable::testing::TestCase']]],
+  ['superscripts_34',['SUPERSCRIPTS',['../namespacesteppable_1_1____internals_1_1symbols.html#a3dbef43e4c83dd6946de66afb052fff7',1,'steppable::__internals::symbols']]],
+  ['switch_5fregex_35',['SWITCH_REGEX',['../namespacesteppable_1_1____internals_1_1utils.html#a588ee3de79a5de23fa7dfbb398f77e12',1,'steppable::__internals::utils']]],
+  ['switchdescriptions_36',['switchDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ab7f4c2cb0c67d1344455b853e44e7a77',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['switches_37',['switches',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a01d7dfb2f06c605ceb112932cf2d751a',1,'steppable::__internals::utils::ProgramArgs']]]
 ];

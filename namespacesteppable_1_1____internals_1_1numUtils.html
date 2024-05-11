@@ -114,9 +114,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac634c8aea297b7e8f5cc251041089c5b" id="r_ac634c8aea297b7e8f5cc251041089c5b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac634c8aea297b7e8f5cc251041089c5b">roundOff</a> (const std::string &amp;number)</td></tr>
-<tr class="memdesc:ac634c8aea297b7e8f5cc251041089c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Round off a number to the nearest integer.  <br /></td></tr>
-<tr class="separator:ac634c8aea297b7e8f5cc251041089c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05db249045994ee795e6f1a24201f182" id="r_a05db249045994ee795e6f1a24201f182"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05db249045994ee795e6f1a24201f182">roundOff</a> (const std::string &amp;_number, const size_t digits=0)</td></tr>
+<tr class="memdesc:a05db249045994ee795e6f1a24201f182"><td class="mdescLeft">&#160;</td><td class="mdescRight">Round off a number to the nearest integer.  <br /></td></tr>
+<tr class="separator:a05db249045994ee795e6f1a24201f182"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2564d0f1e7f1bd71ad9c497cf72fc118" id="r_a2564d0f1e7f1bd71ad9c497cf72fc118"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2564d0f1e7f1bd71ad9c497cf72fc118">moveDecimalPlaces</a> (const std::string &amp;_number, const long places)</td></tr>
 <tr class="memdesc:a2564d0f1e7f1bd71ad9c497cf72fc118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the decimal places of a number.  <br /></td></tr>
 <tr class="separator:a2564d0f1e7f1bd71ad9c497cf72fc118"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,6 +224,11 @@ Here is the caller graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_afa516a42a17fc99b2f9c04171ed1b4fe_cgraph.svg" width="100%" height="596"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_afa516a42a17fc99b2f9c04171ed1b4fe_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -542,8 +547,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ac634c8aea297b7e8f5cc251041089c5b" name="ac634c8aea297b7e8f5cc251041089c5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac634c8aea297b7e8f5cc251041089c5b">&#9670;&#160;</a></span>roundOff()</h2>
+<a id="a05db249045994ee795e6f1a24201f182" name="a05db249045994ee795e6f1a24201f182"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05db249045994ee795e6f1a24201f182">&#9670;&#160;</a></span>roundOff()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -551,8 +556,12 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">std::string steppable::__internals::numUtils::roundOff </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>number</em></span></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>_number</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>digits</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -560,7 +569,8 @@ Here is the caller graph for this function:</div>
 <p>Round off a number to the nearest integer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">number</td><td>The number to round. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_number</td><td>The number to round. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">digits</td><td>The number of decimal places to round to. </td></tr>
   </table>
   </dd>
 </dl>
@@ -568,7 +578,12 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_ac634c8aea297b7e8f5cc251041089c5b_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a05db249045994ee795e6f1a24201f182_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1numUtils_a05db249045994ee795e6f1a24201f182_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -765,7 +780,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri May 10 2024 03:35:09"; // Will get replaced by Doxygen
+        const dateStr = "Sat May 11 2024 15:57:34"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

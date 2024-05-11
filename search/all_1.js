@@ -18,9 +18,10 @@ var searchData=
   ['brightred_15',['brightRed',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ab5c01595115bcd6cbb49f3184c33ff89',1,'steppable::__internals::utils::colors::brightRed()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#acb2ba6677f337e49e2d600356cd881b2',1,'steppable::__internals::utils::colorsBg::brightRed()']]],
   ['brightwhite_16',['brightWhite',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a08de55f887db0083edef018dbdbf0fce',1,'steppable::__internals::utils::colors::brightWhite()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a217842b1e467813034a1c6b4d49ce7d8',1,'steppable::__internals::utils::colorsBg::brightWhite()']]],
   ['brightyellow_17',['brightYellow',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a54e47b365870a35d50a00044ff37b2cc',1,'steppable::__internals::utils::colors::brightYellow()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a13dc19a90f0f88e436e7d4fa26e5cf84',1,'steppable::__internals::utils::colorsBg::brightYellow()']]],
-  ['build_18',['Build',['../md_wiki_2Building-Steppable.html#autotoc_md13',1,'Debug build'],['../md_wiki_2Building-Steppable.html#autotoc_md12',1,'Release Build']]],
-  ['build_20py_20tt_19',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]],
-  ['building_20steppable_20cmake_20',['Building Steppable (CMake)',['../md_wiki_2Building-Steppable.html',1,'']]],
-  ['building_20steppable_20tt_20build_20py_20tt_21',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]],
-  ['built_20libraries_22',['Using the built libraries',['../md_wiki_2Building-Steppable.html#autotoc_md14',1,'']]]
+  ['buffer_18',['buffer',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#accd9148b6c566569642007084c0d08b7',1,'steppable::prettyPrint::ConsoleOutput']]],
+  ['build_19',['Build',['../md_wiki_2Building-Steppable.html#autotoc_md13',1,'Debug build'],['../md_wiki_2Building-Steppable.html#autotoc_md12',1,'Release Build']]],
+  ['build_20py_20tt_20',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]],
+  ['building_20steppable_20cmake_21',['Building Steppable (CMake)',['../md_wiki_2Building-Steppable.html',1,'']]],
+  ['building_20steppable_20tt_20build_20py_20tt_22',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]],
+  ['built_20libraries_23',['Using the built libraries',['../md_wiki_2Building-Steppable.html#autotoc_md14',1,'']]]
 ];

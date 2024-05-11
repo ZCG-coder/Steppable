@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['info_0',['info',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#afea3d5609d98fcdea3b2d76a6efba9f9',1,'steppable::__internals::logging::Logger']]],
+  ['info_0',['info',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#afea3d5609d98fcdea3b2d76a6efba9f9',1,'steppable::__internals::logging::Logger::info()'],['../namespacesteppable_1_1output.html#a0fdf81583afe2caa95d7e8fbb6c456b4',1,'steppable::output::info()']]],
   ['info_1',['INFO',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7a0add0282959d7a8fb7af0dee9885198a',1,'steppable::__internals::logging']]],
-  ['info_2',['info',['../namespacesteppable_1_1output.html#a0fdf81583afe2caa95d7e8fbb6c456b4',1,'steppable::output']]],
+  ['initlocale_2',['initLocale',['../namespacesteppable_1_1____internals_1_1utils.html#af753e0b8dd7f589f022d757639650ff7',1,'steppable::__internals::utils']]],
   ['introduction_3',['Introduction',['../md_wiki_2Building-Steppable.html#autotoc_md10',1,'']]],
   ['is_20not_4',['What this is not?',['../md_wiki_2FAQ.html#autotoc_md19',1,'']]],
   ['is_20this_5',['What is this?',['../md_wiki_2FAQ.html#autotoc_md18',1,'']]],

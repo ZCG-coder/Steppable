@@ -117,12 +117,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1fa38ab4cede78e19fa478242f6e5b46" id="r_a1fa38ab4cede78e19fa478242f6e5b46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fa38ab4cede78e19fa478242f6e5b46">Fraction</a> (const std::string &amp;<a class="el" href="#ac2b4f9433a68b65dba12fdaf7d513d62">top</a>=&quot;1&quot;, const std::string &amp;<a class="el" href="#a249c9793ecff062b5d9681349033df37">bottom</a>=&quot;1&quot;)</td></tr>
 <tr class="memdesc:a1fa38ab4cede78e19fa478242f6e5b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a fraction with a specified top component and bottom component.  <br /></td></tr>
 <tr class="separator:a1fa38ab4cede78e19fa478242f6e5b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4647e3f3062426a91d1ef7cdbde23bb6" id="r_a4647e3f3062426a91d1ef7cdbde23bb6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4647e3f3062426a91d1ef7cdbde23bb6">Fraction</a> (const <a class="el" href="classsteppable_1_1Number.html">Number</a> &amp;number)</td></tr>
+<tr class="memdesc:a4647e3f3062426a91d1ef7cdbde23bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialized a fraction from a number.  <br /></td></tr>
+<tr class="separator:a4647e3f3062426a91d1ef7cdbde23bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5b4a2bd2c9223f2ea7bc5c699857aee" id="r_ab5b4a2bd2c9223f2ea7bc5c699857aee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5b4a2bd2c9223f2ea7bc5c699857aee">Fraction</a> ()</td></tr>
 <tr class="memdesc:ab5b4a2bd2c9223f2ea7bc5c699857aee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a fraction with no top component and bottom component specified. By default, this fraction equals to 1.  <br /></td></tr>
 <tr class="separator:ab5b4a2bd2c9223f2ea7bc5c699857aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a892820854af33b0eabc6b6ec43b389" id="r_a9a892820854af33b0eabc6b6ec43b389"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a892820854af33b0eabc6b6ec43b389">present</a> ()</td></tr>
-<tr class="memdesc:a9a892820854af33b0eabc6b6ec43b389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fraction as a string. The string is formatted as "top/bottom", and it will automatically simplify the fraction.  <br /></td></tr>
-<tr class="separator:a9a892820854af33b0eabc6b6ec43b389"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24daec3e07be2176c6efbcb569d8c921" id="r_a24daec3e07be2176c6efbcb569d8c921"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24daec3e07be2176c6efbcb569d8c921">present</a> (const bool inLine=true)</td></tr>
+<tr class="memdesc:a24daec3e07be2176c6efbcb569d8c921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fraction as a string. The string is formatted as "top/bottom", and it will automatically simplify the fraction.  <br /></td></tr>
+<tr class="separator:a24daec3e07be2176c6efbcb569d8c921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b59c8e9a82d179640425cd4659d2179" id="r_a8b59c8e9a82d179640425cd4659d2179"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::string, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b59c8e9a82d179640425cd4659d2179">asArray</a> () const</td></tr>
+<tr class="memdesc:a8b59c8e9a82d179640425cd4659d2179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fraction as an array of its top and bottom components.  <br /></td></tr>
+<tr class="separator:a8b59c8e9a82d179640425cd4659d2179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a177374401a6d78045720bdf97db60055" id="r_a177374401a6d78045720bdf97db60055"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsteppable_1_1Fraction.html">Fraction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a177374401a6d78045720bdf97db60055">operator+</a> (const <a class="el" href="classsteppable_1_1Fraction.html">Fraction</a> &amp;rhs) const</td></tr>
 <tr class="memdesc:a177374401a6d78045720bdf97db60055"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two fractions together. This function does it by doing a simple fraction addition and returns the sum.  <br /></td></tr>
 <tr class="separator:a177374401a6d78045720bdf97db60055"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,7 +193,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>Acts as a fraction in math. It can be added, subtracted, multiplied and divided. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1fa38ab4cede78e19fa478242f6e5b46" name="a1fa38ab4cede78e19fa478242f6e5b46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fa38ab4cede78e19fa478242f6e5b46">&#9670;&#160;</a></span>Fraction() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fa38ab4cede78e19fa478242f6e5b46">&#9670;&#160;</a></span>Fraction() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,13 +222,43 @@ Private Attributes</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_a1fa38ab4cede78e19fa478242f6e5b46_cgraph.svg" width="380" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_a1fa38ab4cede78e19fa478242f6e5b46_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a4647e3f3062426a91d1ef7cdbde23bb6" name="a4647e3f3062426a91d1ef7cdbde23bb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4647e3f3062426a91d1ef7cdbde23bb6">&#9670;&#160;</a></span>Fraction() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">steppable::Fraction::Fraction </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsteppable_1_1Number.html">Number</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>number</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialized a fraction from a number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>The number to convert to a fraction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_a4647e3f3062426a91d1ef7cdbde23bb6_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
 <a id="ab5b4a2bd2c9223f2ea7bc5c699857aee" name="ab5b4a2bd2c9223f2ea7bc5c699857aee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5b4a2bd2c9223f2ea7bc5c699857aee">&#9670;&#160;</a></span>Fraction() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5b4a2bd2c9223f2ea7bc5c699857aee">&#9670;&#160;</a></span>Fraction() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,6 +282,26 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8b59c8e9a82d179640425cd4659d2179" name="a8b59c8e9a82d179640425cd4659d2179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b59c8e9a82d179640425cd4659d2179">&#9670;&#160;</a></span>asArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; std::string, 2 &gt; steppable::Fraction::asArray </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fraction as an array of its top and bottom components. </p>
+<dl class="section return"><dt>Returns</dt><dd>The array of top and bottom components. </dd></dl>
+
+</div>
+</div>
 <a id="abb223edd73fc68820e151fac052d2fef" name="abb223edd73fc68820e151fac052d2fef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abb223edd73fc68820e151fac052d2fef">&#9670;&#160;</a></span>operator!=()</h2>
 
@@ -705,7 +761,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_abaf8678e0b61e3097789959b66e4c23c_cgraph.svg" width="100%" height="581"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_abaf8678e0b61e3097789959b66e4c23c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -741,8 +797,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a9a892820854af33b0eabc6b6ec43b389" name="a9a892820854af33b0eabc6b6ec43b389"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a892820854af33b0eabc6b6ec43b389">&#9670;&#160;</a></span>present()</h2>
+<a id="a24daec3e07be2176c6efbcb569d8c921" name="a24daec3e07be2176c6efbcb569d8c921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24daec3e07be2176c6efbcb569d8c921">&#9670;&#160;</a></span>present()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -750,17 +806,24 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">std::string steppable::Fraction::present </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>inLine</em><span class="paramdefsep"> = </span><span class="paramdefval">true</span></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Returns the fraction as a string. The string is formatted as "top/bottom", and it will automatically simplify the fraction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inLine</td><td>Whether to present the fraction in a single line. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The fraction as a string. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_a9a892820854af33b0eabc6b6ec43b389_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_a24daec3e07be2176c6efbcb569d8c921_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -790,7 +853,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_a9cf64d847c268d9334775c572ef75dfa_icgraph.svg" width="350" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_a9cf64d847c268d9334775c572ef75dfa_icgraph.svg" width="350" height="542"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -867,7 +930,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri May 10 2024 03:35:09"; // Will get replaced by Doxygen
+        const dateStr = "Sat May 11 2024 15:57:33"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

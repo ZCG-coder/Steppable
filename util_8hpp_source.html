@@ -137,271 +137,293 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#ifndef TIC</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">    #define TIC(...)                                                                                  \</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">        {                                                                                             \</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">            const char* nameSection = #__VA_ARGS__;                                                   \</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">            std::cout &lt;&lt; colors::brightBlue &lt;&lt; std::setw(80) &lt;&lt; std::setfill(&#39;-&#39;) &lt;&lt; reset &lt;&lt; &#39;\n&#39;;   \</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">            std::cout &lt;&lt; colors::brightBlue &lt;&lt; &quot;[Profiling: &quot; &lt;&lt; nameSection &lt;&lt; &#39;]&#39; &lt;&lt; reset &lt;&lt; &#39;\n&#39;; \</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">            auto start = std::chrono::high_resolution_clock::now();</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#ifndef TOC</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">    #define TOC()                                                                                                     \</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">        auto duration =                                                                                               \</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">            std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(std::chrono::high_resolution_clock::now() - start)  \</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">                .count();                                                                                             \</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">        std::cout &lt;&lt; colors::brightBlue &lt;&lt; &#39;[&#39; &lt;&lt; nameSection &lt;&lt; &quot; took &quot; &lt;&lt; duration &lt;&lt; &quot;(microseconds) to execute]&quot; \</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">                  &lt;&lt; reset &lt;&lt; &#39;\n&#39;;                                                                                   \</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">        std::cout &lt;&lt; colors::brightBlue &lt;&lt; std::setw(80) &lt;&lt; std::setfill(&#39;-&#39;);                                        \</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">        std::cout &lt;&lt; reset &lt;&lt; &#39;\n&#39;;                                                                                   \</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">        }</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#ifdef WINDOWS</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">    #include &lt;fcntl.h&gt;</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">    #include &lt;windows.h&gt;</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">inline</span> DWORD enableVtMode()</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">// Set output mode to handle virtual terminal sequences</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keyword">const</span> HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">if</span> (hOut == INVALID_HANDLE_VALUE)</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &lt;locale.h&gt;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &lt;locale&gt;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#ifndef TIC</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">    #define TIC(...)                                                                                  \</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">        {                                                                                             \</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">            const char* nameSection = #__VA_ARGS__;                                                   \</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">            std::cout &lt;&lt; colors::brightBlue &lt;&lt; std::setw(80) &lt;&lt; std::setfill(&#39;-&#39;) &lt;&lt; reset &lt;&lt; &#39;\n&#39;;   \</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">            std::cout &lt;&lt; colors::brightBlue &lt;&lt; &quot;[Profiling: &quot; &lt;&lt; nameSection &lt;&lt; &#39;]&#39; &lt;&lt; reset &lt;&lt; &#39;\n&#39;; \</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">            auto start = std::chrono::high_resolution_clock::now();</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#ifndef TOC</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">    #define TOC()                                                                                                     \</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">        auto duration =                                                                                               \</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">            std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(std::chrono::high_resolution_clock::now() - start)  \</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">                .count();                                                                                             \</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">        std::cout &lt;&lt; colors::brightBlue &lt;&lt; &#39;[&#39; &lt;&lt; nameSection &lt;&lt; &quot; took &quot; &lt;&lt; duration &lt;&lt; &quot;(microseconds) to execute]&quot; \</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">                  &lt;&lt; reset &lt;&lt; &#39;\n&#39;;                                                                                   \</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">        std::cout &lt;&lt; colors::brightBlue &lt;&lt; std::setw(80) &lt;&lt; std::setfill(&#39;-&#39;);                                        \</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">        std::cout &lt;&lt; reset &lt;&lt; &#39;\n&#39;;                                                                                   \</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">        }</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#ifndef MS_STDLIB_BUGS</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">    #if (_MSC_VER || __MINGW32__ || __MSVCRT__)</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">        #define MS_STDLIB_BUGS 1</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">    #else</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">        #define MS_STDLIB_BUGS 0</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#if MS_STDLIB_BUGS</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">    #include &lt;fcntl.h&gt;</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">    #include &lt;io.h&gt;</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        DWORD dwMode = 0;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">if</span> (!GetConsoleMode(hOut, &amp;dwMode))</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keyword">const</span> DWORD dwModeOrig = dwMode;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#af753e0b8dd7f589f022d757639650ff7">initLocale</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#ifdef WINDOWS</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">    #include &lt;fcntl.h&gt;</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">    #include &lt;windows.h&gt;</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">if</span> (!SetConsoleMode(hOut, dwMode))</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">return</span> dwModeOrig;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    }</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> restoreVtMode(<span class="keyword">const</span> DWORD dwModeOrig)</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keyword">const</span> HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">if</span> (hOut == INVALID_HANDLE_VALUE)</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">if</span> (!SetConsoleMode(hOut, dwModeOrig))</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keyword">inline</span> DWORD enableVtMode()</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="comment">// Set output mode to handle virtual terminal sequences</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keyword">const</span> HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">if</span> (hOut == INVALID_HANDLE_VALUE)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        DWORD dwMode = 0;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">if</span> (!GetConsoleMode(hOut, &amp;dwMode))</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keyword">const</span> DWORD dwModeOrig = dwMode;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">if</span> (!SetConsoleMode(hOut, dwMode))</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">return</span> dwModeOrig;</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keyword">class </span>Utf8CodePage</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        Utf8CodePage() : oldCodePage(GetConsoleOutputCP())</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        {</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            SetConsoleOutputCP(CP_UTF8);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            dwModeOrig = enableVtMode();</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        }</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        ~Utf8CodePage()</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        {</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            SetConsoleOutputCP(oldCodePage);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            restoreVtMode(dwModeOrig);</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        }</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        UINT oldCodePage; </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        DWORD dwModeOrig; </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    };</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="foldopen" id="foldopen00165" data-start="{" data-end="};">
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html">  165</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html">Utf8CodePage</a></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    {</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    };</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> restoreVtMode(<span class="keyword">const</span> DWORD dwModeOrig)</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keyword">const</span> HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordflow">if</span> (hOut == INVALID_HANDLE_VALUE)</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="keywordflow">if</span> (!SetConsoleMode(hOut, dwModeOrig))</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    }</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keyword">class </span>Utf8CodePage</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <a class="code hl_function" href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html#abb062ead077477aa3d8e6886e390a2b6">Utf8CodePage</a>() : oldCodePage(GetConsoleOutputCP())</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#af753e0b8dd7f589f022d757639650ff7">initLocale</a>();</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            SetConsoleOutputCP(CP_UTF8);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            dwModeOrig = enableVtMode();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        ~Utf8CodePage()</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        {</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            SetConsoleOutputCP(oldCodePage);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            restoreVtMode(dwModeOrig);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        }</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        UINT oldCodePage; </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        DWORD dwModeOrig; </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    };</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="foldopen" id="foldopen00183" data-start="{" data-end="};">
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html">  183</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html">Utf8CodePage</a></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    {</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html#abb062ead077477aa3d8e6886e390a2b6">  186</a></span>        <a class="code hl_function" href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html#abb062ead077477aa3d8e6886e390a2b6">Utf8CodePage</a>() { <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#af753e0b8dd7f589f022d757639650ff7">initLocale</a>(); }</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    };</div>
 </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>} <span class="comment">// namespace steppable::__internals::utils</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1____internals_1_1numUtils.html">steppable::__internals::numUtils</a></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>{</div>
-<div class="foldopen" id="foldopen00180" data-start="{" data-end="};">
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html">  180</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html">SplitNumberResult</a></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    {</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793">  182</a></span>        std::array&lt;std::string, 4&gt; <a class="code hl_variable" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793">splitNumberArray</a>;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a2528f46d7bbfe1dd8ac10bfa9487903d">  183</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a2528f46d7bbfe1dd8ac10bfa9487903d">aIsNegative</a> = <span class="keyword">false</span>, <a class="code hl_variable" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#aafe32bc0840b6b99ed2e57a065ec55f0">bIsNegative</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    };</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>} <span class="comment">// namespace steppable::__internals::utils</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1____internals_1_1numUtils.html">steppable::__internals::numUtils</a></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>{</div>
+<div class="foldopen" id="foldopen00200" data-start="{" data-end="};">
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html">  200</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html">SplitNumberResult</a></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793">  202</a></span>        std::array&lt;std::string, 4&gt; <a class="code hl_variable" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793">splitNumberArray</a>;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a2528f46d7bbfe1dd8ac10bfa9487903d">  203</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a2528f46d7bbfe1dd8ac10bfa9487903d">aIsNegative</a> = <span class="keyword">false</span>, <a class="code hl_variable" href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#aafe32bc0840b6b99ed2e57a065ec55f0">bIsNegative</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    };</div>
 </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066">simplifyZeroPolarity</a>(<span class="keyword">const</span> std::string_view&amp; <span class="keywordtype">string</span>);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472">simplifyPolarity</a>(<span class="keyword">const</span> std::string_view&amp; _string);</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9">standardizeNumber</a>(<span class="keyword">const</span> std::string_view&amp; _number);</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
-<div class="foldopen" id="foldopen00221" data-start="{" data-end="}">
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">  221</a></span>    <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">isZeroString</a>(<span class="keyword">const</span> std::string_view&amp; <span class="keywordtype">string</span>)</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    {</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="keywordflow">return</span> std::ranges::all_of(<span class="keywordtype">string</span>, [](<span class="keyword">const</span> <span class="keywordtype">char</span> c) { <span class="keywordflow">return</span> c == <span class="charliteral">&#39;0&#39;</span> or c == <span class="charliteral">&#39;.&#39;</span> or c == <span class="charliteral">&#39;-&#39;</span>; });</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    }</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066">simplifyZeroPolarity</a>(<span class="keyword">const</span> std::string_view&amp; <span class="keywordtype">string</span>);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472">simplifyPolarity</a>(<span class="keyword">const</span> std::string_view&amp; _string);</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9">standardizeNumber</a>(<span class="keyword">const</span> std::string_view&amp; _number);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="foldopen" id="foldopen00241" data-start="{" data-end="}">
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">  241</a></span>    <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">isZeroString</a>(<span class="keyword">const</span> std::string_view&amp; <span class="keywordtype">string</span>)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordflow">return</span> std::ranges::all_of(<span class="keywordtype">string</span>, [](<span class="keyword">const</span> <span class="keywordtype">char</span> c) { <span class="keywordflow">return</span> c == <span class="charliteral">&#39;0&#39;</span> or c == <span class="charliteral">&#39;.&#39;</span> or c == <span class="charliteral">&#39;-&#39;</span>; });</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    }</div>
 </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e">isNumber</a>(<span class="keyword">const</span> std::string_view&amp; s);</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    SplitNumberResult <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a6ec6b1fba5358e4335ddce9d58ad60ff">splitNumber</a>(<span class="keyword">const</span> std::string_view&amp; a,</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>                                  <span class="keyword">const</span> std::string_view&amp; b,</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>                                  <span class="keywordtype">bool</span> padInteger = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>                                  <span class="keywordtype">bool</span> padDecimal = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>                                  <span class="keywordtype">bool</span> properlyFormat = <span class="keyword">true</span>,</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                                  <span class="keywordtype">bool</span> preserveNegative = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#ae8dde3fc958f32009443d1aeaa2c0900">replaceLeadingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; vector) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(vector)&gt;;</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212">removeLeadingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; vector) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(vector)&gt;;</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212">removeLeadingZeros</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">string</span>) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(string)&gt;;</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae">removeTrailingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; _vector) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(_vector)&gt;;</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae">removeTrailingZeros</a>(<span class="keyword">const</span> std::string&amp; numStr) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(numStr)&gt;;</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13">determineScale</a>(<span class="keyword">const</span> std::string_view&amp; number);</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#acc0d8c2dcee479d9b8c4b5b4585c70d8">isInteger</a>(<span class="keyword">const</span> std::string&amp; number);</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">isDecimal</a>(<span class="keyword">const</span> std::string&amp; number);</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span> </div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">isPowerOfTen</a>(<span class="keyword">const</span> std::string&amp; number);</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>} <span class="comment">// namespace steppable::__internals::numUtils</span></div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1____internals_1_1stringUtils.html">steppable::__internals::stringUtils</a></div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>{</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="foldopen" id="foldopen00336" data-start="{" data-end="}">
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">  336</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">split</a>(std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT separator)</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    {</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        std::vector&lt;<span class="keyword">decltype</span>(s)&gt; substrings;</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        std::basic_stringstream&lt;CharT&gt; ss(s);</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>        <span class="keyword">decltype</span>(s) token;</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        <span class="keywordflow">while</span> (getline(ss, token, separator))</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>            substrings.push_back(token);</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        <span class="keywordflow">return</span> substrings;</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    }</div>
-</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e">isNumber</a>(<span class="keyword">const</span> std::string_view&amp; s);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    SplitNumberResult <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a6ec6b1fba5358e4335ddce9d58ad60ff">splitNumber</a>(<span class="keyword">const</span> std::string_view&amp; a,</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>                                  <span class="keyword">const</span> std::string_view&amp; b,</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>                                  <span class="keywordtype">bool</span> padInteger = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>                                  <span class="keywordtype">bool</span> padDecimal = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>                                  <span class="keywordtype">bool</span> properlyFormat = <span class="keyword">true</span>,</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>                                  <span class="keywordtype">bool</span> preserveNegative = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#ae8dde3fc958f32009443d1aeaa2c0900">replaceLeadingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; vector) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(vector)&gt;;</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212">removeLeadingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; vector) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(vector)&gt;;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212">removeLeadingZeros</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">string</span>) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(string)&gt;;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae">removeTrailingZeros</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; _vector) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(_vector)&gt;;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae">removeTrailingZeros</a>(<span class="keyword">const</span> std::string&amp; numStr) -&gt; std::decay_t&lt;<span class="keyword">decltype</span>(numStr)&gt;;</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13">determineScale</a>(<span class="keyword">const</span> std::string_view&amp; number);</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#acc0d8c2dcee479d9b8c4b5b4585c70d8">isInteger</a>(<span class="keyword">const</span> std::string&amp; number);</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">isDecimal</a>(<span class="keyword">const</span> std::string&amp; number);</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">isPowerOfTen</a>(<span class="keyword">const</span> std::string&amp; number);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>} <span class="comment">// namespace steppable::__internals::numUtils</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1____internals_1_1stringUtils.html">steppable::__internals::stringUtils</a></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>{</div>
 <div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
 <div class="foldopen" id="foldopen00356" data-start="{" data-end="}">
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2c413d8a2ab72da0854f746f3a3d6178">  356</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">split</a>(std::basic_string_view&lt;CharT&gt; s, <span class="keyword">const</span> CharT separator)</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">  356</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">split</a>(std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT separator)</div>
 <div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    {</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        std::vector&lt;<span class="keyword">decltype</span>(s)&gt; result;</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        <span class="keyword">auto</span> left = s.begin();</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = left; it != s.end(); ++it)</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        {</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>            <span class="keywordflow">if</span> (*it == separator)</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>            {</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>                result.emplace_back(&amp;*left, it - left);</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>                left = it + 1;</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>            }</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>        }</div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>        <span class="keywordflow">if</span> (left != s.end())</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>            result.emplace_back(&amp;*left, s.end() - left);</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>        <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    }</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        std::vector&lt;<span class="keyword">decltype</span>(s)&gt; substrings;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        std::basic_stringstream&lt;CharT&gt; ss(s);</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="keyword">decltype</span>(s) token;</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>        <span class="keywordflow">while</span> (getline(ss, token, separator))</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>            substrings.push_back(token);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span> </div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        <span class="keywordflow">return</span> substrings;</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    }</div>
 </div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="foldopen" id="foldopen00388" data-start="{" data-end="}">
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da">  388</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da">rReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    {</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        std::basic_string&lt;CharT&gt; out = s;</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>        <span class="keyword">typename</span> std::basic_string&lt;CharT&gt;::size_type count = 0;</div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>        <span class="keywordflow">while</span> (out.back() == t)</div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>        {</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>            out.pop_back();</div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>            ++count;</div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>        }</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>        <span class="keywordflow">if</span> (replacement != <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>            out += std::basic_string&lt;CharT&gt;(count, replacement);</div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>        <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>    }</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="foldopen" id="foldopen00376" data-start="{" data-end="}">
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2c413d8a2ab72da0854f746f3a3d6178">  376</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">split</a>(std::basic_string_view&lt;CharT&gt; s, <span class="keyword">const</span> CharT separator)</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    {</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        std::vector&lt;<span class="keyword">decltype</span>(s)&gt; result;</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        <span class="keyword">auto</span> left = s.begin();</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = left; it != s.end(); ++it)</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>        {</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>            <span class="keywordflow">if</span> (*it == separator)</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>            {</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>                result.emplace_back(&amp;*left, it - left);</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>                left = it + 1;</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>            }</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>        }</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>        <span class="keywordflow">if</span> (left != s.end())</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>            result.emplace_back(&amp;*left, s.end() - left);</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    }</div>
 </div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span> </div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="foldopen" id="foldopen00414" data-start="{" data-end="}">
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab0545c4969b448035c39a3aa51d613d0">  414</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab0545c4969b448035c39a3aa51d613d0">lReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>    {</div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>        std::basic_string&lt;CharT&gt; out = s;</div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>        <span class="keyword">typename</span> std::basic_string&lt;CharT&gt;::size_type count = 0;</div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>        <span class="keywordflow">while</span> (out[0] == t)</div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>        {</div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>            out.erase(out.begin());</div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>            ++count;</div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>        }</div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>        <span class="keywordflow">if</span> (replacement != <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>            out = std::basic_string&lt;CharT&gt;(count, replacement) + out;</div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>        <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>    }</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="foldopen" id="foldopen00408" data-start="{" data-end="}">
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da">  408</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da">rReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>    {</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>        std::basic_string&lt;CharT&gt; out = s;</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>        <span class="keyword">typename</span> std::basic_string&lt;CharT&gt;::size_type count = 0;</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>        <span class="keywordflow">while</span> (out.back() == t)</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>        {</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>            out.pop_back();</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>            ++count;</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>        }</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>        <span class="keywordflow">if</span> (replacement != <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>            out += std::basic_string&lt;CharT&gt;(count, replacement);</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>        <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>    }</div>
 </div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span> </div>
-<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
-<div class="foldopen" id="foldopen00443" data-start="{" data-end="}">
-<div class="line"><a id="l00443" name="l00443"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae02cbf753dc057728813546bd80336da">  443</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae02cbf753dc057728813546bd80336da">bothEndsReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>    {</div>
-<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab0545c4969b448035c39a3aa51d613d0">lReplace</a>(<a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da">rReplace</a>(s, t, replacement), t, replacement);</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span> </div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="foldopen" id="foldopen00434" data-start="{" data-end="}">
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab0545c4969b448035c39a3aa51d613d0">  434</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab0545c4969b448035c39a3aa51d613d0">lReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    {</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>        std::basic_string&lt;CharT&gt; out = s;</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>        <span class="keyword">typename</span> std::basic_string&lt;CharT&gt;::size_type count = 0;</div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>        <span class="keywordflow">while</span> (out[0] == t)</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>        {</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>            out.erase(out.begin());</div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>            ++count;</div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>        }</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>        <span class="keywordflow">if</span> (replacement != <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>            out = std::basic_string&lt;CharT&gt;(count, replacement) + out;</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>        <span class="keywordflow">return</span> out;</div>
 <div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>    }</div>
 </div>
 <div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span> </div>
-<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00457" data-start="{" data-end="}">
-<div class="line"><a id="l00457" name="l00457"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a62f32c9499bcccc5b4a1f3ace5360aeb">  457</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a62f32c9499bcccc5b4a1f3ace5360aeb">join</a>(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; vector, <span class="keyword">const</span> std::string&amp; delimiter)</div>
-<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>    {</div>
-<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>        std::stringstream result;</div>
-<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; item : vector)</div>
-<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>            result &lt;&lt; item &lt;&lt; delimiter;</div>
-<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>        <span class="keywordflow">return</span> result.str();</div>
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>    }</div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT&gt;</div>
+<div class="foldopen" id="foldopen00463" data-start="{" data-end="}">
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae02cbf753dc057728813546bd80336da">  463</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae02cbf753dc057728813546bd80336da">bothEndsReplace</a>(<span class="keyword">const</span> std::basic_string&lt;CharT&gt; s, <span class="keyword">const</span> CharT t, <span class="keyword">const</span> CharT replacement = <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>    {</div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab0545c4969b448035c39a3aa51d613d0">lReplace</a>(<a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da">rReplace</a>(s, t, replacement), t, replacement);</div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>    }</div>
 </div>
-<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span> </div>
-<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ad4fca9a20e9a831347b0c71200f0448d">makeWider</a>(<span class="keyword">const</span> std::string&amp; orig);</div>
-<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span> </div>
-<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>    [[maybe_unused]] <span class="keywordtype">int</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae06e20fa11641400422ac7cbc6ed9f7f">utf8ToUnicode</a>(<span class="keyword">const</span> std::string&amp; utf8_code);</div>
-<div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span> </div>
-<div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a5dcad3b5c7b08e6541b5ae68cdf4ef0b">unicodeToUtf8</a>(<span class="keywordtype">int</span> unicode);</div>
-<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>} <span class="comment">// namespace steppable::__internals::stringUtils</span></div>
-<div class="ttc" id="aclasssteppable_1_1____internals_1_1utils_1_1Utf8CodePage_html"><div class="ttname"><a href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html">steppable::__internals::utils::Utf8CodePage</a></div><div class="ttdoc">A class that sets the console output code page to UTF-8 and enables VT mode.</div><div class="ttdef"><b>Definition</b> util.hpp:166</div></div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span> </div>
+<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00477" data-start="{" data-end="}">
+<div class="line"><a id="l00477" name="l00477"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a62f32c9499bcccc5b4a1f3ace5360aeb">  477</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a62f32c9499bcccc5b4a1f3ace5360aeb">join</a>(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; vector, <span class="keyword">const</span> std::string&amp; delimiter)</div>
+<div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span>    {</div>
+<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>        std::stringstream result;</div>
+<div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; item : vector)</div>
+<div class="line"><a id="l00481" name="l00481"></a><span class="lineno">  481</span>            result &lt;&lt; item &lt;&lt; delimiter;</div>
+<div class="line"><a id="l00482" name="l00482"></a><span class="lineno">  482</span>        <span class="keywordflow">return</span> result.str();</div>
+<div class="line"><a id="l00483" name="l00483"></a><span class="lineno">  483</span>    }</div>
+</div>
+<div class="line"><a id="l00484" name="l00484"></a><span class="lineno">  484</span> </div>
+<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ad4fca9a20e9a831347b0c71200f0448d">makeWider</a>(<span class="keyword">const</span> std::string&amp; orig);</div>
+<div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span> </div>
+<div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span>    [[maybe_unused]] <span class="keywordtype">int</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae06e20fa11641400422ac7cbc6ed9f7f">utf8ToUnicode</a>(<span class="keyword">const</span> std::string&amp; utf8_code);</div>
+<div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span> </div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>    std::string <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1stringUtils.html#a5dcad3b5c7b08e6541b5ae68cdf4ef0b">unicodeToUtf8</a>(<span class="keywordtype">int</span> unicode);</div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>} <span class="comment">// namespace steppable::__internals::stringUtils</span></div>
+<div class="ttc" id="aclasssteppable_1_1____internals_1_1utils_1_1Utf8CodePage_html"><div class="ttname"><a href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html">steppable::__internals::utils::Utf8CodePage</a></div><div class="ttdoc">A class that sets the console output code page to UTF-8 and enables VT mode.</div><div class="ttdef"><b>Definition</b> util.hpp:184</div></div>
+<div class="ttc" id="aclasssteppable_1_1____internals_1_1utils_1_1Utf8CodePage_html_abb062ead077477aa3d8e6886e390a2b6"><div class="ttname"><a href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html#abb062ead077477aa3d8e6886e390a2b6">steppable::__internals::utils::Utf8CodePage::Utf8CodePage</a></div><div class="ttdeci">Utf8CodePage()</div><div class="ttdef"><b>Definition</b> util.hpp:186</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html">steppable::__internals::numUtils</a></div><div class="ttdef"><b>Definition</b> rounding.cpp:31</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a21f487d47d06ba1a7acf19091c8edc13"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13">steppable::__internals::numUtils::determineScale</a></div><div class="ttdeci">long long determineScale(const std::string_view &amp;number)</div><div class="ttdoc">Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation.</div><div class="ttdef"><b>Definition</b> util.cpp:221</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a21f487d47d06ba1a7acf19091c8edc13"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13">steppable::__internals::numUtils::determineScale</a></div><div class="ttdeci">long long determineScale(const std::string_view &amp;number)</div><div class="ttdoc">Determines the scale of a number, i.e., the power of 10 when it is expressed in scientific notation.</div><div class="ttdef"><b>Definition</b> util.cpp:223</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a2415d3f7e66937d62bae10c9515ee94e"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e">steppable::__internals::numUtils::isNumber</a></div><div class="ttdeci">bool isNumber(const std::string_view &amp;s)</div><div class="ttdoc">Checks if a given string is a valid number.</div><div class="ttdef"><b>Definition</b> util.cpp:40</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a32fc3a968fc9629ed8616c539e840472"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472">steppable::__internals::numUtils::simplifyPolarity</a></div><div class="ttdeci">std::string simplifyPolarity(const std::string_view &amp;_string)</div><div class="ttdoc">Simplifies a string with non-standard polarity (e.g., –1, —1, etc.).</div><div class="ttdef"><b>Definition</b> util.cpp:74</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a3d4e1e21ccf1afecd766d3152df87212"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212">steppable::__internals::numUtils::removeLeadingZeros</a></div><div class="ttdeci">auto removeLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</div><div class="ttdef"><b>Definition</b> util.cpp:179</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a5d7e8d74d304a1ac7fc2ad4dbf5b40ae"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae">steppable::__internals::numUtils::removeTrailingZeros</a></div><div class="ttdeci">auto removeTrailingZeros(const std::vector&lt; int &gt; &amp;_vector) -&gt; std::decay_t&lt; decltype(_vector)&gt;</div><div class="ttdef"><b>Definition</b> util.cpp:197</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a3d4e1e21ccf1afecd766d3152df87212"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212">steppable::__internals::numUtils::removeLeadingZeros</a></div><div class="ttdeci">auto removeLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</div><div class="ttdef"><b>Definition</b> util.cpp:181</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a5d7e8d74d304a1ac7fc2ad4dbf5b40ae"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae">steppable::__internals::numUtils::removeTrailingZeros</a></div><div class="ttdeci">auto removeTrailingZeros(const std::vector&lt; int &gt; &amp;_vector) -&gt; std::decay_t&lt; decltype(_vector)&gt;</div><div class="ttdef"><b>Definition</b> util.cpp:199</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a5e6d1c6139edf65f76c0bd6aeba82066"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066">steppable::__internals::numUtils::simplifyZeroPolarity</a></div><div class="ttdeci">std::string simplifyZeroPolarity(const std::string_view &amp;string)</div><div class="ttdoc">Simplifies a string that represents a number with non-standard polarity.</div><div class="ttdef"><b>Definition</b> util.cpp:66</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a6ec6b1fba5358e4335ddce9d58ad60ff"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a6ec6b1fba5358e4335ddce9d58ad60ff">steppable::__internals::numUtils::splitNumber</a></div><div class="ttdeci">SplitNumberResult splitNumber(const std::string_view &amp;_a, const std::string_view &amp;_b, const bool padInteger, const bool padDecimal, bool properlyFormat, bool preserveNegative)</div><div class="ttdef"><b>Definition</b> util.cpp:100</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a8ce9e01517c4e53205ea82fc8ad1124b"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">steppable::__internals::numUtils::isPowerOfTen</a></div><div class="ttdeci">bool isPowerOfTen(const std::string &amp;number)</div><div class="ttdoc">Determines whether the number is a power of 10.</div><div class="ttdef"><b>Definition</b> util.cpp:249</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a8ce9e01517c4e53205ea82fc8ad1124b"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b">steppable::__internals::numUtils::isPowerOfTen</a></div><div class="ttdeci">bool isPowerOfTen(const std::string &amp;number)</div><div class="ttdoc">Determines whether the number is a power of 10.</div><div class="ttdef"><b>Definition</b> util.cpp:251</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_a97316c4c4bc4640d519cec4841c7b0e9"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9">steppable::__internals::numUtils::standardizeNumber</a></div><div class="ttdeci">std::string standardizeNumber(const std::string_view &amp;_number)</div><div class="ttdoc">Standardizes a number string.</div><div class="ttdef"><b>Definition</b> util.cpp:82</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_acc0d8c2dcee479d9b8c4b5b4585c70d8"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#acc0d8c2dcee479d9b8c4b5b4585c70d8">steppable::__internals::numUtils::isInteger</a></div><div class="ttdeci">bool isInteger(const std::string &amp;number)</div><div class="ttdoc">Determines whether the number is an integer or not.</div><div class="ttdef"><b>Definition</b> util.cpp:238</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_ae8dde3fc958f32009443d1aeaa2c0900"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#ae8dde3fc958f32009443d1aeaa2c0900">steppable::__internals::numUtils::replaceLeadingZeros</a></div><div class="ttdeci">auto replaceLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</div><div class="ttdef"><b>Definition</b> util.cpp:164</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_afa516a42a17fc99b2f9c04171ed1b4fe"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">steppable::__internals::numUtils::isDecimal</a></div><div class="ttdeci">bool isDecimal(const std::string &amp;number)</div><div class="ttdoc">Determines whether the number is a decimal or not.</div><div class="ttdef"><b>Definition</b> util.cpp:247</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_afce13d9dd949a08a7e75b27246a276b2"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">steppable::__internals::numUtils::isZeroString</a></div><div class="ttdeci">constexpr bool isZeroString(const std::string_view &amp;string)</div><div class="ttdoc">Checks if a given string is a zero string.</div><div class="ttdef"><b>Definition</b> util.hpp:221</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html">steppable::__internals::stringUtils</a></div><div class="ttdef"><b>Definition</b> util.cpp:263</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_a2600efb348f0dd19cc0068946d06b1b7"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">steppable::__internals::stringUtils::split</a></div><div class="ttdeci">auto split(std::basic_string&lt; CharT &gt; s, const CharT separator)</div><div class="ttdoc">Splits a string into substrings based on a separator.</div><div class="ttdef"><b>Definition</b> util.hpp:336</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_a5dcad3b5c7b08e6541b5ae68cdf4ef0b"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#a5dcad3b5c7b08e6541b5ae68cdf4ef0b">steppable::__internals::stringUtils::unicodeToUtf8</a></div><div class="ttdeci">std::string unicodeToUtf8(const int unicode)</div><div class="ttdoc">Converts a Unicode character to UTF-8 encoding.</div><div class="ttdef"><b>Definition</b> util.cpp:293</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_a62f32c9499bcccc5b4a1f3ace5360aeb"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#a62f32c9499bcccc5b4a1f3ace5360aeb">steppable::__internals::stringUtils::join</a></div><div class="ttdeci">auto join(const std::vector&lt; T &gt; &amp;vector, const std::string &amp;delimiter)</div><div class="ttdoc">Joins a vector of elements into a single string using a delimiter.</div><div class="ttdef"><b>Definition</b> util.hpp:457</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ab0545c4969b448035c39a3aa51d613d0"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab0545c4969b448035c39a3aa51d613d0">steppable::__internals::stringUtils::lReplace</a></div><div class="ttdeci">auto lReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the leading occurrences of a character in a string with a replacement character.</div><div class="ttdef"><b>Definition</b> util.hpp:414</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ab790464bf85c0a0932ef563d29f8a9da"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da">steppable::__internals::stringUtils::rReplace</a></div><div class="ttdeci">auto rReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the trailing occurrences of a character in a string with another character.</div><div class="ttdef"><b>Definition</b> util.hpp:388</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ad4fca9a20e9a831347b0c71200f0448d"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ad4fca9a20e9a831347b0c71200f0448d">steppable::__internals::stringUtils::makeWider</a></div><div class="ttdeci">std::string makeWider(const std::string &amp;orig)</div><div class="ttdoc">Makes the given string wider by adding 2 spaces between each character.</div><div class="ttdef"><b>Definition</b> util.cpp:264</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ae02cbf753dc057728813546bd80336da"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae02cbf753dc057728813546bd80336da">steppable::__internals::stringUtils::bothEndsReplace</a></div><div class="ttdeci">auto bothEndsReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the leading and trailing occurrences of a character in a string with a replacement character...</div><div class="ttdef"><b>Definition</b> util.hpp:443</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ae06e20fa11641400422ac7cbc6ed9f7f"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae06e20fa11641400422ac7cbc6ed9f7f">steppable::__internals::stringUtils::utf8ToUnicode</a></div><div class="ttdeci">int utf8ToUnicode(const std::string &amp;utf8_code)</div><div class="ttdoc">Converts a UTF-8 encoded string to a Unicode string.</div><div class="ttdef"><b>Definition</b> util.cpp:276</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_acc0d8c2dcee479d9b8c4b5b4585c70d8"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#acc0d8c2dcee479d9b8c4b5b4585c70d8">steppable::__internals::numUtils::isInteger</a></div><div class="ttdeci">bool isInteger(const std::string &amp;number)</div><div class="ttdoc">Determines whether the number is an integer or not.</div><div class="ttdef"><b>Definition</b> util.cpp:240</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_ae8dde3fc958f32009443d1aeaa2c0900"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#ae8dde3fc958f32009443d1aeaa2c0900">steppable::__internals::numUtils::replaceLeadingZeros</a></div><div class="ttdeci">auto replaceLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;</div><div class="ttdef"><b>Definition</b> util.cpp:167</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_afa516a42a17fc99b2f9c04171ed1b4fe"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe">steppable::__internals::numUtils::isDecimal</a></div><div class="ttdeci">bool isDecimal(const std::string &amp;number)</div><div class="ttdoc">Determines whether the number is a decimal or not.</div><div class="ttdef"><b>Definition</b> util.cpp:249</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1numUtils_html_afce13d9dd949a08a7e75b27246a276b2"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2">steppable::__internals::numUtils::isZeroString</a></div><div class="ttdeci">constexpr bool isZeroString(const std::string_view &amp;string)</div><div class="ttdoc">Checks if a given string is a zero string.</div><div class="ttdef"><b>Definition</b> util.hpp:241</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html">steppable::__internals::stringUtils</a></div><div class="ttdef"><b>Definition</b> util.cpp:265</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_a2600efb348f0dd19cc0068946d06b1b7"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7">steppable::__internals::stringUtils::split</a></div><div class="ttdeci">auto split(std::basic_string&lt; CharT &gt; s, const CharT separator)</div><div class="ttdoc">Splits a string into substrings based on a separator.</div><div class="ttdef"><b>Definition</b> util.hpp:356</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_a5dcad3b5c7b08e6541b5ae68cdf4ef0b"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#a5dcad3b5c7b08e6541b5ae68cdf4ef0b">steppable::__internals::stringUtils::unicodeToUtf8</a></div><div class="ttdeci">std::string unicodeToUtf8(const int unicode)</div><div class="ttdoc">Converts a Unicode character to UTF-8 encoding.</div><div class="ttdef"><b>Definition</b> util.cpp:295</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_a62f32c9499bcccc5b4a1f3ace5360aeb"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#a62f32c9499bcccc5b4a1f3ace5360aeb">steppable::__internals::stringUtils::join</a></div><div class="ttdeci">auto join(const std::vector&lt; T &gt; &amp;vector, const std::string &amp;delimiter)</div><div class="ttdoc">Joins a vector of elements into a single string using a delimiter.</div><div class="ttdef"><b>Definition</b> util.hpp:477</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ab0545c4969b448035c39a3aa51d613d0"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab0545c4969b448035c39a3aa51d613d0">steppable::__internals::stringUtils::lReplace</a></div><div class="ttdeci">auto lReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the leading occurrences of a character in a string with a replacement character.</div><div class="ttdef"><b>Definition</b> util.hpp:434</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ab790464bf85c0a0932ef563d29f8a9da"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da">steppable::__internals::stringUtils::rReplace</a></div><div class="ttdeci">auto rReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the trailing occurrences of a character in a string with another character.</div><div class="ttdef"><b>Definition</b> util.hpp:408</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ad4fca9a20e9a831347b0c71200f0448d"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ad4fca9a20e9a831347b0c71200f0448d">steppable::__internals::stringUtils::makeWider</a></div><div class="ttdeci">std::string makeWider(const std::string &amp;orig)</div><div class="ttdoc">Makes the given string wider by adding 2 spaces between each character.</div><div class="ttdef"><b>Definition</b> util.cpp:266</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ae02cbf753dc057728813546bd80336da"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae02cbf753dc057728813546bd80336da">steppable::__internals::stringUtils::bothEndsReplace</a></div><div class="ttdeci">auto bothEndsReplace(const std::basic_string&lt; CharT &gt; s, const CharT t, const CharT replacement='\0')</div><div class="ttdoc">Replaces the leading and trailing occurrences of a character in a string with a replacement character...</div><div class="ttdef"><b>Definition</b> util.hpp:463</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1stringUtils_html_ae06e20fa11641400422ac7cbc6ed9f7f"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1stringUtils.html#ae06e20fa11641400422ac7cbc6ed9f7f">steppable::__internals::stringUtils::utf8ToUnicode</a></div><div class="ttdeci">int utf8ToUnicode(const std::string &amp;utf8_code)</div><div class="ttdoc">Converts a UTF-8 encoded string to a Unicode string.</div><div class="ttdef"><b>Definition</b> util.cpp:278</div></div>
 <div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div><div class="ttdoc">The namespace containing utility functions for the Steppable library.</div><div class="ttdef"><b>Definition</b> argParse.cpp:39</div></div>
-<div class="ttc" id="astructsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult_html"><div class="ttname"><a href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html">steppable::__internals::numUtils::SplitNumberResult</a></div><div class="ttdoc">A structure for storing split numbers.</div><div class="ttdef"><b>Definition</b> util.hpp:181</div></div>
-<div class="ttc" id="astructsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult_html_a2528f46d7bbfe1dd8ac10bfa9487903d"><div class="ttname"><a href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a2528f46d7bbfe1dd8ac10bfa9487903d">steppable::__internals::numUtils::SplitNumberResult::aIsNegative</a></div><div class="ttdeci">bool aIsNegative</div><div class="ttdef"><b>Definition</b> util.hpp:183</div></div>
-<div class="ttc" id="astructsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult_html_a50c8f786407bdf62690747c343f2f793"><div class="ttname"><a href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793">steppable::__internals::numUtils::SplitNumberResult::splitNumberArray</a></div><div class="ttdeci">std::array&lt; std::string, 4 &gt; splitNumberArray</div><div class="ttdef"><b>Definition</b> util.hpp:182</div></div>
-<div class="ttc" id="astructsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult_html_aafe32bc0840b6b99ed2e57a065ec55f0"><div class="ttname"><a href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#aafe32bc0840b6b99ed2e57a065ec55f0">steppable::__internals::numUtils::SplitNumberResult::bIsNegative</a></div><div class="ttdeci">bool bIsNegative</div><div class="ttdef"><b>Definition</b> util.hpp:183</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_af753e0b8dd7f589f022d757639650ff7"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#af753e0b8dd7f589f022d757639650ff7">steppable::__internals::utils::initLocale</a></div><div class="ttdeci">void initLocale()</div><div class="ttdef"><b>Definition</b> util.cpp:367</div></div>
+<div class="ttc" id="astructsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult_html"><div class="ttname"><a href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html">steppable::__internals::numUtils::SplitNumberResult</a></div><div class="ttdoc">A structure for storing split numbers.</div><div class="ttdef"><b>Definition</b> util.hpp:201</div></div>
+<div class="ttc" id="astructsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult_html_a2528f46d7bbfe1dd8ac10bfa9487903d"><div class="ttname"><a href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a2528f46d7bbfe1dd8ac10bfa9487903d">steppable::__internals::numUtils::SplitNumberResult::aIsNegative</a></div><div class="ttdeci">bool aIsNegative</div><div class="ttdef"><b>Definition</b> util.hpp:203</div></div>
+<div class="ttc" id="astructsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult_html_a50c8f786407bdf62690747c343f2f793"><div class="ttname"><a href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793">steppable::__internals::numUtils::SplitNumberResult::splitNumberArray</a></div><div class="ttdeci">std::array&lt; std::string, 4 &gt; splitNumberArray</div><div class="ttdef"><b>Definition</b> util.hpp:202</div></div>
+<div class="ttc" id="astructsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult_html_aafe32bc0840b6b99ed2e57a065ec55f0"><div class="ttname"><a href="structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#aafe32bc0840b6b99ed2e57a065ec55f0">steppable::__internals::numUtils::SplitNumberResult::bIsNegative</a></div><div class="ttdeci">bool bIsNegative</div><div class="ttdef"><b>Definition</b> util.hpp:203</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!DOCTYPE html>
 <html>
@@ -421,7 +443,7 @@ $(function() { codefold.init(0); });
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri May 10 2024 03:35:08"; // Will get replaced by Doxygen
+        const dateStr = "Sat May 11 2024 15:57:33"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

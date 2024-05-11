@@ -10,6 +10,6 @@ var searchData=
   ['using_20the_20header_20files_7',['Using the Header Files',['../md_wiki_2API-Reference.html#autotoc_md2',1,'']]],
   ['using_20the_20library_8',['Using the Library',['../md_wiki_2API-Reference.html#autotoc_md4',1,'']]],
   ['using_20the_20namespaces_9',['Using the Namespaces',['../md_wiki_2API-Reference.html#autotoc_md3',1,'']]],
-  ['utf8codepage_10',['Utf8CodePage',['../classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html',1,'steppable::__internals::utils']]],
+  ['utf8codepage_10',['Utf8CodePage',['../classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html',1,'steppable::__internals::utils::Utf8CodePage'],['../classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html#abb062ead077477aa3d8e6886e390a2b6',1,'steppable::__internals::utils::Utf8CodePage::Utf8CodePage()']]],
   ['utf8tounicode_11',['utf8ToUnicode',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ae06e20fa11641400422ac7cbc6ed9f7f',1,'steppable::__internals::stringUtils']]]
 ];

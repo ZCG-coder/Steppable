@@ -105,6 +105,9 @@ $(function() {
   <div class="headertitle"><div class="title">steppable::__internals::symbols Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The namespace containing various unicode symbols.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -117,17 +120,24 @@ Functions</h2></td></tr>
 <tr class="memitem:a746f88878c7cf9b2390e5836ff30ef40" id="r_a746f88878c7cf9b2390e5836ff30ef40"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a746f88878c7cf9b2390e5836ff30ef40">makeSuperscript</a> (const std::string &amp;normal)</td></tr>
 <tr class="memdesc:a746f88878c7cf9b2390e5836ff30ef40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a superscript string from a normal string.  <br /></td></tr>
 <tr class="separator:a746f88878c7cf9b2390e5836ff30ef40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d577e67e6e7d6ffa1e878308eda0c08" id="r_a6d577e67e6e7d6ffa1e878308eda0c08"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d577e67e6e7d6ffa1e878308eda0c08">makeSuperscript</a> (char normal)</td></tr>
-<tr class="memdesc:a6d577e67e6e7d6ffa1e878308eda0c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a superscript string from a normal character.  <br /></td></tr>
-<tr class="separator:a6d577e67e6e7d6ffa1e878308eda0c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24e395f161f6d45fa6c88f74eaf1cc6c" id="r_a24e395f161f6d45fa6c88f74eaf1cc6c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24e395f161f6d45fa6c88f74eaf1cc6c">makeSuperscript</a> (char normal)</td></tr>
+<tr class="memdesc:a24e395f161f6d45fa6c88f74eaf1cc6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a superscript string from a normal character.  <br /></td></tr>
+<tr class="separator:a24e395f161f6d45fa6c88f74eaf1cc6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c43fdf51f20bcfff97597689af88bb3" id="r_a6c43fdf51f20bcfff97597689af88bb3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c43fdf51f20bcfff97597689af88bb3">makeSurd</a> (const std::string &amp;radicand)</td></tr>
+<tr class="memdesc:a6c43fdf51f20bcfff97597689af88bb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a surd expression from a radicand.  <br /></td></tr>
+<tr class="separator:a6c43fdf51f20bcfff97597689af88bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a525f77652c8df0a7a7512992e3408522" id="r_a525f77652c8df0a7a7512992e3408522"><td class="memItemLeft" align="right" valign="top">const std::array&lt; std::string_view, 10 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a525f77652c8df0a7a7512992e3408522">SUPERSCRIPTS</a></td></tr>
-<tr class="memdesc:a525f77652c8df0a7a7512992e3408522"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of subscript characters.  <br /></td></tr>
-<tr class="separator:a525f77652c8df0a7a7512992e3408522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dbef43e4c83dd6946de66afb052fff7" id="r_a3dbef43e4c83dd6946de66afb052fff7"><td class="memItemLeft" align="right" valign="top">const std::array&lt; std::string, 10 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dbef43e4c83dd6946de66afb052fff7">SUPERSCRIPTS</a></td></tr>
+<tr class="memdesc:a3dbef43e4c83dd6946de66afb052fff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of subscript characters.  <br /></td></tr>
+<tr class="separator:a3dbef43e4c83dd6946de66afb052fff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The namespace containing various unicode symbols. </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated</a></b></dt><dd>This namespace is deprecated and will be removed in the future, as the unicode output is not flexible enough. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Usage of this namespace is strongly discouraged. Use the <a class="el" href="namespacesteppable_1_1prettyPrint.html" title="The namespace containing utilities for pretty printing.">steppable::prettyPrint</a> namespace for basic tools, and implement yours in <a class="el" href="namespacesteppable_1_1prettyPrint_1_1printers.html" title="The custom-implemented printer engines for outputting expressions.">steppable::prettyPrint::printers</a>. </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a69d3b3d195d72c87d2e9038acc4e8143" name="a69d3b3d195d72c87d2e9038acc4e8143"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69d3b3d195d72c87d2e9038acc4e8143">&#9670;&#160;</a></span>makeSubscript() <span class="overload">[1/2]</span></h2>
 
@@ -190,14 +200,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a6d577e67e6e7d6ffa1e878308eda0c08" name="a6d577e67e6e7d6ffa1e878308eda0c08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d577e67e6e7d6ffa1e878308eda0c08">&#9670;&#160;</a></span>makeSuperscript() <span class="overload">[1/2]</span></h2>
+<a id="a24e395f161f6d45fa6c88f74eaf1cc6c" name="a24e395f161f6d45fa6c88f74eaf1cc6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24e395f161f6d45fa6c88f74eaf1cc6c">&#9670;&#160;</a></span>makeSuperscript() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string_view steppable::__internals::symbols::makeSuperscript </td>
+          <td class="memname">std::string steppable::__internals::symbols::makeSuperscript </td>
           <td>(</td>
           <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>normal</em></span></td><td>)</td>
           <td></td>
@@ -247,20 +257,46 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a525f77652c8df0a7a7512992e3408522" name="a525f77652c8df0a7a7512992e3408522"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a525f77652c8df0a7a7512992e3408522">&#9670;&#160;</a></span>SUPERSCRIPTS</h2>
+<a id="a6c43fdf51f20bcfff97597689af88bb3" name="a6c43fdf51f20bcfff97597689af88bb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c43fdf51f20bcfff97597689af88bb3">&#9670;&#160;</a></span>makeSurd()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::array&lt; std::string_view, 10 &gt; &amp; steppable::__internals::symbols::SUPERSCRIPTS</td>
+          <td class="memname">std::string steppable::__internals::symbols::makeSurd </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>radicand</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Makes a surd expression from a radicand. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">radicand</td><td>The radicand. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The surd expression. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a3dbef43e4c83dd6946de66afb052fff7" name="a3dbef43e4c83dd6946de66afb052fff7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dbef43e4c83dd6946de66afb052fff7">&#9670;&#160;</a></span>SUPERSCRIPTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::array&lt; std::string, 10 &gt; &amp; steppable::__internals::symbols::SUPERSCRIPTS</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= { <span class="stringliteral">&quot;\u2070&quot;</span>, <span class="stringliteral">&quot;\u00b9&quot;</span>, <span class="stringliteral">&quot;\u00b2&quot;</span>, <span class="stringliteral">&quot;\u00b3&quot;</span>, <span class="stringliteral">&quot;\u2074&quot;</span>,</div>
-<div class="line">                                                             <span class="stringliteral">&quot;\u2075&quot;</span>, <span class="stringliteral">&quot;\u2076&quot;</span>, <span class="stringliteral">&quot;\u2077&quot;</span>, <span class="stringliteral">&quot;\u2078&quot;</span>, <span class="stringliteral">&quot;\u2079&quot;</span> }</div>
+<div class="line">                                                        <span class="stringliteral">&quot;\u2075&quot;</span>, <span class="stringliteral">&quot;\u2076&quot;</span>, <span class="stringliteral">&quot;\u2077&quot;</span>, <span class="stringliteral">&quot;\u2078&quot;</span>, <span class="stringliteral">&quot;\u2079&quot;</span> }</div>
 </div><!-- fragment -->
 <p>A list of subscript characters. </p>
 
@@ -285,7 +321,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri May 10 2024 03:35:09"; // Will get replaced by Doxygen
+        const dateStr = "Sat May 11 2024 15:57:34"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

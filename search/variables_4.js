@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['keywordargdescriptions_0',['keywordArgDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a16abcbe1304b801bc6c0ce8c3100626a',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['keywordargs_1',['keywordArgs',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a21194b8ff3cc7c94ac5fa22c445a2de3',1,'steppable::__internals::utils::ProgramArgs']]]
+  ['file_0',['file',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a1ede38f94b58b5465a4ad95a41bb4b0a',1,'steppable::__internals::logging::Logger']]]
 ];

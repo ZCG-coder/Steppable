@@ -7,7 +7,7 @@ var searchData=
   ['representnumber_4',['representNumber',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0',1,'steppable::__internals::arithmetic']]],
   ['reset_5',['reset',['../namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff',1,'steppable::__internals::utils']]],
   ['reverse_6',['reverse',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a588a3cdce1fef100d63d64816a37981a',1,'steppable::__internals::utils::formats']]],
-  ['root_7',['root',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a8c20a75a55d968bd679a1a550a46a497',1,'steppable::__internals::arithmetic']]],
-  ['roundoff_8',['roundOff',['../namespacesteppable_1_1____internals_1_1numUtils.html#ac634c8aea297b7e8f5cc251041089c5b',1,'steppable::__internals::numUtils']]],
+  ['root_7',['root',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a1b2a13f3be54bd279552f57aba88907d',1,'steppable::__internals::arithmetic']]],
+  ['roundoff_8',['roundOff',['../namespacesteppable_1_1____internals_1_1numUtils.html#a05db249045994ee795e6f1a24201f182',1,'steppable::__internals::numUtils']]],
   ['rreplace_9',['rReplace',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da',1,'steppable::__internals::stringUtils']]]
 ];
