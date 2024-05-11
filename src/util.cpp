@@ -128,15 +128,18 @@ namespace steppable::__internals::numUtils
         const std::vector<std::string> aParts = stringUtils::split(a, '.'), bParts = stringUtils::split(b, '.');
         auto aInteger = static_cast<std::string>(aParts.front()), aDecimal = static_cast<std::string>(aParts.back()),
              bInteger = static_cast<std::string>(bParts.front()), bDecimal = static_cast<std::string>(bParts.back());
-        // If the numbers are integers, discard their decimal points
-        if (isZeroString(aDecimal) or aParts.size() == 1)
-            aDecimal = "";
-        if (isZeroString(bDecimal) or bParts.size() == 1)
-            bDecimal = "";
-        aInteger = simplifyZeroPolarity(aInteger);
-        bInteger = simplifyZeroPolarity(bInteger);
-        aDecimal = removeTrailingZeros(aDecimal);
-        bDecimal = removeTrailingZeros(bDecimal);
+        if (properlyFormat)
+        {
+            // If the numbers are integers, discard their decimal points
+            if (isZeroString(aDecimal) or aParts.size() == 1)
+                aDecimal = "";
+            if (isZeroString(bDecimal) or bParts.size() == 1)
+                bDecimal = "";
+            aInteger = simplifyZeroPolarity(aInteger);
+            bInteger = simplifyZeroPolarity(bInteger);
+            aDecimal = removeTrailingZeros(aDecimal);
+            bDecimal = removeTrailingZeros(bDecimal);
+        }
 
         // Pad with zeros
         if (padInteger)
@@ -169,8 +172,7 @@ namespace steppable::__internals::numUtils
         if (const auto firstNonZero = std::ranges::find_if(out, [](const int num) { return num != 0; });
             out.begin() != firstNonZero && out.front() == 0)
         {
-            std::replace_if(
-                out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
+            std::replace_if(out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
         }
 
         return out;
@@ -237,7 +239,7 @@ namespace steppable::__internals::numUtils
 
     bool isInteger(const std::string& number)
     {
-        auto splitNumberResult = splitNumber(number, "0", false, false, false).splitNumberArray;
+        auto splitNumberResult = splitNumber(number, "0", false, false, true).splitNumberArray;
         // If the decimal part is zero, it is an integer.
         if (isZeroString(splitNumberResult[1]))
             return true;

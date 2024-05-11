@@ -219,7 +219,7 @@ namespace steppable::__internals::arithmetic
         auto numberDecimals = quotient.length() - numberIntegers;
         quotient = removeLeadingZeros(quotient);
         std::string finalQuotient = quotient;
-        if ((numberIntegers < 0) and (-numberIntegers + 1 >= decimals))
+        if ((numberIntegers < 0) and (-numberIntegers >= decimals))
         {
             if (steps != 0)
                 warning("The result is inaccurate, as the decimals you specified is not enough to display the result.");
@@ -228,26 +228,12 @@ namespace steppable::__internals::arithmetic
 
         // Scenario 1: No decimal places returned
         // Solution  : Do nothing
-        if (static_cast<size_t>(numberIntegers) == quotient.length() - 1 or decimals == 0)
+        if (static_cast<size_t>(numberIntegers) == quotient.length() - 1)
             finalQuotient = quotient.substr(0, quotient.length() - 1);
         // Scenario 2: Decimal places more than requested
         // Solution  : Round to the nearest decimal place
         else if (numberDecimals >= decimals and numberIntegers > 0)
         {
-            bool carry = false;
-            if (not quotient.empty() and quotient.back() > '4')
-            {
-                quotient = add(quotient, "10", 0, false, false);
-
-                if (quotient.front() == '0')
-                    quotient.erase(0, 1);
-                else
-                {
-                    carry = true;
-                    quotient += '0';
-                }
-            }
-            quotient.pop_back();
             auto beforeDecimal = quotient.substr(0, numberIntegers),
                  afterDecimal = quotient.substr(numberIntegers, numberDecimals);
             if (beforeDecimal.empty())
@@ -256,9 +242,7 @@ namespace steppable::__internals::arithmetic
                 finalQuotient = beforeDecimal + "." + afterDecimal;
             else
                 finalQuotient = beforeDecimal;
-
-            if (afterDecimal.length() > decimals)
-                finalQuotient = multiply(finalQuotient, "10", 0);
+            finalQuotient = roundOff(finalQuotient, _decimals);
         }
         // Scenario 3: Result is less than one
         // Solution  : 1. Append "0." to the beginning
@@ -266,20 +250,8 @@ namespace steppable::__internals::arithmetic
         //             3. Apply rounding
         else if (numberIntegers <= 0)
         {
-            if (not quotient.empty() and quotient.back() > '4')
-            {
-                quotient = add(quotient, "10", 0, false, false);
-                if (quotient.front() == '0')
-                    quotient.erase(0, 1);
-                else
-                    quotient += '0';
-            }
-            quotient.pop_back();
             auto afterDecimal = std::string(-numberIntegers, '0') + quotient;
-            finalQuotient = "0." + afterDecimal;
-
-            if (afterDecimal.length() > decimals)
-                finalQuotient = multiply(finalQuotient, "10", 0);
+            finalQuotient = roundOff("0." + afterDecimal, _decimals);
         }
 
         // Scenario 4: Decimal places less than requested

@@ -37,7 +37,7 @@ namespace steppable::__internals::numUtils
         if (number.find('.') == std::string::npos)
             return number;
         // Round off the number
-        auto splitNumberResult = splitNumber(number, "0", false, false, true, false).splitNumberArray;
+        auto splitNumberResult = splitNumber(number, "0", true, true, false, false).splitNumberArray;
         auto integer = splitNumberResult[0], decimal = splitNumberResult[1];
 
         // Preserve one digit after the rounded digit
