@@ -80,9 +80,9 @@ namespace steppable::__internals::arithmetic
     {
         if (numUtils::isDecimal(base))
         {
-            const auto& fraction = Fraction(_number);
+            const auto& fraction = Fraction(base);
             const auto& [top, bottom] = fraction.asArray();
-            const auto &powerResult = power(_number, top, 0), rootResult = root(powerResult, bottom, _decimals, 0);
+            const auto &powerResult = power(_number, bottom, 0), rootResult = root(powerResult, top, _decimals, 0);
             return reportRootPower(_number, base, fraction, rootResult, steps);
         }
 

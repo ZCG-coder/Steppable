@@ -36,7 +36,7 @@ std::string reportRootPower(const std::string& _number,
                             const std::string& rootResult,
                             const int steps)
 {
-    auto array = fraction.asArray();
+    const auto& array = fraction.asArray();
     std::stringstream ss;
 
     if (steps == 2)
