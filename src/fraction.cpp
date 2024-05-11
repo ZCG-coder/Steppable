@@ -38,6 +38,11 @@
 
 #include <string>
 
+#ifdef WINDOWS
+    #undef max
+    #undef min
+#endif
+
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::numUtils;
 

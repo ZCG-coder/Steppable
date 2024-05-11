@@ -28,6 +28,11 @@
 #include <string>
 #include <vector>
 
+#ifdef WINDOWS
+    #undef max
+    #undef min
+#endif
+
 namespace steppable::prettyPrint
 {
     using namespace steppable::__internals::stringUtils;
