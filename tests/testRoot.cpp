@@ -32,6 +32,11 @@
 TEST_START()
 SECTION(Root with a sqare number)
 using namespace steppable::__internals::arithmetic;
-_.assertIsEqual(root("4", "2"), "2.00000000");
+_.assertIsEqual(root("4", "2", 0, 0), "2");
+SECTION_END()
+
+SECTION(Root with a decimal index)
+using namespace steppable::__internals::arithmetic;
+_.assertIsEqual(root("4", "0.5", 0, 0), "16");
 SECTION_END()
 TEST_END()

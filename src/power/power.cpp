@@ -29,18 +29,48 @@
  */
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
+#include "fraction.hpp"
 #include "powerReport.hpp"
+#include "symbols.hpp"
 #include "util.hpp"
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::output;
 using namespace steppable::__internals::arithmetic;
 
+namespace steppable::prettyPrint::printers
+{
+    std::string ppSuperscript(const std::string& base, const std::string& superscript)
+    {
+        auto width = prettyPrint::getStringWidth(base) + 1,
+             height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
+
+        prettyPrint::ConsoleOutput output(height, width);
+        prettyPrint::Position pos{ static_cast<long long>(width - 1), 0 };
+        output.write(superscript, pos, false);
+        output.write(base, { 0, 1 }, false);
+        return output.asString();
+    }
+} // namespace steppable::prettyPrint::printers
+
 namespace steppable::__internals::arithmetic
 {
     std::string power(const std::string_view _number, const std::string_view& _raiseTo, const int steps)
     {
         std::string raiseTo = static_cast<std::string>(_raiseTo), number = static_cast<std::string>(_number);
+
+        if (isDecimal(raiseTo))
+        {
+            // Raising to decimal power.
+            // Steps:
+            // 1. Convert the decimal to a fraction.
+            // 2. Raise the number to the numerator of the fraction.
+            // 3. Take the root of the number to the denominator of the fraction.
+            const auto& fraction = Fraction(raiseTo);
+            const auto& [top, bottom] = fraction.asArray();
+            const auto &powerResult = power(_number, top, 0), rootResult = root(powerResult, bottom, 8, 0);
+            return reportPowerRoot(number, raiseTo, fraction, rootResult, steps);
+        }
 
         // Here, we attempt to give a quick answer, instead of doing pointless iterations.
         if (number == "1")

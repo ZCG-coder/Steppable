@@ -26,13 +26,106 @@
 
 #include <sstream>
 #include <string>
+#include <vector>
+
+#ifdef WINDOWS
+    #undef max
+    #undef min
+#endif
+
+namespace steppable::prettyPrint
+{
+    using namespace steppable::__internals::stringUtils;
+
+    ConsoleOutput::ConsoleOutput(long long height, long long width) : height(height), width(width)
+    {
+        buffer = std::vector<std::vector<char>>(height, std::vector<char>(width, ' '));
+    }
+
+    void ConsoleOutput::write(const char c, const Position& pos, bool updatePos)
+    {
+        std::vector<char> vector = buffer[pos.y];
+        vector[pos.x] = c;
+        buffer[pos.y] = vector;
+
+        if (updatePos)
+            curPos = pos;
+    }
+
+    void ConsoleOutput::write(const char c, const long long dLine, const long long dCol, bool updatePos)
+    {
+        if (dLine < 0)
+        {
+            // We need to add extra lines for printing at the very top
+            buffer.insert(buffer.begin(), -dLine, std::vector<char>(width, ' '));
+            curPos.y = 0;
+            height -= dLine;
+        }
+        if (dCol < 0)
+        {
+            for (long long i = 0; i < buffer.size(); i++)
+            {
+                std::vector<char> vector = buffer[i];
+                vector.resize(vector.size() - dCol, ' ');
+                buffer[i] = vector;
+            }
+
+            curPos.x -= dCol;
+            width -= dCol;
+        }
+        else
+            curPos.x += dCol;
+        write(c, curPos, updatePos);
+    }
+
+    void ConsoleOutput::write(const std::string& s, const Position& pos, bool updatePos)
+    {
+        Position p = pos;
+        for (const auto& c : s)
+        {
+            if (c == '\n')
+            {
+                p.y++;
+                p.x = pos.x;
+                continue;
+            }
+            write(c, p, false);
+            p.x++;
+            if (updatePos)
+                curPos = p;
+        }
+    }
+
+    std::string ConsoleOutput::asString() const
+    {
+        std::string res;
+        for (const auto& line : buffer)
+        {
+            for (const auto& c : line)
+                res += c;
+            res += '\n';
+        }
+        return res;
+    }
+
+    size_t getStringWidth(const std::string& s)
+    {
+        auto strings = split(s, '\n');
+        size_t max = 0;
+        for (const auto& string : strings)
+            max = std::max(max, string.length());
+        return max;
+    }
+
+    size_t getStringHeight(const std::string& s) { return split(s, '\n').size(); }
+} // namespace steppable::prettyPrint
 
 namespace steppable::__internals::symbols
 {
     using namespace steppable::__internals::stringUtils;
 
-    const std::array<std::string_view, 10>& SUPERSCRIPTS = { "\u2070", "\u00b9", "\u00b2", "\u00b3", "\u2074",
-                                                             "\u2075", "\u2076", "\u2077", "\u2078", "\u2079" };
+    const std::array<std::string, 10>& SUPERSCRIPTS = { "\u2070", "\u00b9", "\u00b2", "\u00b3", "\u2074",
+                                                        "\u2075", "\u2076", "\u2077", "\u2078", "\u2079" };
 
     std::string makeSubscript(const std::string& normal)
     {
@@ -48,16 +141,29 @@ namespace steppable::__internals::symbols
     {
         std::stringstream ss;
         for (const char c : normal)
-            ss << SUPERSCRIPTS[c - '0'];
+            if (isdigit(c))
+                ss << SUPERSCRIPTS[c - '0'];
+            else
+                ss << ABOVE_DOT;
         std::string string = ss.str();
         return string;
     }
 
-    std::string_view makeSuperscript(const char normal)
+    std::string makeSuperscript(const char normal)
     {
         if (normal == '-')
             return "\u207B";
 
         return SUPERSCRIPTS[normal - '0'];
+    }
+
+    std::string makeSurd(const std::string& radicand)
+    {
+        std::stringstream ss;
+        ss << SURD;
+        for (char c : radicand)
+            ss << std::string(1, c) << COMBINE_MACRON;
+
+        return ss.str();
     }
 } // namespace steppable::__internals::symbols

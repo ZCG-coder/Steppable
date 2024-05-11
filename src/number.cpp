@@ -33,6 +33,11 @@
 #include "fn/basicArithm.hpp"
 #include "output.hpp"
 
+#ifdef WINDOWS
+    #undef max
+    #undef min
+#endif
+
 namespace steppable
 {
     using namespace steppable::__internals::arithmetic;

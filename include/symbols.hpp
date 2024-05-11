@@ -33,8 +33,132 @@
 #pragma once
 
 #include <array>
+#include <cstddef>
 #include <string>
+#include <vector>
 
+#pragma once
+
+#include <string>
+#include <vector>
+
+/**
+ * @namespace steppable::prettyPrint
+ * @brief The namespace containing utilities for pretty printing.
+ */
+namespace steppable::prettyPrint
+{
+    /**
+     * @brief Represents a position in the console.
+     */
+    struct Position
+    {
+        long long x = 0;
+        long long y = 0;
+    };
+
+    // // Not currently in use.
+    // enum PrintingAlignment
+    // {
+    //     BASELINE = 0,
+    //     MIDDLE = 1
+    // };
+
+    // struct PrintingObj
+    // {
+    //     std::string str;
+    //     PrintingAlignment alignment;
+    // };
+
+    /**
+     * @brief Represents a console output buffer.
+     */
+    class ConsoleOutput
+    {
+    private:
+        /// @brief The current position.
+        Position curPos;
+
+        /// @brief The buffer object.
+        std::vector<std::vector<char>> buffer;
+
+        /// @brief The height of the buffer.
+        long long height = 10;
+
+        /// @brief The width of the buffer.
+        long long width = 10;
+
+    public:
+        /**
+         * @brief Creates a new console output buffer.
+         *
+         * @param height The height of the buffer.
+         * @param width The width of the buffer.
+         */
+        ConsoleOutput(long long height, long long width);
+
+        /**
+         * @brief Writes a character to the buffer.
+         *
+         * @param c The character to write.
+         * @param dLine The change in line.
+         * @param dCol The change in column.
+         * @param updatePos Whether to update the current position.
+         */
+        void write(const char c, const long long dLine, const long long dCol, bool updatePos = false);
+
+        /**
+         * @brief Writes a character to the buffer.
+         *
+         * @param c The character to write.
+         * @param pos The position to write to.
+         * @param updatePos Whether to update the current position.
+         */
+        void write(const char c, const Position& pos, bool updatePos = false);
+
+        /**
+         * @brief Writes a string to the buffer.
+         *
+         * @param s The string to write.
+         * @param dLine The change in line.
+         * @param dCol The change in column.
+         * @param updatePos Whether to update the current position.
+         */
+        void write(const std::string& s, const Position& pos, bool updatePos = false);
+
+        /**
+         * @brief Gets the buffer as a string.
+         * @return The buffer as a string.
+         */
+        [[nodiscard]] std::string asString() const;
+    };
+
+    /**
+     * @brief Gets the minimal width needed to print a string.
+     *
+     * @param s The string.
+     * @return The width of the string.
+     */
+    size_t getStringWidth(const std::string& s);
+
+    /**
+     * @brief Gets the minimal height needed to print a string.
+     *
+     * @param s The string.
+     * @return The height of the string.
+     */
+    size_t getStringHeight(const std::string& s);
+} // namespace steppable::prettyPrint
+
+/**
+ * @namespace steppable::__internals::symbols
+ * @brief The namespace containing various unicode symbols.
+ *
+ * @deprecated This namespace is deprecated and will be removed in the future, as the unicode output is not flexible
+ * enough.
+ * @warning Usage of this namespace is strongly discouraged. Use the steppable::prettyPrint namespace for basic tools,
+ * and implement yours in steppable::prettyPrint::printers.
+ */
 namespace steppable::__internals::symbols
 {
 /// @brief The because symbol (3 dots in a triangle, Unicode U+2235)
@@ -47,8 +171,12 @@ namespace steppable::__internals::symbols
 /// @brief The divide symbol (Unicode U+00F7)
 #define DIVIDED_BY "\u00F7"
 
+#define SURD "\u221A"
+#define COMBINE_MACRON "\u0305"
+
 /// @brief The large dot symbol (Unicode U+25C9)
 #define LARGE_DOT "\u25C9"
+#define ABOVE_DOT "\u02D9"
 
 // Subscripts
 /**
@@ -68,7 +196,7 @@ namespace steppable::__internals::symbols
 #define SUB_MAGIC_NUMBER 8272
 
     /// @brief A list of subscript characters.
-    extern const std::array<std::string_view, 10>& SUPERSCRIPTS;
+    extern const std::array<std::string, 10>& SUPERSCRIPTS;
 
     /**
      * @brief Create a subscript string from a normal string.
@@ -117,5 +245,57 @@ namespace steppable::__internals::symbols
      * @param[in] normal The normal character.
      * @return The superscript string.
      */
-    std::string_view makeSuperscript(char normal);
+    std::string makeSuperscript(char normal);
+
+    /**
+     * @brief Makes a surd expression from a radicand.
+     *
+     * @param radicand The radicand.
+     * @return The surd expression.
+     */
+    std::string makeSurd(const std::string& radicand);
 } // namespace steppable::__internals::symbols
+
+/**
+ * @namespace steppable::prettyPrint::printers
+ * @brief The custom-implemented printer engines for outputting expressions.
+ */
+namespace steppable::prettyPrint::printers
+{
+    /**
+     * @brief Pretty print a root expression.
+     *
+     * @param radicand The radicand.
+     * @param index The index.
+     * @return The pretty printed root expression.
+     */
+    std::string ppRoot(const std::string& radicand, const std::string& index = "2");
+
+    /**
+     * @brief Pretty print a fraction.
+     *
+     * @param numerator The numerator.
+     * @param denominator The denominator.
+     * @param inLine Whether to print in a single line.
+     * @return The pretty printed fraction.
+     */
+    std::string ppFraction(const std::string& numerator, const std::string& denominator, const bool inLine = false);
+
+    /**
+     * @brief Pretty print a base expression, (aka, subscript).
+     *
+     * @param base The base.
+     * @param subscript The subscript.
+     * @return The pretty printed base expression.
+     */
+    std::string ppSubscript(const std::string& base, const std::string& subscript);
+
+    /**
+     * @brief Pretty print a power expression, (aka, superscript).
+     *
+     * @param base The base.
+     * @param exponent The exponent.
+     * @return The pretty printed power expression.
+     */
+    std::string ppSuperscript(const std::string& base, const std::string& superscript);
+} // namespace steppable::prettyPrint::printers

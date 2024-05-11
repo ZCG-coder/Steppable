@@ -23,6 +23,7 @@
 #include "colors.hpp"
 #include "fn/basicArithm.hpp"
 #include "output.hpp"
+#include "rounding.hpp"
 #include "testing.hpp"
 #include "util.hpp"
 
@@ -52,5 +53,12 @@ const std::string_view &number = "0.5", &raiseTo = "10";
 const auto& result = power(number, raiseTo, 0);
 
 _.assertIsEqual(result, "0.0009765625");
+SECTION_END()
+
+SECTION(Power with Decimal Exponents)
+const std::string_view &number = "4", &raiseTo = "0.5";
+const auto& result = power(number, raiseTo, 0);
+
+_.assertIsEqual(numUtils::roundOff(result), "2");
 SECTION_END()
 TEST_END()

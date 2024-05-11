@@ -33,6 +33,7 @@
 #include "baseConvertReport.hpp"
 #include "fn/basicArithm.hpp"
 #include "output.hpp"
+#include "symbols.hpp"
 #include "util.hpp"
 
 #include <sstream>
@@ -45,6 +46,22 @@ using namespace steppable::__internals::stringUtils;
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::symbols;
 using namespace steppable::output;
+
+namespace steppable::prettyPrint::printers
+{
+    std::string ppSubscript(const std::string& base, const std::string& subscript)
+    {
+        auto subscriptWidth = prettyPrint::getStringWidth(subscript);
+        auto width = prettyPrint::getStringWidth(base) + subscriptWidth + 1,
+             height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
+
+        prettyPrint::ConsoleOutput output(height, width);
+        prettyPrint::Position pos{ static_cast<long long>(width - subscriptWidth - 1), 1 };
+        output.write(subscript, pos, false);
+        output.write(base, { 0, 0 }, false);
+        return output.asString();
+    }
+} // namespace steppable::prettyPrint::printers
 
 namespace steppable::__internals::arithmetic
 {
@@ -112,6 +129,7 @@ namespace steppable::__internals::arithmetic
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
+    std::cout << steppable::prettyPrint::printers::ppSubscript("342", "32341");
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "Number to convert");

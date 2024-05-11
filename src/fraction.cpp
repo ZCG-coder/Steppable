@@ -33,12 +33,34 @@
 #include "exceptions.hpp"
 #include "fn/basicArithm.hpp"
 #include "number.hpp"
+#include "symbols.hpp"
 #include "util.hpp"
 
 #include <string>
 
+#ifdef WINDOWS
+    #undef max
+    #undef min
+#endif
+
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::numUtils;
+
+namespace steppable::prettyPrint::printers
+{
+    std::string ppFraction(const std::string& top, const std::string& bottom, const bool inLine)
+    {
+        // Output in single line
+        if (inLine)
+            return top + "/" + bottom;
+        // Output in three lines, with top and bottom aligned to center.
+        auto topWidth = prettyPrint::getStringWidth(top), bottomWidth = prettyPrint::getStringWidth(bottom);
+        auto width = std::max(topWidth, bottomWidth) + 2;
+        auto topSpacing = std::string((width - topWidth) / 2, ' '),
+             bottomSpacing = std::string((width - bottomWidth) / 2, ' ');
+        return topSpacing + top + '\n' + std::string(width, '-') + '\n' + bottomSpacing + bottom;
+    }
+} // namespace steppable::prettyPrint::printers
 
 namespace steppable
 {
@@ -54,13 +76,23 @@ namespace steppable
             throw exceptions::ZeroDenominatorException();
         this->top = top;
         this->bottom = bottom;
+        simplify();
     }
 
-    std::string Fraction::present()
+    Fraction::Fraction(const Number& number)
+    {
+        this->top = number.present();
+        this->bottom = "1";
+        simplify();
+    }
+
+    std::string Fraction::present(const bool inLine)
     {
         simplify();
-        return top + "/" + bottom;
+        return prettyPrint::printers::ppFraction(top, bottom, inLine);
     }
+
+    std::array<std::string, 2> Fraction::asArray() const { return { top, bottom }; }
 
     Fraction Fraction::operator+(const Fraction& rhs) const
     {
@@ -203,6 +235,12 @@ namespace steppable
 
     void Fraction::simplify()
     {
+        // Make sure the fraction does not contain decimal points.
+        while (isDecimal(top) or isDecimal(bottom))
+        {
+            top = multiply(top, "10", 0);
+            bottom = multiply(bottom, "10", 0);
+        }
         auto gcd = getGCD(top, bottom);
         top = divide(top, gcd, 0, 0);
         bottom = divide(bottom, gcd, 0, 0);

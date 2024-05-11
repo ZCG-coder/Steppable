@@ -29,6 +29,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <rounding.hpp>
 
 TEST_START()
 
@@ -142,6 +143,16 @@ const std::string& in = "abcdefg";
 const auto& out = makeWider(in);
 
 _.assertIsEqual(out, "a  b  c  d  e  f  g");
+SECTION_END()
+
+SECTION(Test Rounding)
+const std::string& number1 = "1.565";
+_.assertIsEqual(roundOff(number1, 0), "2");
+_.assertIsEqual(roundOff(number1, 1), "1.6");
+
+const std::string& number2 = "1.9";
+_.assertIsEqual(roundOff(number2, 0), "2");
+_.assertIsEqual(roundOff(number2, 1), "2.0");
 SECTION_END()
 
 TEST_END()

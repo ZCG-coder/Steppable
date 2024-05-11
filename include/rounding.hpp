@@ -28,10 +28,11 @@ namespace steppable::__internals::numUtils
     /**
      * @brief Round off a number to the nearest integer.
      *
-     * @param[in] number The number to round.
+     * @param[in] _number The number to round.
+     * @param[in] digits The number of decimal places to round to.
      * @return The rounded number.
      */
-    std::string roundOff(const std::string& number);
+    std::string roundOff(const std::string& _number, const size_t digits = 0);
 
     /**
      * @brief Move the decimal places of a number.

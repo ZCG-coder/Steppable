@@ -32,14 +32,37 @@
 #include "powerReport.hpp"
 
 #include "fn/basicArithm.hpp"
+#include "fraction.hpp"
 #include "symbols.hpp"
+#include "util.hpp"
 
 #include <sstream>
 
 using namespace std::literals;
 using namespace steppable::output;
+using namespace steppable::prettyPrint;
 using namespace steppable::__internals::symbols;
 using namespace steppable::__internals::arithmetic;
+
+std::string reportPowerRoot(const std::string& _number,
+                            const std::string& raiseTo,
+                            const steppable::Fraction& fraction,
+                            const std::string& result,
+                            const int steps)
+{
+    auto array = fraction.asArray();
+    std::stringstream ss;
+
+    if (steps == 2)
+        ss << "The exponent " << raiseTo << " is a decimal. Therefore, the result is a root." << '\n';
+    if (steps >= 1)
+    {
+        ss << _number << makeSuperscript(static_cast<std::string>(raiseTo));
+        ss << " = " << makeSuperscript(array[1]) << makeSurd(_number + makeSuperscript(array[0])) << " = ";
+    }
+    ss << result;
+    return ss.str();
+}
 
 std::string reportPower(const std::string_view _number,
                         const std::string_view& raiseTo,
@@ -60,7 +83,7 @@ std::string reportPower(const std::string_view _number,
         if (steps == 2)
             return "Since the number is 0, the result is 0.";
         if (steps == 1)
-            return "0"s + makeSuperscript(static_cast<std::string>(raiseTo)) + " = 0";
+            return printers::ppSuperscript("0", static_cast<std::string>(raiseTo)) + " = 0";
         return "0";
     }
 
@@ -69,21 +92,23 @@ std::string reportPower(const std::string_view _number,
             number = multiply(number, numberOrig, 0);
         else
             number = divide("1", number, 0);
-        const auto& currentPower = add(i, "1", 0);
+        auto currentPower = add(i, "1", 0);
         if (steps == 2)
         {
             if (not negative)
                 ss << BECAUSE " " << multiply(number, numberOrig, 1) << '\n';
             else
                 ss << BECAUSE " " << divide("1", number, 1) << '\n';
-            ss << THEREFORE " " << numberOrig;
             if (negative)
-                ss << makeSuperscript('-');
-            ss << makeSuperscript(currentPower) << " = " << number << '\n';
+                currentPower = "-" + currentPower;
+
+            ss << printers::ppSuperscript(numberOrig, currentPower) << " = " << number << '\n';
         }
     });
 
 finish:
+    number = numUtils::standardizeNumber(number);
+
     if (negative)
     {
         if (steps == 2)

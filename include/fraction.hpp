@@ -32,6 +32,7 @@
 
 #include "number.hpp"
 
+#include <array>
 #include <string>
 
 namespace steppable
@@ -58,6 +59,13 @@ namespace steppable
         Fraction(const std::string& top = "1", const std::string& bottom = "1");
 
         /**
+         * @brief Initialized a fraction from a number.
+         *
+         * @param number The number to convert to a fraction.
+         */
+        Fraction(const Number& number);
+
+        /**
          * @brief Initializes a fraction with no top component and bottom component specified.
          * By default, this fraction equals to 1.
          */
@@ -66,8 +74,17 @@ namespace steppable
         /**
          * @brief Returns the fraction as a string.
          * The string is formatted as "top/bottom", and it will automatically simplify the fraction.
+         *
+         * @param inLine Whether to present the fraction in a single line.
+         * @return The fraction as a string.
          */
-        std::string present();
+        std::string present(const bool inLine = true);
+
+        /**
+         * @brief Returns the fraction as an array of its top and bottom components.
+         * @return The array of top and bottom components.
+         */
+        std::array<std::string, 2> asArray() const;
 
         /**
          * @brief Adds two fractions together.
