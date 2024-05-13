@@ -50,7 +50,7 @@ namespace steppable::__internals::arithmetic
      */
     std::string toNumber(const char _input)
     {
-        const char input = toupper(_input);
+        const char input = static_cast<char>(toupper(_input));
         if ('0' <= input and input <= '9')
             return { input };
         // If letters are used in counting, it should be like this:
@@ -70,7 +70,8 @@ namespace steppable::__internals::arithmetic
             return "";
         }
 
-        std::string converted = "0", inputString = static_cast<std::string>(_inputString);
+        std::string converted = "0";
+        std::string inputString = static_cast<std::string>(_inputString);
         std::ranges::reverse(inputString);
 
         auto maxWidth = power(baseString, std::to_string(_inputString.length()), 0).length();
@@ -88,8 +89,8 @@ namespace steppable::__internals::arithmetic
                       "The digit "s + digit + " is larger than the base " + static_cast<std::string>(baseString));
                 return "";
             }
-            auto placeValue = power(baseString, std::to_string(index), 0),
-                 convertedDigit = multiply(placeValue, digit, 0);
+            auto placeValue = power(baseString, std::to_string(index), 0);
+            auto convertedDigit = multiply(placeValue, digit, 0);
             converted = add(converted, convertedDigit, 0);
 
             if (steps == 2)
@@ -114,16 +115,17 @@ int main(int _argc, const char* _argv[])
 
     int steps = program.getKeywordArgument("steps");
     bool profile = program.getSwitch("profile");
-    const auto &inputString = program.getPosArg(0), baseString = program.getPosArg(1);
+    const auto& inputString = program.getPosArg(0);
+    const auto baseString = program.getPosArg(1);
 
     if (profile)
     {
         TIC(Decimal Conversion)
-        std::cout << "Decimal Conversion :\n" << decimalConvert(inputString, baseString, steps) << std::endl;
+        std::cout << "Decimal Conversion :\n" << decimalConvert(inputString, baseString, steps) << '\n';
         TOC()
     }
     else
-        std::cout << decimalConvert(inputString, baseString, steps) << std::endl;
+        std::cout << decimalConvert(inputString, baseString, steps) << '\n';
 }
 
 #endif

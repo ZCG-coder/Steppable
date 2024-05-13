@@ -34,7 +34,7 @@ namespace nb = nanobind;
 using namespace steppable::__internals::arithmetic;
 using namespace nb::literals;
 
-NB_MODULE(steppyble, mod)
+NB_MODULE(steppyble, mod) // NOLINT
 {
     auto internals = mod.def_submodule("_internals", "Internal functions.");
 

@@ -37,6 +37,7 @@
 #include <util.hpp>
 
 using namespace steppable::__internals::numUtils;
+using namespace steppable::__internals::symbols;
 
 std::string reportAbs(const std::string_view& number, int steps = 2)
 {
@@ -47,12 +48,12 @@ std::string reportAbs(const std::string_view& number, int steps = 2)
         if (number[0] == '-')
         {
             ss << "Since " << number << " is negative, abs(" << number << ") = -(" << number << ")\n";
-            ss << THEREFORE " The absolute value of " << number << " is " << standardizeNumber(number.substr(1));
+            ss << THEREFORE << " The absolute value of " << number << " is " << standardizeNumber(number.substr(1));
         }
         else
         {
             ss << "Since " << number << " is positive, abs(" << number << ") = " << number << '\n';
-            ss << THEREFORE " The absolute value of " << number << " is " << standardizeNumber(number);
+            ss << THEREFORE << " The absolute value of " << number << " is " << standardizeNumber(number);
         }
     }
     else if (steps == 1)

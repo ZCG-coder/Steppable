@@ -35,11 +35,7 @@
 #include <array>
 #include <cstddef>
 #include <string>
-#include <vector>
-
-#pragma once
-
-#include <string>
+#include <string_view>
 #include <vector>
 
 /**
@@ -55,7 +51,7 @@ namespace steppable::prettyPrint
     {
         long long x = 0;
         long long y = 0;
-    };
+    } __attribute__((aligned(16)));
 
     // // Not currently in use.
     // enum PrintingAlignment
@@ -83,10 +79,10 @@ namespace steppable::prettyPrint
         std::vector<std::vector<char>> buffer;
 
         /// @brief The height of the buffer.
-        long long height = 10;
+        size_t height = 10;
 
         /// @brief The width of the buffer.
-        long long width = 10;
+        size_t width = 10;
 
     public:
         /**
@@ -95,7 +91,7 @@ namespace steppable::prettyPrint
          * @param height The height of the buffer.
          * @param width The width of the buffer.
          */
-        ConsoleOutput(long long height, long long width);
+        ConsoleOutput(size_t height, size_t width);
 
         /**
          * @brief Writes a character to the buffer.
@@ -105,7 +101,7 @@ namespace steppable::prettyPrint
          * @param dCol The change in column.
          * @param updatePos Whether to update the current position.
          */
-        void write(const char c, const long long dLine, const long long dCol, bool updatePos = false);
+        void write(char c, long long dLine, long long dCol, bool updatePos = false);
 
         /**
          * @brief Writes a character to the buffer.
@@ -114,7 +110,7 @@ namespace steppable::prettyPrint
          * @param pos The position to write to.
          * @param updatePos Whether to update the current position.
          */
-        void write(const char c, const Position& pos, bool updatePos = false);
+        void write(char c, const Position& pos, bool updatePos = false);
 
         /**
          * @brief Writes a string to the buffer.
@@ -161,39 +157,39 @@ namespace steppable::prettyPrint
  */
 namespace steppable::__internals::symbols
 {
-/// @brief The because symbol (3 dots in a triangle, Unicode U+2235)
-#define BECAUSE "\u2235"
-/// @brief The therefore symbol (3 dots in a triangle, Unicode U+2234)
-#define THEREFORE "\u2234"
+    /// @brief The because symbol (3 dots in a triangle, Unicode U+2235)
+    constexpr std::string_view BECAUSE = "\u2235";
+    /// @brief The therefore symbol (3 dots in a triangle, Unicode U+2234)
+    constexpr std::string_view THEREFORE = "\u2234";
 
-/// @brief The multiply symbol (Unicode U+00D7)
-#define MULTIPLY "\u00D7"
-/// @brief The divide symbol (Unicode U+00F7)
-#define DIVIDED_BY "\u00F7"
+    /// @brief The multiply symbol (Unicode U+00D7)
+    constexpr std::string_view MULTIPLY = "\u00D7";
+    /// @brief The divide symbol (Unicode U+00F7)
+    constexpr std::string_view DIVIDED_BY = "\u00F7";
 
-#define SURD "\u221A"
-#define COMBINE_MACRON "\u0305"
+    constexpr std::string_view SURD = "\u221A";
+    constexpr std::string_view COMBINE_MACRON = "\u0305";
 
-/// @brief The large dot symbol (Unicode U+25C9)
-#define LARGE_DOT "\u25C9"
-#define ABOVE_DOT "\u02D9"
+    /// @brief The large dot symbol (Unicode U+25C9)
+    constexpr std::string_view LARGE_DOT = "\u25C9";
+    constexpr std::string_view ABOVE_DOT = "\u02D9";
 
-// Subscripts
-/**
- * @brief The subscript 0 (Unicode U+2080)
- * @note This is used to check if a subscript is converted correctly, do not use this in the program.
- */
-#define SUB_0 "\u2080"
-/**
- * @brief The subscript z (Unicode U+2098)
- * @note This is used to check if a subscript is converted correctly, do not use this in the program.
- */
-#define SUB_Z "\u1D69"
-/**
- * @brief The subscript magic number (8272)
- * @note This is used to check if a subscript is converted correctly, do not use this in the program.
- */
-#define SUB_MAGIC_NUMBER 8272
+    // Subscripts
+    /**
+     * @brief The subscript 0 (Unicode U+2080)
+     * @note This is used to check if a subscript is converted correctly, do not use this in the program.
+     */
+    constexpr std::string_view SUB_0 = "\u2080";
+    /**
+     * @brief The subscript z (Unicode U+2098)
+     * @note This is used to check if a subscript is converted correctly, do not use this in the program.
+     */
+    constexpr std::string_view SUB_Z = "\u1D69";
+    /**
+     * @brief The subscript magic number (8272)
+     * @note This is used to check if a subscript is converted correctly, do not use this in the program.
+     */
+    constexpr int SUB_MAGIC_NUMBER = 8272;
 
     /// @brief A list of subscript characters.
     extern const std::array<std::string, 10>& SUPERSCRIPTS;
@@ -214,22 +210,22 @@ namespace steppable::__internals::symbols
      */
     std::string makeSubscript(int normal);
 
-// Superscripts
-/**
- * @brief The superscript 0 (Unicode U+2070)
- * @note This is used to check if a superscript is converted correctly, do not use this in the program.
- */
-#define SUP_0 "\u2070"
-/**
- * @brief The superscript z (Unicode U+1DBB)
- * @note This is used to check if a superscript is converted correctly, do not use this in the program.
- */
-#define SUP_Z "\u1DBB"
-/**
- * @brief The superscript magic number (8304)
- * @note This is used to check if a superscript is converted correctly, do not use this in the program.
- */
-#define SUP_MAGIC_NUMBER 8304
+    // Superscripts
+    /**
+     * @brief The superscript 0 (Unicode U+2070)
+     * @note This is used to check if a superscript is converted correctly, do not use this in the program.
+     */
+    constexpr std::string_view SUP_0 = "\u2070";
+    /**
+     * @brief The superscript z (Unicode U+1DBB)
+     * @note This is used to check if a superscript is converted correctly, do not use this in the program.
+     */
+    constexpr std::string_view SUP_Z = "\u1DBB";
+    /**
+     * @brief The superscript magic number (8304)
+     * @note This is used to check if a superscript is converted correctly, do not use this in the program.
+     */
+    constexpr int SUP_MAGIC_NUMBER = 8304;
 
     /**
      * @brief Create a superscript string from a normal string.
@@ -274,12 +270,12 @@ namespace steppable::prettyPrint::printers
     /**
      * @brief Pretty print a fraction.
      *
-     * @param numerator The numerator.
-     * @param denominator The denominator.
+     * @param top The numerator.
+     * @param bottom The denominator.
      * @param inLine Whether to print in a single line.
      * @return The pretty printed fraction.
      */
-    std::string ppFraction(const std::string& numerator, const std::string& denominator, const bool inLine = false);
+    std::string ppFraction(const std::string& top, const std::string& bottom, bool inLine = false);
 
     /**
      * @brief Pretty print a base expression, (aka, subscript).

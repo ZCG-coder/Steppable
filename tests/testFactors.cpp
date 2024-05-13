@@ -20,32 +20,36 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "fn/basicArithm.hpp"
-#include "output.hpp"
+#include "colors.hpp" // IWYU pragma: keep
+#include "factors.hpp" // IWYU pragma: keep
+#include "output.hpp" // IWYU pragma: keep
 #include "testing.hpp"
-#include "util.hpp"
+#include "util.hpp" // IWYU pragma: keep
 
-#include <iomanip>
-#include <iostream>
+#include <iomanip> // IWYU pragma: keep
+#include <iostream> // IWYU pragma: keep
 
 TEST_START()
+using namespace steppable::__internals::numUtils;
 
-using namespace steppable::__internals::arithmetic;
-
-SECTION(Decimal Convert without letters)
-const std::string &a = "46432231133131";
-const std::string &b = "8";
-const auto& result = decimalConvert(a, b, 0);
-
-_.assertIsEqual(result, "2649229669977");
+SECTION(Prime Test)
+_.assertTrue(isPrime("2"));
+_.assertTrue(isPrime("3"));
+_.assertFalse(isPrime("16"));
+_.assertFalse(isPrime("100"));
+_.assertFalse(isPrime("1000"));
+_.assertFalse(isPrime("10000"));
 SECTION_END()
 
-SECTION(Decimal Convert)
-const std::string &a = "88a";
-const std::string &b = "16";
-const auto& result = decimalConvert(a, b, 0);
-
-_.assertIsEqual(result, "2186");
+SECTION(Greatest Square Number Test)
+_.assertIsEqual(getGreatestRootNum("2"), "1");
+_.assertIsEqual(getGreatestRootNum("3"), "1");
+_.assertIsEqual(getGreatestRootNum("4"), "4");
+_.assertIsEqual(getGreatestRootNum("5"), "4");
 SECTION_END()
+
+SECTION(Greatest Root Factor Test)
+_.assertIsEqual(getRootFactor("24", "2"), "4");
+SECTION_END()
+
 TEST_END()

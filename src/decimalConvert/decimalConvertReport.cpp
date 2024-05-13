@@ -39,9 +39,9 @@ std::string reportDecimalConvertStep(const std::string_view& baseString,
 {
     std::stringstream ss;
 
-    ss << digit << " " MULTIPLY " ";
-    ss << baseString << makeSuperscript(powerIndex + '0');
-    ss << " = " << std::setw(maxWidth) << convertedDigit << std::setw(0);
+    ss << digit << " " << MULTIPLY << " ";
+    ss << baseString << makeSuperscript(static_cast<char>(powerIndex + '0'));
+    ss << " = " << std::setw(static_cast<int>(maxWidth)) << convertedDigit << std::setw(0);
     return ss.str();
 }
 
@@ -55,7 +55,7 @@ std::string reportDecimalConvert(const std::string_view& inputString,
 
     std::stringstream ss;
     if (steps == 2)
-        ss << THEREFORE " ";
+        ss << THEREFORE << " ";
     ss << inputString << makeSubscript(static_cast<std::string>(baseString)) << " = ";
     ss << convertedString << makeSubscript("10");
     return ss.str();

@@ -36,6 +36,7 @@
 #pragma once
 
 #include "output.hpp"
+#include "util.hpp"
 
 #include <string>
 #include <string_view>
@@ -55,7 +56,7 @@ namespace steppable::__internals::arithmetic
     {
         std::string quotient;
         std::string remainder;
-    };
+    } ALIGN64;
 
     /**
      * @brief Calculates the absolute value of a string representation of a number.
@@ -114,7 +115,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] steps The number of steps to perform the conversion.
      * @return The converted number as a string.
      */
-    std::string baseConvert(const std::string_view& _number, const std::string_view& baseStr, const int steps = 2);
+    std::string baseConvert(const std::string_view& _number, const std::string_view& baseStr, int steps = 2);
 
     /**
      * @brief Divides a string representation of a number by another string representation of a number.
@@ -190,7 +191,17 @@ namespace steppable::__internals::arithmetic
      *
      * @return The result of the root operation.
      */
-    std::string root(const std::string& _number, const std::string& base, const size_t decimals = 8, const int steps = 2);
+    std::string root(const std::string& _number, const std::string& base, size_t decimals = 8, int steps = 2);
+
+    /**
+     * @brief Gets the integer part of the root of a number.
+     *
+     * @param _number The number to get the root of.
+     * @param base The base of the root.
+     *
+     * @return The integer part of the root of the number.
+     */
+    std::string rootIntPart(const std::string& _number, const std::string& base);
 
     /**
      * @brief Executes a given predicate function a specified number of times.

@@ -20,93 +20,117 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-cmake_minimum_required(VERSION 3.20)
-project(Steppable)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
+PROJECT(Steppable)
 
 # Ensure that Python is available to run the development scripts, and build with bindings.
-find_package(Python COMPONENTS Interpreter Development REQUIRED)
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+FIND_PACKAGE(
+    Python
+    COMPONENTS Interpreter Development
+    REQUIRED
+)
+FIND_PACKAGE(
+    Python3
+    COMPONENTS Interpreter Development
+    REQUIRED
+)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+SET(CMAKE_CXX_STANDARD 20)
+SET(CMAKE_CXX_EXTENSIONS OFF)
+SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(STP_BASE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} CACHE STRING "The source directory of Steppable")
+SET(STP_BASE_DIRECTORY
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    CACHE STRING "The source directory of Steppable"
+)
 
+EXECUTE_PROCESS(
+    COMMAND uname -o
+    COMMAND tr -d '\n'
+    OUTPUT_VARIABLE OPERATING_SYSTEM
+)
+IF(${OPERATING_SYSTEM} MATCHES "Android")
+    SET(ANDROID 1)
+    MESSAGE(STATUS "Building for Android.")
+    SET(LINUX CACHE INTERNAL "Is Linux or Android" 1)
+ENDIF()
 
-execute_process(COMMAND uname -o COMMAND tr -d '\n' OUTPUT_VARIABLE OPERATING_SYSTEM)
-if (${OPERATING_SYSTEM} MATCHES "Android")
-    set(ANDROID 1)
-    message(STATUS "Building for Android.")
-    set(LINUX CACHE INTERNAL "Is Linux or Android" 1)
-endif ()
+IF(WIN32)
+    ADD_COMPILE_DEFINITIONS(WINDOWS)
+    IF(MSVC) # MSVC Has no UTF-8 support by default
+        ADD_COMPILE_OPTIONS(/utf-8)
+    ENDIF()
+    SET(WINDOWS TRUE)
+ELSEIF(APPLE)
+    ADD_COMPILE_DEFINITIONS(MACOSX)
+ELSEIF(LINUX)
+    ADD_COMPILE_DEFINITIONS(LINUX)
+ELSE()
+    MESSAGE(ERROR "Platform not defined")
+ENDIF()
 
-if (WIN32)
-    add_compile_definitions(WINDOWS)
-    if (MSVC) # MSVC Has no UTF-8 support by default
-        add_compile_options(/utf-8)
-    endif ()
-    set(WINDOWS TRUE)
-elseif (APPLE)
-    add_compile_definitions(MACOSX)
-elseif (LINUX)
-    add_compile_definitions(LINUX)
-else ()
-    message(ERROR "Platform not defined")
-endif ()
+IF(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    ADD_COMPILE_DEFINITIONS(DEBUG)
+    SET(DEBUG TRUE)
+ENDIF()
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_compile_definitions(DEBUG)
-    set(DEBUG TRUE)
-endif ()
+FUNCTION(capitalize IN OUT)
+    STRING(SUBSTRING ${IN} 0 1 FIRST_LETTER)
+    STRING(SUBSTRING ${IN} 1 -1 THE_REST)
+    STRING(TOUPPER ${FIRST_LETTER} FIRST_LETTER)
+    STRING(CONCAT CAPITALIZED ${FIRST_LETTER} ${THE_REST})
+    SET(${OUT}
+        ${CAPITALIZED}
+        PARENT_SCOPE
+    )
+ENDFUNCTION()
 
-function(capitalize IN OUT)
-    string(SUBSTRING ${IN} 0 1 FIRST_LETTER)
-    string(SUBSTRING ${IN} 1 -1 THE_REST)
-    string(TOUPPER ${FIRST_LETTER} FIRST_LETTER)
-    string(CONCAT CAPITALIZED ${FIRST_LETTER} ${THE_REST})
-    set(${OUT}
-            ${CAPITALIZED}
-            PARENT_SCOPE)
-endfunction()
+SET(COMPONENTS
+    abs
+    add
+    baseConvert
+    subtract
+    multiply
+    decimalConvert
+    comparison
+    power
+    division
+    root
+)
+# NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
-set(COMPONENTS abs add baseConvert subtract multiply decimalConvert comparison power division root)
-# NEW_COMPONENT: PATCH
-# Do NOT remove the previous comment.
+SET(TARGETS ${COMPONENTS} util)
+SET(TEST_TARGETS_TEMP util fraction number factors ${COMPONENTS})
 
-set(TARGETS ${COMPONENTS} util)
-set(TEST_TARGETS_TEMP util fraction number ${COMPONENTS})
+FOREACH(TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
+    SET(TARGET_NAME "test")
+    CAPITALIZE(${TEST_TARGET} FILE_NAME)
+    STRING(CONCAT TARGET_NAME ${TARGET_NAME} ${FILE_NAME})
+    LIST(APPEND TEST_TARGETS ${TARGET_NAME})
+ENDFOREACH()
 
-foreach (TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
-    set(TARGET_NAME "test")
-    capitalize(${TEST_TARGET} FILE_NAME)
-    string(CONCAT TARGET_NAME ${TARGET_NAME} ${FILE_NAME})
-    list(APPEND TEST_TARGETS ${TARGET_NAME})
-endforeach ()
+ADD_SUBDIRECTORY(src/)
+ADD_SUBDIRECTORY(lib/)
+ADD_SUBDIRECTORY(tests/)
+ADD_SUBDIRECTORY(include/) # The CMakeLists file there adds the include/ directory to everything
 
-add_subdirectory(src/)
-add_subdirectory(lib/)
-add_subdirectory(tests/)
-add_subdirectory(include/) # The CMakeLists file there adds the include/ directory to everything
+FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
-
-
-if (DEBUG)
+IF(DEBUG)
     # Patch the compile_commands.json using the Python script
-    add_custom_target(
-            fix_ccjson ALL
-            COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/patch_compile_commands.py
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-            COMMENT "Patching compile_commands.json"
+    ADD_CUSTOM_TARGET(
+        fix_ccjson ALL
+        COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/patch_compile_commands.py
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Patching compile_commands.json"
     )
 
-    add_custom_target(
-            add_header_comments ALL
-            COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/add_copyright_header.py
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-            COMMENT "Adding header comments"
+    ADD_CUSTOM_TARGET(
+        add_header_comments ALL
+        COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/add_copyright_header.py
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMENT "Adding header comments"
     )
-endif ()
+ENDIF()

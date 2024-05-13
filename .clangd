@@ -2,5 +2,39 @@ CompileFlags:
   Add: -std=c++20
 Diagnostics:
   ClangTidy:
-    Add: modernize*
-    Remove: modernize-use-trailing-return-type
+    Add: ['bugprone-*',
+        'concurrency-*',
+        'cppcoreguidelines-*',
+        'darwin-*',
+        'readability-*',
+        'performance-*',
+        'portability-*',
+        'zircon-*',
+        'cert-*',
+        'clang-diagnostic-*',
+        'clang-analyzer-*',
+        'modernize-*']
+    CheckOptions:
+      'bugprone-reserved-identifier.AllowedIdentifiers': '__internals'
+      'readability-function-cognitive-complexity.Threshold': 40
+
+    Remove: [
+        'modernize-use-trailing-return-type',
+        'cppcoreguidelines-avoid-magic-numbers',
+        'readability-magic-numbers',
+        'bugprone-easily-swappable-parameters',
+        'cert-dcl50-cpp',
+        'cert-dcl37-c',
+        'cert-dcl51-cpp',
+        'cppcoreguidelines-pro-type-vararg',
+        'readability-braces-around-statements',
+        'readability-identifier-length'
+    ]
+
+---
+# Disable include-what-you-use for test files
+If:
+  PathMatch: test.*\.cpp
+
+Diagnostics:
+  UnusedIncludes: None

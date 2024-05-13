@@ -33,7 +33,6 @@
 #pragma once
 
 #include <string>
-#include <string_view>
 #include <vector>
 
 /**
@@ -63,4 +62,4 @@ std::string reportBaseConvertStep(const std::string& _number,
 std::string reportBaseConvert(const std::string& _number,
                               const std::string& _base,
                               const std::vector<std::string>& _result,
-                              const int steps);
+                              int steps);

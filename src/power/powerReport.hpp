@@ -46,7 +46,7 @@ std::string reportPowerRoot(const std::string& _number,
                             const std::string& raiseTo,
                             const steppable::Fraction& fraction,
                             const std::string& result,
-                            const int steps);
+                            int steps);
 
 /**
  * @brief Reports a power operation.
@@ -58,8 +58,8 @@ std::string reportPowerRoot(const std::string& _number,
  *
  * @return The formatted power report.
  */
-std::string reportPower(const std::string_view _number,
+std::string reportPower(std::string_view _number,
                         const std::string_view& raiseTo,
-                        const size_t numberTrailingZeros,
-                        const bool negative,
-                        const int steps);
+                        size_t numberTrailingZeros,
+                        bool negative,
+                        int steps);

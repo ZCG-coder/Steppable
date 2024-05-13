@@ -74,13 +74,13 @@ namespace steppable::testing
 
     void TestCase::assertTrue(const bool value)
     {
-        const std::string& conditionName = vFormat("%i is True", value);
+        const std::string& conditionName = vFormat("%i is True", static_cast<int>(value));
         assert(value, conditionName);
     }
 
     void TestCase::assertFalse(const bool value)
     {
-        const std::string& conditionName = vFormat("%i is False", value);
+        const std::string& conditionName = vFormat("%i is False", static_cast<int>(value));
         assert(not value, conditionName);
     }
 

@@ -57,20 +57,21 @@ std::string reportSubtract(const std::string& aInteger,
     std::stringstream ss;
     auto aStr = aInteger + '.' + aDecimal;
     auto diffDigits = _diffDigits;
-    if (diffDigits.front() == 0 and not steps)
+    if (diffDigits.front() == 0 and (steps == 0))
         diffDigits = removeLeadingZeros(diffDigits);
     else if (diffDigits.front() == 0)
         diffDigits = replaceLeadingZeros(diffDigits);
 
-    auto aOut = aInteger, bOut = bInteger;
+    auto aOut = aInteger;
+    auto bOut = bInteger;
     if (aIsDecimal)
         aOut += '.' + aDecimal;
     if (bIsDecimal)
         bOut += '.' + bDecimal;
 
-    if (aIsDecimal and not bIsDecimal and not steps)
+    if (aIsDecimal and not bIsDecimal and (steps == 0))
         bOut += std::string(aDecimal.length() + 1, ' ');
-    if (not aIsDecimal and bIsDecimal and not steps)
+    if (not aIsDecimal and bIsDecimal and (steps == 0))
         aOut += std::string(bDecimal.length() + 1, ' ');
 
     if (steps == 2)
@@ -105,7 +106,7 @@ std::string reportSubtract(const std::string& aInteger,
                 outputChar = ' ';
             ss << outputChar << "  "; // Two spaces
         }
-        ss << '\n' << THEREFORE " ";
+        ss << '\n' << THEREFORE << " ";
     }
 
     if (steps >= 1)

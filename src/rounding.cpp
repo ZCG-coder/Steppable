@@ -29,6 +29,34 @@
 
 namespace steppable::__internals::numUtils
 {
+    std::string roundDown(const std::string& _number)
+    {
+        auto number = _number;
+        if (number.empty())
+            return "0";
+        if (number.find('.') == std::string::npos)
+            return number;
+        // Round down the number
+        auto splitNumberResult = splitNumber(number, "0", false, false, false, false).splitNumberArray;
+        return splitNumberResult[0]; // Return the integer part
+    }
+
+    std::string roundUp(const std::string& _number)
+    {
+        auto number = _number;
+        if (number.empty())
+            return "0";
+        if (number.find('.') == std::string::npos)
+            return number;
+        // Round up the number
+        auto splitNumberResult = splitNumber(number, "0", false, true, true, false).splitNumberArray;
+        auto integer = splitNumberResult[0];
+        auto decimal = splitNumberResult[1]; // Return the integer part
+        if (decimal.front() > '5')
+            integer = arithmetic::add(integer, "1", 0);
+        return integer;
+    }
+
     std::string roundOff(const std::string& _number, const size_t digits)
     {
         auto number = _number;
@@ -38,7 +66,8 @@ namespace steppable::__internals::numUtils
             return number;
         // Round off the number
         auto splitNumberResult = splitNumber(number, "0", true, true, false, false).splitNumberArray;
-        auto integer = splitNumberResult[0], decimal = splitNumberResult[1];
+        auto integer = splitNumberResult[0];
+        auto decimal = splitNumberResult[1];
 
         // Preserve one digit after the rounded digit
         decimal = decimal.substr(0, digits + 1);
@@ -85,14 +114,15 @@ namespace steppable::__internals::numUtils
     {
         auto number = _number;
         // No change
-        if (not places)
+        if (places == 0)
             return number;
 
         // Is the number an integer?
         if (isInteger(number))
             number += ".0";
         auto splitNumberResult = splitNumber(number, "0", false, false, true, false).splitNumberArray;
-        auto integer = splitNumberResult[0], decimal = splitNumberResult[1];
+        auto integer = splitNumberResult[0];
+        auto decimal = splitNumberResult[1];
         auto repetitions = std::abs(places);
 
         // Move decimal places to the right
@@ -113,11 +143,11 @@ namespace steppable::__internals::numUtils
             for (size_t _ = 0; _ < repetitions; _++)
                 if (integer.length() > 0)
                 {
-                    decimal = integer.back() + decimal;
+                    decimal = integer.back() + decimal; // NOLINT(performance-inefficient-string-concatenation)
                     integer.pop_back();
                 }
                 else
-                    decimal = '0' + decimal;
+                    decimal = '0' + decimal; // NOLINT(performance-inefficient-string-concatenation)
         }
 
         auto result = integer + "." + decimal;

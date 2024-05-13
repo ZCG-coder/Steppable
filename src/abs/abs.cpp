@@ -30,7 +30,6 @@
 
 #include "absReport.hpp"
 #include "argParse.hpp"
-#include "output.hpp"
 #include "util.hpp"
 
 #include <fn/basicArithm.hpp>

@@ -135,14 +135,15 @@ namespace steppable::__internals::utils
         return switches[name];
     }
 
-    ProgramArgs::ProgramArgs(const int _argc, const char** _argv)
+    ProgramArgs::ProgramArgs(const int _argc, const char** _argv) : argc(_argc - 1)
     {
-        argc = _argc - 1;
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
         programName = _argv[0]; // Call this program whatever the user calls it
         PosArgs pos;
 
         // Copy the arguments into a vector
         for (int i = 0; i <= argc; i++)
+            // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
             argv.emplace_back(_argv[i]);
         argv.erase(argv.begin());
     }

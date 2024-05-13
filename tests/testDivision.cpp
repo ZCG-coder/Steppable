@@ -35,9 +35,10 @@ using namespace steppable::__internals::arithmetic;
 
 SECTION(Integer division)
 // A gogol divided by 50
-const std::string
-    &a = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    &b = "50", &res = divide(a, b, 0, 0);
+const std::string& a =
+    "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+const std::string& b = "50";
+const std::string& res = divide(a, b, 0, 0);
 
 _.assertIsEqual(res,
                 "200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
@@ -45,9 +46,10 @@ SECTION_END()
 
 SECTION(Integer divided by decimal)
 // A gogol divided by 79
-const std::string
-    &a = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    &b = "79", &res = divide(a, b, 0, 8);
+const std::string& a =
+    "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+const std::string& b = "79";
+const std::string& res = divide(a, b, 0, 8);
 
 _.assertIsEqual(res,
                 "126582278481012658227848101265822784810126582278481012658"
@@ -55,24 +57,32 @@ _.assertIsEqual(res,
 SECTION_END()
 
 SECTION(Decimal divided by decimal)
-const std::string &a = "532.532132", &b = "53524.2353", &res = divide(a, b, 0, 8);
+const std::string& a = "532.532132";
+const std::string& b = "53524.2353";
+const std::string& res = divide(a, b, 0, 8);
 
 _.assertIsEqual(res, "0.00994936");
 SECTION_END()
 
 SECTION(Division with less decimal places than requested)
-const std::string &a = "1", &b = "2", &res = divide(a, b, 0, 8);
+const std::string& a = "1";
+const std::string& b = "2";
+const std::string& res = divide(a, b, 0, 8);
 
 _.assertIsEqual(res, "0.50000000");
 SECTION_END()
 
 SECTION(Division with negative numbers)
-const std::string &a = "-1", &b = "2", &res = divide(a, b, 0, 8);
+const std::string& a = "-1";
+const std::string& b = "2";
+const std::string& res = divide(a, b, 0, 8);
 _.assertIsEqual(res, "-0.50000000");
 SECTION_END()
 
 SECTION(Division with negative numbers)
-const std::string &a = "1", &b = "-2", &res = divide(a, b, 0, 8);
+const std::string& a = "1";
+const std::string& b = "-2";
+const std::string& res = divide(a, b, 0, 8);
 _.assertIsEqual(res, "-0.50000000");
 SECTION_END()
 

@@ -37,6 +37,7 @@
 #include <string_view>
 
 using namespace steppable::__internals::numUtils;
+using namespace steppable::__internals::symbols;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::arithmetic;
 
@@ -46,9 +47,14 @@ namespace steppable::__internals::arithmetic
     {
         if (standardizeNumber(_a) == standardizeNumber(_b))
         {
+            std::stringstream ss;
             if (steps == 2)
-                return BECAUSE " " + static_cast<std::string>(_a) + " is identical to " + static_cast<std::string>(_b) +
-                       ", " THEREFORE " a = b";
+            {
+                ss << BECAUSE << " " << static_cast<std::string>(_a) << " is identical to "
+                   << static_cast<std::string>(_b);
+                ss << ", " << THEREFORE << " a = b";
+                return ss.str();
+            }
             if (steps == 1)
                 return static_cast<std::string>(_a) + " = " + static_cast<std::string>(_b);
             return "2";
@@ -62,7 +68,8 @@ namespace steppable::__internals::arithmetic
         if (bIntegerReal.empty())
             bIntegerReal = "0";
 
-        auto a = aIntegerReal + "." + aDecimalReal, b = bIntegerReal + "." + bDecimalReal;
+        auto a = aIntegerReal + "." + aDecimalReal;
+        auto b = bIntegerReal + "." + bDecimalReal;
         if (
             // a is longer than b and is of different polarities
             aIntegerReal.length() != bIntegerReal.length() and aIsNegative == bIsNegative)
@@ -91,7 +98,7 @@ namespace steppable::__internals::arithmetic
 
         for (long i = 0; static_cast<size_t>(i) < a.length(); i++)
         {
-            if (a[i] == b[i] or not isdigit(a[i]) or not isdigit(b[i]))
+            if (a[i] == b[i] or (isdigit(a[i]) == 0) or (isdigit(b[i]) == 0))
                 continue; // Negative sign, decimal point or equals
             if (a[i] > b[i] and not bothNegative)
                 return reportComparisonByDigit(a, b, i, true, false, steps);

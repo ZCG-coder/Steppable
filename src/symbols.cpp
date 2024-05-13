@@ -37,7 +37,7 @@ namespace steppable::prettyPrint
 {
     using namespace steppable::__internals::stringUtils;
 
-    ConsoleOutput::ConsoleOutput(long long height, long long width) : height(height), width(width)
+    ConsoleOutput::ConsoleOutput(size_t height, size_t width) : height(height), width(width)
     {
         buffer = std::vector<std::vector<char>>(height, std::vector<char>(width, ' '));
     }
@@ -63,11 +63,11 @@ namespace steppable::prettyPrint
         }
         if (dCol < 0)
         {
-            for (long long i = 0; i < buffer.size(); i++)
+            for (auto& i : buffer)
             {
-                std::vector<char> vector = buffer[i];
+                std::vector<char> vector = i;
                 vector.resize(vector.size() - dCol, ' ');
-                buffer[i] = vector;
+                i = vector;
             }
 
             curPos.x -= dCol;
@@ -124,6 +124,7 @@ namespace steppable::__internals::symbols
 {
     using namespace steppable::__internals::stringUtils;
 
+    // NOLINTNEXTLINE(cert-err58-cpp)
     const std::array<std::string, 10>& SUPERSCRIPTS = { "\u2070", "\u00b9", "\u00b2", "\u00b3", "\u2074",
                                                         "\u2075", "\u2076", "\u2077", "\u2078", "\u2079" };
 
@@ -141,8 +142,8 @@ namespace steppable::__internals::symbols
     {
         std::stringstream ss;
         for (const char c : normal)
-            if (isdigit(c))
-                ss << SUPERSCRIPTS[c - '0'];
+            if (isdigit(c) != 0)
+                ss << SUPERSCRIPTS.at(c - '0');
             else
                 ss << ABOVE_DOT;
         std::string string = ss.str();
@@ -154,7 +155,7 @@ namespace steppable::__internals::symbols
         if (normal == '-')
             return "\u207B";
 
-        return SUPERSCRIPTS[normal - '0'];
+        return SUPERSCRIPTS.at(normal - '0');
     }
 
     std::string makeSurd(const std::string& radicand)

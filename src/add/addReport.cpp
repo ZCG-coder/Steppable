@@ -54,20 +54,22 @@ std::string reportAdd(const std::string& aInteger,
 {
     std::stringstream ss;
 
-    const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
-    std::string aOut = aInteger, bOut = bInteger;
+    const bool aIsDecimal = not isZeroString(aDecimal);
+    const bool bIsDecimal = not isZeroString(bDecimal);
+    std::string aOut = aInteger;
+    std::string bOut = bInteger;
     if (aIsDecimal)
         aOut += '.' + aDecimal;
-    else if (not steps)
+    else if (steps == 0)
         ; // Don't use the spaced formatting
     if (bIsDecimal)
         bOut += '.' + bDecimal;
-    else if (not steps)
+    else if (steps == 0)
         ; // Don't use the spaced formatting
 
-    if (aIsDecimal and not bIsDecimal and steps)
+    if (aIsDecimal and not bIsDecimal and (steps != 0))
         bOut += std::string(aDecimal.length() + 1, ' ');
-    if (bIsDecimal and not aIsDecimal and steps)
+    if (bIsDecimal and not aIsDecimal and (steps != 0))
         aOut += std::string(bDecimal.length() + 1, ' ');
 
     if (steps == 2)
@@ -95,12 +97,13 @@ std::string reportAdd(const std::string& aInteger,
         if (sumDigits.size() <= aOut.length())
             ss << "   ";
         ss << "   ";
+
         for (const int outputChar : sumDigits)
             if (outputChar == -1)
                 ss << ".  ";
             else
                 ss << outputChar << "  "; // Two spaces
-        ss << '\n' << THEREFORE " ";
+        ss << '\n' << THEREFORE << " ";
     }
 
     if (steps >= 1)

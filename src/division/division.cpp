@@ -31,7 +31,6 @@
 #include "argParse.hpp"
 #include "divisionReport.hpp"
 #include "fn/basicArithm.hpp"
-#include "logging.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
 #include "util.hpp"
@@ -50,7 +49,6 @@ using namespace steppable::__internals::arithmetic;
 
 namespace steppable::__internals::arithmetic
 {
-
     QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto& divisor)
     {
         auto currentRemainder = removeLeadingZeros(_currentRemainder);
@@ -66,7 +64,8 @@ namespace steppable::__internals::arithmetic
             currentRemainder = subtract(currentRemainder, divisor, 0);
         }
 
-        const auto &quotient = std::to_string(out), remainder = currentRemainder;
+        const auto& quotient = std::to_string(out);
+        const auto remainder = currentRemainder;
         return { quotient, remainder };
     }
 
@@ -79,9 +78,11 @@ namespace steppable::__internals::arithmetic
      */
     long long determineResultScale(const std::string& _number, const std::string& _divisor)
     {
-        std::string number = _number, divisor = _divisor;
+        std::string number = _number;
+        std::string divisor = _divisor;
         long long numberScale = determineScale(number);
-        long long divisorScale = determineScale(divisor), diffScale = std::abs(numberScale - divisorScale);
+        long long divisorScale = determineScale(divisor);
+        long long diffScale = std::abs(numberScale - divisorScale);
 
         // Step 1: Make divisor the same scale as number
         // Method: If divisorScale > numberScale -> Scale up number.
@@ -139,9 +140,9 @@ namespace steppable::__internals::arithmetic
         {
             std::stringstream ss;
             if (steps == 2)
-                ss << "Since " << _number << " is equal to " << _divisor << ", " THEREFORE " the result is 1";
+                ss << "Since " << _number << " is equal to " << _divisor << ", " << THEREFORE << " the result is 1";
             else if (steps == 1)
-                ss << _number << " " DIVIDED_BY " " << _divisor << " = 1";
+                ss << _number << " " << DIVIDED_BY << " " << _divisor << " = 1";
             else
                 ss << "1";
             return ss.str();
@@ -151,10 +152,13 @@ namespace steppable::__internals::arithmetic
             return roundOff(static_cast<std::string>(_number), _decimals);
 
         auto splitNumberResult = splitNumber(_number, _divisor, false, true);
-        bool numberIsNegative = splitNumberResult.aIsNegative, divisorIsNegative = splitNumberResult.bIsNegative;
+        bool numberIsNegative = splitNumberResult.aIsNegative;
+        bool divisorIsNegative = splitNumberResult.bIsNegative;
         auto [numberInteger, numberDecimal, divisorInteger, divisorDecimal] = splitNumberResult.splitNumberArray;
-        auto numberIntegerOrig = numberInteger, divisorIntegerOrig = divisorInteger, numberDecimalOrig = numberDecimal,
-             divisorDecimalOrig = divisorDecimal;
+        auto numberIntegerOrig = numberInteger;
+        auto divisorIntegerOrig = divisorInteger;
+        auto numberDecimalOrig = numberDecimal;
+        auto divisorDecimalOrig = divisorDecimal;
         auto decimals = _decimals;
 
         // Here, we determine the polarity of the result.
@@ -195,7 +199,9 @@ namespace steppable::__internals::arithmetic
             number += '0';
 
         unsigned long long idx = 0;
-        std::string remainder(1, number[0]), lastRemainder, header = makeWider(divisor) + ") " + makeWider(number);
+        std::string remainder(1, number[0]);
+        std::string lastRemainder;
+        std::string header = makeWider(divisor) + ") " + makeWider(number);
         tempFormattedAns << header << '\n';
         auto width = static_cast<int>(header.length());
 
@@ -234,8 +240,8 @@ namespace steppable::__internals::arithmetic
         // Solution  : Round to the nearest decimal place
         else if (numberDecimals >= decimals and numberIntegers > 0)
         {
-            auto beforeDecimal = quotient.substr(0, numberIntegers),
-                 afterDecimal = quotient.substr(numberIntegers, numberDecimals);
+            auto beforeDecimal = quotient.substr(0, numberIntegers);
+            auto afterDecimal = quotient.substr(numberIntegers, numberDecimals);
             if (beforeDecimal.empty())
                 beforeDecimal = "0";
             if (not afterDecimal.empty())
@@ -271,8 +277,9 @@ namespace steppable::__internals::arithmetic
         const auto& divisionResult = divide(number, divisor, 0);
         const auto& splitNumberResult = splitNumber(divisionResult, "0", false, false, true, true).splitNumberArray;
 
-        const auto &quotient = splitNumberResult[0], nearestResult = multiply(divisor, quotient, 0),
-                   &remainder = removeLeadingZeros(subtract(number, nearestResult, 0));
+        const auto& quotient = splitNumberResult[0];
+        const auto nearestResult = multiply(divisor, quotient, 0);
+        const auto& remainder = removeLeadingZeros(subtract(number, nearestResult, 0));
 
         return { quotient, remainder };
     }
@@ -282,7 +289,8 @@ namespace steppable::__internals::arithmetic
         // Sign for GCD does not matter.
         // https://proofwiki.org/wiki/GCD_for_Negative_Integers
         auto splitNumberResult = splitNumber(_a, _b, false, false, true, false).splitNumberArray;
-        auto a = splitNumberResult[0] + splitNumberResult[1], b = splitNumberResult[2] + splitNumberResult[3];
+        auto a = splitNumberResult[0] + splitNumberResult[1];
+        auto b = splitNumberResult[2] + splitNumberResult[3];
 
         // Ensure that a is greater than or equal to b
         if (b > a)
@@ -321,7 +329,7 @@ int main(const int _argc, const char* _argv[])
 
     if (steps == 5)
     {
-        std::cout << getGCD(aStr, bStr) << std::endl;
+        std::cout << getGCD(aStr, bStr) << '\n';
         return 0;
     }
     if (profile)

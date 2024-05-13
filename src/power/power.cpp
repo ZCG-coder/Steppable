@@ -42,8 +42,8 @@ namespace steppable::prettyPrint::printers
 {
     std::string ppSuperscript(const std::string& base, const std::string& superscript)
     {
-        auto width = prettyPrint::getStringWidth(base) + 1,
-             height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
+        auto width = prettyPrint::getStringWidth(base) + 1;
+        auto height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
 
         prettyPrint::ConsoleOutput output(height, width);
         prettyPrint::Position pos{ static_cast<long long>(width - 1), 0 };
@@ -57,7 +57,8 @@ namespace steppable::__internals::arithmetic
 {
     std::string power(const std::string_view _number, const std::string_view& _raiseTo, const int steps)
     {
-        std::string raiseTo = static_cast<std::string>(_raiseTo), number = static_cast<std::string>(_number);
+        std::string raiseTo = static_cast<std::string>(_raiseTo);
+        std::string number = static_cast<std::string>(_number);
 
         if (isDecimal(raiseTo))
         {
@@ -68,7 +69,8 @@ namespace steppable::__internals::arithmetic
             // 3. Take the root of the number to the denominator of the fraction.
             const auto& fraction = Fraction(raiseTo);
             const auto& [top, bottom] = fraction.asArray();
-            const auto &powerResult = power(_number, top, 0), rootResult = root(powerResult, bottom, 8, 0);
+            const auto& powerResult = power(_number, top, 0);
+            const auto rootResult = root(powerResult, bottom, 8, 0);
             return reportPowerRoot(number, raiseTo, fraction, rootResult, steps);
         }
 

@@ -37,6 +37,8 @@
 #include <sstream>
 #include <string_view>
 
+using namespace steppable::__internals::symbols;
+
 std::string reportComparisonAtInteger(const std::string_view& a,
                                       const std::string_view& b,
                                       const bool bigger,
@@ -50,12 +52,12 @@ std::string reportComparisonAtInteger(const std::string_view& a,
         if (bigger)
         {
             ss << BECAUSE << " The integer part of " << a << " is bigger than the integer part of " << b << '\n';
-            ss << THEREFORE " " << a << " is greater than " << b;
+            ss << THEREFORE << " " << a << " is greater than " << b;
         }
         else
         {
-            ss << BECAUSE " The integer part of " << b << " is bigger than the integer part of " << a << '\n';
-            ss << THEREFORE " " << a << " is less than " << b;
+            ss << BECAUSE << " The integer part of " << b << " is bigger than the integer part of " << a << '\n';
+            ss << THEREFORE << " " << a << " is less than " << b;
         }
     }
     else if (steps == 1)
@@ -79,12 +81,12 @@ std::string reportComparisonByPolarity(const std::string_view& a,
         if (bigger)
         {
             ss << BECAUSE << " " << a << " is positive and " << b << " is negative" << '\n';
-            ss << THEREFORE " " << a << " is greater than " << b;
+            ss << THEREFORE << " " << a << " is greater than " << b;
         }
         else
         {
             ss << BECAUSE << " " << a << " is negative and " << b << " is positive" << '\n';
-            ss << THEREFORE " " << a << " is less than " << b;
+            ss << THEREFORE << " " << a << " is less than " << b;
         }
     }
     else if (steps == 1)
@@ -111,15 +113,15 @@ std::string reportComparisonByDigit(const std::string_view& a,
 
         if (bigger)
         {
-            ss << std::string(digit + 4, ' ') << "^~~~~ " BECAUSE " At digit " << digit + 1 << ", " << a[digit]
+            ss << std::string(digit + 4, ' ') << "^~~~~ " << BECAUSE << " At digit " << digit + 1 << ", " << a[digit]
                << " is greater than " << b[digit] << '\n';
-            ss << THEREFORE " " << a << " is greater than " << b;
+            ss << THEREFORE << " " << a << " is greater than " << b;
         }
         else
         {
-            ss << std::string(digit + 4, ' ') << "^~~~~ " BECAUSE " At digit " << digit + 1 << ", " << a[digit]
+            ss << std::string(digit + 4, ' ') << "^~~~~ " << BECAUSE << " At digit " << digit + 1 << ", " << a[digit]
                << " is less than " << b[digit] << '\n';
-            ss << THEREFORE " " << a << " is less than " << b;
+            ss << THEREFORE << " " << a << " is less than " << b;
         }
     }
     else if (steps == 1)

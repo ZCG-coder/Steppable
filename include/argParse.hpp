@@ -54,11 +54,11 @@ namespace steppable::__internals::utils
 
     /// @brief This is the correct format of a keyword argument.
     // language=RegExp
-    [[maybe_unused]] static const std::regex KEYWORD_ARG_REGEX(R"(^-([a-zA-Z]*):(-?[0-9]+)$)");
+    [[maybe_unused]] const std::regex KEYWORD_ARG_REGEX(R"(^-([a-zA-Z]*):(-?[0-9]+)$)");
 
     /// @brief This is the correct format of a switch.
     // language=RegExp
-    [[maybe_unused]] static const std::regex SWITCH_REGEX(R"(^([-+])([a-zA-Z]*)$)");
+    [[maybe_unused]] const std::regex SWITCH_REGEX(R"(^([-+])([a-zA-Z]*)$)");
 
     /**
      * @class ProgramArgs

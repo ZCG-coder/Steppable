@@ -20,32 +20,49 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
+#include "factors.hpp"
+
 #include "fn/basicArithm.hpp"
-#include "output.hpp"
-#include "testing.hpp"
 #include "util.hpp"
 
-#include <iomanip>
-#include <iostream>
-
-TEST_START()
+#include <vector>
 
 using namespace steppable::__internals::arithmetic;
 
-SECTION(Decimal Convert without letters)
-const std::string &a = "46432231133131";
-const std::string &b = "8";
-const auto& result = decimalConvert(a, b, 0);
+namespace steppable::__internals::numUtils
+{
+    std::vector<std::string> getFactors(const std::string& _number)
+    {
+        std::vector<std::string> factors;
+        // If the number is negative, add a negative sign to the factors
+        if (_number[0] == '-')
+            factors.emplace_back("-1");
+        // Get the absolute value of the number
+        auto number = abs(_number, 0);
+        // Get the factors of the number
+        loop(number, [&](const std::string& factor) {
+            if (factor != "0")
+            {
+                auto quotientRemainder = divideWithQuotient(number, factor);
+                if (quotientRemainder.remainder == "0")
+                    factors.push_back(factor);
+            }
+        });
+        factors.push_back(number);
+        return factors;
+    }
 
-_.assertIsEqual(result, "2649229669977");
-SECTION_END()
+    std::string getRootFactor(const std::string& _number, const std::string& base) { return "1"; }
 
-SECTION(Decimal Convert)
-const std::string &a = "88a";
-const std::string &b = "16";
-const auto& result = decimalConvert(a, b, 0);
+    std::string getGreatestRootNum(const std::string& _number, const std::string& base)
+    {
+        auto integralPart = rootIntPart(_number, base);
+        return power(integralPart, base, 0);
+    }
 
-_.assertIsEqual(result, "2186");
-SECTION_END()
-TEST_END()
+    bool isPrime(const std::string& _number)
+    {
+        auto factors = getFactors(_number);
+        return factors.size() == 2; // Only 1 and the number itself are factors ==> prime!
+    }
+} // namespace steppable::__internals::numUtils

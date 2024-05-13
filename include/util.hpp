@@ -39,13 +39,16 @@
 #include <algorithm>
 #include <array>
 #include <chrono>
+#include <clocale>
 #include <iomanip>
 #include <iostream>
-#include <locale.h>
-#include <locale>
 #include <sstream>
 #include <string>
 #include <vector>
+
+#ifndef ALIGN64
+    #define ALIGN64 __attribute__((aligned(64)))
+#endif
 
 #ifndef TIC
     /**
@@ -79,7 +82,7 @@ namespace steppable::__internals::utils
     #if (_MSC_VER || __MINGW32__ || __MSVCRT__)
         #define MS_STDLIB_BUGS 1
     #else
-        #define MS_STDLIB_BUGS 0
+        #define MS_STDLIB_BUGS 0 // NOLINT(cppcoreguidelines-macro-usage)
     #endif
 #endif
 
@@ -508,4 +511,11 @@ namespace steppable::__internals::stringUtils
      * @see Utf8CodePage
      */
     std::string unicodeToUtf8(int unicode);
+
+    /**
+     * @brief Gets the duplicates in a vector of strings.
+     * @param[in] vector The vector of strings to check for duplicates.
+     * @return A vector of strings containing the duplicates.
+     */
+    std::vector<std::string> duplicates(const std::vector<std::string>& vector);
 } // namespace steppable::__internals::stringUtils

@@ -76,10 +76,10 @@ namespace steppable::__internals::format
 
         // Return a formatted string without risking memory mismanagement
         // and without assuming any compiler or platform specific behavior
-        std::vector<CharT> zc(iLen + 1);
-        std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs);
+        std::vector<CharT> formatted(iLen + 1);
+        (void)std::vsnprintf(formatted.data(), formatted.size(), zcFormat, vaArgs);
         va_end(vaArgs);
-        return std::string(zc.data(), zc.size());
+        return std::string(formatted.data(), formatted.size());
     }
 
     /**
@@ -99,18 +99,18 @@ namespace steppable::__internals::format
     {
         const CharT* const zcFormat = sFormat;
 
-        va_list vaArgs;
+        va_list vaArgs = nullptr;
         va_start(vaArgs, sFormat);
 
-        va_list vaCopy;
+        va_list vaCopy = nullptr;
         va_copy(vaCopy, vaArgs);
         const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy); // NOLINT(clang-diagnostic-format-nonliteral)
         va_end(vaCopy);
 
-        std::vector<CharT> zc(iLen + 1);
-        static_cast<void>(
-            std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs)); // NOLINT(clang-diagnostic-format-nonliteral)
+        std::vector<CharT> formatted(iLen + 1);
+        static_cast<void>(std::vsnprintf(
+            formatted.data(), formatted.size(), zcFormat, vaArgs)); // NOLINT(clang-diagnostic-format-nonliteral)
         va_end(vaArgs);
-        return std::string(zc.data(), zc.size());
+        return std::string(formatted.data(), formatted.size());
     }
 } // namespace steppable::__internals::format

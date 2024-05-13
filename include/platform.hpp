@@ -56,7 +56,7 @@ namespace steppable::__internals::utils
     inline void programSafeExit(const int status)
     {
 #ifdef MACOSX
-        exit(status);
+        exit(status); // NOLINT(concurrency-mt-unsafe)
 #else
         std::quick_exit(status);
 #endif
@@ -72,7 +72,7 @@ namespace steppable::__internals::utils
 #else
         static std::mutex mtx;
         std::lock_guard<std::mutex> lock(mtx);
-        bt = *std::localtime(timer);
+        bt = *std::localtime(timer); // NOLINT(concurrency-mt-unsafe)
 #endif
         return bt;
     }

@@ -36,7 +36,6 @@
 #include "symbols.hpp"
 #include "util.hpp"
 
-#include <sstream>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -52,8 +51,8 @@ namespace steppable::prettyPrint::printers
     std::string ppSubscript(const std::string& base, const std::string& subscript)
     {
         auto subscriptWidth = prettyPrint::getStringWidth(subscript);
-        auto width = prettyPrint::getStringWidth(base) + subscriptWidth + 1,
-             height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
+        auto width = prettyPrint::getStringWidth(base) + subscriptWidth + 1;
+        auto height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
 
         prettyPrint::ConsoleOutput output(height, width);
         prettyPrint::Position pos{ static_cast<long long>(width - subscriptWidth - 1), 1 };
