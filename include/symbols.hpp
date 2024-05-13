@@ -116,8 +116,7 @@ namespace steppable::prettyPrint
          * @brief Writes a string to the buffer.
          *
          * @param s The string to write.
-         * @param dLine The change in line.
-         * @param dCol The change in column.
+         * @param pos The position to write to.
          * @param updatePos Whether to update the current position.
          */
         void write(const std::string& s, const Position& pos, bool updatePos = false);
@@ -290,7 +289,7 @@ namespace steppable::prettyPrint::printers
      * @brief Pretty print a power expression, (aka, superscript).
      *
      * @param base The base.
-     * @param exponent The exponent.
+     * @param superscript The exponent.
      * @return The pretty printed power expression.
      */
     std::string ppSuperscript(const std::string& base, const std::string& superscript);

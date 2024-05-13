@@ -64,12 +64,12 @@ namespace steppable::__internals::format
         const CharT* const zcFormat = sFormat.c_str();
 
         // Initialize a variable argument array
-        va_list vaArgs;
+        va_list vaArgs; // NOLINT(cppcoreguidelines-init-variables)
         va_start(vaArgs, sFormat);
 
         // Reliably acquire the size from a copy of the variable argument array
         // and a functionally reliable call to mock the formatting
-        va_list vaCopy;
+        va_list vaCopy; // NOLINT(cppcoreguidelines-init-variables)
         va_copy(vaCopy, vaArgs);
         const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy);
         va_end(vaCopy);
@@ -99,10 +99,10 @@ namespace steppable::__internals::format
     {
         const CharT* const zcFormat = sFormat;
 
-        va_list vaArgs = nullptr;
+        va_list vaArgs; // NOLINT(cppcoreguidelines-init-variables)
         va_start(vaArgs, sFormat);
 
-        va_list vaCopy = nullptr;
+        va_list vaCopy; // NOLINT(cppcoreguidelines-init-variables)
         va_copy(vaCopy, vaArgs);
         const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy); // NOLINT(clang-diagnostic-format-nonliteral)
         va_end(vaCopy);

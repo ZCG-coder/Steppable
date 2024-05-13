@@ -60,4 +60,13 @@ namespace steppable::__internals::numUtils
      * @return True if the number is prime, false otherwise.
      */
     bool isPrime(const std::string& _number);
+
+    /**
+     * @brief Check if a number is a root number.
+     *
+     * @param[in] _number The number to check.
+     * @param[in] base The base of the root.
+     * @return True if the number is a root number, false otherwise.
+     */
+    bool isRoot(const std::string& _number, const std::string& base);
 } // namespace steppable::__internals::numUtils

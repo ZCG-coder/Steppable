@@ -28,7 +28,10 @@
  * @date 1st May 2024
  */
 
+#include "fn/root.hpp"
+
 #include "argParse.hpp"
+#include "factors.hpp"
 #include "fn/basicArithm.hpp"
 #include "fraction.hpp"
 #include "rootReport.hpp"
@@ -110,9 +113,13 @@ namespace steppable::__internals::arithmetic
         }
     }
 
-    std::string rootSurd(const std::string& _number, const std::string& base)
+    Surd rootSurd(const std::string& _number, const std::string& base)
     {
-        auto closestRoot = rootIntPart(_number, base);
+        auto largestRootFactor = numUtils::getRootFactor(_number, base);
+        auto radicand = divide(_number, largestRootFactor, 0, 1);
+        auto multiplier = rootIntPart(largestRootFactor, base);
+
+        return { radicand, multiplier };
     }
 
     std::string root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)

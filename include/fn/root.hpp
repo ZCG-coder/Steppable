@@ -20,39 +20,22 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "factors.hpp"
-#include "output.hpp"
-#include "testing.hpp"
-#include "util.hpp"
+#pragma once
 
-#include <iomanip>
-#include <iostream>
+#include <string>
 
-TEST_START()
-using namespace steppable::__internals::numUtils;
+namespace steppable::__internals::arithmetic
+{
+    /**
+     * @brief A struct to represent a surd.
+     * A surd is a number that cannot be simplified to remove a square root. It is expressed as \f$(a\sqrt[n]{b})\f$.
+     */
+    struct Surd
+    {
+        /// @brief The radicand of the surd.
+        std::string radicand;
 
-SECTION(Prime Test)
-_.assertTrue(isPrime("2"));
-_.assertTrue(isPrime("3"));
-_.assertFalse(isPrime("16"));
-_.assertFalse(isPrime("100"));
-_.assertFalse(isPrime("1000"));
-_.assertFalse(isPrime("10000"));
-SECTION_END()
-
-SECTION(Greatest Square Number Test)
-_.assertIsEqual(getGreatestRootNum("2"), "1");
-_.assertIsEqual(getGreatestRootNum("3"), "1");
-_.assertIsEqual(getGreatestRootNum("4"), "4");
-_.assertIsEqual(getGreatestRootNum("5"), "4");
-SECTION_END()
-
-SECTION(Greatest Root Factor Test)
-_.assertIsEqual(getRootFactor("24", "2"), "4");
-_.assertIsEqual(getRootFactor("13", "2"), "1");
-_.assertIsEqual(getRootFactor("27", "2"), "9");
-_.assertIsEqual(getRootFactor("72", "2"), "36");
-SECTION_END()
-
-TEST_END()
+        /// @brief The multiplier of the surd.
+        std::string multiplier;
+    };
+} // namespace steppable::__internals::arithmetic

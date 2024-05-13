@@ -23,7 +23,6 @@
 #include "factors.hpp"
 
 #include "fn/basicArithm.hpp"
-#include "util.hpp"
 
 #include <vector>
 
@@ -52,7 +51,18 @@ namespace steppable::__internals::numUtils
         return factors;
     }
 
-    std::string getRootFactor(const std::string& _number, const std::string& base) { return "1"; }
+    std::string getRootFactor(const std::string& _number, const std::string& base)
+    {
+        auto factors = getFactors(_number);
+        // Reverse the factors
+        std::reverse(factors.begin(), factors.end());
+        // Get the largest root factor
+        for (const auto& factor : factors)
+            if (isRoot(factor, base))
+                return factor;
+        // The number has no root factors
+        return "1";
+    }
 
     std::string getGreatestRootNum(const std::string& _number, const std::string& base)
     {
@@ -64,5 +74,12 @@ namespace steppable::__internals::numUtils
     {
         auto factors = getFactors(_number);
         return factors.size() == 2; // Only 1 and the number itself are factors ==> prime!
+    }
+
+    bool isRoot(const std::string& _number, const std::string& base)
+    {
+        auto iRoot = rootIntPart(_number, base);
+        auto rootNum = power(iRoot, base, 0);
+        return compare(rootNum, _number, 0) == "2";
     }
 } // namespace steppable::__internals::numUtils

@@ -122,7 +122,6 @@ namespace steppable::output
      *
      * @tparam T The character type of the message.
      * @tparam Args The types of the additional arguments.
-     * @param[in] name The name of the error.
      * @param[in] msg The error message.
      * @param[in] args Additional arguments for formatting the message.
      */
@@ -145,7 +144,6 @@ namespace steppable::output
      *
      * @tparam T The character type of the message.
      * @tparam Args The types of the additional arguments.
-     * @param[in] name The name of the info message.
      * @param[in] msg The info message.
      * @param[in] args Additional arguments for formatting the message.
      */
