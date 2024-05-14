@@ -35,8 +35,8 @@
 
 #pragma once
 
+#include "fn/root.hpp"
 #include "output.hpp"
-#include "util.hpp"
 
 #include <string>
 #include <string_view>
@@ -56,7 +56,7 @@ namespace steppable::__internals::arithmetic
     {
         std::string quotient;
         std::string remainder;
-    } ALIGN64;
+    };
 
     /**
      * @brief Calculates the absolute value of a string representation of a number.
@@ -192,6 +192,15 @@ namespace steppable::__internals::arithmetic
      * @return The result of the root operation.
      */
     std::string root(const std::string& _number, const std::string& base, size_t decimals = 8, int steps = 2);
+
+    /**
+     * @brief Converts a root operation into a surd.
+     *
+     * @param _number The number to convert to a surd.
+     * @param base The base of the root.
+     * @return The surd object.
+     */
+    Surd rootSurd(const std::string& _number, const std::string& base);
 
     /**
      * @brief Gets the integer part of the root of a number.

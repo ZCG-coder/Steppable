@@ -51,7 +51,7 @@ namespace steppable::prettyPrint
     {
         long long x = 0;
         long long y = 0;
-    } __attribute__((aligned(16)));
+    };
 
     // // Not currently in use.
     // enum PrintingAlignment

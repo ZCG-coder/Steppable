@@ -46,10 +46,6 @@
 #include <string>
 #include <vector>
 
-#ifndef ALIGN64
-    #define ALIGN64 __attribute__((aligned(64)))
-#endif
-
 #ifndef TIC
     /**
      * @brief Starts a timer for profiling code execution time.
