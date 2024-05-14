@@ -24,6 +24,7 @@
 
 #include "fn/basicArithm.hpp"
 
+#include <algorithm>
 #include <vector>
 
 using namespace steppable::__internals::arithmetic;
