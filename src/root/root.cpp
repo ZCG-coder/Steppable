@@ -178,6 +178,7 @@ namespace steppable::__internals::arithmetic
 } // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
+// NOLINTNEXTLINE(bugprone-exception-escape)
 int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;

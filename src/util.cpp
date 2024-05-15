@@ -242,6 +242,8 @@ namespace steppable::__internals::numUtils
         // figure. Scale = -(numberOfZeros + 1)
         // E.g.: 0.1 => 0 leading zeros => scale = -(0 + 1) = -1; 0.0325 => 1 leading zero => scale = -(1 + 1) = -2.
         auto newNumberDecimal = removeLeadingZeros(numberDecimal);
+
+        // NOLINTNEXTLINE(bugprone-narrowing-conversions, cppcoreguidelines-narrowing-conversions)
         long long numberOfZeros = static_cast<long long>(numberDecimal.length()) - newNumberDecimal.length();
         return -(numberOfZeros + 1);
     }

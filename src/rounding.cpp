@@ -129,7 +129,7 @@ namespace steppable::__internals::numUtils
         if (places > 0)
         {
             for (size_t _ = 0; _ < repetitions; _++)
-                if (decimal.length() > 0)
+                if (not decimal.empty())
                 {
                     integer += decimal[0];
                     decimal.erase(decimal.cbegin());
@@ -141,7 +141,7 @@ namespace steppable::__internals::numUtils
         else if (places < 0)
         {
             for (size_t _ = 0; _ < repetitions; _++)
-                if (integer.length() > 0)
+                if (not integer.empty())
                 {
                     decimal = integer.back() + decimal; // NOLINT(performance-inefficient-string-concatenation)
                     integer.pop_back();

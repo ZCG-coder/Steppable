@@ -114,7 +114,7 @@ std::string reportAdd(const std::string& aInteger,
         if (c == -1)
             outStr += ".";
         else
-            outStr += std::string(1, c + '0');
+            outStr += std::string(1, static_cast<char>(c + '0'));
 
     if (properlyFormat)
         ss << standardizeNumber(outStr);

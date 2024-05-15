@@ -80,7 +80,6 @@ namespace steppable::__internals::arithmetic
         for (auto iterator = inputString.begin(); iterator < inputString.end(); ++iterator)
         {
             auto index = iterator - inputString.begin();
-            auto currentIndex = std::to_string(index);
             auto digit = toNumber(inputString[index]);
 
             if (compare(digit, baseString, 0) != "0")
