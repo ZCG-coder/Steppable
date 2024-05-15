@@ -70,7 +70,7 @@ namespace steppable::__internals::arithmetic
             const auto& fraction = Fraction(raiseTo);
             const auto& [top, bottom] = fraction.asArray();
             const auto& powerResult = power(_number, top, 0);
-            const auto rootResult = root(powerResult, bottom, 8, 0);
+            const auto rootResult = root(powerResult, bottom, 8);
             return reportPowerRoot(number, raiseTo, fraction, rootResult, steps);
         }
 

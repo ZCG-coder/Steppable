@@ -20,30 +20,59 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "fn/basicArithm.hpp"
-#include "output.hpp"
-#include "testing.hpp"
-#include "util.hpp"
+#pragma once
 
-#include <iomanip>
-#include <iostream>
+#include <string>
+#include <utility>
+#include <vector>
 
-TEST_START()
-SECTION(Root with a sqare number)
-using namespace steppable::__internals::arithmetic;
-_.assertIsEqual(root("4", "2", 0), "2");
-SECTION_END()
+/**
+ * @namespace steppable::types
+ * @brief The namespace containing types used in the steppable calculator.
+ */
+namespace steppable::types
+{
+    /**
+     * @brief The status of the calculation.
+     */
+    enum Status
+    {
+        CALCULATED_SIMPLIFIED,
+        CALCULATED_UNSIMPLIFIED,
+        MATH_ERROR
+    };
 
-SECTION(Root with a decimal index)
-using namespace steppable::__internals::arithmetic;
-_.assertIsEqual(root("4", "0.5", 0), "16");
-SECTION_END()
+    /**
+     * @brief The result of a calculation.
+     */
+    class Result
+    {
+    private:
+        /// @brief Whether the calculation is done.
+        Status done;
 
-SECTION(Surds)
-using namespace steppable::__internals::arithmetic;
-auto surd = rootSurd("27", "2");
-_.assertIsEqual(surd.multiplier, "3");
-_.assertIsEqual(surd.radicand, "3");
-SECTION_END()
-TEST_END()
+        /// @brief The inputs to the calculation.
+        std::vector<std::string> inputs;
+
+        /// @brief The output of the calculation.
+        std::string out;
+
+    public:
+        Result() = delete;
+
+        /**
+         * @brief Constructs a new result object.
+         *
+         * @param[in] _inputs The inputs to the calculation.
+         * @param[in] _out The output of the calculation.
+         * @param[in] _done A flag indicating how the calculation is done.
+         */
+        Result(const std::vector<std::string>& _inputs, std::string _out, Status _done) :
+            done(_done), inputs(_inputs), out(std::move(_out))
+        {
+        }
+
+        /// @brief Gets how the calculation is done.
+        Status getStatus() { return done; }
+    };
+} // namespace steppable::types

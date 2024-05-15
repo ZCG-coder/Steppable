@@ -191,7 +191,7 @@ namespace steppable::__internals::arithmetic
      *
      * @return The result of the root operation.
      */
-    std::string root(const std::string& _number, const std::string& base, size_t decimals = 8, int steps = 2);
+    std::string root(const std::string& _number, const std::string& base, size_t decimals = 8);
 
     /**
      * @brief Converts a root operation into a surd.

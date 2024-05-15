@@ -123,15 +123,15 @@ namespace steppable::__internals::arithmetic
         return { radicand, multiplier };
     }
 
-    std::string root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)
+    std::string _root(const std::string& _number, const std::string& base, const size_t _decimals)
     {
-        if (numUtils::isDecimal(base))
+        if (isDecimal(base))
         {
             const auto& fraction = Fraction(base);
             const auto& [top, bottom] = fraction.asArray();
             const auto& powerResult = power(_number, bottom, 0);
-            const auto rootResult = root(powerResult, top, _decimals, 0);
-            return reportRootPower(_number, base, fraction, rootResult, steps);
+            const auto rootResult = _root(powerResult, top, _decimals);
+            return reportRootPower(_number, base, fraction, rootResult, 0);
         }
 
         if (compare(base, "1", 0) == "2")
@@ -148,7 +148,6 @@ namespace steppable::__internals::arithmetic
 
         auto x = number;
         auto y = "0"s;
-        auto allowedError = "0." + std::string(decimals - 1, '0') + "1";
         size_t idx = 0;
         auto denominator = "1" + std::string(raisedTimes, '0');
 
@@ -168,6 +167,13 @@ namespace steppable::__internals::arithmetic
             idx++;
             // std::cout << "iteration: " << idx << " error: " << error << " test: " << test << "\n";
         }
+    }
+
+    std::string root(const std::string& _number, const std::string& base, const size_t _decimals)
+    {
+        auto result = rootSurd(_number, base);
+        auto rootResult = _root(result.radicand, base, _decimals);
+        return multiply(rootResult, result.multiplier, 0);
     }
 } // namespace steppable::__internals::arithmetic
 
