@@ -117,8 +117,8 @@ namespace steppable::__internals::arithmetic
     Surd rootSurd(const std::string& _number, const std::string& base)
     {
         auto largestRootFactor = numUtils::getRootFactor(_number, base);
-        auto radicand = roundDown(divide(_number, largestRootFactor, 0, 1));
-        auto multiplier = rootIntPart(largestRootFactor, base);
+        auto radicand = roundDown(divide(_number, largestRootFactor.getOutput(), 0, 1));
+        auto multiplier = largestRootFactor.getInputs()[2];
 
         return { radicand, multiplier };
     }

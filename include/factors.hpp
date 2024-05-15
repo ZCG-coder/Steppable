@@ -22,8 +22,12 @@
 
 #pragma once
 
+#include "types/result.hpp"
+
 #include <string>
 #include <vector>
+
+using namespace steppable::types;
 
 namespace steppable::__internals::numUtils
 {
@@ -40,9 +44,9 @@ namespace steppable::__internals::numUtils
      *
      * @param[in] _number The number to get the largest root factor of.
      * @param[in] base The base of the root.
-     * @return The largest root factor of the number.
+     * @return A result object containing the largest root factor of the number.
      */
-    std::string getRootFactor(const std::string& _number, const std::string& base = "2");
+    ResultBool getRootFactor(const std::string& _number, const std::string& base = "2");
 
     /**
      * @brief Get the greatest root number less than or equal to the given number.
@@ -66,7 +70,8 @@ namespace steppable::__internals::numUtils
      *
      * @param[in] _number The number to check.
      * @param[in] base The base of the root.
-     * @return True if the number is a root number, false otherwise.
+     * @return StatusBool::CALCULATED_SIMPLIFIED_YES if the number is a root number,
+     * StatusBool::CALCULATED_SIMPLIFIED_NO otherwise.
      */
-    bool isRoot(const std::string& _number, const std::string& base);
+    ResultBool isRoot(const std::string& _number, const std::string& base);
 } // namespace steppable::__internals::numUtils

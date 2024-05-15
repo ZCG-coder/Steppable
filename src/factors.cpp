@@ -23,11 +23,13 @@
 #include "factors.hpp"
 
 #include "fn/basicArithm.hpp"
+#include "types/result.hpp"
 
 #include <algorithm>
 #include <vector>
 
 using namespace steppable::__internals::arithmetic;
+using namespace steppable::types;
 
 namespace steppable::__internals::numUtils
 {
@@ -52,17 +54,20 @@ namespace steppable::__internals::numUtils
         return factors;
     }
 
-    std::string getRootFactor(const std::string& _number, const std::string& base)
+    ResultBool getRootFactor(const std::string& _number, const std::string& base)
     {
         auto factors = getFactors(_number);
         // Reverse the factors
         std::reverse(factors.begin(), factors.end());
         // Get the largest root factor
         for (const auto& factor : factors)
-            if (isRoot(factor, base))
-                return factor;
+        {
+            auto rootResult = isRoot(factor, base);
+            if (rootResult.getStatus() == StatusBool::CALCULATED_SIMPLIFIED_YES)
+                return { { _number, base, rootResult.getOutput() }, factor, StatusBool::CALCULATED_SIMPLIFIED_YES };
+        }
         // The number has no root factors
-        return "1";
+        return { { _number, base }, "1", StatusBool::CALCULATED_SIMPLIFIED_YES };
     }
 
     std::string getGreatestRootNum(const std::string& _number, const std::string& base)
@@ -77,10 +82,12 @@ namespace steppable::__internals::numUtils
         return factors.size() == 2; // Only 1 and the number itself are factors ==> prime!
     }
 
-    bool isRoot(const std::string& _number, const std::string& base)
+    ResultBool isRoot(const std::string& _number, const std::string& base)
     {
         auto iRoot = rootIntPart(_number, base);
         auto rootNum = power(iRoot, base, 0);
-        return compare(rootNum, _number, 0) == "2";
+        if (compare(rootNum, _number, 0) == "2")
+            return { { _number, base }, iRoot, StatusBool::CALCULATED_SIMPLIFIED_YES };
+        return { { _number, base }, "1", StatusBool::CALCULATED_SIMPLIFIED_NO };
     }
 } // namespace steppable::__internals::numUtils

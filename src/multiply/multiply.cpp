@@ -50,6 +50,9 @@ namespace steppable::__internals::arithmetic
     {
         auto a = static_cast<std::string>(_a);
         auto b = static_cast<std::string>(_b);
+        const auto& [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, false);
+        bool resultIsNegative = false;
+        const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
         std::stringstream out;
         if (isZeroString(a) or isZeroString(b))
         {
@@ -79,20 +82,17 @@ namespace steppable::__internals::arithmetic
         {
             if (steps == 2)
                 out << "Since " << a << " is a power of 10, we can move the decimal places to obtain the result.\n";
-            out << moveDecimalPlaces(b, static_cast<long long>(a.length() - 1));
+            out << moveDecimalPlaces(b, static_cast<long long>(aInteger.length() - 1));
             return out.str();
         }
         if (isPowerOfTen(b))
         {
             if (steps == 2)
                 out << "Since " << b << " is a power of 10, we can move the decimal places to obtain the result.\n";
-            out << moveDecimalPlaces(a, static_cast<long long>(b.length() - 1));
+            out << moveDecimalPlaces(a, static_cast<long long>(bInteger.length() - 1));
             return out.str();
         }
 
-        const auto& [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, false);
-        bool resultIsNegative = false;
-        const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
         const std::string& aStr = aInteger + aDecimal;
         const std::string bStr = bInteger + bDecimal;
         std::vector<std::vector<int>> prodDigits;

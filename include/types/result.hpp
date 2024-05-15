@@ -35,7 +35,7 @@ namespace steppable::types
     /**
      * @brief The status of the calculation.
      */
-    enum Status
+    enum class Status
     {
         CALCULATED_SIMPLIFIED,
         CALCULATED_UNSIMPLIFIED,
@@ -43,13 +43,29 @@ namespace steppable::types
     };
 
     /**
-     * @brief The result of a calculation.
+     * @brief The status of a boolean calculation.
      */
-    class Result
+    enum class StatusBool
+    {
+        CALCULATED_SIMPLIFIED_YES,
+        CALCULATED_SIMPLIFIED_NO,
+        CALCULATED_UNSIMPLIFIED_YES,
+        CALCULATED_UNSIMPLIFIED_NO,
+        MATH_ERROR
+    };
+
+    /**
+     * @brief A base class for a result of a calculation. You should use the `Result` and `ResultBool` aliases instead
+     * of this class, which has the `Status` and `StatusBool` enums as the status type respectively.
+     *
+     * @tparam StatusType The type of the status of the calculation.
+     */
+    template<typename StatusType>
+    class ResultBase
     {
     private:
         /// @brief Whether the calculation is done.
-        Status done;
+        StatusType done;
 
         /// @brief The inputs to the calculation.
         std::vector<std::string> inputs;
@@ -58,7 +74,7 @@ namespace steppable::types
         std::string out;
 
     public:
-        Result() = delete;
+        ResultBase() = delete;
 
         /**
          * @brief Constructs a new result object.
@@ -67,12 +83,24 @@ namespace steppable::types
          * @param[in] _out The output of the calculation.
          * @param[in] _done A flag indicating how the calculation is done.
          */
-        Result(const std::vector<std::string>& _inputs, std::string _out, Status _done) :
+        ResultBase(const std::vector<std::string>& _inputs, std::string _out, StatusType _done) :
             done(_done), inputs(_inputs), out(std::move(_out))
         {
         }
 
         /// @brief Gets how the calculation is done.
-        Status getStatus() { return done; }
+        StatusType getStatus() const { return done; }
+
+        /// @brief Gets the output of the calculation.
+        std::string getOutput() const { return out; }
+
+        /// @brief Gets the inputs to the calculation.
+        std::vector<std::string> getInputs() const { return inputs; }
     };
+
+    /// @brief An alias for a result of a calculation. This represents a calculation with a `Status` status.
+    using Result = ResultBase<Status>;
+
+    /// @brief An alias for a result of a boolean calculation.
+    using ResultBool = ResultBase<StatusBool>;
 } // namespace steppable::types

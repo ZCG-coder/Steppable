@@ -49,10 +49,10 @@ _.assertIsEqual(getGreatestRootNum("5"), "4");
 SECTION_END()
 
 SECTION(Greatest Root Factor Test)
-_.assertIsEqual(getRootFactor("24", "2"), "4");
-_.assertIsEqual(getRootFactor("13", "2"), "1");
-_.assertIsEqual(getRootFactor("27", "2"), "9");
-_.assertIsEqual(getRootFactor("72", "2"), "36");
+_.assertIsEqual(getRootFactor("24", "2").getOutput(), "4");
+_.assertIsEqual(getRootFactor("13", "2").getOutput(), "1");
+_.assertIsEqual(getRootFactor("27", "2").getOutput(), "9");
+_.assertIsEqual(getRootFactor("72", "2").getOutput(), "36");
 SECTION_END()
 
 TEST_END()
