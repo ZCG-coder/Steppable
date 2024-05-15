@@ -123,9 +123,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab5b4a2bd2c9223f2ea7bc5c699857aee" id="r_ab5b4a2bd2c9223f2ea7bc5c699857aee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5b4a2bd2c9223f2ea7bc5c699857aee">Fraction</a> ()</td></tr>
 <tr class="memdesc:ab5b4a2bd2c9223f2ea7bc5c699857aee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a fraction with no top component and bottom component specified. By default, this fraction equals to 1.  <br /></td></tr>
 <tr class="separator:ab5b4a2bd2c9223f2ea7bc5c699857aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a939fea669a7f630672f7215e77f335b6" id="r_a939fea669a7f630672f7215e77f335b6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a939fea669a7f630672f7215e77f335b6">present</a> (bool inLine=true)</td></tr>
-<tr class="memdesc:a939fea669a7f630672f7215e77f335b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fraction as a string. The string is formatted as "top/bottom", and it will automatically simplify the fraction.  <br /></td></tr>
-<tr class="separator:a939fea669a7f630672f7215e77f335b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24daec3e07be2176c6efbcb569d8c921" id="r_a24daec3e07be2176c6efbcb569d8c921"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24daec3e07be2176c6efbcb569d8c921">present</a> (const bool inLine=true)</td></tr>
+<tr class="memdesc:a24daec3e07be2176c6efbcb569d8c921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fraction as a string. The string is formatted as "top/bottom", and it will automatically simplify the fraction.  <br /></td></tr>
+<tr class="separator:a24daec3e07be2176c6efbcb569d8c921"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b59c8e9a82d179640425cd4659d2179" id="r_a8b59c8e9a82d179640425cd4659d2179"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::string, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b59c8e9a82d179640425cd4659d2179">asArray</a> () const</td></tr>
 <tr class="memdesc:a8b59c8e9a82d179640425cd4659d2179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fraction as an array of its top and bottom components.  <br /></td></tr>
 <tr class="separator:a8b59c8e9a82d179640425cd4659d2179"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,9 +197,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">steppable::Fraction::Fraction </td>
@@ -212,11 +209,6 @@ Private Attributes</h2></td></tr>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>bottom</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;1&quot;</span></span>&#160;)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Initializes a fraction with a specified top component and bottom component. </p>
@@ -240,9 +232,6 @@ Here is the call graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">steppable::Fraction::Fraction </td>
@@ -251,11 +240,6 @@ Here is the call graph for this function:</div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Initialized a fraction from a number. </p>
@@ -813,8 +797,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a939fea669a7f630672f7215e77f335b6" name="a939fea669a7f630672f7215e77f335b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a939fea669a7f630672f7215e77f335b6">&#9670;&#160;</a></span>present()</h2>
+<a id="a24daec3e07be2176c6efbcb569d8c921" name="a24daec3e07be2176c6efbcb569d8c921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24daec3e07be2176c6efbcb569d8c921">&#9670;&#160;</a></span>present()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -822,7 +806,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">std::string steppable::Fraction::present </td>
           <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>inLine</em><span class="paramdefsep"> = </span><span class="paramdefval">true</span></span></td><td>)</td>
+          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>inLine</em><span class="paramdefsep"> = </span><span class="paramdefval">true</span></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -839,7 +823,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_a939fea669a7f630672f7215e77f335b6_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1Fraction_a24daec3e07be2176c6efbcb569d8c921_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -946,7 +930,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 15 2024 15:25:34"; // Will get replaced by Doxygen
+        const dateStr = "Wed May 15 2024 22:41:51"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

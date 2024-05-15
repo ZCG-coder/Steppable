@@ -1,17 +1,15 @@
 var searchData=
 [
-  ['c_20api_0',['C++ API',['../md_wiki_2API-Reference.html#autotoc_md1',1,'']]],
-  ['calculated_5fsimplified_1',['CALCULATED_SIMPLIFIED',['../namespacesteppable_1_1types.html#ad07333753990056ce7d1fd41768bd1b6ae68bb6d16587f58e1c15ad12da583011',1,'steppable::types']]],
-  ['calculated_5funsimplified_2',['CALCULATED_UNSIMPLIFIED',['../namespacesteppable_1_1types.html#ad07333753990056ce7d1fd41768bd1b6aff9776917a1bd30b96f430ca38972660',1,'steppable::types']]],
-  ['can_20the_20first_20release_20be_20made_3',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md16',1,'']]],
-  ['cas_4',['Why another CAS?',['../md_wiki_2FAQ.html#autotoc_md20',1,'']]],
-  ['classes_5',['Available Classes',['../md_wiki_2API-Reference.html#autotoc_md6',1,'']]],
-  ['cmake_6',['Building Steppable (CMake)',['../md_wiki_2Building-Steppable.html',1,'']]],
-  ['code_7',['Getting the Source Code',['../md_wiki_2Getting-the-Source.html',1,'']]],
-  ['combine_5fmacron_8',['COMBINE_MACRON',['../namespacesteppable_1_1____internals_1_1symbols.html#ac7bc3c7e46ec87058cdf6c69326eb3f1',1,'steppable::__internals::symbols']]],
-  ['compare_9',['compare',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8',1,'steppable::__internals::arithmetic']]],
-  ['consoleoutput_10',['ConsoleOutput',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html',1,'steppable::prettyPrint::ConsoleOutput'],['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#afb69280a91e6a7f2111645143cb2c1ed',1,'steppable::prettyPrint::ConsoleOutput::ConsoleOutput()']]],
-  ['contribute_11',['How to contribute?',['../md_wiki_2FAQ.html#autotoc_md21',1,'']]],
-  ['curpos_12',['curPos',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#a067a158c8695ddc8d875e3c07962502f',1,'steppable::prettyPrint::ConsoleOutput']]],
-  ['cyan_13',['cyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a71b169724de6cde942ccf6caba218e16',1,'steppable::__internals::utils::colors']]]
+  ['dbg_0',['DBG',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7ad459851155e872145fe0ae3d79036991',1,'steppable::__internals::logging']]],
+  ['debug_1',['debug',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#aea7bddd607595f37fe9f09624dea23d8',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message)'],['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a7c1ba1b264a4998a9bdf7eff926b1eac',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message, Args &amp;&amp;... args)']]],
+  ['debug_20build_2',['Debug build',['../md_wiki_2Building-Steppable.html#autotoc_md13',1,'']]],
+  ['decimalconvert_3',['decimalConvert',['../namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374',1,'steppable::__internals::arithmetic']]],
+  ['deprecated_20list_4',['Deprecated List',['../deprecated.html',1,'']]],
+  ['determineresultscale_5',['determineResultScale',['../namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3',1,'steppable::__internals::arithmetic']]],
+  ['determinescale_6',['determineScale',['../namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13',1,'steppable::__internals::numUtils']]],
+  ['dim_7',['dim',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#ace928d552abe20aa441fb499a7c605fe',1,'steppable::__internals::utils::formats']]],
+  ['discard_5fall_5fdecimals_8',['DISCARD_ALL_DECIMALS',['../namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320',1,'steppable']]],
+  ['divide_9',['divide',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730',1,'steppable::__internals::arithmetic']]],
+  ['dividewithquotient_10',['divideWithQuotient',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978',1,'steppable::__internals::arithmetic']]],
+  ['does_20it_20work_11',['How does it work?',['../md_wiki_2FAQ.html#autotoc_md17',1,'']]]
 ];

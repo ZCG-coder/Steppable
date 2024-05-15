@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['dbg_0',['DBG',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7ad459851155e872145fe0ae3d79036991',1,'steppable::__internals::logging']]],
-  ['discard_5fall_5fdecimals_1',['DISCARD_ALL_DECIMALS',['../namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320',1,'steppable']]]
+  ['err_0',['ERR',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7a093f75d5c424d8a7019e01b939007ba8',1,'steppable::__internals::logging']]]
 ];

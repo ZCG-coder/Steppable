@@ -146,22 +146,22 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">const</span> CharT* <span class="keyword">const</span> zcFormat = sFormat.c_str();</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="comment">// Initialize a variable argument array</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        va_list vaArgs; <span class="comment">// NOLINT(cppcoreguidelines-init-variables)</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        va_list vaArgs;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        va_start(vaArgs, sFormat);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment">// Reliably acquire the size from a copy of the variable argument array</span></div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="comment">// and a functionally reliable call to mock the formatting</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        va_list vaCopy; <span class="comment">// NOLINT(cppcoreguidelines-init-variables)</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        va_list vaCopy;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        va_copy(vaCopy, vaArgs);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keyword">const</span> <span class="keywordtype">int</span> iLen = std::vsnprintf(<span class="keyword">nullptr</span>, 0, zcFormat, vaCopy);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        va_end(vaCopy);</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment">// Return a formatted string without risking memory mismanagement</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// and without assuming any compiler or platform specific behavior</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        std::vector&lt;CharT&gt; formatted(iLen + 1);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        (void)std::vsnprintf(formatted.data(), formatted.size(), zcFormat, vaArgs);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        std::vector&lt;CharT&gt; zc(iLen + 1);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs);</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        va_end(vaArgs);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">return</span> std::string(formatted.data(), formatted.size());</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">return</span> std::string(zc.data(), zc.size());</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
 </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
@@ -171,19 +171,19 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    {</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keyword">const</span> CharT* <span class="keyword">const</span> zcFormat = sFormat;</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        va_list vaArgs; <span class="comment">// NOLINT(cppcoreguidelines-init-variables)</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        va_list vaArgs;</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        va_start(vaArgs, sFormat);</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        va_list vaCopy; <span class="comment">// NOLINT(cppcoreguidelines-init-variables)</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        va_list vaCopy;</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        va_copy(vaCopy, vaArgs);</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keyword">const</span> <span class="keywordtype">int</span> iLen = std::vsnprintf(<span class="keyword">nullptr</span>, 0, zcFormat, vaCopy); <span class="comment">// NOLINT(clang-diagnostic-format-nonliteral)</span></div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        va_end(vaCopy);</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        std::vector&lt;CharT&gt; formatted(iLen + 1);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(std::vsnprintf(</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            formatted.data(), formatted.size(), zcFormat, vaArgs)); <span class="comment">// NOLINT(clang-diagnostic-format-nonliteral)</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        std::vector&lt;CharT&gt; zc(iLen + 1);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs)); <span class="comment">// NOLINT(clang-diagnostic-format-nonliteral)</span></div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        va_end(vaArgs);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">return</span> std::string(formatted.data(), formatted.size());</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">return</span> std::string(zc.data(), zc.size());</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
 </div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>} <span class="comment">// namespace steppable::__internals::format</span></div>
@@ -209,7 +209,7 @@ $(function() { codefold.init(0); });
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 15 2024 15:25:34"; // Will get replaced by Doxygen
+        const dateStr = "Wed May 15 2024 22:41:51"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

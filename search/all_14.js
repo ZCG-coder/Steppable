@@ -1,19 +1,15 @@
 var searchData=
 [
-  ['testcase_0',['TestCase',['../classsteppable_1_1testing_1_1TestCase.html',1,'steppable::testing::TestCase'],['../classsteppable_1_1testing_1_1TestCase.html#a6591f66f49d6f894b9eeab240bbb0e5f',1,'steppable::testing::TestCase::TestCase(const std::string &amp;testCaseName)']]],
-  ['testcasename_1',['testCaseName',['../classsteppable_1_1testing_1_1TestCase.html#af88107db78477ac1c1e28d0653312ee2',1,'steppable::testing::TestCase']]],
-  ['the_20built_20libraries_2',['Using the built libraries',['../md_wiki_2Building-Steppable.html#autotoc_md14',1,'']]],
-  ['the_20first_20release_20be_20made_3',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md16',1,'']]],
-  ['the_20header_20files_4',['Using the Header Files',['../md_wiki_2API-Reference.html#autotoc_md2',1,'']]],
-  ['the_20library_5',['Using the Library',['../md_wiki_2API-Reference.html#autotoc_md4',1,'']]],
-  ['the_20namespaces_6',['Using the Namespaces',['../md_wiki_2API-Reference.html#autotoc_md3',1,'']]],
-  ['the_20source_20code_7',['Getting the Source Code',['../md_wiki_2Getting-the-Source.html',1,'']]],
-  ['the_20steppable_20wiki_8',['The Steppable Wiki',['../index.html',1,'']]],
-  ['therefore_9',['THEREFORE',['../namespacesteppable_1_1____internals_1_1symbols.html#a0dfa8fb56a37c6f8096561609c1ae8c5',1,'steppable::__internals::symbols']]],
-  ['this_10',['What is this?',['../md_wiki_2FAQ.html#autotoc_md18',1,'']]],
-  ['this_20is_20not_11',['What this is not?',['../md_wiki_2FAQ.html#autotoc_md19',1,'']]],
-  ['to_20contribute_12',['How to contribute?',['../md_wiki_2FAQ.html#autotoc_md21',1,'']]],
-  ['tonumber_13',['toNumber',['../namespacesteppable_1_1____internals_1_1arithmetic.html#acbdfe1847efd604f5b982690debca864',1,'steppable::__internals::arithmetic']]],
-  ['top_14',['top',['../classsteppable_1_1Fraction.html#ac2b4f9433a68b65dba12fdaf7d513d62',1,'steppable::Fraction']]],
-  ['tt_20build_20py_20tt_15',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]]
+  ['underline_0',['underline',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a7306cc6022b8e470d8e0dc8f7e2abb97',1,'steppable::__internals::utils::formats']]],
+  ['unicodetoutf8_1',['unicodeToUtf8',['../namespacesteppable_1_1____internals_1_1stringUtils.html#a5dcad3b5c7b08e6541b5ae68cdf4ef0b',1,'steppable::__internals::stringUtils']]],
+  ['use_5fcurrent_5fprec_2',['USE_CURRENT_PREC',['../namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a7118ba17fbfe11e6ae9f07cb93f0bc64',1,'steppable']]],
+  ['use_5fmaximum_5fprec_3',['USE_MAXIMUM_PREC',['../namespacesteppable.html#a61949411cf477d12b3d15472d5b83092ad24f809859b8234d6d644a5e1ef2daba',1,'steppable']]],
+  ['use_5fminimum_5fprec_4',['USE_MINIMUM_PREC',['../namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a9648f7580409f3161a09341b0658cceb',1,'steppable']]],
+  ['use_5fother_5fprec_5',['USE_OTHER_PREC',['../namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a78296b6fd2698466bf2495637d90feda',1,'steppable']]],
+  ['using_20the_20built_20libraries_6',['Using the built libraries',['../md_wiki_2Building-Steppable.html#autotoc_md14',1,'']]],
+  ['using_20the_20header_20files_7',['Using the Header Files',['../md_wiki_2API-Reference.html#autotoc_md2',1,'']]],
+  ['using_20the_20library_8',['Using the Library',['../md_wiki_2API-Reference.html#autotoc_md4',1,'']]],
+  ['using_20the_20namespaces_9',['Using the Namespaces',['../md_wiki_2API-Reference.html#autotoc_md3',1,'']]],
+  ['utf8codepage_10',['Utf8CodePage',['../classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html',1,'steppable::__internals::utils::Utf8CodePage'],['../classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html#abb062ead077477aa3d8e6886e390a2b6',1,'steppable::__internals::utils::Utf8CodePage::Utf8CodePage()']]],
+  ['utf8tounicode_11',['utf8ToUnicode',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ae06e20fa11641400422ac7cbc6ed9f7f',1,'steppable::__internals::stringUtils']]]
 ];

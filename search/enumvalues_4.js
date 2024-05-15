@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['math_5ferror_0',['MATH_ERROR',['../namespacesteppable_1_1types.html#ad07333753990056ce7d1fd41768bd1b6a5dce1fab33c0d47190d2f55568ab3c23',1,'steppable::types']]]
+  ['warning_0',['WARNING',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7afb0cd1135b4fb39d6df4325a06d6ed71',1,'steppable::__internals::logging']]]
 ];

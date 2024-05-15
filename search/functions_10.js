@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['parseargs_0',['parseArgs',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a1e29a694f062b4975a737c2519a98d89',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['power_1',['power',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0',1,'steppable::__internals::arithmetic']]],
-  ['ppfraction_2',['ppFraction',['../namespacesteppable_1_1prettyPrint_1_1printers.html#a3719e82a7cebdb935632d16277530279',1,'steppable::prettyPrint::printers']]],
-  ['pproot_3',['ppRoot',['../namespacesteppable_1_1prettyPrint_1_1printers.html#a6d34546de5b88d97f80eae7d256611dc',1,'steppable::prettyPrint::printers']]],
-  ['ppsubscript_4',['ppSubscript',['../namespacesteppable_1_1prettyPrint_1_1printers.html#a4b6e725f816e08dd8584a88ef0d9d93e',1,'steppable::prettyPrint::printers']]],
-  ['ppsuperscript_5',['ppSuperscript',['../namespacesteppable_1_1prettyPrint_1_1printers.html#ac4cde7a14deed0ac454613b723f690bd',1,'steppable::prettyPrint::printers']]],
-  ['present_6',['present',['../classsteppable_1_1Fraction.html#a939fea669a7f630672f7215e77f335b6',1,'steppable::Fraction::present()'],['../classsteppable_1_1Number.html#aa512ee40e93e4cd6b891fb6d6f76be2c',1,'steppable::Number::present()']]],
-  ['printusage_7',['printUsage',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af3703e67d1a580ec98788508de89af45',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['programargs_8',['ProgramArgs',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ae0808db6f62b2b091eb1f5aa6749adcd',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['programsafeexit_9',['programSafeExit',['../namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7',1,'steppable::__internals::utils']]]
+  ['red_0',['red',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a36cc73ec1844a03d7cba5b409109c999',1,'steppable::__internals::utils::colors']]],
+  ['removeleadingzeros_1',['removeLeadingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212',1,'steppable::__internals::numUtils::removeLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;'],['../namespacesteppable_1_1____internals_1_1numUtils.html#a8d5637338641568af53f46a993400130',1,'steppable::__internals::numUtils::removeLeadingZeros(const std::string &amp;string) -&gt; std::decay_t&lt; decltype(string)&gt;']]],
+  ['removetrailingzeros_2',['removeTrailingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae',1,'steppable::__internals::numUtils::removeTrailingZeros(const std::vector&lt; int &gt; &amp;_vector) -&gt; std::decay_t&lt; decltype(_vector)&gt;'],['../namespacesteppable_1_1____internals_1_1numUtils.html#a01d87095fb8502339f72173ecfca1419',1,'steppable::__internals::numUtils::removeTrailingZeros(const std::string &amp;numStr) -&gt; std::decay_t&lt; decltype(numStr)&gt;']]],
+  ['replaceleadingzeros_3',['replaceLeadingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#ae8dde3fc958f32009443d1aeaa2c0900',1,'steppable::__internals::numUtils']]],
+  ['representnumber_4',['representNumber',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0',1,'steppable::__internals::arithmetic']]],
+  ['reset_5',['reset',['../namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff',1,'steppable::__internals::utils']]],
+  ['reverse_6',['reverse',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a588a3cdce1fef100d63d64816a37981a',1,'steppable::__internals::utils::formats']]],
+  ['root_7',['root',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a1b2a13f3be54bd279552f57aba88907d',1,'steppable::__internals::arithmetic']]],
+  ['roundoff_8',['roundOff',['../namespacesteppable_1_1____internals_1_1numUtils.html#a05db249045994ee795e6f1a24201f182',1,'steppable::__internals::numUtils']]],
+  ['rreplace_9',['rReplace',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da',1,'steppable::__internals::stringUtils']]]
 ];

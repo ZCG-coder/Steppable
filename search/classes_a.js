@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['utf8codepage_0',['Utf8CodePage',['../classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html',1,'steppable::__internals::utils']]]
+  ['zerodenominatorexception_0',['ZeroDenominatorException',['../classsteppable_1_1exceptions_1_1ZeroDenominatorException.html',1,'steppable::exceptions']]]
 ];

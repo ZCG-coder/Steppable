@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['posargdescriptions_0',['posArgDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ad7aaf0bfbd5e6f71b10c5d201b4d745f',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['posargisnumber_1',['posArgIsNumber',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a6056f31e29c7d75aefa766be61546869',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['posargs_2',['posArgs',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ad6cb9dcbc093aa862459b47cf5a67285',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['prec_3',['prec',['../classsteppable_1_1Number.html#a2e23e169025f1308a248a0d508d2e33c',1,'steppable::Number']]],
-  ['programname_4',['programName',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a50039f2d6bfcbca1bf3b589a04669891',1,'steppable::__internals::utils::ProgramArgs']]]
+  ['splitnumberarray_0',['splitNumberArray',['../structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793',1,'steppable::__internals::numUtils::SplitNumberResult']]],
+  ['superscripts_1',['SUPERSCRIPTS',['../namespacesteppable_1_1____internals_1_1symbols.html#a3dbef43e4c83dd6946de66afb052fff7',1,'steppable::__internals::symbols']]],
+  ['switchdescriptions_2',['switchDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ab7f4c2cb0c67d1344455b853e44e7a77',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['switches_3',['switches',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a01d7dfb2f06c605ceb112932cf2d751a',1,'steppable::__internals::utils::ProgramArgs']]]
 ];

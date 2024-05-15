@@ -1,18 +1,13 @@
 var searchData=
 [
-  ['red_0',['red',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a36cc73ec1844a03d7cba5b409109c999',1,'steppable::__internals::utils::colors']]],
-  ['removeleadingzeros_1',['removeLeadingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212',1,'steppable::__internals::numUtils::removeLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;'],['../namespacesteppable_1_1____internals_1_1numUtils.html#a8d5637338641568af53f46a993400130',1,'steppable::__internals::numUtils::removeLeadingZeros(const std::string &amp;string) -&gt; std::decay_t&lt; decltype(string)&gt;']]],
-  ['removetrailingzeros_2',['removeTrailingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae',1,'steppable::__internals::numUtils::removeTrailingZeros(const std::vector&lt; int &gt; &amp;_vector) -&gt; std::decay_t&lt; decltype(_vector)&gt;'],['../namespacesteppable_1_1____internals_1_1numUtils.html#a01d87095fb8502339f72173ecfca1419',1,'steppable::__internals::numUtils::removeTrailingZeros(const std::string &amp;numStr) -&gt; std::decay_t&lt; decltype(numStr)&gt;']]],
-  ['replaceleadingzeros_3',['replaceLeadingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#ae8dde3fc958f32009443d1aeaa2c0900',1,'steppable::__internals::numUtils']]],
-  ['representnumber_4',['representNumber',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0',1,'steppable::__internals::arithmetic']]],
-  ['reset_5',['reset',['../namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff',1,'steppable::__internals::utils']]],
-  ['result_6',['Result',['../classsteppable_1_1types_1_1Result.html#ab35410b6ca4b51a89bc6ae12f858ed49',1,'steppable::types::Result::Result()=delete'],['../classsteppable_1_1types_1_1Result.html#a94d15c18a1b2827fd9136e8e0d4f74fc',1,'steppable::types::Result::Result(const std::vector&lt; std::string &gt; &amp;_inputs, std::string _out, Status _done)']]],
-  ['reverse_7',['reverse',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a588a3cdce1fef100d63d64816a37981a',1,'steppable::__internals::utils::formats']]],
-  ['root_8',['root',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a4aa89d1787b7578cd2ed73392bdcd7df',1,'steppable::__internals::arithmetic']]],
-  ['rootintpart_9',['rootIntPart',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a6f1429e9d7719e6376dc68ae28d36dbe',1,'steppable::__internals::arithmetic']]],
-  ['rootsurd_10',['rootSurd',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a118bc6cb979317a7c762ee90fb44d0a4',1,'steppable::__internals::arithmetic']]],
-  ['rounddown_11',['roundDown',['../namespacesteppable_1_1____internals_1_1numUtils.html#a61df4994403fa57d99f1687e62afe468',1,'steppable::__internals::numUtils']]],
-  ['roundoff_12',['roundOff',['../namespacesteppable_1_1____internals_1_1numUtils.html#a7b6a9b3fac3ca1e80621ce62274a3cc5',1,'steppable::__internals::numUtils']]],
-  ['roundup_13',['roundUp',['../namespacesteppable_1_1____internals_1_1numUtils.html#aaf66a0e24010cbf253ab23f58eabb395',1,'steppable::__internals::numUtils']]],
-  ['rreplace_14',['rReplace',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da',1,'steppable::__internals::stringUtils']]]
+  ['setw_0',['setw',['../structsteppable_1_1____internals_1_1utils_1_1setw.html#a01b3deb613465b162ac58e8c59ad84ab',1,'steppable::__internals::utils::setw']]],
+  ['simplify_1',['simplify',['../classsteppable_1_1Fraction.html#a9cf64d847c268d9334775c572ef75dfa',1,'steppable::Fraction']]],
+  ['simplifypolarity_2',['simplifyPolarity',['../namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472',1,'steppable::__internals::numUtils']]],
+  ['simplifyzeropolarity_3',['simplifyZeroPolarity',['../namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066',1,'steppable::__internals::numUtils']]],
+  ['split_4',['split',['../namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7',1,'steppable::__internals::stringUtils::split(std::basic_string&lt; CharT &gt; s, const CharT separator)'],['../namespacesteppable_1_1____internals_1_1stringUtils.html#a2c413d8a2ab72da0854f746f3a3d6178',1,'steppable::__internals::stringUtils::split(std::basic_string_view&lt; CharT &gt; s, const CharT separator)']]],
+  ['splitnumber_5',['splitNumber',['../namespacesteppable_1_1____internals_1_1numUtils.html#a6ec6b1fba5358e4335ddce9d58ad60ff',1,'steppable::__internals::numUtils']]],
+  ['standardizenumber_6',['standardizeNumber',['../namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9',1,'steppable::__internals::numUtils']]],
+  ['subtract_7',['subtract',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e',1,'steppable::__internals::arithmetic']]],
+  ['summarize_8',['summarize',['../classsteppable_1_1testing_1_1TestCase.html#a2cb156d120e70f37ceb5421fbf04f8f7',1,'steppable::testing::TestCase']]],
+  ['switch_5fregex_9',['SWITCH_REGEX',['../namespacesteppable_1_1____internals_1_1utils.html#a588ee3de79a5de23fa7dfbb398f77e12',1,'steppable::__internals::utils']]]
 ];

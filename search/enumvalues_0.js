@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['calculated_5fsimplified_0',['CALCULATED_SIMPLIFIED',['../namespacesteppable_1_1types.html#ad07333753990056ce7d1fd41768bd1b6ae68bb6d16587f58e1c15ad12da583011',1,'steppable::types']]],
-  ['calculated_5funsimplified_1',['CALCULATED_UNSIMPLIFIED',['../namespacesteppable_1_1types.html#ad07333753990056ce7d1fd41768bd1b6aff9776917a1bd30b96f430ca38972660',1,'steppable::types']]]
+  ['dbg_0',['DBG',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7ad459851155e872145fe0ae3d79036991',1,'steppable::__internals::logging']]],
+  ['discard_5fall_5fdecimals_1',['DISCARD_ALL_DECIMALS',['../namespacesteppable.html#a61949411cf477d12b3d15472d5b83092a19eced6849f8fbb81d7cf5cfe4d06320',1,'steppable']]]
 ];
