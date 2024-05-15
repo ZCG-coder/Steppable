@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../structsteppable_1_1prettyPrint_1_1Position.html#ab35fe99a2d0116e135aba47d99b1e7b5',1,'steppable::prettyPrint::Position']]]
+  ['value_0',['value',['../classsteppable_1_1Number.html#a8947c23837fd45577abcaf9e7f07d540',1,'steppable::Number']]]
 ];

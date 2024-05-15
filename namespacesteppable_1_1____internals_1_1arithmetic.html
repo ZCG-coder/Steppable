@@ -111,6 +111,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html">QuotientRemainder</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the quotient and remainder of a division operation.  <a href="structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsteppable_1_1____internals_1_1arithmetic_1_1Surd.html">Surd</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct to represent a surd. A surd is a number that cannot be simplified to remove a square root. It is expressed as <img class="formulaInl" alt="$(a\sqrt[n]{b})$" src="form_0.png"/>.  <a href="structsteppable_1_1____internals_1_1arithmetic_1_1Surd.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -123,9 +126,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a6f4658ff66c0d02138acc2aa221856d0" id="r_a6f4658ff66c0d02138acc2aa221856d0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f4658ff66c0d02138acc2aa221856d0">representNumber</a> (const std::string_view &amp;_number)</td></tr>
 <tr class="memdesc:a6f4658ff66c0d02138acc2aa221856d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a number using alphabets and numberals.  <br /></td></tr>
 <tr class="separator:a6f4658ff66c0d02138acc2aa221856d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b80b731e3e2c0d16dcbe5d52b08ffd5" id="r_a5b80b731e3e2c0d16dcbe5d52b08ffd5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b80b731e3e2c0d16dcbe5d52b08ffd5">baseConvert</a> (const std::string_view &amp;_number, const std::string_view &amp;baseStr, const int steps=2)</td></tr>
-<tr class="memdesc:a5b80b731e3e2c0d16dcbe5d52b08ffd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string representation of a number from decimal to another one.  <br /></td></tr>
-<tr class="separator:a5b80b731e3e2c0d16dcbe5d52b08ffd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a814abbd0fc1772320626c4c0ca3f677a" id="r_a814abbd0fc1772320626c4c0ca3f677a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a814abbd0fc1772320626c4c0ca3f677a">baseConvert</a> (const std::string_view &amp;_number, const std::string_view &amp;baseStr, int steps=2)</td></tr>
+<tr class="memdesc:a814abbd0fc1772320626c4c0ca3f677a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string representation of a number from decimal to another one.  <br /></td></tr>
+<tr class="separator:a814abbd0fc1772320626c4c0ca3f677a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e20e50f3da461a8f9d50b14afd68ea8" id="r_a5e20e50f3da461a8f9d50b14afd68ea8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e20e50f3da461a8f9d50b14afd68ea8">compare</a> (const std::string_view &amp;_a, const std::string_view &amp;_b, int steps=2)</td></tr>
 <tr class="memdesc:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two string representations of numbers.  <br /></td></tr>
 <tr class="separator:a5e20e50f3da461a8f9d50b14afd68ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,9 +157,17 @@ Functions</h2></td></tr>
 <tr class="memitem:a50acfa1ad06ce385943ddd207146c9e0" id="r_a50acfa1ad06ce385943ddd207146c9e0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50acfa1ad06ce385943ddd207146c9e0">power</a> (std::string_view _number, const std::string_view &amp;raiseTo, int steps=2)</td></tr>
 <tr class="memdesc:a50acfa1ad06ce385943ddd207146c9e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a string representation of a number to a power.  <br /></td></tr>
 <tr class="separator:a50acfa1ad06ce385943ddd207146c9e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b2a13f3be54bd279552f57aba88907d" id="r_a1b2a13f3be54bd279552f57aba88907d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b2a13f3be54bd279552f57aba88907d">root</a> (const std::string &amp;_number, const std::string &amp;base, const size_t decimals=8, const int steps=2)</td></tr>
-<tr class="memdesc:a1b2a13f3be54bd279552f57aba88907d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the n-th root of a numer.  <br /></td></tr>
-<tr class="separator:a1b2a13f3be54bd279552f57aba88907d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1429e9d7719e6376dc68ae28d36dbe" id="r_a6f1429e9d7719e6376dc68ae28d36dbe"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f1429e9d7719e6376dc68ae28d36dbe">rootIntPart</a> (const std::string &amp;_number, const std::string &amp;base)</td></tr>
+<tr class="memdesc:a6f1429e9d7719e6376dc68ae28d36dbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the integer part of the root of a number.  <br /></td></tr>
+<tr class="separator:a6f1429e9d7719e6376dc68ae28d36dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a118bc6cb979317a7c762ee90fb44d0a4" id="r_a118bc6cb979317a7c762ee90fb44d0a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsteppable_1_1____internals_1_1arithmetic_1_1Surd.html">Surd</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a118bc6cb979317a7c762ee90fb44d0a4">rootSurd</a> (const std::string &amp;_number, const std::string &amp;base)</td></tr>
+<tr class="memdesc:a118bc6cb979317a7c762ee90fb44d0a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a root operation into a surd.  <br /></td></tr>
+<tr class="separator:a118bc6cb979317a7c762ee90fb44d0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eedcdd2349ec452f6319cd0ff443e0a" id="r_a1eedcdd2349ec452f6319cd0ff443e0a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1eedcdd2349ec452f6319cd0ff443e0a">_root</a> (const std::string &amp;_number, const std::string &amp;base, const size_t _decimals)</td></tr>
+<tr class="separator:a1eedcdd2349ec452f6319cd0ff443e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa89d1787b7578cd2ed73392bdcd7df" id="r_a4aa89d1787b7578cd2ed73392bdcd7df"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4aa89d1787b7578cd2ed73392bdcd7df">root</a> (const std::string &amp;_number, const std::string &amp;base, size_t decimals=8)</td></tr>
+<tr class="memdesc:a4aa89d1787b7578cd2ed73392bdcd7df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the n-th root of a numer.  <br /></td></tr>
+<tr class="separator:a4aa89d1787b7578cd2ed73392bdcd7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae61ae2915786a49aebb7025105cf058e" id="r_ae61ae2915786a49aebb7025105cf058e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae61ae2915786a49aebb7025105cf058e">subtract</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2, bool noMinus=false)</td></tr>
 <tr class="memdesc:ae61ae2915786a49aebb7025105cf058e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts one string representation of a number from another string representation of a number.  <br /></td></tr>
 <tr class="separator:ae61ae2915786a49aebb7025105cf058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,6 +177,42 @@ Functions</h2></td></tr>
 <tr class="separator:a210c635ae60eaa54f65bc82a0f3c953a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a1eedcdd2349ec452f6319cd0ff443e0a" name="a1eedcdd2349ec452f6319cd0ff443e0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eedcdd2349ec452f6319cd0ff443e0a">&#9670;&#160;</a></span>_root()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string steppable::__internals::arithmetic::_root </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>_number</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>base</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>_decimals</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a1eedcdd2349ec452f6319cd0ff443e0a_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a1eedcdd2349ec452f6319cd0ff443e0a_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="a37bfff2d022f3dd5e5a15e800ecfd5d6" name="a37bfff2d022f3dd5e5a15e800ecfd5d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37bfff2d022f3dd5e5a15e800ecfd5d6">&#9670;&#160;</a></span>abs()</h2>
 
@@ -261,8 +308,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a5b80b731e3e2c0d16dcbe5d52b08ffd5" name="a5b80b731e3e2c0d16dcbe5d52b08ffd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b80b731e3e2c0d16dcbe5d52b08ffd5">&#9670;&#160;</a></span>baseConvert()</h2>
+<a id="a814abbd0fc1772320626c4c0ca3f677a" name="a814abbd0fc1772320626c4c0ca3f677a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a814abbd0fc1772320626c4c0ca3f677a">&#9670;&#160;</a></span>baseConvert()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -280,7 +327,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>steps</em><span class="paramdefsep"> = </span><span class="paramdefval">2</span></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>steps</em><span class="paramdefsep"> = </span><span class="paramdefval">2</span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -298,7 +345,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a5b80b731e3e2c0d16dcbe5d52b08ffd5_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a814abbd0fc1772320626c4c0ca3f677a_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -522,7 +569,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_ac9102075acd398b3bdf388f6cc2ef978_icgraph.svg" width="443" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_ac9102075acd398b3bdf388f6cc2ef978_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -632,6 +679,11 @@ template&lt;typename Pred &gt; </div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a210c635ae60eaa54f65bc82a0f3c953a_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a210c635ae60eaa54f65bc82a0f3c953a_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -766,8 +818,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a1b2a13f3be54bd279552f57aba88907d" name="a1b2a13f3be54bd279552f57aba88907d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b2a13f3be54bd279552f57aba88907d">&#9670;&#160;</a></span>root()</h2>
+<a id="a4aa89d1787b7578cd2ed73392bdcd7df" name="a4aa89d1787b7578cd2ed73392bdcd7df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aa89d1787b7578cd2ed73392bdcd7df">&#9670;&#160;</a></span>root()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -785,12 +837,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>decimals</em><span class="paramdefsep"> = </span><span class="paramdefval">8</span>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>steps</em><span class="paramdefsep"> = </span><span class="paramdefval">2</span></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>decimals</em><span class="paramdefsep"> = </span><span class="paramdefval">8</span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -809,12 +856,94 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a1b2a13f3be54bd279552f57aba88907d_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a4aa89d1787b7578cd2ed73392bdcd7df_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a1b2a13f3be54bd279552f57aba88907d_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a4aa89d1787b7578cd2ed73392bdcd7df_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a6f1429e9d7719e6376dc68ae28d36dbe" name="a6f1429e9d7719e6376dc68ae28d36dbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1429e9d7719e6376dc68ae28d36dbe">&#9670;&#160;</a></span>rootIntPart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string steppable::__internals::arithmetic::rootIntPart </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>_number</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>base</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the integer part of the root of a number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_number</td><td>The number to get the root of. </td></tr>
+    <tr><td class="paramname">base</td><td>The base of the root.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The integer part of the root of the number. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a6f1429e9d7719e6376dc68ae28d36dbe_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a6f1429e9d7719e6376dc68ae28d36dbe_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a118bc6cb979317a7c762ee90fb44d0a4" name="a118bc6cb979317a7c762ee90fb44d0a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a118bc6cb979317a7c762ee90fb44d0a4">&#9670;&#160;</a></span>rootSurd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsteppable_1_1____internals_1_1arithmetic_1_1Surd.html">Surd</a> steppable::__internals::arithmetic::rootSurd </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>_number</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>base</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a root operation into a surd. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_number</td><td>The number to convert to a surd. </td></tr>
+    <tr><td class="paramname">base</td><td>The base of the root. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The surd object. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a118bc6cb979317a7c762ee90fb44d0a4_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a118bc6cb979317a7c762ee90fb44d0a4_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -922,7 +1051,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 15 2024 15:16:34"; // Will get replaced by Doxygen
+        const dateStr = "Wed May 15 2024 15:20:34"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

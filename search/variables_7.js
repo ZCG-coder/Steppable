@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['level_0',['level',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a486fe08ea44ef0cfd84447ed4f29e99c',1,'steppable::__internals::logging::Logger']]]
+  ['inputs_0',['inputs',['../classsteppable_1_1types_1_1Result.html#a676fb73744d273639baba8764d091865',1,'steppable::types::Result']]]
 ];

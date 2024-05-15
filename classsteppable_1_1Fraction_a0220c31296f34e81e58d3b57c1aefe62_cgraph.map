@@ -1,50 +1,42 @@
 <map id="steppable::Fraction::operator&#45;" name="steppable::Fraction::operator&#45;">
-<area shape="rect" id="Node000001" title="Subtracts a fraction from another fraction. This function does it by doing a simple fraction subtract..." alt="" coords="5,195,151,239"/>
-<area shape="rect" id="Node000002" href="$classsteppable_1_1Fraction.html#ab5b4a2bd2c9223f2ea7bc5c699857aee" title="Initializes a fraction with no top component and bottom component specified. By default,..." alt="" coords="208,125,354,170"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,191,198,173,200,178,146,196"/>
-<area shape="rect" id="Node000003" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66" title="Multiplies two string representations of numbers." alt="" coords="199,195,363,239"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,214,183,214,183,220,151,220"/>
-<area shape="rect" id="Node000015" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e" title="Subtracts one string representation of a number from another string representation of a number." alt="" coords="444,372,608,417"/>
-<area shape="poly" id="edge21_Node000001_Node000015" title=" " alt="" coords="138,237,454,363,452,368,136,242"/>
-<area shape="rect" id="Node000004" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b" title="Determines whether the number is a power of 10." alt="" coords="434,195,618,239"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="363,214,418,214,418,220,363,220"/>
-<area shape="rect" id="Node000005" href="$namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2" title="Checks if a given string is a zero string." alt="" coords="1732,284,1907,329"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="345,192,361,180,377,160,384,140,392,120,409,100,456,67,498,43,538,26,577,14,618,8,662,5,769,4,1291,4,1408,3,1456,5,1500,10,1543,19,1587,36,1634,60,1685,93,1728,133,1762,179,1789,227,1807,268,1802,270,1784,229,1758,182,1724,136,1682,98,1631,64,1585,41,1542,25,1499,15,1455,10,1408,8,1292,9,769,9,662,10,618,13,578,20,540,31,501,48,459,72,413,104,396,123,389,142,381,163,365,184,348,196"/>
-<area shape="rect" id="Node000006" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a2564d0f1e7f1bd71ad9c497cf72fc118" title="Move the decimal places of a number." alt="" coords="411,115,640,159"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="351,191,440,162,441,167,352,196"/>
-<area shape="rect" id="Node000008" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a6ec6b1fba5358e4335ddce9d58ad60ff" title=" " alt="" coords="925,245,1101,290"/>
-<area shape="poly" id="edge20_Node000003_Node000008" title=" " alt="" coords="359,237,411,249,545,265,680,273,805,274,909,271,909,276,805,279,680,278,545,271,411,254,357,242"/>
-<area shape="rect" id="Node000007" href="$namespacesteppable_1_1____internals_1_1numUtils.html#acc0d8c2dcee479d9b8c4b5b4585c70d8" title="Determines whether the number is an integer or not." alt="" coords="688,44,853,89"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="605,111,675,91,677,96,606,116"/>
-<area shape="poly" id="edge17_Node000006_Node000008" title=" " alt="" coords="641,152,745,172,853,200,950,236,948,241,852,205,744,177,640,157"/>
-<area shape="rect" id="Node000014" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9" title="Standardizes a number string." alt="" coords="901,104,1125,149"/>
-<area shape="poly" id="edge18_Node000006_Node000014" title=" " alt="" coords="641,132,885,126,885,132,641,137"/>
-<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="853,61,1046,60,1290,67,1412,76,1524,91,1617,112,1655,125,1685,140,1722,168,1754,202,1801,269,1796,272,1750,206,1719,172,1682,144,1653,130,1616,117,1523,96,1412,82,1290,72,1046,65,853,66"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="801,87,974,233,971,237,797,91"/>
-<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="1033,289,1057,318,1090,352,1129,384,1174,408,1213,420,1253,429,1335,437,1418,433,1499,420,1576,401,1646,378,1758,333,1760,338,1648,383,1577,406,1500,425,1418,438,1335,442,1252,434,1211,425,1172,413,1126,388,1086,356,1053,322,1028,292"/>
-<area shape="rect" id="Node000009" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212" title=" " alt="" coords="1173,215,1407,259"/>
-<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="1101,255,1157,249,1158,254,1102,260"/>
-<area shape="rect" id="Node000010" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae" title=" " alt="" coords="1175,284,1405,329"/>
-<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="1102,277,1160,285,1159,291,1101,282"/>
-<area shape="rect" id="Node000011" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472" title="Simplifies a string with non&#45;standard polarity (e.g., –1, —1, etc.)." alt="" coords="1191,95,1389,139"/>
-<area shape="poly" id="edge12_Node000008_Node000011" title=" " alt="" coords="1041,242,1100,199,1172,156,1200,143,1202,148,1174,161,1103,204,1044,247"/>
-<area shape="rect" id="Node000012" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066" title="Simplifies a string that represents a number with non&#45;standard polarity." alt="" coords="1455,155,1684,199"/>
-<area shape="poly" id="edge15_Node000008_Node000012" title=" " alt="" coords="1058,242,1112,219,1172,200,1240,187,1310,179,1439,172,1440,177,1310,184,1241,192,1174,205,1113,224,1060,247"/>
-<area shape="rect" id="Node000013" href="$namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7" title="Splits a string into substrings based on a separator." alt="" coords="1208,353,1372,398"/>
-<area shape="poly" id="edge16_Node000008_Node000013" title=" " alt="" coords="1060,288,1174,338,1194,346,1192,351,1172,343,1058,293"/>
-<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="1390,136,1448,148,1447,153,1389,141"/>
-<area shape="poly" id="edge14_Node000012_Node000005" title=" " alt="" coords="1616,197,1762,274,1760,279,1613,202"/>
-<area shape="poly" id="edge19_Node000014_Node000011" title=" " alt="" coords="1125,120,1175,118,1176,123,1126,125"/>
-<area shape="poly" id="edge29_Node000015_Node000005" title=" " alt="" coords="574,415,654,450,762,490,822,507,885,521,948,531,1012,534,1292,534,1406,540,1497,547,1539,545,1583,537,1630,520,1682,493,1723,461,1756,421,1782,379,1801,342,1806,344,1787,382,1761,424,1727,465,1685,498,1632,525,1584,542,1540,550,1497,552,1405,545,1291,540,1011,540,948,536,884,526,821,512,760,495,652,455,571,420"/>
-<area shape="poly" id="edge30_Node000015_Node000008" title=" " alt="" coords="608,373,852,313,924,292,925,297,853,318,609,378"/>
-<area shape="poly" id="edge31_Node000015_Node000015" title=" " alt="" coords="479,372,478,362,486,353,502,347,526,345,552,348,568,354,566,359,551,353,526,351,503,352,489,357,483,363,484,371"/>
-<area shape="rect" id="Node000016" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca" title="Adds two string representations of numbers, and performs with the column method." alt="" coords="688,385,853,430"/>
-<area shape="poly" id="edge22_Node000015_Node000016" title=" " alt="" coords="608,405,673,408,673,414,608,410"/>
-<area shape="rect" id="Node000017" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8" title="Compares two string representations of numbers." alt="" coords="688,215,853,259"/>
-<area shape="poly" id="edge26_Node000015_Node000017" title=" " alt="" coords="561,369,720,266,723,270,564,374"/>
-<area shape="poly" id="edge23_Node000016_Node000005" title=" " alt="" coords="850,428,1008,464,1109,480,1219,491,1336,495,1454,488,1571,468,1628,452,1683,432,1715,414,1745,390,1792,339,1795,343,1749,394,1718,418,1685,437,1629,457,1572,473,1455,493,1336,500,1219,497,1108,485,1007,469,848,433"/>
-<area shape="poly" id="edge24_Node000016_Node000008" title=" " alt="" coords="817,382,851,364,963,296,965,301,854,368,820,387"/>
-<area shape="poly" id="edge25_Node000016_Node000015" title=" " alt="" coords="688,397,623,393,624,388,688,392"/>
-<area shape="poly" id="edge27_Node000017_Node000008" title=" " alt="" coords="854,245,910,252,909,257,853,250"/>
-<area shape="poly" id="edge28_Node000017_Node000014" title=" " alt="" coords="820,211,947,153,949,158,823,216"/>
+<area shape="rect" id="Node000001" title="Subtracts a fraction from another fraction. This function does it by doing a simple fraction subtract..." alt="" coords="5,124,151,169"/>
+<area shape="rect" id="Node000002" href="$classsteppable_1_1Fraction.html#ab5b4a2bd2c9223f2ea7bc5c699857aee" title="Initializes a fraction with no top component and bottom component specified. By default,..." alt="" coords="208,64,354,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,122,192,110,194,115,152,127"/>
+<area shape="rect" id="Node000003" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66" title="Multiplies two string representations of numbers." alt="" coords="411,95,575,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,139,395,121,396,127,151,144"/>
+<area shape="rect" id="Node000012" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ae61ae2915786a49aebb7025105cf058e" title="Subtracts one string representation of a number from another string representation of a number." alt="" coords="199,267,363,311"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="113,167,237,255,234,260,110,171"/>
+<area shape="rect" id="Node000004" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b" title="Determines whether the number is a power of 10." alt="" coords="643,5,828,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="555,92,657,53,659,58,557,97"/>
+<area shape="rect" id="Node000005" href="$namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2" title="Checks if a given string is a zero string." alt="" coords="1454,236,1630,281"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="575,106,733,96,833,94,943,96,1058,104,1177,118,1294,141,1407,175,1457,197,1500,224,1497,229,1454,202,1405,179,1293,147,1176,124,1058,109,942,101,833,99,733,101,576,111"/>
+<area shape="rect" id="Node000006" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a6ec6b1fba5358e4335ddce9d58ad60ff" title=" " alt="" coords="647,296,824,341"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="523,138,697,284,694,288,520,142"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="824,294,895,281,1043,266,1191,258,1439,254,1439,259,1191,264,1043,272,896,286,825,299"/>
+<area shape="rect" id="Node000007" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212" title=" " alt="" coords="896,176,1130,221"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="779,293,895,237,928,224,930,229,897,242,781,298"/>
+<area shape="rect" id="Node000008" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae" title=" " alt="" coords="898,296,1128,341"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="824,316,882,316,882,321,824,321"/>
+<area shape="rect" id="Node000009" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a32fc3a968fc9629ed8616c539e840472" title="Simplifies a string with non&#45;standard polarity (e.g., –1, —1, etc.)." alt="" coords="914,485,1112,530"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="767,339,850,411,872,440,882,452,897,464,919,476,916,481,894,469,878,456,868,443,846,415,764,343"/>
+<area shape="rect" id="Node000010" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a5e6d1c6139edf65f76c0bd6aeba82066" title="Simplifies a string that represents a number with non&#45;standard polarity." alt="" coords="1178,425,1406,470"/>
+<area shape="poly" id="edge12_Node000006_Node000010" title=" " alt="" coords="764,339,822,382,858,403,897,420,963,437,1032,448,1100,452,1163,453,1163,458,1100,458,1032,453,962,442,895,425,856,408,819,387,761,343"/>
+<area shape="rect" id="Node000011" href="$namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7" title="Splits a string into substrings based on a separator." alt="" coords="931,365,1095,410"/>
+<area shape="poly" id="edge13_Node000006_Node000011" title=" " alt="" coords="825,338,916,361,915,366,823,343"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="1112,484,1170,471,1171,476,1113,489"/>
+<area shape="poly" id="edge11_Node000010_Node000005" title=" " alt="" coords="1322,423,1497,288,1500,293,1325,427"/>
+<area shape="poly" id="edge23_Node000012_Node000005" title=" " alt="" coords="303,310,368,378,414,420,468,463,528,502,594,535,663,557,698,563,734,565,1014,565,1130,566,1222,561,1265,552,1308,537,1354,514,1405,480,1428,461,1448,439,1483,389,1509,338,1526,295,1531,297,1514,341,1488,392,1453,442,1431,465,1408,484,1357,518,1310,542,1266,558,1223,567,1130,572,1014,570,734,570,698,568,661,562,592,540,526,507,465,467,410,424,364,382,299,314"/>
+<area shape="poly" id="edge24_Node000012_Node000006" title=" " alt="" coords="364,292,632,309,631,314,363,297"/>
+<area shape="poly" id="edge25_Node000012_Node000012" title=" " alt="" coords="242,266,241,257,247,248,261,242,281,240,302,242,316,249,313,253,301,248,281,245,262,247,250,252,246,258,247,266"/>
+<area shape="rect" id="Node000013" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a1deb38d5027df01a66b6c3efd57aedca" title="Adds two string representations of numbers, and performs with the column method." alt="" coords="411,236,575,281"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="363,283,395,279,396,284,364,289"/>
+<area shape="rect" id="Node000014" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8" title="Compares two string representations of numbers." alt="" coords="411,356,575,401"/>
+<area shape="poly" id="edge19_Node000012_Node000014" title=" " alt="" coords="337,309,425,347,423,352,335,314"/>
+<area shape="poly" id="edge16_Node000013_Node000005" title=" " alt="" coords="568,233,718,193,806,175,895,161,1013,152,1130,161,1216,174,1302,191,1451,229,1450,234,1301,196,1215,179,1130,166,1013,157,896,166,807,180,719,198,569,238"/>
+<area shape="poly" id="edge17_Node000013_Node000006" title=" " alt="" coords="577,276,633,290,631,295,575,281"/>
+<area shape="poly" id="edge18_Node000013_Node000012" title=" " alt="" coords="411,264,379,269,378,263,410,259"/>
+<area shape="poly" id="edge20_Node000014_Node000006" title=" " alt="" coords="575,355,631,341,633,347,577,361"/>
+<area shape="rect" id="Node000015" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a97316c4c4bc4640d519cec4841c7b0e9" title="Standardizes a number string." alt="" coords="623,425,848,470"/>
+<area shape="poly" id="edge21_Node000014_Node000015" title=" " alt="" coords="574,399,641,418,640,423,573,404"/>
+<area shape="poly" id="edge22_Node000015_Node000009" title=" " alt="" coords="842,468,899,480,898,486,841,473"/>
 </map>

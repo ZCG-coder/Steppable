@@ -1,81 +1,105 @@
 <map id="steppable::__internals::utils::colors::red" name="steppable::__internals::utils::colors::red">
-<area shape="rect" id="Node000001" title="Set the text color to red." alt="" coords="1220,1111,1384,1155"/>
-<area shape="rect" id="Node000002" href="$namespacesteppable_1_1output.html#a4dbb7442362aa32fbb09dcdd755b07d2" title="Prints an error message." alt="" coords="1016,1041,1160,1086"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1216,1108,1159,1089,1160,1084,1217,1103"/>
-<area shape="rect" id="Node000003" href="$namespacesteppable_1_1output.html#a076ed2ffbc6d17c02f91f3b9cb4026b7" title="Prints an error message." alt="" coords="1016,1111,1160,1155"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1204,1136,1160,1136,1160,1130,1204,1130"/>
-<area shape="rect" id="Node000037" href="$classsteppable_1_1testing_1_1TestCase.html#a2cb156d120e70f37ceb5421fbf04f8f7" title="Prints a summary of the test case, including the number of errors encountered." alt="" coords="1004,1180,1172,1225"/>
-<area shape="poly" id="edge42_Node000001_Node000037" title=" " alt="" coords="1217,1163,1160,1182,1159,1177,1216,1158"/>
-<area shape="rect" id="Node000004" href="$classsteppable_1_1testing_1_1TestCase.html#a72a291251c17f79279ad7235120b7e2c" title="Asserts a given condition and logs the condition name if it fails." alt="" coords="804,213,943,258"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1003,1102,1001,1100,990,1080,981,1056,968,997,961,928,959,853,959,706,957,643,953,593,914,400,878,259,884,258,919,398,958,593,963,643,964,706,964,853,966,928,973,996,986,1054,995,1078,1006,1097,1007,1098"/>
-<area shape="rect" id="Node000011" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a5b80b731e3e2c0d16dcbe5d52b08ffd5" title="Converts a string representation of a number from decimal to another one." alt="" coords="535,421,721,466"/>
-<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="1003,1102,1002,1100,978,1062,966,1027,963,993,964,959,969,889,966,850,953,807,913,705,874,627,851,593,823,559,742,487,711,469,714,464,745,483,826,556,855,590,879,624,917,703,958,805,971,849,975,889,970,960,968,993,971,1026,983,1060,1006,1097,1007,1098"/>
-<area shape="rect" id="Node000012" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374" title="Converts a string representation of a number from any base to decimal." alt="" coords="25,1115,233,1159"/>
-<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="1000,1136,233,1139,233,1134,1000,1131"/>
-<area shape="rect" id="Node000013" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730" title="Divides a string representation of a number by another string representation of a number." alt="" coords="791,819,956,863"/>
-<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="1006,1104,1002,1100,976,1073,953,1041,917,975,893,913,878,865,883,863,898,911,922,973,958,1039,980,1069,1006,1096,1009,1100"/>
-<area shape="rect" id="Node000031" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a" title="Executes a given predicate function a specified number of times." alt="" coords="791,1171,956,1215"/>
-<area shape="poly" id="edge36_Node000003_Node000031" title=" " alt="" coords="1002,1160,956,1173,955,1168,1001,1154"/>
-<area shape="rect" id="Node000032" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a1e29a694f062b4975a737c2519a98d89" title="This function is used to parse the command&#45;line arguments and store them in the appropriate class mem..." alt="" coords="791,1240,956,1301"/>
-<area shape="poly" id="edge37_Node000003_Node000032" title=" " alt="" coords="1011,1166,1005,1170,990,1184,982,1199,973,1214,957,1230,942,1241,939,1237,954,1226,968,1210,977,1196,986,1181,1002,1166,1008,1162"/>
-<area shape="rect" id="Node000033" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af3703e67d1a580ec98788508de89af45" title="This function is used to print the possible command&#45;line arguments. Usually called when the user spec..." alt="" coords="791,1325,956,1387"/>
-<area shape="poly" id="edge38_Node000003_Node000033" title=" " alt="" coords="1008,1167,1006,1169,992,1187,985,1205,981,1240,978,1276,971,1295,958,1315,946,1326,942,1322,954,1311,966,1293,973,1275,976,1239,980,1203,988,1185,1002,1166,1004,1163"/>
-<area shape="rect" id="Node000005" href="$classsteppable_1_1testing_1_1TestCase.html#a2d411e579a2e94888801e5c86ce0a1c1" title="Asserts that a boolean value is false." alt="" coords="544,144,712,189"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="789,215,709,192,710,187,790,209"/>
-<area shape="rect" id="Node000006" href="$classsteppable_1_1testing_1_1TestCase.html#a3156df668add7e3abe7c0b47fa1f9cfd" title="Asserts that two strings are equal." alt="" coords="537,213,719,258"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="789,238,720,238,720,233,789,233"/>
-<area shape="rect" id="Node000007" href="$classsteppable_1_1testing_1_1TestCase.html#a04f2b690d739f3d1c35a3ee7bc62df5f" title="Asserts that two integers are equal." alt="" coords="537,283,719,327"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="790,262,710,285,709,280,789,257"/>
-<area shape="rect" id="Node000008" href="$classsteppable_1_1testing_1_1TestCase.html#a61790bb36fd5283cec131d81df83aa0e" title="Asserts that two strings are not equal." alt="" coords="526,352,731,397"/>
-<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="840,271,797,308,745,342,718,354,716,349,742,337,793,304,837,267"/>
-<area shape="rect" id="Node000009" href="$classsteppable_1_1testing_1_1TestCase.html#a5b2c520e1adfc9dcd388736b55f36aea" title="Asserts that two integers are not equal." alt="" coords="526,5,731,50"/>
-<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="852,201,808,131,777,95,742,65,721,53,724,48,745,60,781,91,812,128,857,198"/>
-<area shape="rect" id="Node000010" href="$classsteppable_1_1testing_1_1TestCase.html#a2eb654185b127e9c62f4fdda127beac1" title="Asserts that a boolean value is true." alt="" coords="547,75,709,119"/>
-<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="837,205,793,168,742,134,708,120,711,115,745,129,797,163,840,200"/>
-<area shape="poly" id="edge13_Node000013_Node000011" title=" " alt="" coords="855,805,789,631,778,588,774,552,765,520,741,487,717,469,720,464,745,483,770,518,779,551,783,587,794,630,860,803"/>
-<area shape="rect" id="Node000014" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978" title=" " alt="" coords="513,819,743,863"/>
-<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="776,844,744,844,744,838,776,838"/>
-<area shape="rect" id="Node000016" href="$classsteppable_1_1Number.html#aebdaf5d342a2a897793556bd390bc184" title="Divides two numbers." alt="" coords="552,888,705,933"/>
-<area shape="poly" id="edge16_Node000013_Node000016" title=" " alt="" coords="778,871,706,891,704,886,776,866"/>
-<area shape="rect" id="Node000017" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a1b2a13f3be54bd279552f57aba88907d" title="Takes the n&#45;th root of a numer." alt="" coords="546,1051,710,1095"/>
-<area shape="poly" id="edge17_Node000013_Node000017" title=" " alt="" coords="840,876,655,1052,651,1048,836,872"/>
-<area shape="rect" id="Node000022" href="$classsteppable_1_1Fraction.html#a9cf64d847c268d9334775c572ef75dfa" title="Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom component..." alt="" coords="556,680,701,725"/>
-<area shape="poly" id="edge27_Node000013_Node000022" title=" " alt="" coords="817,813,668,728,671,723,820,808"/>
-<area shape="rect" id="Node000015" href="$classsteppable_1_1Number.html#a719a8a93fcfe91b30c38ba0830d6de50" title="Calculates the remainder of two numbers. (Modulus)" alt="" coords="306,957,460,1002"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="521,873,515,878,499,894,491,911,483,929,467,947,449,959,446,954,463,943,478,926,486,909,495,891,511,874,518,869"/>
-<area shape="poly" id="edge26_Node000017_Node000017" title=" " alt="" coords="668,1038,653,1032,628,1029,605,1031,591,1036,585,1042,587,1050,581,1051,580,1041,588,1032,604,1026,628,1024,655,1027,670,1033"/>
-<area shape="rect" id="Node000018" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0" title="Raises a string representation of a number to a power." alt="" coords="301,1051,465,1095"/>
-<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="531,1084,465,1084,465,1079,531,1079"/>
-<area shape="poly" id="edge19_Node000018_Node000012" title=" " alt="" coords="286,1100,221,1117,220,1111,285,1095"/>
-<area shape="poly" id="edge25_Node000018_Node000017" title=" " alt="" coords="481,1062,545,1062,545,1067,481,1067"/>
-<area shape="poly" id="edge24_Node000018_Node000018" title=" " alt="" coords="423,1038,408,1032,383,1029,360,1031,346,1036,340,1042,341,1050,336,1051,335,1041,343,1032,359,1026,383,1024,409,1027,425,1033"/>
-<area shape="rect" id="Node000019" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3" title="Determines the scale of the quotient of division." alt="" coords="5,625,253,670"/>
-<area shape="poly" id="edge20_Node000018_Node000019" title=" " alt="" coords="328,1043,299,1016,266,971,236,923,188,824,154,735,134,671,139,670,159,733,193,822,241,921,270,968,303,1013,332,1040"/>
-<area shape="rect" id="Node000020" href="$classsteppable_1_1Fraction.html#abaf8678e0b61e3097789959b66e4c23c" title="Raises the fraction to a power." alt="" coords="56,1045,202,1090"/>
-<area shape="poly" id="edge22_Node000018_Node000020" title=" " alt="" coords="285,1074,202,1072,202,1067,285,1068"/>
-<area shape="rect" id="Node000021" href="$classsteppable_1_1Number.html#ae3e13c5f73bc67cd464c84a8640e1387" title="Raises the number to a power." alt="" coords="52,976,206,1021"/>
-<area shape="poly" id="edge23_Node000018_Node000021" title=" " alt="" coords="294,1048,252,1036,205,1022,207,1017,253,1030,295,1043"/>
-<area shape="poly" id="edge21_Node000019_Node000013" title=" " alt="" coords="140,610,161,557,194,494,215,463,240,434,268,409,299,388,344,368,383,361,423,367,467,388,487,407,495,429,501,452,515,477,546,509,576,533,633,568,689,604,717,631,746,666,757,687,763,706,767,742,772,776,780,792,793,810,801,816,797,820,789,814,775,795,767,777,761,743,758,707,752,689,741,669,713,634,686,608,630,573,573,538,542,513,511,480,496,454,490,431,482,410,463,393,421,372,383,366,345,373,302,393,271,413,244,438,220,467,199,497,166,559,145,612"/>
-<area shape="rect" id="Node000023" href="$classsteppable_1_1Fraction.html#a4647e3f3062426a91d1ef7cdbde23bb6" title="Initialized a fraction from a number." alt="" coords="310,888,456,933"/>
-<area shape="poly" id="edge28_Node000022_Node000023" title=" " alt="" coords="589,737,552,770,515,808,501,827,493,844,483,860,467,878,449,890,446,885,463,874,479,857,488,841,497,824,511,805,548,766,585,733"/>
-<area shape="rect" id="Node000024" href="$classsteppable_1_1Fraction.html#a1fa38ab4cede78e19fa478242f6e5b46" title="Initializes a fraction with a specified top component and bottom component." alt="" coords="310,403,456,447"/>
-<area shape="poly" id="edge29_Node000022_Node000024" title=" " alt="" coords="602,668,525,547,487,491,463,462,446,450,449,446,467,458,491,488,529,544,607,665"/>
-<area shape="rect" id="Node000025" href="$classsteppable_1_1Fraction.html#a21eef8107e9cd1e590f7595c4ecbe147" title="Multiplies two fractions together and stores the result in the current one. This function does it by ..." alt="" coords="310,472,456,517"/>
-<area shape="poly" id="edge30_Node000022_Node000025" title=" " alt="" coords="600,670,541,601,504,564,463,531,444,520,447,515,467,527,508,560,545,597,604,666"/>
-<area shape="rect" id="Node000026" href="$classsteppable_1_1Fraction.html#ab10a5f43f6e60253ab6f4a097c73cf6e" title="Adds two fractions together and stores the result in the current one. This function does it by doing ..." alt="" coords="310,541,456,586"/>
-<area shape="poly" id="edge31_Node000022_Node000026" title=" " alt="" coords="581,673,526,637,464,601,440,589,442,584,466,596,529,632,584,669"/>
-<area shape="rect" id="Node000027" href="$classsteppable_1_1Fraction.html#aad3d96fbba7e7a0fa36c3f69f0463b8b" title="Subtracts a fraction from another fraction and stores the result in the current one...." alt="" coords="310,611,456,655"/>
-<area shape="poly" id="edge32_Node000022_Node000027" title=" " alt="" coords="540,680,455,656,457,651,541,675"/>
-<area shape="rect" id="Node000028" href="$classsteppable_1_1Fraction.html#a86913160c5f596b74be3007bd16bda6b" title="Divides a fraction by abother fraction and stores the result in the current one. This function does i..." alt="" coords="310,680,456,725"/>
-<area shape="poly" id="edge33_Node000022_Node000028" title=" " alt="" coords="540,705,456,705,456,700,540,700"/>
-<area shape="rect" id="Node000029" href="$classsteppable_1_1Fraction.html#ac0a3d392ac70f42f74392fe08c1ab8be" title="Raises the fraction to a power and stores the result in the current one." alt="" coords="310,749,456,794"/>
-<area shape="poly" id="edge34_Node000022_Node000029" title=" " alt="" coords="541,730,457,754,455,749,540,724"/>
-<area shape="rect" id="Node000030" href="$classsteppable_1_1Fraction.html#a24daec3e07be2176c6efbcb569d8c921" title="Returns the fraction as a string. The string is formatted as &quot;top/bottom&quot;, and it will automatically ..." alt="" coords="310,819,456,863"/>
-<area shape="poly" id="edge35_Node000022_Node000030" title=" " alt="" coords="584,736,529,772,466,809,442,821,440,816,464,804,526,768,581,731"/>
-<area shape="rect" id="Node000034" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#abc3534db8c4d346cbd23df19566f2432" title="This function is used to get the value of a keyword argument." alt="" coords="546,1410,710,1472"/>
-<area shape="poly" id="edge39_Node000033_Node000034" title=" " alt="" coords="777,1392,712,1415,710,1410,776,1387"/>
-<area shape="rect" id="Node000035" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a80ee5c4af4d6a642b3a72bea343ebbd9" title="This function is used to get the value of a positional argument." alt="" coords="546,1240,710,1301"/>
-<area shape="poly" id="edge40_Node000033_Node000035" title=" " alt="" coords="776,1325,710,1301,712,1296,777,1320"/>
-<area shape="rect" id="Node000036" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#abfbc6f2e68f3cc414843a59160a0cea6" title="This function is used to get the value of a switch." alt="" coords="546,1325,710,1387"/>
-<area shape="poly" id="edge41_Node000033_Node000036" title=" " alt="" coords="776,1358,711,1358,711,1353,776,1353"/>
+<area shape="rect" id="Node000001" title="Set the text color to red." alt="" coords="2161,532,2326,577"/>
+<area shape="rect" id="Node000002" href="$namespacesteppable_1_1output.html#a4dbb7442362aa32fbb09dcdd755b07d2" title="Prints an error message." alt="" coords="1958,463,2101,507"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2157,529,2100,511,2102,505,2159,524"/>
+<area shape="rect" id="Node000003" href="$namespacesteppable_1_1output.html#a9e519919f19db134021053a38b7966d0" title="Prints an error message." alt="" coords="1958,532,2101,577"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2146,557,2101,557,2101,552,2146,552"/>
+<area shape="rect" id="Node000045" href="$classsteppable_1_1testing_1_1TestCase.html#a2cb156d120e70f37ceb5421fbf04f8f7" title="Prints a summary of the test case, including the number of errors encountered." alt="" coords="1945,601,2113,646"/>
+<area shape="poly" id="edge58_Node000001_Node000045" title=" " alt="" coords="2159,584,2102,603,2100,598,2157,579"/>
+<area shape="rect" id="Node000004" href="$classsteppable_1_1testing_1_1TestCase.html#a72a291251c17f79279ad7235120b7e2c" title="Asserts a given condition and logs the condition name if it fails." alt="" coords="1746,213,1884,258"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1946,524,1943,521,1824,259,1829,257,1947,518,1950,521"/>
+<area shape="rect" id="Node000011" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a814abbd0fc1772320626c4c0ca3f677a" title="Converts a string representation of a number from decimal to another one." alt="" coords="1476,523,1663,567"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="1942,555,1663,550,1663,544,1942,550"/>
+<area shape="rect" id="Node000012" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374" title="Converts a string representation of a number from any base to decimal." alt="" coords="754,412,962,457"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="1949,526,1943,522,1928,505,1920,489,1911,475,1896,462,1851,442,1812,430,1775,424,1740,424,1665,431,1571,437,1323,437,962,437,962,432,1323,432,1571,432,1665,426,1740,419,1776,419,1813,424,1853,437,1898,457,1915,471,1924,487,1932,502,1947,518,1952,521"/>
+<area shape="rect" id="Node000013" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730" title="Divides a string representation of a number by another string representation of a number." alt="" coords="1733,677,1897,722"/>
+<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="1955,586,1946,591,1887,635,1840,679,1836,675,1884,631,1944,587,1952,582"/>
+<area shape="rect" id="Node000039" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a" title="Executes a given predicate function a specified number of times." alt="" coords="1733,472,1897,517"/>
+<area shape="poly" id="edge51_Node000003_Node000039" title=" " alt="" coords="1942,533,1896,520,1898,515,1944,528"/>
+<area shape="rect" id="Node000040" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a1e29a694f062b4975a737c2519a98d89" title="This function is used to parse the command&#45;line arguments and store them in the appropriate class mem..." alt="" coords="1733,746,1897,808"/>
+<area shape="poly" id="edge53_Node000003_Node000040" title=" " alt="" coords="1949,588,1947,591,1934,609,1927,626,1923,661,1919,697,1912,716,1899,736,1887,748,1883,744,1895,733,1907,714,1914,696,1917,661,1922,625,1929,606,1943,587,1945,585"/>
+<area shape="rect" id="Node000041" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af3703e67d1a580ec98788508de89af45" title="This function is used to print the possible command&#45;line arguments. Usually called when the user spec..." alt="" coords="1733,1274,1897,1336"/>
+<area shape="poly" id="edge54_Node000003_Node000041" title=" " alt="" coords="1948,589,1947,590,1927,683,1890,886,1824,1274,1819,1273,1885,885,1922,682,1943,588,1944,586"/>
+<area shape="rect" id="Node000005" href="$classsteppable_1_1testing_1_1TestCase.html#a2d411e579a2e94888801e5c86ce0a1c1" title="Asserts that a boolean value is false." alt="" coords="1485,213,1654,258"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1730,238,1654,238,1654,233,1730,233"/>
+<area shape="rect" id="Node000006" href="$classsteppable_1_1testing_1_1TestCase.html#a3156df668add7e3abe7c0b47fa1f9cfd" title="Asserts that two strings are equal." alt="" coords="1478,283,1661,327"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="1732,262,1652,285,1650,280,1730,257"/>
+<area shape="rect" id="Node000007" href="$classsteppable_1_1testing_1_1TestCase.html#a04f2b690d739f3d1c35a3ee7bc62df5f" title="Asserts that two integers are equal." alt="" coords="1478,352,1661,397"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="1782,271,1738,308,1686,342,1660,354,1658,349,1683,337,1735,304,1778,267"/>
+<area shape="rect" id="Node000008" href="$classsteppable_1_1testing_1_1TestCase.html#a61790bb36fd5283cec131d81df83aa0e" title="Asserts that two strings are not equal." alt="" coords="1467,5,1672,50"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="1793,201,1749,131,1719,95,1683,65,1663,53,1665,48,1686,60,1722,91,1753,128,1798,198"/>
+<area shape="rect" id="Node000009" href="$classsteppable_1_1testing_1_1TestCase.html#a5b2c520e1adfc9dcd388736b55f36aea" title="Asserts that two integers are not equal." alt="" coords="1467,75,1672,119"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="1778,205,1735,168,1683,134,1658,122,1660,118,1686,129,1738,163,1782,200"/>
+<area shape="rect" id="Node000010" href="$classsteppable_1_1testing_1_1TestCase.html#a2eb654185b127e9c62f4fdda127beac1" title="Asserts that a boolean value is true." alt="" coords="1488,144,1651,189"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="1730,215,1650,192,1652,187,1732,209"/>
+<area shape="poly" id="edge33_Node000013_Node000011" title=" " alt="" coords="1783,668,1739,623,1683,582,1659,570,1661,565,1686,577,1742,619,1787,664"/>
+<area shape="rect" id="Node000014" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a1eedcdd2349ec452f6319cd0ff443e0a" title=" " alt="" coords="1487,787,1652,831"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="1747,731,1734,737,1621,789,1618,784,1732,732,1744,726"/>
+<area shape="rect" id="Node000021" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a118bc6cb979317a7c762ee90fb44d0a4" title="Converts a root operation into a surd." alt="" coords="5,824,170,869"/>
+<area shape="poly" id="edge41_Node000013_Node000021" title=" " alt="" coords="1737,733,1735,736,1724,750,1718,763,1713,791,1707,819,1699,832,1686,846,1663,860,1630,873,1539,898,1424,920,1295,940,1039,967,859,977,568,977,467,975,389,968,312,950,217,919,166,897,122,872,124,867,168,892,219,915,314,945,390,962,468,970,568,972,859,972,1039,962,1294,934,1423,915,1538,893,1628,868,1661,855,1683,842,1695,829,1702,817,1707,790,1713,762,1719,747,1731,733,1734,730"/>
+<area shape="rect" id="Node000024" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a6f1429e9d7719e6376dc68ae28d36dbe" title="Gets the integer part of the root of a number." alt="" coords="772,652,944,697"/>
+<area shape="poly" id="edge40_Node000013_Node000024" title=" " alt="" coords="1717,705,1411,707,1221,704,1029,696,944,688,945,683,1030,690,1221,698,1411,701,1717,699"/>
+<area shape="rect" id="Node000025" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978" title=" " alt="" coords="1454,592,1685,637"/>
+<area shape="poly" id="edge34_Node000013_Node000025" title=" " alt="" coords="1733,674,1635,640,1637,635,1735,669"/>
+<area shape="rect" id="Node000029" href="$classsteppable_1_1Number.html#aebdaf5d342a2a897793556bd390bc184" title="Divides two numbers." alt="" coords="1493,989,1646,1034"/>
+<area shape="poly" id="edge39_Node000013_Node000029" title=" " alt="" coords="1736,734,1735,736,1717,766,1709,795,1709,824,1712,853,1715,882,1715,911,1706,941,1687,972,1669,988,1648,999,1646,994,1666,983,1683,969,1702,939,1710,911,1710,882,1707,853,1704,824,1704,794,1712,764,1731,733,1732,731"/>
+<area shape="rect" id="Node000030" href="$classsteppable_1_1Fraction.html#a9cf64d847c268d9334775c572ef75dfa" title="Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom component..." alt="" coords="1497,1163,1642,1207"/>
+<area shape="poly" id="edge42_Node000013_Node000030" title=" " alt="" coords="1736,734,1735,736,1711,775,1700,812,1697,848,1701,884,1705,920,1707,959,1702,1001,1687,1047,1668,1082,1645,1114,1598,1164,1594,1160,1641,1111,1664,1079,1682,1045,1697,1000,1702,959,1700,921,1695,884,1692,848,1694,811,1706,773,1730,733,1732,731"/>
+<area shape="poly" id="edge14_Node000014_Node000014" title=" " alt="" coords="1610,774,1595,768,1569,765,1547,767,1532,772,1526,778,1528,786,1523,787,1521,777,1529,768,1545,762,1570,760,1596,763,1612,769"/>
+<area shape="rect" id="Node000015" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a4aa89d1787b7578cd2ed73392bdcd7df" title="Takes the n&#45;th root of a numer." alt="" coords="1242,847,1406,891"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="1473,835,1407,851,1406,846,1471,830"/>
+<area shape="rect" id="Node000016" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a50acfa1ad06ce385943ddd207146c9e0" title="Raises a string representation of a number to a power." alt="" coords="1030,787,1194,831"/>
+<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="1228,845,1193,835,1194,829,1229,839"/>
+<area shape="poly" id="edge18_Node000016_Node000012" title=" " alt="" coords="1098,772,1082,719,1057,654,1023,585,980,521,942,486,902,459,905,455,946,482,984,518,1027,582,1062,652,1087,717,1103,771"/>
+<area shape="poly" id="edge17_Node000016_Node000014" title=" " alt="" coords="1210,806,1487,806,1487,812,1210,812"/>
+<area shape="poly" id="edge28_Node000016_Node000016" title=" " alt="" coords="1146,774,1133,768,1112,765,1092,767,1080,772,1075,778,1076,786,1071,786,1070,777,1077,768,1091,762,1112,760,1135,763,1149,769"/>
+<area shape="rect" id="Node000017" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3" title="Determines the scale of the quotient of division." alt="" coords="734,532,982,577"/>
+<area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="1082,775,1027,694,1014,666,1008,642,999,620,980,598,952,579,955,575,983,594,1003,617,1013,640,1019,664,1032,692,1086,772"/>
+<area shape="rect" id="Node000018" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a9af210044669c6dd27a2fca4723fe831" title="Get the greatest root number less than or equal to the given number." alt="" coords="452,795,686,839"/>
+<area shape="poly" id="edge21_Node000016_Node000018" title=" " alt="" coords="1034,839,982,850,913,858,858,860,734,850,677,843,678,837,735,845,858,855,912,853,981,845,1033,834"/>
+<area shape="rect" id="Node000019" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a07e07f04261f727113c0cfcb02afc6db" title="Check if a number is a root number." alt="" coords="487,623,651,667"/>
+<area shape="poly" id="edge22_Node000016_Node000019" title=" " alt="" coords="1084,775,1025,693,998,659,980,642,940,626,898,615,854,609,810,608,725,613,652,626,651,620,725,608,810,602,854,604,899,610,942,621,983,637,1002,655,1029,690,1088,772"/>
+<area shape="rect" id="Node000022" href="$classsteppable_1_1Fraction.html#abaf8678e0b61e3097789959b66e4c23c" title="Raises the fraction to a power." alt="" coords="785,721,931,766"/>
+<area shape="poly" id="edge26_Node000016_Node000022" title=" " alt="" coords="1014,787,930,765,932,760,1015,781"/>
+<area shape="rect" id="Node000023" href="$classsteppable_1_1Number.html#ae3e13c5f73bc67cd464c84a8640e1387" title="Raises the number to a power." alt="" coords="781,791,935,835"/>
+<area shape="poly" id="edge27_Node000016_Node000023" title=" " alt="" coords="1014,813,935,814,935,809,1014,808"/>
+<area shape="poly" id="edge29_Node000016_Node000024" title=" " alt="" coords="1069,779,980,711,944,696,946,691,983,707,1072,775"/>
+<area shape="poly" id="edge20_Node000017_Node000013" title=" " alt="" coords="952,579,1089,614,1242,646,1339,659,1472,671,1733,691,1732,697,1471,676,1338,664,1242,652,1087,620,951,584"/>
+<area shape="rect" id="Node000020" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a56e89ee4d61b127912e22822a2323558" title="Get the largest factor of a number, that is a root number." alt="" coords="218,623,404,667"/>
+<area shape="poly" id="edge23_Node000019_Node000020" title=" " alt="" coords="472,648,404,648,404,642,472,642"/>
+<area shape="poly" id="edge24_Node000020_Node000021" title=" " alt="" coords="271,679,219,723,113,826,109,822,216,719,267,675"/>
+<area shape="poly" id="edge25_Node000021_Node000015" title=" " alt="" coords="185,868,266,886,362,903,465,916,568,921,859,921,963,917,1066,907,1241,882,1242,887,1067,913,963,922,859,926,568,926,464,921,361,908,265,891,184,874"/>
+<area shape="poly" id="edge30_Node000024_Node000018" title=" " alt="" coords="759,700,736,711,721,723,712,734,703,747,688,760,626,797,623,792,685,756,699,743,708,731,717,719,733,707,756,695"/>
+<area shape="poly" id="edge31_Node000024_Node000019" title=" " alt="" coords="756,667,651,656,652,651,757,661"/>
+<area shape="poly" id="edge32_Node000024_Node000021" title=" " alt="" coords="757,699,171,831,170,826,756,694"/>
+<area shape="rect" id="Node000026" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a5eeb396144a9e1d3edd3339abb6f434f" title="Get the factors of a number." alt="" coords="1242,497,1406,542"/>
+<area shape="poly" id="edge35_Node000025_Node000026" title=" " alt="" coords="1473,589,1453,582,1370,545,1372,540,1455,577,1475,584"/>
+<area shape="rect" id="Node000028" href="$classsteppable_1_1Number.html#a719a8a93fcfe91b30c38ba0830d6de50" title="Calculates the remainder of two numbers. (Modulus)" alt="" coords="1248,592,1401,637"/>
+<area shape="poly" id="edge38_Node000025_Node000028" title=" " alt="" coords="1439,617,1401,617,1401,612,1439,612"/>
+<area shape="poly" id="edge36_Node000026_Node000020" title=" " alt="" coords="1226,514,1124,508,1001,506,867,509,735,522,633,542,533,569,371,625,369,620,531,564,632,537,734,517,867,504,1001,500,1124,503,1226,509"/>
+<area shape="rect" id="Node000027" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a1a51aabb1fe846587df780d136efd45f" title="Check if a number is prime." alt="" coords="1030,532,1194,577"/>
+<area shape="poly" id="edge37_Node000026_Node000027" title=" " alt="" coords="1227,538,1195,544,1194,538,1226,533"/>
+<area shape="rect" id="Node000031" href="$classsteppable_1_1Fraction.html#a4647e3f3062426a91d1ef7cdbde23bb6" title="Initialized a fraction from a number." alt="" coords="1252,1128,1397,1173"/>
+<area shape="poly" id="edge43_Node000030_Node000031" title=" " alt="" coords="1481,1175,1397,1163,1398,1158,1482,1170"/>
+<area shape="rect" id="Node000032" href="$classsteppable_1_1Fraction.html#a1fa38ab4cede78e19fa478242f6e5b46" title="Initializes a fraction with a specified top component and bottom component." alt="" coords="1252,1197,1397,1242"/>
+<area shape="poly" id="edge44_Node000030_Node000032" title=" " alt="" coords="1482,1200,1398,1212,1397,1207,1481,1195"/>
+<area shape="rect" id="Node000033" href="$classsteppable_1_1Fraction.html#a21eef8107e9cd1e590f7595c4ecbe147" title="Multiplies two fractions together and stores the result in the current one. This function does it by ..." alt="" coords="1252,1267,1397,1311"/>
+<area shape="poly" id="edge45_Node000030_Node000033" title=" " alt="" coords="1483,1210,1456,1222,1432,1239,1408,1257,1384,1268,1382,1264,1405,1252,1429,1234,1453,1217,1481,1205"/>
+<area shape="rect" id="Node000034" href="$classsteppable_1_1Fraction.html#ab10a5f43f6e60253ab6f4a097c73cf6e" title="Adds two fractions together and stores the result in the current one. This function does it by doing ..." alt="" coords="1252,1336,1397,1381"/>
+<area shape="poly" id="edge46_Node000030_Node000034" title=" " alt="" coords="1484,1205,1456,1222,1445,1234,1438,1246,1432,1271,1426,1298,1420,1312,1408,1326,1393,1338,1389,1333,1404,1322,1415,1309,1421,1296,1427,1270,1433,1244,1441,1231,1453,1218,1481,1200"/>
+<area shape="rect" id="Node000035" href="$classsteppable_1_1Fraction.html#aad3d96fbba7e7a0fa36c3f69f0463b8b" title="Subtracts a fraction from another fraction and stores the result in the current one...." alt="" coords="1252,1405,1397,1450"/>
+<area shape="poly" id="edge47_Node000030_Node000035" title=" " alt="" coords="1484,1203,1456,1222,1441,1242,1433,1263,1432,1305,1431,1349,1424,1372,1408,1395,1395,1407,1391,1403,1404,1391,1419,1369,1426,1348,1426,1305,1428,1262,1436,1240,1452,1218,1481,1198"/>
+<area shape="rect" id="Node000036" href="$classsteppable_1_1Fraction.html#a86913160c5f596b74be3007bd16bda6b" title="Divides a fraction by abother fraction and stores the result in the current one. This function does i..." alt="" coords="1252,1475,1397,1519"/>
+<area shape="poly" id="edge48_Node000030_Node000036" title=" " alt="" coords="1484,1202,1456,1222,1436,1251,1428,1280,1428,1310,1431,1339,1435,1369,1435,1400,1428,1432,1408,1464,1395,1476,1392,1472,1404,1461,1423,1430,1430,1400,1430,1370,1426,1340,1422,1310,1423,1280,1432,1249,1452,1218,1481,1198"/>
+<area shape="rect" id="Node000037" href="$classsteppable_1_1Fraction.html#ac0a3d392ac70f42f74392fe08c1ab8be" title="Raises the fraction to a power and stores the result in the current one." alt="" coords="1252,989,1397,1034"/>
+<area shape="poly" id="edge49_Node000030_Node000037" title=" " alt="" coords="1534,1154,1476,1101,1405,1049,1384,1037,1386,1032,1408,1044,1479,1097,1538,1150"/>
+<area shape="rect" id="Node000038" href="$classsteppable_1_1Fraction.html#a939fea669a7f630672f7215e77f335b6" title="Returns the fraction as a string. The string is formatted as &quot;top/bottom&quot;, and it will automatically ..." alt="" coords="1252,1059,1397,1103"/>
+<area shape="poly" id="edge50_Node000030_Node000038" title=" " alt="" coords="1500,1159,1378,1106,1380,1101,1502,1154"/>
+<area shape="poly" id="edge52_Node000039_Node000026" title=" " alt="" coords="1717,501,1454,513,1407,516,1407,511,1454,508,1717,495"/>
+<area shape="rect" id="Node000042" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#abc3534db8c4d346cbd23df19566f2432" title="This function is used to get the value of a keyword argument." alt="" coords="1487,1232,1652,1293"/>
+<area shape="poly" id="edge55_Node000041_Node000042" title=" " alt="" coords="1717,1291,1652,1279,1653,1274,1718,1285"/>
+<area shape="rect" id="Node000043" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a80ee5c4af4d6a642b3a72bea343ebbd9" title="This function is used to get the value of a positional argument." alt="" coords="1487,1317,1652,1379"/>
+<area shape="poly" id="edge56_Node000041_Node000043" title=" " alt="" coords="1718,1325,1653,1336,1652,1331,1717,1319"/>
+<area shape="rect" id="Node000044" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#abfbc6f2e68f3cc414843a59160a0cea6" title="This function is used to get the value of a switch." alt="" coords="1487,1402,1652,1464"/>
+<area shape="poly" id="edge57_Node000041_Node000044" title=" " alt="" coords="1761,1347,1686,1393,1653,1408,1651,1403,1683,1388,1758,1342"/>
 </map>

@@ -17,5 +17,6 @@ var searchData=
   ['steppable_3a_3aoutput_14',['output',['../namespacesteppable_1_1output.html',1,'steppable']]],
   ['steppable_3a_3aprettyprint_15',['prettyPrint',['../namespacesteppable_1_1prettyPrint.html',1,'steppable']]],
   ['steppable_3a_3aprettyprint_3a_3aprinters_16',['printers',['../namespacesteppable_1_1prettyPrint_1_1printers.html',1,'steppable::prettyPrint']]],
-  ['steppable_3a_3atesting_17',['testing',['../namespacesteppable_1_1testing.html',1,'steppable']]]
+  ['steppable_3a_3atesting_17',['testing',['../namespacesteppable_1_1testing.html',1,'steppable']]],
+  ['steppable_3a_3atypes_18',['types',['../namespacesteppable_1_1types.html',1,'steppable']]]
 ];

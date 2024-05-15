@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['magenta_0',['magenta',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a76143a1fc45bbb2ba3a02b4688beac5e',1,'steppable::__internals::utils::colors']]],
-  ['makesubscript_1',['makeSubscript',['../namespacesteppable_1_1____internals_1_1symbols.html#a69d3b3d195d72c87d2e9038acc4e8143',1,'steppable::__internals::symbols::makeSubscript(const std::string &amp;normal)'],['../namespacesteppable_1_1____internals_1_1symbols.html#a993dd4e293dff0986f46f231e35ea5a0',1,'steppable::__internals::symbols::makeSubscript(int normal)']]],
-  ['makesuperscript_2',['makeSuperscript',['../namespacesteppable_1_1____internals_1_1symbols.html#a746f88878c7cf9b2390e5836ff30ef40',1,'steppable::__internals::symbols::makeSuperscript(const std::string &amp;normal)'],['../namespacesteppable_1_1____internals_1_1symbols.html#a24e395f161f6d45fa6c88f74eaf1cc6c',1,'steppable::__internals::symbols::makeSuperscript(char normal)']]],
-  ['makesurd_3',['makeSurd',['../namespacesteppable_1_1____internals_1_1symbols.html#a6c43fdf51f20bcfff97597689af88bb3',1,'steppable::__internals::symbols']]],
-  ['makewider_4',['makeWider',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ad4fca9a20e9a831347b0c71200f0448d',1,'steppable::__internals::stringUtils']]],
-  ['movedecimalplaces_5',['moveDecimalPlaces',['../namespacesteppable_1_1____internals_1_1numUtils.html#a2564d0f1e7f1bd71ad9c497cf72fc118',1,'steppable::__internals::numUtils']]],
-  ['multiply_6',['multiply',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a59c559ff2ec84dc1964531893a457c66',1,'steppable::__internals::arithmetic']]]
+  ['localtime_5fxp_0',['localtime_xp',['../namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e',1,'steppable::__internals::utils']]],
+  ['log_1',['log',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a48c781d289e36805e7e9d96eccb5d55e',1,'steppable::__internals::logging::Logger']]],
+  ['logger_2',['Logger',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a3c66a92d73c0da631dcfcfe62e0c948e',1,'steppable::__internals::logging::Logger']]],
+  ['loop_3',['loop',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a210c635ae60eaa54f65bc82a0f3c953a',1,'steppable::__internals::arithmetic']]],
+  ['lreplace_4',['lReplace',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ab0545c4969b448035c39a3aa51d613d0',1,'steppable::__internals::stringUtils']]]
 ];

@@ -140,20 +140,20 @@ var sectionId = 'dynsection-3';
 </a>
 </g>
 </g>
-<!-- Node8 -->
-<g id="Node000008" class="node">
-<title>Node8</title>
-<g id="a_Node000008"><a xlink:href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ae1f860b54fd4b6676147b75623bcae62" target="_top" xlink:title="Logs a warning message.">
+<!-- Node9 -->
+<g id="Node000009" class="node">
+<title>Node9</title>
+<g id="a_Node000009"><a xlink:href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ae1f860b54fd4b6676147b75623bcae62" target="_top" xlink:title="Logs a warning message.">
 <polygon fill="white" stroke="#666666" points="320,-33.5 178,-33.5 178,0 320,0 320,-33.5"/>
 <text text-anchor="start" x="186" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="249" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">::logging::Logger::warning</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node8 -->
-<g id="edge7_Node000002_Node000008" class="edge">
-<title>Node2&#45;&gt;Node8</title>
-<g id="a_edge7_Node000002_Node000008"><a xlink:title=" ">
+<!-- Node2&#45;&gt;Node9 -->
+<g id="edge8_Node000002_Node000009" class="edge">
+<title>Node2&#45;&gt;Node9</title>
+<g id="a_edge8_Node000002_Node000009"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M377.37,-72.03C360.06,-62.43 339.3,-51.48 320,-42.75 313.27,-39.71 306.06,-36.73 298.93,-33.94"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="375.38,-74.93 385.81,-76.76 378.8,-68.82 375.38,-74.93"/>
 </a>
@@ -162,7 +162,7 @@ var sectionId = 'dynsection-3';
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a7c1ba1b264a4998a9bdf7eff926b1eac" target="_top" xlink:title="Logs a debug message with additional arguments.">
+<g id="a_Node000004"><a xlink:href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ac9f9eff49890890d0887f1d52cfe57b0" target="_top" xlink:title="Logs a debug message with additional arguments.">
 <polygon fill="white" stroke="#666666" points="137.5,-189.5 4.5,-189.5 4.5,-156 137.5,-156 137.5,-189.5"/>
 <text text-anchor="start" x="12.5" y="-176" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="71" y="-163.25" font-family="Helvetica,sans-Serif" font-size="10.00">::logging::Logger::debug</text>
@@ -181,7 +181,7 @@ var sectionId = 'dynsection-3';
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a676f416e329994f615fcb2b1a80b2352" target="_top" xlink:title="Logs an error message with additional arguments.">
+<g id="a_Node000006"><a xlink:href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ac3134a2316ae168e214c0481c67fe682" target="_top" xlink:title="Logs an error message with additional arguments.">
 <polygon fill="white" stroke="#666666" points="134.12,-137.5 7.88,-137.5 7.88,-104 134.12,-104 134.12,-137.5"/>
 <text text-anchor="start" x="15.88" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="71" y="-111.25" font-family="Helvetica,sans-Serif" font-size="10.00">::logging::Logger::error</text>
@@ -197,20 +197,39 @@ var sectionId = 'dynsection-3';
 </a>
 </g>
 </g>
-<!-- Node9 -->
-<g id="Node000009" class="node">
-<title>Node9</title>
-<g id="a_Node000009"><a xlink:href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#ad7e980e57cb9ef5437083e43851b3594" target="_top" xlink:title="Logs a warning message with additional arguments.">
+<!-- Node8 -->
+<g id="Node000008" class="node">
+<title>Node8</title>
+<g id="a_Node000008"><a xlink:href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a3c66a92d73c0da631dcfcfe62e0c948e" target="_top" xlink:title="Constructs a Logger object.">
+<polygon fill="white" stroke="#666666" points="139,-85.5 3,-85.5 3,-52 139,-52 139,-85.5"/>
+<text text-anchor="start" x="11" y="-72" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
+<text text-anchor="middle" x="71" y="-59.25" font-family="Helvetica,sans-Serif" font-size="10.00">::logging::Logger::Logger</text>
+</a>
+</g>
+</g>
+<!-- Node7&#45;&gt;Node8 -->
+<g id="edge7_Node000007_Node000008" class="edge">
+<title>Node7&#45;&gt;Node8</title>
+<g id="a_edge7_Node000007_Node000008"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M175.57,-68.75C163.56,-68.75 151.15,-68.75 139.27,-68.75"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="175.42,-72.25 185.42,-68.75 175.42,-65.25 175.42,-72.25"/>
+</a>
+</g>
+</g>
+<!-- Node10 -->
+<g id="Node000010" class="node">
+<title>Node10</title>
+<g id="a_Node000010"><a xlink:href="classsteppable_1_1____internals_1_1logging_1_1Logger.html#a4dd6ad5fdb5dd31fa61facda263b1349" target="_top" xlink:title="Logs a warning message with additional arguments.">
 <polygon fill="white" stroke="#666666" points="142,-33.5 0,-33.5 0,0 142,0 142,-33.5"/>
 <text text-anchor="start" x="8" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
 <text text-anchor="middle" x="71" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">::logging::Logger::warning</text>
 </a>
 </g>
 </g>
-<!-- Node8&#45;&gt;Node9 -->
-<g id="edge8_Node000008_Node000009" class="edge">
-<title>Node8&#45;&gt;Node9</title>
-<g id="a_edge8_Node000008_Node000009"><a xlink:title=" ">
+<!-- Node9&#45;&gt;Node10 -->
+<g id="edge9_Node000009_Node000010" class="edge">
+<title>Node9&#45;&gt;Node10</title>
+<g id="a_edge9_Node000009_Node000010"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M166.17,-16.75C158.26,-16.75 150.28,-16.75 142.49,-16.75"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="166.17,-20.25 176.17,-16.75 166.17,-13.25 166.17,-20.25"/>
 </a>

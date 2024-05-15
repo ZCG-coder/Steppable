@@ -132,39 +132,37 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;exception&gt;</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1exceptions.html">   37</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1exceptions.html">steppable::exceptions</a></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
-<div class="foldopen" id="foldopen00043" data-start="{" data-end="};">
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html">   43</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html">ZeroDenominatorException</a> final : <span class="keyword">public</span> std::exception</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html#a9d99a641cb051f398b47ba96e56a7465">   46</a></span>        [[nodiscard]] <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html#a9d99a641cb051f398b47ba96e56a7465">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;The denominator is zero, which is not allowed.&quot;</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1exceptions.html">   35</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1exceptions.html">steppable::exceptions</a></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html">   41</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html">ZeroDenominatorException</a> final : <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html#a9d99a641cb051f398b47ba96e56a7465">   44</a></span>        [[nodiscard]] <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html#a9d99a641cb051f398b47ba96e56a7465">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;The denominator is zero, which is not allowed.&quot;</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
 </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    };</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    };</div>
 </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="foldopen" id="foldopen00056" data-start="{" data-end="};">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html">   56</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html">MultiLengthLetterException</a> final : <span class="keyword">public</span> std::exception</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html#a8dfb1b1000b19645543ee814674205dd">   59</a></span>        [[nodiscard]] <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html#a8dfb1b1000b19645543ee814674205dd">what</a>() const noexcept<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;The length of letter exceeds the 1 limit.&quot;</span>; }</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    };</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="};">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html">   54</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html">MultiLengthLetterException</a> final : <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html#a8dfb1b1000b19645543ee814674205dd">   57</a></span>        [[nodiscard]] <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html#a8dfb1b1000b19645543ee814674205dd">what</a>() const noexcept<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;The length of letter exceeds the 1 limit.&quot;</span>; }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    };</div>
 </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>} <span class="comment">// namespace steppable::exceptions</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <span class="comment">// namespace steppable::exceptions</span></div>
 </div>
-<div class="ttc" id="aclasssteppable_1_1exceptions_1_1MultiLengthLetterException_html"><div class="ttname"><a href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html">steppable::exceptions::MultiLengthLetterException</a></div><div class="ttdoc">Thrown when initializing a Key object with two or more letters.</div><div class="ttdef"><b>Definition</b> exceptions.hpp:57</div></div>
-<div class="ttc" id="aclasssteppable_1_1exceptions_1_1MultiLengthLetterException_html_a8dfb1b1000b19645543ee814674205dd"><div class="ttname"><a href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html#a8dfb1b1000b19645543ee814674205dd">steppable::exceptions::MultiLengthLetterException::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> exceptions.hpp:59</div></div>
-<div class="ttc" id="aclasssteppable_1_1exceptions_1_1ZeroDenominatorException_html"><div class="ttname"><a href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html">steppable::exceptions::ZeroDenominatorException</a></div><div class="ttdoc">Thrown when initializing a fraction with zero as denominator.</div><div class="ttdef"><b>Definition</b> exceptions.hpp:44</div></div>
-<div class="ttc" id="aclasssteppable_1_1exceptions_1_1ZeroDenominatorException_html_a9d99a641cb051f398b47ba96e56a7465"><div class="ttname"><a href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html#a9d99a641cb051f398b47ba96e56a7465">steppable::exceptions::ZeroDenominatorException::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> exceptions.hpp:46</div></div>
-<div class="ttc" id="anamespacesteppable_1_1exceptions_html"><div class="ttname"><a href="namespacesteppable_1_1exceptions.html">steppable::exceptions</a></div><div class="ttdef"><b>Definition</b> exceptions.hpp:38</div></div>
+<div class="ttc" id="aclasssteppable_1_1exceptions_1_1MultiLengthLetterException_html"><div class="ttname"><a href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html">steppable::exceptions::MultiLengthLetterException</a></div><div class="ttdoc">Thrown when initializing a Key object with two or more letters.</div><div class="ttdef"><b>Definition</b> exceptions.hpp:55</div></div>
+<div class="ttc" id="aclasssteppable_1_1exceptions_1_1MultiLengthLetterException_html_a8dfb1b1000b19645543ee814674205dd"><div class="ttname"><a href="classsteppable_1_1exceptions_1_1MultiLengthLetterException.html#a8dfb1b1000b19645543ee814674205dd">steppable::exceptions::MultiLengthLetterException::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> exceptions.hpp:57</div></div>
+<div class="ttc" id="aclasssteppable_1_1exceptions_1_1ZeroDenominatorException_html"><div class="ttname"><a href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html">steppable::exceptions::ZeroDenominatorException</a></div><div class="ttdoc">Thrown when initializing a fraction with zero as denominator.</div><div class="ttdef"><b>Definition</b> exceptions.hpp:42</div></div>
+<div class="ttc" id="aclasssteppable_1_1exceptions_1_1ZeroDenominatorException_html_a9d99a641cb051f398b47ba96e56a7465"><div class="ttname"><a href="classsteppable_1_1exceptions_1_1ZeroDenominatorException.html#a9d99a641cb051f398b47ba96e56a7465">steppable::exceptions::ZeroDenominatorException::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> exceptions.hpp:44</div></div>
+<div class="ttc" id="anamespacesteppable_1_1exceptions_html"><div class="ttname"><a href="namespacesteppable_1_1exceptions.html">steppable::exceptions</a></div><div class="ttdef"><b>Definition</b> exceptions.hpp:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!DOCTYPE html>
 <html>
@@ -184,7 +182,7 @@ $(function() { codefold.init(0); });
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 15 2024 15:16:33"; // Will get replaced by Doxygen
+        const dateStr = "Wed May 15 2024 15:20:33"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

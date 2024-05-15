@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['debug_0',['debug',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#aea7bddd607595f37fe9f09624dea23d8',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message)'],['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a7c1ba1b264a4998a9bdf7eff926b1eac',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message, Args &amp;&amp;... args)']]],
-  ['decimalconvert_1',['decimalConvert',['../namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374',1,'steppable::__internals::arithmetic']]],
-  ['determineresultscale_2',['determineResultScale',['../namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3',1,'steppable::__internals::arithmetic']]],
-  ['determinescale_3',['determineScale',['../namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13',1,'steppable::__internals::numUtils']]],
-  ['dim_4',['dim',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#ace928d552abe20aa441fb499a7c605fe',1,'steppable::__internals::utils::formats']]],
-  ['divide_5',['divide',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730',1,'steppable::__internals::arithmetic']]],
-  ['dividewithquotient_6',['divideWithQuotient',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978',1,'steppable::__internals::arithmetic']]]
+  ['compare_0',['compare',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8',1,'steppable::__internals::arithmetic']]],
+  ['consoleoutput_1',['ConsoleOutput',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#afb69280a91e6a7f2111645143cb2c1ed',1,'steppable::prettyPrint::ConsoleOutput']]],
+  ['cyan_2',['cyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a71b169724de6cde942ccf6caba218e16',1,'steppable::__internals::utils::colors']]]
 ];
