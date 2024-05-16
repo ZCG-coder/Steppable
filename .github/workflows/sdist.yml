@@ -1,33 +1,47 @@
+---
 name: Create a Source Distribution
-
 on:
     push:
-        branches: [ "main", "develop" ]
+        branches: ["main", "develop"]
     pull_request:
-        branches: [ "main" ]
-
+        branches: ["main"]
 jobs:
     build:
         runs-on: ubuntu-latest
-
         steps:
-        -   uses: actions/checkout@v4
+            - uses: actions/checkout@v4
 
-        -   name: Set up Python
-            uses: actions/setup-python@v5
-            with:
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
                 cache: 'pip'
-                python-version: 3.12
+                python-version: ${{ matrix.python_version }}
 
-        -   name: Install packages
-            run: pip install -r requirements.txt
-          
-        -   name: Python Build
-            run: python setup.py sdist
+            - name: Install Poetry
+              uses: snok/install-poetry@v1
+              with:
+                virtualenvs-create: true
+                virtualenvs-in-project: true
+                installer-parallel: true
 
-        -   name: Upload SDist Artifact
-            uses: actions/upload-artifact@v4.3.1
-            with:
+            - name: Load cached venv
+              id: cached-poetry-dependencies
+              uses: actions/cache@v3
+              with:
+                path: .venv
+                key: venv-${{ matrix.os }}-${{ matrix.python_version }}-${{ hashFiles('**/poetry.lock') }}
+
+            - name: Install dependencies
+              if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+              run: poetry install --no-interaction --no-root
+              shell: bash
+
+            - name: Python Build
+              run: poetry run python setup.py sdist
+
+            - name: Upload SDist Artifact
+              uses: actions/upload-artifact@v4.3.1
+              with:
                 # Artifact name
                 name: sdist
                 # A file, directory or wildcard pattern that describes what to upload

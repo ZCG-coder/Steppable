@@ -1,21 +1,18 @@
+---
 # This starter workflow is for a CMake project running on multiple platforms. There is a different starter workflow if you just want a single platform.
 # See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-single-platform.yml
 name: Benchmark on multiple platforms
-
 on:
     push:
-        branches: [ "develop" ]
+        branches: ["develop"]
     pull_request:
-        branches: [ "main" ]
-
+        branches: ["main"]
 jobs:
     graph:
         runs-on: ${{ matrix.os }}
-
         strategy:
             # Set fail-fast to false to ensure that feedback is delivered for all matrix combinations. Consider changing this to true when your workflow is stable.
             fail-fast: false
-
             # Set up a matrix to run the following 3 configurations:
             # 1. <Windows, Release, latest MSVC compiler toolchain on the default runner image, default generator>
             # 2. <Linux, Release, latest GCC compiler toolchain on the default runner image, default generator>
@@ -23,75 +20,91 @@ jobs:
             #
             # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
             matrix:
-                os: [ ubuntu-latest, windows-latest, macos-14 ]
-                build_type: [ Release ]
-                c_compiler: [ clang, cl ]
+                os: [ubuntu-latest, windows-latest, macos-14]
+                build_type: [Release]
+                c_compiler: [clang, cl]
                 include:
-                    -   os: windows-latest
-                        c_compiler: cl
-                        cpp_compiler: cl
-                        cmake_extra_options: ''
-                    -   os: ubuntu-latest
-                        c_compiler: clang
-                        cpp_compiler: clang++
-                        cmake_extra_options: '-GNinja'
-                    -   os: macos-14
-                        c_compiler: clang
-                        cpp_compiler: clang++
-                        cmake_extra_options: '-GNinja'
-
+                    - os: windows-latest
+                      c_compiler: cl
+                      cpp_compiler: cl
+                      cmake_extra_options: ''
+                    - os: ubuntu-latest
+                      c_compiler: clang
+                      cpp_compiler: clang++
+                      cmake_extra_options: '-GNinja'
+                    - os: macos-14
+                      c_compiler: clang
+                      cpp_compiler: clang++
+                      cmake_extra_options: '-GNinja'
                 exclude:
-                    -   os: windows-latest
-                        c_compiler: clang
-                    -   os: ubuntu-latest
-                        c_compiler: cl
-                    -   os: macos-14
-                        c_compiler: cl
-
+                    - os: windows-latest
+                      c_compiler: clang
+                    - os: ubuntu-latest
+                      c_compiler: cl
+                    - os: macos-14
+                      c_compiler: cl
         steps:
-            -   uses: actions/checkout@v4
+            - uses: actions/checkout@v4
 
-            -   name: Set reusable strings
-                # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
-                id: strings
-                shell: bash
-                run: |
-                    echo "build-output-dir=${{ github.workspace }}/cmake-build" >> "$GITHUB_OUTPUT"
-                    echo "py-build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
-                    echo "CMAKE_C_COMPILER=${{ matrix.c_compiler }}" >> "$GITHUB_ENV"
-                    echo "CMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}" >> "$GITHUB_ENV"
-                    echo "CMAKE_OPTIONS=${{ matrix.cmake_extra_options }}" >> "$GITHUB_ENV"
+            - name: Set reusable strings
+              # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
+              id: strings
+              shell: bash
+              run: |
+                echo "build-output-dir=${{ github.workspace }}/cmake-build" >> "$GITHUB_OUTPUT"
+                echo "py-build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+                echo "CMAKE_C_COMPILER=${{ matrix.c_compiler }}" >> "$GITHUB_ENV"
+                echo "CMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}" >> "$GITHUB_ENV"
+                echo "CMAKE_OPTIONS=${{ matrix.cmake_extra_options }}" >> "$GITHUB_ENV"
 
-            -   name: Set up Homebrew
-                if: ${{matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest'}}
-                id: set-up-homebrew
-                uses: Homebrew/actions/setup-homebrew@master
+            - name: Set up Homebrew
+              if: ${{matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest'}}
+              id: set-up-homebrew
+              uses: Homebrew/actions/setup-homebrew@master
 
-            -   name: Install LLVM
-                if: ${{matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest' }}
-                run: |
-                    brew install llvm ninja
-                    echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
+            - name: Install LLVM
+              if: ${{matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest' }}
+              run: |
+                brew install llvm ninja
+                echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
 
-            -   name: Set up Python
-                uses: actions/setup-python@v5
-                with:
-                    cache: 'pip'
-                    python-version: '3.12'
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                cache: 'pip'
+                python-version: '3.12'
 
-            -   name: Install packages
-                run: pip install -r requirements.txt
+            - name: Install Poetry
+              uses: snok/install-poetry@v1
+              with:
+                virtualenvs-create: true
+                virtualenvs-in-project: true
+                installer-parallel: true
 
-            -   name: Python Build
-                run: python setup.py build
+            - name: Load cached venv
+              id: cached-poetry-dependencies
+              uses: actions/cache@v3
+              with:
+                path: .venv
+                key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
-            -   name: Benchmark
-                run: python tools/benchmark.py -g
+            - name: Install dependencies
+              if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+              run: poetry install --no-interaction --no-root
+              shell: bash
 
-            -   name: Upload Graphs
-                uses: actions/upload-artifact@v4.3.1
-                with:
-                    # Artifact name
-                    name: Benchmark ${{ matrix.os }}
-                    # A file, directory or wildcard pattern that describes what to upload
-                    path: ${{ github.workspace }}/tools/figures
+            - name: Python Build
+              run: poetry run python setup.py build
+              shell: bash
+
+            - name: Benchmark
+              run: poetry run python tools/benchmark.py -g
+              shell: bash
+
+            - name: Upload Graphs
+              uses: actions/upload-artifact@v4.3.1
+              with:
+                # Artifact name
+                name: Benchmark ${{ matrix.os }}
+                # A file, directory or wildcard pattern that describes what to upload
+                path: ${{ github.workspace }}/tools/figures

@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "steppable"
+version = "0.0.1"
+description = "A CAS built from scratch."
+authors = ["Andy Zhang <andy@nwsoft.tech>"]
+license = "MIT License"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+nanobind = "^1.9.2"
+matplotlib = "^3.9.0"
+setuptools = "^69.5.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

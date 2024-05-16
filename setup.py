@@ -77,8 +77,9 @@ class CMakeBuild(build_ext):
             f"-DCMAKE_CXX_COMPILER={cxx_compiler}",
             f"-DCMAKE_C_COMPILER={c_compiler}",
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}{os.sep}",
-            f"-DPYTHON_EXECUTABLE={sys.executable}",
+            f"-DPython_EXECUTABLE={sys.executable}",
             f"-DCMAKE_BUILD_TYPE={cfg}",  # not used on MSVC, but no harm
+            f"-DSTP_BUILD_COMPONENT_EXECUTABLE=True",  # not used on MSVC, but no harm
         ]
         build_args = []
         # Adding CMake arguments set as environment variable
