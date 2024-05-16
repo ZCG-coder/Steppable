@@ -1,13 +1,9 @@
 var searchData=
 [
-  ['get_20started_0',['Get Started',['../md_wiki_2Building-Steppable-_07build_8py_08.html#autotoc_md8',1,'Get Started'],['../md_wiki_2Building-Steppable.html#autotoc_md11',1,'Get Started']]],
-  ['getgcd_1',['getGCD',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a7ff9976bf48df9c832d7489e88004813',1,'steppable::__internals::arithmetic']]],
-  ['getkeywordargument_2',['getKeywordArgument',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#abc3534db8c4d346cbd23df19566f2432',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['getposarg_3',['getPosArg',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a80ee5c4af4d6a642b3a72bea343ebbd9',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['getquotientremainder_4',['getQuotientRemainder',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a677f253d71524a9d500e980dc159c79c',1,'steppable::__internals::arithmetic']]],
-  ['getstringheight_5',['getStringHeight',['../namespacesteppable_1_1prettyPrint.html#a6c89a78ae09a4f71eb5b95a4549d40d1',1,'steppable::prettyPrint']]],
-  ['getstringwidth_6',['getStringWidth',['../namespacesteppable_1_1prettyPrint.html#a1a21e6713926f95247a2db8963a0ae2d',1,'steppable::prettyPrint']]],
-  ['getswitch_7',['getSwitch',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#abfbc6f2e68f3cc414843a59160a0cea6',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['getting_20the_20source_20code_8',['Getting the Source Code',['../md_wiki_2Getting-the-Source.html',1,'']]],
-  ['green_9',['green',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a9366db5386221d73fa03fbff6f906693',1,'steppable::__internals::utils::colors']]]
+  ['faq_0',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]],
+  ['file_1',['file',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a1ede38f94b58b5465a4ad95a41bb4b0a',1,'steppable::__internals::logging::Logger']]],
+  ['files_2',['Using the Header Files',['../md_wiki_2API-Reference.html#autotoc_md2',1,'']]],
+  ['first_20release_20be_20made_3',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md16',1,'']]],
+  ['fraction_4',['Fraction',['../classsteppable_1_1Fraction.html',1,'steppable::Fraction'],['../classsteppable_1_1Fraction.html#a1fa38ab4cede78e19fa478242f6e5b46',1,'steppable::Fraction::Fraction(const std::string &amp;top=&quot;1&quot;, const std::string &amp;bottom=&quot;1&quot;)'],['../classsteppable_1_1Fraction.html#a4647e3f3062426a91d1ef7cdbde23bb6',1,'steppable::Fraction::Fraction(const Number &amp;number)'],['../classsteppable_1_1Fraction.html#ab5b4a2bd2c9223f2ea7bc5c699857aee',1,'steppable::Fraction::Fraction()']]],
+  ['frequently_20asked_20questions_20faq_5',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]]
 ];

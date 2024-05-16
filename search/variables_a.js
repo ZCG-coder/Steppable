@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['posargdescriptions_0',['posArgDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ad7aaf0bfbd5e6f71b10c5d201b4d745f',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['posargisnumber_1',['posArgIsNumber',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a6056f31e29c7d75aefa766be61546869',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['posargs_2',['posArgs',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ad6cb9dcbc093aa862459b47cf5a67285',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['prec_3',['prec',['../classsteppable_1_1Number.html#a2e23e169025f1308a248a0d508d2e33c',1,'steppable::Number']]],
-  ['programname_4',['programName',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a50039f2d6bfcbca1bf3b589a04669891',1,'steppable::__internals::utils::ProgramArgs']]]
+  ['mode_0',['mode',['../classsteppable_1_1Number.html#a8f789d22f723c1957ad6a38c42075eed',1,'steppable::Number']]],
+  ['multiplier_1',['multiplier',['../structsteppable_1_1____internals_1_1arithmetic_1_1Surd.html#a4896bf385852233f2b2995608570f077',1,'steppable::__internals::arithmetic::Surd']]],
+  ['multiply_2',['MULTIPLY',['../namespacesteppable_1_1____internals_1_1symbols.html#a6066cf65dd18d444ed42733883dc362c',1,'steppable::__internals::symbols']]]
 ];

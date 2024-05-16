@@ -150,12 +150,12 @@ Functions</h2></td></tr>
 <tr class="separator:a1d55e037764ba41ec8682f00b30701ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af753e0b8dd7f589f022d757639650ff7" id="r_af753e0b8dd7f589f022d757639650ff7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af753e0b8dd7f589f022d757639650ff7">initLocale</a> ()</td></tr>
 <tr class="separator:af753e0b8dd7f589f022d757639650ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbf5cff932cfda276cae801261c5d1f0" id="r_afbf5cff932cfda276cae801261c5d1f0"><td class="memItemLeft" align="right" valign="top">static const std::regex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbf5cff932cfda276cae801261c5d1f0">KEYWORD_ARG_REGEX</a> (R&quot;(^-([a-zA-Z]*):(-?[0-9]+)$)&quot;)</td></tr>
-<tr class="memdesc:afbf5cff932cfda276cae801261c5d1f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the correct format of a keyword argument.  <br /></td></tr>
-<tr class="separator:afbf5cff932cfda276cae801261c5d1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a588ee3de79a5de23fa7dfbb398f77e12" id="r_a588ee3de79a5de23fa7dfbb398f77e12"><td class="memItemLeft" align="right" valign="top">static const std::regex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a588ee3de79a5de23fa7dfbb398f77e12">SWITCH_REGEX</a> (R&quot;(^([-+])([a-zA-Z]*)$)&quot;)</td></tr>
-<tr class="memdesc:a588ee3de79a5de23fa7dfbb398f77e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the correct format of a switch.  <br /></td></tr>
-<tr class="separator:a588ee3de79a5de23fa7dfbb398f77e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a141e2de5154cf53c5b9253b43ddb5c57" id="r_a141e2de5154cf53c5b9253b43ddb5c57"><td class="memItemLeft" align="right" valign="top">const std::regex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a141e2de5154cf53c5b9253b43ddb5c57">KEYWORD_ARG_REGEX</a> (R&quot;(^-([a-zA-Z]*):(-?[0-9]+)$)&quot;)</td></tr>
+<tr class="memdesc:a141e2de5154cf53c5b9253b43ddb5c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the correct format of a keyword argument.  <br /></td></tr>
+<tr class="separator:a141e2de5154cf53c5b9253b43ddb5c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a0ed86fe8184563408ae2f7c378064e" id="r_a0a0ed86fe8184563408ae2f7c378064e"><td class="memItemLeft" align="right" valign="top">const std::regex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a0ed86fe8184563408ae2f7c378064e">SWITCH_REGEX</a> (R&quot;(^([-+])([a-zA-Z]*)$)&quot;)</td></tr>
+<tr class="memdesc:a0a0ed86fe8184563408ae2f7c378064e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the correct format of a switch.  <br /></td></tr>
+<tr class="separator:a0a0ed86fe8184563408ae2f7c378064e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a265f606a0e1f8eb0fc678593f7f44be7" id="r_a265f606a0e1f8eb0fc678593f7f44be7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a265f606a0e1f8eb0fc678593f7f44be7">programSafeExit</a> (const int status)</td></tr>
 <tr class="memdesc:a265f606a0e1f8eb0fc678593f7f44be7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit the program safely.  <br /></td></tr>
 <tr class="separator:a265f606a0e1f8eb0fc678593f7f44be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,34 +236,26 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="afbf5cff932cfda276cae801261c5d1f0" name="afbf5cff932cfda276cae801261c5d1f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbf5cff932cfda276cae801261c5d1f0">&#9670;&#160;</a></span>KEYWORD_ARG_REGEX()</h2>
+<a id="a141e2de5154cf53c5b9253b43ddb5c57" name="a141e2de5154cf53c5b9253b43ddb5c57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a141e2de5154cf53c5b9253b43ddb5c57">&#9670;&#160;</a></span>KEYWORD_ARG_REGEX()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static const std::regex steppable::__internals::utils::KEYWORD_ARG_REGEX </td>
+          <td class="memname">const std::regex steppable::__internals::utils::KEYWORD_ARG_REGEX </td>
           <td>(</td>
           <td class="paramtype">R&quot;(^-([a-zA-Z]*):(-?[0-9]+)$)&quot;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>This is the correct format of a keyword argument. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1utils_afbf5cff932cfda276cae801261c5d1f0_icgraph.svg" width="442" height="72"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1utils_a141e2de5154cf53c5b9253b43ddb5c57_icgraph.svg" width="442" height="72"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -374,34 +366,26 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a588ee3de79a5de23fa7dfbb398f77e12" name="a588ee3de79a5de23fa7dfbb398f77e12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a588ee3de79a5de23fa7dfbb398f77e12">&#9670;&#160;</a></span>SWITCH_REGEX()</h2>
+<a id="a0a0ed86fe8184563408ae2f7c378064e" name="a0a0ed86fe8184563408ae2f7c378064e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a0ed86fe8184563408ae2f7c378064e">&#9670;&#160;</a></span>SWITCH_REGEX()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static const std::regex steppable::__internals::utils::SWITCH_REGEX </td>
+          <td class="memname">const std::regex steppable::__internals::utils::SWITCH_REGEX </td>
           <td>(</td>
           <td class="paramtype">R&quot;(^([-+])([a-zA-Z]*)$)&quot;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>This is the correct format of a switch. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1utils_a588ee3de79a5de23fa7dfbb398f77e12_icgraph.svg" width="391" height="72"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1utils_a0a0ed86fe8184563408ae2f7c378064e_icgraph.svg" width="391" height="72"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -425,7 +409,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 15 2024 22:41:51"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 16 2024 02:01:49"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

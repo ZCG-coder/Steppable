@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['faq_0',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]],
-  ['file_1',['file',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a1ede38f94b58b5465a4ad95a41bb4b0a',1,'steppable::__internals::logging::Logger']]],
-  ['files_2',['Using the Header Files',['../md_wiki_2API-Reference.html#autotoc_md2',1,'']]],
-  ['first_20release_20be_20made_3',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md16',1,'']]],
-  ['fraction_4',['Fraction',['../classsteppable_1_1Fraction.html',1,'steppable::Fraction'],['../classsteppable_1_1Fraction.html#a1fa38ab4cede78e19fa478242f6e5b46',1,'steppable::Fraction::Fraction(const std::string &amp;top=&quot;1&quot;, const std::string &amp;bottom=&quot;1&quot;)'],['../classsteppable_1_1Fraction.html#a4647e3f3062426a91d1ef7cdbde23bb6',1,'steppable::Fraction::Fraction(const Number &amp;number)'],['../classsteppable_1_1Fraction.html#ab5b4a2bd2c9223f2ea7bc5c699857aee',1,'steppable::Fraction::Fraction()']]],
-  ['frequently_20asked_20questions_20faq_5',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]]
+  ['err_0',['ERR',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7a093f75d5c424d8a7019e01b939007ba8',1,'steppable::__internals::logging']]],
+  ['error_1',['error',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#ae885985fe5bac5fca8db6a48d3da6488',1,'steppable::__internals::logging::Logger::error(const std::string &amp;message)'],['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#ac3134a2316ae168e214c0481c67fe682',1,'steppable::__internals::logging::Logger::error(const std::string &amp;message, Args... args)'],['../namespacesteppable_1_1output.html#a9e519919f19db134021053a38b7966d0',1,'steppable::output::error(const std::string &amp;name, std::basic_string&lt; T &gt; msg, Args... args)'],['../namespacesteppable_1_1output.html#a4dbb7442362aa32fbb09dcdd755b07d2',1,'steppable::output::error(const std::string &amp;name, std::basic_string&lt; CharT &gt; msg)']]],
+  ['errorcount_2',['errorCount',['../classsteppable_1_1testing_1_1TestCase.html#a18cb39c2028bb236ac7059f1dae7fc2d',1,'steppable::testing::TestCase']]]
 ];

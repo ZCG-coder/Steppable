@@ -141,7 +141,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">   56</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">programSafeExit</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> status)</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#ifdef MACOSX</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        exit(status);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        exit(status); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        std::quick_exit(status);</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif</span></div>
@@ -159,7 +159,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">static</span> std::mutex mtx;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        std::lock_guard&lt;std::mutex&gt; lock(mtx);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        bt = *std::localtime(timer);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        bt = *std::localtime(timer); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">return</span> bt;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
@@ -187,7 +187,7 @@ $(function() { codefold.init(0); });
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 15 2024 22:41:51"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 16 2024 02:01:49"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

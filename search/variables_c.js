@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['remainder_0',['remainder',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#a6b2431c269b09e854d33a09bd31f00e6',1,'steppable::__internals::arithmetic::QuotientRemainder']]]
+  ['out_0',['out',['../classsteppable_1_1types_1_1ResultBase.html#a468ca24f22b2bc6981059e46c9b16fb0',1,'steppable::types::ResultBase']]]
 ];

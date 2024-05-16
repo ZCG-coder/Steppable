@@ -140,6 +140,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a62f32c9499bcccc5b4a1f3ace5360aeb"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a62f32c9499bcccc5b4a1f3ace5360aeb">join</a> (const std::vector&lt; T &gt; &amp;vector, const std::string &amp;delimiter)</td></tr>
 <tr class="memdesc:a62f32c9499bcccc5b4a1f3ace5360aeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joins a vector of elements into a single string using a delimiter.  <br /></td></tr>
 <tr class="separator:a62f32c9499bcccc5b4a1f3ace5360aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addd78766b99fddfe882bd32318ed0f2b" id="r_addd78766b99fddfe882bd32318ed0f2b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addd78766b99fddfe882bd32318ed0f2b">duplicates</a> (const std::vector&lt; std::string &gt; &amp;vector)</td></tr>
+<tr class="memdesc:addd78766b99fddfe882bd32318ed0f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the duplicates in a vector of strings.  <br /></td></tr>
+<tr class="separator:addd78766b99fddfe882bd32318ed0f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ae02cbf753dc057728813546bd80336da" name="ae02cbf753dc057728813546bd80336da"></a>
@@ -193,6 +196,32 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_ae02cbf753dc057728813546bd80336da_cgraph.svg" width="440" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
+
+</div>
+</div>
+<a id="addd78766b99fddfe882bd32318ed0f2b" name="addd78766b99fddfe882bd32318ed0f2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addd78766b99fddfe882bd32318ed0f2b">&#9670;&#160;</a></span>duplicates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; steppable::__internals::stringUtils::duplicates </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>vector</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the duplicates in a vector of strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vector</td><td>The vector of strings to check for duplicates. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of strings containing the duplicates. </dd></dl>
 
 </div>
 </div>
@@ -518,7 +547,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 15 2024 22:41:51"; // Will get replaced by Doxygen
+        const dateStr = "Thu May 16 2024 02:01:49"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();
