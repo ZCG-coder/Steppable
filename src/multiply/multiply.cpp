@@ -48,7 +48,11 @@ namespace steppable::__internals::arithmetic
 {
     std::string multiply(const std::string_view& _a, const std::string_view& _b, const int steps)
     {
-        auto a = static_cast<std::string>(_a), b = static_cast<std::string>(_b);
+        auto a = static_cast<std::string>(_a);
+        auto b = static_cast<std::string>(_b);
+        const auto& [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, false);
+        bool resultIsNegative = false;
+        const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
         std::stringstream out;
         if (isZeroString(a) or isZeroString(b))
         {
@@ -78,22 +82,21 @@ namespace steppable::__internals::arithmetic
         {
             if (steps == 2)
                 out << "Since " << a << " is a power of 10, we can move the decimal places to obtain the result.\n";
-            out << moveDecimalPlaces(b, a.length() - 1);
+            out << moveDecimalPlaces(b, static_cast<long long>(aInteger.length() - 1));
             return out.str();
         }
         if (isPowerOfTen(b))
         {
             if (steps == 2)
                 out << "Since " << b << " is a power of 10, we can move the decimal places to obtain the result.\n";
-            out << moveDecimalPlaces(a, b.length() - 1);
+            out << moveDecimalPlaces(a, static_cast<long long>(bInteger.length() - 1));
             return out.str();
         }
 
-        const auto& [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, false);
-        bool resultIsNegative = false;
-        const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
-        const std::string &aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
-        std::vector<std::vector<int>> prodDigits, carries;
+        const std::string& aStr = aInteger + aDecimal;
+        const std::string bStr = bInteger + bDecimal;
+        std::vector<std::vector<int>> prodDigits;
+        std::vector<std::vector<int>> carries;
 
         if (aIsNegative and bIsNegative)
             resultIsNegative = false; // NOLINT(bugprone-branch-clone)
@@ -105,10 +108,10 @@ namespace steppable::__internals::arithmetic
         for (size_t indexB = 0; indexB < bStr.length(); indexB++)
         {
             const int bDigit = static_cast<int>(bStr[indexB]) - '0';
-            std::vector<int> currentProdDigits(aStr.length() + bStr.length() + 1, 0),
-                currentCarries(aStr.length() + bStr.length() + 1, 0);
+            std::vector<int> currentProdDigits(aStr.length() + bStr.length() + 1, 0);
+            std::vector<int> currentCarries(aStr.length() + bStr.length() + 1, 0);
             if (bDigit == 0)
-                goto skip;
+                goto skip; // NOLINT(cppcoreguidelines-avoid-goto)
             for (long long indexA = static_cast<long long>(aStr.length()) - 1; indexA != -1; indexA--)
             {
                 const int aDigit = aStr[indexA] - '0';
@@ -141,7 +144,8 @@ namespace steppable::__internals::arithmetic
         }
 
         // Add the vectors digit-wise together
-        std::vector<int> finalProdDigits(prodDigits[0].size(), 0), finalProdCarries(prodDigits[0].size(), 0);
+        std::vector<int> finalProdDigits(prodDigits[0].size(), 0);
+        std::vector<int> finalProdCarries(prodDigits[0].size(), 0);
         for (long long indexDigit = static_cast<long long>(finalProdDigits.size()) - 1; indexDigit != -1; indexDigit--)
         {
             int sum = finalProdCarries[indexDigit];

@@ -31,15 +31,12 @@
 namespace steppable::__internals::logging
 {
 #if DEBUG
-    Logger::Logger(const std::string& name, const std::string& filename, const Level level)
+    Logger::Logger(const std::string& name, const std::string& filename, const Level level) : level(level), name(name)
 #else
-    Logger::Logger(const std::string& name, const std::string& filename, const Level level)
+    Logger::Logger(const std::string& name, const std::string& filename, const Level level) : level(level), name(name)
 #endif
     {
         file.open(filename);
-        this->level = level;
-        this->name = name;
-
         info(name + " logger started");
     }
 

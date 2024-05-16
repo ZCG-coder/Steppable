@@ -20,11 +20,11 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-enable_testing()
+ENABLE_TESTING()
 
-foreach (ITEM IN LISTS TEST_TARGETS)
-    add_executable(${ITEM} ${ITEM}.cpp)
-    target_link_libraries(${ITEM} PRIVATE calc)
-    add_test(NAME ${ITEM} COMMAND ${CMAKE_BINARY_DIR}/tests/${ITEM})
-    message(TRACE "Added test case: ${ITEM}: ${ITEM}.cpp")
-endforeach ()
+FOREACH(ITEM IN LISTS TEST_TARGETS)
+    ADD_EXECUTABLE(${ITEM} ${ITEM}.cpp)
+    TARGET_LINK_LIBRARIES(${ITEM} PRIVATE calc)
+    ADD_TEST(NAME ${ITEM} COMMAND ${CMAKE_BINARY_DIR}/tests/${ITEM})
+    MESSAGE(TRACE "Added test case: ${ITEM}: ${ITEM}.cpp")
+ENDFOREACH()

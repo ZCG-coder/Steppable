@@ -54,21 +54,18 @@ namespace steppable::prettyPrint::printers
         if (inLine)
             return top + "/" + bottom;
         // Output in three lines, with top and bottom aligned to center.
-        auto topWidth = prettyPrint::getStringWidth(top), bottomWidth = prettyPrint::getStringWidth(bottom);
+        auto topWidth = prettyPrint::getStringWidth(top);
+        auto bottomWidth = prettyPrint::getStringWidth(bottom);
         auto width = std::max(topWidth, bottomWidth) + 2;
-        auto topSpacing = std::string((width - topWidth) / 2, ' '),
-             bottomSpacing = std::string((width - bottomWidth) / 2, ' ');
+        auto topSpacing = std::string((width - topWidth) / 2, ' ');
+        auto bottomSpacing = std::string((width - bottomWidth) / 2, ' ');
         return topSpacing + top + '\n' + std::string(width, '-') + '\n' + bottomSpacing + bottom;
     }
 } // namespace steppable::prettyPrint::printers
 
 namespace steppable
 {
-    Fraction::Fraction()
-    {
-        this->top = "1";
-        this->bottom = "1";
-    }
+    Fraction::Fraction() : top("1"), bottom("1") {}
 
     Fraction::Fraction(const std::string& top, const std::string& bottom)
     {
@@ -79,10 +76,9 @@ namespace steppable
         simplify();
     }
 
-    Fraction::Fraction(const Number& number)
+    Fraction::Fraction(const Number& number) : bottom("1")
     {
         this->top = number.present();
-        this->bottom = "1";
         simplify();
     }
 

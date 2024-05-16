@@ -77,7 +77,7 @@ std::string reportPower(const std::string_view _number,
 
     // Here, we attempt to give a quick answer, instead of doing pointless iterations.
     if (numberOrig == "1")
-        goto finish;
+        goto finish; // NOLINT(cppcoreguidelines-avoid-goto)
     if (numberOrig == "0")
     {
         if (steps == 2)
@@ -96,9 +96,9 @@ std::string reportPower(const std::string_view _number,
         if (steps == 2)
         {
             if (not negative)
-                ss << BECAUSE " " << multiply(number, numberOrig, 1) << '\n';
+                ss << BECAUSE << " " << multiply(number, numberOrig, 1) << '\n';
             else
-                ss << BECAUSE " " << divide("1", number, 1) << '\n';
+                ss << BECAUSE << " " << divide("1", number, 1) << '\n';
             if (negative)
                 currentPower = "-" + currentPower;
 
@@ -112,7 +112,7 @@ finish:
     if (negative)
     {
         if (steps == 2)
-            ss << BECAUSE " " << divide("1", number, 1) << '\n';
+            ss << BECAUSE << " " << divide("1", number, 1) << '\n';
         else if (steps == 1)
         {
             const auto& divisionResult = divide("1", number, 0);

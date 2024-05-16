@@ -55,6 +55,7 @@ namespace steppable::output
 {
     using namespace steppable::__internals;
     using namespace steppable::__internals::utils;
+    using namespace steppable::__internals::symbols;
 
     /**
      * @brief Prints an error message.
@@ -73,10 +74,10 @@ namespace steppable::output
      * @param[in] args Additional arguments for formatting the message.
      */
     template<typename T, typename... Args>
-    void error(const std::string& name, std::basic_string<T> msg, Args&&... args)
+    void error(const std::string& name, std::basic_string<T> msg, Args... args)
     {
         auto formattedMsg = format::vFormat(std::string(msg), args...);
-        std::cerr << colors::red << formats::bold << LARGE_DOT " Error: " << reset << colors::red;
+        std::cerr << colors::red << formats::bold << LARGE_DOT << " Error: " << reset << colors::red;
         std::cerr << formattedMsg << reset << '\n';
 
         // Write to the log file
@@ -101,7 +102,7 @@ namespace steppable::output
     template<typename CharT>
     void error(const std::string& name, std::basic_string<CharT> msg)
     {
-        std::cerr << colors::red << formats::bold << LARGE_DOT " Error: " << reset << colors::red;
+        std::cerr << colors::red << formats::bold << LARGE_DOT << " Error: " << reset << colors::red;
         std::cerr << msg << reset << '\n';
 
         // Write to the log file
@@ -121,14 +122,13 @@ namespace steppable::output
      *
      * @tparam T The character type of the message.
      * @tparam Args The types of the additional arguments.
-     * @param[in] name The name of the error.
      * @param[in] msg The error message.
      * @param[in] args Additional arguments for formatting the message.
      */
     template<typename T, typename... Args>
-    [[maybe_unused]] void warning(T msg, Args&&... args)
+    [[maybe_unused]] void warning(T msg, Args... args)
     {
-        std::cout << colors::yellow << formats::bold << LARGE_DOT " Warning: " << reset << colors::yellow;
+        std::cout << colors::yellow << formats::bold << LARGE_DOT << " Warning: " << reset << colors::yellow;
         std::cout << format::vFormat(msg, args...) << reset << '\n';
     }
 
@@ -144,14 +144,13 @@ namespace steppable::output
      *
      * @tparam T The character type of the message.
      * @tparam Args The types of the additional arguments.
-     * @param[in] name The name of the info message.
      * @param[in] msg The info message.
      * @param[in] args Additional arguments for formatting the message.
      */
     template<typename T, typename... Args>
-    void info(T msg, Args&&... args)
+    void info(T msg, Args... args)
     {
-        std::cout << colors::brightGreen << formats::bold << LARGE_DOT " Info: " << reset << colors::brightGreen;
+        std::cout << colors::brightGreen << formats::bold << LARGE_DOT << " Info: " << reset << colors::brightGreen;
         std::cout << format::vFormat(msg, args...) << reset << '\n';
     }
 } // namespace steppable::output

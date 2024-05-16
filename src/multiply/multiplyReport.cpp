@@ -62,8 +62,8 @@ std::string reportMultiply(const std::string& a,
     if (steps == 2)
     {
         const long long outputWidth = static_cast<long long>(prodDigitsOut[0].size()) * 3 - 2;
-        ss << std::right << std::setw(outputWidth + 3) << makeWider(aStr) << '\n';
-        ss << MULTIPLY << std::right << std::setw(outputWidth + 2) << makeWider(bStr) << '\n';
+        ss << std::right << std::setw(static_cast<int>(outputWidth + 3)) << makeWider(aStr) << '\n';
+        ss << MULTIPLY << std::right << std::setw(static_cast<int>(outputWidth + 2)) << makeWider(bStr) << '\n';
         ss << std::string(outputWidth + 6, '_') << '\n';
 
         for (size_t indexProdDigits = 0; indexProdDigits < prodDigitsOut.size(); indexProdDigits++)
@@ -93,7 +93,7 @@ std::string reportMultiply(const std::string& a,
             ss << '\n';
             ss << std::string(outputWidth + 6, '_') << '\n' << "   ";
             for (const int i : finalProdCarries)
-                if (i)
+                if (i != 0)
                     ss << makeSubscript(i + '0') << "  ";
                 else
                     ss << "   ";
@@ -102,10 +102,10 @@ std::string reportMultiply(const std::string& a,
             for (const int i : finalProdDigits)
                 ss << i << "  ";
         }
-        ss << "\n" THEREFORE " ";
+        ss << "\n" << THEREFORE << " ";
     }
     if (steps >= 1)
-        ss << a << " " MULTIPLY " " << b << " = ";
+        ss << a << " " << MULTIPLY << " " << b << " = ";
     if (resultIsNegative)
         ss << '-';
     const auto vector = removeLeadingZeros(finalProdDigits);
@@ -116,7 +116,7 @@ std::string reportMultiply(const std::string& a,
 
     // Add the decimal point.
     auto places = aDecimal.length() + bDecimal.length();
-    out = moveDecimalPlaces(out, -places);
+    out = moveDecimalPlaces(out, -static_cast<long long>(places));
 
     ss << standardizeNumber(out);
     return ss.str();

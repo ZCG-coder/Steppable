@@ -1,8 +1,32 @@
 ---
-Checks: 'abseil-*,altera-*,bugprone-*,concurrency-*,cppcoreguidelines-*,darwin-*,fuchsia-*,readability-*,performance-*,portability-*,zircon-*,hicpp-*,google-*,cert-*,clang-diagnostic-*,clang-analyzer-*,modernize-*,-*'
+Checks: ['bugprone-*',
+        'cert-*',
+        'clang-analyzer-*',
+        'clang-diagnostic-*',
+        'concurrency-*',
+        'cppcoreguidelines-*',
+        'darwin-*',
+        'modernize-*',
+        'performance-*',
+        'portability-*',
+        'readability-*',
+        'zircon-*',
+        # Remove the following:
+        '-bugprone-easily-swappable-parameters',
+        '-bugprone-suspicious-semicolon',
+        '-cert-dcl37-c',
+        '-cert-dcl50-cpp',
+        '-cert-dcl51-cpp',
+        '-cppcoreguidelines-avoid-magic-numbers',
+        '-cppcoreguidelines-pro-bounds-array-to-pointer-decay',
+        '-cppcoreguidelines-pro-type-vararg',
+        '-modernize-use-trailing-return-type',
+        '-readability-braces-around-statements',
+        '-readability-identifier-length',
+        '-readability-magic-numbers',
+    ]
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
-AnalyzeTemporaryDtors: false
 FormatStyle: Microsoft
 User: coder
 CheckOptions:
@@ -24,5 +48,7 @@ CheckOptions:
   modernize-loop-convert.NamingStyle: CamelCase
   llvm-else-after-return.WarnOnUnfixable: 'false'
   google-readability-function-size.StatementThreshold: '800'
+  bugprone-reserved-identifier.AllowedIdentifiers: '__internals'
+  readability-function-cognitive-complexity.Threshold: 40
 ...
 

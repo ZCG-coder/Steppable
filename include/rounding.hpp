@@ -26,13 +26,29 @@
 namespace steppable::__internals::numUtils
 {
     /**
+     * @brief Round down a number to the nearest integer.
+     *
+     * @param[in] _number The number to round down.
+     * @return The rounded number.
+     */
+    std::string roundDown(const std::string& _number);
+
+    /**
+     * @brief Round up a number to the nearest integer.
+     *
+     * @param[in] _number The number to round up.
+     * @return The rounded number.
+     */
+    std::string roundUp(const std::string& _number);
+
+    /**
      * @brief Round off a number to the nearest integer.
      *
      * @param[in] _number The number to round.
      * @param[in] digits The number of decimal places to round to.
      * @return The rounded number.
      */
-    std::string roundOff(const std::string& _number, const size_t digits = 0);
+    std::string roundOff(const std::string& _number, size_t digits = 0);
 
     /**
      * @brief Move the decimal places of a number.
@@ -43,5 +59,5 @@ namespace steppable::__internals::numUtils
      *
      * @return The processed number.
      */
-    std::string moveDecimalPlaces(const std::string& _number, const long places);
+    std::string moveDecimalPlaces(const std::string& _number, long places);
 } // namespace steppable::__internals::numUtils

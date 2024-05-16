@@ -20,32 +20,58 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "fn/basicArithm.hpp"
-#include "output.hpp"
-#include "testing.hpp"
-#include "util.hpp"
+#pragma once
 
-#include <iomanip>
-#include <iostream>
+#include "types/result.hpp"
 
-TEST_START()
+#include <string>
+#include <vector>
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::types;
 
-SECTION(Decimal Convert without letters)
-const std::string &a = "46432231133131";
-const std::string &b = "8";
-const auto& result = decimalConvert(a, b, 0);
+namespace steppable::__internals::numUtils
+{
+    /**
+     * @brief Get the factors of a number.
+     *
+     * @param[in] _number The number to get the factors of.
+     * @return The factors of the number.
+     */
+    std::vector<std::string> getFactors(const std::string& _number);
 
-_.assertIsEqual(result, "2649229669977");
-SECTION_END()
+    /**
+     * @brief Get the largest factor of a number, that is a root number.
+     *
+     * @param[in] _number The number to get the largest root factor of.
+     * @param[in] base The base of the root.
+     * @return A result object containing the largest root factor of the number.
+     */
+    ResultBool getRootFactor(const std::string& _number, const std::string& base = "2");
 
-SECTION(Decimal Convert)
-const std::string &a = "88a";
-const std::string &b = "16";
-const auto& result = decimalConvert(a, b, 0);
+    /**
+     * @brief Get the greatest root number less than or equal to the given number.
+     *
+     * @param[in] _number The number to get the greatest root number of.
+     * @param[in] base The base of the root.
+     * @return The greatest root number less than or equal to the given number.
+     */
+    std::string getGreatestRootNum(const std::string& _number, const std::string& base = "2");
 
-_.assertIsEqual(result, "2186");
-SECTION_END()
-TEST_END()
+    /**
+     * @brief Check if a number is prime.
+     *
+     * @param[in] _number The number to check.
+     * @return True if the number is prime, false otherwise.
+     */
+    bool isPrime(const std::string& _number);
+
+    /**
+     * @brief Check if a number is a root number.
+     *
+     * @param[in] _number The number to check.
+     * @param[in] base The base of the root.
+     * @return StatusBool::CALCULATED_SIMPLIFIED_YES if the number is a root number,
+     * StatusBool::CALCULATED_SIMPLIFIED_NO otherwise.
+     */
+    ResultBool isRoot(const std::string& _number, const std::string& base);
+} // namespace steppable::__internals::numUtils

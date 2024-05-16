@@ -23,6 +23,7 @@
 #include "util.hpp"
 
 #include <cstddef>
+#include <map>
 
 #ifdef WINDOWS
     #undef min
@@ -41,7 +42,8 @@ namespace steppable::__internals::numUtils
     {
         if (s.empty())
             return false;
-        int decimalPointCount = 0, minusCount = 0;
+        int decimalPointCount = 0;
+        int minusCount = 0;
 
         for (const char c : s)
         {
@@ -57,7 +59,7 @@ namespace steppable::__internals::numUtils
                     return false;
                 minusCount++;
             }
-            else if (not isdigit(c))
+            else if (isdigit(c) == 0)
                 return false;
         }
         return true;
@@ -104,9 +106,11 @@ namespace steppable::__internals::numUtils
                                   bool properlyFormat,
                                   bool preserveNegative)
     {
-        bool aIsNegative = false, bIsNegative = false;
+        bool aIsNegative = false;
+        bool bIsNegative = false;
 
-        auto a = static_cast<std::string>(_a), b = static_cast<std::string>(_b);
+        auto a = static_cast<std::string>(_a);
+        auto b = static_cast<std::string>(_b);
         if (properlyFormat)
         {
             a = simplifyPolarity(_a), b = simplifyPolarity(_b);
@@ -125,9 +129,12 @@ namespace steppable::__internals::numUtils
             a = removeLeadingZeros(a);
             b = removeLeadingZeros(b);
         }
-        const std::vector<std::string> aParts = stringUtils::split(a, '.'), bParts = stringUtils::split(b, '.');
-        auto aInteger = static_cast<std::string>(aParts.front()), aDecimal = static_cast<std::string>(aParts.back()),
-             bInteger = static_cast<std::string>(bParts.front()), bDecimal = static_cast<std::string>(bParts.back());
+        const std::vector<std::string> aParts = stringUtils::split(a, '.');
+        const std::vector<std::string> bParts = stringUtils::split(b, '.');
+        auto aInteger = static_cast<std::string>(aParts.front());
+        auto aDecimal = static_cast<std::string>(aParts.back());
+        auto bInteger = static_cast<std::string>(bParts.front());
+        auto bDecimal = static_cast<std::string>(bParts.back());
         if (properlyFormat)
         {
             // If the numbers are integers, discard their decimal points
@@ -172,7 +179,8 @@ namespace steppable::__internals::numUtils
         if (const auto firstNonZero = std::ranges::find_if(out, [](const int num) { return num != 0; });
             out.begin() != firstNonZero && out.front() == 0)
         {
-            std::replace_if(out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
+            std::replace_if(
+                out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
         }
 
         return out;
@@ -223,7 +231,8 @@ namespace steppable::__internals::numUtils
     long long determineScale(const std::string_view& number)
     {
         auto splitNumberResult = splitNumber(number, "0", false, false).splitNumberArray;
-        auto numberInteger = splitNumberResult[0], numberDecimal = splitNumberResult[1];
+        auto numberInteger = splitNumberResult[0];
+        auto numberDecimal = splitNumberResult[1];
 
         // If there is an integer component, determine the scale of it
         if (not isZeroString(numberInteger))
@@ -233,6 +242,8 @@ namespace steppable::__internals::numUtils
         // figure. Scale = -(numberOfZeros + 1)
         // E.g.: 0.1 => 0 leading zeros => scale = -(0 + 1) = -1; 0.0325 => 1 leading zero => scale = -(1 + 1) = -2.
         auto newNumberDecimal = removeLeadingZeros(numberDecimal);
+
+        // NOLINTNEXTLINE(bugprone-narrowing-conversions, cppcoreguidelines-narrowing-conversions)
         long long numberOfZeros = static_cast<long long>(numberDecimal.length()) - newNumberDecimal.length();
         return -(numberOfZeros + 1);
     }
@@ -241,9 +252,7 @@ namespace steppable::__internals::numUtils
     {
         auto splitNumberResult = splitNumber(number, "0", false, false, true).splitNumberArray;
         // If the decimal part is zero, it is an integer.
-        if (isZeroString(splitNumberResult[1]))
-            return true;
-        return false;
+        return isZeroString(splitNumberResult[1]);
     }
 
     bool isDecimal(const std::string& number) { return not isInteger(number); }
@@ -254,6 +263,8 @@ namespace steppable::__internals::numUtils
             return true; // 1 is a power of 10.
         if (number.front() != '1')
             return false; // The number must start with 1.
+
+        // NOLINTNEXTLINE(readability-use-anyofallof)
         for (const char c : number.substr(1, number.length()))
             if (c != '0' and c != '.')
                 return false; // The rest of the number must be zeros or decimal points.
@@ -282,8 +293,8 @@ namespace steppable::__internals::stringUtils
 
         for (unsigned p = 0; p < utf8_size; ++p)
         {
-            const auto bit_count = p ? 6 : 8 - utf8_size - (utf8_size == 1 ? 0 : 1),
-                       shift = p < utf8_size - 1 ? 6 * (utf8_size - p - 1) : 0;
+            const auto bit_count = p != 0U ? 6 : 8 - utf8_size - (utf8_size == 1 ? 0 : 1);
+            const auto shift = p < utf8_size - 1 ? 6 * (utf8_size - p - 1) : 0;
 
             for (size_t k = 0; k < bit_count; ++k)
                 unicode += (utf8_code[p] & 1 << k) << shift;
@@ -304,7 +315,8 @@ namespace steppable::__internals::stringUtils
         }
         if (unicode <= 0x7ff) // 7FF(16) = 2047(10)
         {
-            unsigned char c1 = 192, c2 = 128;
+            unsigned char c1 = 192;
+            unsigned char c2 = 128;
 
             for (int k = 0; k < 11; ++k)
                 if (k < 6)
@@ -319,7 +331,9 @@ namespace steppable::__internals::stringUtils
         }
         if (unicode <= 0xffff) // 0xFFFF(16) = 65535(10)
         {
-            unsigned char c1 = 224, c2 = 128, c3 = 128;
+            unsigned char c1 = 224;
+            unsigned char c2 = 128;
+            unsigned char c3 = 128;
 
             for (int k = 0; k < 16; ++k)
                 if (k < 6)
@@ -337,7 +351,10 @@ namespace steppable::__internals::stringUtils
         }
         if (unicode <= 0x1fffff) // 1 * 0xFFFFF(16) = 2097151(10)
         {
-            unsigned char c1 = 240, c2 = 128, c3 = 128, c4 = 128;
+            unsigned char c1 = 240;
+            unsigned char c2 = 128;
+            unsigned char c3 = 128;
+            unsigned char c4 = 128;
 
             for (int k = 0; k < 21; ++k)
                 if (k < 6)
@@ -372,9 +389,8 @@ namespace steppable::__internals::utils
         _setmode(_fileno(stdout), _O_WTEXT);
 #else
         // The correct locale name may vary by OS, e.g., "en_US.utf8".
-        constexpr char locale_name[] = "";
-        setlocale(LC_ALL, locale_name);
-        std::locale::global(std::locale(locale_name));
+        (void)setlocale(LC_ALL, ""); // NOLINT(concurrency-mt-unsafe)
+        std::locale::global(std::locale(""));
         std::wcin.imbue(std::locale());
         std::wcout.imbue(std::locale());
 #endif

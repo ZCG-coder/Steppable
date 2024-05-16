@@ -56,9 +56,9 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string_view& divisor,
                            const std::string_view& _divisor,
                            const std::string_view& _number,
-                           const int steps,
-                           const int width,
-                           const bool resultIsNegative);
+                           int steps,
+                           int width,
+                           bool resultIsNegative);
 
 /**
  * @brief Reports a division step.

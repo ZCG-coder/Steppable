@@ -52,8 +52,9 @@ namespace steppable::__internals::arithmetic
     {
         auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b);
         auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
-        bool resultIsNegative;
-        const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
+        bool resultIsNegative = false;
+        const bool aIsDecimal = not isZeroString(aDecimal);
+        const bool bIsDecimal = not isZeroString(bDecimal);
 
         // Here, we try to determine if the result is negative or not
         // Scenario 1: a is negative and b is positive
@@ -121,7 +122,8 @@ namespace steppable::__internals::arithmetic
             return "-" + subtractResult;
         }
 
-        std::string aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
+        std::string aStr = aInteger + aDecimal;
+        std::string bStr = bInteger + bDecimal;
         std::ranges::reverse(aStr);
         std::ranges::reverse(bStr);
 
@@ -131,7 +133,8 @@ namespace steppable::__internals::arithmetic
         std::ranges::for_each(borrows, [](int& c) { c -= '0'; });
         for (int index = 0; index < aStr.length(); index++)
         {
-            int aDigit = borrows[index], bDigit = bStr[index] - '0';
+            int aDigit = borrows[index];
+            int bDigit = bStr[index] - '0';
             if (aStr[index] == ' ')
                 aDigit = 0;
             if (bStr[index] == ' ')
@@ -196,7 +199,8 @@ int main(int _argc, const char* _argv[])
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");
-    bool profile = program.getSwitch("profile"), noMinus = program.getSwitch("noMinus");
+    bool profile = program.getSwitch("profile");
+    bool noMinus = program.getSwitch("noMinus");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
 

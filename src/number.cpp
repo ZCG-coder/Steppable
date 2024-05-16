@@ -42,13 +42,10 @@ namespace steppable
 {
     using namespace steppable::__internals::arithmetic;
 
-    Number::Number() { value = "0"; }
+    Number::Number() : prec(8), value("0") {}
 
-    Number::Number(const std::string& value, size_t prec, RoundingMode mode)
+    Number::Number(std::string value, size_t prec, RoundingMode mode) : value(std::move(value)), prec(prec), mode(mode)
     {
-        this->value = value;
-        this->prec = prec;
-        this->mode = mode;
     }
 
     Number Number::operator+(const Number& rhs) const { return add(value, rhs.value, 0); }
@@ -59,7 +56,7 @@ namespace steppable
 
     Number Number::operator/(const Number& rhs) const
     {
-        size_t usePrec;
+        size_t usePrec = 0;
         if (mode == USE_MAXIMUM_PREC)
             usePrec = std::max(prec, rhs.prec);
         else if (mode == USE_MINIMUM_PREC)
@@ -75,7 +72,7 @@ namespace steppable
             usePrec = 0;
             output::warning("Invalid precision specified");
         }
-        return divide(value, rhs.value, 0, usePrec);
+        return divide(value, rhs.value, 0, static_cast<int>(usePrec));
     }
 
     Number Number::operator%(const Number& rhs) const { return divideWithQuotient(value, rhs.value).remainder; }
@@ -118,47 +115,17 @@ namespace steppable
         return *this;
     }
 
-    bool Number::operator==(const Number& rhs) const
-    {
-        if (compare(value, rhs.value, 0) == "2")
-            return true;
-        return false;
-    }
+    bool Number::operator==(const Number& rhs) const { return compare(value, rhs.value, 0) == "2"; }
 
-    bool Number::operator!=(const Number& rhs) const
-    {
-        if (compare(value, rhs.value, 0) != "2")
-            return true;
-        return false;
-    }
+    bool Number::operator!=(const Number& rhs) const { return compare(value, rhs.value, 0) != "2"; }
 
-    bool Number::operator<(const Number& rhs) const
-    {
-        if (compare(value, rhs.value, 0) == "0")
-            return true;
-        return false;
-    }
+    bool Number::operator<(const Number& rhs) const { return compare(value, rhs.value, 0) == "0"; }
 
-    bool Number::operator>(const Number& rhs) const
-    {
-        if (compare(value, rhs.value, 0) == "1")
-            return true;
-        return false;
-    }
+    bool Number::operator>(const Number& rhs) const { return compare(value, rhs.value, 0) == "1"; }
 
-    bool Number::operator<=(const Number& rhs) const
-    {
-        if (compare(value, rhs.value, 0) != "1")
-            return true;
-        return false;
-    }
+    bool Number::operator<=(const Number& rhs) const { return compare(value, rhs.value, 0) != "1"; }
 
-    bool Number::operator>=(const Number& rhs) const
-    {
-        if (compare(value, rhs.value, 0) != "0")
-            return true;
-        return false;
-    }
+    bool Number::operator>=(const Number& rhs) const { return compare(value, rhs.value, 0) != "0"; }
 
     Number Number::operator++()
     {

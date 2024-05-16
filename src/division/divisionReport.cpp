@@ -32,7 +32,6 @@
 #include "divisionReport.hpp"
 
 #include "fn/basicArithm.hpp"
-#include "internals.hpp"
 #include "util.hpp"
 
 #include <sstream>
@@ -41,6 +40,7 @@
 
 using namespace std::literals;
 using namespace steppable::__internals::stringUtils;
+using namespace steppable::__internals::symbols;
 using namespace steppable::__internals::arithmetic;
 
 std::string reportDivision(std::stringstream& tempFormattedAns,
@@ -64,7 +64,7 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
         formattedAns << std::string(width - divisor.length() * 2, '_') << '\n';
         formattedAns << tempFormattedAns.rdbuf();
 
-        formattedAns << THEREFORE " ";
+        formattedAns << THEREFORE << " ";
     }
 
     if (steps >= 1)
@@ -99,7 +99,7 @@ std::string reportDivisionStep(const std::string_view& temp,
 
     const auto outputWidth = index == 0 ? (divisor.length() - 1) * 3 :
                                           3 * (divisor.length() + index + normalWidth - lastRemainder.length() - 2);
-    for (auto i : splitResult)
+    for (const auto& i : splitResult)
         ss << std::string(outputWidth, ' ') << i << '\n';
 
     return ss.str();

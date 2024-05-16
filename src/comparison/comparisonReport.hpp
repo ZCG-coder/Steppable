@@ -81,6 +81,6 @@ std::string reportComparisonByPolarity(const std::string_view& a,
 std::string reportComparisonByDigit(const std::string_view& a,
                                     const std::string_view& b,
                                     size_t digit,
-                                    bool bigger,
+                                    bool greater,
                                     bool bothNegative,
                                     int steps = 2);

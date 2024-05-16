@@ -84,7 +84,7 @@ namespace steppable::__internals::logging
  * @param[in] level The logging level (default: Level::INFO).
  */
 #if DEBUG
-        Logger(const std::string& name, const std::string& filename, const Level level = Level::DBG);
+        Logger(const std::string& name, const std::string& filename, Level level = Level::DBG);
 #else
         Logger(const std::string& name, const std::string& filename, const Level level = Level::INFO);
 #endif
@@ -106,7 +106,7 @@ namespace steppable::__internals::logging
          * @param[in] args The additional arguments.
          */
         template<typename... Args>
-        void error(const std::string& message, Args&&... args)
+        void error(const std::string& message, Args... args)
         {
             auto formattedMsg = vFormat(message, args...);
             error(formattedMsg);
@@ -124,7 +124,7 @@ namespace steppable::__internals::logging
          * @param[in] args The additional arguments.
          */
         template<typename... Args>
-        void warning(const std::string& message, Args&&... args)
+        void warning(const std::string& message, Args... args)
         {
             auto formattedMsg = vFormat(message, args...);
             warning(formattedMsg);
@@ -148,7 +148,7 @@ namespace steppable::__internals::logging
          * @param[in] args The additional arguments.
          */
         template<typename... Args>
-        void debug(const std::string& message, Args&&... args)
+        void debug(const std::string& message, Args... args)
         {
             auto formattedMsg = vFormat(message, args...);
             debug(formattedMsg);

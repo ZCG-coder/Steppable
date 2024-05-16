@@ -35,28 +35,32 @@ TEST_START()
 using namespace steppable::__internals::arithmetic;
 
 SECTION(Power)
-const std::string_view &number = "47", &raiseTo = "10";
+const std::string number = "47";
+const std::string raiseTo = "10";
 const auto& result = power(number, raiseTo, 0);
 
 _.assertIsEqual(result, "52599132235830049");
 SECTION_END()
 
 SECTION(Power with Decimals)
-const std::string_view &number = "47.5", &raiseTo = "10";
+const std::string number = "47.5";
+const std::string raiseTo = "10";
 const auto& result = power(number, raiseTo, 0);
 
 _.assertIsEqual(result, "58470404222497940.0634765625");
 SECTION_END()
 
 SECTION(Power with Decimals)
-const std::string_view &number = "0.5", &raiseTo = "10";
+const std::string number = "0.5";
+const std::string raiseTo = "10";
 const auto& result = power(number, raiseTo, 0);
 
 _.assertIsEqual(result, "0.0009765625");
 SECTION_END()
 
 SECTION(Power with Decimal Exponents)
-const std::string_view &number = "4", &raiseTo = "0.5";
+const std::string number = "4";
+const std::string raiseTo = "0.5";
 const auto& result = power(number, raiseTo, 0);
 
 _.assertIsEqual(numUtils::roundOff(result), "2");

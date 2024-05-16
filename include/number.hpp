@@ -84,7 +84,7 @@ namespace steppable
          * @brief Initializes a number with a specified value.
          * @note By default, the value is 0.
          */
-        Number(const std::string& value = "0", size_t prec = 0, RoundingMode mode = USE_CURRENT_PREC);
+        Number(std::string value = "0", size_t prec = 0, RoundingMode mode = USE_CURRENT_PREC);
 
         /**
          * @brief Adds two numbers together.
@@ -228,6 +228,6 @@ namespace steppable
          * @brief Presents the number in a human-readable format.
          * @return The number as a string.
          */
-        std::string present() const;
+        [[nodiscard]] std::string present() const;
     };
 } // namespace steppable

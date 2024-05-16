@@ -41,6 +41,7 @@
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::symbols;
 
 namespace steppable::__internals::arithmetic
 {
@@ -55,8 +56,8 @@ namespace steppable::__internals::arithmetic
             std::stringstream ss;
             if (steps == 2)
             {
-                ss << BECAUSE " a = 0, the result is " << b << '\n';
-                ss << THEREFORE " " << a << " + " << b << " = " << b;
+                ss << BECAUSE << " a = 0, the result is " << b << '\n';
+                ss << THEREFORE << " " << a << " + " << b << " = " << b;
             }
             else if (steps == 1)
                 ss << a << " + " << b << " = " << b;
@@ -71,8 +72,8 @@ namespace steppable::__internals::arithmetic
             std::stringstream ss;
             if (steps == 2)
             {
-                ss << BECAUSE " b = 0, the result is " << a << '\n';
-                ss << THEREFORE " " << a << " + " << b << " = " << a;
+                ss << BECAUSE << " b = 0, the result is " << a << '\n';
+                ss << THEREFORE << " " << a << " + " << b << " = " << a;
             }
             else if (steps == 1)
                 ss << a << " + " << b << " = " << a;
@@ -84,7 +85,8 @@ namespace steppable::__internals::arithmetic
         auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, true, true, properlyFormat);
         auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
         bool resultIsNegative = false;
-        const bool aIsDecimal = not isZeroString(aDecimal), bIsDecimal = not isZeroString(bDecimal);
+        const bool aIsDecimal = not isZeroString(aDecimal);
+        const bool bIsDecimal = not isZeroString(bDecimal);
 
         if (negative)
             resultIsNegative = true;
@@ -107,15 +109,18 @@ namespace steppable::__internals::arithmetic
             return subtract(a, b.substr(1), steps);
         }
 
-        auto aStr = aInteger + aDecimal, bStr = bInteger + bDecimal;
+        auto aStr = aInteger + aDecimal;
+        auto bStr = bInteger + bDecimal;
         std::ranges::reverse(aStr);
         std::ranges::reverse(bStr);
 
         std::vector sumDigits(aStr.length() + 1, 0);
         std::vector carries(aStr.length() + 1, false);
+
         for (size_t index = 0; index < aStr.length(); index++)
         {
-            int aDigit = aStr[index] - '0', bDigit = bStr[index] - '0';
+            int aDigit = aStr[index] - '0';
+            int bDigit = bStr[index] - '0';
             if (aStr[index] == ' ')
                 aDigit = 0;
             if (bStr[index] == ' ')

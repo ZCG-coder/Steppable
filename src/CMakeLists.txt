@@ -20,56 +20,59 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-add_library(util STATIC argParse.cpp colors.cpp logging.cpp symbols.cpp testing.cpp util.cpp)
-set_target_properties(util PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ADD_LIBRARY(util STATIC argParse.cpp colors.cpp logging.cpp symbols.cpp testing.cpp util.cpp)
+SET_TARGET_PROPERTIES(util PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-add_library(steppable STATIC number.cpp fraction.cpp)
-set_target_properties(steppable PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ADD_LIBRARY(steppable STATIC number.cpp fraction.cpp)
+SET_TARGET_PROPERTIES(steppable PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-set(CALCULATOR_FILES)
+SET(CALCULATOR_FILES)
 
-function(COPY_TO_BIN TARGET_NAME)
-    if (DEFINED STP_BUILD_COMPONENT_EXECUTABLE)
-        if (WINDOWS)
-            add_custom_command(TARGET ${TARGET_NAME}
-                    POST_BUILD
-                    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
-                    ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME}.exe)
-        else ()
-            add_custom_command(TARGET ${TARGET_NAME}
-                    POST_BUILD
-                    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
-                    ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME})
-        endif ()
-    endif ()
-endfunction()
+FUNCTION(COPY_TO_BIN TARGET_NAME)
+    IF(DEFINED STP_BUILD_COMPONENT_EXECUTABLE)
+        IF(WINDOWS)
+            ADD_CUSTOM_COMMAND(
+                TARGET ${TARGET_NAME}
+                POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
+                        ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME}.exe
+            )
+        ELSE()
+            ADD_CUSTOM_COMMAND(
+                TARGET ${TARGET_NAME}
+                POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}>
+                        ${CMAKE_CURRENT_BINARY_DIR}/../bin/${TARGET_NAME}
+            )
+        ENDIF()
+    ENDIF()
+ENDFUNCTION()
 
-foreach (COMPONENT IN LISTS COMPONENTS)
-    message(TRACE "Adding component: ${COMPONENT}: ${COMPONENT}/${COMPONENT}.cpp, ${COMPONENT}/${COMPONENT}Report.cpp")
+FOREACH(COMPONENT IN LISTS COMPONENTS)
+    MESSAGE(TRACE "Adding component: ${COMPONENT}: ${COMPONENT}/${COMPONENT}.cpp, ${COMPONENT}/${COMPONENT}Report.cpp")
 
     # No longer offering executables for each component automatically.
+    IF(DEFINED STP_BUILD_COMPONENT_EXECUTABLE)
+        ADD_EXECUTABLE(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
+        TARGET_INCLUDE_DIRECTORIES(${COMPONENT} PRIVATE ${STP_BASE_DIRECTORY}/include/)
+        TARGET_LINK_LIBRARIES(${COMPONENT} PRIVATE calc)
+    ENDIF()
 
-    if (DEFINED STP_BUILD_COMPONENT_EXECUTABLE)
-        add_executable(${COMPONENT} ${COMPONENT}/${COMPONENT}.cpp ${COMPONENT}/${COMPONENT}Report.cpp)
-        target_include_directories(${COMPONENT} PRIVATE ${STP_BASE_DIRECTORY}/include/)
-        target_link_libraries(${COMPONENT} PRIVATE calc)
-    endif ()
-
-    list(APPEND CALCULATOR_FILES ${CMAKE_CURRENT_SOURCE_DIR}/${COMPONENT}/${COMPONENT}.cpp
-                                 ${CMAKE_CURRENT_SOURCE_DIR}/${COMPONENT}/${COMPONENT}Report.cpp)
+    LIST(APPEND CALCULATOR_FILES ${CMAKE_CURRENT_SOURCE_DIR}/${COMPONENT}/${COMPONENT}.cpp
+         ${CMAKE_CURRENT_SOURCE_DIR}/${COMPONENT}/${COMPONENT}Report.cpp
+    )
 
     COPY_TO_BIN(${COMPONENT})
-endforeach ()
+ENDFOREACH()
 
-add_library(calc STATIC ${CALCULATOR_FILES} fraction.cpp rounding.cpp number.cpp)
-set_target_properties(calc PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ADD_LIBRARY(calc STATIC ${CALCULATOR_FILES} fraction.cpp rounding.cpp factors.cpp number.cpp)
+SET_TARGET_PROPERTIES(calc PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-target_include_directories(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
-target_include_directories(calc PRIVATE ${STP_BASE_DIRECTORY}/include/)
-target_include_directories(util PRIVATE ${STP_BASE_DIRECTORY}/include/)
+TARGET_INCLUDE_DIRECTORIES(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
+TARGET_INCLUDE_DIRECTORIES(calc PRIVATE ${STP_BASE_DIRECTORY}/include/)
+TARGET_INCLUDE_DIRECTORIES(util PRIVATE ${STP_BASE_DIRECTORY}/include/)
 
-target_link_libraries(steppable PRIVATE util)
-target_link_libraries(calc PRIVATE steppable)
-target_compile_definitions(calc PRIVATE NO_MAIN)
-target_compile_definitions(steppable PRIVATE NO_MAIN)
-
+TARGET_LINK_LIBRARIES(steppable PRIVATE util)
+TARGET_LINK_LIBRARIES(calc PRIVATE steppable)
+TARGET_COMPILE_DEFINITIONS(calc PRIVATE NO_MAIN)
+TARGET_COMPILE_DEFINITIONS(steppable PRIVATE NO_MAIN)

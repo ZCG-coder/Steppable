@@ -20,32 +20,22 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "fn/basicArithm.hpp"
-#include "output.hpp"
-#include "testing.hpp"
-#include "util.hpp"
+#pragma once
 
-#include <iomanip>
-#include <iostream>
+#include <string>
 
-TEST_START()
+namespace steppable::__internals::arithmetic
+{
+    /**
+     * @brief A struct to represent a surd.
+     * A surd is a number that cannot be simplified to remove a square root. It is expressed as \f$(a\sqrt[n]{b})\f$.
+     */
+    struct Surd
+    {
+        /// @brief The radicand of the surd.
+        std::string radicand;
 
-using namespace steppable::__internals::arithmetic;
-
-SECTION(Decimal Convert without letters)
-const std::string &a = "46432231133131";
-const std::string &b = "8";
-const auto& result = decimalConvert(a, b, 0);
-
-_.assertIsEqual(result, "2649229669977");
-SECTION_END()
-
-SECTION(Decimal Convert)
-const std::string &a = "88a";
-const std::string &b = "16";
-const auto& result = decimalConvert(a, b, 0);
-
-_.assertIsEqual(result, "2186");
-SECTION_END()
-TEST_END()
+        /// @brief The multiplier of the surd.
+        std::string multiplier;
+    };
+} // namespace steppable::__internals::arithmetic

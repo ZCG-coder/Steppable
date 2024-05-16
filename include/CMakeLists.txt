@@ -21,6 +21,6 @@
 #####################################################################################################
 
 # Add include directory to all targets
-foreach (TARGET IN LISTS TEST_TARGETS)
-    target_include_directories(${TARGET} PUBLIC ${STP_BASE_DIRECTORY}/include/)
-endforeach (TARGET)
+FOREACH(TARGET IN LISTS TEST_TARGETS)
+    TARGET_INCLUDE_DIRECTORIES(${TARGET} PUBLIC ${STP_BASE_DIRECTORY}/include/)
+ENDFOREACH(TARGET)

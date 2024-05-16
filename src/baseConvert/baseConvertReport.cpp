@@ -33,15 +33,15 @@
 #include "baseConvertReport.hpp"
 
 #include "symbols.hpp"
-#include "util.hpp"
 
+#include <algorithm>
 #include <sstream>
 #include <string>
 #include <string_view>
 #include <vector>
 
 using namespace std::string_literals;
-using namespace steppable::__internals::stringUtils;
+using namespace steppable::__internals::symbols;
 
 std::string reportBaseConvertStep(const std::string& _number,
                                   const std::string& _base,
@@ -49,7 +49,7 @@ std::string reportBaseConvertStep(const std::string& _number,
                                   const std::string& _remainder)
 {
     std::stringstream ss;
-    ss << _number << " " DIVIDED_BY " " << _base << " = " << _quotient << " ... " << _remainder;
+    ss << _number << " " << DIVIDED_BY << " " << _base << " = " << _quotient << " ... " << _remainder;
     return ss.str();
 }
 
@@ -65,8 +65,10 @@ std::string reportBaseConvert(const std::string& _number,
     else if (steps == 1)
         ss << _number << steppable::__internals::symbols::makeSubscript("10") << " = ";
     // Output the result in reverse order
-    for (auto it = _result.rbegin(); it != _result.rend(); ++it)
-        ss << *it;
+    auto result = _result;
+    std::reverse(result.begin(), result.end());
+    for (const auto& item : result)
+        ss << item;
     if (steps == 1)
         ss << steppable::__internals::symbols::makeSubscript(_base);
     return ss.str();

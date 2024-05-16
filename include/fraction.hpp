@@ -56,14 +56,14 @@ namespace steppable
          * @note By default, the top and bottom components are 1.
          * @throws ZeroDenominatorException when the bottom component is zero.
          */
-        Fraction(const std::string& top = "1", const std::string& bottom = "1");
+        explicit Fraction(const std::string& top = "1", const std::string& bottom = "1");
 
         /**
          * @brief Initialized a fraction from a number.
          *
          * @param number The number to convert to a fraction.
          */
-        Fraction(const Number& number);
+        explicit Fraction(const Number& number);
 
         /**
          * @brief Initializes a fraction with no top component and bottom component specified.
@@ -78,13 +78,13 @@ namespace steppable
          * @param inLine Whether to present the fraction in a single line.
          * @return The fraction as a string.
          */
-        std::string present(const bool inLine = true);
+        std::string present(bool inLine = true);
 
         /**
          * @brief Returns the fraction as an array of its top and bottom components.
          * @return The array of top and bottom components.
          */
-        std::array<std::string, 2> asArray() const;
+        [[nodiscard]] std::array<std::string, 2> asArray() const;
 
         /**
          * @brief Adds two fractions together.

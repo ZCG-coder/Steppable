@@ -35,7 +35,9 @@
 using namespace std::literals;
 
 /// @brief This macro defines the main function and initializes the Utf8CodePage object, and prepares the error counter.
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define TEST_START()                                         \
+    /* NOLINTNEXTLINE(bugprone-exception-escape) */          \
     int main()                                               \
     {                                                        \
         using namespace steppable::__internals::stringUtils; \
@@ -46,6 +48,7 @@ using namespace std::literals;
         int errors = 0;
 
 /// @brief This macro defines a test section with the given name.
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define SECTION(...)                                                                            \
     {                                                                                           \
         const std::string& nameSection = #__VA_ARGS__;                                          \
@@ -55,6 +58,7 @@ using namespace std::literals;
         auto _ = TestCase(nameSection);
 
 /// @brief This macro ends a test section and prints the time taken to execute the section.
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define SECTION_END()                                                                                            \
     auto end = std::chrono::high_resolution_clock::now();                                                        \
     auto duration =                                                                                              \
@@ -68,6 +72,7 @@ using namespace std::literals;
     }
 
 /// @brief This macro ends the main function and prints the number of errors encountered.
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define TEST_END()                                                                          \
     if (errors)                                                                             \
         error("TEST_END", "Not all tests passed. There are %i errors."s, errors);           \
@@ -97,7 +102,7 @@ namespace steppable::testing
         std::string_view testCaseName;
 
     public:
-        int errorCount = 0;
+        int errorCount = 0; // NOLINT(cppcoreguidelines-non-private-member-variables-in-classes)
 
         /**
          * @brief Constructs a new TestCase object with the given name.

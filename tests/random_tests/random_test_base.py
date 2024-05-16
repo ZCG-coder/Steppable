@@ -87,7 +87,7 @@ class RandomTest:
         random.seed(time.time())
         top_limit = random.randint(100, int(1e100))
 
-        for _ in range(self.times):
+        for i in range(self.times):
             number1 = random.randint(1000, top_limit) / random.randint(1000, top_limit)
             number2 = random.randint(1000, top_limit) / random.randint(1000, top_limit)
 
@@ -110,13 +110,13 @@ class RandomTest:
             output = float(output.decode("utf-8")[:-1])
 
             expression = self.expression.format(number1, number2)
-            python_output = None
             if self.rounding:
                 python_output = round(eval(expression), 2)
             else:
                 python_output = eval(expression)
             print(
-                f"== For {expression},\n-> Steppable gives {output} while Python gives {python_output}"
+                f"\033[K\033[A\rTest [{i + 1}/{self.times}|{(i + 1) / self.times * 100:2.1f}%] - ",
+                end=""
             )
 
             diff = abs(python_output - output)
@@ -133,7 +133,6 @@ class RandomTest:
                 print(red() + f"PROBLEMATIC SCALE for {expression}" + reset())
             else:
                 print(green() + f"PASSED" + reset())
-            print()
 
         self.summary()
 
