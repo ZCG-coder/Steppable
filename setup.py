@@ -161,7 +161,7 @@ class CMakeBuild(build_ext):
 # The information here can also be placed in setup.cfg - better separation of
 # logic and declaration, and simpler if you include description/version in a file.
 setup(
-    name="steppyble",
+    name="steppable",
     version="0.0.1",
     license="MIT",
     author="Andy Zhang",
@@ -187,13 +187,6 @@ setup(
     description="Python bindings for Steppable.",
     long_description="Python bindings for Steppable, written using nanobind.",
     ext_modules=[CMakeExtension("steppyble")],
-    data_files=[
-        ("src", glob.glob("src/**/*.*", recursive=True)),
-        ("include", glob.glob("include/fn/*.*", recursive=True)),
-        ("lib", glob.glob("lib/*.*", recursive=True)),
-        ("tests", glob.glob("tests/**/*.*", recursive=True)),
-        "CMakeLists.txt",
-    ],
     include_package_data=True,
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,

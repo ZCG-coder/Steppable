@@ -5,6 +5,12 @@ name: Lint
 on:
     push:
         branches: ["develop"]
+        paths:
+            - "**.cpp"
+            - "**.hpp"
+            - "**.py"
+            - "lint.yml"
+
     pull_request:
         branches: ["main"]
 env:
@@ -33,20 +39,15 @@ jobs:
                 cache: 'pip'
                 python-version: '3.12'
 
-            - name: Install Poetry
-              uses: snok/install-poetry@v1
-              with:
-                virtualenvs-create: false
-                installer-parallel: true
-
             - name: Install dependencies
-              run: poetry install --no-interaction --no-root
+              run: pip install .
               shell: bash
 
             - name: Configure CMake
               # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
               # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-              run: poetry run cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DPYTHON_EXECUTABLE=$(poetry env info --path)
+              run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") -DPYTHON_EXECUTABLE:FILEPATH=`which python`
+              shell: bash
 
             - name: Lint
-              run: poetry run python tools/run_clang_tidy.py -source-filter='.*lib.*' -p build
+              run: python tools/run_clang_tidy.py -source-filter='.*lib.*' -p build

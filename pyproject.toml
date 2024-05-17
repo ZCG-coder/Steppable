@@ -1,22 +1,24 @@
-[tool.poetry]
+[project]
 name = "steppable"
 version = "0.0.1"
 description = "A CAS built from scratch."
-authors = ["Andy Zhang <andy@nwsoft.tech>"]
-license = "MIT License"
+authors = [
+    { name = "Andy Zhang", email = "andy@nwsoft.tech" }
+]
+license = {file = "LICENSE"}
 readme = "README.md"
-package-mode = false
+requires-python = ">= 3.10"
 
-[tool.poetry.dependencies]
-python = "^3.10"
-nanobind = "^1.9.2"
-matplotlib = "^3.9.0"
-setuptools = "^69.5.1"
+dynamic = ["classifiers", "optional-dependencies"]
 
-[tool.poetry.group.dev.dependencies]
-black = "^24.4.2"
-isort = "^5.13.2"
+dependencies = [
+    "matplotlib",
+    "black",
+    "isort",
+    "setuptools >= 61.0",
+    "nanobind >= 1.9.2"
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools >= 61.0", "nanobind >= 1.9.2"]
+build-backend = "setuptools.build_meta"

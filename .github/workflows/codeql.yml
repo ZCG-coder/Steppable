@@ -14,6 +14,11 @@ name: "CodeQL"
 on:
     push:
         branches: ["main"]
+        paths:
+            - "**.cpp"
+            - "**.hpp"
+            - "**.py"
+            - "codeql.yml"
     pull_request:
         branches: ["main"]
 jobs:
@@ -57,23 +62,8 @@ jobs:
                 cache: 'pip'
                 python-version: ${{ matrix.python_version }}
 
-            - name: Install Poetry
-              uses: snok/install-poetry@v1
-              with:
-                virtualenvs-create: true
-                virtualenvs-in-project: true
-                installer-parallel: true
-
-            - name: Load cached venv
-              id: cached-poetry-dependencies
-              uses: actions/cache@v4
-              with:
-                path: .venv
-                key: venv-${{ matrix.os }}-${{ matrix.python_version }}-${{ hashFiles('**/poetry.lock') }}
-
             - name: Install dependencies
-              if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-              run: poetry install --no-interaction --no-root
+              run: pip install .
               shell: bash
             # Initializes the CodeQL tools for scanning.
             - name: Initialize CodeQL
