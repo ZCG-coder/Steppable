@@ -22,13 +22,38 @@
 
 from pathlib import Path
 import time
-from typing import List
+from typing import Callable, List, Tuple
 import random
 import subprocess
 import argparse
 
 ROOT_PATH = Path(__file__).parent.parent
 BUILD_PATH_DEFAULT = "build"
+
+FUNCTIONS = {
+    "abs": lambda x, y: abs(x),
+    "add": lambda x, y: x + y,
+    "comparison": lambda x, y: x > y,
+    "division": lambda x, y: x / y,
+    "multiply": lambda x, y: x * y,
+    "subtract": lambda x, y: x - y,
+    "root": lambda x, y: x ** (1 / y),
+    "power": lambda x, y: x**y,
+}
+
+
+def _benchmark_function(
+    function: Callable,
+    input_1: int,
+    input_2: int,
+) -> float:
+    start = time.time()
+    try:
+        function(input_1, input_2)
+    except Exception as e:
+        print(f"Error: {e}")
+    end = time.time()
+    return end - start
 
 
 def _benchmark(
@@ -60,21 +85,32 @@ def _benchmark(
     except subprocess.TimeoutExpired:
         print(f"Warning: Timeout running {cmd} on {input_str1}, {input_str2}")
     end = time.time()
-    print(f"Time taken: {end - start}\033[A\r")
     return end - start
 
 
 def benchmark(
     cmd: str, inputs: List[str], limit: int, verbose: bool = False, timeout: int = 10
-) -> List[float]:
-    random_number = str(random.randint(0, limit))
+) -> Tuple[List[float], List[float], bool]:
+    random_number = random.randint(0, limit)
+    random_number_str = str(random_number)
     time_needed = []
+    time_needed_system = []
+    system_available = False
     for input_str in inputs:
         time_needed.append(
-            _benchmark(cmd, input_str, random_number, verbose=verbose, timeout=timeout)
+            _benchmark(
+                cmd, input_str, random_number_str, verbose=verbose, timeout=timeout
+            )
         )
+        if (func := Path(cmd).stem) in FUNCTIONS:
+            time_needed_system.append(
+                _benchmark_function(FUNCTIONS[func], int(input_str), random_number)
+            )
+            system_available = True
+        else:
+            time_needed_system.append(0)
 
-    return time_needed
+    return time_needed, time_needed_system, system_available
 
 
 def main():
@@ -90,7 +126,7 @@ def main():
         "-e", "--executables", type=str, default="bin/*", required=False
     )
     parser.add_argument("-t", "--timeout", type=int, default=50, required=False)
-    parser.add_argument("-l", "--limit", type=float, default=500, required=False)
+    parser.add_argument("-l", "--limit", type=float, default=100, required=False)
     parser.add_argument("-v", "--verbose", action="store_true", required=False)
     parser.add_argument("-g", "--graph", action="store_true", required=False)
     args = parser.parse_args()
@@ -125,9 +161,11 @@ def main():
         print(f"Running benchmarks on {exe}")
         inputs_system = [i for i in range(LIMIT)]
         inputs = [str(i) for i in inputs_system]
-        times = benchmark(
+        time_result = benchmark(
             str(exe), inputs, LIMIT, verbose=args.verbose, timeout=args.timeout
         )
+        times = time_result[0]
+        times_system = time_result[1]
         if (not args.graph) and args.verbose:
             print(f"Times: {times}")
         if args.graph:
@@ -137,7 +175,11 @@ def main():
             import matplotlib.pyplot as plt
 
             plt.figure(figsize=(15, 5))
-            plt.plot(range(LIMIT), times)
+            plt.plot(range(LIMIT), times, label="Steppable")
+            if time_result[2]:
+                plt.plot(range(LIMIT), times_system, label="System")
+
+            plt.legend()
             plt.xlabel("Input")
             plt.ylabel("Time (s)")
             plt.title(f"Benchmark for {exe.stem}")
