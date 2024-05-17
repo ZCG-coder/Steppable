@@ -90,7 +90,7 @@ def main():
         "-e", "--executables", type=str, default="bin/*", required=False
     )
     parser.add_argument("-t", "--timeout", type=int, default=50, required=False)
-    parser.add_argument("-l", "--limit", type=float, default=1e5, required=False)
+    parser.add_argument("-l", "--limit", type=float, default=500, required=False)
     parser.add_argument("-v", "--verbose", action="store_true", required=False)
     parser.add_argument("-g", "--graph", action="store_true", required=False)
     args = parser.parse_args()
@@ -123,7 +123,8 @@ def main():
 
     for exe in executables:
         print(f"Running benchmarks on {exe}")
-        inputs = [str(i) for i in range(LIMIT)]
+        inputs_system = [i for i in range(LIMIT)]
+        inputs = [str(i) for i in inputs_system]
         times = benchmark(
             str(exe), inputs, LIMIT, verbose=args.verbose, timeout=args.timeout
         )
