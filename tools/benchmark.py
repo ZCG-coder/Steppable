@@ -60,6 +60,7 @@ def _benchmark(
     except subprocess.TimeoutExpired:
         print(f"Warning: Timeout running {cmd} on {input_str1}, {input_str2}")
     end = time.time()
+    print(f"Time taken: {end - start}\033[A\r")
     return end - start
 
 
@@ -101,10 +102,24 @@ def main():
         print(f"Build directory {build_dir} does not exist.")
         return
 
-    executables = sorted(list(build_dir.glob(args.executables)))
-    if not executables:
-        print(f"No executables found in {build_dir}")
-        return
+    if args.executables:
+        executables = sorted(list(build_dir.glob(args.executables)))
+        if not executables:
+            print(f"No executables found in {build_dir}")
+            return
+    else:
+        executables = [
+            build_dir / "bin" / "abs",
+            build_dir / "bin" / "add",
+            build_dir / "bin" / "comparison",
+            build_dir / "bin" / "division",
+            build_dir / "bin" / "multiply",
+            build_dir / "bin" / "subtract",
+        ]
+
+    print(
+        f"Started benchmarking on {' '.join([executable.stem for executable in executables])}"
+    )
 
     for exe in executables:
         print(f"Running benchmarks on {exe}")

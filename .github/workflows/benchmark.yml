@@ -21,14 +21,10 @@ jobs:
             #
             # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
             matrix:
-                os: [ubuntu-latest, windows-latest, macos-14]
+                os: [ubuntu-latest, macos-14]
                 build_type: [Release]
-                c_compiler: [clang, cl]
+                c_compiler: [clang]
                 include:
-                    - os: windows-latest
-                      c_compiler: cl
-                      cpp_compiler: cl
-                      cmake_extra_options: ''
                     - os: ubuntu-latest
                       c_compiler: clang
                       cpp_compiler: clang++
@@ -37,13 +33,7 @@ jobs:
                       c_compiler: clang
                       cpp_compiler: clang++
                       cmake_extra_options: '-GNinja'
-                exclude:
-                    - os: windows-latest
-                      c_compiler: clang
-                    - os: ubuntu-latest
-                      c_compiler: cl
-                    - os: macos-14
-                      c_compiler: cl
+
         steps:
             - uses: actions/checkout@v4
 
@@ -59,12 +49,10 @@ jobs:
                 echo "CMAKE_OPTIONS=${{ matrix.cmake_extra_options }}" >> "$GITHUB_ENV"
 
             - name: Set up Homebrew
-              if: ${{matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest'}}
               id: set-up-homebrew
               uses: Homebrew/actions/setup-homebrew@master
 
             - name: Install LLVM
-              if: ${{matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest' }}
               run: |
                 brew install llvm ninja
                 echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
@@ -91,7 +79,7 @@ jobs:
               shell: bash
 
             - name: Benchmark
-              run: python tools/benchmark.py -vg
+              run: python tools/benchmark.py -g
               shell: bash
 
             - name: Upload Graphs
