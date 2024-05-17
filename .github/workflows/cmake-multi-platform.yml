@@ -9,7 +9,7 @@ on:
             - "**.cpp"
             - "**.hpp"
             - "**.py"
-            - "cmake-multi-platform.yml"
+
     pull_request:
         branches: ["main"]
 jobs:
