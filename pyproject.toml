@@ -1,0 +1,24 @@
+[project]
+name = "steppable"
+version = "0.0.1"
+description = "A CAS built from scratch."
+authors = [
+    { name = "Andy Zhang", email = "andy@nwsoft.tech" }
+]
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">= 3.10"
+
+dynamic = ["classifiers", "optional-dependencies"]
+
+dependencies = [
+    "matplotlib",
+    "black",
+    "isort",
+    "setuptools >= 61.0",
+    "nanobind >= 1.9.2"
+]
+
+[build-system]
+requires = ["setuptools >= 61.0", "nanobind >= 1.9.2"]
+build-backend = "setuptools.build_meta"
