@@ -31,7 +31,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from building.paths import BUILD_DIR
+from lib.paths import BUILD_DIR
 
 GCC_VERSION_RE = re.compile(r"g\+\+ (\(.+?\))? (\d+\.\d+\.\d+)")
 CLANG_VERSION_RE = re.compile(r"version (\d+\.\d+\.\d+)")

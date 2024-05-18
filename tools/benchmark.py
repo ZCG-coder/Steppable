@@ -20,14 +20,15 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from pathlib import Path
-import time
-from typing import Callable, List, Tuple
+import argparse
 import random
 import subprocess
-import argparse
+import time
+from pathlib import Path
+from typing import Callable, List, Tuple
 
-ROOT_PATH = Path(__file__).parent.parent
+from lib.paths import PROJECT_PATH
+
 BUILD_PATH_DEFAULT = "build"
 
 FUNCTIONS = {
@@ -133,7 +134,7 @@ def main():
 
     LIMIT = int(args.limit)
 
-    build_dir = Path(ROOT_PATH / args.build_dir).resolve()
+    build_dir = Path(PROJECT_PATH / args.build_dir).resolve()
     if not build_dir.exists():
         print(f"Build directory {build_dir} does not exist.")
         return
@@ -169,7 +170,7 @@ def main():
         if (not args.graph) and args.verbose:
             print(f"Times: {times}")
         if args.graph:
-            img_path = ROOT_PATH / "tools" / "figures" / f"benchmark_{exe.stem}.svg"
+            img_path = PROJECT_PATH / "tools" / "figures" / f"benchmark_{exe.stem}.svg"
             print(f"Saving as {img_path}")
 
             import matplotlib.pyplot as plt

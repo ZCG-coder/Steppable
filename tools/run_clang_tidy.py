@@ -65,7 +65,7 @@ import threading
 import traceback
 
 try:
-    import yaml
+    import yaml  # pyright: ignore
 except ImportError:
     yaml = None
 

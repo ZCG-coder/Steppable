@@ -138,7 +138,7 @@ def first_n_lines(text: str, n: int) -> str:
 
 def process(file: Path):
     if (
-        file.suffix in [".cpp", ".hpp"] or file.name == "cpp.hint"
+        file.suffix in [".cpp", ".hpp", ".stp_settings"] or file.name == "cpp.hint"
     ):  # C++ Source / Header
         with open(file, "r") as f:
             contents = f.read()
@@ -195,9 +195,11 @@ def walk_into_directory(path: Path):
 if __name__ == "__main__":
     process(PROJECT_PATH / "CMakeLists.txt")
     process(PROJECT_PATH / "setup.py")
+    process(PROJECT_PATH / "__init__.py")
     process(PROJECT_PATH / "cpp.hint")
     walk_into_directory(PROJECT_PATH / "include")
     walk_into_directory(PROJECT_PATH / "lib")
+    walk_into_directory(PROJECT_PATH / "res")
     walk_into_directory(PROJECT_PATH / "src")
     walk_into_directory(PROJECT_PATH / "tests")
     walk_into_directory(PROJECT_PATH / "tools")

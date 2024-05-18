@@ -82,7 +82,7 @@ jobs:
               shell: bash
 
             - name: Benchmark
-              run: python tools/benchmark.py -g
+              run: python -m tools.benchmark -g
               shell: bash
 
             - name: Upload Graphs

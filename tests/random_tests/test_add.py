@@ -21,8 +21,9 @@
 #####################################################################################################
 
 from random_test_base import RandomTest
-from pathlib import Path
 
-TOOL_PATH = Path(__file__).parent.parent.parent / "build" / "bin" / "add"
+from lib.paths import PROJECT_PATH
+
+TOOL_PATH = PROJECT_PATH / "build" / "bin" / "add"
 r = RandomTest(TOOL_PATH.as_posix(), expression="{} + {}", rounding=False)
 r.random_test()

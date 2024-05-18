@@ -50,4 +50,4 @@ jobs:
               shell: bash
 
             - name: Lint
-              run: python tools/run_clang_tidy.py -source-filter='.*lib.*' -p build
+              run: python -m tools.run_clang_tidy -source-filter='.*lib.*' -p build

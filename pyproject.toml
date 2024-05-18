@@ -12,9 +12,9 @@ requires-python = ">= 3.10"
 dynamic = ["classifiers", "optional-dependencies"]
 
 dependencies = [
-    "matplotlib",
-    "black",
-    "isort",
+    "matplotlib >= 3.9.0",
+    "black >= 24.4.2",
+    "isort >= 5.13.2",
     "setuptools >= 61.0",
     "nanobind >= 1.9.2"
 ]

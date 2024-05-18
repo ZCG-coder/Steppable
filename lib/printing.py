@@ -20,10 +20,62 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from random_test_base import RandomTest
+import sys
 
-from lib.paths import PROJECT_PATH
+from lib.constants import WINDOWS
 
-TOOL_PATH = PROJECT_PATH / "build" / "bin" / "division"
-r = RandomTest(TOOL_PATH.as_posix(), expression="{} / {}")
-r.random_test()
+
+def green() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[92m"
+    return ""
+
+
+def red() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[91m"
+    return ""
+
+
+def yellow() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[93m"
+    return ""
+
+
+def blue() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[94m"
+    return ""
+
+
+def erase_line() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[K\033[A\r"
+    return ""
+
+
+def reset() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[0m"
+    return ""
+
+
+def bold() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[1m"
+    return ""
