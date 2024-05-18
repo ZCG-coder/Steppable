@@ -2,8 +2,8 @@
 name: Bug report
 about: Create a report to help us fix the bugs
 title: Bug
-labels: bug
-assignees: ''
+labels: T-Bug
+assignees: ZCG-coder
 
 ---
 
