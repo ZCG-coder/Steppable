@@ -23,10 +23,60 @@
 // Hint files help the Visual Studio IDE interpret Visual C++ identifiers
 // such as names of functions and macros.
 // For more information see https://go.microsoft.com/fwlink/?linkid=865984
-#define SECTION(__VA_ARGS__)                                                                                 \
-    {                                                                                                        \
-        const char* nameSection = #__VA_ARGS__;                                                              \
-        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << '\0' << reset << '\n'; \
-        std::cout << colors::brightBlue << "[Testing: " << nameSection << ']' << reset << '\n';         \
-        auto start = std::chrono::high_resolution_clock::now();                                              \
-        auto testCase = TestCase(static_cast<std::string>(nameSection));
+#define TEST_START()                                         \
+    /* NOLINTNEXTLINE(bugprone-exception-escape) */          \
+    int main()                                               \
+    {                                                        \
+        using namespace steppable::__internals::stringUtils; \
+        using namespace steppable::__internals::utils;       \
+        using namespace steppable::testing;                  \
+        using namespace steppable::output;                   \
+        Utf8CodePage use_utf8;                               \
+        int errors = 0;
+
+#define SECTION(...)                                                                            \
+    {                                                                                           \
+        const std::string& nameSection = #__VA_ARGS__;                                          \
+        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << '\n'; \
+        std::cout << colors::brightBlue << "[Testing: " << nameSection << ']' << reset << '\n'; \
+        auto start = std::chrono::high_resolution_clock::now();                                 \
+        auto _ = TestCase(nameSection);
+
+#define SECTION_END()                                                                                            \
+    auto end = std::chrono::high_resolution_clock::now();                                                        \
+    auto duration =                                                                                              \
+        std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start) \
+            .count();                                                                                            \
+    _.summarize();                                                                                               \
+    std::cout << colors::brightBlue << '[' << nameSection << " took " << duration << "(microseconds) to finish]" \
+              << reset << '\n';                                                                                  \
+    std::cout << reset << '\n';                                                                                  \
+    errors += _.errorCount;                                                                                      \
+    }
+
+#define TEST_END()                                                                          \
+    if (errors)                                                                             \
+        error("TEST_END", "Not all tests passed. There are %i errors."s, errors);           \
+    else                                                                                    \
+        info("All tests passed.");                                                          \
+    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << '\n'; \
+    if (errors)                                                                             \
+        return 1;                                                                           \
+    }
+
+#define TIC(...)                                                                                  \
+    {                                                                                             \
+        const char* nameSection = #__VA_ARGS__;                                                   \
+        std::cout << colors::brightBlue << std::setw(80) << std::setfill('-') << reset << '\n';   \
+        std::cout << colors::brightBlue << "[Profiling: " << nameSection << ']' << reset << '\n'; \
+        auto start = std::chrono::high_resolution_clock::now();
+
+#define TOC()                                                                                                     \
+    auto duration =                                                                                               \
+        std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start)  \
+            .count();                                                                                             \
+    std::cout << colors::brightBlue << '[' << nameSection << " took " << duration << "(microseconds) to execute]" \
+              << reset << '\n';                                                                                   \
+    std::cout << colors::brightBlue << std::setw(80) << std::setfill('-');                                        \
+    std::cout << reset << '\n';                                                                                   \
+    }
