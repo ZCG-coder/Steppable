@@ -1,7 +1,7 @@
 var searchData=
 [
   ['baseconvert_0',['baseConvert',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a814abbd0fc1772320626c4c0ca3f677a',1,'steppable::__internals::arithmetic']]],
-  ['be_20made_1',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md16',1,'']]],
+  ['be_20made_1',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md20',1,'']]],
   ['because_2',['BECAUSE',['../namespacesteppable_1_1____internals_1_1symbols.html#a0ff8e5d83e68647014a98b86f3b2a968',1,'steppable::__internals::symbols']]],
   ['bisnegative_3',['bIsNegative',['../structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#aafe32bc0840b6b99ed2e57a065ec55f0',1,'steppable::__internals::numUtils::SplitNumberResult']]],
   ['black_4',['black',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad336a4a15381fd18dfef501bb8a18659',1,'steppable::__internals::utils::colors']]],
@@ -10,7 +10,7 @@ var searchData=
   ['bold_7',['bold',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a020bdff691dad4ade1a65f76bef6bfd0',1,'steppable::__internals::utils::formats']]],
   ['bothendsreplace_8',['bothEndsReplace',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ae02cbf753dc057728813546bd80336da',1,'steppable::__internals::stringUtils']]],
   ['bottom_9',['bottom',['../classsteppable_1_1Fraction.html#a249c9793ecff062b5d9681349033df37',1,'steppable::Fraction']]],
-  ['branches_10',['Branches',['../md_wiki_2Getting-the-Source.html#autotoc_md23',1,'']]],
+  ['branches_10',['Branches',['../md_wiki_2Getting-the-Source.html#autotoc_md27',1,'']]],
   ['brightblack_11',['brightBlack',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a58dd1f4567462d8571dd024ea2d5d483',1,'steppable::__internals::utils::colors::brightBlack()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a94a98cf9653f1890743181c4c76e1bc1',1,'steppable::__internals::utils::colorsBg::brightBlack()']]],
   ['brightblue_12',['brightBlue',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad218e37dd295aeff04ca94c2ea4e7cfd',1,'steppable::__internals::utils::colors::brightBlue()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#aa16d7262258186b45188a5f57d968662',1,'steppable::__internals::utils::colorsBg::brightBlue()']]],
   ['brightcyan_13',['brightCyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4c441d71252273750960c63b9a1c70e1',1,'steppable::__internals::utils::colors::brightCyan()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#ab43a36a214b76652fdffdfa14f6541a3',1,'steppable::__internals::utils::colorsBg::brightCyan()']]],
@@ -20,9 +20,10 @@ var searchData=
   ['brightwhite_17',['brightWhite',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a08de55f887db0083edef018dbdbf0fce',1,'steppable::__internals::utils::colors::brightWhite()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a217842b1e467813034a1c6b4d49ce7d8',1,'steppable::__internals::utils::colorsBg::brightWhite()']]],
   ['brightyellow_18',['brightYellow',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a54e47b365870a35d50a00044ff37b2cc',1,'steppable::__internals::utils::colors::brightYellow()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a13dc19a90f0f88e436e7d4fa26e5cf84',1,'steppable::__internals::utils::colorsBg::brightYellow()']]],
   ['buffer_19',['buffer',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#accd9148b6c566569642007084c0d08b7',1,'steppable::prettyPrint::ConsoleOutput']]],
-  ['build_20',['Build',['../md_wiki_2Building-Steppable.html#autotoc_md13',1,'Debug build'],['../md_wiki_2Building-Steppable.html#autotoc_md12',1,'Release Build']]],
-  ['build_20py_20tt_21',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]],
-  ['building_20steppable_20cmake_22',['Building Steppable (CMake)',['../md_wiki_2Building-Steppable.html',1,'']]],
-  ['building_20steppable_20tt_20build_20py_20tt_23',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]],
-  ['built_20libraries_24',['Using the built libraries',['../md_wiki_2Building-Steppable.html#autotoc_md14',1,'']]]
+  ['build_20',['Release Build',['../md_wiki_2Building-Steppable.html#autotoc_md12',1,'']]],
+  ['build_21',['Debug build',['../md_wiki_2Building-Steppable.html#autotoc_md13',1,'']]],
+  ['build_20py_20tt_22',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]],
+  ['building_20steppable_20cmake_23',['Building Steppable (CMake)',['../md_wiki_2Building-Steppable.html',1,'']]],
+  ['building_20steppable_20tt_20build_20py_20tt_24',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]],
+  ['built_20libraries_25',['Using the built libraries',['../md_wiki_2Building-Steppable.html#autotoc_md14',1,'']]]
 ];

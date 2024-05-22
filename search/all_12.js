@@ -3,7 +3,7 @@ var searchData=
   ['radicand_0',['radicand',['../structsteppable_1_1____internals_1_1arithmetic_1_1Surd.html#a9e084ef69162afe13a4a20602aa1220e',1,'steppable::__internals::arithmetic::Surd']]],
   ['red_1',['red',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a36cc73ec1844a03d7cba5b409109c999',1,'steppable::__internals::utils::colors']]],
   ['reference_2',['API Reference',['../md_wiki_2API-Reference.html',1,'']]],
-  ['release_20be_20made_3',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md16',1,'']]],
+  ['release_20be_20made_3',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md20',1,'']]],
   ['release_20build_4',['Release Build',['../md_wiki_2Building-Steppable.html#autotoc_md12',1,'']]],
   ['remainder_5',['remainder',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#a6b2431c269b09e854d33a09bd31f00e6',1,'steppable::__internals::arithmetic::QuotientRemainder']]],
   ['removeleadingzeros_6',['removeLeadingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212',1,'steppable::__internals::numUtils::removeLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;'],['../namespacesteppable_1_1____internals_1_1numUtils.html#a8d5637338641568af53f46a993400130',1,'steppable::__internals::numUtils::removeLeadingZeros(const std::string &amp;string) -&gt; std::decay_t&lt; decltype(string)&gt;']]],

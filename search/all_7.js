@@ -15,5 +15,6 @@ var searchData=
   ['getstringwidth_12',['getStringWidth',['../namespacesteppable_1_1prettyPrint.html#a1a21e6713926f95247a2db8963a0ae2d',1,'steppable::prettyPrint']]],
   ['getswitch_13',['getSwitch',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#abfbc6f2e68f3cc414843a59160a0cea6',1,'steppable::__internals::utils::ProgramArgs']]],
   ['getting_20the_20source_20code_14',['Getting the Source Code',['../md_wiki_2Getting-the-Source.html',1,'']]],
-  ['green_15',['green',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a9366db5386221d73fa03fbff6f906693',1,'steppable::__internals::utils::colors']]]
+  ['graphs_15',['Graphs',['../md_wiki_2Performance.html#autotoc_md31',1,'']]],
+  ['green_16',['green',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a9366db5386221d73fa03fbff6f906693',1,'steppable::__internals::utils::colors']]]
 ];

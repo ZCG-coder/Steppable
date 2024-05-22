@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reference_0',['API Reference',['../md_wiki_2API-Reference.html',1,'']]]
+  ['questions_20faq_0',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]]
 ];
