@@ -183,4 +183,11 @@ _.assertIsEqual(roundDown(number2), "1");
 _.assertIsEqual(roundUp(number2), "2");
 SECTION_END()
 
+SECTION(Test isPowerOfTen)
+_.assertTrue(isPowerOfTen("10"));
+_.assertTrue(isPowerOfTen("0.1"));
+_.assertTrue(isPowerOfTen("0.01"));
+_.assertFalse(isPowerOfTen("20"));
+SECTION_END()
+
 TEST_END()

@@ -21,6 +21,7 @@
 #####################################################################################################
 
 import sys
+import os
 
 from lib.constants import WINDOWS
 
@@ -79,3 +80,34 @@ def bold() -> str:
     if sys.stdout.isatty():
         return "\033[1m"
     return ""
+
+
+def print_progressbar(
+    iteration: int,
+    total: int,
+    prefix: str = "",
+    suffix: str = "",
+    decimals: int = 1,
+    length: int = 100,
+    fill: str = "\u2588",
+) -> None:
+    """
+    Call in a loop to create terminal progress bar.
+    :param iteration: Current iteration.
+    :param total: Total iterations.
+    :param prefix: Prefix string.
+    :param suffix: Suffix string.
+    :param decimals: Positive number of decimals in percent complete.
+    :param length: Character length of bar.
+    :param fill: Bar fill character.
+    """
+    if not os.isatty(sys.stdout.fileno()):
+        print(f"{prefix} {iteration}/{total} {suffix}")
+        return
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filled_length = int(length * iteration // total)
+    bar = fill * filled_length + " " * (length - filled_length)
+    print("\r%s |%s| %s%% %s" % (prefix, bar, percent, suffix), end="")
+    # Print New Line on Complete
+    if iteration == total:
+        print()

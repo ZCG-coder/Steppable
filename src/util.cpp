@@ -257,18 +257,21 @@ namespace steppable::__internals::numUtils
 
     bool isDecimal(const std::string& number) { return not isInteger(number); }
 
-    bool isPowerOfTen(const std::string& number)
+    bool isPowerOfTen(const std::string& _number)
     {
+        auto number = _number;
+        if (isDecimal(number))
+        {
+            number = number.substr(0, number.length() - 1);
+            return not std::ranges::any_of(number, [](const auto& c) { return c != '0' and c != '.'; });
+        }
         if (number == "1")
             return true; // 1 is a power of 10.
         if (number.front() != '1')
             return false; // The number must start with 1.
 
-        // NOLINTNEXTLINE(readability-use-anyofallof)
-        for (const char c : number.substr(1, number.length()))
-            if (c != '0' and c != '.')
-                return false; // The rest of the number must be zeros or decimal points.
-        return true;
+        number = number.substr(1, number.length() - 1);
+        return not std::ranges::any_of(number, [](const auto& c) { return c != '0' and c != '.'; });
     }
 } // namespace steppable::__internals::numUtils
 
