@@ -23,7 +23,6 @@
 #include "util.hpp"
 
 #include <cstddef>
-#include <map>
 
 #ifdef WINDOWS
     #undef min
@@ -200,7 +199,17 @@ namespace steppable::__internals::numUtils
         if (string == "0")
             return "0";
         auto out = string;
-        out.erase(0, std::min(out.find_first_not_of('0'), out.size() - 1));
+        bool negative = false;
+        if (out.front() == '-')
+        {
+            negative = true;
+            out.erase(0, 1);
+        }
+        while (out.front() == '0')
+            out.erase(0, 1);
+
+        if (negative)
+            out.insert(0, 1, '-');
         return out;
     }
 

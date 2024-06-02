@@ -27,9 +27,12 @@ if (NOT DEFINED Python_EXECUTABLE)
     Python
     COMPONENTS Development Interpreter
     REQUIRED)
-else ()
-    set(Python_EXECUTABLE ${PYTHON_EXECUTABLE})
+    find_package(
+    Python3
+    COMPONENTS Development Interpreter
+    REQUIRED)
 endif ()
+set(Python_EXECUTABLE ${Python3_EXECUTABLE})
 
 # Detect the installed nanobind package and import it into CMake
 execute_process(

@@ -128,7 +128,6 @@ namespace steppable::__internals::numUtils
         auto splitNumberArray = splitNumberResult.splitNumberArray;
         auto integer = splitNumberArray[0];
         auto decimal = splitNumberArray[1];
-        bool isNegative = splitNumberResult.aIsNegative;
         auto repetitions = std::abs(places);
 
         // Move decimal places to the right
@@ -157,8 +156,6 @@ namespace steppable::__internals::numUtils
         }
 
         auto result = integer + "." + decimal;
-        if (isNegative)
-            result = '-' + result;
         return standardizeNumber(removeLeadingZeros(result));
     }
 } // namespace steppable::__internals::numUtils
