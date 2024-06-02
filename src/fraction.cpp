@@ -37,6 +37,7 @@
 #include "util.hpp"
 
 #include <string>
+#include <utility>
 
 #ifdef WINDOWS
     #undef max
@@ -227,6 +228,12 @@ namespace steppable
         const auto& otherNewTop = multiply(rhs.top, bottom, 0);
 
         return compare(thisNewTop, otherNewTop, 0) != "0";
+    }
+
+    void Fraction::reciprocal()
+    {
+        std::ranges::swap(top, bottom);
+        simplify();
     }
 
     void Fraction::simplify()

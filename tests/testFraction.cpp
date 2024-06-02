@@ -59,4 +59,10 @@ _.assertIsEqual(Fraction("0.5").present(), "1/2");
 _.assertIsEqual(Fraction(Number("0.25")).present(), "1/4");
 SECTION_END()
 
+SECTION(Reciprocal)
+auto fraction = Fraction("1", "4");
+fraction.reciprocal();
+_.assertIsEqual(fraction.present(), "4/1");
+SECTION_END()
+
 TEST_END()
