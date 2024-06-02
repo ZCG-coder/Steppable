@@ -104,6 +104,8 @@ namespace steppable::__internals::arithmetic
             if (steps == 2)
                 out << "Since " << b << " is a power of 10, we can move the decimal places to obtain the result.\n";
             auto result = moveDecimalPlaces(a, determineScale(b));
+            if (resultIsNegative)
+                result = "-" + result; // NOLINT(performance-inefficient-string-concatenation)
 
             out << result;
             return out.str();
