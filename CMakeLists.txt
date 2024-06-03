@@ -98,6 +98,7 @@ SET(COMPONENTS
     power
     division
     root
+    factorial
 )
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
