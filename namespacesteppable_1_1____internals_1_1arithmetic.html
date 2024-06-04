@@ -165,6 +165,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a7ff9976bf48df9c832d7489e88004813" id="r_a7ff9976bf48df9c832d7489e88004813"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ff9976bf48df9c832d7489e88004813">getGCD</a> (const std::string_view &amp;_a, const std::string_view &amp;_b)</td></tr>
 <tr class="memdesc:a7ff9976bf48df9c832d7489e88004813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the greatest common divisor of two string representations of numbers.  <br /></td></tr>
 <tr class="separator:a7ff9976bf48df9c832d7489e88004813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59af1f3ad78fe203eb847fde390f7742" id="r_a59af1f3ad78fe203eb847fde390f7742"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59af1f3ad78fe203eb847fde390f7742">factorial</a> (const std::string &amp;_number, int steps=2)</td></tr>
+<tr class="memdesc:a59af1f3ad78fe203eb847fde390f7742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the factorial of a number.  <br /></td></tr>
+<tr class="separator:a59af1f3ad78fe203eb847fde390f7742"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59c559ff2ec84dc1964531893a457c66" id="r_a59c559ff2ec84dc1964531893a457c66"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59c559ff2ec84dc1964531893a457c66">multiply</a> (const std::string_view &amp;a, const std::string_view &amp;b, int steps=2)</td></tr>
 <tr class="memdesc:a59c559ff2ec84dc1964531893a457c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies two string representations of numbers.  <br /></td></tr>
 <tr class="separator:a59c559ff2ec84dc1964531893a457c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -588,6 +591,42 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a59af1f3ad78fe203eb847fde390f7742" name="a59af1f3ad78fe203eb847fde390f7742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59af1f3ad78fe203eb847fde390f7742">&#9670;&#160;</a></span>factorial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string steppable::__internals::arithmetic::factorial </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>_number</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>steps</em></span><span class="paramdefsep"> = </span><span class="paramdefval">2</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the factorial of a number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_number</td><td>The number to calculate the factorial of. </td></tr>
+    <tr><td class="paramname">steps</td><td>The number of steps to calculate the factorial.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The factorial of the number. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a59af1f3ad78fe203eb847fde390f7742_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="a7ff9976bf48df9c832d7489e88004813" name="a7ff9976bf48df9c832d7489e88004813"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7ff9976bf48df9c832d7489e88004813">&#9670;&#160;</a></span>getGCD()</h2>
 
@@ -624,7 +663,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a7ff9976bf48df9c832d7489e88004813_icgraph.svg" width="562" height="542"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1arithmetic_a7ff9976bf48df9c832d7489e88004813_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1065,7 +1104,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed May 22 2024 06:01:31"; // Will get replaced by Doxygen
+        const dateStr = "Tue Jun 4 2024 14:53:37"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();
