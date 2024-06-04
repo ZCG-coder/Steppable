@@ -21,7 +21,7 @@
  **************************************************************************************************/
 
 #include "colors.hpp"
-#include "fraction.hpp"
+#include "fn/basicArithm.hpp"
 #include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"
@@ -29,40 +29,10 @@
 #include <iomanip>
 #include <iostream>
 
+using namespace steppable::__internals::arithmetic;
+
 TEST_START()
-
-using namespace steppable;
-
-SECTION(Fraction Add)
-_.assertIsEqual((Fraction("13122", "54251") + Fraction("22451", "3423")).present(), "1262905807/185701173");
-_.assertIsEqual((Fraction("22451", "3423") + Fraction("13122", "54251")).present(), "1262905807/185701173");
+SECTION(Factorial)
+_.assertIsEqual(factorial("5", 0), "120");
 SECTION_END()
-
-SECTION(Fraction Subtract)
-_.assertIsEqual((Fraction("13122", "54251") - Fraction("22451", "3423")).present(), "-1173072595/185701173");
-_.assertIsEqual((Fraction("22451", "3423") - Fraction("13122", "54251")).present(), "1173072595/185701173");
-SECTION_END()
-
-SECTION(Fraction Multiply)
-_.assertIsEqual((Fraction("13122", "54251") * Fraction("22451", "3423")).present(), "98200674/61900391");
-_.assertIsEqual((Fraction("22451", "3423") * Fraction("13122", "54251")).present(), "98200674/61900391");
-SECTION_END()
-
-SECTION(Fraction Division)
-_.assertIsEqual((Fraction("13122", "54251") / Fraction("22451", "3423")).present(), "44916606/1217989201");
-_.assertIsEqual((Fraction("22451", "3423") / Fraction("13122", "54251")).present(), "1217989201/44916606");
-SECTION_END()
-
-SECTION(Fraction from Number)
-_.assertIsEqual(Fraction("0.25").present(), "1/4");
-_.assertIsEqual(Fraction("0.5").present(), "1/2");
-_.assertIsEqual(Fraction(Number("0.25")).present(), "1/4");
-SECTION_END()
-
-SECTION(Reciprocal)
-auto fraction = Fraction("1", "4");
-fraction.reciprocal();
-_.assertIsEqual(fraction.present(), "4/1");
-SECTION_END()
-
 TEST_END()

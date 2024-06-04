@@ -20,16 +20,7 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-set(Python_FIND_VIRTUALENV ONLY)
-
-if (NOT DEFINED Python_EXECUTABLE)
-    find_package(
-    Python
-    COMPONENTS Development Interpreter
-    REQUIRED)
-else ()
-    set(Python_EXECUTABLE ${PYTHON_EXECUTABLE})
-endif ()
+set(Python_EXECUTABLE ${Python3_EXECUTABLE})
 
 # Detect the installed nanobind package and import it into CMake
 execute_process(

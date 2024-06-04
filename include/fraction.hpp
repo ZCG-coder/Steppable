@@ -225,6 +225,12 @@ namespace steppable
         bool operator>=(const Fraction& rhs) const;
 
         /**
+         * @brief Converts a fraction to its reciprocal.
+         * This function converts the fraction to its reciprocal.
+         */
+        void reciprocal();
+
+        /**
          * @brief Simplifies a fraction.
          * This function simplifies the fraction by dividing the top and bottom components by their greatest common
          * divisor.

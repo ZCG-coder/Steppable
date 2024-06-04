@@ -213,6 +213,16 @@ namespace steppable::__internals::arithmetic
     std::string rootIntPart(const std::string& _number, const std::string& base);
 
     /**
+     * @brief Calculates the factorial of a number.
+     *
+     * @param _number The number to calculate the factorial of.
+     * @param steps The number of steps to calculate the factorial.
+     *
+     * @return The factorial of the number.
+     */
+    std::string factorial(const std::string& _number, int steps = 2);
+
+    /**
      * @brief Executes a given predicate function a specified number of times.
      *
      * @param[in] times The number of times to execute the predicate function.

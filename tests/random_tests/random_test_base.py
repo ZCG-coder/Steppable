@@ -20,46 +20,11 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-import os
 import random
 import subprocess
 import time
 
-
-def green():
-    """
-    Changes the output color to green, only if the output console is a terminal.
-    """
-    if os.isatty(0):
-        return "\033[92m"
-    return ""
-
-
-def red():
-    """
-    Changes the output color to red, only if the output console is a terminal.
-    """
-    if os.isatty(0):
-        return "\033[91m"
-    return ""
-
-
-def reset():
-    """
-    Resets output color, only if the output console is a terminal.
-    """
-    if os.isatty(0):
-        return "\033[0;0m"
-    return ""
-
-
-def bold():
-    """
-    Changes the output color to bold, only if the output console is a terminal.
-    """
-    if os.isatty(0):
-        return "\033[1m"
-    return ""
+from lib.printing import bold, green, red, reset
 
 
 class RandomTest:
@@ -68,11 +33,11 @@ class RandomTest:
     """
 
     def __init__(
-            self,
-            executable="",
-            times: int = 100,
-            expression: str = "{} / {}",
-            rounding: bool = True,
+        self,
+        executable="",
+        times: int = 100,
+        expression: str = "{} / {}",
+        rounding: bool = True,
     ):
         self.times = times
         if executable == "":
@@ -116,7 +81,7 @@ class RandomTest:
                 python_output = eval(expression)
             print(
                 f"\033[K\033[A\rTest [{i + 1}/{self.times}|{(i + 1) / self.times * 100:2.1f}%] - ",
-                end=""
+                end="",
             )
 
             diff = abs(python_output - output)
@@ -146,7 +111,7 @@ class RandomTest:
                 + reset()
             )
             for idx, (number1, number2, output, python_output) in enumerate(
-                    self.failed
+                self.failed
             ):
                 print(f"TEST {idx + 1}")
                 print(f"  {self.expression.format(number1, number2)}")

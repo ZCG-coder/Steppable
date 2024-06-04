@@ -20,10 +20,94 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from random_test_base import RandomTest
+import sys
+import os
 
-from lib.paths import PROJECT_PATH
+from lib.constants import WINDOWS
 
-TOOL_PATH = PROJECT_PATH / "build" / "bin" / "division"
-r = RandomTest(TOOL_PATH.as_posix(), expression="{} / {}")
-r.random_test()
+
+def green() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[92m"
+    return ""
+
+
+def red() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[91m"
+    return ""
+
+
+def yellow() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[93m"
+    return ""
+
+
+def blue() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[94m"
+    return ""
+
+
+def erase_line() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[K\033[A\r"
+    return ""
+
+
+def reset() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[0m"
+    return ""
+
+
+def bold() -> str:
+    if WINDOWS:
+        return ""
+    if sys.stdout.isatty():
+        return "\033[1m"
+    return ""
+
+
+def print_progressbar(
+    iteration: int,
+    total: int,
+    prefix: str = "",
+    suffix: str = "",
+    decimals: int = 1,
+    length: int = 100,
+    fill: str = "\u2588",
+) -> None:
+    """
+    Call in a loop to create terminal progress bar.
+    :param iteration: Current iteration.
+    :param total: Total iterations.
+    :param prefix: Prefix string.
+    :param suffix: Suffix string.
+    :param decimals: Positive number of decimals in percent complete.
+    :param length: Character length of bar.
+    :param fill: Bar fill character.
+    """
+    if not os.isatty(sys.stdout.fileno()):
+        print(f"{prefix} {iteration}/{total} {suffix}")
+        return
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filled_length = int(length * iteration // total)
+    bar = fill * filled_length + " " * (length - filled_length)
+    print("\r%s |%s| %s%% %s" % (prefix, bar, percent, suffix), end="")
+    # Print New Line on Complete
+    if iteration == total:
+        print()

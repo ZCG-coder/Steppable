@@ -27,25 +27,13 @@ output name of a target.
 
 import json
 import logging
-import platform
 import sys
 from pathlib import Path
 from typing import List
 
-from building.paths import (
-    BUILD_DIR,
-    OBJ_DIR,
-    LIB_DIR,
-    PROJECT,
-    PROJECT_PATH,
-    STATIC,
-    SHARED,
-    EXECUTABLE,
-)
-
-WINDOWS = platform.system() == "Windows"
-MACOSX = platform.system() == "Darwin"
-LINUX = platform.system() == "Linux"
+from lib.constants import WINDOWS
+from lib.paths import BIN_DIR, BUILD_DIR, LIB_DIR, OBJ_DIR, PROJECT, PROJECT_PATH
+from tools.building.constants import EXECUTABLE, SHARED, STATIC
 
 logger = logging.getLogger(__name__)
 

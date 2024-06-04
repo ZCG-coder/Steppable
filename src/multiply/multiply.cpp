@@ -52,8 +52,18 @@ namespace steppable::__internals::arithmetic
         auto b = static_cast<std::string>(_b);
         const auto& [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b, false, false);
         bool resultIsNegative = false;
+
+        // Determine the polarity of the result.
+        if (aIsNegative and bIsNegative)
+            resultIsNegative = false; // NOLINT(bugprone-branch-clone)
+        else if (aIsNegative or bIsNegative)
+            resultIsNegative = true;
+        else
+            resultIsNegative = false;
+
         const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
         std::stringstream out;
+        // Multiply by zero gives zero.
         if (isZeroString(a) or isZeroString(b))
         {
             if (steps == 2)
@@ -82,14 +92,22 @@ namespace steppable::__internals::arithmetic
         {
             if (steps == 2)
                 out << "Since " << a << " is a power of 10, we can move the decimal places to obtain the result.\n";
-            out << moveDecimalPlaces(b, static_cast<long long>(aInteger.length() - 1));
+            auto result = moveDecimalPlaces(b, determineScale(a));
+            if (resultIsNegative)
+                result = "-" + result; // NOLINT(performance-inefficient-string-concatenation)
+
+            out << result;
             return out.str();
         }
         if (isPowerOfTen(b))
         {
             if (steps == 2)
                 out << "Since " << b << " is a power of 10, we can move the decimal places to obtain the result.\n";
-            out << moveDecimalPlaces(a, static_cast<long long>(bInteger.length() - 1));
+            auto result = moveDecimalPlaces(a, determineScale(b));
+            if (resultIsNegative)
+                result = "-" + result; // NOLINT(performance-inefficient-string-concatenation)
+
+            out << result;
             return out.str();
         }
 
@@ -97,13 +115,6 @@ namespace steppable::__internals::arithmetic
         const std::string bStr = bInteger + bDecimal;
         std::vector<std::vector<int>> prodDigits;
         std::vector<std::vector<int>> carries;
-
-        if (aIsNegative and bIsNegative)
-            resultIsNegative = false; // NOLINT(bugprone-branch-clone)
-        else if (aIsNegative or bIsNegative)
-            resultIsNegative = true;
-        else
-            resultIsNegative = false;
 
         for (size_t indexB = 0; indexB < bStr.length(); indexB++)
         {

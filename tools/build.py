@@ -26,9 +26,9 @@ This script is used to build the project in case CMake is not available. No depe
 
 import logging
 
-from building.directories import create_build_dirs
-from building.paths import BUILD_DIR
-from building.project import BuildSteppable
+from lib.paths import BUILD_DIR
+from tools.building.directories import create_build_dirs
+from tools.building.project import BuildSteppable
 
 logger = logging.getLogger(__name__)
 

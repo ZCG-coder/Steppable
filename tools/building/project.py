@@ -35,27 +35,12 @@ from multiprocessing.dummy import Pool
 from pathlib import Path
 from typing import List, Tuple
 
-from building.compiler_detection import detect_cxx_compiler
-from building.directories import (
-    LINUX,
-    MACOSX,
-    WINDOWS,
-    create_dir,
-    is_updated,
-    make_output_name,
-)
-from building.printing import blue, bold, erase_line, green, red, reset
-from building.paths import (
-    BIN_DIR,
-    LIB_DIR,
-    OBJ_DIR,
-    PROJECT_PATH,
-    SRC_DIR,
-    STATIC,
-    SHARED,
-    EXECUTABLE,
-    TESTS_DIR,
-)
+from lib.constants import LINUX, MACOSX
+from lib.paths import BIN_DIR, LIB_DIR, OBJ_DIR, PROJECT_PATH, SRC_DIR, TESTS_DIR
+from lib.printing import blue, bold, erase_line, green, red, reset
+from tools.building.compiler_detection import detect_cxx_compiler
+from tools.building.constants import EXECUTABLE, SHARED, STATIC
+from tools.building.directories import WINDOWS, create_dir, is_updated, make_output_name
 
 logger = logging.getLogger(__name__)
 

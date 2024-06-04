@@ -23,7 +23,6 @@
 #include "util.hpp"
 
 #include <cstddef>
-#include <map>
 
 #ifdef WINDOWS
     #undef min
@@ -200,7 +199,17 @@ namespace steppable::__internals::numUtils
         if (string == "0")
             return "0";
         auto out = string;
-        out.erase(0, std::min(out.find_first_not_of('0'), out.size() - 1));
+        bool negative = false;
+        if (out.front() == '-')
+        {
+            negative = true;
+            out.erase(0, 1);
+        }
+        while (out.front() == '0')
+            out.erase(0, 1);
+
+        if (negative)
+            out.insert(0, 1, '-');
         return out;
     }
 
@@ -257,18 +266,20 @@ namespace steppable::__internals::numUtils
 
     bool isDecimal(const std::string& number) { return not isInteger(number); }
 
-    bool isPowerOfTen(const std::string& number)
+    bool isPowerOfTen(const std::string& _number)
     {
+        auto number = _number;
+        if (number.front() == '-')
+            number = number.substr(1, number.length() - 1); // Remove negative sign as it does nothing here.
+        if (isDecimal(number))
+            return not std::ranges::any_of(number, [](const auto& c) { return c != '0' and c != '.' and c != '1'; });
         if (number == "1")
             return true; // 1 is a power of 10.
         if (number.front() != '1')
             return false; // The number must start with 1.
 
-        // NOLINTNEXTLINE(readability-use-anyofallof)
-        for (const char c : number.substr(1, number.length()))
-            if (c != '0' and c != '.')
-                return false; // The rest of the number must be zeros or decimal points.
-        return true;
+        number = number.substr(1, number.length() - 1);
+        return not std::ranges::any_of(number, [](const auto& c) { return c != '0' and c != '.'; });
     }
 } // namespace steppable::__internals::numUtils
 

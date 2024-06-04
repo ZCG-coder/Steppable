@@ -64,10 +64,13 @@ namespace steppable::__internals::numUtils
             return "0";
         if (number.find('.') == std::string::npos)
             return number;
+        auto splitNumberResult = splitNumber(number, "0", true, true, false, false);
+
         // Round off the number
-        auto splitNumberResult = splitNumber(number, "0", true, true, false, false).splitNumberArray;
-        auto integer = splitNumberResult[0];
-        auto decimal = splitNumberResult[1];
+        auto splitNumberArray = splitNumberResult.splitNumberArray;
+        auto integer = splitNumberArray[0];
+        auto decimal = splitNumberArray[1];
+        bool isNegative = splitNumberResult.aIsNegative;
 
         // Preserve one digit after the rounded digit
         decimal = decimal.substr(0, digits + 1);
@@ -102,7 +105,8 @@ namespace steppable::__internals::numUtils
         }
         std::ranges::reverse(newDecimal.begin(), newDecimal.end());
         decimal = newDecimal.substr(0, digits);
-        // decimal = newDecimal;
+        if (isNegative)
+            integer = '-' + integer;
         if (decimal.empty() and digits > 0)
             return integer + "." + std::string(digits, '0');
         if (decimal.empty())
@@ -120,9 +124,10 @@ namespace steppable::__internals::numUtils
         // Is the number an integer?
         if (isInteger(number))
             number += ".0";
-        auto splitNumberResult = splitNumber(number, "0", false, false, true, false).splitNumberArray;
-        auto integer = splitNumberResult[0];
-        auto decimal = splitNumberResult[1];
+        auto splitNumberResult = splitNumber(number, "0", false, false, true, false);
+        auto splitNumberArray = splitNumberResult.splitNumberArray;
+        auto integer = splitNumberArray[0];
+        auto decimal = splitNumberArray[1];
         auto repetitions = std::abs(places);
 
         // Move decimal places to the right
@@ -151,6 +156,6 @@ namespace steppable::__internals::numUtils
         }
 
         auto result = integer + "." + decimal;
-        return standardizeNumber(result);
+        return standardizeNumber(removeLeadingZeros(result));
     }
 } // namespace steppable::__internals::numUtils

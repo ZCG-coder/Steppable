@@ -20,10 +20,11 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from random_test_base import RandomTest
+"""
+This module contains the constants that are used in building the project.
+"""
 
-from lib.paths import PROJECT_PATH
 
-TOOL_PATH = PROJECT_PATH / "build" / "bin" / "division"
-r = RandomTest(TOOL_PATH.as_posix(), expression="{} / {}")
-r.random_test()
+STATIC = 0
+SHARED = 1
+EXECUTABLE = 2

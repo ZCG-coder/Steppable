@@ -72,7 +72,7 @@ def get_compile_commands() -> Path:
 
 
 def patch():
-    """Remove the NO_MAIN definition in compile_commands.json"""
+    """Remove the NO_MAIN definition in compile_commands.json."""
 
     file = get_compile_commands()
     with open(file) as f:
@@ -82,6 +82,8 @@ def patch():
     for obj in objs:
         command: str = obj["command"]
         command = re.sub(NO_MAIN_PATTERN, " ", command)
+
+        # Fix the SDK issue on updating macOS
         command = re.sub(
             I_SYS_ROOT_PATTERN,
             " /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk ",

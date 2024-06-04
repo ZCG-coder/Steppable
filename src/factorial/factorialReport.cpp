@@ -20,49 +20,29 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "fraction.hpp"
-#include "output.hpp"
-#include "testing.hpp"
-#include "util.hpp"
+#include "factorialReport.hpp"
 
-#include <iomanip>
-#include <iostream>
+#include "fn/basicArithm.hpp"
+#include "symbols.hpp"
 
-TEST_START()
+#include <sstream>
+#include <string>
 
-using namespace steppable;
+using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::symbols;
 
-SECTION(Fraction Add)
-_.assertIsEqual((Fraction("13122", "54251") + Fraction("22451", "3423")).present(), "1262905807/185701173");
-_.assertIsEqual((Fraction("22451", "3423") + Fraction("13122", "54251")).present(), "1262905807/185701173");
-SECTION_END()
+std::string reportFactorial(const std::string& number, const std::string& result, int steps)
+{
+    if (steps == 0)
+        return result;
 
-SECTION(Fraction Subtract)
-_.assertIsEqual((Fraction("13122", "54251") - Fraction("22451", "3423")).present(), "-1173072595/185701173");
-_.assertIsEqual((Fraction("22451", "3423") - Fraction("13122", "54251")).present(), "1173072595/185701173");
-SECTION_END()
+    // In this case, steps == 2 is equivalent to steps == 1.
+    std::stringstream ss;
+    loop(number, [&](const auto& item) { ss << add(item, "1", 0) << " " << MULTIPLY << " "; });
+    auto out = ss.str();
 
-SECTION(Fraction Multiply)
-_.assertIsEqual((Fraction("13122", "54251") * Fraction("22451", "3423")).present(), "98200674/61900391");
-_.assertIsEqual((Fraction("22451", "3423") * Fraction("13122", "54251")).present(), "98200674/61900391");
-SECTION_END()
+    out.erase(out.end() - 3, out.end()); // Remove the last " * "
+    out += " = " + result;
 
-SECTION(Fraction Division)
-_.assertIsEqual((Fraction("13122", "54251") / Fraction("22451", "3423")).present(), "44916606/1217989201");
-_.assertIsEqual((Fraction("22451", "3423") / Fraction("13122", "54251")).present(), "1217989201/44916606");
-SECTION_END()
-
-SECTION(Fraction from Number)
-_.assertIsEqual(Fraction("0.25").present(), "1/4");
-_.assertIsEqual(Fraction("0.5").present(), "1/2");
-_.assertIsEqual(Fraction(Number("0.25")).present(), "1/4");
-SECTION_END()
-
-SECTION(Reciprocal)
-auto fraction = Fraction("1", "4");
-fraction.reciprocal();
-_.assertIsEqual(fraction.present(), "4/1");
-SECTION_END()
-
-TEST_END()
+    return out;
+}

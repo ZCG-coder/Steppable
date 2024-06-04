@@ -20,10 +20,22 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from random_test_base import RandomTest
+"""
+This module contains the paths that are used in the project.
+"""
 
-from lib.paths import PROJECT_PATH
+from pathlib import Path
 
-TOOL_PATH = PROJECT_PATH / "build" / "bin" / "division"
-r = RandomTest(TOOL_PATH.as_posix(), expression="{} / {}")
-r.random_test()
+# section Project paths
+PROJECT = "Steppable"
+
+PROJECT_PATH = Path(__file__).parent.parent
+SRC_DIR = PROJECT_PATH / "src"
+TESTS_DIR = PROJECT_PATH / "tests"
+INCLUDE_DIR = PROJECT_PATH / "include"
+
+BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
+OBJ_DIR = BUILD_DIR / "obj.temp"
+BIN_DIR = BUILD_DIR / "bin"
+LIB_DIR = BUILD_DIR / "lib"
+# endsection

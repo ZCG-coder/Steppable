@@ -24,6 +24,8 @@ import datetime
 import sys
 from pathlib import Path
 
+from lib.paths import PROJECT_PATH, SRC_DIR, TESTS_DIR
+
 
 class _Getch:
     """Gets a single character from standard input.  Does not echo to the
@@ -44,13 +46,14 @@ class _Getch:
 
 class _GetchUnix:
     def __init__(self):
-        import tty
+        import tty  # pyright: ignore
 
     def __call__(self) -> str:
         import termios
         import tty
 
         fd = sys.stdin.fileno()
+        error = False
         try:
             old_settings = termios.tcgetattr(fd)
             tty.setraw(sys.stdin.fileno())
@@ -61,18 +64,20 @@ class _GetchUnix:
             error = True
         finally:
             if not error:
-                termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+                termios.tcsetattr(
+                    fd, termios.TCSADRAIN, old_settings  # pyright: ignore
+                )
         return ch
 
 
 class _GetchWindows:
     def __init__(self):
-        import msvcrt
+        import msvcrt  # pyright: ignore
 
     def __call__(self) -> str:
         import msvcrt
 
-        return msvcrt.getch()
+        return msvcrt.getch()  # pyright: ignore
 
 
 getch = _Getch()
@@ -97,7 +102,7 @@ Thank you for contributing to this project! This part documents how you may cont
 1. Naming Conventions for components
 ------------------------------------
 Due to the problems of CMake with handling spaces, the names of components cannot include a space. Also, it cannot be a
-restricted character in any operating system, for example, * " / \ < > : | ? on Windows. The names should be in the
+restricted character in any operating system, for example, * " / \\ < > : | ? on Windows. The names should be in the
 camelCase format.
 
 Be descriptive with the name, and try to include similar functions in a single component. For example, instead of using
@@ -137,10 +142,6 @@ raise any concers on contributing, using and more there.
 """,
 ]
 
-ROOT_DIR = Path(__file__).parent.parent
-SRC_PATH = ROOT_DIR / "src"
-TESTS_PATH = ROOT_DIR / "tests"
-
 BRACE = "{"
 END_BRACE = "}"
 PATCH_COMMENT = "# NEW_COMPONENT: PATCH"
@@ -179,7 +180,7 @@ def validate_name(name: str) -> bool:
 
 
 def make_dir(name: str, date: str, author: str) -> None:
-    path: Path = SRC_PATH / name
+    path: Path = SRC_DIR / name
 
     if not path.is_dir():
         path.mkdir(exist_ok=False)
@@ -317,7 +318,7 @@ std::string report{name.capitalize()}();
         )
     print(f"- Added {name}Report.hpp")
 
-    with open(TESTS_PATH / f"test{name.capitalize()}.cpp", "w") as f:
+    with open(TESTS_DIR / f"test{name.capitalize()}.cpp", "w") as f:
         f.write(
             """\
 /**************************************************************************************************
@@ -360,21 +361,21 @@ TEST_END()
 
 
 def patch_cmakelists(name: str) -> None:
-    with open(ROOT_DIR / "CMakeLists.txt") as f:
+    with open(PROJECT_PATH / "CMakeLists.txt") as f:
         contents = f.read()
 
     pos = contents.find(PATCH_COMMENT)
     contents = contents[: pos - 2] + f" {name}" + contents[pos - 2 :]
-    with open(ROOT_DIR / "CMakeLists.txt", "w") as f:
+    with open(PROJECT_PATH / "CMakeLists.txt", "w") as f:
         f.write(contents)
         print(f"- Added {name} to CMakeLists.txt.")
 
 
 def ordinal(n: int) -> str:
     """
-    Get the ordinal numeral for a given number n
+    Get the ordinal numeral for a given number n.
     """
-    return f"{n:d}{'tsnrhtdd'[(n//10%10!=1)*(n%10<4)*n%10::4]}"
+    return f"{n:d}{'tsnrhtdd'[(n // 10 % 10 != 1) * (n % 10 < 4) * n % 10::4]}"
 
 
 today = datetime.date.today()
