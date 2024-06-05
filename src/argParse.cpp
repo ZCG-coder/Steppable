@@ -77,6 +77,9 @@ namespace steppable::__internals::utils
             for (const auto& [posArgName, posArgDescription] : posArgDescriptions)
             {
                 std::cout << colors::brightGreen << formats::bold << '<' << posArgName << '>' << reset;
+                if (posArgIsNumber[std::distance(posArgDescriptions.begin(), posArgDescriptions.find(posArgName))])
+                    std::cout << " (*)";
+
                 std::cout << ": " << posArgDescription << '\n';
             }
             std::cout << reset << '\n';
@@ -111,6 +114,10 @@ namespace steppable::__internals::utils
             std::cerr << '\n';
             output::error("ProgramArgs::printUsage", std::string(reason));
         }
+
+        // Print the footnote only if there are positional arguments that require a number
+        if (std::ranges::any_of(posArgIsNumber, [](const bool isNumber) { return isNumber; }))
+            std::cout << "(*) Requires a number\n";
         programSafeExit(-1);
     }
 
