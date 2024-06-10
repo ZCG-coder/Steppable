@@ -86,10 +86,10 @@ namespace steppable::__internals::arithmetic
         }
         // otherwise use recursion
         // double C = cos(x / 4);
-        auto C = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals * 2);
-        auto C2 = roundOff(multiply(C, C, 0), static_cast<long>(decimals) * 2);
+        auto result = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals * 2);
+        auto result2 = roundOff(multiply(result, result, 0), static_cast<long>(decimals) * 2);
         // return 8 * C2 * (C2 - 1) + 1;
-        return standardizeNumber(add(multiply("8", multiply(C2, subtract(C2, "1", 0), 0), 0), "1", 0));
+        return standardizeNumber(add(multiply("8", multiply(result2, subtract(result2, "1", 0), 0), 0), "1", 0));
     }
 
     std::string cos(const std::string& x, const int decimals, const int mode)
@@ -171,17 +171,37 @@ namespace steppable::__internals::arithmetic
         {
         case 0:
         {
-            result = divide(sin(x, decimals + 1), cos(x, decimals + 1), 0, decimals);
+            auto cosX = cos(x, decimals + 1);
+            if (isZeroString(cosX))
+            {
+                error("trig::tan"s, "Tangent is undefined here."s);
+                return "Infinity";
+            }
+            result = divide(sin(x, decimals + 1), cosX, 0, decimals);
             break;
         }
         case 1:
         {
-            result = divide(sin(degToRad(x), decimals + 1), cos(degToRad(x), decimals + 1), 0, decimals);
+            auto xRad = degToRad(x);
+            auto cosX = cos(xRad, decimals + 1);
+            if (isZeroString(cosX))
+            {
+                error("trig::tan"s, "Tangent is undefined here."s);
+                return "Infinity";
+            }
+            result = divide(sin(xRad, decimals + 1), cosX, 0, decimals);
             break;
         }
         case 2:
         {
-            result = divide(sin(gradToRad(x), decimals + 1), cos(gradToRad(x), decimals + 1), 0, decimals);
+            auto xRad = gradToRad(x);
+            auto cosX = cos(xRad, decimals + 1);
+            if (isZeroString(cosX))
+            {
+                error("trig::tan"s, "Tangent is undefined here."s);
+                return "Infinity";
+            }
+            result = divide(sin(xRad, decimals + 1), cosX, 0, decimals);
             break;
         }
         default:
