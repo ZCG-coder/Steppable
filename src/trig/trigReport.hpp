@@ -22,7 +22,7 @@
 
 /**
  * @file trigReport.hpp
- * @brief Desciption
+ * @brief Not implemented.
  *
  * @author Andy Zhang
  * @date 5th June 2024

@@ -22,7 +22,7 @@
 
 /**
  * @file trig.cpp
- * @brief Desciption
+ * @brief This file contains the implementation of trigonometric functions.
  *
  * @author Andy Zhang
  * @date 5th June 2024
@@ -87,12 +87,12 @@ namespace steppable::__internals::arithmetic
         // otherwise use recursion
         // double C = cos(x / 4);
         auto C = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals * 2);
-        auto C2 = roundOff(multiply(C, C, 0), decimals * 2);
+        auto C2 = roundOff(multiply(C, C, 0), static_cast<long>(decimals) * 2);
         // return 8 * C2 * (C2 - 1) + 1;
         return standardizeNumber(add(multiply("8", multiply(C2, subtract(C2, "1", 0), 0), 0), "1", 0));
     }
 
-    std::string cos(const std::string& x, const int decimals, const int mode = 0)
+    std::string cos(const std::string& x, const int decimals, const int mode)
     {
         // Mode Options:
         // 0: Radians  (default)
@@ -126,7 +126,7 @@ namespace steppable::__internals::arithmetic
         return roundOff(result, decimals);
     }
 
-    std::string sin(const std::string& x, const int decimals, const int mode = 0)
+    std::string sin(const std::string& x, const int decimals, const int mode)
     {
         // Mode Options:
         // 0: Radians  (default)
@@ -160,7 +160,7 @@ namespace steppable::__internals::arithmetic
         return roundOff(result, decimals);
     }
 
-    std::string tan(const std::string& x, const int decimals, const int mode = 0)
+    std::string tan(const std::string& x, const int decimals, const int mode)
     {
         // Mode Options:
         // 0: Radians  (default)
@@ -203,9 +203,8 @@ int main(int _argc, const char* _argv[])
     ProgramArgs program(_argc, _argv);
     program.addPosArg('c', "Command", false);
     program.addPosArg('n', "Number", false);
-    program.addKeywordArg("mode", 0, "Amount of steps while taking the absolute value. 0 = No steps, 2 = All steps.");
-    program.addKeywordArg(
-        "decimals", 5, "Amount of decimals while taking the absolute value. 0 = No steps, 2 = All steps.");
+    program.addKeywordArg("mode", 0, "The mode to calculate in. 0 = radians (default), 1 = degrees, 2 = gradians.");
+    program.addKeywordArg("decimals", 5, "Amount of decimals while calculating.");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 

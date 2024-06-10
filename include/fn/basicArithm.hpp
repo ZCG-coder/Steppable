@@ -223,6 +223,55 @@ namespace steppable::__internals::arithmetic
     std::string factorial(const std::string& _number, int steps = 2);
 
     /**
+     * @brief Converts degrees to radians.
+     *
+     * @param _deg The angle expressed in degrees.
+     * @return The equivalent angle in radians.
+     */
+    std::string degToRad(const std::string& _deg);
+
+    /**
+     * @brief Converts gradians to radians.
+     *
+     * @param _grad The angle expressed in gradians.
+     * @return The equivalent angle in radians.
+     */
+    std::string gradToRad(const std::string& _grad);
+
+    /**
+     * @brief Calculates the cosine of a number.
+     *
+     * @param x The number to calculate the cosine of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the cosine in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The cosine of the number.
+     */
+    std::string cos(const std::string& x, int decimals, int mode = 0);
+
+    /**
+     * @brief Calculates the sine of a number.
+     *
+     * @param x The number to calculate the sine of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the sine in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The sine of the number.
+     */
+    std::string sin(const std::string& x, int decimals, int mode = 0);
+
+    /**
+     * @brief Calculates the tangent of a number.
+     *
+     * @param x The number to calculate the tangent of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the tangent in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The tangent of the number.
+     */
+    std::string tan(const std::string& x, int decimals, int mode = 0);
+
+    /**
      * @brief Executes a given predicate function a specified number of times.
      *
      * @param[in] times The number of times to execute the predicate function.
