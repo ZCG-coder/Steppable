@@ -29,9 +29,11 @@
  */
 
 #include "trigReport.hpp"
+
 #include <string>
 
 std::string reportTrig()
 {
-    // Your code here...
+    // Intentionally not implemented
+    return "";
 }
