@@ -171,17 +171,17 @@ namespace steppable::__internals::arithmetic
         {
         case 0:
         {
-            result = divide(sin(x, decimals + 1), cos(x, decimals + 1), decimals);
+            result = divide(sin(x, decimals + 1), cos(x, decimals + 1), 0, decimals);
             break;
         }
         case 1:
         {
-            result = divide(sin(degToRad(x), decimals + 1), cos(degToRad(x), decimals + 1), decimals);
+            result = divide(sin(degToRad(x), decimals + 1), cos(degToRad(x), decimals + 1), 0, decimals);
             break;
         }
         case 2:
         {
-            result = divide(sin(gradToRad(x), decimals + 1), cos(gradToRad(x), decimals + 1), decimals);
+            result = divide(sin(gradToRad(x), decimals + 1), cos(gradToRad(x), decimals + 1), 0, decimals);
             break;
         }
         default:
