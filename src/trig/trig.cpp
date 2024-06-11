@@ -47,7 +47,7 @@ namespace steppable::__internals::arithmetic
     std::string degToRad(const std::string& _deg)
     {
         // rad = deg * (pi / 180)
-        auto deg = divideWithQuotient(_deg, "180").remainder;
+        auto deg = divideWithQuotient(_deg, "360").remainder;
         auto rad = multiply(deg, constants::PI_OVER_180, 0);
         return rad;
     }
@@ -55,9 +55,32 @@ namespace steppable::__internals::arithmetic
     std::string gradToRad(const std::string& _grad)
     {
         // rad = grad * (pi / 200)
-        auto grad = divideWithQuotient(_grad, "200").remainder;
+        auto grad = divideWithQuotient(_grad, "400").remainder;
         auto rad = multiply(grad, constants::PI_OVER_200, 0);
         return rad;
+    }
+
+    std::string radToDeg(const std::string& _rad)
+    {
+        // deg = rad * (180 / pi)
+        auto rad = divideWithQuotient(_rad, static_cast<std::string>(constants::TWO_PI)).remainder;
+        auto deg = divide(rad, constants::PI_OVER_180, 0);
+        return deg;
+    }
+
+    std::string radToGrad(const std::string& _rad)
+    {
+        // grad = rad * (200 / pi)
+        auto rad = divideWithQuotient(_rad, static_cast<std::string>(constants::TWO_PI)).remainder;
+        auto grad = divide(rad, constants::PI_OVER_200, 0);
+        return grad;
+    }
+
+    std::string gradToDeg(const std::string& _grad)
+    {
+        // deg = grad * (9 / 10)
+        auto deg = divideWithQuotient(_grad, "400").remainder;
+        return deg;
     }
 
     std::string _cos(const std::string& x, const int decimals)
@@ -103,7 +126,7 @@ namespace steppable::__internals::arithmetic
         {
         case 0:
         {
-            result = _cos(x, decimals);
+            result = _cos(divideWithQuotient(x, static_cast<std::string>(constants::TWO_PI)).remainder, decimals);
             break;
         }
         case 1:
@@ -137,7 +160,10 @@ namespace steppable::__internals::arithmetic
         {
         case 0:
         {
-            result = cos(subtract(x, constants::PI_OVER_2, 0), decimals);
+            result = cos(subtract(divideWithQuotient(x, static_cast<std::string>(constants::TWO_PI)).remainder,
+                                  constants::PI_OVER_2,
+                                  0),
+                         decimals);
             break;
         }
         case 1:
@@ -171,7 +197,7 @@ namespace steppable::__internals::arithmetic
         {
         case 0:
         {
-            auto cosX = cos(x, decimals + 1);
+            auto cosX = cos(divideWithQuotient(x, static_cast<std::string>(constants::TWO_PI)).remainder, decimals + 1);
             if (isZeroString(cosX))
             {
                 error("trig::tan"s, "Tangent is undefined here."s);
@@ -214,6 +240,88 @@ namespace steppable::__internals::arithmetic
         return roundOff(result, decimals);
     }
 
+    std::string csc(const std::string& x, const int decimals, const int mode)
+    {
+        auto sinX = sin(x, decimals + 1, mode);
+        if (isZeroString(sinX))
+        {
+            error("trig::csc"s, "Cosecant is undefined here."s);
+            return "Infinity";
+        }
+        return divide("1", sinX, 0, decimals);
+    }
+
+    std::string sec(const std::string& x, const int decimals, const int mode)
+    {
+        auto cosX = cos(x, decimals + 1, mode);
+        if (isZeroString(cosX))
+        {
+            error("trig::sec"s, "Secant is undefined here."s);
+            return "Infinity";
+        }
+        return divide("1", cosX, 0, decimals);
+    }
+
+    std::string cot(const std::string& x, const int decimals, const int mode)
+    {
+        auto tanX = tan(x, decimals + 1, mode);
+        if (isZeroString(tanX))
+        {
+            error("trig::cot"s, "Cotangent is undefined here."s);
+            return "Infinity";
+        }
+        return divide("1", tanX, 0, decimals);
+    }
+
+    std::string atan(const std::string& _x, const int decimals, const int mode)
+    {
+        auto x = _x;
+        bool isReduced = false;
+        if (compare(abs(x, 0), "1", 0) != "0")
+        {
+            isReduced = true;
+            // Reduce x to a small number
+            x = divide("1", x, 0, decimals * 2);
+        }
+        // Otherwise, use Padé series.
+        // (https://journalofinequalitiesandapplications.springeropen.com/articles/10.1186/s13660-017-1310-6/tables/1)
+        //        3
+        //     55x  + 105x
+        // ------------------ ~= arctan(x)
+        //    4      2
+        //  9x  + 90x  + 105
+        auto x2 = power(x, "2", 0);
+        auto x3 = multiply(x2, x, 0); // Use multiply to reduce the number of operations.
+        auto x4 = multiply(x3, x, 0);
+        auto numerator = add(multiply("55", x3, 0), multiply("105", x, 0), 0);
+        auto denominator = add(add(x4, multiply("90", x2, 0), 0), "105", 0);
+        auto result = standardizeNumber(divide(numerator, denominator, 0, decimals * 2));
+
+        if (isReduced)
+        {
+            // If x was reduced, use the identity
+            // arctan(1/x) = pi/2 - arctan(x)
+            result = subtract(constants::PI_OVER_2, result, 0);
+        }
+        result = roundOff(result, decimals);
+
+        // Convert the result as needed.
+        switch (mode)
+        {
+        case 1:
+            result = radToDeg(result);
+            break;
+        case 2:
+            result = radToGrad(result);
+            break;
+        default:
+            break;
+        }
+
+        return result;
+    }
+
+    // std::string asin(const std::string& x, const int decimals, const int mode) {}
 } // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
@@ -242,6 +350,14 @@ int main(int _argc, const char* _argv[])
         std::cout << cos(arg, decimals, mode) << '\n';
     else if (command == "tan")
         std::cout << tan(arg, decimals, mode) << '\n';
+    else if (command == "csc")
+        std::cout << csc(arg, decimals, mode) << '\n';
+    else if (command == "sec")
+        std::cout << sec(arg, decimals, mode) << '\n';
+    else if (command == "cot")
+        std::cout << cot(arg, decimals, mode) << '\n';
+    else if (command == "atan")
+        std::cout << atan(arg, decimals, mode) << '\n';
     else
         error("trig::main", "Invalid command."s);
 }

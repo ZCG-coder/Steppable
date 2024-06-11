@@ -272,6 +272,50 @@ namespace steppable::__internals::arithmetic
     std::string tan(const std::string& x, int decimals, int mode = 0);
 
     /**
+     * @brief Calculates the secant of a number.
+     *
+     * @param x The number to calculate the secant of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the secant in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The secant of the number.
+     */
+    std::string sec(const std::string& x, int decimals, int mode = 0);
+
+    /**
+     * @brief Calculates the cosecant of a number.
+     *
+     * @param x The number to calculate the cosecant of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the cosecant in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The cosecant of the number.
+     */
+    std::string csc(const std::string& x, int decimals, int mode = 0);
+
+    /**
+     * @brief Calculates the cotangent of a number.
+     *
+     * @param x The number to calculate the cotangent of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the cotangent in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The cotangent of the number.
+     */
+    std::string cot(const std::string& x, int decimals, int mode = 0);
+
+    /**
+     * @brief Calculates the arc tangent of a number.
+     *
+     * @param x The number to calculate the arc tangent of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the arc tangent in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The arc tangent of the number.
+     */
+    std::string atan(const std::string& x, int decimals, int mode = 0);
+
+    /**
      * @brief Executes a given predicate function a specified number of times.
      *
      * @param[in] times The number of times to execute the predicate function.
