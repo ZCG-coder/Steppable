@@ -171,9 +171,14 @@ namespace steppable::__internals::arithmetic
 
     std::string root(const std::string& _number, const std::string& base, const size_t _decimals)
     {
-        auto result = rootSurd(_number, base);
-        auto rootResult = _root(result.radicand, base, _decimals);
-        return multiply(rootResult, result.multiplier, 0);
+        if (isInteger(_number))
+        {
+            auto result = rootSurd(_number, base);
+            auto rootResult = _root(result.radicand, base, _decimals);
+            return multiply(rootResult, result.multiplier, 0);
+        }
+
+        return _root(_number, base, _decimals);
     }
 } // namespace steppable::__internals::arithmetic
 

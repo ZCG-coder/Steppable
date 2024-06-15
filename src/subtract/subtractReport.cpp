@@ -114,8 +114,9 @@ std::string reportSubtract(const std::string& aInteger,
     if (diffDigits.empty())
         diffDigits = { 0 };
 
+    std::stringstream ansStream;
     if (resultIsNegative)
-        ss << '-';
+        ansStream << '-';
     for (int outputDigit : diffDigits)
     {
         char outputChar = static_cast<char>(outputDigit + '0');
@@ -123,8 +124,9 @@ std::string reportSubtract(const std::string& aInteger,
             outputChar = '.';
         else if (outputDigit == -2)
             outputChar = '0';
-        ss << outputChar; // No spaces
+        ansStream << outputChar; // No spaces
     }
 
+    ss << standardizeNumber(ansStream.str());
     return std::move(ss.str());
 }

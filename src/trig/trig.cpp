@@ -35,6 +35,7 @@
 #include "trigReport.hpp"
 #include "util.hpp"
 
+#include <functional>
 #include <string>
 
 using namespace std::literals;
@@ -321,7 +322,65 @@ namespace steppable::__internals::arithmetic
         return result;
     }
 
-    // std::string asin(const std::string& x, const int decimals, const int mode) {}
+    std::string asin(const std::string& x, const int decimals, const int mode)
+    {
+        if (compare(abs(x, 0), "1", 0) != "0")
+            error("trig::asin"s, "Arc sine is not defined here."s);
+
+        auto x2 = power(x, "2", 0);
+        auto x3 = multiply(x2, x, 0);
+        auto x5 = multiply(x3, x2, 0);
+        auto x7 = multiply(x5, x2, 0);
+        std::string result;
+
+        // For x <= 0.5, use Taylor series.
+        //                   3      5      7
+        //                  x     3x     5x
+        // arcsin(x) = x + --- + ---- + -----
+        //                  6     40     112
+        if (compare(abs(x, 0), "0.5", 0) != "1")
+        {
+            result = add(x, divide(x3, "6", 0), 0);
+            result = add(result, divide(multiply(x5, "3", 0), "40", 0), 0);
+            result = add(result, divide(multiply(x7, "5", 0), "112", 0), 0);
+            return roundOff(result, decimals);
+        }
+
+        // Othman, S. B.; Bagul, Y. J. An Innovative Method for Approximating Arcsine Function. Preprints 2022,
+        // 2022070388. https://doi.org/10.20944/preprints202207.0388.v1
+        //
+        //                                  /-----|     /-----|           5        3
+        // arcsin(x) = 2 * 0.510774109 * (\/ 1 + x  − \/ 1 − x ) + (0.239x − 0.138x + 0.005x)
+        //
+        //                              /-----|     /-----|           5        3
+        //           = 1.021548218 * (\/ 1 + x  − \/ 1 − x ) + (0.239x − 0.138x + 0.005x)
+
+        auto onePlusX = add("1", x, 0);
+        auto oneMinusX = subtract("1", x, 0);
+        auto sqrtOnePlusX = root(onePlusX, "2", static_cast<long>(decimals) * 2);
+        auto sqrtOneMinusX = root(oneMinusX, "2", static_cast<long>(decimals) * 2);
+
+        result = multiply("1.021548218", subtract(sqrtOnePlusX, sqrtOneMinusX, 0), 0);
+        result = add(result,
+                     add(multiply("0.239", x5, 0), subtract(multiply("0.138", x3, 0), multiply("0.005", x, 0), 0), 0),
+                     0);
+
+        switch (mode)
+        {
+        case 1:
+            result = radToDeg(result);
+            break;
+        case 2:
+            result = radToGrad(result);
+            break;
+        default:
+            break;
+        }
+
+        return result;
+    }
+
+    // std::string acos(const std::string& x, const int decimals, const int mode) {}
 } // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
@@ -342,23 +401,32 @@ int main(int _argc, const char* _argv[])
     const auto& command = program.getPosArg(0);
     const auto& arg = static_cast<std::string>(program.getPosArg(1));
 
-    using namespace steppable::__internals::arithmetic;
+    using namespace steppable::__internals;
+
+    std::function<std::string(const std::string& x, const int decimals, const int mode)> function;
 
     if (command == "sin")
-        std::cout << sin(arg, decimals, mode) << '\n';
+        function = arithmetic::sin;
     else if (command == "cos")
-        std::cout << cos(arg, decimals, mode) << '\n';
+        function = arithmetic::cos;
     else if (command == "tan")
-        std::cout << tan(arg, decimals, mode) << '\n';
+        function = arithmetic::tan;
     else if (command == "csc")
-        std::cout << csc(arg, decimals, mode) << '\n';
+        function = arithmetic::csc;
     else if (command == "sec")
-        std::cout << sec(arg, decimals, mode) << '\n';
+        function = arithmetic::sec;
     else if (command == "cot")
-        std::cout << cot(arg, decimals, mode) << '\n';
+        function = arithmetic::cot;
     else if (command == "atan")
-        std::cout << atan(arg, decimals, mode) << '\n';
+        function = arithmetic::atan;
+    else if (command == "asin")
+        function = arithmetic::asin;
+    else if (command == "acos")
+        function = arithmetic::acos;
     else
+    {
         error("trig::main", "Invalid command."s);
+        return EXIT_FAILURE;
+    }
 }
 #endif
