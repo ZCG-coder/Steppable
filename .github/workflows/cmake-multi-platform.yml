@@ -25,12 +25,12 @@ jobs:
             #
             # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
             matrix:
-                os: [ubuntu-latest, windows-latest, macos-12, macos-13, macos-14]
+                os: [ubuntu-latest, windows-2019, macos-12, macos-13, macos-14]
                 build_type: [Release]
                 c_compiler: [clang, cl]
                 python_version: ['3.10', '3.11', '3.12']
                 include:
-                    - os: windows-latest
+                    - os: windows-2019
                       c_compiler: cl
                       cpp_compiler: cl
                       cmake_extra_options: ''
@@ -54,7 +54,7 @@ jobs:
                       cpp_compiler: clang++
                       cmake_extra_options: '-GNinja'
                 exclude:
-                    - os: windows-latest
+                    - os: windows-2019
                       c_compiler: clang
                     - os: ubuntu-latest
                       c_compiler: cl

@@ -36,6 +36,7 @@
 #include "util.hpp"
 
 #include <functional>
+#include <iostream>
 #include <string>
 
 using namespace std::literals;
@@ -380,7 +381,59 @@ namespace steppable::__internals::arithmetic
         return result;
     }
 
-    // std::string acos(const std::string& x, const int decimals, const int mode) {}
+    std::string acos(const std::string& x, const int decimals, const int mode)
+    {
+        std::string circleAngle;
+        switch (mode)
+        {
+        case 1:
+            circleAngle = "180";
+            break;
+        case 2:
+            circleAngle = "200";
+            break;
+        default:
+            circleAngle = static_cast<std::string>(constants::PI);
+        }
+
+        //             pi
+        // acos(x) = ----- - asin(x)
+        //             2
+        return subtract(circleAngle, asin(x, decimals, mode), 0);
+    }
+
+    std::string asec(const std::string& x, const int decimals, const int mode)
+    {
+        if (compare(abs(x, 0), "1", 0) != "0")
+            error("trig::asec"s, "Arc secant is not defined here."s);
+
+        //                 1
+        // asec(x) = acos(---)
+        //                 x
+        return acos(divide("1", x, 0, decimals), decimals, mode);
+    }
+
+    std::string acsc(const std::string& x, const int decimals, const int mode)
+    {
+        if (compare(abs(x, 0), "1", 0) != "0")
+            error("trig::acsc"s, "Arc cosecant is not defined here."s);
+
+        //                 1
+        // acsc(x) = asin(---)
+        //                 x
+        return asin(divide("1", x, 0, decimals), decimals, mode);
+    }
+
+    std::string acot(const std::string& x, const int decimals, const int mode)
+    {
+        if (compare(abs(x, 0), "1", 0) != "0")
+            error("trig::acot"s, "Arc cotangent is not defined here."s);
+
+        //                 1
+        // acot(x) = atan(---)
+        //                 x
+        return atan(divide("1", x, 0, decimals), decimals, mode);
+    }
 } // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
@@ -405,28 +458,39 @@ int main(int _argc, const char* _argv[])
 
     std::function<std::string(const std::string& x, const int decimals, const int mode)> function;
 
+    // Basic trigonometric functions
     if (command == "sin")
         function = arithmetic::sin;
     else if (command == "cos")
         function = arithmetic::cos;
     else if (command == "tan")
         function = arithmetic::tan;
+    // Reciprocal trigonometric functions
     else if (command == "csc")
         function = arithmetic::csc;
     else if (command == "sec")
         function = arithmetic::sec;
     else if (command == "cot")
         function = arithmetic::cot;
+    // Inverse trigonometric functions
     else if (command == "atan")
         function = arithmetic::atan;
     else if (command == "asin")
         function = arithmetic::asin;
     else if (command == "acos")
         function = arithmetic::acos;
+    else if (command == "asec")
+        function = arithmetic::asec;
+    else if (command == "acsc")
+        function = arithmetic::acsc;
+    else if (command == "acot")
+        function = arithmetic::acot;
+    // Invalid command
     else
     {
         error("trig::main", "Invalid command."s);
         return EXIT_FAILURE;
     }
+    std::cout << function(arg, decimals, mode) << '\n';
 }
 #endif
