@@ -62,10 +62,6 @@ jobs:
                 cache: 'pip'
                 python-version: '3.12'
 
-            - name: Install dependencies
-              run: pip install .
-              shell: bash
-
             - name: Set reusable strings
               # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
               id: strings
@@ -84,6 +80,10 @@ jobs:
               run: |
                 brew install llvm ninja
                 echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
+
+            - name: Install dependencies
+              run: pip install .
+              shell: bash
 
             # Initializes the CodeQL tools for scanning.
             - name: Initialize CodeQL
