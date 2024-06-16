@@ -65,6 +65,26 @@ jobs:
             - name: Install dependencies
               run: pip install .
               shell: bash
+
+            - name: Set reusable strings
+              # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
+              id: strings
+              shell: bash
+              run: |
+                echo "build-output-dir=${{ github.workspace }}/cmake-build" >> "$GITHUB_OUTPUT"
+                echo "py-build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+                echo "CMAKE_C_COMPILER=clang" >> "$GITHUB_ENV"
+                echo "CMAKE_CXX_COMPILER=clang++" >> "$GITHUB_ENV"
+
+            - name: Set up Homebrew
+              id: set-up-homebrew
+              uses: Homebrew/actions/setup-homebrew@master
+
+            - name: Install LLVM
+              run: |
+                brew install llvm ninja
+                echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
+
             # Initializes the CodeQL tools for scanning.
             - name: Initialize CodeQL
               uses: github/codeql-action/init@v3

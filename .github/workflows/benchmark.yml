@@ -57,8 +57,6 @@ jobs:
               run: |
                 brew install llvm ninja
                 echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
-                echo "CMAKE_C_COMPILER=$(brew --prefix llvm)/bin/${{ matrix.c_compiler }}" >> "$GITHUB_ENV"
-                echo "CMAKE_CXX_COMPILER=$(brew --prefix llvm)/bin/${{ matrix.cpp_compiler }}" >> "$GITHUB_ENV"
 
             - name: Set up Python
               uses: actions/setup-python@v5
@@ -73,7 +71,14 @@ jobs:
             - name: Configure CMake
               # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
               # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-              run: cmake -B "${{github.workspace}}/build" -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") -DPYTHON_EXECUTABLE:FILEPATH=`which python` -DSTP_BUILD_COMPONENT_EXECUTABLE=True
+              run: >
+                cmake -B "${{github.workspace}}/build"
+                -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())")
+                -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))")
+                -DPYTHON_EXECUTABLE:FILEPATH=`which python`
+                -DSTP_BUILD_COMPONENT_EXECUTABLE=True
+                -DCMAKE_C_COMPILER="$(brew --prefix llvm)/bin/${{ matrix.c_compiler }}"
+                -DCMAKE_CXX_COMPILER="$(brew --prefix llvm)/bin/${{ matrix.cpp_compiler }}"
               shell: bash
 
             - name: CMake Build
