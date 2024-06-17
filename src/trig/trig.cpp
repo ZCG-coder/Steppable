@@ -65,17 +65,24 @@ namespace steppable::__internals::arithmetic
     std::string radToDeg(const std::string& _rad)
     {
         // deg = rad * (180 / pi)
-        auto rad = divideWithQuotient(_rad, static_cast<std::string>(constants::TWO_PI)).remainder;
+        auto rad = _rad;
+        rad = divideWithQuotient(rad, static_cast<std::string>(constants::TWO_PI)).remainder;
+        rad = standardizeNumber(rad);
         auto deg = divide(rad, constants::PI_OVER_180, 0);
-        return deg;
+        deg = standardizeNumber(deg);
+        deg = divideWithQuotient(deg, "90").remainder;
+        return standardizeNumber(deg);
     }
 
     std::string radToGrad(const std::string& _rad)
     {
         // grad = rad * (200 / pi)
         auto rad = divideWithQuotient(_rad, static_cast<std::string>(constants::TWO_PI)).remainder;
+        rad = standardizeNumber(rad);
         auto grad = divide(rad, constants::PI_OVER_200, 0);
-        return grad;
+        grad = standardizeNumber(grad);
+        grad = divideWithQuotient(grad, "100").remainder;
+        return standardizeNumber(grad);
     }
 
     std::string gradToDeg(const std::string& _grad)
@@ -393,23 +400,26 @@ namespace steppable::__internals::arithmetic
 
     std::string acos(const std::string& x, const int decimals, const int mode)
     {
+        if (compare(x, "1", 0) == "2")
+            return "0";
         std::string circleAngle;
         switch (mode)
         {
         case 1:
-            circleAngle = "180";
+            circleAngle = "90";
             break;
         case 2:
-            circleAngle = "200";
+            circleAngle = "100";
             break;
         default:
-            circleAngle = static_cast<std::string>(constants::PI);
+            circleAngle = static_cast<std::string>(constants::PI_OVER_2);
         }
 
         //             pi
         // acos(x) = ----- - asin(x)
         //             2
-        return subtract(circleAngle, asin(x, decimals, mode), 0);
+        auto result = subtract(circleAngle, asin(x, decimals, mode), 0);
+        return roundOff(result, decimals);
     }
 
     std::string asec(const std::string& x, const int decimals, const int mode)
