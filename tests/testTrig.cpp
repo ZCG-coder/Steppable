@@ -21,6 +21,7 @@
  **************************************************************************************************/
 
 #include "colors.hpp"
+#include "fn/basicArithm.hpp"
 #include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"
@@ -29,4 +30,24 @@
 #include <iostream>
 
 TEST_START()
+using namespace steppable::__internals::arithmetic;
+
+// We can just test the basics of the trigonometric functions, as the rest are based on them.
+SECTION(Test sine and cosine)
+_.assertIsEqual(sin("30", 2, 1), "0.50");
+_.assertIsEqual(cos("60", 2, 1), "0.50");
+SECTION_END()
+
+SECTION(Test tangent)
+_.assertIsEqual(tan("45", 2, 1), "1.00");
+// Zero check test
+_.assertIsEqual(tan("90", 2, 1), "Infinity");
+SECTION_END()
+
+SECTION(Test arc sine)
+_.assertIsEqual(asin("0.5", 2, 1), "30.00");
+// Zero check test
+_.assertIsEqual(asin("0", 2, 1), "0");
+SECTION_END()
+
 TEST_END()

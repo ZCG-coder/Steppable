@@ -325,13 +325,22 @@ namespace steppable::__internals::arithmetic
 
     std::string asin(const std::string& x, const int decimals, const int mode)
     {
-        if (compare(abs(x, 0), "1", 0) != "0")
+        if (compare(abs(x, 0), "1", 0) == "1")
+        {
             error("trig::asin"s, "Arc sine is not defined here."s);
+            return "Infinity";
+        }
+        if (compare(abs(x, 0), "0", 0) == "2")
+            return "0";
 
         auto x2 = power(x, "2", 0);
         auto x3 = multiply(x2, x, 0);
         auto x5 = multiply(x3, x2, 0);
         auto x7 = multiply(x5, x2, 0);
+        std::string onePlusX;
+        std::string oneMinusX;
+        std::string sqrtOnePlusX;
+        std::string sqrtOneMinusX;
         std::string result;
 
         // For x <= 0.5, use Taylor series.
@@ -344,7 +353,7 @@ namespace steppable::__internals::arithmetic
             result = add(x, divide(x3, "6", 0), 0);
             result = add(result, divide(multiply(x5, "3", 0), "40", 0), 0);
             result = add(result, divide(multiply(x7, "5", 0), "112", 0), 0);
-            return roundOff(result, decimals);
+            goto out; // NOLINT(cppcoreguidelines-avoid-goto)
         }
 
         // Othman, S. B.; Bagul, Y. J. An Innovative Method for Approximating Arcsine Function. Preprints 2022,
@@ -356,16 +365,17 @@ namespace steppable::__internals::arithmetic
         //                              /-----|     /-----|           5        3
         //           = 1.021548218 * (\/ 1 + x  − \/ 1 − x ) + (0.239x − 0.138x + 0.005x)
 
-        auto onePlusX = add("1", x, 0);
-        auto oneMinusX = subtract("1", x, 0);
-        auto sqrtOnePlusX = root(onePlusX, "2", static_cast<long>(decimals) * 2);
-        auto sqrtOneMinusX = root(oneMinusX, "2", static_cast<long>(decimals) * 2);
+        onePlusX = add("1", x, 0);
+        oneMinusX = subtract("1", x, 0);
+        sqrtOnePlusX = root(onePlusX, "2", static_cast<long>(decimals) * 2);
+        sqrtOneMinusX = root(oneMinusX, "2", static_cast<long>(decimals) * 2);
 
         result = multiply("1.021548218", subtract(sqrtOnePlusX, sqrtOneMinusX, 0), 0);
         result = add(result,
                      add(multiply("0.239", x5, 0), subtract(multiply("0.138", x3, 0), multiply("0.005", x, 0), 0), 0),
                      0);
 
+    out:
         switch (mode)
         {
         case 1:
@@ -378,7 +388,7 @@ namespace steppable::__internals::arithmetic
             break;
         }
 
-        return result;
+        return roundOff(result, decimals);
     }
 
     std::string acos(const std::string& x, const int decimals, const int mode)
@@ -404,8 +414,11 @@ namespace steppable::__internals::arithmetic
 
     std::string asec(const std::string& x, const int decimals, const int mode)
     {
-        if (compare(abs(x, 0), "1", 0) != "0")
+        if (compare(abs(x, 0), "1", 0) == "1")
+        {
             error("trig::asec"s, "Arc secant is not defined here."s);
+            return "Infinity";
+        }
 
         //                 1
         // asec(x) = acos(---)
@@ -416,7 +429,10 @@ namespace steppable::__internals::arithmetic
     std::string acsc(const std::string& x, const int decimals, const int mode)
     {
         if (compare(abs(x, 0), "1", 0) != "0")
+        {
             error("trig::acsc"s, "Arc cosecant is not defined here."s);
+            return "Infinity";
+        }
 
         //                 1
         // acsc(x) = asin(---)
@@ -427,7 +443,10 @@ namespace steppable::__internals::arithmetic
     std::string acot(const std::string& x, const int decimals, const int mode)
     {
         if (compare(abs(x, 0), "1", 0) != "0")
+        {
             error("trig::acot"s, "Arc cotangent is not defined here."s);
+            return "Infinity";
+        }
 
         //                 1
         // acot(x) = atan(---)

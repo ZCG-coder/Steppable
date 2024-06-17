@@ -171,6 +171,8 @@ namespace steppable::__internals::arithmetic
 
     std::string root(const std::string& _number, const std::string& base, const size_t _decimals)
     {
+        if (isZeroString(_number))
+            return "0";
         if (isInteger(_number))
         {
             auto result = rootSurd(_number, base);

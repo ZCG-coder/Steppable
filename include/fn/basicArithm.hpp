@@ -305,6 +305,28 @@ namespace steppable::__internals::arithmetic
     std::string cot(const std::string& x, int decimals, int mode = 0);
 
     /**
+     * @brief Calculates the arc cosine of a number.
+     *
+     * @param x The number to calculate the arc cosine of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the arc cosine in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The arc cosine of the number.
+     */
+    std::string acos(const std::string& x, int decimals, int mode = 0);
+
+    /**
+     * @brief Calculates the arc sine of a number.
+     *
+     * @param x The number to calculate the arc sine of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the arc sine in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The arc sine of the number.
+     */
+    std::string asin(const std::string& x, int decimals, int mode = 0);
+
+    /**
      * @brief Calculates the arc tangent of a number.
      *
      * @param x The number to calculate the arc tangent of.
@@ -314,6 +336,39 @@ namespace steppable::__internals::arithmetic
      * @return The arc tangent of the number.
      */
     std::string atan(const std::string& x, int decimals, int mode = 0);
+
+    /**
+     * @brief Calculates the arc secant of a number.
+     *
+     * @param x The number to calculate the arc secant of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the arc secant in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The arc secant of the number.
+     */
+    std::string asec(const std::string& x, int decimals, int mode = 0);
+
+    /**
+     * @brief Calculates the arc cosecant of a number.
+     *
+     * @param x The number to calculate the arc cosecant of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the arc cosecant in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The arc cosecant of the number.
+     */
+    std::string acsc(const std::string& x, int decimals, int mode = 0);
+
+    /**
+     * @brief Calculates the arc cotangent of a number.
+     *
+     * @param x The number to calculate the arc cotangent of.
+     * @param decimals The number of decimal places to round off to.
+     * @param mode The mode to calculate the arc cotangent in. 0 = radians (default), 1 = degrees, 2 = gradians.
+     *
+     * @return The arc cotangent of the number.
+     */
+    std::string acot(const std::string& x, int decimals, int mode = 0);
 
     /**
      * @brief Executes a given predicate function a specified number of times.
