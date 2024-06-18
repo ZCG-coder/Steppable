@@ -285,6 +285,10 @@ namespace steppable::__internals::arithmetic
     std::string atan(const std::string& _x, const int decimals, const int mode)
     {
         auto x = _x;
+        // Zero check
+        if (isZeroString(x))
+            return "0";
+
         bool isReduced = false;
         if (compare(abs(x, 0), "1", 0) != "0")
         {

@@ -56,4 +56,8 @@ _.assertIsEqual(asin("0.5", 2, 1), "30.00");
 _.assertIsEqual(asin("0", 2, 1), "0");
 SECTION_END()
 
+SECTION(Test arc tangent)
+_.assertIsEqual(atan("0", 2, 1), "0");
+SECTION_END()
+
 TEST_END()
