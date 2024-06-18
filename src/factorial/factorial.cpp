@@ -21,11 +21,11 @@
  **************************************************************************************************/
 
 /**
- * @file add.cpp
- * @brief This file contains the implementation of the add function, which add two number strings together.
+ * @file factorial.cpp
+ * @brief This file contains the implementation of the factorial function, which calculates a factorial.
  *
  * @author Andy Zhang
- * @date 9th October 2023
+ * @date 4th June 2024
  */
 
 #include "argParse.hpp"

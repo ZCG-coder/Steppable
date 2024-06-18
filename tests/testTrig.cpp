@@ -30,67 +30,34 @@
 #include <iostream>
 
 TEST_START()
-
 using namespace steppable::__internals::arithmetic;
 
-SECTION(Integer division)
-// A gogol divided by 50
-const std::string& a =
-    "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-const std::string& b = "50";
-const std::string& res = divide(a, b, 0, 0);
-
-_.assertIsEqual(res,
-                "200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+// We can just test the basics of the trigonometric functions, as the rest are based on them.
+SECTION(Test sine and cosine)
+_.assertIsEqual(sin("30", 2, 1), "0.50");
+_.assertIsEqual(cos("60", 2, 1), "0.50");
 SECTION_END()
 
-SECTION(Integer divided by decimal)
-// A gogol divided by 79
-const std::string& a =
-    "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-const std::string& b = "79";
-const std::string& res = divide(a, b, 0, 8);
-
-_.assertIsEqual(res,
-                "126582278481012658227848101265822784810126582278481012658"
-                "227848101265822784810126582278481012658227.84810127");
+SECTION(Test tangent)
+_.assertIsEqual(tan("45", 2, 1), "1.00");
+// Zero check test
+_.assertIsEqual(tan("90", 2, 1), "Infinity");
 SECTION_END()
 
-SECTION(Decimal divided by decimal)
-const std::string& a = "532.532132";
-const std::string& b = "53524.2353";
-const std::string& res = divide(a, b, 0, 8);
-
-_.assertIsEqual(res, "0.00994936");
+SECTION(Test arc cosine)
+_.assertIsEqual(acos("0.5", 2, 1), "60");
+// Zero check test
+_.assertIsEqual(acos("1", 2, 1), "0");
 SECTION_END()
 
-SECTION(Division with less decimal places than requested)
-const std::string& a = "1";
-const std::string& b = "2";
-const std::string& res = divide(a, b, 0, 8);
-
-_.assertIsEqual(res, "0.50000000");
+SECTION(Test arc sine)
+_.assertIsEqual(asin("0.5", 2, 1), "30.00");
+// Zero check test
+_.assertIsEqual(asin("0", 2, 1), "0");
 SECTION_END()
 
-SECTION(Division with negative numbers)
-const std::string& a = "-1";
-const std::string& b = "2";
-const std::string& res = divide(a, b, 0, 8);
-_.assertIsEqual(res, "-0.50000000");
-SECTION_END()
-
-SECTION(Division with negative numbers)
-const std::string& a = "1";
-const std::string& b = "-2";
-const std::string& res = divide(a, b, 0, 8);
-_.assertIsEqual(res, "-0.50000000");
-SECTION_END()
-
-SECTION(Division with remainders)
-const std::string& a = "3.5";
-const std::string& b = "2";
-const std::string& res = divideWithQuotient(a, b).remainder;
-_.assertIsEqual(res, "1.5");
+SECTION(Test arc tangent)
+_.assertIsEqual(atan("0", 2, 1), "0");
 SECTION_END()
 
 TEST_END()

@@ -61,8 +61,8 @@ class CMakeBuild(build_ext):
         # auxiliary "native" libs
 
         debug = int(os.environ.get("DEBUG", 0)) if self.debug is None else self.debug
-        cxx_compiler = os.environ.get("CMAKE_CXX_COMPILER", "g++")
-        c_compiler = os.environ.get("CMAKE_C_COMPILER", "gcc")
+        cxx_compiler = os.environ.get("CMAKE_CXX_COMPILER", "clang++")
+        c_compiler = os.environ.get("CMAKE_C_COMPILER", "clang")
         cmake_options = os.environ.get("CMAKE_OPTIONS", "")
         cfg = "Debug" if debug else "Release"
 

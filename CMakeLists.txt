@@ -59,7 +59,7 @@ IF(${OPERATING_SYSTEM} MATCHES "Android")
 ENDIF()
 
 IF(WIN32)
-    ADD_COMPILE_DEFINITIONS(WINDOWS)
+    ADD_COMPILE_DEFINITIONS(WINDOWS NOMINMAX) # Do not add min() and max() macros.
     IF(MSVC) # MSVC Has no UTF-8 support by default
         ADD_COMPILE_OPTIONS(/utf-8)
     ENDIF()
@@ -100,7 +100,7 @@ SET(COMPONENTS
     division
     root
     factorial
-)
+ trig)
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
 SET(TARGETS ${COMPONENTS} util)
