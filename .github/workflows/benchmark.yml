@@ -86,6 +86,12 @@ jobs:
               run: cmake --build "${{github.workspace}}/build"
               shell: bash
 
+            - name: Run CTests
+              # Run the CTest tests
+              working-directory: "${{github.workspace}}/build/tests"
+              run: ctest
+              shell: bash
+
             - name: Benchmark
               run: python -m tools.benchmark -g
               shell: bash
