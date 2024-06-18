@@ -13,5 +13,7 @@ var searchData=
   ['getstringheight_10',['getStringHeight',['../namespacesteppable_1_1prettyPrint.html#a6c89a78ae09a4f71eb5b95a4549d40d1',1,'steppable::prettyPrint']]],
   ['getstringwidth_11',['getStringWidth',['../namespacesteppable_1_1prettyPrint.html#a1a21e6713926f95247a2db8963a0ae2d',1,'steppable::prettyPrint']]],
   ['getswitch_12',['getSwitch',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#abfbc6f2e68f3cc414843a59160a0cea6',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['green_13',['green',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a9366db5386221d73fa03fbff6f906693',1,'steppable::__internals::utils::colors']]]
+  ['gradtodeg_13',['gradToDeg',['../namespacesteppable_1_1____internals_1_1arithmetic.html#aa89469b99e86570859eec976adbff706',1,'steppable::__internals::arithmetic']]],
+  ['gradtorad_14',['gradToRad',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a9218e6288df4d50a9f073d262426aaf1',1,'steppable::__internals::arithmetic']]],
+  ['green_15',['green',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a9366db5386221d73fa03fbff6f906693',1,'steppable::__internals::utils::colors']]]
 ];

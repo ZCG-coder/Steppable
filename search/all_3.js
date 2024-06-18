@@ -17,6 +17,9 @@ var searchData=
   ['consoleoutput_14',['ConsoleOutput',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html',1,'steppable::prettyPrint::ConsoleOutput'],['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#afb69280a91e6a7f2111645143cb2c1ed',1,'steppable::prettyPrint::ConsoleOutput::ConsoleOutput()']]],
   ['contents_15',['Contents',['../index.html#autotoc_md29',1,'']]],
   ['contribute_16',['How to contribute?',['../md_wiki_2FAQ.html#autotoc_md25',1,'']]],
-  ['curpos_17',['curPos',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#a067a158c8695ddc8d875e3c07962502f',1,'steppable::prettyPrint::ConsoleOutput']]],
-  ['cyan_18',['cyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a71b169724de6cde942ccf6caba218e16',1,'steppable::__internals::utils::colors']]]
+  ['cos_17',['cos',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a46dc3c8049bc38c614754c7a9892a6ef',1,'steppable::__internals::arithmetic']]],
+  ['cot_18',['cot',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a7ee5bb970e3ef6576477fe9b84ef05fb',1,'steppable::__internals::arithmetic']]],
+  ['csc_19',['csc',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ad6130fb90d02d24ab7ebc673b308eb53',1,'steppable::__internals::arithmetic']]],
+  ['curpos_20',['curPos',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#a067a158c8695ddc8d875e3c07962502f',1,'steppable::prettyPrint::ConsoleOutput']]],
+  ['cyan_21',['cyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a71b169724de6cde942ccf6caba218e16',1,'steppable::__internals::utils::colors']]]
 ];

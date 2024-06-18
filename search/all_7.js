@@ -15,6 +15,8 @@ var searchData=
   ['getstringwidth_12',['getStringWidth',['../namespacesteppable_1_1prettyPrint.html#a1a21e6713926f95247a2db8963a0ae2d',1,'steppable::prettyPrint']]],
   ['getswitch_13',['getSwitch',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#abfbc6f2e68f3cc414843a59160a0cea6',1,'steppable::__internals::utils::ProgramArgs']]],
   ['getting_20the_20source_20code_14',['Getting the Source Code',['../md_wiki_2Getting-the-Source.html',1,'']]],
-  ['graphs_15',['Graphs',['../md_wiki_2Performance.html#autotoc_md31',1,'']]],
-  ['green_16',['green',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a9366db5386221d73fa03fbff6f906693',1,'steppable::__internals::utils::colors']]]
+  ['gradtodeg_15',['gradToDeg',['../namespacesteppable_1_1____internals_1_1arithmetic.html#aa89469b99e86570859eec976adbff706',1,'steppable::__internals::arithmetic']]],
+  ['gradtorad_16',['gradToRad',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a9218e6288df4d50a9f073d262426aaf1',1,'steppable::__internals::arithmetic']]],
+  ['graphs_17',['Graphs',['../md_wiki_2Performance.html#autotoc_md31',1,'']]],
+  ['green_18',['green',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a9366db5386221d73fa03fbff6f906693',1,'steppable::__internals::utils::colors']]]
 ];
