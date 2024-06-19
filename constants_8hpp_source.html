@@ -142,66 +142,64 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;string_view&gt;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html">   27</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1constants.html">steppable::constants</a></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#a762da6f841b891d1688518c6b90d3068">   30</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#a762da6f841b891d1688518c6b90d3068">PI</a> =</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="stringliteral">&quot;3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679&quot;</span>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// Generated using Python:</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// -------------------------------------------------------</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// 1 | from decimal import Decimal, getcontext</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// 2 | # Set precision to 100 decimal places.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// 3 | getcontext().prec = 100</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// 4 | Decimal(</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// 6 | ) * Decimal(2)</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// -------------------------------------------------------</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#ae11158a2e1f640e58e3fb1b1bfd97869">   43</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#ae11158a2e1f640e58e3fb1b1bfd97869">TWO_PI</a> = <span class="stringliteral">&quot;6.283185307179586231995926937088370323181152343750&quot;</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// Generated using Python:</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// -------------------------------------------------------</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// 1 | from decimal import Decimal, getcontext</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// 2 | # Set precision to 100 decimal places.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// 3 | getcontext().prec = 100</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// 4 | Decimal(</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 6 | ) / Decimal(2)</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// -------------------------------------------------------</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#a89da15dbb108bf59c55a6f6bc51e7769">   55</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#a89da15dbb108bf59c55a6f6bc51e7769">PI_OVER_2</a> =</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="stringliteral">&quot;1.570796326794896619231321691639751442098584699687552910487472296153908203143104499314017412835292542&quot;</span>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// Generated using Python:</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// -------------------------------------------------------</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// 1 | from decimal import Decimal, getcontext</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// 2 | # Set precision to 100 decimal places.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// 3 | getcontext().prec = 100</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// 4 | Decimal(</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// 6 | ) / Decimal(180)</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">// -------------------------------------------------------</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#ab5defed222e2c1e9582169ca352ba94c">   68</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#ab5defed222e2c1e9582169ca352ba94c">PI_OVER_180</a> =</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="stringliteral">&quot;0.01745329251994329508887757482524547311994764539930555555555555555555555555555555555555555555555555556&quot;</span>;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// Generated using Python:</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">// -------------------------------------------------------</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// 1 | from decimal import Decimal, getcontext</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// 2 | # Set precision to 100 decimal places.</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// 3 | getcontext().prec = 100</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// 4 | Decimal(</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// 6 | ) / Decimal(200)</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// -------------------------------------------------------</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#a3c35253ae14f3db3b78663a429051077">   81</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#a3c35253ae14f3db3b78663a429051077">PI_OVER_200</a> =</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="stringliteral">&quot;0.01570796326794896619231321691639716312084074699687552942986246296153903203140449499314017412671058534&quot;</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>} <span class="comment">// namespace steppable::constants</span></div>
-</div>
-<div class="ttc" id="anamespacesteppable_1_1constants_html"><div class="ttname"><a href="namespacesteppable_1_1constants.html">steppable::constants</a></div><div class="ttdef"><b>Definition</b> constants.hpp:28</div></div>
-<div class="ttc" id="anamespacesteppable_1_1constants_html_a3c35253ae14f3db3b78663a429051077"><div class="ttname"><a href="namespacesteppable_1_1constants.html#a3c35253ae14f3db3b78663a429051077">steppable::constants::PI_OVER_200</a></div><div class="ttdeci">constexpr const std::string_view &amp; PI_OVER_200</div><div class="ttdoc">Pi divided by 200 (to convert grads to radians), correct to 100 decimal places.</div><div class="ttdef"><b>Definition</b> constants.hpp:81</div></div>
-<div class="ttc" id="anamespacesteppable_1_1constants_html_a762da6f841b891d1688518c6b90d3068"><div class="ttname"><a href="namespacesteppable_1_1constants.html#a762da6f841b891d1688518c6b90d3068">steppable::constants::PI</a></div><div class="ttdeci">constexpr const std::string_view &amp; PI</div><div class="ttdoc">100 digits of pi.</div><div class="ttdef"><b>Definition</b> constants.hpp:30</div></div>
-<div class="ttc" id="anamespacesteppable_1_1constants_html_a89da15dbb108bf59c55a6f6bc51e7769"><div class="ttname"><a href="namespacesteppable_1_1constants.html#a89da15dbb108bf59c55a6f6bc51e7769">steppable::constants::PI_OVER_2</a></div><div class="ttdeci">constexpr const std::string_view &amp; PI_OVER_2</div><div class="ttdoc">Pi divided by 2.</div><div class="ttdef"><b>Definition</b> constants.hpp:55</div></div>
-<div class="ttc" id="anamespacesteppable_1_1constants_html_ab5defed222e2c1e9582169ca352ba94c"><div class="ttname"><a href="namespacesteppable_1_1constants.html#ab5defed222e2c1e9582169ca352ba94c">steppable::constants::PI_OVER_180</a></div><div class="ttdeci">constexpr const std::string_view &amp; PI_OVER_180</div><div class="ttdoc">Pi divided by 180 (to convert degrees to radians), correct to 100 decimal places.</div><div class="ttdef"><b>Definition</b> constants.hpp:68</div></div>
-<div class="ttc" id="anamespacesteppable_1_1constants_html_ae11158a2e1f640e58e3fb1b1bfd97869"><div class="ttname"><a href="namespacesteppable_1_1constants.html#ae11158a2e1f640e58e3fb1b1bfd97869">steppable::constants::TWO_PI</a></div><div class="ttdeci">constexpr const std::string_view &amp; TWO_PI</div><div class="ttdoc">Pi multiplied by 2.</div><div class="ttdef"><b>Definition</b> constants.hpp:43</div></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1constants.html">steppable::constants</a></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#a762da6f841b891d1688518c6b90d3068">   34</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#a762da6f841b891d1688518c6b90d3068">PI</a> =</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="stringliteral">&quot;3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679&quot;</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// Generated using Python:</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// -------------------------------------------------------</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// 1 | from decimal import Decimal, getcontext</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// 2 | # Set precision to 100 decimal places.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// 3 | getcontext().prec = 100</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// 4 | Decimal(</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// 6 | ) * Decimal(2)</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// -------------------------------------------------------</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#ae11158a2e1f640e58e3fb1b1bfd97869">   47</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#ae11158a2e1f640e58e3fb1b1bfd97869">TWO_PI</a> = <span class="stringliteral">&quot;6.283185307179586231995926937088370323181152343750&quot;</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// Generated using Python:</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// -------------------------------------------------------</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// 1 | from decimal import Decimal, getcontext</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 2 | # Set precision to 100 decimal places.</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// 3 | getcontext().prec = 100</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// 4 | Decimal(</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// 6 | ) / Decimal(2)</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// -------------------------------------------------------</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#a89da15dbb108bf59c55a6f6bc51e7769">   59</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#a89da15dbb108bf59c55a6f6bc51e7769">PI_OVER_2</a> =</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="stringliteral">&quot;1.570796326794896619231321691639751442098584699687552910487472296153908203143104499314017412835292542&quot;</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// Generated using Python:</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// -------------------------------------------------------</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// 1 | from decimal import Decimal, getcontext</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// 2 | # Set precision to 100 decimal places.</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">// 3 | getcontext().prec = 100</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// 4 | Decimal(</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">// 6 | ) / Decimal(180)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// -------------------------------------------------------</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#ab5defed222e2c1e9582169ca352ba94c">   72</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#ab5defed222e2c1e9582169ca352ba94c">PI_OVER_180</a> =</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="stringliteral">&quot;0.01745329251994329508887757482524547311994764539930555555555555555555555555555555555555555555555555556&quot;</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// Generated using Python:</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// -------------------------------------------------------</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// 1 | from decimal import Decimal, getcontext</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// 2 | # Set precision to 100 decimal places.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// 3 | getcontext().prec = 100</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// 4 | Decimal(</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// 6 | ) / Decimal(200)</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="comment">// -------------------------------------------------------</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1constants.html#a3c35253ae14f3db3b78663a429051077">   85</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> std::string_view&amp; <a class="code hl_variable" href="namespacesteppable_1_1constants.html#a3c35253ae14f3db3b78663a429051077">PI_OVER_200</a> =</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="stringliteral">&quot;0.01570796326794896619231321691639716312084074699687552942986246296153903203140449499314017412671058534&quot;</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>} <span class="comment">// namespace steppable::constants</span></div>
+<div class="ttc" id="anamespacesteppable_1_1constants_html"><div class="ttname"><a href="namespacesteppable_1_1constants.html">steppable::constants</a></div><div class="ttdoc">Numerical constants used in Steppable.</div></div>
+<div class="ttc" id="anamespacesteppable_1_1constants_html_a3c35253ae14f3db3b78663a429051077"><div class="ttname"><a href="namespacesteppable_1_1constants.html#a3c35253ae14f3db3b78663a429051077">steppable::constants::PI_OVER_200</a></div><div class="ttdeci">constexpr const std::string_view &amp; PI_OVER_200</div><div class="ttdoc">Pi divided by 200 (to convert grads to radians), correct to 100 decimal places.</div><div class="ttdef"><b>Definition</b> constants.hpp:85</div></div>
+<div class="ttc" id="anamespacesteppable_1_1constants_html_a762da6f841b891d1688518c6b90d3068"><div class="ttname"><a href="namespacesteppable_1_1constants.html#a762da6f841b891d1688518c6b90d3068">steppable::constants::PI</a></div><div class="ttdeci">constexpr const std::string_view &amp; PI</div><div class="ttdoc">100 digits of pi.</div><div class="ttdef"><b>Definition</b> constants.hpp:34</div></div>
+<div class="ttc" id="anamespacesteppable_1_1constants_html_a89da15dbb108bf59c55a6f6bc51e7769"><div class="ttname"><a href="namespacesteppable_1_1constants.html#a89da15dbb108bf59c55a6f6bc51e7769">steppable::constants::PI_OVER_2</a></div><div class="ttdeci">constexpr const std::string_view &amp; PI_OVER_2</div><div class="ttdoc">Pi divided by 2.</div><div class="ttdef"><b>Definition</b> constants.hpp:59</div></div>
+<div class="ttc" id="anamespacesteppable_1_1constants_html_ab5defed222e2c1e9582169ca352ba94c"><div class="ttname"><a href="namespacesteppable_1_1constants.html#ab5defed222e2c1e9582169ca352ba94c">steppable::constants::PI_OVER_180</a></div><div class="ttdeci">constexpr const std::string_view &amp; PI_OVER_180</div><div class="ttdoc">Pi divided by 180 (to convert degrees to radians), correct to 100 decimal places.</div><div class="ttdef"><b>Definition</b> constants.hpp:72</div></div>
+<div class="ttc" id="anamespacesteppable_1_1constants_html_ae11158a2e1f640e58e3fb1b1bfd97869"><div class="ttname"><a href="namespacesteppable_1_1constants.html#ae11158a2e1f640e58e3fb1b1bfd97869">steppable::constants::TWO_PI</a></div><div class="ttdeci">constexpr const std::string_view &amp; TWO_PI</div><div class="ttdoc">Pi multiplied by 2.</div><div class="ttdef"><b>Definition</b> constants.hpp:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!DOCTYPE html>
 <html>
@@ -221,7 +219,7 @@ $(function(){ initResizable(false); });
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Tue Jun 18 2024 07:44:16"; // Will get replaced by Doxygen
+        const dateStr = "Wed Jun 19 2024 14:59:33"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();
