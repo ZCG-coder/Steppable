@@ -97,6 +97,7 @@ jobs:
               uses: test-summary/action@v2.3
               with:
                 paths: "${{github.workspace}}/build/tests/result.xml"
+                show: "all"
               if: always()
 
             - name: Benchmark
