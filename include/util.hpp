@@ -187,6 +187,10 @@ namespace steppable::__internals::utils
 #endif
 } // namespace steppable::__internals::utils
 
+/**
+ * @namespace steppable::__internals::numUtils
+ * @brief Utilities to operate numbers.
+ */
 namespace steppable::__internals::numUtils
 {
     /**
@@ -342,6 +346,10 @@ namespace steppable::__internals::numUtils
     bool isPowerOfTen(const std::string& number);
 } // namespace steppable::__internals::numUtils
 
+/**
+ * @namespace steppable::__internals::stringUtils
+ * @brief Utilities to operate strings.
+ */
 namespace steppable::__internals::stringUtils
 {
     /**

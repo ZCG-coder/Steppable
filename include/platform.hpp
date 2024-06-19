@@ -38,7 +38,7 @@
 #include <mutex>
 
 /**
- * @namespace steppable::__internals::util
+ * @namespace steppable::__internals::utils
  * @brief Namespace for internal functions
  * @note This namespace should not be used by other programs outside of the Steppable core.
  */

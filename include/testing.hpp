@@ -83,6 +83,10 @@ using namespace std::literals;
         return 1;                                                                           \
     }
 
+/**
+ * @namespace steppable::testing
+ * @brief Includes testing utilities for Steppable.
+ */
 namespace steppable::testing
 {
     /**
