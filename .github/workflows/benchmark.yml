@@ -86,8 +86,23 @@ jobs:
               run: cmake --build "${{github.workspace}}/build"
               shell: bash
 
+            - name: Run CTests
+              # Run the CTest tests
+              working-directory: "${{github.workspace}}/build/tests"
+              run: ctest --output-junit result.xml
+              shell: bash
+
+            - name: Test Summary
+              id: test_summary
+              uses: test-summary/action@v2.3
+              with:
+                paths: "${{github.workspace}}/build/tests/result.xml"
+                show: "all"
+              if: always()
+
             - name: Benchmark
               run: python -m tools.benchmark -g
+              if: always()
               shell: bash
 
             - name: Upload Graphs

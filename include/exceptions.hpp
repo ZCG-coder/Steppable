@@ -32,6 +32,10 @@
 
 #include <exception>
 
+/**
+ * @namespace steppable::exceptions
+ * @brief Contains Steppable exceptions.
+ */
 namespace steppable::exceptions
 {
     /**

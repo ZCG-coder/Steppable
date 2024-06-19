@@ -43,6 +43,10 @@
 #include <string>
 #include <vector>
 
+/**
+ * @namespace steppable::__internals::format
+ * @brief Contains string formatting utilities.
+ */
 namespace steppable::__internals::format
 {
     // https://stackoverflow.com/a/49812356/14868780

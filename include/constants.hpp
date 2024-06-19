@@ -24,6 +24,10 @@
 
 #include <string_view>
 
+/**
+ * @namespace steppable::constants
+ * @brief Numerical constants used in Steppable.
+ */
 namespace steppable::constants
 {
     /// @brief 100 digits of pi.

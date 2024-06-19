@@ -51,6 +51,10 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @namespace steppable::output
+ * @brief Message-printing utilities for Steppable.
+ */
 namespace steppable::output
 {
     using namespace steppable::__internals;
