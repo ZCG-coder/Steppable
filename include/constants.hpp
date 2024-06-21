@@ -84,4 +84,6 @@ namespace steppable::constants
     // -------------------------------------------------------
     constexpr const std::string_view& PI_OVER_200 =
         "0.01570796326794896619231321691639716312084074699687552942986246296153903203140449499314017412671058534";
+
+    constexpr const std::string_view& E = "2.718281828459045090795598298427648842334747314453125";
 } // namespace steppable::constants

@@ -371,6 +371,36 @@ namespace steppable::__internals::arithmetic
     std::string acot(const std::string& x, int decimals, int mode = 0);
 
     /**
+     * @brief Hyperbolic sine function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The hyperbolic sine of the number.
+     */
+    std::string sinh(const std::string& x, int decimals);
+
+    /**
+     * @brief Hyperbolic cosine function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The hyperbolic cosine of the number.
+     */
+    std::string cosh(const std::string& x, int decimals);
+
+    /**
+     * @brief Hyperbolic tangent function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The hyperbolic tangent of the number.
+     */
+    std::string tanh(const std::string& x, int decimals);
+
+    /**
      * @brief Executes a given predicate function a specified number of times.
      *
      * @param[in] times The number of times to execute the predicate function.
