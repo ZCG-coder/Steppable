@@ -401,6 +401,36 @@ namespace steppable::__internals::arithmetic
     std::string tanh(const std::string& x, int decimals);
 
     /**
+     * @brief Hyperbolic tangent function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The hyperbolic tangent of the number.
+     */
+    std::string sech(const std::string& x, int decimals);
+
+    /**
+     * @brief Hyperbolic tangent function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The hyperbolic tangent of the number.
+     */
+    std::string csch(const std::string& x, int decimals);
+
+    /**
+     * @brief Hyperbolic tangent function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The hyperbolic tangent of the number.
+     */
+    std::string coth(const std::string& x, int decimals);
+
+    /**
      * @brief Executes a given predicate function a specified number of times.
      *
      * @param[in] times The number of times to execute the predicate function.

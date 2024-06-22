@@ -32,6 +32,7 @@
 #include "constants.hpp"
 #include "fn/basicArithm.hpp"
 #include "hypReport.hpp"
+#include "output.hpp"
 #include "util.hpp"
 
 #include <functional>
@@ -76,6 +77,42 @@ namespace steppable::__internals::arithmetic
 
         return divide(numerator, denominator, 0, decimals);
     }
+
+    std::string coth(const std::string& x, const int decimals)
+    {
+        const auto& denominator = tanh(x, decimals);
+        if (isZeroString(denominator))
+        {
+            error("hyp::coth"s, "Hyperbolic cotangent is not defined here."s);
+            return "Infinity";
+        }
+
+        return divide("1", denominator, 0, decimals);
+    }
+
+    std::string csch(const std::string& x, const int decimals)
+    {
+        const auto& denominator = sinh(x, decimals);
+        if (isZeroString(denominator))
+        {
+            error("hyp::csch"s, "Hyperbolic cosecant is not defined here."s);
+            return "Infinity";
+        }
+
+        return divide("1", denominator, 0, decimals);
+    }
+
+    std::string sech(const std::string& x, const int decimals)
+    {
+        const auto& denominator = cosh(x, decimals);
+        if (isZeroString(denominator))
+        {
+            error("hyp::sech"s, "Hyperbolic secant is not defined here."s);
+            return "Infinity";
+        }
+
+        return divide("1", denominator, 0, decimals);
+    }
 } // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
@@ -105,6 +142,13 @@ int main(int _argc, const char* _argv[])
         function = arithmetic::cosh;
     else if (command == "tanh")
         function = arithmetic::tanh;
+    // Reciprocal trigonometric functions
+    else if (command == "csch")
+        function = arithmetic::csch;
+    else if (command == "sech")
+        function = arithmetic::sech;
+    else if (command == "coth")
+        function = arithmetic::coth;
     // Invalid command
     else
     {
