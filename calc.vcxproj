@@ -27,21 +27,30 @@
     <ClCompile Include="src\comparison\comparisonReport.cpp" />
     <ClCompile Include="src\division\division.cpp" />
     <ClCompile Include="src\division\divisionReport.cpp" />
+    <ClCompile Include="src\factorial\factorial.cpp" />
+    <ClCompile Include="src\factorial\factorialReport.cpp" />
     <ClCompile Include="src\multiply\multiply.cpp" />
     <ClCompile Include="src\multiply\multiplyReport.cpp" />
     <ClCompile Include="src\power\power.cpp" />
     <ClCompile Include="src\power\powerReport.cpp" />
+    <ClCompile Include="src\root\root.cpp" />
+    <ClCompile Include="src\root\rootReport.cpp" />
     <ClCompile Include="src\subtract\subtract.cpp" />
     <ClCompile Include="src\subtract\subtractReport.cpp" />
+    <ClCompile Include="src\trig\trig.cpp" />
+    <ClCompile Include="src\trig\trigReport.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\abs\absReport.hpp" />
     <ClInclude Include="src\add\addReport.hpp" />
     <ClInclude Include="src\comparison\comparisonReport.hpp" />
     <ClInclude Include="src\division\divisionReport.hpp" />
+    <ClInclude Include="src\factorial\factorialReport.hpp" />
     <ClInclude Include="src\multiply\multiplyReport.hpp" />
     <ClInclude Include="src\power\powerReport.hpp" />
+    <ClInclude Include="src\root\rootReport.hpp" />
     <ClInclude Include="src\subtract\subtractReport.hpp" />
+    <ClInclude Include="src\trig\trigReport.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="util.vcxproj">
@@ -59,26 +68,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
