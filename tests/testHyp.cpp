@@ -24,9 +24,20 @@
 #include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"
+#include "fn/basicArithm.hpp"
 
 #include <iomanip>
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable::__internals::arithmetic;
+
+SECTION(Test hyperbolic sine)
+_.assertIsEqual(sinh("10", 3), "11013.233");
+SECTION_END()
+
+SECTION(Test hyperbolic cosine)
+_.assertIsEqual(cosh("4.75", 4), "57.7965");
+SECTION_END()
 TEST_END()
