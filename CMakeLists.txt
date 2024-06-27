@@ -100,7 +100,7 @@ SET(COMPONENTS
     division
     root
     factorial
- trig hyp)
+ trig hyp log)
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
 SET(TARGETS ${COMPONENTS} util)

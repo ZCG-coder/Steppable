@@ -431,6 +431,49 @@ namespace steppable::__internals::arithmetic
     std::string coth(const std::string& x, int decimals);
 
     /**
+     * @brief Calculates the logarithm with a given base.
+     *
+     * @param _number The number to calculate the logarithm of.
+     * @param _base The base of the logarithm.
+     * @param _decimals The number of decimal places to round off to.
+     * @return The result of the logarithm operation.
+     */
+    std::string logb(const std::string& _number, const std::string& _base, size_t _decimals);
+
+    /**
+     * @brief Calculates the common logarithm of a number.
+     *
+     * @note The common logarithm is the logarithm with base 10.
+     *
+     * @param _number The number to calculate the common logarithm of.
+     * @param _decimals The number of decimal places to round off to.
+     * @return The result of the common logarithm operation.
+     */
+    std::string log10(const std::string& _number, size_t _decimals);
+
+    /**
+     * @brief Calculates the binary logarithm of a number.
+     *
+     * @note The binary logarithm is the logarithm with base 2.
+     *
+     * @param _number The number to calculate the binary logarithm of.
+     * @param _decimals The number of decimal places to round off to.
+     * @return The result of the binary logarithm operation.
+     */
+    std::string log2(const std::string& _number, size_t _decimals);
+
+    /**
+     * @brief Calculates the natural logarithm of a number.
+     *
+     * @note The natural logarithm is the logarithm with base e.
+     *
+     * @param _number The number to calculate the natural logarithm of.
+     * @param _decimals The number of decimal places to round off to.
+     * @return The result of the natural logarithm operation.
+     */
+    std::string ln(const std::string& _number, size_t _decimals);
+
+    /**
      * @brief Executes a given predicate function a specified number of times.
      *
      * @param[in] times The number of times to execute the predicate function.
