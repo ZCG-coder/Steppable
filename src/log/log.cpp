@@ -47,6 +47,13 @@ namespace steppable::__internals::arithmetic
 {
     std::string _log(const std::string& _number, const size_t _decimals)
     {
+        // Zero check
+        if (numUtils::isZeroString(_number))
+        {
+            output::error("log::_log"s, "The number cannot be zero."s);
+            return "-Infinity";
+        }
+
         //   /-\   +--------------------------------------------+
         //  / ! \  | WARNING: DO NOT CALL THIS METHOD DIRECTLY! |
         // /-----\ +--------------------------------------------+
@@ -83,11 +90,15 @@ namespace steppable::__internals::arithmetic
     // Common logarithms
     std::string logb(const std::string& _number, const std::string& _base, const size_t _decimals)
     {
-        //            ln(a)
-        // log (x) = -------
-        //    b       ln(b)
-        auto lnX = _log(_number, _decimals + 2);
-        auto lnB = _log(_base, _decimals + 2);
+        //            -ln(1/a)
+        // log (x) = ----------
+        //    b       -ln(1/b)
+
+        auto oneOverA = divide("1", _number, 0, static_cast<int>(_decimals + 2));
+        auto oneOverB = divide("1", _base, 0, static_cast<int>(_decimals + 2));
+
+        auto lnX = "-" + _log(oneOverA, _decimals + 2);
+        auto lnB = "-" + _log(oneOverB, _decimals + 2);
         auto result = divide(lnX, lnB, 0, static_cast<int>(_decimals));
 
         return numUtils::roundOff(result, _decimals);
