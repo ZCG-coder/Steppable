@@ -431,6 +431,66 @@ namespace steppable::__internals::arithmetic
     std::string coth(const std::string& x, int decimals);
 
     /**
+     * @brief Inverse hyperbolic sine function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The inverse hyperbolic sine of the number.
+     */
+    std::string asinh(const std::string& x, int decimals);
+
+    /**
+     * @brief Inverse hyperbolic cosine function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The inverse hyperbolic cosine of the number.
+     */
+    std::string acosh(const std::string& x, int decimals);
+
+    /**
+     * @brief Inverse hyperbolic tangent function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The inverse hyperbolic tangent of the number.
+     */
+    std::string atanh(const std::string& x, int decimals);
+
+    /**
+     * @brief Inverse hyperbolic cotangent function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The inverse hyperbolic cotangent of the number.
+     */
+    std::string acoth(const std::string& x, int decimals);
+
+    /**
+     * @brief Inverse hyperbolic secant function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The inverse hyperbolic secant of the number.
+     */
+    std::string asech(const std::string& x, int decimals);
+
+    /**
+     * @brief Inverse hyperbolic cosecant function.
+     *
+     * @param x The number.
+     * @param decimals The number of decimal places to round off to.
+     *
+     * @return The inverse hyperbolic cosecant of the number.
+     */
+    std::string acsch(const std::string& x, int decimals);
+
+    /**
      * @brief Calculates the logarithm with a given base.
      *
      * @param _number The number to calculate the logarithm of.

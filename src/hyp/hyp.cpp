@@ -113,6 +113,95 @@ namespace steppable::__internals::arithmetic
 
         return divide("1", denominator, 0, decimals);
     }
+
+    std::string asinh(const std::string& x, const int decimals)
+    {
+        //                      /------|
+        //                     / 2
+        // asinh(x) = ln(x + \/ x  + 1  )
+
+        const auto& x2 = power(x, "2", 0);
+        const auto& radicand = add(x2, "1", 0);
+        const auto& rootResult = root(radicand, "2", decimals);
+        const auto& result = add(x, rootResult, 0);
+        return ln(result, decimals);
+    }
+
+    std::string acosh(const std::string& x, const int decimals)
+    {
+        //                      /------|
+        //                     / 2
+        // acosh(x) = ln(x + \/ x  - 1  )
+
+        const auto& x2 = power(x, "2", 0);
+        const auto& radicand = subtract(x2, "1", 0);
+        const auto& rootResult = root(radicand, "2", decimals);
+        const auto& result = add(x, rootResult, 0);
+        return ln(result, decimals);
+    }
+
+    std::string atanh(const std::string& x, const int decimals)
+    {
+        //             1         1 + x
+        // atanh(x) = --- * ln( ------- )
+        //             2         1 - x
+
+        const auto& numerator = add("1", x, 0);
+        const auto& denominator = subtract("1", x, 0);
+        auto result = divide(numerator, denominator, 0, decimals);
+        result = ln(result, decimals);
+        return divide(result, "2", 0, decimals);
+    }
+
+    std::string acoth(const std::string& x, const int decimals)
+    {
+        //             1          1 + x
+        // acoth(x) = ---  * ln( ------- )
+        //             2          x - 1
+
+        const auto& numerator = add("1", x, 0);
+        const auto& denominator = subtract(x, "1", 0);
+        auto result = divide(numerator, denominator, 0, decimals);
+        result = ln(result, decimals);
+        return divide(result, "2", 0, decimals);
+    }
+
+    std::string acsch(const std::string& x, const int decimals)
+    {
+        //                         /-------|
+        //                1       / 1
+        // acsch(x) = ln(--- +   / --- + 1  )
+        //                x     /   2
+        //                    \/   x
+
+        const auto& x2 = power(x, "2", 0);
+        const auto& oneOverX = divide("1", x, 0, decimals);
+        const auto& oneOverX2 = divide("1", x2, 0, decimals);
+
+        const auto& radicand = add(oneOverX2, "1", 0);
+        const auto& rootResult = root(radicand, "2", decimals);
+        const auto& lnArg = add(oneOverX, rootResult, 0);
+        return ln(lnArg, decimals);
+    }
+
+    std::string asech(const std::string& x, const int decimals)
+    {
+        //                         /-------|
+        //                1       / 1
+        // asech(x) = ln(--- +   / --- - 1  )
+        //                x     /   2
+        //                    \/   x
+
+        const auto& x2 = power(x, "2", 0);
+        const auto& oneOverX = divide("1", x, 0, decimals);
+        const auto& oneOverX2 = divide("1", x2, 0, decimals);
+
+        const auto& radicand = subtract(oneOverX2, "1", 0);
+        const auto& rootResult = root(radicand, "2", decimals);
+        const auto& lnArg = add(oneOverX, rootResult, 0);
+        return ln(lnArg, decimals);
+    }
+
 } // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN
@@ -149,6 +238,19 @@ int main(int _argc, const char* _argv[])
         function = arithmetic::sech;
     else if (command == "coth")
         function = arithmetic::coth;
+    // Inverse trigonometric functions
+    else if (command == "asinh")
+        function = arithmetic::asinh;
+    else if (command == "acosh")
+        function = arithmetic::acosh;
+    else if (command == "atanh")
+        function = arithmetic::atanh;
+    else if (command == "acsch")
+        function = arithmetic::acsch;
+    else if (command == "acoth")
+        function = arithmetic::acoth;
+    else if (command == "asech")
+        function = arithmetic::asech;
     // Invalid command
     else
     {
