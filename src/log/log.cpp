@@ -53,6 +53,8 @@ namespace steppable::__internals::arithmetic
             output::error("log::_log"s, "The number cannot be zero."s);
             return "-Infinity";
         }
+        if (compare(_number, "1", 0) == "2")
+            return "0";
 
         //   /-\   +--------------------------------------------+
         //  / ! \  | WARNING: DO NOT CALL THIS METHOD DIRECTLY! |

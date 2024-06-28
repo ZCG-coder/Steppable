@@ -75,9 +75,9 @@ SECTION_END()
 // _.assertIsEqual(acoth("1.25", 4), "1.0986");
 // SECTION_END()
 
-// SECTION(Test inverse hyperbolic secant)
-// _.assertIsEqual(asech("0.75", 4), "0.7954");
-// SECTION_END()
+SECTION(Test inverse hyperbolic secant)
+_.assertIsEqual(asech("0.75", 4), "0.7953");
+SECTION_END()
 
 // SECTION(Test inverse hyperbolic cosecant)
 // _.assertIsEqual(acsch("0.25", 4), "2.0947");

@@ -33,6 +33,7 @@
 #include "fn/basicArithm.hpp"
 #include "hypReport.hpp"
 #include "output.hpp"
+#include "rounding.hpp"
 #include "util.hpp"
 
 #include <functional>
@@ -49,8 +50,8 @@ namespace steppable::__internals::arithmetic
     std::string sinh(const std::string& x, const int decimals)
     {
         const auto& twoX = multiply(x, "2", 0);
-        const auto& eTwoX = power(constants::E, twoX, 0);
-        const auto& eX = power(constants::E, x, 0);
+        const auto& eTwoX = roundOff(power(constants::E, twoX, 0), decimals + 2);
+        const auto& eX = roundOff(power(constants::E, x, 0), decimals + 2);
 
         const auto& numerator = subtract(eTwoX, "1", 0);
         const auto& denominator = multiply("2", eX, 0);
@@ -61,8 +62,8 @@ namespace steppable::__internals::arithmetic
     std::string cosh(const std::string& x, const int decimals)
     {
         const auto& twoX = multiply(x, "2", 0);
-        const auto& eTwoX = power(constants::E, twoX, 0);
-        const auto& eX = power(constants::E, x, 0);
+        const auto& eTwoX = roundOff(power(constants::E, twoX, 0), decimals + 2);
+        const auto& eX = roundOff(power(constants::E, x, 0), decimals + 2);
 
         const auto& numerator = add(eTwoX, "1", 0);
         const auto& denominator = multiply("2", eX, 0);
@@ -148,8 +149,8 @@ namespace steppable::__internals::arithmetic
 
         const auto& numerator = add("1", x, 0);
         const auto& denominator = subtract("1", x, 0);
-        auto result = divide(numerator, denominator, 0, decimals);
-        result = ln(result, decimals);
+        auto result = divide(numerator, denominator, 0, decimals + 2);
+        result = ln(result, decimals + 2);
         return divide(result, "2", 0, decimals);
     }
 
@@ -170,9 +171,9 @@ namespace steppable::__internals::arithmetic
     {
         //                         /-------|
         //                1       / 1
-        // acsch(x) = ln(--- +   / --- + 1  )
-        //                x     /   2
-        //                    \/   x
+        // acsch(x) = ln(--- +   / ---- + 1  )
+        //                x     /    2
+        //                    \/    x
 
         const auto& x2 = power(x, "2", 0);
         const auto& oneOverX = divide("1", x, 0, decimals);
@@ -188,9 +189,9 @@ namespace steppable::__internals::arithmetic
     {
         //                         /-------|
         //                1       / 1
-        // asech(x) = ln(--- +   / --- - 1  )
-        //                x     /   2
-        //                    \/   x
+        // asech(x) = ln(--- +   / ---- - 1  )
+        //                x     /    2
+        //                    \/    x
 
         const auto& x2 = power(x, "2", 0);
         const auto& oneOverX = divide("1", x, 0, decimals);
