@@ -112,12 +112,12 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Frequently Asked Questions (FAQ)</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md19"></a> </p><dl class="section note"><dt>Note</dt><dd></dd></dl>
+<div class="textblock"><p><a class="anchor" id="autotoc_md42"></a> </p><dl class="section note"><dt>Note</dt><dd></dd></dl>
 <p>Please read this document before asking a question in discussions. Your question may be answered here already.</p>
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md43"></a>
 When can the first release be made?</h1>
 <p>Please expect the project to be functional before 2028.</p>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 How does it work?</h1>
 <p>We found that there is no better nor simpler method of writing a step-by-step solver than imitating how a human would solve it. So we wrote a parser that converts the input into a tree, and then we wrote a calculator that solves the tree step by step. Finally, the reporter shows the steps and results to the user in a human-readable format.</p>
 <p>Currently, only the calculator and the reporter are implemented, with very limited functionality. Here is a list of what we are planning to implement next (and in the near future):</p>
@@ -138,7 +138,7 @@ How does it work?</h1>
 <li class="checked">Multiplication of integers and decimals</li>
 </ul>
 <ul class="check">
-<li class="checked">Powers of integers</li>
+<li class="checked">Powers of integers and decimals</li>
 </ul>
 <ul class="check">
 <li class="checked">Division of integers and decimals</li>
@@ -161,7 +161,16 @@ How does it work?</h1>
 </ul>
 <ul class="check">
 <li class="checked">API for fractions</li>
-<li class="unchecked">Conversion between fractions and decimals</li>
+</ul>
+<ul class="check">
+<li class="checked">Factorials</li>
+</ul>
+<ul class="check">
+<li class="checked">Conversion between fractions and decimals</li>
+<li class="unchecked">Logarithms</li>
+</ul>
+<ul class="check">
+<li class="unchecked">Trigonometric Functions ($sin$, $cos$, $tan$, $asin$, $acos$, $atan$...)</li>
 </ul>
 <ul class="check">
 <li class="unchecked">Expansion of polynomials</li>
@@ -172,14 +181,14 @@ How does it work?</h1>
 </li>
 </ul>
 <p>The parser is the most difficult part of the project, so we will start with the calculator and reporter first. When implemented, it will probably call the calculator(s) (which is/are compiled into executable format together with the reporter) and then show the result to the user.</p>
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md45"></a>
 What is this?</h1>
 <p>This project attempts to make a CAS that solves problems like a human does. It even adds, subtracts, multiplies, and divides using the column method. This is because we believe that a CAS should be able to solve problems step by step, so that the user can understand how the problem is solved.</p>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md46"></a>
 What this is not?</h1>
 <p>This is not a CAS intended for high-performance computing. This is because the basic arithmetic operations are much more time-consuming than the plain old <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code> (around 10 times slower). The amount of coding needed for high-performance computing would take a considerable amount of time to design, program and debug. We may try it after we this CAS is fully functional.</p>
 <p>See the <a href="https://github.com/ZCG-coder/Steppable/wiki/Performance">Performance Page</a> for more information.</p>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md47"></a>
 Why another CAS?</h1>
 <p>Out of <a href="https://en.wikipedia.org/wiki/List_of_computer_algebra_systems">this list</a>, we could not find a CAS that is:</p>
 <ul>
@@ -188,7 +197,7 @@ Why another CAS?</h1>
 <li>Runs even without internet connection</li>
 <li>Has no external dependencies (including BigNum libraries)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<h1><a class="anchor" id="autotoc_md48"></a>
 How to contribute?</h1>
 <p>Welcome to our project! We are glad that you are interested in contributing to our project. Please make a <a href="https://github.com/ZCG-Coder/Steppable/pull">pull request</a> in order to contribute to the project, and we will review it as soon as possible. But most importantly above all, we hope you will enjoy using this project and have fun coding ! </p>
 </div></div><!-- contents -->
@@ -211,7 +220,7 @@ How to contribute?</h1>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed Jun 19 2024 14:59:33"; // Will get replaced by Doxygen
+        const dateStr = "Sat Jun 29 2024 09:41:48"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

@@ -112,7 +112,8 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Building Steppable (CMake)</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md9"></a> </p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md9"></a> </p><dl class="section important"><dt>Important</dt><dd>It is reported that CL.EXE cannot build Steppable, as nanobind, one of Steppable's dependencies <b>cannot be built under Visual Studio.</b> There is nothing that we can do, except to wait for a new release of Visual Studio. In the meantime, check out <a href="https://github.com/ZCG-coder/Steppable/discussions/31">this Discussion post</a> for more information.</dd></dl>
+<p>Thank you.</p>
 <h1><a class="anchor" id="autotoc_md10"></a>
 Introduction</h1>
 <p>Steppable is configured using CMake, in order to enable building across different platforms and compilers. As a result, one needs an external build system, e.g., <a href="https://www.gnu.org/software/make/">Make</a> to build it.</p>
@@ -209,7 +210,7 @@ Using the built libraries</h1>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed Jun 19 2024 14:59:33"; // Will get replaced by Doxygen
+        const dateStr = "Sat Jun 29 2024 09:41:48"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

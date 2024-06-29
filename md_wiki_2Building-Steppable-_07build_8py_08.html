@@ -112,7 +112,9 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md7"></a> On platforms where Python is available, you can use the <code>build.py</code> script to build Steppable. It is a simple script that can replace the need for CMake, Make, and other build tools.</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md7"></a> </p><dl class="section important"><dt>Important</dt><dd>It is reported that CL.EXE cannot build Steppable, as nanobind, one of Steppable's dependencies <b>cannot be built under Visual Studio.</b> There is nothing that we can do, except to wait for a new release of Visual Studio. In the meantime, check out <a href="https://github.com/ZCG-coder/Steppable/discussions/31">this Discussion post</a> for more information.</dd></dl>
+<p>Thank you.</p>
+<p>On platforms where Python is available, you can use the <code>build.py</code> script to build Steppable. It is a simple script that can replace the need for CMake, Make, and other build tools.</p>
 <h1><a class="anchor" id="autotoc_md8"></a>
 Get Started</h1>
 <p>To get started, you would need:</p>
@@ -171,7 +173,7 @@ Get Started</h1>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Wed Jun 19 2024 14:59:33"; // Will get replaced by Doxygen
+        const dateStr = "Sat Jun 29 2024 09:41:48"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();
