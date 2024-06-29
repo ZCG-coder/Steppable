@@ -63,24 +63,25 @@ SECTION_END()
 
 // TODO: FIX THESE
 // - Incorrect return values.
-// SECTION(Test inverse hyperbolic cosine)
-// _.assertIsEqual(acosh("1.25", 4), "0.6931");
-// SECTION_END()
+SECTION(Test inverse hyperbolic cosine)
+_.assertIsEqual(acosh("1.25", 4), "0.6931");
+SECTION_END()
 
-// SECTION(Test inverse hyperbolic tangent)
-// _.assertIsEqual(atanh("0.75", 4), "0.9730");
-// SECTION_END()
+SECTION(Test inverse hyperbolic tangent)
+_.assertIsEqual(atanh("0.75", 4), "0.9725");
+SECTION_END()
 
-// SECTION(Test inverse hyperbolic cotangent)
-// _.assertIsEqual(acoth("1.25", 4), "1.0986");
-// SECTION_END()
+SECTION(Test inverse hyperbolic cotangent)
+_.assertIsEqual(acoth("5", 4), "0.2028");
+_.assertIsEqual(acoth("1.5", 4), "0.8047");
+SECTION_END()
 
 SECTION(Test inverse hyperbolic secant)
 _.assertIsEqual(asech("0.75", 4), "0.7953");
 SECTION_END()
 
-// SECTION(Test inverse hyperbolic cosecant)
-// _.assertIsEqual(acsch("0.25", 4), "2.0947");
-// SECTION_END()
+SECTION(Test inverse hyperbolic cosecant)
+_.assertIsEqual(acsch("0.25", 4), "2.0929");
+SECTION_END()
 
 TEST_END()
