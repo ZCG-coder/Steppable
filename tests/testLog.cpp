@@ -21,6 +21,7 @@
  **************************************************************************************************/
 
 #include "colors.hpp"
+#include "fn/basicArithm.hpp"
 #include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"
@@ -29,4 +30,10 @@
 #include <iostream>
 
 TEST_START()
+using namespace steppable::__internals::arithmetic;
+
+SECTION(Test natural logarithm)
+_.assertIsEqual(ln("5.3", 4), "1.6675");
+SECTION_END()
+
 TEST_END()
