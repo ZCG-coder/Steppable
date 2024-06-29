@@ -157,7 +157,7 @@ namespace steppable::__internals::arithmetic
             auto radicand = add(y, newAvg, 0);
             auto test = power(radicand, base, 0);
 
-            if (compare(newAvg, "0", 0) == "2")
+            if (compare(newAvg, "0", 0) == "2" or compare(test, number, 0) == "2")
                 return numUtils::standardizeNumber(divide(radicand, denominator, 0, static_cast<int>(_decimals)));
             if (compare(test, number, 0) == "1")
                 x = radicand;

@@ -111,9 +111,15 @@ namespace steppable::__internals::arithmetic
         {
             // double x2 = x * x;
             auto x2 = multiply(x, x, 0);
-            // return (12 - 5 * x2) / (12 + x2); // Padé approximant
-            auto a = subtract("12", multiply("5", x2, 0), 0);
-            auto b = add("12", x2, 0);
+            auto x4 = multiply(x2, x2, 0);
+            // (313*x^4 - 6900*x^2 + 15120)/(13*x^4 + 660*x^2 + 15120) // Padé approximant
+            //      4        2
+            //  313x  - 6900x  + 15120
+            // ------------------------
+            //     4       2
+            //  13x  + 660x  + 15120
+            auto a = add(subtract(multiply("313", x4, 0), multiply("6900", x2, 0), 0), "15120", 0);
+            auto b = add(add(multiply("13", x4, 0), multiply("660", x2, 0), 0), "15120", 0);
             return standardizeNumber(divide(a, b, 0, decimals * 2));
         }
         // otherwise use recursion

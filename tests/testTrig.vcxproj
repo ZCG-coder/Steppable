@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7666b097-5666-4f12-863a-f7baacfedb4e}</ProjectGuid>
-    <RootNamespace>comparison</RootNamespace>
+    <ProjectGuid>{7C777575-7A1D-4B2E-8E89-07E25EB676A9}</ProjectGuid>
+    <RootNamespace>testAdd</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -157,19 +157,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="comparison.cpp" />
-    <ClCompile Include="comparisonReport.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="comparisonReport.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\calc.vcxproj">
+    <ProjectReference Include="..\calc.vcxproj">
       <Project>{0a900aaa-ac12-48cf-85cf-8bb0c0130512}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\util.vcxproj">
+    <ProjectReference Include="..\util.vcxproj">
       <Project>{f6af63f8-9e0f-4da2-89b3-3096b56ba251}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="testTrig.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

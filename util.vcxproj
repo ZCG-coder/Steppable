@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\argParse.cpp" />
     <ClCompile Include="src\colors.cpp" />
+    <ClCompile Include="src\factors.cpp" />
     <ClCompile Include="src\fraction.cpp" />
     <ClCompile Include="src\logging.cpp" />
     <ClCompile Include="src\number.cpp" />
@@ -32,7 +33,9 @@
   <ItemGroup>
     <ClInclude Include="include\argParse.hpp" />
     <ClInclude Include="include\colors.hpp" />
+    <ClInclude Include="include\constants.hpp" />
     <ClInclude Include="include\exceptions.hpp" />
+    <ClInclude Include="include\factors.hpp" />
     <ClInclude Include="include\fn\basicArithm.hpp" />
     <ClInclude Include="include\format.hpp" />
     <ClInclude Include="include\fraction.hpp" />
@@ -44,6 +47,7 @@
     <ClInclude Include="include\rounding.hpp" />
     <ClInclude Include="include\symbols.hpp" />
     <ClInclude Include="include\testing.hpp" />
+    <ClInclude Include="include\types\result.hpp" />
     <ClInclude Include="include\util.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -57,26 +61,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>

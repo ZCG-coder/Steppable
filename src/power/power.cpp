@@ -92,8 +92,16 @@ namespace steppable::__internals::arithmetic
             return "0";
         }
 
-        auto numberNoTrailingZeros = removeTrailingZeros(number);
-        size_t numberTrailingZeros = number.length() - numberNoTrailingZeros.length();
+        auto numberNoTrailingZeros = standardizeNumber(number);
+        size_t numberTrailingZeros = 0;
+        if (isInteger(number))
+        {
+            number = splitNumber(number, "0", false, false, true).splitNumberArray[0];
+            numberNoTrailingZeros = removeTrailingZeros(number);
+            numberTrailingZeros = number.length() - numberNoTrailingZeros.length();
+        }
+        else
+            numberTrailingZeros = 0;
         // Remove the zeros to reduce the workload.
         number = numberNoTrailingZeros;
 
