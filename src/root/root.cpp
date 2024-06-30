@@ -105,8 +105,8 @@ namespace steppable::__internals::arithmetic
             auto radicand = add(y, newAvg, 0);
             auto test = power(radicand, base, 0);
 
-            if (compare(newAvg, "0", 0) == "2")
-                return numUtils::roundDown(numUtils::roundOff(radicand, 1));
+            if (compare(newAvg, "0", 0) == "2" or compare(test, number, 0) == "2")
+                return roundDown(numUtils::roundOff(radicand, 1));
             if (compare(test, number, 0) == "1")
                 x = radicand;
             else if (compare(test, number, 0) == "0")

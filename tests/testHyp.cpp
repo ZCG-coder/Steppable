@@ -61,8 +61,6 @@ SECTION(Test inverse hyperbolic sine)
 _.assertIsEqual(asinh("0.5", 4), "0.4812");
 SECTION_END()
 
-// TODO: FIX THESE
-// - Incorrect return values.
 SECTION(Test inverse hyperbolic cosine)
 _.assertIsEqual(acosh("1.25", 4), "0.6931");
 SECTION_END()
