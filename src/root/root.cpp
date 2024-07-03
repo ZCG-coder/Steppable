@@ -153,6 +153,19 @@ namespace steppable::__internals::arithmetic
 
         while (true)
         {
+            // Try to approximate the correct radicand.
+            // Method:
+            // +---+    *********    +---+
+            // | y | <= * value * <= | x |
+            // +---+    *********    +---+
+            //                x - y
+            // - value = y + -------
+            //                  2
+            //
+            //           base
+            // - If value     > actual, x is too large, exchange x with y.
+            // - If           < actual, y is too large, exchange y with x.
+            // - If           is within acceptable range, return.
             auto newAvg = divide(subtract(x, y, 0), "2", 0, static_cast<int>(decimals) + 1);
             auto radicand = add(y, newAvg, 0);
             auto test = power(radicand, base, 0);
