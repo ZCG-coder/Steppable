@@ -65,7 +65,9 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Column Method Addition)
-        std::cout << "Taking absolute value :\n" << abs(number, steps) << '\n';
+        std::cout << "Taking absolute value :"
+                  << "\n"
+                  << abs(number, steps) << '\n';
         TOC()
     }
     else

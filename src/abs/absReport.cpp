@@ -47,12 +47,14 @@ std::string reportAbs(const std::string_view& number, int steps = 2)
     {
         if (number[0] == '-')
         {
-            ss << "Since " << number << " is negative, abs(" << number << ") = -(" << number << ")\n";
+            ss << "Since " << number << " is negative, "
+               << "abs(" << number << ") = -(" << number << ")\n";
             ss << THEREFORE << " The absolute value of " << number << " is " << standardizeNumber(number.substr(1));
         }
         else
         {
-            ss << "Since " << number << " is positive, abs(" << number << ") = " << number << '\n';
+            ss << "Since " << number << " is positive, "
+               << "abs(" << number << ") = " << number << '\n';
             ss << THEREFORE << " The absolute value of " << number << " is " << standardizeNumber(number);
         }
     }

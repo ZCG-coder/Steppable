@@ -1,2 +1,6 @@
 *.jpeg filter=lfs diff=lfs merge=lfs -text
 *.svg filter=lfs diff=lfs merge=lfs -text
+
+# Steppable translations
+res/translations/*.stp_strings linguist-generated=true linguist-language=Bash
+res/translations/**/*.stp_localized linguist-generated=true linguist-language=Bash

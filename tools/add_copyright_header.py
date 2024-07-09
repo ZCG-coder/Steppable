@@ -138,8 +138,9 @@ def first_n_lines(text: str, n: int) -> str:
 
 def process(file: Path):
     if (
-        file.suffix in [".cpp", ".hpp", ".stp_settings"] or file.name == "cpp.hint"
-    ):  # C++ Source / Header
+        file.suffix in (".cpp", ".hpp")  # C++ Source / Header
+        or file.name == "cpp.hint"  # C++ Hint file
+    ):
         with open(file, "r") as f:
             contents = f.read()
             results = re.match(
@@ -161,7 +162,9 @@ def process(file: Path):
         with open(file, "w") as f:
             f.write(contents)
     elif (
-        file.suffix == ".py" or file.name == "CMakeLists.txt"
+        file.suffix == ".py"
+        or file.name == "CMakeLists.txt"
+        or ".stp_" in file.suffix  # Steppable configuration files
     ):  # Python File or CMake file
         with open(file, "r") as f:
             contents = f.read()
