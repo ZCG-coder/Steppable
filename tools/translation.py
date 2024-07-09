@@ -75,9 +75,9 @@ def ask_translation(string: str) -> str:
     """
     Asks the user to translate a string.
     """
-    print(f"String      : {string}")
+    print(f'String      : "{string}"')
     translation = input("Translation : ")
-    erase_line(2)
+    print(erase_line(2))
 
     return translation
 
@@ -110,7 +110,7 @@ def write_indexed_file(component: str, *, append: bool = False) -> None:
     while string != "":
         string = input("> ")
         guid = str(uuid.uuid4())
-        strings.append(f"{guid} >> {string}")
+        strings.append(f'{guid} >> "{string}"')
 
     strings.pop(-1)
     for idx, string in enumerate(strings):
@@ -140,14 +140,18 @@ def add_translations(file: Path, language: str) -> None:
         lines = f.readlines()
     for line in lines:
         line = line.strip()
-        line_parts = line.split(" >> ")  # Split the UUID and the string
         if not line:
             # Skip empty lines
             continue
 
-        # Step 1: Check for invalid characters: \ " '
+        # Step 2: Check for invalid characters: \ " '
         if line.startswith("#"):
             continue  # Skip comments
+        line_parts = line.split(" >> ")  # Split the UUID and the string
+
+        # Step 1: Get the GUID and the string
+        guid, line = line_parts
+        line = line.replace('"', "")  # Remove quotes
 
         if (pos := line.find("\\")) != -1:
             print_error(line, pos, "Invalid character: \\")
@@ -159,8 +163,6 @@ def add_translations(file: Path, language: str) -> None:
             print_error(line, pos, "Invalid character: '")
             exit(1)
 
-        # Step 2: Get the GUID and the string
-        guid, line = line_parts
         if not line:
             print_error(line, 0, "Empty string")
             exit(1)

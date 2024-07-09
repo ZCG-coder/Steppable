@@ -33,9 +33,22 @@
 
 #pragma once
 
+#include "output.hpp"
+
 #include <cstdlib>
 #include <ctime>
 #include <mutex>
+#include <stdlib.h>
+#include <string>
+#ifdef WINDOWS
+    #include <windows.h>
+#else
+    #include <pwd.h>
+    #include <sys/types.h>
+    #include <unistd.h>
+#endif
+
+using namespace std::literals;
 
 /**
  * @namespace steppable::__internals::utils
@@ -76,4 +89,49 @@ namespace steppable::__internals::utils
 #endif
         return bt;
     }
+
+    inline std::string getHomeDirectory()
+    {
+        std::string homeDir;
+
+#ifdef _WIN32
+        char homePath[MAX_PATH];
+        if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_PROFILE, NULL, 0, homePath)))
+            homeDir = homePath;
+        else
+            std::cerr << "Error: Unable to get the home directory." << std::endl;
+#else
+        const char* homeEnv = std::getenv("HOME"); // NOLINT(concurrency-mt-unsafe)
+
+        if (homeEnv != nullptr)
+            homeDir = homeEnv;
+        else
+        {
+            std::array<char, 4096> buffer{};
+            std::array<char, 4096> errBuffer{};
+            const char* homeEnv = nullptr;
+            int error = 0;
+            struct passwd pw
+            {
+            };
+            struct passwd* result = nullptr;
+
+            uid_t userId = getuid();
+            error = getpwuid_r(userId, &pw, buffer.data(), sizeof(buffer), &result);
+
+            if (result != nullptr)
+                homeDir = pw.pw_dir;
+            else if (error != 0)
+            {
+                strerror_r(error, errBuffer.data(), errBuffer.size());
+                std::cerr << "Error occurred while getting the home directory: " << buffer.data() << "\n";
+            }
+            else
+                std::cerr << "Error: Unable to get the home directory.\n";
+        }
+#endif
+
+        return homeDir;
+    }
+
 } // namespace steppable::__internals::utils

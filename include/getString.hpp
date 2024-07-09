@@ -20,59 +20,20 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-/**
- * @file abs.cpp
- * @brief This file contains the implementation of the abs function, which gets the absolute value of a number string.
- *
- * @author Andy Zhang
- * @date 12th January 2024
- */
+#pragma once
 
-#include "absReport.hpp"
-#include "argParse.hpp"
-#include "platform.hpp"
-#include "util.hpp"
-
-#include <fn/basicArithm.hpp>
-#include <iostream>
 #include <string>
-#include <string_view>
 
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::arithmetic;
-
-namespace steppable::__internals::arithmetic
+namespace steppable::localization
 {
-    std::string abs(const std::string_view& _number, const int steps)
-    {
-        std::string number = static_cast<std::string>(_number);
-        return reportAbs(number, steps);
-    }
-} // namespace steppable::__internals::arithmetic
-
-#ifndef NO_MAIN
-int main(const int _argc, const char* _argv[])
-{
-    Utf8CodePage _;
-    ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number");
-    program.addKeywordArg("steps", 2, "Amount of steps while taking the absolute value. 0 = No steps, 2 = All steps.");
-    program.addSwitch("profile", false, "profiling the program");
-    program.parseArgs();
-
-    const int steps = program.getKeywordArgument("steps");
-    const bool profile = program.getSwitch("profile");
-    const auto& number = program.getPosArg(0);
-
-    if (profile)
-    {
-        TIC(Column Method Addition)
-        std::cout << "Taking absolute value :"
-                  << "\n"
-                  << abs(number, steps) << '\n';
-        TOC()
-    }
-    else
-        std::cout << abs(number, steps) << '\n';
-}
-#endif
+    /**
+     * @brief Gets a string from origin, and by the key.
+     * @details The origin is the name of the file, and the key is the GUID of the string.
+     *
+     * @param origin The name of the file, without the extension.
+     * @param key The GUID key of the string.
+     *
+     * @return The string in its localized form.
+     */
+    std::string getString(const std::string& origin, const std::string& key);
+} // namespace steppable::localization
