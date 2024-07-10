@@ -63,15 +63,18 @@ import sys
 import tempfile
 import threading
 import traceback
+from typing import List, Union
 
-try:
-    import yaml  # pyright: ignore
-except ImportError:
-    yaml = None
+import yaml  # pyright: ignore
 
 
-def strtobool(val):
-    """Convert a string representation of truth to a bool following LLVM's CLI argument parsing."""
+def strtobool(val: str) -> bool:
+    """
+    Convert a string representation of truth to a bool following LLVM's CLI argument parsing.
+    :param val: The string to convert.
+    :return: The bool value.
+    :raises argparse.ArgumentTypeError: If the string is not a valid boolean.
+    """
 
     val = val.lower()
     if val in ["", "true", "1"]:
@@ -85,8 +88,12 @@ def strtobool(val):
     )
 
 
-def find_compilation_database(path):
-    """Adjusts the directory until a compilation database is found."""
+def find_compilation_database(path: str) -> str:
+    """
+    Adjusts the directory until a compilation database is found.
+    :param path: The path close to the compilation database.
+    :return: The absolute path to the compilation database.
+    """
     result = os.path.realpath("./")
     while not os.path.isfile(os.path.join(result, path)):
         parent = os.path.dirname(result)
@@ -97,31 +104,58 @@ def find_compilation_database(path):
     return result
 
 
-def make_absolute(f, directory):
+def make_absolute(f: str, directory: str) -> str:
+    """
+    Return an absolute path if f is not already an absolute path.
+    :param f: The file path.
+    :param directory: The directory path.
+    :return: The absolute path.
+    """
     if os.path.isabs(f):
         return f
     return os.path.normpath(os.path.join(directory, f))
 
 
 def get_tidy_invocation(
-    f,
-    clang_tidy_binary,
-    checks,
-    tmpdir,
-    build_path,
-    header_filter,
-    allow_enabling_alpha_checkers,
-    extra_arg,
-    extra_arg_before,
-    quiet,
-    config_file_path,
-    config,
-    line_filter,
-    use_color,
-    plugins,
-    warnings_as_errors,
-):
-    """Gets a command line for clang-tidy."""
+    f: str,
+    clang_tidy_binary: str,
+    checks: str,
+    tmpdir: Union[str, None],
+    build_path: str,
+    header_filter: str,
+    allow_enabling_alpha_checkers: str,
+    extra_arg: str,
+    extra_arg_before: str,
+    quiet: str,
+    config_file_path: str,
+    config: str,
+    line_filter: str,
+    use_color: str,
+    plugins: str,
+    warnings_as_errors: str,
+) -> List[str]:
+    """
+    Gets a command line for clang-tidy.
+    :param f: The file path.
+    :param clang_tidy_binary: The clang-tidy binary path.
+    :param checks: The checks to run.
+    :param tmpdir: The temporary directory.
+    :param build_path: The build path.
+    :param header_filter: The header filter.
+    :param allow_enabling_alpha_checkers: Whether to allow enabling alpha checkers.
+    :param extra_arg: The extra arguments.
+    :param extra_arg_before: The extra arguments before.
+    :param quiet: Whether to run clang-tidy in quiet mode.
+    :param config_file_path: The config file path.
+    :param config: The config.
+    :param line_filter: The line filter.
+    :param use_color: Whether to use colors in diagnostics.
+    :param plugins: The plugins to load.
+    :param warnings_as_errors: Whether to upgrade warnings to errors.
+
+    :return: The full command line.
+    """
+
     start = [clang_tidy_binary]
     if allow_enabling_alpha_checkers:
         start.append("-allow-enabling-analyzer-alpha-checkers")
@@ -162,8 +196,13 @@ def get_tidy_invocation(
     return start
 
 
-def merge_replacement_files(tmpdir, mergefile):
-    """Merge all replacement files in a directory into a single file"""
+def merge_replacement_files(tmpdir: str, mergefile: str) -> None:
+    """
+    Merge all replacement files in a directory into a single file
+    with the same format.
+    :param tmpdir: The temporary directory.
+    :param mergefile: The file to merge into.
+    """
     # The fixes suggested by clang-tidy >= 4.0.0 are given under
     # the top level key 'Diagnostics' in the output yaml files
     mergekey = "Diagnostics"
@@ -187,8 +226,15 @@ def merge_replacement_files(tmpdir, mergefile):
         open(mergefile, "w").close()
 
 
-def find_binary(arg, name, build_path):
-    """Get the path for a binary or exit"""
+def find_binary(arg: str, name: str, build_path: str) -> str:
+    """
+    Get the path for a binary or exit
+    :param arg: The binary path.
+    :param name: The binary name.
+    :param build_path: The build path.
+    :return: The binary path.
+    :raises SystemExit: If the binary is not found.
+    """
     if arg:
         if shutil.which(arg):
             return arg
@@ -209,8 +255,15 @@ def find_binary(arg, name, build_path):
         )
 
 
-def apply_fixes(args, clang_apply_replacements_binary, tmpdir):
-    """Calls clang-apply-fixes on a given directory."""
+def apply_fixes(
+    args: argparse.Namespace, clang_apply_replacements_binary: str, tmpdir: str
+) -> None:
+    """
+    Calls clang-apply-fixes on a given directory.
+    :param args: The command line arguments.
+    :param clang_apply_replacements_binary: The clang-apply-replacements binary path.
+    :param tmpdir: The temporary directory.
+    """
     invocation = [clang_apply_replacements_binary]
     invocation.append("-ignore-insert-conflict")
     if args.format:
@@ -221,8 +274,25 @@ def apply_fixes(args, clang_apply_replacements_binary, tmpdir):
     subprocess.call(invocation)
 
 
-def run_tidy(args, clang_tidy_binary, tmpdir, build_path, queue, lock, failed_files):
-    """Takes filenames out of queue and runs clang-tidy on them."""
+def run_tidy(
+    args: argparse.Namespace,
+    clang_tidy_binary: str,
+    tmpdir: str,
+    build_path: str,
+    queue: queue.Queue,
+    lock: threading.Lock,
+    failed_files: List[str],
+) -> None:
+    """
+    Takes filenames out of queue and runs clang-tidy on them.
+    :param args: The command line arguments.
+    :param clang_tidy_binary: The clang-tidy binary path.
+    :param tmpdir: The temporary directory.
+    :param build_path: The build path.
+    :param queue: The queue of files to process.
+    :param lock: The threading lock.
+    :param failed_files: The list of failed files.
+    """
     while True:
         name = queue.get()
         invocation = get_tidy_invocation(
@@ -261,7 +331,10 @@ def run_tidy(args, clang_tidy_binary, tmpdir, build_path, queue, lock, failed_fi
         queue.task_done()
 
 
-def main():
+def main() -> None:
+    """
+    The main function.
+    """
     parser = argparse.ArgumentParser(
         description=(
             "Runs clang-tidy over all files in a compilation database. Requires clang-tidy and clang-apply-replacements"
@@ -435,7 +508,7 @@ def main():
         )
 
     combine_fixes = False
-    export_fixes_dir = None
+    export_fixes_dir = ""
     delete_fixes_dir = False
     if args.export_fixes is not None:
         # if a directory is given, create it if it does not exist
@@ -569,7 +642,7 @@ def main():
     if args.fix:
         print("Applying fixes ...")
         try:
-            apply_fixes(args, clang_apply_replacements_binary, export_fixes_dir)
+            apply_fixes(args, clang_apply_replacements_binary, export_fixes_dir)  # type: ignore
         except:
             print("Error applying fixes.\n", file=sys.stderr)
             traceback.print_exc()

@@ -338,6 +338,8 @@ class BuildSteppable(Project):
         """
         Adds a component to the project. Components are the building blocks of the project, and are linked together to
         build the final executables.
+        :param group: The group to which the component belongs.
+        :param name: The name of the component.
         """
 
         files = [

@@ -71,7 +71,7 @@ def get_compile_commands() -> Path:
     raise RuntimeError("Cannot get the CMake build directory")
 
 
-def patch():
+def patch() -> None:
     """Remove the NO_MAIN definition in compile_commands.json."""
 
     try:

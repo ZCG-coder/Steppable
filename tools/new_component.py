@@ -92,6 +92,10 @@ PATCH_COMMENT = "# NEW_COMPONENT: PATCH"
 
 
 def show_help() -> None:
+    """
+    Show the help text for new contributors.
+    """
+
     for idx, part in enumerate(HELP):
         print(part)
         if idx != (len(HELP) - 1):
@@ -107,6 +111,11 @@ def show_help() -> None:
 
 
 def validate_name(name: str) -> bool:
+    """
+    Validate the name of the component. It cannot contain restricted characters.
+    :param name: The name of the component.
+    :return: True if the name is valid, False otherwise.
+    """
     if (
         "*" in name
         or '"' in name
@@ -124,6 +133,12 @@ def validate_name(name: str) -> bool:
 
 
 def make_dir(name: str, date: str, author: str) -> None:
+    """
+    Create a new directory for the component.
+    :param name: The name of the component.
+    :param date: The date of creation.
+    :param author: The author of the component.
+    """
     path: Path = SRC_DIR / name
 
     if not path.is_dir():
@@ -305,6 +320,10 @@ TEST_END()
 
 
 def patch_cmakelists(name: str) -> None:
+    """
+    Patch the CMakeLists.txt file to include the new component.
+    :param name: The name of the component.
+    """
     with open(PROJECT_PATH / "CMakeLists.txt") as f:
         contents = f.read()
 
@@ -318,7 +337,11 @@ def patch_cmakelists(name: str) -> None:
 def ordinal(n: int) -> str:
     """
     Get the ordinal numeral for a given number n.
+    :param n: The number.
+    :return: The ordinal numeral.
     """
+
+    # Credits to https://stackoverflow.com/a/20007730/14868780 for this crazy one-liner.
     return f"{n:d}{'tsnrhtdd'[(n // 10 % 10 != 1) * (n % 10 < 4) * n % 10::4]}"
 
 
@@ -328,6 +351,10 @@ today_string = today.strftime(f"{today_ordinal} %B %Y")
 
 
 def main():
+    """
+    Main function for the new component wizard.
+    """
+
     print(WELCOME_STRING)
     selection = getch().upper()
 

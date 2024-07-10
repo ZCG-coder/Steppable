@@ -74,6 +74,8 @@ LOCALIZED_HEADER = """\
 def ask_translation(string: str) -> str:
     """
     Asks the user to translate a string.
+    :param string: The string to translate.
+    :return: The translation of the string.
     """
     print(f'String      : "{string}"')
     translation = input("Translation : ")
@@ -86,6 +88,7 @@ def verify_language(language: str) -> None:
     """
     Verifies that the language code is a valid ISO 639-1 code. Eg. "en" or "en-US".
     Exits the program if the language code is invalid.
+    :param language: The language code to verify.
     """
     if not ISO_639_REGEX.match(language):
         print(f"ERROR: Invalid language code: {language}")
@@ -127,6 +130,13 @@ def write_indexed_file(component: str, *, append: bool = False) -> None:
 
 
 def add_translations(file: Path, language: str) -> None:
+    """
+    Adds a new translation to the given file.
+    Writes the translations to a new file.
+    :param file: The file to translate.
+    :param language: The language to translate the strings to.
+    """
+
     verify_language(language)  # Check if the language code is valid
     print("INFO: Thank you for helping us translate the project!")
     print(f"INFO: TRANSLATING {file} TO {language}")

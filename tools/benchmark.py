@@ -20,6 +20,10 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
+"""
+Benchmarking script for Steppable executables.
+"""
+
 import argparse
 import random
 import subprocess
@@ -32,7 +36,7 @@ from lib.paths import PROJECT_PATH
 BUILD_PATH_DEFAULT = "build"
 
 FUNCTIONS = {
-    "abs": lambda x, y: abs(x),
+    "abs": lambda x, _: abs(x),
     "add": lambda x, y: x + y,
     "comparison": lambda x, y: x > y,
     "division": lambda x, y: x / y,
@@ -48,6 +52,14 @@ def _benchmark_function(
     input_1: int,
     input_2: int,
 ) -> float:
+    """
+    Benchmark a Python function.
+    :param function: The function to benchmark.
+    :param input_1: The first input.
+    :param input_2: The second input.
+    :return: The time taken to run the function.
+    """
+
     start = time.time()
     try:
         function(input_1, input_2)
@@ -65,6 +77,16 @@ def _benchmark(
     verbose: bool = False,
     timeout: int = 10,
 ) -> float:
+    """
+    Benchmark a system executable.
+    :param cmd: The executable to run.
+    :param input_str1: The first input.
+    :param input_str2: The second input.
+    :param verbose: Whether to print the output.
+    :param timeout: The timeout for the process.
+    :return: The time taken to run the executable.
+    """
+
     start = time.time()
     try:
         result = subprocess.run(
@@ -92,6 +114,16 @@ def _benchmark(
 def benchmark(
     cmd: str, inputs: List[str], limit: int, verbose: bool = False, timeout: int = 10
 ) -> Tuple[List[float], List[float], bool]:
+    """
+    Benchmark a Steppable executable.
+    :param cmd: The executable to run.
+    :param inputs: The inputs to run the executable on.
+    :param limit: The limit for the inputs.
+    :param verbose: Whether to print the output.
+    :param timeout: The timeout for the process.
+    :return: The time taken to run the executable.
+    """
+
     random_number = random.randint(0, limit)
     random_number_str = str(random_number)
     time_needed = []
@@ -114,7 +146,11 @@ def benchmark(
     return time_needed, time_needed_system, system_available
 
 
-def main():
+def main() -> None:
+    """
+    Main function for the benchmarking script.
+    """
+
     parser = argparse.ArgumentParser(
         prog="benchmark.py",
         description="Performs benchmarks on Steppable executables",
