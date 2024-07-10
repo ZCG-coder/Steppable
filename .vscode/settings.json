@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    ".cmake-format": "python",
     "array": "cpp",
     "string_view": "cpp",
     "any": "cpp",
@@ -57,7 +58,8 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "variant": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "__node_handle": "cpp"
   },
   "copyrightInserter.holder": "NWSOFT",
   "copyrightInserter.license": "mit",

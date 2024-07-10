@@ -38,6 +38,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#include <filesystem>
 #include <string>
 #ifdef WINDOWS
     #include <shlobj.h>
@@ -90,9 +91,9 @@ namespace steppable::__internals::utils
         return bt;
     }
 
-    inline std::string getHomeDirectory()
+    inline std::filesystem::path getHomeDirectory()
     {
-        std::string homeDir;
+        std::filesystem::path homeDir;
 
 #ifdef _WIN32
         char homePath[MAX_PATH];
@@ -133,6 +134,26 @@ namespace steppable::__internals::utils
 #endif
 
         return homeDir;
+    }
+
+    inline std::filesystem::path getConfDirectory()
+    {
+        // When we have a full application, we can allow users to change the configuration directory.
+        // However, now, we will use the default configuration directory for the platform.
+        std::filesystem::path confDir = getHomeDirectory();
+
+#ifndef WINDOWS
+        confDir /= ".config";
+        confDir /= "steppable";
+#else
+        confDir /= "AppData";
+        confDir /= "Roaming";
+        confDir /= "Steppable";
+#endif
+        // If the directory does not exist, create it.
+        if (not std::filesystem::is_directory(confDir))
+            std::filesystem::create_directories(confDir);
+        return confDir;
     }
 
 } // namespace steppable::__internals::utils

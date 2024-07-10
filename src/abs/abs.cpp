@@ -30,7 +30,7 @@
 
 #include "absReport.hpp"
 #include "argParse.hpp"
-#include "platform.hpp"
+#include "getString.hpp"
 #include "util.hpp"
 
 #include <fn/basicArithm.hpp>
@@ -40,6 +40,7 @@
 
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::arithmetic;
+using namespace steppable::localization;
 
 namespace steppable::__internals::arithmetic
 {
@@ -55,9 +56,9 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number");
-    program.addKeywordArg("steps", 2, "Amount of steps while taking the absolute value. 0 = No steps, 2 = All steps.");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', getString("abs", "ca70a6a7-d1d8-4e43-a94e-014d8f9839c9"));
+    program.addKeywordArg("steps", 2, getString("abs", "3860a4ae-1073-4a6d-a75e-f64426291573"));
+    program.addSwitch("profile", false, getString("abs", "5d7bddda-e33f-4f9c-81b2-d30baad2ec5c"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");
