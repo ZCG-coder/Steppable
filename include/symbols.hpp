@@ -35,6 +35,7 @@
 #include <array>
 #include <cstddef>
 #include <string>
+#include <string_view>
 #include <vector>
 
 /**
@@ -156,33 +157,33 @@ namespace steppable::prettyPrint
 namespace steppable::__internals::symbols
 {
     /// @brief The because symbol (3 dots in a triangle, Unicode U+2235)
-    constexpr std::string BECAUSE = "\u2235";
+    constexpr const std::string_view& BECAUSE = "\u2235";
     /// @brief The therefore symbol (3 dots in a triangle, Unicode U+2234)
-    constexpr std::string THEREFORE = "\u2234";
+    constexpr const std::string_view& THEREFORE = "\u2234";
 
     /// @brief The multiply symbol (Unicode U+00D7)
-    constexpr std::string MULTIPLY = "\u00D7";
+    constexpr const std::string_view& MULTIPLY = "\u00D7";
     /// @brief The divide symbol (Unicode U+00F7)
-    constexpr std::string DIVIDED_BY = "\u00F7";
+    constexpr const std::string_view& DIVIDED_BY = "\u00F7";
 
-    constexpr std::string SURD = "\u221A";
-    constexpr std::string COMBINE_MACRON = "\u0305";
+    constexpr const std::string_view& SURD = "\u221A";
+    constexpr const std::string_view& COMBINE_MACRON = "\u0305";
 
     /// @brief The large dot symbol (Unicode U+25C9)
-    constexpr std::string LARGE_DOT = "\u25C9";
-    constexpr std::string ABOVE_DOT = "\u02D9";
+    constexpr const std::string_view& LARGE_DOT = "\u25C9";
+    constexpr const std::string_view& ABOVE_DOT = "\u02D9";
 
     // Subscripts
     /**
      * @brief The subscript 0 (Unicode U+2080)
      * @note This is used to check if a subscript is converted correctly, do not use this in the program.
      */
-    constexpr std::string SUB_0 = "\u2080";
+    constexpr const std::string_view& SUB_0 = "\u2080";
     /**
      * @brief The subscript z (Unicode U+2098)
      * @note This is used to check if a subscript is converted correctly, do not use this in the program.
      */
-    constexpr std::string SUB_Z = "\u1D69";
+    constexpr const std::string_view& SUB_Z = "\u1D69";
     /**
      * @brief The subscript magic number (8272)
      * @note This is used to check if a subscript is converted correctly, do not use this in the program.
@@ -190,7 +191,7 @@ namespace steppable::__internals::symbols
     constexpr int SUB_MAGIC_NUMBER = 8272;
 
     /// @brief A list of subscript characters.
-    extern const std::array<std::string, 10>& SUPERSCRIPTS;
+    extern const std::array<const std::string_view&, 10>& SUPERSCRIPTS;
 
     /**
      * @brief Create a subscript string from a normal string.
@@ -213,12 +214,12 @@ namespace steppable::__internals::symbols
      * @brief The superscript 0 (Unicode U+2070)
      * @note This is used to check if a superscript is converted correctly, do not use this in the program.
      */
-    constexpr std::string SUP_0 = "\u2070";
+    constexpr const std::string_view& SUP_0 = "\u2070";
     /**
      * @brief The superscript z (Unicode U+1DBB)
      * @note This is used to check if a superscript is converted correctly, do not use this in the program.
      */
-    constexpr std::string SUP_Z = "\u1DBB";
+    constexpr const std::string_view& SUP_Z = "\u1DBB";
     /**
      * @brief The superscript magic number (8304)
      * @note This is used to check if a superscript is converted correctly, do not use this in the program.
