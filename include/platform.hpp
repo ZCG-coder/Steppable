@@ -36,11 +36,11 @@
 #include "output.hpp"
 
 #include <cstdlib>
+#include <cstring>
 #include <ctime>
-#include <mutex>
-#include <stdlib.h>
 #include <string>
 #ifdef WINDOWS
+    #include <shlobj.h>
     #include <windows.h>
 #else
     #include <pwd.h>
@@ -99,7 +99,7 @@ namespace steppable::__internals::utils
         if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_PROFILE, NULL, 0, homePath)))
             homeDir = homePath;
         else
-            std::cerr << "Error: Unable to get the home directory." << std::endl;
+            output::error("platform::getHomeDirectory"s, "Error: Unable to get the home directory."s);
 #else
         const char* homeEnv = std::getenv("HOME"); // NOLINT(concurrency-mt-unsafe)
 
@@ -124,10 +124,11 @@ namespace steppable::__internals::utils
             else if (error != 0)
             {
                 strerror_r(error, errBuffer.data(), errBuffer.size());
-                std::cerr << "Error occurred while getting the home directory: " << buffer.data() << "\n";
+                output::error("platform::getHomeDirectory"s,
+                              "Error occurred while getting the home directory: "s + buffer.data());
             }
             else
-                std::cerr << "Error: Unable to get the home directory.\n";
+                output::error("platform::getHomeDirectory"s, "Error: Unable to get the home directory."s);
         }
 #endif
 
