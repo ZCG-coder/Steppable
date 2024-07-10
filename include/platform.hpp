@@ -95,16 +95,16 @@ namespace steppable::__internals::utils
     {
         std::filesystem::path homeDir;
 
-#ifdef _WIN32
+#ifdef WINDOWS
         char homePath[MAX_PATH];
         if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_PROFILE, NULL, 0, homePath)))
             homeDir = homePath;
         else
             output::error("platform::getHomeDirectory"s, "Error: Unable to get the home directory."s);
 #else
-        const char* homeEnv = std::getenv("HOME"); // NOLINT(concurrency-mt-unsafe)
+        const std::string& homeEnv = std::getenv("HOME"); // NOLINT(concurrency-mt-unsafe)
 
-        if (homeEnv != nullptr)
+        if (not homeEnv.empty())
             homeDir = homeEnv;
         else
         {

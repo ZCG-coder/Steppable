@@ -20,8 +20,18 @@ namespace steppable::localization
 
         std::string lang;
 #ifdef WINDOWS
-        LANGID langID = GetUserDefaultUILanguage();
-        lang = std::to_string(PRIMARYLANGID(LANGID));
+        LANGID langId = GetUserDefaultUILanguage();
+        WCHAR localeName[LOCALE_NAME_MAX_LENGTH];
+
+        if (LCIDToLocaleName(langId, localeName, LOCALE_NAME_MAX_LENGTH, 0) != 0)
+        {
+            // Convert WCHAR to std::string
+            char localeNameStr[LOCALE_NAME_MAX_LENGTH];
+            WideCharToMultiByte(CP_UTF8, 0, localeName, -1, localeNameStr, LOCALE_NAME_MAX_LENGTH, NULL, NULL);
+            lang = std::string(localeNameStr);
+        }
+        else
+            return "en-US";
 #else
         std::string langC = getenv("LANG"); // NOLINT(concurrency-mt-unsafe)
         if (not langC.empty())
@@ -98,7 +108,8 @@ namespace steppable::localization
             }
             else
             {
-                output::error("getString"s, "Malformed line in localization file: " + originFile.string() + " -> " + line);
+                output::error("getString"s,
+                              "Malformed line in localization file: " + originFile.string() + " -> " + line);
                 break;
             }
         }
