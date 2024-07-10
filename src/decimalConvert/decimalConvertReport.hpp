@@ -24,13 +24,13 @@
 
 #include <string>
 
-std::string reportDecimalConvertStep(const std::string_view& baseString,
-                                     const std::string_view& digit,
+std::string reportDecimalConvertStep(const std::string& baseString,
+                                     const std::string& digit,
                                      size_t powerIndex,
-                                     const std::string_view& convertedDigit,
+                                     const std::string& convertedDigit,
                                      size_t maxWidth);
 
-std::string reportDecimalConvert(const std::string_view& inputString,
-                                 const std::string_view& baseString,
-                                 const std::string_view& convertedString,
+std::string reportDecimalConvert(const std::string& inputString,
+                                 const std::string& baseString,
+                                 const std::string& convertedString,
                                  int steps = 2);

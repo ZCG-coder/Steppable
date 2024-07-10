@@ -30,7 +30,7 @@
 
 #pragma once
 
-#include <string_view>
+#include <string>
 
 using namespace std::literals;
 
@@ -103,7 +103,7 @@ namespace steppable::testing
          */
         void assert(bool condition, const std::string& conditionName);
 
-        std::string_view testCaseName;
+        std::string testCaseName;
 
     public:
         int errorCount = 0; // NOLINT(cppcoreguidelines-non-private-member-variables-in-classes)

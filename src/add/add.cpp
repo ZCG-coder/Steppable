@@ -35,7 +35,7 @@
 
 #include <algorithm>
 #include <iostream>
-#include <string_view>
+#include <string>
 #include <vector>
 
 using namespace steppable::__internals::numUtils;
@@ -45,8 +45,8 @@ using namespace steppable::__internals::symbols;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string add(const std::string_view& a,
-                    const std::string_view& b,
+    std::string add(const std::string& a,
+                    const std::string& b,
                     const int steps,
                     const bool negative,
                     const bool properlyFormat)

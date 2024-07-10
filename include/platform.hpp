@@ -32,22 +32,9 @@
  */
 
 #pragma once
-
-#include "output.hpp"
-
 #include <cstdlib>
-#include <cstring>
 #include <ctime>
 #include <filesystem>
-#include <string>
-#ifdef WINDOWS
-    #include <shlobj.h>
-    #include <windows.h>
-#else
-    #include <pwd.h>
-    #include <sys/types.h>
-    #include <unistd.h>
-#endif
 
 using namespace std::literals;
 
@@ -91,69 +78,7 @@ namespace steppable::__internals::utils
         return bt;
     }
 
-    inline std::filesystem::path getHomeDirectory()
-    {
-        std::filesystem::path homeDir;
+    std::filesystem::path getHomeDirectory();
 
-#ifdef WINDOWS
-        char homePath[MAX_PATH];
-        if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_PROFILE, NULL, 0, homePath)))
-            homeDir = homePath;
-        else
-            output::error("platform::getHomeDirectory"s, "Error: Unable to get the home directory."s);
-#else
-        const std::string& homeEnv = std::getenv("HOME"); // NOLINT(concurrency-mt-unsafe)
-
-        if (not homeEnv.empty())
-            homeDir = homeEnv;
-        else
-        {
-            std::array<char, 4096> buffer{};
-            std::array<char, 4096> errBuffer{};
-            const char* homeEnv = nullptr;
-            int error = 0;
-            struct passwd pw
-            {
-            };
-            struct passwd* result = nullptr;
-
-            uid_t userId = getuid();
-            error = getpwuid_r(userId, &pw, buffer.data(), sizeof(buffer), &result);
-
-            if (result != nullptr)
-                homeDir = pw.pw_dir;
-            else if (error != 0)
-            {
-                strerror_r(error, errBuffer.data(), errBuffer.size());
-                output::error("platform::getHomeDirectory"s,
-                              "Error occurred while getting the home directory: "s + buffer.data());
-            }
-            else
-                output::error("platform::getHomeDirectory"s, "Error: Unable to get the home directory."s);
-        }
-#endif
-
-        return homeDir;
-    }
-
-    inline std::filesystem::path getConfDirectory()
-    {
-        // When we have a full application, we can allow users to change the configuration directory.
-        // However, now, we will use the default configuration directory for the platform.
-        std::filesystem::path confDir = getHomeDirectory();
-
-#ifndef WINDOWS
-        confDir /= ".config";
-        confDir /= "steppable";
-#else
-        confDir /= "AppData";
-        confDir /= "Roaming";
-        confDir /= "Steppable";
-#endif
-        // If the directory does not exist, create it.
-        if (not std::filesystem::is_directory(confDir))
-            std::filesystem::create_directories(confDir);
-        return confDir;
-    }
-
+    std::filesystem::path getConfDirectory();
 } // namespace steppable::__internals::utils

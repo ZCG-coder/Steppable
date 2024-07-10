@@ -64,8 +64,8 @@ std::string reportPowerRoot(const std::string& _number,
     return ss.str();
 }
 
-std::string reportPower(const std::string_view _number,
-                        const std::string_view& raiseTo,
+std::string reportPower(const std::string _number,
+                        const std::string& raiseTo,
                         const size_t numberTrailingZeros,
                         const bool negative,
                         const int steps)

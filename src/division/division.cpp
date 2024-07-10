@@ -40,7 +40,6 @@
 #include <ostream>
 #include <sstream>
 #include <string>
-#include <string_view>
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::stringUtils;
@@ -114,10 +113,7 @@ namespace steppable::__internals::arithmetic
         return diffScale;
     }
 
-    std::string divide(const std::string_view& _number,
-                       const std::string_view& _divisor,
-                       const int steps,
-                       const int _decimals)
+    std::string divide(const std::string& _number, const std::string& _divisor, const int steps, const int _decimals)
     {
         if (isZeroString(_number) and isZeroString(_divisor))
         {
@@ -284,7 +280,7 @@ namespace steppable::__internals::arithmetic
         return { quotient, remainder };
     }
 
-    std::string getGCD(const std::string_view& _a, const std::string_view& _b)
+    std::string getGCD(const std::string& _a, const std::string& _b)
     {
         // Sign for GCD does not matter.
         // https://proofwiki.org/wiki/GCD_for_Negative_Integers

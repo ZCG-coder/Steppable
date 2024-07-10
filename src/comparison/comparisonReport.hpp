@@ -34,7 +34,6 @@
 
 #include <cstddef>
 #include <string>
-#include <string_view>
 
 /**
  * @brief Reports the comparison based on the integer. If the integer parts are of different length, the one with longer
@@ -47,7 +46,7 @@
  *
  * @returns The comparison result.
  */
-std::string reportComparisonAtInteger(const std::string_view& a, const std::string_view& b, bool bigger, int steps = 2);
+std::string reportComparisonAtInteger(const std::string& a, const std::string& b, bool bigger, int steps = 2);
 
 /**
  * @brief Reports the comparison based on the polarity. If they are of different polarity, the one that is positive is
@@ -60,10 +59,7 @@ std::string reportComparisonAtInteger(const std::string_view& a, const std::stri
  *
  * @returns The comparison result.
  */
-std::string reportComparisonByPolarity(const std::string_view& a,
-                                       const std::string_view& b,
-                                       bool greater,
-                                       int steps = 2);
+std::string reportComparisonByPolarity(const std::string& a, const std::string& b, bool greater, int steps = 2);
 
 /**
  * @brief Compares each digit and see if one is larger.
@@ -78,8 +74,8 @@ std::string reportComparisonByPolarity(const std::string_view& a,
  *
  * @returns The comparison result.
  */
-std::string reportComparisonByDigit(const std::string_view& a,
-                                    const std::string_view& b,
+std::string reportComparisonByDigit(const std::string& a,
+                                    const std::string& b,
                                     size_t digit,
                                     bool greater,
                                     bool bothNegative,

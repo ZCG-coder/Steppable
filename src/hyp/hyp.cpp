@@ -50,8 +50,8 @@ namespace steppable::__internals::arithmetic
     std::string sinh(const std::string& x, const int decimals)
     {
         const auto& twoX = multiply(x, "2", 0);
-        const auto& eTwoX = roundOff(power(constants::E, twoX, 0), decimals + 2);
-        const auto& eX = roundOff(power(constants::E, x, 0), decimals + 2);
+        const auto& eTwoX = roundOff(power(static_cast<std::string>(constants::E), twoX, 0), decimals + 2);
+        const auto& eX = roundOff(power(static_cast<std::string>(constants::E), x, 0), decimals + 2);
 
         const auto& numerator = subtract(eTwoX, "1", 0);
         const auto& denominator = multiply("2", eX, 0);
@@ -62,8 +62,8 @@ namespace steppable::__internals::arithmetic
     std::string cosh(const std::string& x, const int decimals)
     {
         const auto& twoX = multiply(x, "2", 0);
-        const auto& eTwoX = roundOff(power(constants::E, twoX, 0), decimals + 2);
-        const auto& eX = roundOff(power(constants::E, x, 0), decimals + 2);
+        const auto& eTwoX = roundOff(power(static_cast<std::string>(constants::E), twoX, 0), decimals + 2);
+        const auto& eX = roundOff(power(static_cast<std::string>(constants::E), x, 0), decimals + 2);
 
         const auto& numerator = add(eTwoX, "1", 0);
         const auto& denominator = multiply("2", eX, 0);

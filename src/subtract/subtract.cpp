@@ -39,7 +39,6 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <string_view>
 #include <vector>
 
 using namespace steppable::__internals::numUtils;
@@ -48,7 +47,7 @@ using namespace steppable::__internals::arithmetic;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string subtract(const std::string_view& a, const std::string_view& b, const int steps, const bool noMinus)
+    std::string subtract(const std::string& a, const std::string& b, const int steps, const bool noMinus)
     {
         auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(a, b);
         auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;

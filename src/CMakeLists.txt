@@ -20,7 +20,7 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-ADD_LIBRARY(util STATIC argParse.cpp colors.cpp logging.cpp symbols.cpp testing.cpp util.cpp getString.cpp)
+ADD_LIBRARY(util STATIC argParse.cpp colors.cpp logging.cpp symbols.cpp testing.cpp util.cpp getString.cpp platform.cpp)
 SET_TARGET_PROPERTIES(util PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 ADD_LIBRARY(steppable STATIC number.cpp fraction.cpp)

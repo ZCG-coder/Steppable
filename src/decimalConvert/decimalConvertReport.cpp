@@ -27,14 +27,13 @@
 #include <iomanip>
 #include <sstream>
 #include <string>
-#include <string_view>
 
 using namespace steppable::__internals::symbols;
 
-std::string reportDecimalConvertStep(const std::string_view& baseString,
-                                     const std::string_view& digit,
+std::string reportDecimalConvertStep(const std::string& baseString,
+                                     const std::string& digit,
                                      const size_t powerIndex,
-                                     const std::string_view& convertedDigit,
+                                     const std::string& convertedDigit,
                                      const size_t maxWidth)
 {
     std::stringstream ss;
@@ -45,9 +44,9 @@ std::string reportDecimalConvertStep(const std::string_view& baseString,
     return ss.str();
 }
 
-std::string reportDecimalConvert(const std::string_view& inputString,
-                                 const std::string_view& baseString,
-                                 const std::string_view& convertedString,
+std::string reportDecimalConvert(const std::string& inputString,
+                                 const std::string& baseString,
+                                 const std::string& convertedString,
                                  const int steps)
 {
     if (steps == 0)

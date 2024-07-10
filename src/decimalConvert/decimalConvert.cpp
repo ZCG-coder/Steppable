@@ -61,7 +61,7 @@ namespace steppable::__internals::arithmetic
         throw std::runtime_error("Cannot convert "s + _input + " to Number");
     }
 
-    std::string decimalConvert(const std::string_view& _inputString, const std::string_view& baseString, int steps)
+    std::string decimalConvert(const std::string& _inputString, const std::string& baseString, int steps)
     {
         if (compare(baseString, "36", 0) == "1")
         {

@@ -50,7 +50,7 @@ namespace steppable::__internals::arithmetic
     {
         // rad = deg * (pi / 180)
         auto deg = divideWithQuotient(_deg, "360").remainder;
-        auto rad = multiply(deg, constants::PI_OVER_180, 0);
+        auto rad = multiply(deg, static_cast<std::string>(constants::PI_OVER_180), 0);
         return rad;
     }
 
@@ -58,7 +58,7 @@ namespace steppable::__internals::arithmetic
     {
         // rad = grad * (pi / 200)
         auto grad = divideWithQuotient(_grad, "400").remainder;
-        auto rad = multiply(grad, constants::PI_OVER_200, 0);
+        auto rad = multiply(grad, static_cast<std::string>(constants::PI_OVER_200), 0);
         return rad;
     }
 
@@ -68,7 +68,7 @@ namespace steppable::__internals::arithmetic
         auto rad = _rad;
         rad = divideWithQuotient(rad, static_cast<std::string>(constants::TWO_PI)).remainder;
         rad = standardizeNumber(rad);
-        auto deg = divide(rad, constants::PI_OVER_180, 0);
+        auto deg = divide(rad, static_cast<std::string>(constants::PI_OVER_180), 0);
         deg = standardizeNumber(deg);
         deg = divideWithQuotient(deg, "90").remainder;
         return standardizeNumber(deg);
@@ -79,7 +79,7 @@ namespace steppable::__internals::arithmetic
         // grad = rad * (200 / pi)
         auto rad = divideWithQuotient(_rad, static_cast<std::string>(constants::TWO_PI)).remainder;
         rad = standardizeNumber(rad);
-        auto grad = divide(rad, constants::PI_OVER_200, 0);
+        auto grad = divide(rad, static_cast<std::string>(constants::PI_OVER_200), 0);
         grad = standardizeNumber(grad);
         grad = divideWithQuotient(grad, "100").remainder;
         return standardizeNumber(grad);
@@ -176,25 +176,25 @@ namespace steppable::__internals::arithmetic
         case 0:
         {
             result = cos(subtract(divideWithQuotient(x, static_cast<std::string>(constants::TWO_PI)).remainder,
-                                  constants::PI_OVER_2,
+                                  static_cast<std::string>(constants::PI_OVER_2),
                                   0),
                          decimals);
             break;
         }
         case 1:
         {
-            result = cos(subtract(degToRad(x), constants::PI_OVER_2, 0), decimals);
+            result = cos(subtract(degToRad(x), static_cast<std::string>(constants::PI_OVER_2), 0), decimals);
             break;
         }
         case 2:
         {
-            result = cos(subtract(gradToRad(x), constants::PI_OVER_2, 0), decimals);
+            result = cos(subtract(gradToRad(x), static_cast<std::string>(constants::PI_OVER_2), 0), decimals);
             break;
         }
         default:
         {
             error("trig::sin"s, "Invalid mode. Defaulting to radians."s);
-            result = cos(subtract(x, constants::PI_OVER_2, 0), decimals);
+            result = cos(subtract(x, static_cast<std::string>(constants::PI_OVER_2), 0), decimals);
         }
         }
 
@@ -320,7 +320,7 @@ namespace steppable::__internals::arithmetic
         {
             // If x was reduced, use the identity
             // arctan(1/x) = pi/2 - arctan(x)
-            result = subtract(constants::PI_OVER_2, result, 0);
+            result = subtract(static_cast<std::string>(constants::PI_OVER_2), result, 0);
         }
         result = roundOff(result, decimals);
 

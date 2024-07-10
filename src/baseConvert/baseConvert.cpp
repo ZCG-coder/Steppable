@@ -37,7 +37,6 @@
 #include "util.hpp"
 
 #include <string>
-#include <string_view>
 #include <vector>
 
 using namespace std::literals;
@@ -69,7 +68,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] _number The number in decimal form.
      * @returns The number represented using alphabets and numberals.
      */
-    std::string representNumber(const std::string_view& _number)
+    std::string representNumber(const std::string& _number)
     {
         if (compare(_number, "10", 0) != "1")
         {
@@ -83,7 +82,7 @@ namespace steppable::__internals::arithmetic
         return { 1, static_cast<char>(letter) };
     }
 
-    std::string baseConvert(const std::string_view& _number, const std::string_view& baseStr, const int steps)
+    std::string baseConvert(const std::string& _number, const std::string& baseStr, const int steps)
     {
         const size_t base = std::stoll(static_cast<std::string>(baseStr));
         auto numberOrig = static_cast<std::string>(_number);

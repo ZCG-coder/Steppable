@@ -34,7 +34,6 @@
 
 #include <sstream>
 #include <string>
-#include <string_view>
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::symbols;
@@ -43,7 +42,7 @@ using namespace steppable::__internals::arithmetic;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string compare(const std::string_view& _a, const std::string_view& _b, const int steps)
+    std::string compare(const std::string& _a, const std::string& _b, const int steps)
     {
         if (standardizeNumber(_a) == standardizeNumber(_b))
         {

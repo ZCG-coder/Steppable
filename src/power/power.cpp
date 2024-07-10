@@ -55,7 +55,7 @@ namespace steppable::prettyPrint::printers
 
 namespace steppable::__internals::arithmetic
 {
-    std::string power(const std::string_view _number, const std::string_view& _raiseTo, const int steps)
+    std::string power(const std::string _number, const std::string& _raiseTo, const int steps)
     {
         std::string raiseTo = static_cast<std::string>(_raiseTo);
         std::string number = static_cast<std::string>(_number);

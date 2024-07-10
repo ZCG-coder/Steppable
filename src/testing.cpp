@@ -26,7 +26,6 @@
 #include "output.hpp"
 
 #include <string>
-#include <string_view>
 
 using namespace std::literals;
 using namespace steppable::output;
@@ -34,7 +33,7 @@ using namespace steppable::__internals::format;
 
 namespace steppable::testing
 {
-    TestCase::TestCase(const std::string& testCaseName) { this->testCaseName = testCaseName; }
+    TestCase::TestCase(const std::string& testCaseName) : testCaseName(testCaseName) {}
 
     void TestCase::assert(const bool condition, const std::string& conditionName)
     {

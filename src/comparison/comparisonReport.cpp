@@ -35,12 +35,12 @@
 #include "symbols.hpp"
 
 #include <sstream>
-#include <string_view>
+#include <string>
 
 using namespace steppable::__internals::symbols;
 
-std::string reportComparisonAtInteger(const std::string_view& a,
-                                      const std::string_view& b,
+std::string reportComparisonAtInteger(const std::string& a,
+                                      const std::string& b,
                                       const bool bigger,
                                       const int steps)
 {
@@ -68,8 +68,8 @@ std::string reportComparisonAtInteger(const std::string_view& a,
     return ss.str();
 }
 
-std::string reportComparisonByPolarity(const std::string_view& a,
-                                       const std::string_view& b,
+std::string reportComparisonByPolarity(const std::string& a,
+                                       const std::string& b,
                                        const bool greater,
                                        const int steps)
 {
@@ -97,8 +97,8 @@ std::string reportComparisonByPolarity(const std::string_view& a,
     return ss.str();
 }
 
-std::string reportComparisonByDigit(const std::string_view& a,
-                                    const std::string_view& b,
+std::string reportComparisonByDigit(const std::string& a,
+                                    const std::string& b,
                                     const size_t _digit,
                                     const bool greater,
                                     const bool bothNegative,

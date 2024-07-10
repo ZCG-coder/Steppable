@@ -36,7 +36,6 @@
 
 #include <sstream>
 #include <string>
-#include <string_view>
 #include <vector>
 
 using namespace steppable::__internals::numUtils;
@@ -46,7 +45,7 @@ using namespace steppable::__internals::arithmetic;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string multiply(const std::string_view& _a, const std::string_view& _b, const int steps)
+    std::string multiply(const std::string& _a, const std::string& _b, const int steps)
     {
         auto a = static_cast<std::string>(_a);
         auto b = static_cast<std::string>(_b);

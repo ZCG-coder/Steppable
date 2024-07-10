@@ -33,13 +33,12 @@
 
 #include <sstream>
 #include <string>
-#include <string_view>
 #include <util.hpp>
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::symbols;
 
-std::string reportAbs(const std::string_view& number, int steps = 2)
+std::string reportAbs(const std::string& number, int steps = 2)
 {
     std::stringstream ss;
 

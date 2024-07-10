@@ -32,7 +32,6 @@
 #pragma once
 
 #include <string>
-#include <string_view>
 
 /**
  * @brief Reports the absolute value of a number string to the user.
@@ -42,4 +41,4 @@
  *
  * @return The absolute value of the number.
  */
-std::string reportAbs(const std::string_view& number, int steps = 2);
+std::string reportAbs(const std::string& number, int steps = 2);

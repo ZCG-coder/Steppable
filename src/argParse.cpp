@@ -30,34 +30,31 @@
 #include <ranges>
 #include <regex>
 #include <string>
-#include <string_view>
 #include <vector>
 
 using namespace std::literals;
 
 namespace steppable::__internals::utils
 {
-    void ProgramArgs::addSwitch(const std::string_view& name,
-                                const bool defaultValue,
-                                const std::string_view& description)
+    void ProgramArgs::addSwitch(const std::string& name, const bool defaultValue, const std::string& description)
     {
         switches.insert({ name, defaultValue });
         switchDescriptions.insert_or_assign(name, description);
     }
 
-    void ProgramArgs::addKeywordArg(const std::string_view& name, int defaultValue, const std::string_view description)
+    void ProgramArgs::addKeywordArg(const std::string& name, int defaultValue, const std::string& description)
     {
         keywordArgs.insert({ name, defaultValue });
         keywordArgDescriptions.insert({ name, description });
     }
 
-    void ProgramArgs::addPosArg(const char name, const std::string_view& description, const bool requiresNumber)
+    void ProgramArgs::addPosArg(const char name, const std::string& description, const bool requiresNumber)
     {
         posArgDescriptions.insert({ name, description });
         posArgIsNumber.push_back(requiresNumber);
     }
 
-    void ProgramArgs::printUsage(const std::string_view& reason) const
+    void ProgramArgs::printUsage(const std::string& reason) const
     {
         std::cout << "Usage: " << formats::bold << programName << reset << " ";
 
@@ -121,31 +118,31 @@ namespace steppable::__internals::utils
         programSafeExit(-1);
     }
 
-    std::string_view ProgramArgs::getPosArg(const size_t index) const
+    std::string ProgramArgs::getPosArg(const size_t index) const
     {
         if (posArgs.size() <= index)
             printUsage("Missing positional argument: " + std::to_string(index));
         return posArgs[index];
     }
 
-    int ProgramArgs::getKeywordArgument(const std::string_view& name)
+    int ProgramArgs::getKeywordArgument(const std::string& name)
     {
         if (not keywordArgs.contains(name))
             printUsage("Missing switch: " + static_cast<std::string>(name));
         return keywordArgs[name];
     }
 
-    bool ProgramArgs::getSwitch(const std::string_view& name)
+    bool ProgramArgs::getSwitch(const std::string& name)
     {
         if (not switches.contains(name))
             printUsage("Missing switch: " + static_cast<std::string>(name));
         return switches[name];
     }
 
-    ProgramArgs::ProgramArgs(const int _argc, const char** _argv) : argc(_argc - 1)
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
+    ProgramArgs::ProgramArgs(const int _argc, const char** _argv) : argc(_argc - 1), programName(_argv[0])
     {
-        // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
-        programName = _argv[0]; // Call this program whatever the user calls it
+        // Call this program whatever the user calls it
         PosArgs pos;
 
         // Copy the arguments into a vector
@@ -157,7 +154,7 @@ namespace steppable::__internals::utils
 
     void ProgramArgs::parseArgs()
     {
-        for (auto _arg : argv)
+        for (const auto& _arg : argv)
         {
             auto arg = static_cast<std::string>(_arg);
             if (std::smatch match; std::regex_match(arg, match, KEYWORD_ARG_REGEX))
@@ -177,7 +174,7 @@ namespace steppable::__internals::utils
             {
                 if (not numUtils::isNumber(_arg) and posArgIsNumber[posArgs.size()])
                 {
-                    output::error("ProgramArgs::parseArgs", "Invalid argument: %s"s, _arg);
+                    output::error("ProgramArgs::parseArgs"s, "Invalid argument: %s"s, _arg.c_str());
                     programSafeExit(-1);
                 }
                 posArgs.push_back(_arg);

@@ -35,7 +35,7 @@
 #include "util.hpp"
 
 #include <iostream>
-#include <string_view>
+#include <string>
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::utils;
