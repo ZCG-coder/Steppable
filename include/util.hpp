@@ -149,7 +149,6 @@ namespace steppable::__internals::utils
          */
         Utf8CodePage() : oldCodePage(GetConsoleOutputCP())
         {
-            initLocale();
             SetConsoleOutputCP(CP_UTF8);
             dwModeOrig = enableVtMode();
         }
