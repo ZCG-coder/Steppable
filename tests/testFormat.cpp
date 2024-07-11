@@ -20,70 +20,36 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "format.hpp"
+#include "colors.hpp"
+#include "factors.hpp"
+#include "output.hpp"
+#include "testing.hpp"
+#include "util.hpp"
 
-#include <algorithm>
-#include <stdexcept>
+#include <iomanip>
+#include <iostream>
 #include <string>
-#include <vector>
 
-namespace steppable::__internals::format
-{
+using namespace steppable::__internals;
 
-    std::string format(const std::string& format, const std::vector<std::string>& args)
-    {
-        // Format string
-        // Original format:
-        // {0} -> args[0]
-        // {1} -> args[1]
-        // ...
-        // {n} -> args[n]
+TEST_START()
+SECTION(Test format)
+const std::string& formatOrig = "Hello, {0}!";
+const std::string& arg = "world";
+const std::string& expected = "Hello, world!";
 
-        std::string result = format;
-        std::string index;
-        bool inBrackets = false;
-        for (size_t idx = 0; idx < format.size(); idx++)
-        {
-            char i = format.at(idx);
-            switch (i)
-            {
-            // Start replacing!
-            case '{':
-            {
-                inBrackets = true;
-                index.erase(index.begin(), index.end());
-                break;
-            }
+const std::string& result = format::format(formatOrig, { arg });
+_.assertIsEqual(result, expected);
+SECTION_END()
 
-            // End replacing
-            case '}':
-            {
-                inBrackets = false;
-                // SIZE_MAX is 20 digits long, so we can safely assume that the index must not be longer than 20
-                // characters.
-                if (index.length() > 20 or index.length() < 1)
-                    throw std::length_error("Argument index too long or too short.");
-                if (not std::ranges::all_of(index, [](const char& c) { return std::isdigit(c); }))
-                    throw std::invalid_argument("Argument index must be a number.");
+SECTION(Test format with multiple values)
+const std::string& formatOrig = "{0}, {1}!";
+const std::string& arg1 = "Hello";
+const std::string& arg2 = "world";
+const std::string& expected = "Hello, world!";
 
-                size_t argIndex = std::stoull(index);
-                if (argIndex >= args.size())
-                    throw std::out_of_range("Argument index out of range.");
+const std::string& result = format::format(formatOrig, { arg1, arg2 });
+_.assertIsEqual(result, expected);
+SECTION_END()
 
-                // +1 for the closing bracket
-                result.replace(result.find("{" + index), index.size() + 2, args.at(argIndex));
-                break;
-            }
-
-            default:
-            {
-                if (inBrackets)
-                    index += i;
-                break;
-            }
-            }
-        }
-
-        return result;
-    }
-} // namespace steppable::__internals::format
+TEST_END()
