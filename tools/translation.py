@@ -36,6 +36,7 @@ from pathlib import Path
 import re
 import sys
 import uuid
+import argparse
 
 from lib.getch import getch
 from lib.printing import erase_line, print_error
@@ -109,7 +110,7 @@ def write_indexed_file(component: str, *, append: bool = False) -> None:
     print(f"Enter the strings in {component}, blank line to quit.")
     string = input("> ")
     guid = str(uuid.uuid4())
-    strings = [f"{guid} >> {string}"]
+    strings = [f'{guid} >> "{string}"']
     while string != "":
         string = input("> ")
         guid = str(uuid.uuid4())
@@ -140,9 +141,10 @@ def add_translations(file: Path, language: str) -> None:
     verify_language(language)  # Check if the language code is valid
     print("INFO: Thank you for helping us translate the project!")
     print(f"INFO: TRANSLATING {file} TO {language}")
+    component = file.stem
 
     if not file.is_file():
-        write_indexed_file(file.stem, append=False)
+        write_indexed_file(component, append=False)
 
     entries = []
 
@@ -196,21 +198,39 @@ def add_translations(file: Path, language: str) -> None:
     print(f"INFO: Translations written to {output_file}. Done.")
 
 
-if __name__ == "__main__":
-    args = sys.argv
-    if len(args) == 1:
-        print("USAGE: python -m tools.translation <COMMAND> <args>")
-        exit(1)
+def main():
+    parser = argparse.ArgumentParser(
+        description="Translate strings in a stp_strings file."
+    )
+    subparsers = parser.add_subparsers(dest="command")
 
-    if args[1] == "add_tr":
-        component = args[2]
-        language = args[3]
-        file = Path(f"res/translations/{component}.stp_strings")
-        add_translations(file, language)
-    elif args[1] == "wr_idx":
-        component = args[2]
-        print("Do you want to append to the file? (Y/n) ", end="", flush=True)
-        char = getch()
-        print()
-        append = char.lower() == "y" or char.strip() == ""
-        write_indexed_file(component, append=append)
+    add_tr_parser = subparsers.add_parser("add_tr")
+    add_tr_parser.add_argument(
+        "component",
+        help="The name of the component to translate.",
+    )
+    add_tr_parser.add_argument(
+        "language",
+        help="The language to translate the strings to.",
+    )
+
+    wr_idx_parser = subparsers.add_parser("wr_idx")
+    wr_idx_parser.add_argument(
+        "component",
+        help="The name of the component to write the indexed file for.",
+    )
+    wr_idx_parser.add_argument(
+        "--append",
+        action="store_true",
+        help="Append the strings to the file.",
+    )
+
+    args = parser.parse_args()
+    if args.command == "add_tr":
+        add_translations(args.component, args.language)
+    elif args.command == "wr_idx":
+        write_indexed_file(args.component, append=args.append)
+
+
+if __name__ == "__main__":
+    main()

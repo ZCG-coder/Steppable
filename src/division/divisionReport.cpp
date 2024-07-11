@@ -56,9 +56,8 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
 
     if (steps == 2)
     {
-        tempFormattedAns << std::string(width - temp.length(), ' ') << makeWider(static_cast<std::string>(temp))
-                         << '\n';
-        formattedAns << std::string(width - ans.length(), ' ') << makeWider(static_cast<std::string>(ans)) << '\n';
+        tempFormattedAns << std::string(width - temp.length(), ' ') << makeWider(temp) << '\n';
+        formattedAns << std::string(width - ans.length(), ' ') << makeWider(ans) << '\n';
         formattedAns << std::string(divisor.length() * 3 - 1, ' ');
         formattedAns << std::string(width - divisor.length() * 2, '_') << '\n';
         formattedAns << tempFormattedAns.rdbuf();
@@ -84,7 +83,7 @@ std::string reportDivisionStep(const std::string& temp,
                                const std::string& divisor,
                                size_t width,
                                size_t index,
-                               const std::string lastRemainder)
+                               const std::string& lastRemainder)
 {
     std::stringstream ss;
 

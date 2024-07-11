@@ -35,5 +35,5 @@ namespace steppable::localization
      *
      * @return The string in its localized form.
      */
-    std::string getString(const std::string& origin, const std::string& key);
+    std::string $(const std::string& origin, const std::string& key);
 } // namespace steppable::localization

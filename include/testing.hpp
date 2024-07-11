@@ -73,14 +73,14 @@ using namespace std::literals;
 
 /// @brief This macro ends the main function and prints the number of errors encountered.
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define TEST_END()                                                                          \
-    if (errors)                                                                             \
-        error("TEST_END", "Not all tests passed. There are %i errors."s, errors);           \
-    else                                                                                    \
-        info("All tests passed.");                                                          \
-    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << '\n'; \
-    if (errors)                                                                             \
-        return 1;                                                                           \
+#define TEST_END()                                                                                      \
+    if (errors)                                                                                         \
+        error("TEST_END"s, "Not all tests passed. There are {0} errors."s, { std::to_string(errors) }); \
+    else                                                                                                \
+        info("TEST_END"s, "All tests passed."s);                                                        \
+    std::cout << colors::brightBlue << std::setw(80) << std::setfill('=') << reset << '\n';             \
+    if (errors)                                                                                         \
+        return 1;                                                                                       \
     }
 
 /**

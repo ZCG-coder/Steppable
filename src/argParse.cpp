@@ -109,7 +109,7 @@ namespace steppable::__internals::utils
         if (not reason.empty())
         {
             std::cerr << '\n';
-            output::error("ProgramArgs::printUsage", std::string(reason));
+            output::error("ProgramArgs::printUsage"s, "{0}"s, { reason });
         }
 
         // Print the footnote only if there are positional arguments that require a number
@@ -174,7 +174,7 @@ namespace steppable::__internals::utils
             {
                 if (not numUtils::isNumber(_arg) and posArgIsNumber[posArgs.size()])
                 {
-                    output::error("ProgramArgs::parseArgs"s, "Invalid argument: %s"s, _arg.c_str());
+                    output::error("ProgramArgs::parseArgs"s, "Invalid argument: {0}"s, { _arg });
                     programSafeExit(-1);
                 }
                 posArgs.push_back(_arg);

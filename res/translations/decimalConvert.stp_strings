@@ -20,33 +20,15 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-"""
-This module contains the paths that are used in the project.
-"""
-
-from pathlib import Path
-from lib.constants import WINDOWS
-
-# section Project paths
-PROJECT = "Steppable"
-
-PROJECT_PATH = Path(__file__).parent.parent
-SRC_DIR = PROJECT_PATH / "src"
-TESTS_DIR = PROJECT_PATH / "tests"
-INCLUDE_DIR = PROJECT_PATH / "include"
-
-BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
-OBJ_DIR = BUILD_DIR / "obj.temp"
-BIN_DIR = BUILD_DIR / "bin"
-LIB_DIR = BUILD_DIR / "lib"
-# endsection
-
-# section Configuration paths
-if not WINDOWS:
-    CONFIG_DIR = Path().home() / ".config" / "steppable"
-else:
-    CONFIG_DIR = Path().home() / "AppData" / "Roaming" / "steppable"
-
-DEFAULT_CONFIG_DIR = PROJECT_PATH / "res"
-
-# endsection
+# NOTE: This file is generated. Do not edit it manually. Any changes will be overwritten.
+# STR_GUID: (key) / STRING ORIGINAL: (string)
+# eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
+# Recommended syntax highlighting: Bash Script
+cbb9ed62-1127-4e1d-95ef-e75cc7fb2837 >> "The base is larger than 36, which means that it is impossible to represent the number."
+e97b6539-8f69-4ccb-a50e-82a66aff2898 >> "The digit "
+aa93528f-2d3d-4416-b5ab-7cb413b1d098 >> " is larger than the base "
+53053bf2-84ba-4b63-9f27-d334dc38b60d >> "Number in the base"
+b771e8bc-9b66-4b4d-b9ff-fd4111111cf4 >> "Base number"
+b461a3e5-12c3-48ea-aaba-2b4e234f3234 >> "Amount of steps while converting the number. 0 = No steps, 2 = All steps."
+d14e05b6-cb8e-43a5-9ab2-11f960f4e199 >> "profiling the program"
+d1536a73-2eb9-4bf9-8b25-00ff88038dab >> "Decimal Conversion :"

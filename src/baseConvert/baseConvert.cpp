@@ -23,7 +23,6 @@
 /**
  * @file baseConvert.cpp
  * @brief This file contains the implementation of the baseConvert function, which converts any number to any base.
- * @warning Still work-in-progress.
  *
  * @author Andy Zhang
  * @date 9th October 2023
@@ -77,6 +76,7 @@ namespace steppable::__internals::arithmetic
         }
         const int number = std::stoi(static_cast<std::string>(_number));
         if (number > 10)
+            // Do not localize.
             throw std::invalid_argument("Number should be a single digit or a letter from A to Z");
         const unsigned char letter = 'A' + static_cast<char>(number) - 10;
         return { 1, static_cast<char>(letter) };

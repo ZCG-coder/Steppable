@@ -20,33 +20,26 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-"""
-This module contains the paths that are used in the project.
-"""
-
-from pathlib import Path
-from lib.constants import WINDOWS
-
-# section Project paths
-PROJECT = "Steppable"
-
-PROJECT_PATH = Path(__file__).parent.parent
-SRC_DIR = PROJECT_PATH / "src"
-TESTS_DIR = PROJECT_PATH / "tests"
-INCLUDE_DIR = PROJECT_PATH / "include"
-
-BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
-OBJ_DIR = BUILD_DIR / "obj.temp"
-BIN_DIR = BUILD_DIR / "bin"
-LIB_DIR = BUILD_DIR / "lib"
-# endsection
-
-# section Configuration paths
-if not WINDOWS:
-    CONFIG_DIR = Path().home() / ".config" / "steppable"
-else:
-    CONFIG_DIR = Path().home() / "AppData" / "Roaming" / "steppable"
-
-DEFAULT_CONFIG_DIR = PROJECT_PATH / "res"
-
-# endsection
+# NOTE: This file is generated. Do not edit it manually. Any changes will be overwritten.
+# STR_GUID: (key) / STRING ORIGINAL: (string)
+# eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
+# Recommended syntax highlighting: Bash Script
+0095d521-ccba-4c5b-b33f-9d9f2b3d18e3 >> "Comparing the integer part of a and b"
+07ff2704-10c1-4eea-bba2-bd63116ca34b >> "Amount of steps while comparing"
+0972be2d-ce73-4226-82d8-778fb5293894 >> "Number 2"
+09a9b12d-7b58-4626-b7c8-62a16933bfce >> "Comparing the polarities of a and b"
+1b7ea6d8-9909-4589-8d59-b3eb7121cdee >> " The integer part of "
+1d411edd-f7a6-4ad5-8a0a-cc8b5eea01b1 >> "Number 1"
+1fc8cd4c-7613-41db-9795-a937e9da4ef5 >> " is bigger than the integer part of "
+46cf1604-e1cb-49ec-9e4b-a5625a958769 >> " The integer part of "
+843cdbae-d7f0-411c-8a73-92ee04bb0cfe >> " is greater than "
+ab1363eb-bfdb-44a9-89ee-b125a8d60cbd >> " At digit "
+ac560b6d-5bba-409a-a3e8-db1c08a3a5a2 >> " is bigger than the integer part of "
+b848b3aa-a574-4b8f-92dc-fafca9eeef31 >> " is negative"
+b930c709-22e7-46f8-9cdf-5ed193469964 >> "profiling the program"
+bd4f865a-ce08-4825-ac74-f824e4da2fed >> " is identical to "
+c49d968f-31df-4654-b13b-0f16212f4591 >> "Equal"
+e0f2cd92-6758-446c-96c4-f042fb438852 >> " is less than "
+eb150ad5-09a5-4be6-8400-988e6f0eb252 >> " is positive and "
+ec120274-c8f2-4a41-9e64-b7b0d011d20e >> " is less than "
+f798da55-3445-4fc4-aff5-98757d402a5a >> " is positive"

@@ -123,15 +123,15 @@ namespace steppable::__internals::arithmetic
         return { radicand, multiplier };
     }
 
-    std::string _root(const std::string& _number, const std::string& base, const size_t _decimals)
+    std::string _root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)
     {
         if (isDecimal(base))
         {
             const auto& fraction = Fraction(base);
             const auto& [top, bottom] = fraction.asArray();
             const auto& powerResult = power(_number, bottom, 0);
-            const auto rootResult = _root(powerResult, top, _decimals);
-            return reportRootPower(_number, base, fraction, rootResult, 0);
+            const auto rootResult = _root(powerResult, top, _decimals, 0);
+            return reportRootPower(_number, base, fraction, rootResult, steps);
         }
 
         if (compare(base, "1", 0) == "2")
@@ -182,18 +182,18 @@ namespace steppable::__internals::arithmetic
         }
     }
 
-    std::string root(const std::string& _number, const std::string& base, const size_t _decimals)
+    std::string root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)
     {
         if (isZeroString(_number))
             return "0";
         if (isInteger(_number))
         {
             auto result = rootSurd(_number, base);
-            auto rootResult = _root(result.radicand, base, _decimals);
+            auto rootResult = _root(result.radicand, base, _decimals, 0);
             return multiply(rootResult, result.multiplier, 0);
         }
 
-        return _root(_number, base, _decimals);
+        return _root(_number, base, _decimals, steps);
     }
 } // namespace steppable::__internals::arithmetic
 
@@ -206,21 +206,23 @@ int main(const int _argc, const char* _argv[])
     program.addPosArg('a', "Number");
     program.addPosArg('n', "Base");
     program.addKeywordArg("decimals", 8, "Amount of decimals while taking the n-th root.");
+    program.addKeywordArg("steps", 2, "Amount of steps while taking the n-th root.");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
     const int decimals = program.getKeywordArgument("decimals");
     const bool profile = program.getSwitch("profile");
+    const int steps = program.getKeywordArgument("steps");
     const auto& number = static_cast<std::string>(program.getPosArg(0));
     const auto& base = static_cast<std::string>(program.getPosArg(1));
 
     if (profile)
     {
         TIC(Nth root)
-        std::cout << "Taking n-th root :\n" << root(number, base, decimals) << '\n';
+        std::cout << "Taking n-th root :\n" << root(number, base, decimals, steps) << '\n';
         TOC()
     }
     else
-        std::cout << root(number, base, decimals) << '\n';
+        std::cout << root(number, base, decimals, steps) << '\n';
 }
 #endif

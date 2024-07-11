@@ -58,6 +58,7 @@ namespace steppable::__internals::arithmetic
         // Where A is the 10th numeral.
         if ('A' <= input and input <= 'Z')
             return std::to_string(input - 'A' + 10);
+        // Do not localize.
         throw std::runtime_error("Cannot convert "s + _input + " to Number");
     }
 
@@ -71,7 +72,7 @@ namespace steppable::__internals::arithmetic
         }
 
         std::string converted = "0";
-        std::string inputString = static_cast<std::string>(_inputString);
+        std::string inputString = _inputString;
         std::ranges::reverse(inputString);
 
         auto maxWidth = power(baseString, std::to_string(_inputString.length()), 0).length();
@@ -84,8 +85,7 @@ namespace steppable::__internals::arithmetic
 
             if (compare(digit, baseString, 0) != "0")
             {
-                error("decimalConvert",
-                      "The digit "s + digit + " is larger than the base " + static_cast<std::string>(baseString));
+                error("decimalConvert", "The digit "s + digit + " is larger than the base " + baseString);
                 return "";
             }
             auto placeValue = power(baseString, std::to_string(index), 0);

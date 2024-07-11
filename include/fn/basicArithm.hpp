@@ -164,7 +164,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] steps The number of steps to perform the power operation.
      * @return The result of the power operation as a string.
      */
-    std::string power(std::string _number, const std::string& raiseTo, int steps = 2);
+    std::string power(const std::string& _number, const std::string& raiseTo, int steps = 2);
 
     /**
      * @brief Subtracts one string representation of a number from another string representation of a number.
@@ -187,7 +187,7 @@ namespace steppable::__internals::arithmetic
      *
      * @return The result of the root operation.
      */
-    std::string root(const std::string& _number, const std::string& base, size_t decimals = 8);
+    std::string root(const std::string& _number, const std::string& base, size_t decimals = 8, int steps = 0);
 
     /**
      * @brief Converts a root operation into a surd.
@@ -556,7 +556,7 @@ namespace steppable::__internals::arithmetic
             catch (std::exception& e)
             {
                 output::error("loop", "Exception occurred in predicate."s);
-                output::error("loop", "Exception message: %s"s, e.what());
+                output::error("loop", "Exception message: {0}"s, { e.what() });
             }
             current = add(current, "1", 0);
             result = compare(current, times, 0);

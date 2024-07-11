@@ -70,7 +70,7 @@ namespace steppable
         else
         {
             usePrec = 0;
-            output::warning("Invalid precision specified");
+            output::warning("Number::operator/"s, "Invalid precision specified"s);
         }
         return divide(value, rhs.value, 0, static_cast<int>(usePrec));
     }

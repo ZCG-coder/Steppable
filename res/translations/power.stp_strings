@@ -20,33 +20,17 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-"""
-This module contains the paths that are used in the project.
-"""
-
-from pathlib import Path
-from lib.constants import WINDOWS
-
-# section Project paths
-PROJECT = "Steppable"
-
-PROJECT_PATH = Path(__file__).parent.parent
-SRC_DIR = PROJECT_PATH / "src"
-TESTS_DIR = PROJECT_PATH / "tests"
-INCLUDE_DIR = PROJECT_PATH / "include"
-
-BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
-OBJ_DIR = BUILD_DIR / "obj.temp"
-BIN_DIR = BUILD_DIR / "bin"
-LIB_DIR = BUILD_DIR / "lib"
-# endsection
-
-# section Configuration paths
-if not WINDOWS:
-    CONFIG_DIR = Path().home() / ".config" / "steppable"
-else:
-    CONFIG_DIR = Path().home() / "AppData" / "Roaming" / "steppable"
-
-DEFAULT_CONFIG_DIR = PROJECT_PATH / "res"
-
-# endsection
+# NOTE: This file is generated. Do not edit it manually. Any changes will be overwritten.
+# STR_GUID: (key) / STRING ORIGINAL: (string)
+# eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
+# Recommended syntax highlighting: Bash Script
+7c866c46-d67e-4c1e-8fd5-b3bfa07d005d >> "Since the number is 1, the result is 1."
+f8fdd5af-6450-4c19-97a9-9724493f76ab >> "Since the exponent is 0, the result is 0."
+4252ac37-a36b-4605-9ec1-d69e70b91b46 >> "Number as the base"
+1fefffaf-7731-430b-989f-42e74017a2eb >> "Number as the exponent"
+cb935566-6125-49ce-9ebc-e157410a3005 >> "Amount of steps while raising the power (i.e., multiplying). 0 = No steps, 2 = All steps."
+e5d48237-e161-494d-940b-e2457411fcfb >> "profiling the program"
+2a9fd067-59a3-4a65-b1a6-2ca479e0f1a1 >> "Power :"
+7b3b39ff-c3fa-4998-b9e2-8989fb6846f9 >> "The exponent "
+afe38881-f487-4e1b-afaf-4fc65eaceda1 >> " is a decimal. Therefore, the result is a root."
+261e4299-0132-4ab5-a37d-aa376efbdd5f >> "Since the number is 0, the result is 0."

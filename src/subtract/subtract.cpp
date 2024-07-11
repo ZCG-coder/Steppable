@@ -192,7 +192,7 @@ int main(int _argc, const char* _argv[])
     ProgramArgs program(_argc, _argv);
     program.addPosArg('a', "");
     program.addPosArg('b', "");
-    program.addKeywordArg("steps", 2, "steps while adding");
+    program.addKeywordArg("steps", 2, "steps while subtracting");
     program.addSwitch("noMinus", false, "shows the minus sign");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();

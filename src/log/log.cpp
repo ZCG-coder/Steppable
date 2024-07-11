@@ -122,12 +122,10 @@ int main(int _argc, const char* _argv[])
     program.addPosArg('c', "Command", false);
     program.addPosArg('n', "Number", true);
     program.addPosArg('b', "Base", true);
-    program.addKeywordArg("mode", 0, "The mode to calculate in. 0 = radians (default), 1 = degrees, 2 = gradians.");
     program.addKeywordArg("decimals", 5, "Amount of decimals while calculating.");
     program.addSwitch("profile", false, "profiling the program");
     program.parseArgs();
 
-    const int mode = program.getKeywordArgument("mode");
     const bool profile = program.getSwitch("profile");
     const int decimals = program.getKeywordArgument("decimals");
     const auto& command = static_cast<std::string>(program.getPosArg(0));
@@ -147,7 +145,7 @@ int main(int _argc, const char* _argv[])
         std::cout << arithmetic::ln(arg, decimals) << "\n";
     else
     {
-        error("log"s, "Unknown command: "s + command);
+        error("log"s, "Unknown command "s + command);
         return EXIT_FAILURE;
     }
 }

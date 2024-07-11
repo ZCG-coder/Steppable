@@ -21,32 +21,38 @@
 #####################################################################################################
 
 """
-This module contains the paths that are used in the project.
+Installs the Steppable settings and resources to the user home.
 """
 
-from pathlib import Path
-from lib.constants import WINDOWS
+from lib.paths import DEFAULT_CONFIG_DIR, CONFIG_DIR
+import shutil
 
-# section Project paths
-PROJECT = "Steppable"
 
-PROJECT_PATH = Path(__file__).parent.parent
-SRC_DIR = PROJECT_PATH / "src"
-TESTS_DIR = PROJECT_PATH / "tests"
-INCLUDE_DIR = PROJECT_PATH / "include"
+def copy_resources() -> None:
+    """
+    Copy the resources to the user home.
+    """
+    # Copy the resources
+    if CONFIG_DIR.is_dir():
+        # Only copy the files
+        for file in DEFAULT_CONFIG_DIR.iterdir():
+            if file.is_file():
+                print(f"Copying FILE {file.name}")
+                shutil.copy(file, CONFIG_DIR)
+            else:
+                print(f"Copying DIRECTORY {file.name}")
+                shutil.copytree(file, CONFIG_DIR / file.name, dirs_exist_ok=True)
+        return
+    shutil.copytree(DEFAULT_CONFIG_DIR, CONFIG_DIR)
 
-BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
-OBJ_DIR = BUILD_DIR / "obj.temp"
-BIN_DIR = BUILD_DIR / "bin"
-LIB_DIR = BUILD_DIR / "lib"
-# endsection
 
-# section Configuration paths
-if not WINDOWS:
-    CONFIG_DIR = Path().home() / ".config" / "steppable"
-else:
-    CONFIG_DIR = Path().home() / "AppData" / "Roaming" / "steppable"
+def install() -> None:
+    """
+    Install the Steppable settings and resources.
+    """
 
-DEFAULT_CONFIG_DIR = PROJECT_PATH / "res"
+    copy_resources()
 
-# endsection
+
+if __name__ == "__main__":
+    install()

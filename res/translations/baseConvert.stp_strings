@@ -20,33 +20,18 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-"""
-This module contains the paths that are used in the project.
-"""
-
-from pathlib import Path
-from lib.constants import WINDOWS
-
-# section Project paths
-PROJECT = "Steppable"
-
-PROJECT_PATH = Path(__file__).parent.parent
-SRC_DIR = PROJECT_PATH / "src"
-TESTS_DIR = PROJECT_PATH / "tests"
-INCLUDE_DIR = PROJECT_PATH / "include"
-
-BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
-OBJ_DIR = BUILD_DIR / "obj.temp"
-BIN_DIR = BUILD_DIR / "bin"
-LIB_DIR = BUILD_DIR / "lib"
-# endsection
-
-# section Configuration paths
-if not WINDOWS:
-    CONFIG_DIR = Path().home() / ".config" / "steppable"
-else:
-    CONFIG_DIR = Path().home() / "AppData" / "Roaming" / "steppable"
-
-DEFAULT_CONFIG_DIR = PROJECT_PATH / "res"
-
-# endsection
+# NOTE: This file is generated. Do not edit it manually. Any changes will be overwritten.
+# STR_GUID: (key) / STRING ORIGINAL: (string)
+# eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
+# Recommended syntax highlighting: Bash Script
+4e5a4863-4e4a-44f1-a782-e74de6b93469 >> "It is impossilbe to represent a number in base greater than 36"
+b6dfac21-0553-409b-aa2f-9d91b2c8fa66 >> "Impossible"
+783e7915-f4a3-4973-9747-2d8de3de5545 >> "Conversion to base 0 or 1 is not possible"
+f3211410-9b0d-49f6-8797-c4756b2fee28 >> "Number to convert"
+61826029-8d77-4133-8bc7-7f03365bd9a3 >> "Base of the number"
+f988a0b2-decd-4d0c-a2e2-dd4127c1e83b >> "Amount of steps while converting. 0 = No steps, 2 = All steps."
+0826ae41-c7f6-4e1f-a932-2f6c00930a05 >> "profiling the program"
+74dd79f5-7c24-4b39-bf66-59a3570e4a03 >> "Base conversion :"
+8a0b5c6d-b1a8-49b4-99fd-b1710744f4bf >> " The number "
+ba480f03-4d90-4c82-bfd2-4c36d67cc861 >> " in base "
+27f31ee4-74da-4725-8817-5f3704b6376a >> " is "

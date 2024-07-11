@@ -20,59 +20,60 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-/**
- * @file abs.cpp
- * @brief This file contains the implementation of the abs function, which gets the absolute value of a number string.
- *
- * @author Andy Zhang
- * @date 12th January 2024
- */
+#include "format.hpp"
 
-#include "absReport.hpp"
-#include "argParse.hpp"
-#include "getString.hpp"
-#include "util.hpp"
-
-#include <fn/basicArithm.hpp>
-#include <iostream>
 #include <string>
+#include <vector>
 
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::arithmetic;
-using namespace steppable::localization;
-
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::format
 {
-    std::string abs(const std::string& _number, const int steps)
+
+    std::string format(const std::string& format, const std::vector<std::string>& args)
     {
-        std::string number = static_cast<std::string>(_number);
-        return reportAbs(number, steps);
+        // Format string
+        // Original format:
+        // {0} -> args[0]
+        // {1} -> args[1]
+        // ...
+        // {n} -> args[n]
+
+        std::string result = format;
+        std::string index;
+        bool inBrackets = false;
+        for (char i : format)
+        {
+            switch (i)
+            {
+            // Start replacing!
+            case '{':
+            {
+                inBrackets = true;
+                index = i;
+                break;
+            }
+
+            // End replacing
+            case '}':
+            {
+                inBrackets = false;
+                size_t argIndex = std::stoull(index.substr(1));
+                if (argIndex >= args.size())
+                    throw std::out_of_range("Argument index out of range.");
+
+                // +1 for the closing bracket
+                result.replace(result.find(index), index.size() + 1, args.at(argIndex));
+                break;
+            }
+
+            default:
+            {
+                if (inBrackets)
+                    index += i;
+                break;
+            }
+            }
+        }
+
+        return result;
     }
-} // namespace steppable::__internals::arithmetic
-
-#ifndef NO_MAIN
-int main(const int _argc, const char* _argv[])
-{
-    Utf8CodePage _;
-    ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', $("abs", "ca70a6a7-d1d8-4e43-a94e-014d8f9839c9"));
-    program.addKeywordArg("steps", 2, $("abs", "3860a4ae-1073-4a6d-a75e-f64426291573"));
-    program.addSwitch("profile", false, $("abs", "5d7bddda-e33f-4f9c-81b2-d30baad2ec5c"));
-    program.parseArgs();
-
-    const int steps = program.getKeywordArgument("steps");
-    const bool profile = program.getSwitch("profile");
-    const auto& number = program.getPosArg(0);
-
-    if (profile)
-    {
-        TIC(Column Method Addition)
-        std::cout << "Taking absolute value :"
-                  << "\n"
-                  << abs(number, steps) << '\n';
-        TOC()
-    }
-    else
-        std::cout << abs(number, steps) << '\n';
-}
-#endif
+} // namespace steppable::__internals::format

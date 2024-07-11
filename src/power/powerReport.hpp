@@ -58,7 +58,7 @@ std::string reportPowerRoot(const std::string& _number,
  *
  * @return The formatted power report.
  */
-std::string reportPower(std::string _number,
+std::string reportPower(const std::string& _number,
                         const std::string& raiseTo,
                         size_t numberTrailingZeros,
                         bool negative,

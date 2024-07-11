@@ -31,6 +31,7 @@
 #include "addReport.hpp"
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
+#include "getString.hpp"
 #include "util.hpp"
 
 #include <algorithm>
@@ -42,6 +43,7 @@ using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::symbols;
+using namespace steppable::localization;
 
 namespace steppable::__internals::arithmetic
 {
@@ -56,7 +58,8 @@ namespace steppable::__internals::arithmetic
             std::stringstream ss;
             if (steps == 2)
             {
-                ss << BECAUSE << " a = 0, the result is " << b << '\n';
+                // The result is...
+                ss << BECAUSE << " a = 0" << $("add", "ca3f0783-02d8-4006-8bbe-2311ffd708fa") << b << '\n';
                 ss << THEREFORE << " " << a << " + " << b << " = " << b;
             }
             else if (steps == 1)
@@ -72,7 +75,8 @@ namespace steppable::__internals::arithmetic
             std::stringstream ss;
             if (steps == 2)
             {
-                ss << BECAUSE << " b = 0, the result is " << a << '\n';
+                // The result is...
+                ss << BECAUSE << " b = 0" << $("add", "ca3f0783-02d8-4006-8bbe-2311ffd708fa") << a << '\n';
                 ss << THEREFORE << " " << a << " + " << b << " = " << a;
             }
             else if (steps == 1)
@@ -99,13 +103,33 @@ namespace steppable::__internals::arithmetic
         else if (aIsNegative)
         {
             if (steps == 2)
-                std::cout << "Subtracting " << b << " from " << a << " since " << a << " is negative.\n";
+                // Subtracting...
+                std::cout << $("add", "547d6d96-de8d-4f2e-af3b-2da475d8d161")
+                          << b
+                          // from
+                          << $("add", "07467696-88c7-430a-8c2a-40862a3f88b4")
+                          << a
+                          // since
+                          << $("add", "ae7aebca-6f59-4631-a848-27ada6a0ab1e")
+                          << a
+                          // is negative
+                          << $("add", "e0ce4a4c-319f-4fbc-a6c4-8a10c48d679d") << "\n";
             return subtract(b, a.substr(1), steps);
         }
         else if (bIsNegative)
         {
             if (steps == 2)
-                std::cout << "Subtracting " << a << " from " << b << " since " << b << " is negative.\n";
+                // Subtracting...
+                std::cout << $("add", "547d6d96-de8d-4f2e-af3b-2da475d8d161")
+                          << a
+                          // from
+                          << $("add", "07467696-88c7-430a-8c2a-40862a3f88b4")
+                          << b
+                          // since
+                          << $("add", "ae7aebca-6f59-4631-a848-27ada6a0ab1e")
+                          << b
+                          // is negative
+                          << $("add", "e0ce4a4c-319f-4fbc-a6c4-8a10c48d679d") << "\n";
             return subtract(a, b.substr(1), steps);
         }
 
@@ -162,10 +186,14 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number 1");
-    program.addPosArg('b', "Number 2");
-    program.addKeywordArg("steps", 2, "Amount of steps while adding. 0 = No steps, 2 = All steps.");
-    program.addSwitch("profile", false, "profiling the program");
+    // Number 1
+    program.addPosArg('a', $("add", "6e1121d2-75a4-4173-a54b-0b6c2f98abfc"));
+    // Number 2
+    program.addPosArg('b', $("add", "852e4cdb-cb19-4717-95b3-eaec08777ebc"));
+    // Steps while adding...
+    program.addKeywordArg("steps", 2, $("add", "c935c960-609c-4ecd-97f5-d4f36d3bbc9f"));
+    // Profiling
+    program.addSwitch("profile", false, $("add", "6959b967-151d-44b0-a250-464f871d6dc1"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");
@@ -176,7 +204,7 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Column Method Addition)
-        std::cout << "Column Method Addition :\n" << add(aStr, bStr) << '\n';
+        std::cout << $("add", "0c7e9691-2777-4cb8-8ae6-e21206859c5d") << "\n" << add(aStr, bStr) << '\n';
         TOC()
     }
     else

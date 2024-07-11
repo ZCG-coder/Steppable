@@ -55,7 +55,7 @@ namespace steppable::prettyPrint::printers
 
 namespace steppable::__internals::arithmetic
 {
-    std::string power(const std::string _number, const std::string& _raiseTo, const int steps)
+    std::string power(const std::string& _number, const std::string& _raiseTo, const int steps)
     {
         std::string raiseTo = static_cast<std::string>(_raiseTo);
         std::string number = static_cast<std::string>(_number);
@@ -86,7 +86,7 @@ namespace steppable::__internals::arithmetic
         if (number == "0")
         {
             if (steps == 2)
-                return "Since the number is 0, the result is 0.";
+                return "Since the exponent is 0, the result is 0.";
             if (steps == 1)
                 return "0"s + symbols::makeSuperscript(raiseTo) + " = 0";
             return "0";

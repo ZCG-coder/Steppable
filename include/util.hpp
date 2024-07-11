@@ -87,7 +87,6 @@ namespace steppable::__internals::utils
     #include <io.h>
 #endif
 
-    void initLocale();
 #ifdef WINDOWS
     #include <fcntl.h>
     #include <windows.h>
@@ -182,7 +181,7 @@ namespace steppable::__internals::utils
     class Utf8CodePage
     {
     public:
-        Utf8CodePage() { initLocale(); }
+        Utf8CodePage() { ; }
     };
 #endif
 } // namespace steppable::__internals::utils

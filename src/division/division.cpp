@@ -128,7 +128,7 @@ namespace steppable::__internals::arithmetic
         }
         if (isZeroString(_divisor))
         {
-            error("division", "Division of %s by zero leads to infinity."s, std::string(_number).c_str());
+            error("division", "Division of {0} by zero leads to infinity."s, { _number });
             return "Infinity";
         }
 
@@ -224,7 +224,9 @@ namespace steppable::__internals::arithmetic
         if ((numberIntegers < 0) and (-numberIntegers >= decimals))
         {
             if (steps != 0)
-                warning("The result is inaccurate, as the decimals you specified is not enough to display the result.");
+                warning(
+                    "division"s,
+                    "The result is inaccurate, as the decimals you specified is not enough to display the result."s);
             return "0";
         }
 

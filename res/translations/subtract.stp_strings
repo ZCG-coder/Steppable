@@ -20,33 +20,12 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-"""
-This module contains the paths that are used in the project.
-"""
-
-from pathlib import Path
-from lib.constants import WINDOWS
-
-# section Project paths
-PROJECT = "Steppable"
-
-PROJECT_PATH = Path(__file__).parent.parent
-SRC_DIR = PROJECT_PATH / "src"
-TESTS_DIR = PROJECT_PATH / "tests"
-INCLUDE_DIR = PROJECT_PATH / "include"
-
-BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
-OBJ_DIR = BUILD_DIR / "obj.temp"
-BIN_DIR = BUILD_DIR / "bin"
-LIB_DIR = BUILD_DIR / "lib"
-# endsection
-
-# section Configuration paths
-if not WINDOWS:
-    CONFIG_DIR = Path().home() / ".config" / "steppable"
-else:
-    CONFIG_DIR = Path().home() / "AppData" / "Roaming" / "steppable"
-
-DEFAULT_CONFIG_DIR = PROJECT_PATH / "res"
-
-# endsection
+# NOTE: This file is generated. Do not edit it manually. Any changes will be overwritten.
+# STR_GUID: (key) / STRING ORIGINAL: (string)
+# eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
+# Recommended syntax highlighting: Bash Script
+063f0bd2-a4ca-4433-97c0-8baa73cd0e7c >> "Adding %s and %s since %s is negative"
+645b0f26-3c2a-49ae-a9d6-1e06c11fe15e >> "steps while subtracting"
+7704320c-1391-405f-8147-0b4023d769f6 >> "shows the minus sign"
+4c13dd96-fb5b-4e99-b8e6-08e8be07b446 >> "profiling the program"
+4dee3c00-c204-4cb0-afad-e57e41763bf5 >> "Column Method Subtraction :"

@@ -72,46 +72,20 @@ namespace steppable::output
      * It is intended to tell the user that something is going wrong and cannot be handled.
      *
      * @tparam T The character type of the message.
-     * @tparam Args The types of the additional arguments.
      * @param[in] name The name of the error.
      * @param[in] msg The error message.
      * @param[in] args Additional arguments for formatting the message.
      */
-    template<typename T, typename... Args>
-    void error(const std::string& name, std::basic_string<T> msg, Args... args)
+    template<typename T>
+    void error(const std::string& name, std::basic_string<T> msg, const std::vector<std::string>& args = {})
     {
-        auto formattedMsg = format::vFormat(std::string(msg), args...);
-        std::cerr << colors::red << formats::bold << LARGE_DOT << " Error: " << reset << colors::red;
+        auto formattedMsg = format::format(msg, args);
+        std::cerr << colors::red << formats::bold << LARGE_DOT << name << " - ERROR: " << reset << colors::red;
         std::cerr << formattedMsg << reset << '\n';
 
         // Write to the log file
         auto logger = logging::Logger(name, "steppable.log");
         logger.error(formattedMsg);
-    }
-
-    /**
-     * @brief Prints an error message.
-     *
-     * This function prints an error message with the given name and message.
-     * Additional arguments can be provided to format the message using the
-     * `std::basic_string<T>` format syntax.
-     *
-     * The message is printed in red color, and is also written to the log file.
-     * It is intended to tell the user that something is going wrong and cannot be handled.
-     *
-     * @tparam CharT The character type of the message.
-     * @param[in] name The name of the error.
-     * @param[in] msg The error message.
-     */
-    template<typename CharT>
-    void error(const std::string& name, std::basic_string<CharT> msg)
-    {
-        std::cerr << colors::red << formats::bold << LARGE_DOT << " Error: " << reset << colors::red;
-        std::cerr << msg << reset << '\n';
-
-        // Write to the log file
-        auto logger = logging::Logger(name, "steppable.log");
-        logger.error(msg);
     }
 
     /**
@@ -125,15 +99,16 @@ namespace steppable::output
      * It is intended to tell the user that something is going wrong but can be handled.
      *
      * @tparam T The character type of the message.
-     * @tparam Args The types of the additional arguments.
      * @param[in] msg The error message.
      * @param[in] args Additional arguments for formatting the message.
      */
-    template<typename T, typename... Args>
-    [[maybe_unused]] void warning(T msg, Args... args)
+    template<typename T>
+    [[maybe_unused]] void warning(const std::basic_string<T>& name,
+                                  const std::basic_string<T>& msg,
+                                  const std::vector<std::string>& args = {})
     {
-        std::cout << colors::yellow << formats::bold << LARGE_DOT << " Warning: " << reset << colors::yellow;
-        std::cout << format::vFormat(msg, args...) << reset << '\n';
+        std::cout << colors::yellow << formats::bold << LARGE_DOT << name << " - WARNING: " << reset << colors::yellow;
+        std::cout << format::format(msg, args) << reset << '\n';
     }
 
     /**
@@ -147,14 +122,16 @@ namespace steppable::output
      * It is intended to tell the user that something is going right, or to provide some information.
      *
      * @tparam T The character type of the message.
-     * @tparam Args The types of the additional arguments.
      * @param[in] msg The info message.
      * @param[in] args Additional arguments for formatting the message.
      */
-    template<typename T, typename... Args>
-    void info(T msg, Args... args)
+    template<typename T>
+    void info(const std::basic_string<T>& name,
+              const std::basic_string<T>& msg,
+              const std::vector<std::string>& args = {})
     {
-        std::cout << colors::brightGreen << formats::bold << LARGE_DOT << " Info: " << reset << colors::brightGreen;
-        std::cout << format::vFormat(msg, args...) << reset << '\n';
+        std::cout << colors::brightGreen << formats::bold << LARGE_DOT << name << " INFO: " << reset
+                  << colors::brightGreen;
+        std::cout << format::format(msg, args) << reset << '\n';
     }
 } // namespace steppable::output

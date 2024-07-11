@@ -20,33 +20,13 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-"""
-This module contains the paths that are used in the project.
-"""
-
-from pathlib import Path
-from lib.constants import WINDOWS
-
-# section Project paths
-PROJECT = "Steppable"
-
-PROJECT_PATH = Path(__file__).parent.parent
-SRC_DIR = PROJECT_PATH / "src"
-TESTS_DIR = PROJECT_PATH / "tests"
-INCLUDE_DIR = PROJECT_PATH / "include"
-
-BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
-OBJ_DIR = BUILD_DIR / "obj.temp"
-BIN_DIR = BUILD_DIR / "bin"
-LIB_DIR = BUILD_DIR / "lib"
-# endsection
-
-# section Configuration paths
-if not WINDOWS:
-    CONFIG_DIR = Path().home() / ".config" / "steppable"
-else:
-    CONFIG_DIR = Path().home() / "AppData" / "Roaming" / "steppable"
-
-DEFAULT_CONFIG_DIR = PROJECT_PATH / "res"
-
-# endsection
+# NOTE: This file is generated. Do not edit it manually. Any changes will be overwritten.
+# STR_GUID: (key) / STRING ORIGINAL: (string)
+# eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
+# Recommended syntax highlighting: Bash Script
+0b4174a0-75ae-4dbb-93e0-144938272fd6 >> "Number"
+43d64cf7-6f56-4081-a239-34a972cf5cce >> "Base"
+c4392b15-37a2-4d0e-9b3a-fc11b46bf369 >> "Amount of decimals while taking the n-th root."
+5f1f7d97-0ef3-4ccc-95c3-f7582ba11a20 >> "profiling the program"
+aca8b9a2-c7ff-470a-a72f-86204a413c18 >> "Taking n-th root :"
+248c0c3b-05f8-45d6-868f-ec921c088ce1 >> "The base %s  is a decimal. Therefore, we need to perform a power operation first."

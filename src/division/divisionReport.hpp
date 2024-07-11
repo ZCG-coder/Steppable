@@ -76,4 +76,4 @@ std::string reportDivisionStep(const std::string& temp,
                                const std::string& divisor,
                                size_t width,
                                size_t index,
-                               std::string lastRemainder);
+                               const std::string& lastRemainder);

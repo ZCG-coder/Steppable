@@ -29,6 +29,8 @@
 #include <algorithm>
 #include <regex>
 
+// DO NOT LOCALIZE
+
 namespace steppable::localization
 {
     using namespace steppable::__internals::utils;
@@ -73,7 +75,7 @@ namespace steppable::localization
         return lang;
     }
 
-    std::string getString(const std::string& origin, const std::string& key)
+    std::string $(const std::string& origin, const std::string& key)
     {
         // Get localization directory -> origin -> key -> **string**
         // If we cannot find the string, return the default string.

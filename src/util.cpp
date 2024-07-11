@@ -389,21 +389,3 @@ namespace steppable::__internals::stringUtils
         return "";
     }
 } // namespace steppable::__internals::stringUtils
-
-namespace steppable::__internals::utils
-{
-    void initLocale()
-    {
-#if MS_STDLIB_BUGS
-        constexpr char cp_utf16le[] = ".1200";
-        setlocale(LC_ALL, cp_utf16le);
-        _setmode(_fileno(stdout), _O_WTEXT);
-#else
-        // The correct locale name may vary by OS, e.g., "en_US.utf8".
-        (void)setlocale(LC_ALL, ""); // NOLINT(concurrency-mt-unsafe)
-        std::locale::global(std::locale(""));
-        std::wcin.imbue(std::locale());
-        std::wcout.imbue(std::locale());
-#endif
-    }
-} // namespace steppable::__internals::utils

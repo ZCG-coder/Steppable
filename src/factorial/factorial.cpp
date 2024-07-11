@@ -60,7 +60,7 @@ namespace steppable::__internals::arithmetic
             //          / 0
             // and factorial is defined as
             //   n! = n * G(n)                ,where n is a non-zero decimal ............ (2)
-            error("factorial"s, "%s is not an integer."s, number.c_str());
+            error("factorial"s, "{0} is not an integer."s, { number });
             return "0";
         }
         if (isZeroString(number))
@@ -72,7 +72,7 @@ namespace steppable::__internals::arithmetic
         // Negative numbers do not have a factorial.
         if (number.front() == '-')
         {
-            error("factorial"s, "%s is negative."s, number.c_str());
+            error("factorial"s, "{0} is negative."s, { number });
             return "0";
         }
 

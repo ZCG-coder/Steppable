@@ -73,7 +73,8 @@ namespace steppable::__internals::utils
             {
                 strerror_r(error, errBuffer.data(), errBuffer.size());
                 output::error("platform::getHomeDirectory"s,
-                              "Error occurred while getting the home directory: "s + buffer.data());
+                              "Error occurred while getting the home directory: {0}"s,
+                              { buffer.data() });
             }
             else
                 output::error("platform::getHomeDirectory"s, "Error: Unable to get the home directory."s);
