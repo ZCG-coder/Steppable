@@ -24,6 +24,9 @@
 
 #include "output.hpp"
 
+#ifdef LINUX
+    #include <cstring>
+#endif
 #include <string>
 
 #ifdef WINDOWS
