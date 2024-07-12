@@ -28,6 +28,7 @@
 
 #include <algorithm>
 #include <regex>
+#include <vector>
 
 // DO NOT LOCALIZE
 
