@@ -54,8 +54,8 @@ std::string reportAbs(const std::string& number, int steps = 2)
                // is negative,
                << $("abs", "5c8a89a7-4cb1-40d8-b926-6ae84fc3a3ef") << "abs(" << number << ") = -(" << number << ")\n";
             // The absolute value of...
-            ss << THEREFORE << $("abs", "8fd01dbe-c921-4f22-a0ab-d1348967e4b0")
-               << number
+            ss << THEREFORE
+               << $("abs", "8fd01dbe-c921-4f22-a0ab-d1348967e4b0", { number })
                // is
                << $("abs", "7066c6e7-6b80-4671-bc61-6c0322204c87") << standardizeNumber(number.substr(1));
         }
@@ -67,8 +67,8 @@ std::string reportAbs(const std::string& number, int steps = 2)
                // Is positive,...
                << $("abs", "b119f705-751b-425e-a758-47d755307700") << "abs(" << number << ") = " << number << '\n';
             // The absolute value of...
-            ss << THEREFORE << $("abs", "8fd01dbe-c921-4f22-a0ab-d1348967e4b0")
-               << number
+            ss << THEREFORE
+               << $("abs", "8fd01dbe-c921-4f22-a0ab-d1348967e4b0", { number })
                // is
                << $("abs", "7066c6e7-6b80-4671-bc61-6c0322204c87") << standardizeNumber(number);
         }

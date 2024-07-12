@@ -36,4 +36,18 @@ namespace steppable::localization
      * @return The string in its localized form.
      */
     std::string $(const std::string& origin, const std::string& key);
+
+    /**
+     * @brief Gets a string from origin, and by the key. Formats it with the format strings.
+     * @details The origin is the name of the file, and the key is the GUID of the string. This method also
+     * enables you to format the string with the format strings.
+     *
+     * @param origin The name of the file, without the extension.
+     * @param formatKey The GUID key of the format string.
+     * @param formatStrings The format strings to format the string with.
+     * @return The formatted string in its localized form, formatted with the format strings.
+     */
+    std::string $(const std::string& origin,
+                  const std::string& formatKey,
+                  const std::vector<std::string>& formatStrings);
 } // namespace steppable::localization

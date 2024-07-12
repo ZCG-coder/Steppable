@@ -52,4 +52,14 @@ const std::string& result = format::format(formatOrig, { arg1, arg2 });
 _.assertIsEqual(result, expected);
 SECTION_END()
 
+SECTION(Test format with multiple values reversed)
+const std::string& formatOrig = "{1}, {0}!";
+const std::string& arg1 = "world";
+const std::string& arg2 = "Hello";
+const std::string& expected = "Hello, world!";
+
+const std::string& result = format::format(formatOrig, { arg1, arg2 });
+_.assertIsEqual(result, expected);
+SECTION_END()
+
 TEST_END()

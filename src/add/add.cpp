@@ -103,33 +103,15 @@ namespace steppable::__internals::arithmetic
         else if (aIsNegative)
         {
             if (steps == 2)
-                // Subtracting...
-                std::cout << $("add", "547d6d96-de8d-4f2e-af3b-2da475d8d161")
-                          << b
-                          // from
-                          << $("add", "07467696-88c7-430a-8c2a-40862a3f88b4")
-                          << a
-                          // since
-                          << $("add", "ae7aebca-6f59-4631-a848-27ada6a0ab1e")
-                          << a
-                          // is negative
-                          << $("add", "e0ce4a4c-319f-4fbc-a6c4-8a10c48d679d") << "\n";
+                // Subtracting {0} from {1} since {2} is negative
+                std::cout << $("add", "547d6d96-de8d-4f2e-af3b-2da475d8d161", { b, a.substr(1), a }) << "\n";
             return subtract(b, a.substr(1), steps);
         }
         else if (bIsNegative)
         {
             if (steps == 2)
-                // Subtracting...
-                std::cout << $("add", "547d6d96-de8d-4f2e-af3b-2da475d8d161")
-                          << a
-                          // from
-                          << $("add", "07467696-88c7-430a-8c2a-40862a3f88b4")
-                          << b
-                          // since
-                          << $("add", "ae7aebca-6f59-4631-a848-27ada6a0ab1e")
-                          << b
-                          // is negative
-                          << $("add", "e0ce4a4c-319f-4fbc-a6c4-8a10c48d679d") << "\n";
+                // Subtracting {0} from {1} since {2} is negative
+                std::cout << $("add", "547d6d96-de8d-4f2e-af3b-2da475d8d161", { a, b.substr(1), b }) << "\n";
             return subtract(a, b.substr(1), steps);
         }
 

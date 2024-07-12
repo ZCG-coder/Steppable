@@ -21,7 +21,7 @@
  **************************************************************************************************/
 
 /**
- * @file comparision.cpp
+ * @file comparison.cpp
  * @brief This file contains the implementation of the compare function, which compares two numbers.
  *
  * @author Andy Zhang
@@ -30,6 +30,7 @@
 #include "argParse.hpp"
 #include "comparisonReport.hpp"
 #include "fn/basicArithm.hpp"
+#include "getString.hpp"
 #include "util.hpp"
 
 #include <sstream>
@@ -39,6 +40,7 @@ using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::symbols;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::arithmetic;
+using namespace steppable::localization;
 
 namespace steppable::__internals::arithmetic
 {
@@ -49,13 +51,12 @@ namespace steppable::__internals::arithmetic
             std::stringstream ss;
             if (steps == 2)
             {
-                ss << BECAUSE << " " << static_cast<std::string>(_a) << " is identical to "
-                   << static_cast<std::string>(_b);
-                ss << ", " << THEREFORE << " a = b";
+                ss << BECAUSE << $("comparison", "bd4f865a-ce08-4825-ac74-f824e4da2fed", { _a, _b }) << THEREFORE
+                   << " a = b";
                 return ss.str();
             }
             if (steps == 1)
-                return static_cast<std::string>(_a) + " = " + static_cast<std::string>(_b);
+                return _a + " = " + _b;
             return "2";
         }
         const auto [splitNumberArray, aIsNegative, bIsNegative] = splitNumber(_a, _b, false, true);
@@ -110,7 +111,7 @@ namespace steppable::__internals::arithmetic
         }
 
         if (steps == 1)
-            return "Equal";
+            return $("comparison", "c49d968f-31df-4654-b13b-0f16212f4591");
         if (steps == 2)
         {
             std::stringstream ss;
@@ -126,10 +127,10 @@ int main(int _argc, const char** _argv)
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number 1");
-    program.addPosArg('b', "Number 2");
-    program.addKeywordArg("steps", 2, "Amount of steps while comparing");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', $("comparison", "1d411edd-f7a6-4ad5-8a0a-cc8b5eea01b1"));
+    program.addPosArg('b', $("comparison", "0972be2d-ce73-4226-82d8-778fb5293894"));
+    program.addKeywordArg("steps", 2, $("comparison", "07ff2704-10c1-4eea-bba2-bd63116ca34b"));
+    program.addSwitch("profile", false, $("comparison", "b930c709-22e7-46f8-9cdf-5ed193469964"));
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");

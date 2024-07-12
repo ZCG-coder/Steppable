@@ -32,14 +32,14 @@ Process:
 | in file  |         | file        |        | to a new file            |
 +----------+         +-------------+        +--------------------------+
 """
-from pathlib import Path
-import re
-import sys
-import uuid
 import argparse
+import re
+import readline as _  # Enables input history and more advanced editing capabilities.
+import uuid
+from pathlib import Path
 
-from lib.getch import getch
 from lib.printing import erase_line, print_error
+from tools.install import install
 
 ISO_639_REGEX = re.compile(r"^[a-z]{2}(-[A-Z]{2})?$")
 LOCALIZED_HEADER = """\
@@ -171,9 +171,6 @@ def add_translations(file: Path, language: str) -> None:
         if (pos := line.find('"')) != -1:
             print_error(line, pos, 'Invalid character: "')
             exit(1)
-        if (pos := line.find("'")) != -1:
-            print_error(line, pos, "Invalid character: '")
-            exit(1)
 
         if not line:
             print_error(line, 0, "Empty string")
@@ -196,6 +193,9 @@ def add_translations(file: Path, language: str) -> None:
     with output_file.open("w") as f:
         f.write(LOCALIZED_HEADER.format(TYPE="TRANSLATED") + "\n".join(entries))
     print(f"INFO: Translations written to {output_file}. Done.")
+
+    # Step 6: Write the indexed file to the user configuration for future reference.
+    install()
 
 
 def main():
@@ -227,7 +227,8 @@ def main():
 
     args = parser.parse_args()
     if args.command == "add_tr":
-        add_translations(args.component, args.language)
+        path = Path(f"res/translations/{args.component}.stp_strings")
+        add_translations(path, args.language)
     elif args.command == "wr_idx":
         write_indexed_file(args.component, append=args.append)
 

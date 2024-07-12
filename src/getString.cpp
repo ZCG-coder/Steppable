@@ -147,4 +147,14 @@ namespace steppable::localization
         }
         return translation;
     }
+
+    std::string $(const std::string& origin,
+                  const std::string& formatKey,
+                  const std::vector<std::string>& formatStrings)
+    {
+        // Get the key
+        const std::string& key = $(origin, formatKey);
+        // Format the string
+        return __internals::format::format(key, formatStrings);
+    }
 } // namespace steppable::localization

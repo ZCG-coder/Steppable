@@ -24,11 +24,9 @@
 # STR_GUID: (key) / STRING ORIGINAL: (string)
 # eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
 # Recommended syntax highlighting: Bash Script
-e8ad759d-fcb8-4280-a7a8-a637ae834ffc >> "Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn’t make sense. And Cookie Monster is sad that there are no cookies, and your friends are sad because they don't exist. Oh wow this escalated quickly."
-977f3c9f-01c3-49e4-bf4a-94d7c58bbe82 >> "Division of %s by zero leads to infinity."
-b4cace82-0076-40f3-85de-92aa1a81df44 >> "Since "
-d9daa07b-a906-4a9d-b6a4-524f1c3319e4 >> " is equal to "
-b190d3cb-13bb-4517-8903-fb2a1bc727b9 >> " the result is 1"
+e8ad759d-fcb8-4280-a7a8-a637ae834ffc >> "Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn't make sense. And Cookie Monster is sad that there are no cookies, and your friends are sad because they don't exist. Oh wow this escalated quickly."
+977f3c9f-01c3-49e4-bf4a-94d7c58bbe82 >> "Division of {0} by zero leads to infinity."
+b4cace82-0076-40f3-85de-92aa1a81df44 >> "Since {0} is equal to {1} the result is 1"
 d38c283c-e75d-4cc2-a634-bf1b3361d489 >> "The result is inaccurate, as the decimals you specified is not enough to display the result."
 e7bbfa43-684d-498a-b10f-d8a76a371583 >> "Number 1"
 9e6d7430-7006-4c77-ad4a-00955080765c >> "Number 2"

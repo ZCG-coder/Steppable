@@ -24,9 +24,9 @@
 # STR_GUID: (key) / STRING ORIGINAL: (string)
 # eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
 # Recommended syntax highlighting: Bash Script
-4eeba5fa-a5b8-4abf-ae65-22a466da6d18 >> "%s is not an integer."
+4eeba5fa-a5b8-4abf-ae65-22a466da6d18 >> "{0} is not an integer."
 d023ddb5-8a71-441b-8c67-8836bd94e93d >> "By definition, 0! = 1"
-69d93fb8-1bb7-4ed2-be6d-8eeafd5f23a6 >> "%s is negative."
+69d93fb8-1bb7-4ed2-be6d-8eeafd5f23a6 >> "{0} is negative."
 135326d7-4e93-46d1-9e0e-8407eab6307b >> "Number"
 7e1e72c2-256d-4b71-84b6-65166937d7ba >> "Amount of steps while calculating the factorial. 0 = No steps, 2 = All steps."
 b781d070-00e5-4c26-a56a-c0ad9504c0e3 >> "profiling the program"

@@ -31,6 +31,7 @@
 #include "argParse.hpp"
 #include "divisionReport.hpp"
 #include "fn/basicArithm.hpp"
+#include "getString.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
 #include "util.hpp"
@@ -44,6 +45,7 @@
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::output;
+using namespace steppable::localization;
 using namespace steppable::__internals::arithmetic;
 
 namespace steppable::__internals::arithmetic
@@ -118,17 +120,13 @@ namespace steppable::__internals::arithmetic
         if (isZeroString(_number) and isZeroString(_divisor))
         {
             // Easter egg in open-source code
-            error("division",
-                  "Imagine that you have zero cookies and you split them evenly among zero friends, how many "
-                  "cookies does "
-                  "each person get? See? It doesn't make sense. And Cookie Monster is sad that there are no "
-                  "cookies, and "
-                  "you are sad that you have no friends."s);
+            error("division", $("division", "e8ad759d-fcb8-4280-a7a8-a637ae834ffc"));
             return "Indeterminate";
         }
         if (isZeroString(_divisor))
         {
-            error("division", "Division of {0} by zero leads to infinity."s, { _number });
+            // Division by zero leads to infinity.
+            error("division", $("division", "977f3c9f-01c3-49e4-bf4a-94d7c58bbe82", { _number }));
             return "Infinity";
         }
 
@@ -136,7 +134,8 @@ namespace steppable::__internals::arithmetic
         {
             std::stringstream ss;
             if (steps == 2)
-                ss << "Since " << _number << " is equal to " << _divisor << ", " << THEREFORE << " the result is 1";
+                // Since the number is equal to the divisor, the result is 1.
+                ss << $("division", "b4cace82-0076-40f3-85de-92aa1a81df44", { _number, _divisor });
             else if (steps == 1)
                 ss << _number << " " << DIVIDED_BY << " " << _divisor << " = 1";
             else
@@ -224,9 +223,8 @@ namespace steppable::__internals::arithmetic
         if ((numberIntegers < 0) and (-numberIntegers >= decimals))
         {
             if (steps != 0)
-                warning(
-                    "division"s,
-                    "The result is inaccurate, as the decimals you specified is not enough to display the result."s);
+                // Warn the user that the result is inaccurate.
+                warning("division"s, $("division", "d38c283c-e75d-4cc2-a634-bf1b3361d489"));
             return "0";
         }
 
@@ -312,11 +310,11 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number 1");
-    program.addPosArg('b', "Number 2");
-    program.addKeywordArg("steps", 2, "Amount of steps while dividing. 0 = No steps, 2 = All steps.");
-    program.addKeywordArg("decimals", 5, "Decimals to output");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', $("division", "e7bbfa43-684d-498a-b10f-d8a76a371583"));
+    program.addPosArg('b', $("division", "9e6d7430-7006-4c77-ad4a-00955080765c"));
+    program.addKeywordArg("steps", 2, $("division", "797de85c-787c-4c05-bc42-763da058f9e0"));
+    program.addKeywordArg("decimals", 5, $("division", "e10fcce8-4bb3-4b3b-9820-33571065a8ee"));
+    program.addSwitch("profile", false, $("division", "98a3f915-5e93-4417-942a-071b2d9a13b3"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");
@@ -332,8 +330,9 @@ int main(const int _argc, const char* _argv[])
     }
     if (profile)
     {
-        TIC(Column Method Division)
-        std::cout << "Column Method Division :\n" << divide(aStr, bStr, steps, decimals) << '\n';
+        TIC(Column method division)
+        std::cout << $("division", "bc2c8ff9-2d67-45e9-8824-2bc971e21cc9") << "\n"
+                  << divide(aStr, bStr, steps, decimals) << '\n';
         TOC()
     }
     else

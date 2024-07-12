@@ -31,6 +31,7 @@
 #include "argParse.hpp"
 #include "baseConvertReport.hpp"
 #include "fn/basicArithm.hpp"
+#include "getString.hpp"
 #include "output.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
@@ -42,6 +43,7 @@ using namespace std::literals;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::symbols;
+using namespace steppable::localization;
 using namespace steppable::output;
 
 namespace steppable::prettyPrint::printers
@@ -90,12 +92,14 @@ namespace steppable::__internals::arithmetic
 
         if (base > 36)
         {
-            error("baseConvert"s, "It is impossilbe to represent a number in base greater than 36"s);
+            // It is impossible to convert to a base greater than 36.
+            error("baseConvert"s, $("baseConvert", "4e5a4863-4e4a-44f1-a782-e74de6b93469"));
             return "Impossible";
         }
         if (base == 0 or base == 1)
         {
-            error("baseConvert"s, "Conversion to base 0 or 1 is not possible"s);
+            // It is impossible to convert to a base of 0 or 1.
+            error("baseConvert"s, $("baseConvert", "783e7915-f4a3-4973-9747-2d8de3de5545"));
             return "Impossible";
         }
 
@@ -127,13 +131,12 @@ namespace steppable::__internals::arithmetic
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
 {
-    std::cout << steppable::prettyPrint::printers::ppSubscript("342", "32341");
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number to convert");
-    program.addPosArg('b', "Base of the number");
-    program.addKeywordArg("steps", 2, "Amount of steps while converting. 0 = No steps, 2 = All steps.");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', $("baseConvert", "f3211410-9b0d-49f6-8797-c4756b2fee28"));
+    program.addPosArg('b', $("baseConvert", "61826029-8d77-4133-8bc7-7f03365bd9a3"));
+    program.addKeywordArg("steps", 2, $("baseConvert", "f988a0b2-decd-4d0c-a2e2-dd4127c1e83b"));
+    program.addSwitch("profile", false, $("baseConvert", "0826ae41-c7f6-4e1f-a932-2f6c00930a05"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");
@@ -144,7 +147,8 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(baseConvert)
-        std::cout << "baseConvert :\n" << baseConvert(aStr, bStr) << '\n';
+        std::cout << $("baseConvert", "74dd79f5-7c24-4b39-bf66-59a3570e4a03") << "\n"
+                  << baseConvert(aStr, bStr) << '\n';
         TOC()
     }
     else

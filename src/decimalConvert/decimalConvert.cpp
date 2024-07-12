@@ -28,6 +28,7 @@
 #include "argParse.hpp"
 #include "decimalConvertReport.hpp"
 #include "fn/basicArithm.hpp"
+#include "getString.hpp"
 #include "util.hpp"
 
 #include <cctype>
@@ -38,6 +39,7 @@ using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::symbols;
 using namespace steppable::output;
+using namespace steppable::localization;
 using namespace steppable::__internals::arithmetic;
 
 namespace steppable::__internals::arithmetic
@@ -66,9 +68,8 @@ namespace steppable::__internals::arithmetic
     {
         if (compare(baseString, "36", 0) == "1")
         {
-            error("decimalConvert",
-                  "The base is larger than 36, which means that it is impossible to represent the number."s);
-            return "";
+            error("decimalConvert", $("decimalConvert", "cbb9ed62-1127-4e1d-95ef-e75cc7fb2837"));
+            return "Impossible";
         }
 
         std::string converted = "0";
@@ -85,8 +86,9 @@ namespace steppable::__internals::arithmetic
 
             if (compare(digit, baseString, 0) != "0")
             {
-                error("decimalConvert", "The digit "s + digit + " is larger than the base " + baseString);
-                return "";
+                error("decimalConvert",
+                      $("decimalConvert", "e97b6539-8f69-4ccb-a50e-82a66aff2898", { digit, baseString }));
+                return "Impossible";
             }
             auto placeValue = power(baseString, std::to_string(index), 0);
             auto convertedDigit = multiply(placeValue, digit, 0);
@@ -106,10 +108,10 @@ int main(int _argc, const char* _argv[])
 {
     [[maybe_unused]] Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number in the base", false);
-    program.addPosArg('b', "Base number");
-    program.addKeywordArg("steps", 2, "Amount of steps while converting the number. 0 = No steps, 2 = All steps.");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', $("decimalConvert", "53053bf2-84ba-4b63-9f27-d334dc38b60d"), false);
+    program.addPosArg('b', $("decimalConvert", "b771e8bc-9b66-4b4d-b9ff-fd4111111cf4"));
+    program.addKeywordArg("steps", 2, $("decimalConvert", "b461a3e5-12c3-48ea-aaba-2b4e234f3234"));
+    program.addSwitch("profile", false, $("decimalConvert", "d14e05b6-cb8e-43a5-9ab2-11f960f4e199"));
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");
@@ -120,7 +122,8 @@ int main(int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Decimal Conversion)
-        std::cout << "Decimal Conversion :\n" << decimalConvert(inputString, baseString, steps) << '\n';
+        std::cout << $("decimalConvert", "d1536a73-2eb9-4bf9-8b25-00ff88038dab") << "\n"
+                  << decimalConvert(inputString, baseString, steps) << '\n';
         TOC()
     }
     else
