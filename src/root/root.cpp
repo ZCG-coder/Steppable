@@ -34,6 +34,7 @@
 #include "factors.hpp"
 #include "fn/basicArithm.hpp"
 #include "fraction.hpp"
+#include "getString.hpp"
 #include "rootReport.hpp"
 #include "rounding.hpp"
 #include "symbols.hpp"
@@ -50,6 +51,7 @@ using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::__internals::numUtils;
+using namespace steppable::localization;
 using namespace std::literals;
 
 namespace steppable::prettyPrint::printers
@@ -203,11 +205,11 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number");
-    program.addPosArg('n', "Base");
-    program.addKeywordArg("decimals", 8, "Amount of decimals while taking the n-th root.");
-    program.addKeywordArg("steps", 2, "Amount of steps while taking the n-th root.");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', $("root", "0b4174a0-75ae-4dbb-93e0-144938272fd6"));
+    program.addPosArg('n', $("root", "43d64cf7-6f56-4081-a239-34a972cf5cce"));
+    program.addKeywordArg("decimals", 8, $("root", "c4392b15-37a2-4d0e-9b3a-fc11b46bf369"));
+    program.addKeywordArg("steps", 2, $("root", "3178f539-1d1c-4e7b-8f5e-6186b361b4e6"));
+    program.addSwitch("profile", false, $("root", "5f1f7d97-0ef3-4ccc-95c3-f7582ba11a20"));
     program.parseArgs();
 
     const int decimals = program.getKeywordArgument("decimals");
@@ -219,7 +221,8 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Nth root)
-        std::cout << "Taking n-th root :\n" << root(number, base, decimals, steps) << '\n';
+        std::cout << $("root", "aca8b9a2-c7ff-470a-a72f-86204a413c18") << "\n"
+                  << root(number, base, decimals, steps) << '\n';
         TOC()
     }
     else

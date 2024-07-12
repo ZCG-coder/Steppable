@@ -77,7 +77,7 @@ namespace steppable::output
      * @param[in] args Additional arguments for formatting the message.
      */
     template<typename T>
-    void error(const std::string& name, std::basic_string<T> msg, const std::vector<std::string>& args = {})
+    void error(const std::string& name, const std::basic_string<T>& msg, const std::vector<std::string>& args = {})
     {
         auto formattedMsg = format::format(msg, args);
         std::cerr << colors::red << formats::bold << LARGE_DOT << name << " - ERROR: " << reset << colors::red;
@@ -99,13 +99,14 @@ namespace steppable::output
      * It is intended to tell the user that something is going wrong but can be handled.
      *
      * @tparam T The character type of the message.
+     * @param[in] name The name of the warning
      * @param[in] msg The error message.
      * @param[in] args Additional arguments for formatting the message.
      */
     template<typename T>
-    [[maybe_unused]] void warning(const std::basic_string<T>& name,
-                                  const std::basic_string<T>& msg,
-                                  const std::vector<std::string>& args = {})
+    void warning(const std::basic_string<T>& name,
+                 const std::basic_string<T>& msg,
+                 const std::vector<std::string>& args = {})
     {
         std::cout << colors::yellow << formats::bold << LARGE_DOT << name << " - WARNING: " << reset << colors::yellow;
         std::cout << format::format(msg, args) << reset << '\n';
@@ -122,6 +123,7 @@ namespace steppable::output
      * It is intended to tell the user that something is going right, or to provide some information.
      *
      * @tparam T The character type of the message.
+     * @param[in] name The name of the info message.
      * @param[in] msg The info message.
      * @param[in] args Additional arguments for formatting the message.
      */

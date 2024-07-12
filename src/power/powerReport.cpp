@@ -33,6 +33,7 @@
 
 #include "fn/basicArithm.hpp"
 #include "fraction.hpp"
+#include "getString.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
@@ -40,6 +41,7 @@
 
 using namespace std::literals;
 using namespace steppable::output;
+using namespace steppable::localization;
 using namespace steppable::prettyPrint;
 using namespace steppable::__internals::symbols;
 using namespace steppable::__internals::arithmetic;
@@ -54,7 +56,8 @@ std::string reportPowerRoot(const std::string& _number,
     std::stringstream ss;
 
     if (steps == 2)
-        ss << "The exponent " << raiseTo << " is a decimal. Therefore, the result is a root." << '\n';
+        // The exponent is a decimal, so the result is a root.
+        ss << $("power", "7b3b39ff-c3fa-4998-b9e2-8989fb6846f9", { raiseTo }) << '\n';
     if (steps >= 1)
     {
         ss << _number << makeSuperscript(static_cast<std::string>(raiseTo));
@@ -81,7 +84,8 @@ std::string reportPower(const std::string& _number,
     if (numberOrig == "0")
     {
         if (steps == 2)
-            return "Since the number is 0, the result is 0.";
+            // The number is 0, so the result is 0.
+            return $("power", "261e4299-0132-4ab5-a37d-aa376efbdd5f");
         if (steps == 1)
             return printers::ppSuperscript("0", static_cast<std::string>(raiseTo)) + " = 0";
         return "0";

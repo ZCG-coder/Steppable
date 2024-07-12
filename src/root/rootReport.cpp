@@ -22,7 +22,7 @@
 
 #include "rootReport.hpp"
 
-#include "format.hpp"
+#include "getString.hpp"
 #include "symbols.hpp"
 
 #include <sstream>
@@ -30,7 +30,7 @@
 
 using namespace steppable::__internals::symbols;
 using namespace steppable::prettyPrint::printers;
-using namespace steppable::__internals::format;
+using namespace steppable::localization;
 
 std::string reportRootPower(const std::string& _number,
                             const std::string& base,
@@ -42,8 +42,7 @@ std::string reportRootPower(const std::string& _number,
     std::stringstream ss;
 
     if (steps == 2)
-        ss << format("The base {0} is a decimal. Therefore, we need to perform a power operation first.", { _number })
-           << '\n';
+        ss << $("root", "248c0c3b-05f8-45d6-868f-ec921c088ce1", { _number }) << '\n';
     if (steps >= 1)
     {
         ss << ppRoot(_number, base) << '\n';

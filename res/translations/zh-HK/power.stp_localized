@@ -21,21 +21,15 @@
 #####################################################################################################
 
 # NOTE: This file is generated. Do not edit it manually. Any changes will be overwritten.
-# STR_GUID: (key) / STRING ORIGINAL: (string)
+# STR_GUID: (key) / STRING TRANSLATED: (string)
 # eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
 # Recommended syntax highlighting: Bash Script
-82443952-e7cc-4566-b6fe-f1caba92534d >> "Invalid mode. Defaulting to radians."
-a7ed4324-5cc3-48d2-9798-d3e743b809d3 >> "Tangent is undefined here."
-0dd11fcc-bdd0-48d1-9b4a-7ebcccb4915f >> "Cosecant is undefined here."
-62792c6c-6751-4850-bf66-5e6366322cc0 >> "Secant is undefined here."
-65650a93-4298-4e19-8c81-f5fbd9f14ac2 >> "Cotangent is undefined here."
-b06650e0-7101-4734-9647-5abb56beb492 >> "Arc sine is not defined here."
-fffb4742-3712-4c9a-a7ff-65cd51508a0a >> "Arc secant is not defined here."
-c021dfde-300c-4d74-a6a1-87a514c1bbe0 >> "Arc cosecant is not defined here."
-c0c6a29f-abda-4676-9662-1d00f94f10a4 >> "Arc cotangent is not defined here."
-47dcf91b-847c-48f0-9889-f5ce1b6831e3 >> "Command"
-bcd0a3e9-3d89-4921-94b3-d7533d60911f >> "Number"
-03fdd1f2-6ea5-49d4-ac3f-27f01f04a518 >> "The mode to calculate in. 0 = radians (default), 1 = degrees, 2 = gradians."
-d1df3b60-dac1-496c-99bb-ba763dc551df >> "Amount of decimals while calculating."
-162adb13-c4b2-4418-b3df-edb6f9355d64 >> "profiling the program"
-6ad9958f-f127-4ee4-a4c6-94cf19576b9a >> "Invalid command {0}."
+7c866c46-d67e-4c1e-8fd5-b3bfa07d005d >> "由於數值為一，結果為一。"
+f8fdd5af-6450-4c19-97a9-9724493f76ab >> "由於指數為零，結果為一。"
+4252ac37-a36b-4605-9ec1-d69e70b91b46 >> "數值"
+1fefffaf-7731-430b-989f-42e74017a2eb >> "指數"
+cb935566-6125-49ce-9ebc-e157410a3005 >> "計算指數（乘法）時所顯示的步驟。0代表沒有步驟，2代表全部步驟。"
+e5d48237-e161-494d-940b-e2457411fcfb >> "分析程式"
+2a9fd067-59a3-4a65-b1a6-2ca479e0f1a1 >> "指數："
+7b3b39ff-c3fa-4998-b9e2-8989fb6846f9 >> "因為指數{0}，結果為方根。"
+261e4299-0132-4ab5-a37d-aa376efbdd5f >> "由於數值為零，結果為零。"
