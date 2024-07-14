@@ -124,99 +124,39 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a135f5fd1fc2dfbe08f6659e29b39b0e9" id="r_a135f5fd1fc2dfbe08f6659e29b39b0e9"><td class="memTemplParams" colspan="2">template&lt;typename CharT &gt; </td></tr>
-<tr class="memitem:a135f5fd1fc2dfbe08f6659e29b39b0e9"><td class="memTemplItemLeft" align="right" valign="top">std::basic_string&lt; CharT &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a135f5fd1fc2dfbe08f6659e29b39b0e9">vFormat</a> (const std::basic_string&lt; CharT &gt; sFormat,...)</td></tr>
-<tr class="memdesc:a135f5fd1fc2dfbe08f6659e29b39b0e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a string using a variable number of arguments.  <br /></td></tr>
-<tr class="separator:a135f5fd1fc2dfbe08f6659e29b39b0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38ab869ab75e817afec5ed1138860d0d" id="r_a38ab869ab75e817afec5ed1138860d0d"><td class="memTemplParams" colspan="2">template&lt;typename CharT &gt; </td></tr>
-<tr class="memitem:a38ab869ab75e817afec5ed1138860d0d"><td class="memTemplItemLeft" align="right" valign="top">std::basic_string&lt; CharT &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a38ab869ab75e817afec5ed1138860d0d">vFormat</a> (const CharT *sFormat,...)</td></tr>
-<tr class="memdesc:a38ab869ab75e817afec5ed1138860d0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a string using a format specifier and variable arguments.  <br /></td></tr>
-<tr class="separator:a38ab869ab75e817afec5ed1138860d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afed9c32da8cf316e7b7bc454edda5b2b" id="r_afed9c32da8cf316e7b7bc454edda5b2b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afed9c32da8cf316e7b7bc454edda5b2b">format</a> (const std::string &amp;format, const std::vector&lt; std::string &gt; &amp;args)</td></tr>
+<tr class="separator:afed9c32da8cf316e7b7bc454edda5b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains string formatting utilities. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a38ab869ab75e817afec5ed1138860d0d" name="a38ab869ab75e817afec5ed1138860d0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38ab869ab75e817afec5ed1138860d0d">&#9670;&#160;</a></span>vFormat() <span class="overload">[1/2]</span></h2>
+<a id="afed9c32da8cf316e7b7bc454edda5b2b" name="afed9c32da8cf316e7b7bc454edda5b2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afed9c32da8cf316e7b7bc454edda5b2b">&#9670;&#160;</a></span>format()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename CharT &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::basic_string&lt; CharT &gt; steppable::__internals::format::vFormat </td>
+          <td class="memname">std::string steppable::__internals::format::format </td>
           <td>(</td>
-          <td class="paramtype">const CharT *</td>          <td class="paramname"><span class="paramname"><em>sFormat</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Formats a string using a format specifier and variable arguments. </p>
-<p>This function takes a format specifier and variable arguments, similar to the printf function, and returns a formatted string. The format specifier is a string that may contain placeholders for the variable arguments. The function uses the vsnprintf function to perform the formatting.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">CharT</td><td>The character type of the string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">sFormat</td><td>The format specifier string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>The variable arguments. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The formatted string. </dd></dl>
-
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1format_afed9c32da8cf316e7b7bc454edda5b2b_cgraph.svg" width="175" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div>
-<a id="a135f5fd1fc2dfbe08f6659e29b39b0e9" name="a135f5fd1fc2dfbe08f6659e29b39b0e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a135f5fd1fc2dfbe08f6659e29b39b0e9">&#9670;&#160;</a></span>vFormat() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CharT &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::basic_string&lt; CharT &gt; steppable::__internals::format::vFormat </td>
-          <td>(</td>
-          <td class="paramtype">const std::basic_string&lt; CharT &gt;</td>          <td class="paramname"><span class="paramname"><em>sFormat</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Formats a string using a variable number of arguments. </p>
-<p>This function takes a format string and a variable number of arguments, and returns a formatted string. It uses the same format specifiers as the standard library's <code>printf</code> function.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">CharT</td><td>The character type of the string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">sFormat</td><td>The format string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>The variable arguments. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The formatted string. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1format_a135f5fd1fc2dfbe08f6659e29b39b0e9_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1format_afed9c32da8cf316e7b7bc454edda5b2b_icgraph.svg" width="428" height="454"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -240,7 +180,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Sun Jun 30 2024 00:49:46"; // Will get replaced by Doxygen
+        const dateStr = "Sun Jul 14 2024 10:07:30"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

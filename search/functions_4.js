@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['debug_0',['debug',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#aea7bddd607595f37fe9f09624dea23d8',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message)'],['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#ac9f9eff49890890d0887f1d52cfe57b0',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message, Args... args)']]],
-  ['decimalconvert_1',['decimalConvert',['../namespacesteppable_1_1____internals_1_1arithmetic.html#afc4c4f319dadbb5b1ff481132f008374',1,'steppable::__internals::arithmetic']]],
-  ['degtorad_2',['degToRad',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a8bfa254ceb954f123b82f075eec42219',1,'steppable::__internals::arithmetic']]],
-  ['determineresultscale_3',['determineResultScale',['../namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3',1,'steppable::__internals::arithmetic']]],
-  ['determinescale_4',['determineScale',['../namespacesteppable_1_1____internals_1_1numUtils.html#a21f487d47d06ba1a7acf19091c8edc13',1,'steppable::__internals::numUtils']]],
-  ['dim_5',['dim',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#ace928d552abe20aa441fb499a7c605fe',1,'steppable::__internals::utils::formats']]],
-  ['divide_6',['divide',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a26194ae8ddb44afb942fbf8335ae1730',1,'steppable::__internals::arithmetic']]],
-  ['dividewithquotient_7',['divideWithQuotient',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ac9102075acd398b3bdf388f6cc2ef978',1,'steppable::__internals::arithmetic']]],
-  ['duplicates_8',['duplicates',['../namespacesteppable_1_1____internals_1_1stringUtils.html#addd78766b99fddfe882bd32318ed0f2b',1,'steppable::__internals::stringUtils']]]
+  ['compare_0',['compare',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a53a5988a1ccf479c14e75c2902bbb82d',1,'steppable::__internals::arithmetic']]],
+  ['consoleoutput_1',['ConsoleOutput',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#afb69280a91e6a7f2111645143cb2c1ed',1,'steppable::prettyPrint::ConsoleOutput']]],
+  ['cos_2',['cos',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a46dc3c8049bc38c614754c7a9892a6ef',1,'steppable::__internals::arithmetic']]],
+  ['cosh_3',['cosh',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a776dbc8645c8624dde48a244683ae42a',1,'steppable::__internals::arithmetic']]],
+  ['cot_4',['cot',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a7ee5bb970e3ef6576477fe9b84ef05fb',1,'steppable::__internals::arithmetic']]],
+  ['coth_5',['coth',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a5a4b4fe0bce22d04b35b3ab7ff5f49fb',1,'steppable::__internals::arithmetic']]],
+  ['csc_6',['csc',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ad6130fb90d02d24ab7ebc673b308eb53',1,'steppable::__internals::arithmetic']]],
+  ['csch_7',['csch',['../namespacesteppable_1_1____internals_1_1arithmetic.html#abfd850598ebf24c40ed8a7a838f48737',1,'steppable::__internals::arithmetic']]],
+  ['cyan_8',['cyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a71b169724de6cde942ccf6caba218e16',1,'steppable::__internals::utils::colors']]]
 ];

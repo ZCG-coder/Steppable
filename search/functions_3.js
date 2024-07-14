@@ -1,12 +1,17 @@
 var searchData=
 [
-  ['compare_0',['compare',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a5e20e50f3da461a8f9d50b14afd68ea8',1,'steppable::__internals::arithmetic']]],
-  ['consoleoutput_1',['ConsoleOutput',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#afb69280a91e6a7f2111645143cb2c1ed',1,'steppable::prettyPrint::ConsoleOutput']]],
-  ['cos_2',['cos',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a46dc3c8049bc38c614754c7a9892a6ef',1,'steppable::__internals::arithmetic']]],
-  ['cosh_3',['cosh',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a776dbc8645c8624dde48a244683ae42a',1,'steppable::__internals::arithmetic']]],
-  ['cot_4',['cot',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a7ee5bb970e3ef6576477fe9b84ef05fb',1,'steppable::__internals::arithmetic']]],
-  ['coth_5',['coth',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a5a4b4fe0bce22d04b35b3ab7ff5f49fb',1,'steppable::__internals::arithmetic']]],
-  ['csc_6',['csc',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ad6130fb90d02d24ab7ebc673b308eb53',1,'steppable::__internals::arithmetic']]],
-  ['csch_7',['csch',['../namespacesteppable_1_1____internals_1_1arithmetic.html#abfd850598ebf24c40ed8a7a838f48737',1,'steppable::__internals::arithmetic']]],
-  ['cyan_8',['cyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a71b169724de6cde942ccf6caba218e16',1,'steppable::__internals::utils::colors']]]
+  ['baseconvert_0',['baseConvert',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ada19cbf0676e8da03445ff72c6b6713b',1,'steppable::__internals::arithmetic']]],
+  ['black_1',['black',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad336a4a15381fd18dfef501bb8a18659',1,'steppable::__internals::utils::colors']]],
+  ['blink_2',['blink',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a81741a5947da47cf70427e92cef9fb3c',1,'steppable::__internals::utils::formats']]],
+  ['blue_3',['blue',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a60e405320c8f162ff41ad8e3cde071a8',1,'steppable::__internals::utils::colors']]],
+  ['bold_4',['bold',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a020bdff691dad4ade1a65f76bef6bfd0',1,'steppable::__internals::utils::formats']]],
+  ['bothendsreplace_5',['bothEndsReplace',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ae02cbf753dc057728813546bd80336da',1,'steppable::__internals::stringUtils']]],
+  ['brightblack_6',['brightBlack',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a58dd1f4567462d8571dd024ea2d5d483',1,'steppable::__internals::utils::colors::brightBlack()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a94a98cf9653f1890743181c4c76e1bc1',1,'steppable::__internals::utils::colorsBg::brightBlack()']]],
+  ['brightblue_7',['brightBlue',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ad218e37dd295aeff04ca94c2ea4e7cfd',1,'steppable::__internals::utils::colors::brightBlue()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#aa16d7262258186b45188a5f57d968662',1,'steppable::__internals::utils::colorsBg::brightBlue()']]],
+  ['brightcyan_8',['brightCyan',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4c441d71252273750960c63b9a1c70e1',1,'steppable::__internals::utils::colors::brightCyan()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#ab43a36a214b76652fdffdfa14f6541a3',1,'steppable::__internals::utils::colorsBg::brightCyan()']]],
+  ['brightgreen_9',['brightGreen',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a0c81a57789690db931ec76b0407d1e17',1,'steppable::__internals::utils::colors::brightGreen()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a19fc39336d006e1c63e43539d3ea64cd',1,'steppable::__internals::utils::colorsBg::brightGreen()']]],
+  ['brightmagenta_10',['brightMagenta',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a303aa7d08bab0337d289b9b5aa60b494',1,'steppable::__internals::utils::colors']]],
+  ['brightred_11',['brightRed',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#ab5c01595115bcd6cbb49f3184c33ff89',1,'steppable::__internals::utils::colors::brightRed()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#acb2ba6677f337e49e2d600356cd881b2',1,'steppable::__internals::utils::colorsBg::brightRed()']]],
+  ['brightwhite_12',['brightWhite',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a08de55f887db0083edef018dbdbf0fce',1,'steppable::__internals::utils::colors::brightWhite()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a217842b1e467813034a1c6b4d49ce7d8',1,'steppable::__internals::utils::colorsBg::brightWhite()']]],
+  ['brightyellow_13',['brightYellow',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a54e47b365870a35d50a00044ff37b2cc',1,'steppable::__internals::utils::colors::brightYellow()'],['../namespacesteppable_1_1____internals_1_1utils_1_1colorsBg.html#a13dc19a90f0f88e436e7d4fa26e5cf84',1,'steppable::__internals::utils::colorsBg::brightYellow()']]]
 ];

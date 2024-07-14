@@ -1,25 +1,25 @@
 <map id="steppable::__internals::utils::ProgramArgs::parseArgs" name="steppable::__internals::utils::ProgramArgs::parseArgs">
-<area shape="rect" id="Node000001" title="This function is used to parse the command&#45;line arguments and store them in the appropriate class mem..." alt="" coords="5,240,170,301"/>
-<area shape="rect" id="Node000002" href="$namespacesteppable_1_1output.html#a9e519919f19db134021053a38b7966d0" title="Prints an error message." alt="" coords="255,109,399,154"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,237,163,199,216,164,239,153,242,158,219,169,167,203,123,241"/>
-<area shape="rect" id="Node000008" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e" title="Checks if a given string is a valid number." alt="" coords="245,179,409,223"/>
-<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="170,244,232,226,233,231,171,249"/>
-<area shape="rect" id="Node000009" href="$namespacesteppable_1_1____internals_1_1utils.html#a141e2de5154cf53c5b9253b43ddb5c57" title="This is the correct format of a keyword argument." alt="" coords="218,248,436,293"/>
-<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="170,268,202,268,202,273,170,273"/>
-<area shape="rect" id="Node000010" href="$namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7" title="Exit the program safely." alt="" coords="240,317,414,362"/>
-<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="171,292,233,310,232,315,170,297"/>
-<area shape="rect" id="Node000011" href="$namespacesteppable_1_1____internals_1_1utils.html#a0a0ed86fe8184563408ae2f7c378064e" title="This is the correct format of a switch." alt="" coords="243,387,411,431"/>
-<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="123,300,167,337,219,372,231,378,228,383,216,377,163,341,119,304"/>
-<area shape="rect" id="Node000003" href="$namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a020bdff691dad4ade1a65f76bef6bfd0" title="Set the text format to bold." alt="" coords="484,5,648,50"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="378,106,483,60,496,54,499,59,485,65,380,111"/>
-<area shape="rect" id="Node000005" href="$namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a36cc73ec1844a03d7cba5b409109c999" title="Set the text color to red." alt="" coords="484,75,648,119"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="398,119,468,108,469,114,399,124"/>
-<area shape="rect" id="Node000006" href="$namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff" title="Reset the text color and format to the default values." alt="" coords="484,144,648,189"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="399,139,469,150,468,155,398,145"/>
-<area shape="rect" id="Node000007" href="$namespacesteppable_1_1____internals_1_1format.html#a135f5fd1fc2dfbe08f6659e29b39b0e9" title="Formats a string using a variable number of arguments." alt="" coords="484,213,648,258"/>
-<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="400,148,437,164,462,181,485,199,495,204,492,208,483,203,459,185,435,169,398,153"/>
-<area shape="rect" id="Node000004" href="$namespacesteppable_1_1____internals_1_1utils.html#a65d6e9f0b589e6d5eab0da73a4ebb16c" title="Check if the output stream is a terminal." alt="" coords="696,75,861,119"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="638,48,694,67,693,72,636,53"/>
-<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="649,94,681,94,681,100,649,100"/>
-<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="636,141,693,122,694,127,638,146"/>
+<area shape="rect" id="Node000001" title="This function is used to parse the command&#45;line arguments and store them in the appropriate class mem..." alt="" coords="5,258,170,319"/>
+<area shape="rect" id="Node000002" href="$namespacesteppable_1_1localization.html#ae3e0bed8db649955a0360fa32175a0bc" title="Gets a string from origin, and by the key." alt="" coords="235,85,419,113"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,255,216,173,289,120,293,124,219,177,124,259"/>
+<area shape="rect" id="Node000003" href="$namespacesteppable_1_1output.html#aaeed30985adb9664fb71758754dad2fa" title="Prints an error message." alt="" coords="942,42,1085,87"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="134,255,174,234,217,217,269,203,318,195,406,189,486,194,560,203,634,211,711,211,796,198,843,185,893,166,919,152,943,135,983,96,986,100,946,139,921,157,895,171,844,190,797,203,712,217,634,216,560,209,485,200,406,195,319,200,270,209,218,222,176,239,137,260"/>
+<area shape="rect" id="Node000008" href="$namespacesteppable_1_1____internals_1_1numUtils.html#ae2707a98e2f9ce61b19a5c17c23f6991" title="Checks if a given string is a valid number." alt="" coords="245,232,409,276"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="170,274,229,265,230,271,171,279"/>
+<area shape="rect" id="Node000009" href="$namespacesteppable_1_1____internals_1_1utils.html#a141e2de5154cf53c5b9253b43ddb5c57" title="This is the correct format of a keyword argument." alt="" coords="218,301,436,346"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="171,298,202,303,202,308,170,303"/>
+<area shape="rect" id="Node000010" href="$namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7" title="Exit the program safely." alt="" coords="240,370,414,415"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="143,318,219,356,235,362,233,367,217,360,140,322"/>
+<area shape="rect" id="Node000011" href="$namespacesteppable_1_1____internals_1_1utils.html#a0a0ed86fe8184563408ae2f7c378064e" title="This is the correct format of a switch." alt="" coords="243,440,410,484"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="112,318,158,373,187,401,219,425,230,432,228,436,216,430,184,405,154,377,108,322"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="351,83,409,53,446,38,483,27,598,8,688,3,779,11,894,27,932,35,931,40,893,33,778,16,688,9,598,13,485,33,447,43,412,57,353,87"/>
+<area shape="rect" id="Node000004" href="$namespacesteppable_1_1____internals_1_1utils.html#a9f8874d38acee1827b2ad2aef3dc8386" title=" " alt="" coords="484,42,660,87"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="419,84,468,77,469,82,420,89"/>
+<area shape="rect" id="Node000006" href="$namespacesteppable_1_1localization.html#abb3cdf12222c59b01352ee909d1d5e97" title=" " alt="" coords="488,112,656,156"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="420,110,473,117,472,123,419,115"/>
+<area shape="rect" id="Node000005" href="$namespacesteppable_1_1____internals_1_1utils.html#af55d306f308c40f7cf64ad6cdb0235f7" title=" " alt="" coords="708,42,894,87"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="661,62,693,62,693,67,661,67"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="894,62,926,62,926,67,894,67"/>
+<area shape="rect" id="Node000007" href="$namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7" title="Splits a string into substrings based on a separator." alt="" coords="719,112,883,156"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="656,131,703,131,703,137,656,137"/>
 </map>

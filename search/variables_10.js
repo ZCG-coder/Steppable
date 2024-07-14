@@ -9,6 +9,6 @@ var searchData=
   ['sup_5fz_6',['SUP_Z',['../namespacesteppable_1_1____internals_1_1symbols.html#a0d749d94fae3c4edaa864d8422c23db9',1,'steppable::__internals::symbols']]],
   ['superscripts_7',['SUPERSCRIPTS',['../namespacesteppable_1_1____internals_1_1symbols.html#a3dbef43e4c83dd6946de66afb052fff7',1,'steppable::__internals::symbols']]],
   ['surd_8',['SURD',['../namespacesteppable_1_1____internals_1_1symbols.html#a839c149559c7f8ae448ae16db7200ad6',1,'steppable::__internals::symbols']]],
-  ['switchdescriptions_9',['switchDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ab7f4c2cb0c67d1344455b853e44e7a77',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['switches_10',['switches',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a01d7dfb2f06c605ceb112932cf2d751a',1,'steppable::__internals::utils::ProgramArgs']]]
+  ['switchdescriptions_9',['switchDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ab6ac41c953fc44b2a2087839df2c5ccd',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['switches_10',['switches',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ad0d965907c030b01376175fe9214a859',1,'steppable::__internals::utils::ProgramArgs']]]
 ];

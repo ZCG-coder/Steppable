@@ -1,10 +1,26 @@
 var searchData=
 [
-  ['header_20files_0',['Using the Header Files',['../md_wiki_2API-Reference.html#autotoc_md2',1,'']]],
-  ['header_20guards_1',['Header Guards',['../md_wiki_2Coding-Style-_07CPP_08.html#autotoc_md20',1,'']]],
-  ['height_2',['height',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#a3283bdb0b0fa8c09d19f6c0a53d7009a',1,'steppable::prettyPrint::ConsoleOutput']]],
-  ['help_3',['Tools that can help',['../md_wiki_2Coding-Style-_07CPP_08.html#autotoc_md25',1,'']]],
-  ['hidden_4',['hidden',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a32a55b746eecefaea572c0ccb747f834',1,'steppable::__internals::utils::formats']]],
-  ['how_20does_20it_20work_5',['How does it work?',['../md_wiki_2FAQ.html#autotoc_md44',1,'']]],
-  ['how_20to_20contribute_6',['How to contribute?',['../md_wiki_2FAQ.html#autotoc_md48',1,'']]]
+  ['get_20started_0',['Get Started',['../md_wiki_2Building-Steppable-_07build_8py_08.html#autotoc_md8',1,'Get Started'],['../md_wiki_2Building-Steppable.html#autotoc_md11',1,'Get Started']]],
+  ['getconfdirectory_1',['getConfDirectory',['../namespacesteppable_1_1____internals_1_1utils.html#a9f8874d38acee1827b2ad2aef3dc8386',1,'steppable::__internals::utils']]],
+  ['getfactors_2',['getFactors',['../namespacesteppable_1_1____internals_1_1numUtils.html#a5eeb396144a9e1d3edd3339abb6f434f',1,'steppable::__internals::numUtils']]],
+  ['getgcd_3',['getGCD',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a102ebf6862142b8bc9c128ba6509a1e5',1,'steppable::__internals::arithmetic']]],
+  ['getgreatestrootnum_4',['getGreatestRootNum',['../namespacesteppable_1_1____internals_1_1numUtils.html#a9af210044669c6dd27a2fca4723fe831',1,'steppable::__internals::numUtils']]],
+  ['gethomedirectory_5',['getHomeDirectory',['../namespacesteppable_1_1____internals_1_1utils.html#af55d306f308c40f7cf64ad6cdb0235f7',1,'steppable::__internals::utils']]],
+  ['getinputs_6',['getInputs',['../classsteppable_1_1types_1_1ResultBase.html#af2a240fd4fcd94b294ff3a9ea0cf0428',1,'steppable::types::ResultBase']]],
+  ['getkeywordargument_7',['getKeywordArgument',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a48a7085a74430f9340efa6a881f0ab43',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['getlanguage_8',['getLanguage',['../namespacesteppable_1_1localization.html#abb3cdf12222c59b01352ee909d1d5e97',1,'steppable::localization']]],
+  ['getoutput_9',['getOutput',['../classsteppable_1_1types_1_1ResultBase.html#a25a1e41cb440a75fcf0051d1cde140a9',1,'steppable::types::ResultBase']]],
+  ['getposarg_10',['getPosArg',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a77706ab8fe8be24d76f50ddd2094dfe0',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['getquotientremainder_11',['getQuotientRemainder',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a677f253d71524a9d500e980dc159c79c',1,'steppable::__internals::arithmetic']]],
+  ['getrootfactor_12',['getRootFactor',['../namespacesteppable_1_1____internals_1_1numUtils.html#a379086734493f9c5d59b1bca39908074',1,'steppable::__internals::numUtils']]],
+  ['getstatus_13',['getStatus',['../classsteppable_1_1types_1_1ResultBase.html#acdcd172539b6a5c755855291ded9ae9e',1,'steppable::types::ResultBase']]],
+  ['getstringheight_14',['getStringHeight',['../namespacesteppable_1_1prettyPrint.html#a6c89a78ae09a4f71eb5b95a4549d40d1',1,'steppable::prettyPrint']]],
+  ['getstringwidth_15',['getStringWidth',['../namespacesteppable_1_1prettyPrint.html#a1a21e6713926f95247a2db8963a0ae2d',1,'steppable::prettyPrint']]],
+  ['getswitch_16',['getSwitch',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a3db1d70b9bfd3f98824f1d241d8a01b7',1,'steppable::__internals::utils::ProgramArgs']]],
+  ['getting_20the_20source_20code_17',['Getting the Source Code',['../md_wiki_2Getting-the-Source.html',1,'']]],
+  ['gradtodeg_18',['gradToDeg',['../namespacesteppable_1_1____internals_1_1arithmetic.html#aa89469b99e86570859eec976adbff706',1,'steppable::__internals::arithmetic']]],
+  ['gradtorad_19',['gradToRad',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a9218e6288df4d50a9f073d262426aaf1',1,'steppable::__internals::arithmetic']]],
+  ['graphs_20',['Graphs',['../md_wiki_2Performance.html#autotoc_md59',1,'']]],
+  ['green_21',['green',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a9366db5386221d73fa03fbff6f906693',1,'steppable::__internals::utils::colors']]],
+  ['guards_22',['Header Guards',['../md_wiki_2Coding-Style-_07CPP_08.html#autotoc_md20',1,'']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['factorial_0',['factorial',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a59af1f3ad78fe203eb847fde390f7742',1,'steppable::__internals::arithmetic']]],
-  ['fraction_1',['Fraction',['../classsteppable_1_1Fraction.html#a1fa38ab4cede78e19fa478242f6e5b46',1,'steppable::Fraction::Fraction(const std::string &amp;top=&quot;1&quot;, const std::string &amp;bottom=&quot;1&quot;)'],['../classsteppable_1_1Fraction.html#a4647e3f3062426a91d1ef7cdbde23bb6',1,'steppable::Fraction::Fraction(const Number &amp;number)'],['../classsteppable_1_1Fraction.html#ab5b4a2bd2c9223f2ea7bc5c699857aee',1,'steppable::Fraction::Fraction()']]]
+  ['error_0',['error',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#ae885985fe5bac5fca8db6a48d3da6488',1,'steppable::__internals::logging::Logger::error(const std::string &amp;message)'],['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#ac3134a2316ae168e214c0481c67fe682',1,'steppable::__internals::logging::Logger::error(const std::string &amp;message, Args... args)'],['../namespacesteppable_1_1output.html#aaeed30985adb9664fb71758754dad2fa',1,'steppable::output::error()']]]
 ];

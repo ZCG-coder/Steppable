@@ -128,66 +128,66 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae0808db6f62b2b091eb1f5aa6749adcd" id="r_ae0808db6f62b2b091eb1f5aa6749adcd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0808db6f62b2b091eb1f5aa6749adcd">ProgramArgs</a> (int _argc, const char **<a class="el" href="#af34abdab3c9215e33e0ee4b630bd9b86">argv</a>)</td></tr>
+<tr class="memitem:ae0808db6f62b2b091eb1f5aa6749adcd" id="r_ae0808db6f62b2b091eb1f5aa6749adcd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0808db6f62b2b091eb1f5aa6749adcd">ProgramArgs</a> (int _argc, const char **<a class="el" href="#aa79d43218ce59bce1f0333db7c28e19b">argv</a>)</td></tr>
 <tr class="memdesc:ae0808db6f62b2b091eb1f5aa6749adcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor of the <a class="el" href="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html" title="This class is used by the program to parse command-line arguments. The class uses regular expressions...">ProgramArgs</a> class, which copies the arguments passed to the program to the class.  <br /></td></tr>
 <tr class="separator:ae0808db6f62b2b091eb1f5aa6749adcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e29a694f062b4975a737c2519a98d89" id="r_a1e29a694f062b4975a737c2519a98d89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e29a694f062b4975a737c2519a98d89">parseArgs</a> ()</td></tr>
 <tr class="memdesc:a1e29a694f062b4975a737c2519a98d89"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to parse the command-line arguments and store them in the appropriate class members.  <br /></td></tr>
 <tr class="separator:a1e29a694f062b4975a737c2519a98d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00f504dc3e9595c51b921021f8daef0a" id="r_a00f504dc3e9595c51b921021f8daef0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00f504dc3e9595c51b921021f8daef0a">addSwitch</a> (const std::string_view &amp;name, bool defaultValue, const std::string_view &amp;description=&quot;&quot;)</td></tr>
-<tr class="memdesc:a00f504dc3e9595c51b921021f8daef0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a switch to the class.  <br /></td></tr>
-<tr class="separator:a00f504dc3e9595c51b921021f8daef0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0090c50f11a473ffd6b410c82a73333" id="r_ab0090c50f11a473ffd6b410c82a73333"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0090c50f11a473ffd6b410c82a73333">addPosArg</a> (char name, const std::string_view &amp;description=&quot;&quot;, bool requiresNumber=true)</td></tr>
-<tr class="memdesc:ab0090c50f11a473ffd6b410c82a73333"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a positional argument to the class.  <br /></td></tr>
-<tr class="separator:ab0090c50f11a473ffd6b410c82a73333"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e42c3d791cd01bb49566b341865f525" id="r_a7e42c3d791cd01bb49566b341865f525"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e42c3d791cd01bb49566b341865f525">addKeywordArg</a> (const std::string_view &amp;name, int defaultValue, std::string_view description=&quot;&quot;)</td></tr>
-<tr class="memdesc:a7e42c3d791cd01bb49566b341865f525"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a keyword argument to the class.  <br /></td></tr>
-<tr class="separator:a7e42c3d791cd01bb49566b341865f525"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80ee5c4af4d6a642b3a72bea343ebbd9" id="r_a80ee5c4af4d6a642b3a72bea343ebbd9"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80ee5c4af4d6a642b3a72bea343ebbd9">getPosArg</a> (size_t index) const</td></tr>
-<tr class="memdesc:a80ee5c4af4d6a642b3a72bea343ebbd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to get the value of a positional argument.  <br /></td></tr>
-<tr class="separator:a80ee5c4af4d6a642b3a72bea343ebbd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc3534db8c4d346cbd23df19566f2432" id="r_abc3534db8c4d346cbd23df19566f2432"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc3534db8c4d346cbd23df19566f2432">getKeywordArgument</a> (const std::string_view &amp;name)</td></tr>
-<tr class="memdesc:abc3534db8c4d346cbd23df19566f2432"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to get the value of a keyword argument.  <br /></td></tr>
-<tr class="separator:abc3534db8c4d346cbd23df19566f2432"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfbc6f2e68f3cc414843a59160a0cea6" id="r_abfbc6f2e68f3cc414843a59160a0cea6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfbc6f2e68f3cc414843a59160a0cea6">getSwitch</a> (const std::string_view &amp;name)</td></tr>
-<tr class="memdesc:abfbc6f2e68f3cc414843a59160a0cea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to get the value of a switch.  <br /></td></tr>
-<tr class="separator:abfbc6f2e68f3cc414843a59160a0cea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3703e67d1a580ec98788508de89af45" id="r_af3703e67d1a580ec98788508de89af45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3703e67d1a580ec98788508de89af45">printUsage</a> (const std::string_view &amp;reason=&quot;&quot;) const</td></tr>
-<tr class="memdesc:af3703e67d1a580ec98788508de89af45"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to print the possible command-line arguments. Usually called when the user specifies the wrong arguments.  <br /></td></tr>
-<tr class="separator:af3703e67d1a580ec98788508de89af45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6941b40a7dd9edc805fe26740cc739a" id="r_ab6941b40a7dd9edc805fe26740cc739a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6941b40a7dd9edc805fe26740cc739a">addSwitch</a> (const std::string &amp;name, bool defaultValue, const std::string &amp;description=&quot;&quot;)</td></tr>
+<tr class="memdesc:ab6941b40a7dd9edc805fe26740cc739a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a switch to the class.  <br /></td></tr>
+<tr class="separator:ab6941b40a7dd9edc805fe26740cc739a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27801400da3e73853d78ceae3c0f9462" id="r_a27801400da3e73853d78ceae3c0f9462"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27801400da3e73853d78ceae3c0f9462">addPosArg</a> (char name, const std::string &amp;description=&quot;&quot;, bool requiresNumber=true)</td></tr>
+<tr class="memdesc:a27801400da3e73853d78ceae3c0f9462"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a positional argument to the class.  <br /></td></tr>
+<tr class="separator:a27801400da3e73853d78ceae3c0f9462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6b51e158e6f6179b9b0212732275a4" id="r_aea6b51e158e6f6179b9b0212732275a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea6b51e158e6f6179b9b0212732275a4">addKeywordArg</a> (const std::string &amp;name, int defaultValue, const std::string &amp;description=&quot;&quot;)</td></tr>
+<tr class="memdesc:aea6b51e158e6f6179b9b0212732275a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to add a keyword argument to the class.  <br /></td></tr>
+<tr class="separator:aea6b51e158e6f6179b9b0212732275a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77706ab8fe8be24d76f50ddd2094dfe0" id="r_a77706ab8fe8be24d76f50ddd2094dfe0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77706ab8fe8be24d76f50ddd2094dfe0">getPosArg</a> (size_t index) const</td></tr>
+<tr class="memdesc:a77706ab8fe8be24d76f50ddd2094dfe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to get the value of a positional argument.  <br /></td></tr>
+<tr class="separator:a77706ab8fe8be24d76f50ddd2094dfe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48a7085a74430f9340efa6a881f0ab43" id="r_a48a7085a74430f9340efa6a881f0ab43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48a7085a74430f9340efa6a881f0ab43">getKeywordArgument</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a48a7085a74430f9340efa6a881f0ab43"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to get the value of a keyword argument.  <br /></td></tr>
+<tr class="separator:a48a7085a74430f9340efa6a881f0ab43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3db1d70b9bfd3f98824f1d241d8a01b7" id="r_a3db1d70b9bfd3f98824f1d241d8a01b7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3db1d70b9bfd3f98824f1d241d8a01b7">getSwitch</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a3db1d70b9bfd3f98824f1d241d8a01b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to get the value of a switch.  <br /></td></tr>
+<tr class="separator:a3db1d70b9bfd3f98824f1d241d8a01b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af23f24f2657aad9931800258c08cd49f" id="r_af23f24f2657aad9931800258c08cd49f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af23f24f2657aad9931800258c08cd49f">printUsage</a> (const std::string &amp;reason=&quot;&quot;) const</td></tr>
+<tr class="memdesc:af23f24f2657aad9931800258c08cd49f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to print the possible command-line arguments. Usually called when the user specifies the wrong arguments.  <br /></td></tr>
+<tr class="separator:af23f24f2657aad9931800258c08cd49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a01d7dfb2f06c605ceb112932cf2d751a" id="r_a01d7dfb2f06c605ceb112932cf2d751a"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string_view, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01d7dfb2f06c605ceb112932cf2d751a">switches</a></td></tr>
-<tr class="memdesc:a01d7dfb2f06c605ceb112932cf2d751a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the information of all switches specified. Keys are switch names, and values are whether the switch is enabled.  <br /></td></tr>
-<tr class="separator:a01d7dfb2f06c605ceb112932cf2d751a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7f4c2cb0c67d1344455b853e44e7a77" id="r_ab7f4c2cb0c67d1344455b853e44e7a77"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string_view, std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7f4c2cb0c67d1344455b853e44e7a77">switchDescriptions</a></td></tr>
-<tr class="memdesc:ab7f4c2cb0c67d1344455b853e44e7a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all switches specified.  <br /></td></tr>
-<tr class="separator:ab7f4c2cb0c67d1344455b853e44e7a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6cb9dcbc093aa862459b47cf5a67285" id="r_ad6cb9dcbc093aa862459b47cf5a67285"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6cb9dcbc093aa862459b47cf5a67285">posArgs</a></td></tr>
-<tr class="memdesc:ad6cb9dcbc093aa862459b47cf5a67285"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector is used to store the values of all positional arguments specified.  <br /></td></tr>
-<tr class="separator:ad6cb9dcbc093aa862459b47cf5a67285"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7aaf0bfbd5e6f71b10c5d201b4d745f" id="r_ad7aaf0bfbd5e6f71b10c5d201b4d745f"><td class="memItemLeft" align="right" valign="top">std::map&lt; char, std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7aaf0bfbd5e6f71b10c5d201b4d745f">posArgDescriptions</a></td></tr>
-<tr class="memdesc:ad7aaf0bfbd5e6f71b10c5d201b4d745f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all positional arguments specified.  <br /></td></tr>
-<tr class="separator:ad7aaf0bfbd5e6f71b10c5d201b4d745f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0d965907c030b01376175fe9214a859" id="r_ad0d965907c030b01376175fe9214a859"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0d965907c030b01376175fe9214a859">switches</a></td></tr>
+<tr class="memdesc:ad0d965907c030b01376175fe9214a859"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the information of all switches specified. Keys are switch names, and values are whether the switch is enabled.  <br /></td></tr>
+<tr class="separator:ad0d965907c030b01376175fe9214a859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ac41c953fc44b2a2087839df2c5ccd" id="r_ab6ac41c953fc44b2a2087839df2c5ccd"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6ac41c953fc44b2a2087839df2c5ccd">switchDescriptions</a></td></tr>
+<tr class="memdesc:ab6ac41c953fc44b2a2087839df2c5ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all switches specified.  <br /></td></tr>
+<tr class="separator:ab6ac41c953fc44b2a2087839df2c5ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d6bc5e0d0d137228b49c79d52fc0c2d" id="r_a8d6bc5e0d0d137228b49c79d52fc0c2d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d6bc5e0d0d137228b49c79d52fc0c2d">posArgs</a></td></tr>
+<tr class="memdesc:a8d6bc5e0d0d137228b49c79d52fc0c2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector is used to store the values of all positional arguments specified.  <br /></td></tr>
+<tr class="separator:a8d6bc5e0d0d137228b49c79d52fc0c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad62009ca1a5103613e826bbfdee8ba6f" id="r_ad62009ca1a5103613e826bbfdee8ba6f"><td class="memItemLeft" align="right" valign="top">std::map&lt; char, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad62009ca1a5103613e826bbfdee8ba6f">posArgDescriptions</a></td></tr>
+<tr class="memdesc:ad62009ca1a5103613e826bbfdee8ba6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all positional arguments specified.  <br /></td></tr>
+<tr class="separator:ad62009ca1a5103613e826bbfdee8ba6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6056f31e29c7d75aefa766be61546869" id="r_a6056f31e29c7d75aefa766be61546869"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6056f31e29c7d75aefa766be61546869">posArgIsNumber</a></td></tr>
 <tr class="memdesc:a6056f31e29c7d75aefa766be61546869"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map stores whether the positional arguments are required to be numbers.  <br /></td></tr>
 <tr class="separator:a6056f31e29c7d75aefa766be61546869"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21194b8ff3cc7c94ac5fa22c445a2de3" id="r_a21194b8ff3cc7c94ac5fa22c445a2de3"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string_view, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21194b8ff3cc7c94ac5fa22c445a2de3">keywordArgs</a></td></tr>
-<tr class="memdesc:a21194b8ff3cc7c94ac5fa22c445a2de3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the values of all keyword arguments specified. Keys are keyword argument names and values are the values of the keyword arguments.  <br /></td></tr>
-<tr class="separator:a21194b8ff3cc7c94ac5fa22c445a2de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16abcbe1304b801bc6c0ce8c3100626a" id="r_a16abcbe1304b801bc6c0ce8c3100626a"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string_view, std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16abcbe1304b801bc6c0ce8c3100626a">keywordArgDescriptions</a></td></tr>
-<tr class="memdesc:a16abcbe1304b801bc6c0ce8c3100626a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all keyword arguments specified.  <br /></td></tr>
-<tr class="separator:a16abcbe1304b801bc6c0ce8c3100626a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5555c348c90f18c16f6c6677d7611cb" id="r_ac5555c348c90f18c16f6c6677d7611cb"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5555c348c90f18c16f6c6677d7611cb">keywordArgs</a></td></tr>
+<tr class="memdesc:ac5555c348c90f18c16f6c6677d7611cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the values of all keyword arguments specified. Keys are keyword argument names and values are the values of the keyword arguments.  <br /></td></tr>
+<tr class="separator:ac5555c348c90f18c16f6c6677d7611cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45c0c7028ab6efd7fbd8fd600da7745b" id="r_a45c0c7028ab6efd7fbd8fd600da7745b"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45c0c7028ab6efd7fbd8fd600da7745b">keywordArgDescriptions</a></td></tr>
+<tr class="memdesc:a45c0c7028ab6efd7fbd8fd600da7745b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This map is used to store the descriptions of all keyword arguments specified.  <br /></td></tr>
+<tr class="separator:a45c0c7028ab6efd7fbd8fd600da7745b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff971505a61f01fb89ed90aadb9f9df7" id="r_aff971505a61f01fb89ed90aadb9f9df7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff971505a61f01fb89ed90aadb9f9df7">argc</a></td></tr>
 <tr class="memdesc:aff971505a61f01fb89ed90aadb9f9df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This stores the number of arguments passed to the program.  <br /></td></tr>
 <tr class="separator:aff971505a61f01fb89ed90aadb9f9df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af34abdab3c9215e33e0ee4b630bd9b86" id="r_af34abdab3c9215e33e0ee4b630bd9b86"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string_view &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af34abdab3c9215e33e0ee4b630bd9b86">argv</a></td></tr>
-<tr class="memdesc:af34abdab3c9215e33e0ee4b630bd9b86"><td class="mdescLeft">&#160;</td><td class="mdescRight">This stores the arguments passed to the program.  <br /></td></tr>
-<tr class="separator:af34abdab3c9215e33e0ee4b630bd9b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50039f2d6bfcbca1bf3b589a04669891" id="r_a50039f2d6bfcbca1bf3b589a04669891"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50039f2d6bfcbca1bf3b589a04669891">programName</a></td></tr>
-<tr class="memdesc:a50039f2d6bfcbca1bf3b589a04669891"><td class="mdescLeft">&#160;</td><td class="mdescRight">This stores the name of the program.  <br /></td></tr>
-<tr class="separator:a50039f2d6bfcbca1bf3b589a04669891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa79d43218ce59bce1f0333db7c28e19b" id="r_aa79d43218ce59bce1f0333db7c28e19b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa79d43218ce59bce1f0333db7c28e19b">argv</a></td></tr>
+<tr class="memdesc:aa79d43218ce59bce1f0333db7c28e19b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This stores the arguments passed to the program.  <br /></td></tr>
+<tr class="separator:aa79d43218ce59bce1f0333db7c28e19b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af62fd8a9e1947786e6836f202e5ce357" id="r_af62fd8a9e1947786e6836f202e5ce357"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af62fd8a9e1947786e6836f202e5ce357">programName</a></td></tr>
+<tr class="memdesc:af62fd8a9e1947786e6836f202e5ce357"><td class="mdescLeft">&#160;</td><td class="mdescRight">This stores the name of the program.  <br /></td></tr>
+<tr class="separator:af62fd8a9e1947786e6836f202e5ce357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class is used by the program to parse command-line arguments. The class uses regular expressions to match and parse the command-line arguments. It supports switches, positional arguments, and keyword arguments. </p>
@@ -236,8 +236,8 @@ is "-name:value". They are optional and can be in any order. </dd></dl>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7e42c3d791cd01bb49566b341865f525" name="a7e42c3d791cd01bb49566b341865f525"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e42c3d791cd01bb49566b341865f525">&#9670;&#160;</a></span>addKeywordArg()</h2>
+<a id="aea6b51e158e6f6179b9b0212732275a4" name="aea6b51e158e6f6179b9b0212732275a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6b51e158e6f6179b9b0212732275a4">&#9670;&#160;</a></span>addKeywordArg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -245,7 +245,7 @@ is "-name:value". They are optional and can be in any order. </dd></dl>
         <tr>
           <td class="memname">void steppable::__internals::utils::ProgramArgs::addKeywordArg </td>
           <td>(</td>
-          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -255,7 +255,7 @@ is "-name:value". They are optional and can be in any order. </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>description</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>&#160;)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>description</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -272,8 +272,8 @@ is "-name:value". They are optional and can be in any order. </dd></dl>
 
 </div>
 </div>
-<a id="ab0090c50f11a473ffd6b410c82a73333" name="ab0090c50f11a473ffd6b410c82a73333"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0090c50f11a473ffd6b410c82a73333">&#9670;&#160;</a></span>addPosArg()</h2>
+<a id="a27801400da3e73853d78ceae3c0f9462" name="a27801400da3e73853d78ceae3c0f9462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27801400da3e73853d78ceae3c0f9462">&#9670;&#160;</a></span>addPosArg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -286,7 +286,7 @@ is "-name:value". They are optional and can be in any order. </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>description</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>description</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -311,8 +311,8 @@ the command-line arguments. </dd></dl>
 
 </div>
 </div>
-<a id="a00f504dc3e9595c51b921021f8daef0a" name="a00f504dc3e9595c51b921021f8daef0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00f504dc3e9595c51b921021f8daef0a">&#9670;&#160;</a></span>addSwitch()</h2>
+<a id="ab6941b40a7dd9edc805fe26740cc739a" name="ab6941b40a7dd9edc805fe26740cc739a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6941b40a7dd9edc805fe26740cc739a">&#9670;&#160;</a></span>addSwitch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -320,7 +320,7 @@ the command-line arguments. </dd></dl>
         <tr>
           <td class="memname">void steppable::__internals::utils::ProgramArgs::addSwitch </td>
           <td>(</td>
-          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -330,7 +330,7 @@ the command-line arguments. </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>description</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>&#160;)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>description</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -347,8 +347,8 @@ the command-line arguments. </dd></dl>
 
 </div>
 </div>
-<a id="abc3534db8c4d346cbd23df19566f2432" name="abc3534db8c4d346cbd23df19566f2432"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc3534db8c4d346cbd23df19566f2432">&#9670;&#160;</a></span>getKeywordArgument()</h2>
+<a id="a48a7085a74430f9340efa6a881f0ab43" name="a48a7085a74430f9340efa6a881f0ab43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48a7085a74430f9340efa6a881f0ab43">&#9670;&#160;</a></span>getKeywordArgument()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -356,7 +356,7 @@ the command-line arguments. </dd></dl>
         <tr>
           <td class="memname">int steppable::__internals::utils::ProgramArgs::getKeywordArgument </td>
           <td>(</td>
-          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -374,13 +374,13 @@ the command-line arguments. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_abc3534db8c4d346cbd23df19566f2432_cgraph.svg" width="100%" height="541"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_a48a7085a74430f9340efa6a881f0ab43_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="a80ee5c4af4d6a642b3a72bea343ebbd9" name="a80ee5c4af4d6a642b3a72bea343ebbd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80ee5c4af4d6a642b3a72bea343ebbd9">&#9670;&#160;</a></span>getPosArg()</h2>
+<a id="a77706ab8fe8be24d76f50ddd2094dfe0" name="a77706ab8fe8be24d76f50ddd2094dfe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77706ab8fe8be24d76f50ddd2094dfe0">&#9670;&#160;</a></span>getPosArg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -389,7 +389,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string_view steppable::__internals::utils::ProgramArgs::getPosArg </td>
+          <td class="memname">std::string steppable::__internals::utils::ProgramArgs::getPosArg </td>
           <td>(</td>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td> const</td>
@@ -414,13 +414,13 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_a80ee5c4af4d6a642b3a72bea343ebbd9_cgraph.svg" width="100%" height="541"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_a77706ab8fe8be24d76f50ddd2094dfe0_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="abfbc6f2e68f3cc414843a59160a0cea6" name="abfbc6f2e68f3cc414843a59160a0cea6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfbc6f2e68f3cc414843a59160a0cea6">&#9670;&#160;</a></span>getSwitch()</h2>
+<a id="a3db1d70b9bfd3f98824f1d241d8a01b7" name="a3db1d70b9bfd3f98824f1d241d8a01b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3db1d70b9bfd3f98824f1d241d8a01b7">&#9670;&#160;</a></span>getSwitch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -428,7 +428,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">bool steppable::__internals::utils::ProgramArgs::getSwitch </td>
           <td>(</td>
-          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -446,7 +446,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_abfbc6f2e68f3cc414843a59160a0cea6_cgraph.svg" width="100%" height="541"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_a3db1d70b9bfd3f98824f1d241d8a01b7_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -476,8 +476,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="af3703e67d1a580ec98788508de89af45" name="af3703e67d1a580ec98788508de89af45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3703e67d1a580ec98788508de89af45">&#9670;&#160;</a></span>printUsage()</h2>
+<a id="af23f24f2657aad9931800258c08cd49f" name="af23f24f2657aad9931800258c08cd49f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af23f24f2657aad9931800258c08cd49f">&#9670;&#160;</a></span>printUsage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -485,7 +485,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void steppable::__internals::utils::ProgramArgs::printUsage </td>
           <td>(</td>
-          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>reason</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>reason</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -502,12 +502,12 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_af3703e67d1a580ec98788508de89af45_cgraph.svg" width="100%" height="541"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_af23f24f2657aad9931800258c08cd49f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_af3703e67d1a580ec98788508de89af45_icgraph.svg" width="388" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classsteppable_1_1____internals_1_1utils_1_1ProgramArgs_af23f24f2657aad9931800258c08cd49f_icgraph.svg" width="388" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -537,8 +537,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="af34abdab3c9215e33e0ee4b630bd9b86" name="af34abdab3c9215e33e0ee4b630bd9b86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af34abdab3c9215e33e0ee4b630bd9b86">&#9670;&#160;</a></span>argv</h2>
+<a id="aa79d43218ce59bce1f0333db7c28e19b" name="aa79d43218ce59bce1f0333db7c28e19b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa79d43218ce59bce1f0333db7c28e19b">&#9670;&#160;</a></span>argv</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -547,7 +547,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::string_view&gt; steppable::__internals::utils::ProgramArgs::argv</td>
+          <td class="memname">std::vector&lt;std::string&gt; steppable::__internals::utils::ProgramArgs::argv</td>
         </tr>
       </table>
   </td>
@@ -561,8 +561,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a16abcbe1304b801bc6c0ce8c3100626a" name="a16abcbe1304b801bc6c0ce8c3100626a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16abcbe1304b801bc6c0ce8c3100626a">&#9670;&#160;</a></span>keywordArgDescriptions</h2>
+<a id="a45c0c7028ab6efd7fbd8fd600da7745b" name="a45c0c7028ab6efd7fbd8fd600da7745b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45c0c7028ab6efd7fbd8fd600da7745b">&#9670;&#160;</a></span>keywordArgDescriptions</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -571,7 +571,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;std::string_view, std::string_view&gt; steppable::__internals::utils::ProgramArgs::keywordArgDescriptions</td>
+          <td class="memname">std::map&lt;std::string, std::string&gt; steppable::__internals::utils::ProgramArgs::keywordArgDescriptions</td>
         </tr>
       </table>
   </td>
@@ -585,8 +585,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a21194b8ff3cc7c94ac5fa22c445a2de3" name="a21194b8ff3cc7c94ac5fa22c445a2de3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21194b8ff3cc7c94ac5fa22c445a2de3">&#9670;&#160;</a></span>keywordArgs</h2>
+<a id="ac5555c348c90f18c16f6c6677d7611cb" name="ac5555c348c90f18c16f6c6677d7611cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5555c348c90f18c16f6c6677d7611cb">&#9670;&#160;</a></span>keywordArgs</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -595,7 +595,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;std::string_view, int&gt; steppable::__internals::utils::ProgramArgs::keywordArgs</td>
+          <td class="memname">std::unordered_map&lt;std::string, int&gt; steppable::__internals::utils::ProgramArgs::keywordArgs</td>
         </tr>
       </table>
   </td>
@@ -609,8 +609,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ad7aaf0bfbd5e6f71b10c5d201b4d745f" name="ad7aaf0bfbd5e6f71b10c5d201b4d745f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7aaf0bfbd5e6f71b10c5d201b4d745f">&#9670;&#160;</a></span>posArgDescriptions</h2>
+<a id="ad62009ca1a5103613e826bbfdee8ba6f" name="ad62009ca1a5103613e826bbfdee8ba6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad62009ca1a5103613e826bbfdee8ba6f">&#9670;&#160;</a></span>posArgDescriptions</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -619,7 +619,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;char, std::string_view&gt; steppable::__internals::utils::ProgramArgs::posArgDescriptions</td>
+          <td class="memname">std::map&lt;char, std::string&gt; steppable::__internals::utils::ProgramArgs::posArgDescriptions</td>
         </tr>
       </table>
   </td>
@@ -657,8 +657,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ad6cb9dcbc093aa862459b47cf5a67285" name="ad6cb9dcbc093aa862459b47cf5a67285"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6cb9dcbc093aa862459b47cf5a67285">&#9670;&#160;</a></span>posArgs</h2>
+<a id="a8d6bc5e0d0d137228b49c79d52fc0c2d" name="a8d6bc5e0d0d137228b49c79d52fc0c2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d6bc5e0d0d137228b49c79d52fc0c2d">&#9670;&#160;</a></span>posArgs</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -667,7 +667,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::string_view&gt; steppable::__internals::utils::ProgramArgs::posArgs</td>
+          <td class="memname">std::vector&lt;std::string&gt; steppable::__internals::utils::ProgramArgs::posArgs</td>
         </tr>
       </table>
   </td>
@@ -681,8 +681,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a50039f2d6bfcbca1bf3b589a04669891" name="a50039f2d6bfcbca1bf3b589a04669891"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50039f2d6bfcbca1bf3b589a04669891">&#9670;&#160;</a></span>programName</h2>
+<a id="af62fd8a9e1947786e6836f202e5ce357" name="af62fd8a9e1947786e6836f202e5ce357"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af62fd8a9e1947786e6836f202e5ce357">&#9670;&#160;</a></span>programName</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -691,7 +691,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string_view steppable::__internals::utils::ProgramArgs::programName</td>
+          <td class="memname">std::string steppable::__internals::utils::ProgramArgs::programName</td>
         </tr>
       </table>
   </td>
@@ -705,8 +705,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab7f4c2cb0c67d1344455b853e44e7a77" name="ab7f4c2cb0c67d1344455b853e44e7a77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7f4c2cb0c67d1344455b853e44e7a77">&#9670;&#160;</a></span>switchDescriptions</h2>
+<a id="ab6ac41c953fc44b2a2087839df2c5ccd" name="ab6ac41c953fc44b2a2087839df2c5ccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ac41c953fc44b2a2087839df2c5ccd">&#9670;&#160;</a></span>switchDescriptions</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -715,7 +715,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;std::string_view, std::string_view&gt; steppable::__internals::utils::ProgramArgs::switchDescriptions</td>
+          <td class="memname">std::map&lt;std::string, std::string&gt; steppable::__internals::utils::ProgramArgs::switchDescriptions</td>
         </tr>
       </table>
   </td>
@@ -729,8 +729,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a01d7dfb2f06c605ceb112932cf2d751a" name="a01d7dfb2f06c605ceb112932cf2d751a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01d7dfb2f06c605ceb112932cf2d751a">&#9670;&#160;</a></span>switches</h2>
+<a id="ad0d965907c030b01376175fe9214a859" name="ad0d965907c030b01376175fe9214a859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0d965907c030b01376175fe9214a859">&#9670;&#160;</a></span>switches</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -739,7 +739,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;std::string_view, bool&gt; steppable::__internals::utils::ProgramArgs::switches</td>
+          <td class="memname">std::unordered_map&lt;std::string, bool&gt; steppable::__internals::utils::ProgramArgs::switches</td>
         </tr>
       </table>
   </td>
@@ -776,7 +776,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Sun Jun 30 2024 00:49:46"; // Will get replaced by Doxygen
+        const dateStr = "Sun Jul 14 2024 10:07:30"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

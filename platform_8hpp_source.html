@@ -139,44 +139,51 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> **************************************************************************************************/</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;ctime&gt;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
-<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">   56</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">programSafeExit</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> status)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#ifdef MACOSX</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        exit(status); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        std::quick_exit(status);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">using namespace </span>std::literals;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">   57</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">programSafeExit</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> status)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#ifdef MACOSX</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        exit(status); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        std::quick_exit(status);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
 </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e">   65</a></span>    <span class="keyword">inline</span> std::tm <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e">localtime_xp</a>(std::time_t* timer)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        std::tm bt{};</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#if defined(__unix__)</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        localtime_r(timer, &amp;bt);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#elif defined(WINDOWS)</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        localtime_s(&amp;bt, timer);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">static</span> std::mutex mtx;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        std::lock_guard&lt;std::mutex&gt; lock(mtx);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        bt = *std::localtime(timer); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">return</span> bt;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e">   66</a></span>    <span class="keyword">inline</span> std::tm <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e">localtime_xp</a>(std::time_t* timer)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        std::tm bt{};</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#if defined(__unix__)</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        localtime_r(timer, &amp;bt);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#elif defined(WINDOWS)</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        localtime_s(&amp;bt, timer);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keyword">static</span> std::mutex mtx;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        std::lock_guard&lt;std::mutex&gt; lock(mtx);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        bt = *std::localtime(timer); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">return</span> bt;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>} <span class="comment">// namespace steppable::__internals::utils</span></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div><div class="ttdoc">The namespace containing utility functions for the Steppable library.</div><div class="ttdef"><b>Definition</b> argParse.cpp:39</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a265f606a0e1f8eb0fc678593f7f44be7"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">steppable::__internals::utils::programSafeExit</a></div><div class="ttdeci">void programSafeExit(const int status)</div><div class="ttdoc">Exit the program safely.</div><div class="ttdef"><b>Definition</b> platform.hpp:56</div></div>
-<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a52bb814d5639116caa0b4a53b7f53e5e"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e">steppable::__internals::utils::localtime_xp</a></div><div class="ttdeci">std::tm localtime_xp(std::time_t *timer)</div><div class="ttdef"><b>Definition</b> platform.hpp:65</div></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    std::filesystem::path <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#af55d306f308c40f7cf64ad6cdb0235f7">getHomeDirectory</a>();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    std::filesystem::path <a class="code hl_function" href="namespacesteppable_1_1____internals_1_1utils.html#a9f8874d38acee1827b2ad2aef3dc8386">getConfDirectory</a>();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>} <span class="comment">// namespace steppable::__internals::utils</span></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html">steppable::__internals::utils</a></div><div class="ttdoc">The namespace containing utility functions for the Steppable library.</div><div class="ttdef"><b>Definition</b> argParse.cpp:40</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a265f606a0e1f8eb0fc678593f7f44be7"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a265f606a0e1f8eb0fc678593f7f44be7">steppable::__internals::utils::programSafeExit</a></div><div class="ttdeci">void programSafeExit(const int status)</div><div class="ttdoc">Exit the program safely.</div><div class="ttdef"><b>Definition</b> platform.hpp:57</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a52bb814d5639116caa0b4a53b7f53e5e"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a52bb814d5639116caa0b4a53b7f53e5e">steppable::__internals::utils::localtime_xp</a></div><div class="ttdeci">std::tm localtime_xp(std::time_t *timer)</div><div class="ttdef"><b>Definition</b> platform.hpp:66</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_a9f8874d38acee1827b2ad2aef3dc8386"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#a9f8874d38acee1827b2ad2aef3dc8386">steppable::__internals::utils::getConfDirectory</a></div><div class="ttdeci">std::filesystem::path getConfDirectory()</div><div class="ttdef"><b>Definition</b> platform.cpp:89</div></div>
+<div class="ttc" id="anamespacesteppable_1_1____internals_1_1utils_html_af55d306f308c40f7cf64ad6cdb0235f7"><div class="ttname"><a href="namespacesteppable_1_1____internals_1_1utils.html#af55d306f308c40f7cf64ad6cdb0235f7">steppable::__internals::utils::getHomeDirectory</a></div><div class="ttdeci">std::filesystem::path getHomeDirectory()</div><div class="ttdef"><b>Definition</b> platform.cpp:43</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!DOCTYPE html>
 <html>
@@ -196,7 +203,7 @@ $(function(){ initResizable(false); });
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Sun Jun 30 2024 00:49:46"; // Will get replaced by Doxygen
+        const dateStr = "Sun Jul 14 2024 10:07:30"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

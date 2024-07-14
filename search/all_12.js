@@ -1,29 +1,6 @@
 var searchData=
 [
-  ['radicand_0',['radicand',['../structsteppable_1_1____internals_1_1arithmetic_1_1Surd.html#a9e084ef69162afe13a4a20602aa1220e',1,'steppable::__internals::arithmetic::Surd']]],
-  ['radtodeg_1',['radToDeg',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a98154cd89dd2e5e321233d806438eb14',1,'steppable::__internals::arithmetic']]],
-  ['radtograd_2',['radToGrad',['../namespacesteppable_1_1____internals_1_1arithmetic.html#aacb9860d66f88b74e090017654bb5688',1,'steppable::__internals::arithmetic']]],
-  ['reciprocal_3',['reciprocal',['../classsteppable_1_1Fraction.html#a2d20a7ae3e6a1fd18b06c86db601e6e4',1,'steppable::Fraction']]],
-  ['red_4',['red',['../namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a36cc73ec1844a03d7cba5b409109c999',1,'steppable::__internals::utils::colors']]],
-  ['reference_5',['API Reference',['../md_wiki_2API-Reference.html',1,'']]],
-  ['release_20be_20made_6',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md43',1,'']]],
-  ['release_20build_7',['Release Build',['../md_wiki_2Building-Steppable.html#autotoc_md12',1,'']]],
-  ['remainder_8',['remainder',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#a6b2431c269b09e854d33a09bd31f00e6',1,'steppable::__internals::arithmetic::QuotientRemainder']]],
-  ['removeleadingzeros_9',['removeLeadingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#a3d4e1e21ccf1afecd766d3152df87212',1,'steppable::__internals::numUtils::removeLeadingZeros(const std::vector&lt; int &gt; &amp;vector) -&gt; std::decay_t&lt; decltype(vector)&gt;'],['../namespacesteppable_1_1____internals_1_1numUtils.html#a8d5637338641568af53f46a993400130',1,'steppable::__internals::numUtils::removeLeadingZeros(const std::string &amp;string) -&gt; std::decay_t&lt; decltype(string)&gt;']]],
-  ['removetrailingzeros_10',['removeTrailingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#a5d7e8d74d304a1ac7fc2ad4dbf5b40ae',1,'steppable::__internals::numUtils::removeTrailingZeros(const std::vector&lt; int &gt; &amp;_vector) -&gt; std::decay_t&lt; decltype(_vector)&gt;'],['../namespacesteppable_1_1____internals_1_1numUtils.html#a01d87095fb8502339f72173ecfca1419',1,'steppable::__internals::numUtils::removeTrailingZeros(const std::string &amp;numStr) -&gt; std::decay_t&lt; decltype(numStr)&gt;']]],
-  ['replaceleadingzeros_11',['replaceLeadingZeros',['../namespacesteppable_1_1____internals_1_1numUtils.html#ae8dde3fc958f32009443d1aeaa2c0900',1,'steppable::__internals::numUtils']]],
-  ['representnumber_12',['representNumber',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a6f4658ff66c0d02138acc2aa221856d0',1,'steppable::__internals::arithmetic']]],
-  ['reset_13',['reset',['../namespacesteppable_1_1____internals_1_1utils.html#a1d55e037764ba41ec8682f00b30701ff',1,'steppable::__internals::utils']]],
-  ['result_14',['Result',['../namespacesteppable_1_1types.html#a6a56027383b6971654eda4bcc5c41dc6',1,'steppable::types']]],
-  ['resultbase_15',['ResultBase',['../classsteppable_1_1types_1_1ResultBase.html',1,'steppable::types::ResultBase&lt; StatusType &gt;'],['../classsteppable_1_1types_1_1ResultBase.html#a759d2c4eb35bda5148f4fe5f2e9d0e7a',1,'steppable::types::ResultBase::ResultBase()=delete'],['../classsteppable_1_1types_1_1ResultBase.html#a4286541881317ef556d73566a9d338f9',1,'steppable::types::ResultBase::ResultBase(const std::vector&lt; std::string &gt; &amp;_inputs, std::string _out, StatusType _done)']]],
-  ['resultbool_16',['ResultBool',['../namespacesteppable_1_1types.html#a6d7b97d272a88c4e6a4427222d6965dd',1,'steppable::types']]],
-  ['reverse_17',['reverse',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a588a3cdce1fef100d63d64816a37981a',1,'steppable::__internals::utils::formats']]],
-  ['root_18',['root',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a4aa89d1787b7578cd2ed73392bdcd7df',1,'steppable::__internals::arithmetic']]],
-  ['rootintpart_19',['rootIntPart',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a6f1429e9d7719e6376dc68ae28d36dbe',1,'steppable::__internals::arithmetic']]],
-  ['rootsurd_20',['rootSurd',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a118bc6cb979317a7c762ee90fb44d0a4',1,'steppable::__internals::arithmetic']]],
-  ['rounddown_21',['roundDown',['../namespacesteppable_1_1____internals_1_1numUtils.html#a61df4994403fa57d99f1687e62afe468',1,'steppable::__internals::numUtils']]],
-  ['roundingmode_22',['RoundingMode',['../namespacesteppable.html#a61949411cf477d12b3d15472d5b83092',1,'steppable']]],
-  ['roundoff_23',['roundOff',['../namespacesteppable_1_1____internals_1_1numUtils.html#a7b6a9b3fac3ca1e80621ce62274a3cc5',1,'steppable::__internals::numUtils']]],
-  ['roundup_24',['roundUp',['../namespacesteppable_1_1____internals_1_1numUtils.html#aaf66a0e24010cbf253ab23f58eabb395',1,'steppable::__internals::numUtils']]],
-  ['rreplace_25',['rReplace',['../namespacesteppable_1_1____internals_1_1stringUtils.html#ab790464bf85c0a0932ef563d29f8a9da',1,'steppable::__internals::stringUtils']]]
+  ['questions_20faq_0',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]],
+  ['quotient_1',['quotient',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#ae02205a4a9283f5df34a455b575fd60c',1,'steppable::__internals::arithmetic::QuotientRemainder']]],
+  ['quotientremainder_2',['QuotientRemainder',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html',1,'steppable::__internals::arithmetic']]]
 ];

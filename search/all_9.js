@@ -1,22 +1,10 @@
 var searchData=
 [
-  ['important_20points_20to_20consider_0',['Important points to consider',['../md_wiki_2Philosophy.html#autotoc_md62',1,'']]],
-  ['imports_1',['Imports',['../md_wiki_2Coding-Style-_07Python_08.html#autotoc_md32',1,'Imports'],['../md_wiki_2Coding-Style-_07Python_08.html#autotoc_md37',1,'Sorting Imports']]],
-  ['indentation_2',['Indentation',['../md_wiki_2Coding-Style-_07CPP_08.html#autotoc_md17',1,'Indentation'],['../md_wiki_2Coding-Style-_07Python_08.html#autotoc_md28',1,'Indentation']]],
-  ['info_3',['INFO',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7a0add0282959d7a8fb7af0dee9885198a',1,'steppable::__internals::logging']]],
-  ['info_4',['info',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#afea3d5609d98fcdea3b2d76a6efba9f9',1,'steppable::__internals::logging::Logger::info()'],['../namespacesteppable_1_1output.html#a0d82124b4d77fbf95d7f66ef105503a2',1,'steppable::output::info()']]],
-  ['initlocale_5',['initLocale',['../namespacesteppable_1_1____internals_1_1utils.html#af753e0b8dd7f589f022d757639650ff7',1,'steppable::__internals::utils']]],
-  ['inputs_6',['inputs',['../classsteppable_1_1types_1_1ResultBase.html#a6cebef27ddffe3b99a3aa0719f5bdd98',1,'steppable::types::ResultBase']]],
-  ['introduction_7',['Introduction',['../md_wiki_2Building-Steppable.html#autotoc_md10',1,'']]],
-  ['is_20not_8',['What this is not?',['../md_wiki_2FAQ.html#autotoc_md46',1,'']]],
-  ['is_20this_9',['What is this?',['../md_wiki_2FAQ.html#autotoc_md45',1,'']]],
-  ['isdecimal_10',['isDecimal',['../namespacesteppable_1_1____internals_1_1numUtils.html#afa516a42a17fc99b2f9c04171ed1b4fe',1,'steppable::__internals::numUtils']]],
-  ['isinteger_11',['isInteger',['../namespacesteppable_1_1____internals_1_1numUtils.html#acc0d8c2dcee479d9b8c4b5b4585c70d8',1,'steppable::__internals::numUtils']]],
-  ['isnumber_12',['isNumber',['../namespacesteppable_1_1____internals_1_1numUtils.html#a2415d3f7e66937d62bae10c9515ee94e',1,'steppable::__internals::numUtils']]],
-  ['ispoweroften_13',['isPowerOfTen',['../namespacesteppable_1_1____internals_1_1numUtils.html#a8ce9e01517c4e53205ea82fc8ad1124b',1,'steppable::__internals::numUtils']]],
-  ['isprime_14',['isPrime',['../namespacesteppable_1_1____internals_1_1numUtils.html#a1a51aabb1fe846587df780d136efd45f',1,'steppable::__internals::numUtils']]],
-  ['isroot_15',['isRoot',['../namespacesteppable_1_1____internals_1_1numUtils.html#af5d859c9839f7f49bf06f891693d5dfc',1,'steppable::__internals::numUtils']]],
-  ['isterminal_16',['isTerminal',['../namespacesteppable_1_1____internals_1_1utils.html#a65d6e9f0b589e6d5eab0da73a4ebb16c',1,'steppable::__internals::utils']]],
-  ['iszerostring_17',['isZeroString',['../namespacesteppable_1_1____internals_1_1numUtils.html#afce13d9dd949a08a7e75b27246a276b2',1,'steppable::__internals::numUtils']]],
-  ['it_20work_18',['How does it work?',['../md_wiki_2FAQ.html#autotoc_md44',1,'']]]
+  ['header_20files_0',['Using the Header Files',['../md_wiki_2API-Reference.html#autotoc_md2',1,'']]],
+  ['header_20guards_1',['Header Guards',['../md_wiki_2Coding-Style-_07CPP_08.html#autotoc_md20',1,'']]],
+  ['height_2',['height',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#a3283bdb0b0fa8c09d19f6c0a53d7009a',1,'steppable::prettyPrint::ConsoleOutput']]],
+  ['help_3',['Tools that can help',['../md_wiki_2Coding-Style-_07CPP_08.html#autotoc_md25',1,'']]],
+  ['hidden_4',['hidden',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a32a55b746eecefaea572c0ccb747f834',1,'steppable::__internals::utils::formats']]],
+  ['how_20does_20it_20work_5',['How does it work?',['../md_wiki_2FAQ.html#autotoc_md44',1,'']]],
+  ['how_20to_20contribute_6',['How to contribute?',['../md_wiki_2FAQ.html#autotoc_md48',1,'']]]
 ];

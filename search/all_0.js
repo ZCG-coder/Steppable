@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['_5fcos_0',['_cos',['../namespacesteppable_1_1____internals_1_1arithmetic.html#aa5a5a2c1bbcd8b9d02be2bb4bb8f2d9c',1,'steppable::__internals::arithmetic']]],
-  ['_5flog_1',['_log',['../namespacesteppable_1_1____internals_1_1arithmetic.html#af5ed04e106ff7490b9229ff62365ea1f',1,'steppable::__internals::arithmetic']]],
-  ['_5froot_2',['_root',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a1eedcdd2349ec452f6319cd0ff443e0a',1,'steppable::__internals::arithmetic']]]
+  ['_24_0',['$',['../namespacesteppable_1_1localization.html#ae3e0bed8db649955a0360fa32175a0bc',1,'steppable::localization::$(const std::string &amp;origin, const std::string &amp;key)'],['../namespacesteppable_1_1localization.html#a59978a0a3a6490e522bdf41fbdb3ff61',1,'steppable::localization::$(const std::string &amp;origin, const std::string &amp;formatKey, const std::vector&lt; std::string &gt; &amp;formatStrings)']]]
 ];
