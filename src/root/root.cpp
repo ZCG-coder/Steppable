@@ -34,6 +34,7 @@
 #include "factors.hpp"
 #include "fn/basicArithm.hpp"
 #include "fraction.hpp"
+#include "getString.hpp"
 #include "rootReport.hpp"
 #include "rounding.hpp"
 #include "symbols.hpp"
@@ -50,6 +51,7 @@ using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::__internals::numUtils;
+using namespace steppable::localization;
 using namespace std::literals;
 
 namespace steppable::prettyPrint::printers
@@ -123,15 +125,15 @@ namespace steppable::__internals::arithmetic
         return { radicand, multiplier };
     }
 
-    std::string _root(const std::string& _number, const std::string& base, const size_t _decimals)
+    std::string _root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)
     {
         if (isDecimal(base))
         {
             const auto& fraction = Fraction(base);
             const auto& [top, bottom] = fraction.asArray();
             const auto& powerResult = power(_number, bottom, 0);
-            const auto rootResult = _root(powerResult, top, _decimals);
-            return reportRootPower(_number, base, fraction, rootResult, 0);
+            const auto rootResult = _root(powerResult, top, _decimals, 0);
+            return reportRootPower(_number, base, fraction, rootResult, steps);
         }
 
         if (compare(base, "1", 0) == "2")
@@ -153,6 +155,19 @@ namespace steppable::__internals::arithmetic
 
         while (true)
         {
+            // Try to approximate the correct radicand.
+            // Method:
+            // +---+    *********    +---+
+            // | y | <= * value * <= | x |
+            // +---+    *********    +---+
+            //                x - y
+            // - value = y + -------
+            //                  2
+            //
+            //           base
+            // - If value     > actual, x is too large, exchange x with y.
+            // - If           < actual, y is too large, exchange y with x.
+            // - If           is within acceptable range, return.
             auto newAvg = divide(subtract(x, y, 0), "2", 0, static_cast<int>(decimals) + 1);
             auto radicand = add(y, newAvg, 0);
             auto test = power(radicand, base, 0);
@@ -169,18 +184,18 @@ namespace steppable::__internals::arithmetic
         }
     }
 
-    std::string root(const std::string& _number, const std::string& base, const size_t _decimals)
+    std::string root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)
     {
         if (isZeroString(_number))
             return "0";
         if (isInteger(_number))
         {
             auto result = rootSurd(_number, base);
-            auto rootResult = _root(result.radicand, base, _decimals);
+            auto rootResult = _root(result.radicand, base, _decimals, 0);
             return multiply(rootResult, result.multiplier, 0);
         }
 
-        return _root(_number, base, _decimals);
+        return _root(_number, base, _decimals, steps);
     }
 } // namespace steppable::__internals::arithmetic
 
@@ -190,24 +205,27 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number");
-    program.addPosArg('n', "Base");
-    program.addKeywordArg("decimals", 8, "Amount of decimals while taking the n-th root.");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', $("root", "0b4174a0-75ae-4dbb-93e0-144938272fd6"));
+    program.addPosArg('n', $("root", "43d64cf7-6f56-4081-a239-34a972cf5cce"));
+    program.addKeywordArg("decimals", 8, $("root", "c4392b15-37a2-4d0e-9b3a-fc11b46bf369"));
+    program.addKeywordArg("steps", 2, $("root", "3178f539-1d1c-4e7b-8f5e-6186b361b4e6"));
+    program.addSwitch("profile", false, $("root", "5f1f7d97-0ef3-4ccc-95c3-f7582ba11a20"));
     program.parseArgs();
 
     const int decimals = program.getKeywordArgument("decimals");
     const bool profile = program.getSwitch("profile");
+    const int steps = program.getKeywordArgument("steps");
     const auto& number = static_cast<std::string>(program.getPosArg(0));
     const auto& base = static_cast<std::string>(program.getPosArg(1));
 
     if (profile)
     {
         TIC(Nth root)
-        std::cout << "Taking n-th root :\n" << root(number, base, decimals) << '\n';
+        std::cout << $("root", "aca8b9a2-c7ff-470a-a72f-86204a413c18") << "\n"
+                  << root(number, base, decimals, steps) << '\n';
         TOC()
     }
     else
-        std::cout << root(number, base, decimals) << '\n';
+        std::cout << root(number, base, decimals, steps) << '\n';
 }
 #endif

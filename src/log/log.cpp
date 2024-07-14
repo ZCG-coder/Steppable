@@ -30,6 +30,7 @@
 
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
+#include "getString.hpp"
 #include "logReport.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
@@ -41,6 +42,7 @@
 
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::utils;
+using namespace steppable::localization;
 using namespace std::literals;
 
 namespace steppable::__internals::arithmetic
@@ -119,20 +121,18 @@ int main(int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('c', "Command", false);
-    program.addPosArg('n', "Number", true);
-    program.addPosArg('b', "Base", true);
-    program.addKeywordArg("mode", 0, "The mode to calculate in. 0 = radians (default), 1 = degrees, 2 = gradians.");
-    program.addKeywordArg("decimals", 5, "Amount of decimals while calculating.");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('c', $("log", "e8227bec-443c-4d2d-a569-06e3d20c11ad"), false);
+    program.addPosArg('n', $("log", "d67686ce-2bad-48c9-a8ff-ec709d23ccea"), true);
+    program.addPosArg('b', $("log", "4a3f8558-00dd-430e-921c-792542d9c29a"), true);
+    program.addKeywordArg("decimals", 5, $("log", "56363a7f-4277-4805-95b2-ef3b8ccc1671"));
+    program.addSwitch("profile", false, $("log", "8623ed47-e7bd-46a2-a1db-3c0746520e2e"));
     program.parseArgs();
 
-    const int mode = program.getKeywordArgument("mode");
     const bool profile = program.getSwitch("profile");
     const int decimals = program.getKeywordArgument("decimals");
-    const auto& command = static_cast<std::string>(program.getPosArg(0));
-    const auto& arg = static_cast<std::string>(program.getPosArg(1));
-    const auto& base = static_cast<std::string>(program.getPosArg(2));
+    const auto& command = program.getPosArg(0);
+    const auto& arg = program.getPosArg(1);
+    const auto& base = program.getPosArg(2);
 
     using namespace steppable::__internals;
     using namespace steppable::output;
@@ -147,7 +147,7 @@ int main(int _argc, const char* _argv[])
         std::cout << arithmetic::ln(arg, decimals) << "\n";
     else
     {
-        error("log"s, "Unknown command: "s + command);
+        error("log"s, $("log", "0fc4245a-fee9-4e99-bbbd-378d091c5143", { command }));
         return EXIT_FAILURE;
     }
 }

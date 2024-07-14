@@ -20,25 +20,27 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-set(Python_EXECUTABLE ${Python3_EXECUTABLE})
+if(NOT ${STP_NO_BINDINGS}) # Only create the bindings if needed
+    set(Python_EXECUTABLE ${Python3_EXECUTABLE})
 
-# Detect the installed nanobind package and import it into CMake
-execute_process(
-    COMMAND "${Python_EXECUTABLE}" -m nanobind --cmake_dir
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-    OUTPUT_VARIABLE NB_DIR)
-message(TRACE "Found nanobind: ${NB_DIR}")
-list(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
-find_package(nanobind CONFIG REQUIRED)
+    # Detect the installed nanobind package and import it into CMake
+    execute_process(
+        COMMAND "${Python_EXECUTABLE}" -m nanobind --cmake_dir
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+        OUTPUT_VARIABLE NB_DIR)
+    message(TRACE "Found nanobind: ${NB_DIR}")
+    list(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
+    find_package(nanobind CONFIG REQUIRED)
 
-# Python bindings for Steppable.
-set(Python_INTERPRETER_ID ${Python3_INTERPRETER_ID} CACHE INTERNAL "Compatibility for nanobind")
-nanobind_add_module(steppyble STABLE_ABI NB_STATIC LTO bindings.cpp)
+    # Python bindings for Steppable.
+    set(Python_INTERPRETER_ID ${Python3_INTERPRETER_ID} CACHE INTERNAL "Compatibility for nanobind")
+    nanobind_add_module(steppyble STABLE_ABI NB_STATIC LTO bindings.cpp)
 
-if(NOT ${WINDOWS})
-    target_link_options(steppyble PRIVATE -Bsymbolic)
+    if(NOT ${WINDOWS})
+        target_link_options(steppyble PRIVATE -Bsymbolic)
+    endif()
+    set_target_properties(steppyble PROPERTIES POSITION_INDEPENDENT_CODE ON)
+    target_link_libraries(steppyble PRIVATE calc steppable)
+    target_compile_definitions(steppyble PRIVATE NO_MAIN)
+    target_include_directories(steppyble PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 endif()
-set_target_properties(steppyble PROPERTIES POSITION_INDEPENDENT_CODE ON)
-target_link_libraries(steppyble PRIVATE calc steppable)
-target_compile_definitions(steppyble PRIVATE NO_MAIN)
-target_include_directories(steppyble PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)

@@ -71,12 +71,17 @@ def get_compile_commands() -> Path:
     raise RuntimeError("Cannot get the CMake build directory")
 
 
-def patch():
+def patch() -> None:
     """Remove the NO_MAIN definition in compile_commands.json."""
 
-    file = get_compile_commands()
-    with open(file) as f:
-        objs = json.load(f)
+    try:
+        file = get_compile_commands()
+
+        with open(file) as f:
+            objs = json.load(f)
+    except (RuntimeError, FileNotFoundError):
+        print("Warning: CMake compile_commands cannot be found. Exiting.")
+        exit(0)
 
     modified_objs = []
     for obj in objs:

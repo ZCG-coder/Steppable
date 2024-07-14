@@ -20,6 +20,10 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
+"""
+Add a copyright header to all files.
+"""
+
 import datetime
 import re
 from pathlib import Path
@@ -128,18 +132,36 @@ REGEX_PY_CMAKE = re.compile(
 
 
 def count_lines(text: str) -> int:
+    """
+    Count the number of lines in a string.
+    :param text: The string to count the lines of.
+    :return: The number of lines.
+    """
+
     return len(text.splitlines())
 
 
 def first_n_lines(text: str, n: int) -> str:
+    """
+    Get the first n lines of a string.
+    :param text: The string to get the first n lines of.
+    :param n: The number of lines to get.
+    :return: The first n lines of the string.
+    """
+
     lines = text.splitlines()
     return "\n".join(lines[0:n])
 
 
-def process(file: Path):
+def process(file: Path) -> None:
+    """
+    Process the file, adding or updating the header if necessary.
+    :param file: The file to process.
+    """
     if (
-        file.suffix in [".cpp", ".hpp", ".stp_settings"] or file.name == "cpp.hint"
-    ):  # C++ Source / Header
+        file.suffix in (".cpp", ".hpp")  # C++ Source / Header
+        or file.name == "cpp.hint"  # C++ Hint file
+    ):
         with open(file, "r") as f:
             contents = f.read()
             results = re.match(
@@ -161,7 +183,9 @@ def process(file: Path):
         with open(file, "w") as f:
             f.write(contents)
     elif (
-        file.suffix == ".py" or file.name == "CMakeLists.txt"
+        file.suffix == ".py"
+        or file.name == "CMakeLists.txt"
+        or ".stp_" in file.suffix  # Steppable configuration files
     ):  # Python File or CMake file
         with open(file, "r") as f:
             contents = f.read()
@@ -186,7 +210,12 @@ def process(file: Path):
             f.write(contents)
 
 
-def walk_into_directory(path: Path):
+def walk_into_directory(path: Path) -> None:
+    """
+    Walk into the directory and process all files.
+    :param path: The directory to walk
+    """
+
     for subpath in path.rglob("*"):
         if subpath.is_file():
             process(subpath)

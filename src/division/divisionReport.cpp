@@ -36,7 +36,6 @@
 
 #include <sstream>
 #include <string>
-#include <string_view>
 
 using namespace std::literals;
 using namespace steppable::__internals::stringUtils;
@@ -44,11 +43,11 @@ using namespace steppable::__internals::symbols;
 using namespace steppable::__internals::arithmetic;
 
 std::string reportDivision(std::stringstream& tempFormattedAns,
-                           const std::string_view& temp,
-                           const std::string_view& ans,
-                           const std::string_view& divisor,
-                           const std::string_view& _divisor,
-                           const std::string_view& _number,
+                           const std::string& temp,
+                           const std::string& ans,
+                           const std::string& divisor,
+                           const std::string& _divisor,
+                           const std::string& _number,
                            const int steps,
                            const int width,
                            const bool resultIsNegative)
@@ -57,9 +56,8 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
 
     if (steps == 2)
     {
-        tempFormattedAns << std::string(width - temp.length(), ' ') << makeWider(static_cast<std::string>(temp))
-                         << '\n';
-        formattedAns << std::string(width - ans.length(), ' ') << makeWider(static_cast<std::string>(ans)) << '\n';
+        tempFormattedAns << std::string(width - temp.length(), ' ') << makeWider(temp) << '\n';
+        formattedAns << std::string(width - ans.length(), ' ') << makeWider(ans) << '\n';
         formattedAns << std::string(divisor.length() * 3 - 1, ' ');
         formattedAns << std::string(width - divisor.length() * 2, '_') << '\n';
         formattedAns << tempFormattedAns.rdbuf();
@@ -80,12 +78,12 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
     return static_cast<std::string>(ans);
 }
 
-std::string reportDivisionStep(const std::string_view& temp,
-                               const std::string_view& quotient,
-                               const std::string_view& divisor,
+std::string reportDivisionStep(const std::string& temp,
+                               const std::string& quotient,
+                               const std::string& divisor,
                                size_t width,
                                size_t index,
-                               const std::string_view lastRemainder)
+                               const std::string& lastRemainder)
 {
     std::stringstream ss;
 

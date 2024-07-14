@@ -87,7 +87,6 @@ namespace steppable::__internals::utils
     #include <io.h>
 #endif
 
-    void initLocale();
 #ifdef WINDOWS
     #include <fcntl.h>
     #include <windows.h>
@@ -150,7 +149,6 @@ namespace steppable::__internals::utils
          */
         Utf8CodePage() : oldCodePage(GetConsoleOutputCP())
         {
-            initLocale();
             SetConsoleOutputCP(CP_UTF8);
             dwModeOrig = enableVtMode();
         }
@@ -182,7 +180,7 @@ namespace steppable::__internals::utils
     class Utf8CodePage
     {
     public:
-        Utf8CodePage() { initLocale(); }
+        Utf8CodePage() { ; }
     };
 #endif
 } // namespace steppable::__internals::utils
@@ -215,14 +213,14 @@ namespace steppable::__internals::numUtils
      * @param[in] string The input string to be simplified.
      * @return A simplified string with standard polarity.
      */
-    std::string simplifyZeroPolarity(const std::string_view& string);
+    std::string simplifyZeroPolarity(const std::string& string);
 
     /**
      * @brief Simplifies a string with non-standard polarity (e.g., --1, ---1, etc.).
      * @param[in] _string A string to simplify.
      * @return A simplified string with correct polarity.
      */
-    std::string simplifyPolarity(const std::string_view& _string);
+    std::string simplifyPolarity(const std::string& _string);
 
     /**
      * @brief Standardizes a number string.
@@ -230,10 +228,10 @@ namespace steppable::__internals::numUtils
      * @param[in] _number The number string to standardize.
      * @return The standardized number string.
      */
-    std::string standardizeNumber(const std::string_view& _number);
+    std::string standardizeNumber(const std::string& _number);
 
     /**
-     * @fn constexpr bool isZeroString(const std::string_view& string)
+     * @fn constexpr bool isZeroString(const std::string& string)
      * @brief Checks if a given string is a zero string.
      *
      * A zero string is defined as a string that contains only the character '0'.
@@ -241,7 +239,7 @@ namespace steppable::__internals::numUtils
      * @param[in] string The string to check.
      * @return True if the string is a zero string, false otherwise.
      */
-    constexpr bool isZeroString(const std::string_view& string)
+    constexpr bool isZeroString(const std::string& string)
     {
         return std::ranges::all_of(string, [](const char c) { return c == '0' or c == '.' or c == '-'; });
     }
@@ -252,7 +250,7 @@ namespace steppable::__internals::numUtils
      * @param[in] s The string to be checked.
      * @return True if the string is a valid number, false otherwise.
      */
-    bool isNumber(const std::string_view& s);
+    bool isNumber(const std::string& s);
 
     /**
      * Splits two numbers represented as strings and returns the result.
@@ -266,8 +264,8 @@ namespace steppable::__internals::numUtils
      *
      * @see SplitNumberResult
      */
-    SplitNumberResult splitNumber(const std::string_view& a,
-                                  const std::string_view& b,
+    SplitNumberResult splitNumber(const std::string& a,
+                                  const std::string& b,
                                   bool padInteger = true,
                                   bool padDecimal = true,
                                   bool properlyFormat = true,
@@ -319,7 +317,7 @@ namespace steppable::__internals::numUtils
      * @param[in] number The number to be processed.
      * @return The scale of the number
      */
-    long long determineScale(const std::string_view& number);
+    long long determineScale(const std::string& number);
 
     /**
      * @brief Determines whether the number is an integer or not.

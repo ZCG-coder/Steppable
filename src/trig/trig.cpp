@@ -31,6 +31,7 @@
 #include "argParse.hpp"
 #include "constants.hpp"
 #include "fn/basicArithm.hpp"
+#include "getString.hpp"
 #include "rounding.hpp"
 #include "trigReport.hpp"
 #include "util.hpp"
@@ -41,6 +42,7 @@
 
 using namespace std::literals;
 using namespace steppable::output;
+using namespace steppable::localization;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::numUtils;
 
@@ -50,7 +52,7 @@ namespace steppable::__internals::arithmetic
     {
         // rad = deg * (pi / 180)
         auto deg = divideWithQuotient(_deg, "360").remainder;
-        auto rad = multiply(deg, constants::PI_OVER_180, 0);
+        auto rad = multiply(deg, static_cast<std::string>(constants::PI_OVER_180), 0);
         return rad;
     }
 
@@ -58,7 +60,7 @@ namespace steppable::__internals::arithmetic
     {
         // rad = grad * (pi / 200)
         auto grad = divideWithQuotient(_grad, "400").remainder;
-        auto rad = multiply(grad, constants::PI_OVER_200, 0);
+        auto rad = multiply(grad, static_cast<std::string>(constants::PI_OVER_200), 0);
         return rad;
     }
 
@@ -68,7 +70,7 @@ namespace steppable::__internals::arithmetic
         auto rad = _rad;
         rad = divideWithQuotient(rad, static_cast<std::string>(constants::TWO_PI)).remainder;
         rad = standardizeNumber(rad);
-        auto deg = divide(rad, constants::PI_OVER_180, 0);
+        auto deg = divide(rad, static_cast<std::string>(constants::PI_OVER_180), 0);
         deg = standardizeNumber(deg);
         deg = divideWithQuotient(deg, "90").remainder;
         return standardizeNumber(deg);
@@ -79,7 +81,7 @@ namespace steppable::__internals::arithmetic
         // grad = rad * (200 / pi)
         auto rad = divideWithQuotient(_rad, static_cast<std::string>(constants::TWO_PI)).remainder;
         rad = standardizeNumber(rad);
-        auto grad = divide(rad, constants::PI_OVER_200, 0);
+        auto grad = divide(rad, static_cast<std::string>(constants::PI_OVER_200), 0);
         grad = standardizeNumber(grad);
         grad = divideWithQuotient(grad, "100").remainder;
         return standardizeNumber(grad);
@@ -176,25 +178,25 @@ namespace steppable::__internals::arithmetic
         case 0:
         {
             result = cos(subtract(divideWithQuotient(x, static_cast<std::string>(constants::TWO_PI)).remainder,
-                                  constants::PI_OVER_2,
+                                  static_cast<std::string>(constants::PI_OVER_2),
                                   0),
                          decimals);
             break;
         }
         case 1:
         {
-            result = cos(subtract(degToRad(x), constants::PI_OVER_2, 0), decimals);
+            result = cos(subtract(degToRad(x), static_cast<std::string>(constants::PI_OVER_2), 0), decimals);
             break;
         }
         case 2:
         {
-            result = cos(subtract(gradToRad(x), constants::PI_OVER_2, 0), decimals);
+            result = cos(subtract(gradToRad(x), static_cast<std::string>(constants::PI_OVER_2), 0), decimals);
             break;
         }
         default:
         {
             error("trig::sin"s, "Invalid mode. Defaulting to radians."s);
-            result = cos(subtract(x, constants::PI_OVER_2, 0), decimals);
+            result = cos(subtract(x, static_cast<std::string>(constants::PI_OVER_2), 0), decimals);
         }
         }
 
@@ -215,7 +217,7 @@ namespace steppable::__internals::arithmetic
             auto cosX = cos(divideWithQuotient(x, static_cast<std::string>(constants::TWO_PI)).remainder, decimals + 1);
             if (isZeroString(cosX))
             {
-                error("trig::tan"s, "Tangent is undefined here."s);
+                error("trig::tan"s, $("trig", "a7ed4324-5cc3-48d2-9798-d3e743b809d3"));
                 return "Infinity";
             }
             result = divide(sin(x, decimals + 1), cosX, 0, decimals);
@@ -227,7 +229,7 @@ namespace steppable::__internals::arithmetic
             auto cosX = cos(xRad, decimals + 1);
             if (isZeroString(cosX))
             {
-                error("trig::tan"s, "Tangent is undefined here."s);
+                error("trig::tan"s, $("trig", "a7ed4324-5cc3-48d2-9798-d3e743b809d3"));
                 return "Infinity";
             }
             result = divide(sin(xRad, decimals + 1), cosX, 0, decimals);
@@ -239,7 +241,7 @@ namespace steppable::__internals::arithmetic
             auto cosX = cos(xRad, decimals + 1);
             if (isZeroString(cosX))
             {
-                error("trig::tan"s, "Tangent is undefined here."s);
+                error("trig::tan"s, $("trig", "a7ed4324-5cc3-48d2-9798-d3e743b809d3"));
                 return "Infinity";
             }
             result = divide(sin(xRad, decimals + 1), cosX, 0, decimals);
@@ -260,7 +262,7 @@ namespace steppable::__internals::arithmetic
         auto sinX = sin(x, decimals + 1, mode);
         if (isZeroString(sinX))
         {
-            error("trig::csc"s, "Cosecant is undefined here."s);
+            error("trig::csc"s, $("trig", "0dd11fcc-bdd0-48d1-9b4a-7ebcccb4915f"));
             return "Infinity";
         }
         return divide("1", sinX, 0, decimals);
@@ -271,7 +273,7 @@ namespace steppable::__internals::arithmetic
         auto cosX = cos(x, decimals + 1, mode);
         if (isZeroString(cosX))
         {
-            error("trig::sec"s, "Secant is undefined here."s);
+            error("trig::sec"s, $("trig", "62792c6c-6751-4850-bf66-5e6366322cc0"));
             return "Infinity";
         }
         return divide("1", cosX, 0, decimals);
@@ -282,7 +284,7 @@ namespace steppable::__internals::arithmetic
         auto tanX = tan(x, decimals + 1, mode);
         if (isZeroString(tanX))
         {
-            error("trig::cot"s, "Cotangent is undefined here."s);
+            error("trig::cot"s, $("trig", "65650a93-4298-4e19-8c81-f5fbd9f14ac2"));
             return "Infinity";
         }
         return divide("1", tanX, 0, decimals);
@@ -320,7 +322,7 @@ namespace steppable::__internals::arithmetic
         {
             // If x was reduced, use the identity
             // arctan(1/x) = pi/2 - arctan(x)
-            result = subtract(constants::PI_OVER_2, result, 0);
+            result = subtract(static_cast<std::string>(constants::PI_OVER_2), result, 0);
         }
         result = roundOff(result, decimals);
 
@@ -344,7 +346,7 @@ namespace steppable::__internals::arithmetic
     {
         if (compare(abs(x, 0), "1", 0) == "1")
         {
-            error("trig::asin"s, "Arc sine is not defined here."s);
+            error("trig::asin", $("trig", "b06650e0-7101-4734-9647-5abb56beb492"));
             return "Infinity";
         }
         if (compare(abs(x, 0), "0", 0) == "2")
@@ -436,7 +438,7 @@ namespace steppable::__internals::arithmetic
     {
         if (compare(abs(x, 0), "1", 0) == "1")
         {
-            error("trig::asec"s, "Arc secant is not defined here."s);
+            error("trig::asec", $("trig", "fffb4742-3712-4c9a-a7ff-65cd51508a0a"));
             return "Infinity";
         }
 
@@ -450,7 +452,7 @@ namespace steppable::__internals::arithmetic
     {
         if (compare(abs(x, 0), "1", 0) != "0")
         {
-            error("trig::acsc"s, "Arc cosecant is not defined here."s);
+            error("trig::acsc"s, $("trig", "c021dfde-300c-4d74-a6a1-87a514c1bbe0"));
             return "Infinity";
         }
 
@@ -464,7 +466,7 @@ namespace steppable::__internals::arithmetic
     {
         if (compare(abs(x, 0), "1", 0) != "0")
         {
-            error("trig::acot"s, "Arc cotangent is not defined here."s);
+            error("trig::acot"s, $("trig", "c0c6a29f-abda-4676-9662-1d00f94f10a4"));
             return "Infinity";
         }
 
@@ -480,11 +482,11 @@ int main(int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('c', "Command", false);
-    program.addPosArg('n', "Number", false);
-    program.addKeywordArg("mode", 0, "The mode to calculate in. 0 = radians (default), 1 = degrees, 2 = gradians.");
-    program.addKeywordArg("decimals", 5, "Amount of decimals while calculating.");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('c', $("trig", "47dcf91b-847c-48f0-9889-f5ce1b6831e3"), false);
+    program.addPosArg('n', $("trig", "bcd0a3e9-3d89-4921-94b3-d7533d60911f"), false);
+    program.addKeywordArg("mode", 0, $("trig", "03fdd1f2-6ea5-49d4-ac3f-27f01f04a518"));
+    program.addKeywordArg("decimals", 5, $("trig", "d1df3b60-dac1-496c-99bb-ba763dc551df"));
+    program.addSwitch("profile", false, $("trig", "162adb13-c4b2-4418-b3df-edb6f9355d64"));
     program.parseArgs();
 
     const int mode = program.getKeywordArgument("mode");
@@ -527,7 +529,7 @@ int main(int _argc, const char* _argv[])
     // Invalid command
     else
     {
-        error("trig::main", "Invalid command."s);
+        error("trig::main", $("trig", "6ad9958f-f127-4ee4-a4c6-94cf19576b9a", { command }));
         return EXIT_FAILURE;
     }
     std::cout << function(arg, decimals, mode) << '\n';

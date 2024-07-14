@@ -39,7 +39,7 @@
 
 #include <map>
 #include <regex>
-#include <string_view>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -50,15 +50,15 @@
 namespace steppable::__internals::utils
 {
     /// @brief This is the type of the positional arguments. It is equivalent to a vector of string_views.
-    using PosArgs = std::vector<std::string_view>;
+    using PosArgs = std::vector<std::string>;
 
     /// @brief This is the correct format of a keyword argument.
     // language=RegExp
-    [[maybe_unused]] const std::regex KEYWORD_ARG_REGEX(R"(^-([a-zA-Z]*):(-?[0-9]+)$)");
+    [[maybe_unused]] const std::regex KEYWORD_ARG_REGEX(R"(^-([a-zA-Z]*):(-?[0-9]+)$)"); // NOLINT(cert-err58-cpp)
 
     /// @brief This is the correct format of a switch.
     // language=RegExp
-    [[maybe_unused]] const std::regex SWITCH_REGEX(R"(^([-+])([a-zA-Z]*)$)");
+    [[maybe_unused]] const std::regex SWITCH_REGEX(R"(^([-+])([a-zA-Z]*)$)"); // NOLINT(cert-err58-cpp)
 
     /**
      * @class ProgramArgs
@@ -82,14 +82,14 @@ namespace steppable::__internals::utils
         /** @brief This map is used to store the information of all switches specified. Keys are switch names, and
          * values are whether the switch is enabled.
          */
-        std::unordered_map<std::string_view, bool> switches;
+        std::unordered_map<std::string, bool> switches;
         /// @brief This map is used to store the descriptions of all switches specified.
-        std::map<std::string_view, std::string_view> switchDescriptions;
+        std::map<std::string, std::string> switchDescriptions;
 
         /// @brief This vector is used to store the values of all positional arguments specified.
-        std::vector<std::string_view> posArgs; // Names are used for error messages only.
+        std::vector<std::string> posArgs; // Names are used for error messages only.
         /// @brief This map is used to store the descriptions of all positional arguments specified.
-        std::map<char, std::string_view> posArgDescriptions;
+        std::map<char, std::string> posArgDescriptions;
         /// @brief This map stores whether the positional arguments are required to be numbers.
         std::vector<bool> posArgIsNumber;
 
@@ -97,18 +97,18 @@ namespace steppable::__internals::utils
          * @brief This map is used to store the values of all keyword arguments specified. Keys are keyword argument
          * names and values are the values of the keyword arguments.
          */
-        std::unordered_map<std::string_view, int> keywordArgs;
+        std::unordered_map<std::string, int> keywordArgs;
         /// @brief This map is used to store the descriptions of all keyword arguments specified.
-        std::map<std::string_view, std::string_view> keywordArgDescriptions;
+        std::map<std::string, std::string> keywordArgDescriptions;
 
         /// @brief This stores the number of arguments passed to the program.
         int argc;
 
         /// @brief This stores the arguments passed to the program.
-        std::vector<std::string_view> argv;
+        std::vector<std::string> argv;
 
         /// @brief This stores the name of the program.
-        std::string_view programName;
+        std::string programName;
 
     public:
         /**
@@ -133,7 +133,7 @@ namespace steppable::__internals::utils
          * @param[in] defaultValue The default value of the switch. True = enabled, False = disabled.
          * @param[in] description The description of the switch.
          */
-        void addSwitch(const std::string_view& name, bool defaultValue, const std::string_view& description = "");
+        void addSwitch(const std::string& name, bool defaultValue, const std::string& description = "");
 
         /**
          * @brief This function is used to add a positional argument to the class.
@@ -145,7 +145,7 @@ namespace steppable::__internals::utils
          * @note the command-line arguments.
          */
         void addPosArg(char name,
-                       const std::string_view& description = "",
+                       const std::string& description = "",
                        bool requiresNumber = true); // Positional arguments are always required and ordered
 
         /**
@@ -154,7 +154,7 @@ namespace steppable::__internals::utils
          * @param[in] defaultValue The default value of the keyword argument. The value is stored as an integer.
          * @param[in] description The description of the keyword argument.
          */
-        void addKeywordArg(const std::string_view& name, int defaultValue, std::string_view description = "");
+        void addKeywordArg(const std::string& name, int defaultValue, const std::string& description = "");
 
         /**
          * @brief This function is used to get the value of a positional argument.
@@ -164,7 +164,7 @@ namespace steppable::__internals::utils
          * @note If the positional argument is not specified, the function will print an error message and exit the
          * program.
          */
-        [[nodiscard]] std::string_view getPosArg(size_t index) const;
+        [[nodiscard]] std::string getPosArg(size_t index) const;
 
         /**
          * @brief This function is used to get the value of a keyword argument.
@@ -174,7 +174,7 @@ namespace steppable::__internals::utils
          * @note If the keyword argument is not specified, the function will print an error message and exit the
          * program.
          */
-        int getKeywordArgument(const std::string_view& name);
+        int getKeywordArgument(const std::string& name);
 
         /**
          * @brief This function is used to get the value of a switch.
@@ -183,7 +183,7 @@ namespace steppable::__internals::utils
          *
          * @note If the switch is not specified, the function will print an error message and exit the program.
          */
-        bool getSwitch(const std::string_view& name);
+        bool getSwitch(const std::string& name);
 
         /**
          * @brief This function is used to print the possible command-line arguments. Usually called when the user
@@ -193,6 +193,6 @@ namespace steppable::__internals::utils
          *
          * @note The function will print the usage of the program and exit the program.
          */
-        void printUsage(const std::string_view& reason = "") const;
+        void printUsage(const std::string& reason = "") const;
     };
 } // namespace steppable::__internals::utils

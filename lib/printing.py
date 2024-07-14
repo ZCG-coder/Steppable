@@ -27,6 +27,11 @@ from lib.constants import WINDOWS
 
 
 def green() -> str:
+    """
+    Sets the terminal output color to green.
+
+    :return: The escape sequence to set the terminal output color to green.
+    """
     if WINDOWS:
         return ""
     if sys.stdout.isatty():
@@ -35,6 +40,11 @@ def green() -> str:
 
 
 def red() -> str:
+    """
+    Sets the terminal output color to red.
+
+    :return: The escape sequence to set the terminal output color to red.
+    """
     if WINDOWS:
         return ""
     if sys.stdout.isatty():
@@ -43,6 +53,11 @@ def red() -> str:
 
 
 def yellow() -> str:
+    """
+    Sets the terminal output color to yellow.
+
+    :return: The escape sequence to set the terminal output color to yellow.
+    """
     if WINDOWS:
         return ""
     if sys.stdout.isatty():
@@ -51,6 +66,11 @@ def yellow() -> str:
 
 
 def blue() -> str:
+    """
+    Sets the terminal output color to blue.
+
+    :return: The escape sequence to set the terminal output color to blue.
+    """
     if WINDOWS:
         return ""
     if sys.stdout.isatty():
@@ -58,7 +78,13 @@ def blue() -> str:
     return ""
 
 
-def erase_line() -> str:
+def erase_line(lines: int = 1) -> str:
+    """
+    Erases the specified number of lines in the terminal.
+
+    :param lines: Number of lines to erase.
+    :return: The escape sequence to erase the lines.
+    """
     if WINDOWS:
         return ""
     if sys.stdout.isatty():
@@ -80,6 +106,15 @@ def bold() -> str:
     if sys.stdout.isatty():
         return "\033[1m"
     return ""
+
+
+def print_error(line: str, pos: int, message: str) -> None:
+    """
+    Prints an error message with an arrow pointing to the position of the error.
+    """
+    print(f"ERROR: {message}")
+    print(line)
+    print(" " * pos + "^")
 
 
 def print_progressbar(

@@ -39,7 +39,6 @@
 
 #pragma once
 
-#include <cstdarg>
 #include <string>
 #include <vector>
 
@@ -49,72 +48,5 @@
  */
 namespace steppable::__internals::format
 {
-    // https://stackoverflow.com/a/49812356/14868780
-    /**
-     * @brief Formats a string using a variable number of arguments.
-     *
-     * This function takes a format string and a variable number of arguments,
-     * and returns a formatted string. It uses the same format specifiers as
-     * the standard library's `printf` function.
-     *
-     * @tparam CharT The character type of the string.
-     * @param[in] sFormat The format string.
-     * @param[in] ... The variable arguments.
-     * @return The formatted string.
-     */
-    template<typename CharT>
-    std::basic_string<CharT> vFormat(const std::basic_string<CharT> sFormat, ...)
-    {
-        const CharT* const zcFormat = sFormat.c_str();
-
-        // Initialize a variable argument array
-        va_list vaArgs; // NOLINT(cppcoreguidelines-init-variables)
-        va_start(vaArgs, sFormat);
-
-        // Reliably acquire the size from a copy of the variable argument array
-        // and a functionally reliable call to mock the formatting
-        va_list vaCopy; // NOLINT(cppcoreguidelines-init-variables)
-        va_copy(vaCopy, vaArgs);
-        const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy);
-        va_end(vaCopy);
-
-        // Return a formatted string without risking memory mismanagement
-        // and without assuming any compiler or platform specific behavior
-        std::vector<CharT> formatted(iLen + 1);
-        (void)std::vsnprintf(formatted.data(), formatted.size(), zcFormat, vaArgs);
-        va_end(vaArgs);
-        return std::string(formatted.data(), formatted.size());
-    }
-
-    /**
-     * @brief Formats a string using a format specifier and variable arguments.
-     *
-     * This function takes a format specifier and variable arguments, similar to the printf function,
-     * and returns a formatted string. The format specifier is a string that may contain placeholders
-     * for the variable arguments. The function uses the vsnprintf function to perform the formatting.
-     *
-     * @tparam CharT The character type of the string.
-     * @param[in] sFormat The format specifier string.
-     * @param[in] ... The variable arguments.
-     * @return The formatted string.
-     */
-    template<typename CharT>
-    std::basic_string<CharT> vFormat(const CharT* sFormat, ...)
-    {
-        const CharT* const zcFormat = sFormat;
-
-        va_list vaArgs; // NOLINT(cppcoreguidelines-init-variables)
-        va_start(vaArgs, sFormat);
-
-        va_list vaCopy; // NOLINT(cppcoreguidelines-init-variables)
-        va_copy(vaCopy, vaArgs);
-        const int iLen = std::vsnprintf(nullptr, 0, zcFormat, vaCopy); // NOLINT(clang-diagnostic-format-nonliteral)
-        va_end(vaCopy);
-
-        std::vector<CharT> formatted(iLen + 1);
-        static_cast<void>(std::vsnprintf(
-            formatted.data(), formatted.size(), zcFormat, vaArgs)); // NOLINT(clang-diagnostic-format-nonliteral)
-        va_end(vaArgs);
-        return std::string(formatted.data(), formatted.size());
-    }
+    std::string format(const std::string& format, const std::vector<std::string>& args);
 } // namespace steppable::__internals::format

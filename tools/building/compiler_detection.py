@@ -78,6 +78,7 @@ def get_identification(compiler_path: Path, compiler_type: int) -> str:
 def register_compiler(path: Path) -> None:
     """
     Adds the compiler path to the status.json file in the build directory. This is used to cache the compiler path.
+    :param path: The path to the compiler executable.
     """
     with open(BUILD_DIR / "status.json", "w") as f:
         json.dump({"compiler": str(path)}, f)

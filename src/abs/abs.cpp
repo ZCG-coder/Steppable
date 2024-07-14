@@ -30,18 +30,20 @@
 
 #include "absReport.hpp"
 #include "argParse.hpp"
+#include "getString.hpp"
 #include "util.hpp"
 
 #include <fn/basicArithm.hpp>
+#include <iostream>
 #include <string>
-#include <string_view>
 
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::arithmetic;
+using namespace steppable::localization;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string abs(const std::string_view& _number, const int steps)
+    std::string abs(const std::string& _number, const int steps)
     {
         std::string number = static_cast<std::string>(_number);
         return reportAbs(number, steps);
@@ -53,9 +55,9 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number");
-    program.addKeywordArg("steps", 2, "Amount of steps while taking the absolute value. 0 = No steps, 2 = All steps.");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', $("abs", "ca70a6a7-d1d8-4e43-a94e-014d8f9839c9"));
+    program.addKeywordArg("steps", 2, $("abs", "3860a4ae-1073-4a6d-a75e-f64426291573"));
+    program.addSwitch("profile", false, $("abs", "5d7bddda-e33f-4f9c-81b2-d30baad2ec5c"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");
@@ -65,7 +67,9 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Column Method Addition)
-        std::cout << "Taking absolute value :\n" << abs(number, steps) << '\n';
+        std::cout << "Taking absolute value :"
+                  << "\n"
+                  << abs(number, steps) << '\n';
         TOC()
     }
     else

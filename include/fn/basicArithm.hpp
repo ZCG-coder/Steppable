@@ -39,7 +39,6 @@
 #include "output.hpp"
 
 #include <string>
-#include <string_view>
 
 using namespace std::literals;
 
@@ -65,7 +64,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] steps The number of steps to perform the calculation.
      * @return The absolute value of the number as a string.
      */
-    std::string abs(const std::string_view& _number, int steps);
+    std::string abs(const std::string& _number, int steps);
 
     /**
      * @brief Adds two string representations of numbers, and performs with the column method.
@@ -78,8 +77,8 @@ namespace steppable::__internals::arithmetic
      * @param[in] properlyFormat Flag indicating whether to properly format the output. Default true.
      * @return The sum of the two numbers as a string.
      */
-    std::string add(const std::string_view& a,
-                    const std::string_view& b,
+    std::string add(const std::string& a,
+                    const std::string& b,
                     int steps = 2,
                     bool negative = false,
                     bool properlyFormat = true);
@@ -95,7 +94,7 @@ namespace steppable::__internals::arithmetic
      *         "1" if a is greater than b,
      *         "0" if a is less than b.
      */
-    std::string compare(const std::string_view& _a, const std::string_view& _b, int steps = 2);
+    std::string compare(const std::string& _a, const std::string& _b, int steps = 2);
 
     /**
      * @brief Converts a string representation of a number from any base to decimal.
@@ -105,7 +104,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] steps The number of steps to perform the conversion.
      * @return The converted number as a string.
      */
-    std::string decimalConvert(const std::string_view& _inputString, const std::string_view& baseString, int steps = 2);
+    std::string decimalConvert(const std::string& _inputString, const std::string& baseString, int steps = 2);
 
     /**
      * @brief Converts a string representation of a number from decimal to another one.
@@ -115,7 +114,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] steps The number of steps to perform the conversion.
      * @return The converted number as a string.
      */
-    std::string baseConvert(const std::string_view& _number, const std::string_view& baseStr, int steps = 2);
+    std::string baseConvert(const std::string& _number, const std::string& baseStr, int steps = 2);
 
     /**
      * @brief Divides a string representation of a number by another string representation of a number.
@@ -126,10 +125,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] decimals The number of decimal places in the result.
      * @return The quotient of the division as a string.
      */
-    std::string divide(const std::string_view& number,
-                       const std::string_view& divisor,
-                       int steps = 2,
-                       int decimals = 5);
+    std::string divide(const std::string& number, const std::string& divisor, int steps = 2, int decimals = 5);
 
     /**
      * Calculates the quotient and remainder of dividing the current remainder by the divisor.
@@ -148,7 +144,7 @@ namespace steppable::__internals::arithmetic
      *
      * @return The greatest common divisor of the two numbers.
      */
-    std::string getGCD(const std::string_view& _a, const std::string_view& _b);
+    std::string getGCD(const std::string& _a, const std::string& _b);
 
     /**
      * @brief Multiplies two string representations of numbers.
@@ -158,7 +154,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] steps The number of steps to perform the multiplication.
      * @return The product of the two numbers as a string.
      */
-    std::string multiply(const std::string_view& a, const std::string_view& b, int steps = 2);
+    std::string multiply(const std::string& a, const std::string& b, int steps = 2);
 
     /**
      * @brief Raises a string representation of a number to a power.
@@ -168,7 +164,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] steps The number of steps to perform the power operation.
      * @return The result of the power operation as a string.
      */
-    std::string power(std::string_view _number, const std::string_view& raiseTo, int steps = 2);
+    std::string power(const std::string& _number, const std::string& raiseTo, int steps = 2);
 
     /**
      * @brief Subtracts one string representation of a number from another string representation of a number.
@@ -179,7 +175,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] noMinus Flag indicating whether to display a minus sign or not.
      * @return The difference between the two numbers as a string.
      */
-    std::string subtract(const std::string_view& a, const std::string_view& b, int steps = 2, bool noMinus = false);
+    std::string subtract(const std::string& a, const std::string& b, int steps = 2, bool noMinus = false);
 
     /**
      * @brief Takes the n-th root of a numer.
@@ -191,7 +187,7 @@ namespace steppable::__internals::arithmetic
      *
      * @return The result of the root operation.
      */
-    std::string root(const std::string& _number, const std::string& base, size_t decimals = 8);
+    std::string root(const std::string& _number, const std::string& base, size_t decimals = 8, int steps = 0);
 
     /**
      * @brief Converts a root operation into a surd.
@@ -540,7 +536,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] predicate The predicate function to execute.
      */
     template<typename Pred>
-    void loop(const std::string_view& times, Pred predicate)
+    void loop(const std::string& times, Pred predicate)
     {
         // We're done already!
         if (times == "0")
@@ -560,7 +556,7 @@ namespace steppable::__internals::arithmetic
             catch (std::exception& e)
             {
                 output::error("loop", "Exception occurred in predicate."s);
-                output::error("loop", "Exception message: %s"s, e.what());
+                output::error("loop", "Exception message: {0}"s, { e.what() });
             }
             current = add(current, "1", 0);
             result = compare(current, times, 0);

@@ -32,10 +32,11 @@
  */
 
 #pragma once
-
 #include <cstdlib>
 #include <ctime>
-#include <mutex>
+#include <filesystem>
+
+using namespace std::literals;
 
 /**
  * @namespace steppable::__internals::utils
@@ -76,4 +77,8 @@ namespace steppable::__internals::utils
 #endif
         return bt;
     }
+
+    std::filesystem::path getHomeDirectory();
+
+    std::filesystem::path getConfDirectory();
 } // namespace steppable::__internals::utils

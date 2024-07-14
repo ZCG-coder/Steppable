@@ -30,23 +30,24 @@
 
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
+#include "getString.hpp"
 #include "multiplyReport.hpp"
 #include "rounding.hpp"
 #include "util.hpp"
 
 #include <sstream>
 #include <string>
-#include <string_view>
 #include <vector>
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::output;
+using namespace steppable::localization;
 using namespace steppable::__internals::arithmetic;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string multiply(const std::string_view& _a, const std::string_view& _b, const int steps)
+    std::string multiply(const std::string& _a, const std::string& _b, const int steps)
     {
         auto a = static_cast<std::string>(_a);
         auto b = static_cast<std::string>(_b);
@@ -67,7 +68,7 @@ namespace steppable::__internals::arithmetic
         if (isZeroString(a) or isZeroString(b))
         {
             if (steps == 2)
-                out << "Since any of a or b is zero, the result must be zero as well.\n";
+                out << $("multiply", "9cdeff33-fefa-40ac-b867-a811f652d6e3") << "\n";
             out << "0"; // Since a or b is zero, the result must be zero as well
         }
 
@@ -75,14 +76,14 @@ namespace steppable::__internals::arithmetic
         if (a == "1")
         {
             if (steps == 2)
-                out << "Since " << a << " is 1, the result is " << b << ".\n";
+                out << $("multiply", "36adc27f-07e8-4118-88ed-f148164044da", { a, b }) << "\n";
             out << b;
             return out.str();
         }
         if (b == "1")
         {
             if (steps == 2)
-                out << "Since " << b << " is 1, the result is " << a << ".\n";
+                out << $("multiply", "36adc27f-07e8-4118-88ed-f148164044da", { b, a }) << "\n";
             out << a;
             return out.str();
         }
@@ -91,7 +92,7 @@ namespace steppable::__internals::arithmetic
         if (isPowerOfTen(a))
         {
             if (steps == 2)
-                out << "Since " << a << " is a power of 10, we can move the decimal places to obtain the result.\n";
+                out << $("multiply", "0e76c0f9-6d14-450d-abc4-f4a758787d06", { a }) << "\n";
             auto result = moveDecimalPlaces(b, determineScale(a));
             if (resultIsNegative)
                 result = "-" + result; // NOLINT(performance-inefficient-string-concatenation)
@@ -102,7 +103,7 @@ namespace steppable::__internals::arithmetic
         if (isPowerOfTen(b))
         {
             if (steps == 2)
-                out << "Since " << b << " is a power of 10, we can move the decimal places to obtain the result.\n";
+                out << $("multiply", "0e76c0f9-6d14-450d-abc4-f4a758787d06", { b }) << "\n";
             auto result = moveDecimalPlaces(a, determineScale(b));
             if (resultIsNegative)
                 result = "-" + result; // NOLINT(performance-inefficient-string-concatenation)
@@ -196,10 +197,10 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number 1");
-    program.addPosArg('b', "Number 2");
-    program.addKeywordArg("steps", 2, "Amount of steps while multiplying");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', $("multiply", "1d54da58-ec3c-4888-80a8-c40565efb603"));
+    program.addPosArg('b', $("multiply", "3db8b80f-9667-476a-b096-9323615dd461"));
+    program.addKeywordArg("steps", 2, $("multiply", "5ed5291e-6269-4d76-a8f8-db5eec807955"));
+    program.addSwitch("profile", false, $("multiply", "eec47776-991b-40cc-9956-7227127d2c1f"));
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");
@@ -210,7 +211,8 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Column Method Multiplication)
-        std::cout << "Column Method Multiplication :\n" << multiply(aStr, bStr, steps) << '\n';
+        std::cout << $("multiply", "776a33fd-982a-4888-8b42-83b0f3797dc2") << "\n"
+                  << multiply(aStr, bStr, steps) << '\n';
         TOC()
     }
     else

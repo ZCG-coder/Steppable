@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    ".cmake-format": "python",
     "array": "cpp",
     "string_view": "cpp",
     "any": "cpp",
@@ -57,7 +58,8 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "variant": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "__node_handle": "cpp"
   },
   "copyrightInserter.holder": "NWSOFT",
   "copyrightInserter.license": "mit",
@@ -68,7 +70,6 @@
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorStyle": "line",
-  "clangd.path": "/usr/bin/clangd",
   "C_Cpp.clang_format_path": "clang-format-17",
   "C_Cpp.codeAnalysis.clangTidy.path": "clang-tidy-17",
   "files.exclude": {

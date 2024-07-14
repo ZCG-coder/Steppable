@@ -26,70 +26,70 @@
 #include "output.hpp"
 
 #include <string>
-#include <string_view>
 
 using namespace std::literals;
 using namespace steppable::output;
-using namespace steppable::__internals::format;
 
 namespace steppable::testing
 {
-    TestCase::TestCase(const std::string& testCaseName) { this->testCaseName = testCaseName; }
+    TestCase::TestCase(const std::string& testCaseName) : testCaseName(testCaseName) {}
 
     void TestCase::assert(const bool condition, const std::string& conditionName)
     {
         if (condition)
         {
-            info("%s PASSED", conditionName.c_str());
+            info("TestCase::assert"s, "{0} PASSED"s, { conditionName });
             return;
         }
-        error(
-            "TestCase::assert", "%i: Condition %s evaluates to false. FAILED"s, errorCount + 1, conditionName.c_str());
+        error("TestCase::assert",
+              "{0}: Condition {1} evaluates to false. FAILED"s,
+              { std::to_string(errorCount + 1), conditionName });
         errorCount++;
     }
 
     void TestCase::assertIsEqual(const std::string& a, const std::string& b)
     {
-        const std::string& conditionName = vFormat("String %s == %s", a.c_str(), b.c_str());
+        const std::string& conditionName = format::format("String {0} == {1}", { a, b });
         assert(a == b, conditionName);
     }
 
     void TestCase::assertIsNotEqual(const std::string& a, const std::string& b)
     {
-        const std::string& conditionName = vFormat("String %s != %s", a.c_str(), b.c_str());
+        const std::string& conditionName = format::format("String {0} != {1}", { a, b });
         assert(a != b, conditionName);
     }
 
     void TestCase::assertIsEqual(const int a, const int b)
     {
-        const std::string& conditionName = vFormat("Integer %i == %i", a, b);
+        const std::string& conditionName =
+            format::format("Integer {0} == {1}", { std::to_string(a), std::to_string(b) });
         assert(a == b, conditionName);
     }
 
     void TestCase::assertIsNotEqual(const int a, const int b)
     {
-        const std::string& conditionName = vFormat("Integer %i != %i", a, b);
+        const std::string& conditionName =
+            format::format("Integer {0} != {1}", { std::to_string(a), std::to_string(b) });
         assert(a != b, conditionName);
     }
 
     void TestCase::assertTrue(const bool value)
     {
-        const std::string& conditionName = vFormat("%i is True", static_cast<int>(value));
+        const std::string& conditionName = format::format("{0} is True", { std::to_string(static_cast<int>(value)) });
         assert(value, conditionName);
     }
 
     void TestCase::assertFalse(const bool value)
     {
-        const std::string& conditionName = vFormat("%i is False", static_cast<int>(value));
+        const std::string& conditionName = format::format("{0} is False", { std::to_string(static_cast<int>(value)) });
         assert(not value, conditionName);
     }
 
     void TestCase::summarize() const
     {
-        if (errorCount == 1)
-            std::cout << colors::red << '[' << testCaseName << ": Total " << errorCount << " error]" << reset << '\n';
-        else if (errorCount > 1)
-            std::cout << colors::red << '[' << testCaseName << ": Total " << errorCount << " errors]" << reset << '\n';
+        if (errorCount != 0)
+            std::cout << colors::red << '[' << testCaseName << ": Total " << errorCount << " error(s)]" << reset
+                      << '\n';
         else
             std::cout << colors::brightGreen << '[' << testCaseName << ": All tests passed]" << reset << '\n';
     }

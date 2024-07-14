@@ -33,7 +33,6 @@
 
 #include <sstream>
 #include <string>
-#include <string_view>
 
 /**
  * @brief Reports a division operation to the user.
@@ -51,11 +50,11 @@
  * @return The formatted report.
  */
 std::string reportDivision(std::stringstream& tempFormattedAns,
-                           const std::string_view& temp,
-                           const std::string_view& ans,
-                           const std::string_view& divisor,
-                           const std::string_view& _divisor,
-                           const std::string_view& _number,
+                           const std::string& temp,
+                           const std::string& ans,
+                           const std::string& divisor,
+                           const std::string& _divisor,
+                           const std::string& _number,
                            int steps,
                            int width,
                            bool resultIsNegative);
@@ -72,9 +71,9 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
  *
  * @return The formatted division step report.
  */
-std::string reportDivisionStep(const std::string_view& temp,
-                               const std::string_view& quotient,
-                               const std::string_view& divisor,
+std::string reportDivisionStep(const std::string& temp,
+                               const std::string& quotient,
+                               const std::string& divisor,
                                size_t width,
                                size_t index,
-                               std::string_view lastRemainder);
+                               const std::string& lastRemainder);

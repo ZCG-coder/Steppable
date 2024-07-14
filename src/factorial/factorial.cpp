@@ -31,17 +31,19 @@
 #include "argParse.hpp"
 #include "factorialReport.hpp"
 #include "fn/basicArithm.hpp"
+#include "getString.hpp"
 #include "output.hpp"
 #include "util.hpp"
 
 #include <iostream>
-#include <string_view>
+#include <string>
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::symbols;
 using namespace steppable::output;
+using namespace steppable::localization;
 using namespace std::literals;
 
 namespace steppable::__internals::arithmetic
@@ -60,19 +62,19 @@ namespace steppable::__internals::arithmetic
             //          / 0
             // and factorial is defined as
             //   n! = n * G(n)                ,where n is a non-zero decimal ............ (2)
-            error("factorial"s, "%s is not an integer."s, number.c_str());
+            error("factorial"s, $("factorial", "4eeba5fa-a5b8-4abf-ae65-22a466da6d18", { number }));
             return "0";
         }
         if (isZeroString(number))
         {
             if (steps == 2)
-                return "By definition, 0! = 1";
+                return $("factorial", "d023ddb5-8a71-441b-8c67-8836bd94e93d");
             return "1"; // By definition, 0! = 1
         }
         // Negative numbers do not have a factorial.
         if (number.front() == '-')
         {
-            error("factorial"s, "%s is negative."s, number.c_str());
+            error("factorial"s, $("factorial", "69d93fb8-1bb7-4ed2-be6d-8eeafd5f23a6", { number }));
             return "0";
         }
 
@@ -89,9 +91,9 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', "Number");
-    program.addKeywordArg("steps", 2, "Amount of steps while calculating the factorial. 0 = No steps, 2 = All steps.");
-    program.addSwitch("profile", false, "profiling the program");
+    program.addPosArg('a', $("factorial", "135326d7-4e93-46d1-9e0e-8407eab6307b"));
+    program.addKeywordArg("steps", 2, $("factorial", "7e1e72c2-256d-4b71-84b6-65166937d7ba"));
+    program.addSwitch("profile", false, $("factorial", "b781d070-00e5-4c26-a56a-c0ad9504c0e3"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");
@@ -101,7 +103,7 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Factorial)
-        std::cout << "Factorial :\n" << factorial(number, steps) << '\n';
+        std::cout << $("factorial", "3ab32522-695e-4551-9542-0eb1824c8bd2") << "\n" << factorial(number, steps) << '\n';
         TOC()
     }
     else

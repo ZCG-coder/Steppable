@@ -37,7 +37,7 @@
 
 namespace steppable::__internals::numUtils
 {
-    bool isNumber(const std::string_view& s)
+    bool isNumber(const std::string& s)
     {
         if (s.empty())
             return false;
@@ -64,7 +64,7 @@ namespace steppable::__internals::numUtils
         return true;
     }
 
-    std::string simplifyZeroPolarity(const std::string_view& string)
+    std::string simplifyZeroPolarity(const std::string& string)
     {
         // Check if the string is zero
         if (isZeroString(string))
@@ -72,7 +72,7 @@ namespace steppable::__internals::numUtils
         return static_cast<std::string>(string);
     }
 
-    std::string simplifyPolarity(const std::string_view& _string)
+    std::string simplifyPolarity(const std::string& _string)
     {
         auto string = simplifyZeroPolarity(_string);
         while (string[0] == '-' and string[1] == '-')
@@ -80,7 +80,7 @@ namespace steppable::__internals::numUtils
         return string;
     }
 
-    std::string standardizeNumber(const std::string_view& _number)
+    std::string standardizeNumber(const std::string& _number)
     {
         auto number = simplifyPolarity(_number);
         // Remove the trailing decimal point
@@ -98,8 +98,8 @@ namespace steppable::__internals::numUtils
         return number;
     }
 
-    SplitNumberResult splitNumber(const std::string_view& _a,
-                                  const std::string_view& _b,
+    SplitNumberResult splitNumber(const std::string& _a,
+                                  const std::string& _b,
                                   const bool padInteger,
                                   const bool padDecimal,
                                   bool properlyFormat,
@@ -237,7 +237,7 @@ namespace steppable::__internals::numUtils
         return result;
     }
 
-    long long determineScale(const std::string_view& number)
+    long long determineScale(const std::string& number)
     {
         auto splitNumberResult = splitNumber(number, "0", false, false).splitNumberArray;
         auto numberInteger = splitNumberResult[0];
@@ -389,21 +389,3 @@ namespace steppable::__internals::stringUtils
         return "";
     }
 } // namespace steppable::__internals::stringUtils
-
-namespace steppable::__internals::utils
-{
-    void initLocale()
-    {
-#if MS_STDLIB_BUGS
-        constexpr char cp_utf16le[] = ".1200";
-        setlocale(LC_ALL, cp_utf16le);
-        _setmode(_fileno(stdout), _O_WTEXT);
-#else
-        // The correct locale name may vary by OS, e.g., "en_US.utf8".
-        (void)setlocale(LC_ALL, ""); // NOLINT(concurrency-mt-unsafe)
-        std::locale::global(std::locale(""));
-        std::wcin.imbue(std::locale());
-        std::wcout.imbue(std::locale());
-#endif
-    }
-} // namespace steppable::__internals::utils

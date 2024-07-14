@@ -25,6 +25,7 @@ This module contains the paths that are used in the project.
 """
 
 from pathlib import Path
+from lib.constants import WINDOWS
 
 # section Project paths
 PROJECT = "Steppable"
@@ -38,4 +39,14 @@ BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
 OBJ_DIR = BUILD_DIR / "obj.temp"
 BIN_DIR = BUILD_DIR / "bin"
 LIB_DIR = BUILD_DIR / "lib"
+# endsection
+
+# section Configuration paths
+if not WINDOWS:
+    CONFIG_DIR = Path().home() / ".config" / "steppable"
+else:
+    CONFIG_DIR = Path().home() / "AppData" / "Roaming" / "steppable"
+
+DEFAULT_CONFIG_DIR = PROJECT_PATH / "res"
+
 # endsection
