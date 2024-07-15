@@ -24,3 +24,31 @@
 FOREACH(TARGET IN LISTS TEST_TARGETS)
     TARGET_INCLUDE_DIRECTORIES(${TARGET} PUBLIC ${STP_BASE_DIRECTORY}/include/)
 ENDFOREACH(TARGET)
+
+IF (STP_BUILD_GUI EQUAL 1)
+    FIND_PACKAGE(SDL2 REQUIRED)
+    ADD_LIBRARY(imgui
+                imgui/imgui.cpp
+                imgui/imgui_draw.cpp
+                imgui/imgui_widgets.cpp
+                imgui/imgui_tables.cpp
+                imgui/imgui_demo.cpp
+                imgui/backends/imgui_impl_sdl2.cpp
+                imgui/backends/imgui_impl_opengl3.cpp)
+
+    # If we have freetype, we can use it to render text
+    FIND_PACKAGE(Freetype QUIET)
+    if (FREETYPE_FOUND)
+        MESSAGE(STATUS "Found Freetype")
+        ADD_LIBRARY(imgui_freetype STATIC "${STP_BASE_DIRECTORY}/include/imgui/misc/freetype/imgui_freetype.cpp")
+        TARGET_INCLUDE_DIRECTORIES(imgui_freetype PRIVATE "${STP_BASE_DIRECTORY}/include/imgui")
+        TARGET_LINK_LIBRARIES(imgui_freetype PRIVATE ${FREETYPE_LIBRARIES})
+        TARGET_LINK_LIBRARIES(imgui PRIVATE imgui_freetype)
+        TARGET_INCLUDE_DIRECTORIES(imgui_freetype PRIVATE ${FREETYPE_INCLUDE_DIRS})
+        TARGET_COMPILE_DEFINITIONS(imgui PRIVATE IMGUI_ENABLE_FREETYPE)
+    endif()
+
+    TARGET_LINK_LIBRARIES(imgui PRIVATE SDL2::SDL2)
+    TARGET_INCLUDE_DIRECTORIES(imgui PRIVATE ${SDL2_INCLUDE_DIRS})
+    TARGET_INCLUDE_DIRECTORIES(imgui PRIVATE "${STP_BASE_DIRECTORY}/include/imgui")
+ENDIF()

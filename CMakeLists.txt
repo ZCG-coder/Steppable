@@ -101,7 +101,9 @@ SET(COMPONENTS
     division
     root
     factorial
- trig hyp log)
+    trig
+    hyp
+    log)
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
 SET(TARGETS ${COMPONENTS} util)
@@ -117,6 +119,7 @@ ENDFOREACH()
 ADD_SUBDIRECTORY(src/)
 ADD_SUBDIRECTORY(lib/)
 ADD_SUBDIRECTORY(tests/)
+ADD_SUBDIRECTORY(gui/)
 ADD_SUBDIRECTORY(include/) # The CMakeLists file there adds the include/ directory to everything
 
 FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
