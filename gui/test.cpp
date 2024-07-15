@@ -70,16 +70,12 @@ int main()
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
-    // Setup Dear ImGui style
-    ImGui::StyleColorsDark();
-    // ImGui::StyleColorsLight();
-
     // Setup Platform/Renderer backends
     ImGui_ImplSDL2_InitForOpenGL(window, gl_context);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
     bool done = false;
-    ImVec4 clear_color = ImVec4(0.45, 0.55, 0.60, 1.00);
+    ImVec4 clear_color = ImVec4(0.22, 0.22, 0.22, 1.00);
     std::array<char, 100> buf{};
     loadFonts(&io);
 
@@ -114,11 +110,20 @@ int main()
         ImGui::InputText("Input", buf.data(), buf.size());
         ImGui::End();
 
+        if (isDarkModeEnabled())
+        {
+            glClearColor(0.22, 0.22, 0.22, 1.0);
+            ImGui::StyleColorsDark();
+        }
+        else
+        {
+            glClearColor(0.95, 0.95, 0.95, 1.0);
+            ImGui::StyleColorsLight();
+        }
+
         // Rendering
         ImGui::Render();
         glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-        glClearColor(
-            clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
         glClear(GL_COLOR_BUFFER_BIT);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         SDL_GL_SwapWindow(window);

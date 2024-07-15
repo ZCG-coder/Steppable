@@ -12,6 +12,47 @@ using namespace std::literals;
 
 namespace steppable::gui::__internals
 {
+#ifdef MACOSX
+    #include <CoreFoundation/CoreFoundation.h>
+
+    bool isDarkModeEnabled()
+    {
+        bool isDarkMode = false;
+        CFPreferencesAppSynchronize(CFSTR("AppleInterfaceStyle"));
+        CFPropertyListRef value = CFPreferencesCopyAppValue(CFSTR("AppleInterfaceStyle"), kCFPreferencesAnyApplication);
+        if (value != nullptr)
+        {
+            const auto* interfaceStyle = static_cast<CFStringRef>(value);
+            if (CFStringCompare(interfaceStyle, CFSTR("Dark"), 0) == kCFCompareEqualTo)
+                isDarkMode = true;
+            CFRelease(value);
+        }
+        return isDarkMode;
+    }
+#elif defined(LINUX)
+    bool isDarkModeEnabled() { return std::filesystem::exists("/usr/share/themes/Adwaita-dark/gtk-3.0"); }
+#elif defined(WINDOWS)
+    bool isDarkModeEnabled()
+    {
+        HKEY key;
+        if (RegOpenKeyExA(HKEY_CURRENT_USER,
+                          "Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+                          0,
+                          KEY_QUERY_VALUE,
+                          &key) == ERROR_SUCCESS)
+        {
+            DWORD value = 0;
+            DWORD size = sizeof(DWORD);
+            if (RegQueryValueExA(key, "AppsUseLightTheme", nullptr, nullptr, reinterpret_cast<LPBYTE>(&value), &size) ==
+                ERROR_SUCCESS)
+                return value == 0;
+        }
+        return false;
+    }
+#else
+    bool isDarkModeEnabled() { return false; }
+#endif
+
     inline void addIfExistent(const ImGuiIO* io,
                               const std::filesystem::path& path,
                               const ImFontConfig* config,

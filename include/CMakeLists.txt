@@ -38,7 +38,7 @@ IF (STP_BUILD_GUI EQUAL 1)
 
     # If we have freetype, we can use it to render text
     FIND_PACKAGE(Freetype QUIET)
-    if (FREETYPE_FOUND)
+    IF (FREETYPE_FOUND)
         MESSAGE(STATUS "Found Freetype")
         ADD_LIBRARY(imgui_freetype STATIC "${STP_BASE_DIRECTORY}/include/imgui/misc/freetype/imgui_freetype.cpp")
         TARGET_INCLUDE_DIRECTORIES(imgui_freetype PRIVATE "${STP_BASE_DIRECTORY}/include/imgui")
@@ -46,7 +46,11 @@ IF (STP_BUILD_GUI EQUAL 1)
         TARGET_LINK_LIBRARIES(imgui PRIVATE imgui_freetype)
         TARGET_INCLUDE_DIRECTORIES(imgui_freetype PRIVATE ${FREETYPE_INCLUDE_DIRS})
         TARGET_COMPILE_DEFINITIONS(imgui PRIVATE IMGUI_ENABLE_FREETYPE)
-    endif()
+    ENDIF()
+
+    IF (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+        TARGET_LINK_LIBRARIES(imgui PRIVATE "-framework CoreFoundation")
+    ENDIF()
 
     TARGET_LINK_LIBRARIES(imgui PRIVATE SDL2::SDL2)
     TARGET_INCLUDE_DIRECTORIES(imgui PRIVATE ${SDL2_INCLUDE_DIRS})
