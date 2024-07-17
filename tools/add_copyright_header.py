@@ -162,7 +162,7 @@ def process(file: Path) -> None:
         file.suffix in (".cpp", ".hpp")  # C++ Source / Header
         or file.name == "cpp.hint"  # C++ Hint file
     ):
-        with open(file, "r") as f:
+        with open(file, "r", encoding="utf-8") as f:
             contents = f.read()
             results = re.match(
                 REGEX_CPP, first_n_lines(contents, count_lines(COPYRIGHT_CPP) + 1)
@@ -180,14 +180,14 @@ def process(file: Path) -> None:
                 contents = contents.replace(results.group(0), header + "\n")
                 print(f"Updated header in {file}")
 
-        with open(file, "w") as f:
+        with open(file, "w", encoding="utf-8") as f:
             f.write(contents)
     elif (
         file.suffix == ".py"
         or file.name == "CMakeLists.txt"
         or ".stp_" in file.suffix  # Steppable configuration files
     ):  # Python File or CMake file
-        with open(file, "r") as f:
+        with open(file, "r", encoding="utf-8") as f:
             contents = f.read()
             results = re.match(
                 REGEX_PY_CMAKE,
@@ -206,7 +206,7 @@ def process(file: Path) -> None:
                 contents = contents.replace(results.group(0), header + "\n")
                 print(f"Updated header in {file}")
 
-        with open(file, "w") as f:
+        with open(file, "w", encoding="utf-8") as f:
             f.write(contents)
 
 
