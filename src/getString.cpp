@@ -71,7 +71,7 @@ namespace steppable::localization
         // The languages may be in xx_YY format. We need to convert it to xx-YY format.
         std::ranges::replace(lang, '_', '-');
         // We cannot find the language, so we return "en-US" as the default language.
-        if (lang.empty())
+        if (lang.empty() or lang == "C")
             lang = "en-US";
         return lang;
     }
@@ -114,10 +114,10 @@ namespace steppable::localization
         {
             // LINE FORMAT
             // key >> "string"
-            if (line.front() == '#')
-                continue; // Skip comments
             if (line.empty())
                 continue; // Skip empty lines
+            if (line.front() == '#')
+                continue; // Skip comments
             // Get the key and the string
             if (std::regex_match(line, STRING_REGEX))
             {
