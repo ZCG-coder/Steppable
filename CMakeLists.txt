@@ -59,18 +59,18 @@ IF(${OPERATING_SYSTEM} MATCHES "Android")
     SET(LINUX CACHE INTERNAL "Is Linux or Android" 1)
 ENDIF()
 
-IF(WIN32)
+IF(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     ADD_COMPILE_DEFINITIONS(WINDOWS NOMINMAX) # Do not add min() and max() macros.
     IF(MSVC) # MSVC Has no UTF-8 support by default
         ADD_COMPILE_OPTIONS(/utf-8)
     ENDIF()
     SET(WINDOWS TRUE)
-ELSEIF(APPLE)
+ELSEIF(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     ADD_COMPILE_DEFINITIONS(MACOSX)
-ELSEIF(LINUX)
+ELSEIF(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     ADD_COMPILE_DEFINITIONS(LINUX)
 ELSE()
-    MESSAGE(ERROR "Platform not defined")
+    MESSAGE(WARNING "Platform not defined")
 ENDIF()
 
 IF(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -101,7 +101,9 @@ SET(COMPONENTS
     division
     root
     factorial
- trig hyp log)
+    trig
+    hyp
+    log)
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
 SET(TARGETS ${COMPONENTS} util)
@@ -117,6 +119,7 @@ ENDFOREACH()
 ADD_SUBDIRECTORY(src/)
 ADD_SUBDIRECTORY(lib/)
 ADD_SUBDIRECTORY(tests/)
+ADD_SUBDIRECTORY(gui/)
 ADD_SUBDIRECTORY(include/) # The CMakeLists file there adds the include/ directory to everything
 
 FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)

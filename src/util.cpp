@@ -205,7 +205,8 @@ namespace steppable::__internals::numUtils
             negative = true;
             out.erase(0, 1);
         }
-        while (out.front() == '0')
+        // Remove all the leading zeros, EXCEPT the last one.
+        while (out.front() == '0' and out.length() > 1)
             out.erase(0, 1);
 
         if (negative)
