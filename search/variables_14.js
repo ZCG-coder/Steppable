@@ -1,4 +1,29 @@
 var searchData=
 [
-  ['x_0',['x',['../structsteppable_1_1prettyPrint_1_1Position.html#a6fc8290cc97f4f822e88020f443ad229',1,'steppable::prettyPrint::Position']]]
+  ['u0_0',['U0',['../structImFontGlyph.html#a3c9d90fb39f6beaf9d69413fa4c8366f',1,'ImFontGlyph']]],
+  ['u1_1',['U1',['../structImFontGlyph.html#aaca9625f2d6972016e05fed583db85b0',1,'ImFontGlyph']]],
+  ['uid_2',['UID',['../structMyDocument.html#aa8b4127cad19be82ea13993d621367a1',1,'MyDocument']]],
+  ['undo_5fchar_3',['undo_char',['../structStbUndoState.html#a8458dacf2d823a6eb69d4991ed219c05',1,'StbUndoState']]],
+  ['undo_5fchar_5fpoint_4',['undo_char_point',['../structStbUndoState.html#a1e93b8c26a8a23536921d125aceacd06',1,'StbUndoState']]],
+  ['undo_5fpoint_5',['undo_point',['../structStbUndoState.html#ad29a8695b3e8252ac164d0c2d0be7d7c',1,'StbUndoState']]],
+  ['undo_5frec_6',['undo_rec',['../structStbUndoState.html#ad8f3e6ad062589d2b560e6d0d20cc897',1,'StbUndoState']]],
+  ['undocktargetnode_7',['UndockTargetNode',['../structImGuiDockRequest.html#a4036b3dfaef9d30e21c218fb6d059ddf',1,'ImGuiDockRequest']]],
+  ['undocktargetwindow_8',['UndockTargetWindow',['../structImGuiDockRequest.html#a94cf3967c5383e8834f0e10f9de61d9e',1,'ImGuiDockRequest']]],
+  ['undostate_9',['undostate',['../structSTB__TexteditState.html#a7e1f0366bbd57e01a4f49a720beb9ead',1,'STB_TexteditState']]],
+  ['uniform1i_10',['Uniform1i',['../unionImGL3WProcs.html#aa3269caceaec09b127985d786e5689ec',1,'ImGL3WProcs']]],
+  ['uniformmatrix4fv_11',['UniformMatrix4fv',['../unionImGL3WProcs.html#a4a4589063c11e88d151c3e63fe208c9f',1,'ImGL3WProcs']]],
+  ['usebuffersubdata_12',['UseBufferSubData',['../structImGui__ImplOpenGL3__Data.html#a7e52bd10bd4d2688df2fbdc915f0e075',1,'ImGui_ImplOpenGL3_Data']]],
+  ['used4kpagesmap_13',['Used4kPagesMap',['../structImFont.html#a95184d1095ecc7da9c843579052e1009',1,'ImFont']]],
+  ['usedchars_14',['UsedChars',['../structImFontGlyphRangesBuilder.html#af83d63600e78e2454a78f0d736ba8ee4',1,'ImFontGlyphRangesBuilder']]],
+  ['useprogram_15',['UseProgram',['../unionImGL3WProcs.html#a3ff636f93be8c25e0c8690a90a739e23',1,'ImGL3WProcs']]],
+  ['user_5fallocator_5fcontext_16',['user_allocator_context',['../structstbtt__pack__context.html#a45fddc4d4adfcef58aa08ad2874cedc0',1,'stbtt_pack_context']]],
+  ['usercallback_17',['UserCallback',['../structImDrawCmd.html#ad26dac4e939f5c4bb892cbca0f9e3af8',1,'ImDrawCmd']]],
+  ['usercallbackdata_18',['UserCallbackData',['../structImDrawCmd.html#ae2f5a0baf4a0b25942237b8ce6adb42d',1,'ImDrawCmd']]],
+  ['userdata_19',['UserData',['../structImGuiIO.html#a8c5e74fd39c2655455329e09529da7d3',1,'ImGuiIO::UserData'],['../structImGuiInputTextCallbackData.html#ae8358ea4135032204fcba6c9ada7c49f',1,'ImGuiInputTextCallbackData::UserData'],['../structImGuiSizeCallbackData.html#ae16a4a1b916810b2f69925c527430a39',1,'ImGuiSizeCallbackData::UserData'],['../structImFontAtlas.html#ac848a29825d36edf8629b31b419dc21e',1,'ImFontAtlas::UserData'],['../structImGuiSettingsHandler.html#a4e8dc5a10948568680764a3cdaf9b102',1,'ImGuiSettingsHandler::UserData'],['../structImGuiContextHook.html#a334cf9cae105a3636f13aa1f2bc25e60',1,'ImGuiContextHook::UserData'],['../structImGuiGetNameFromIndexOldToNewCallbackData.html#ab5145665995e4fd93266c2b14ae4d199',1,'ImGuiGetNameFromIndexOldToNewCallbackData::UserData']]],
+  ['userdata_20',['userdata',['../structstbtt__fontinfo.html#a9c81078df96a7a3f730137151efab285',1,'stbtt_fontinfo']]],
+  ['userflags_21',['UserFlags',['../structanonymous__namespace_02imgui__freetype_8cpp_03_1_1FreeTypeFont.html#aea3dbbabbf22220d84d71ce4aedf760c',1,'anonymous_namespace{imgui_freetype.cpp}::FreeTypeFont']]],
+  ['userid_22',['UserID',['../structImGuiTableColumn.html#a41e54f7b02880ad716544c0928338443',1,'ImGuiTableColumn::UserID'],['../structImGuiTableColumnSettings.html#a8b68ca3c4df704ce887e11e9b2a4ac8b',1,'ImGuiTableColumnSettings::UserID']]],
+  ['useroutersize_23',['UserOuterSize',['../structImGuiTableTempData.html#aaf4e14bfbf965747f8925825dcb13255',1,'ImGuiTableTempData']]],
+  ['usevulkan_24',['UseVulkan',['../structImGui__ImplSDL2__Data.html#a7dbf81a62e12f8563a368561a2cd756c',1,'ImGui_ImplSDL2_Data']]],
+  ['uv_25',['uv',['../structImDrawVert.html#abdf3183529055a6c3f709b23a4bf06b1',1,'ImDrawVert']]]
 ];

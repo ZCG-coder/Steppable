@@ -1,14 +1,8 @@
 var searchData=
 [
-  ['splitnumberarray_0',['splitNumberArray',['../structsteppable_1_1____internals_1_1numUtils_1_1SplitNumberResult.html#a50c8f786407bdf62690747c343f2f793',1,'steppable::__internals::numUtils::SplitNumberResult']]],
-  ['sub_5f0_1',['SUB_0',['../namespacesteppable_1_1____internals_1_1symbols.html#a543212aa778516ece88e52ca746de327',1,'steppable::__internals::symbols']]],
-  ['sub_5fmagic_5fnumber_2',['SUB_MAGIC_NUMBER',['../namespacesteppable_1_1____internals_1_1symbols.html#a431c277f3c6ce34225a17edc7dabd2ac',1,'steppable::__internals::symbols']]],
-  ['sub_5fz_3',['SUB_Z',['../namespacesteppable_1_1____internals_1_1symbols.html#a02816c89e5c5022f3365f8c563f6157a',1,'steppable::__internals::symbols']]],
-  ['sup_5f0_4',['SUP_0',['../namespacesteppable_1_1____internals_1_1symbols.html#adb98fdcaf5e3cb83591fde5cce43d832',1,'steppable::__internals::symbols']]],
-  ['sup_5fmagic_5fnumber_5',['SUP_MAGIC_NUMBER',['../namespacesteppable_1_1____internals_1_1symbols.html#adbeda46f79c39baedc185ad1c569b892',1,'steppable::__internals::symbols']]],
-  ['sup_5fz_6',['SUP_Z',['../namespacesteppable_1_1____internals_1_1symbols.html#a0d749d94fae3c4edaa864d8422c23db9',1,'steppable::__internals::symbols']]],
-  ['superscripts_7',['SUPERSCRIPTS',['../namespacesteppable_1_1____internals_1_1symbols.html#a3dbef43e4c83dd6946de66afb052fff7',1,'steppable::__internals::symbols']]],
-  ['surd_8',['SURD',['../namespacesteppable_1_1____internals_1_1symbols.html#a839c149559c7f8ae448ae16db7200ad6',1,'steppable::__internals::symbols']]],
-  ['switchdescriptions_9',['switchDescriptions',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ab6ac41c953fc44b2a2087839df2c5ccd',1,'steppable::__internals::utils::ProgramArgs']]],
-  ['switches_10',['switches',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#ad0d965907c030b01376175fe9214a859',1,'steppable::__internals::utils::ProgramArgs']]]
+  ['quantity_0',['Quantity',['../structanonymous__namespace_02imgui__demo_8cpp_03_1_1MyItem.html#abfab8d6c419bb6da9a31cb8f04773893',1,'anonymous_namespace{imgui_demo.cpp}::MyItem']]],
+  ['queryframecount_1',['QueryFrameCount',['../structImGuiStackLevelInfo.html#a54555db636b1247dd9e0ebcdd781f46f',1,'ImGuiStackLevelInfo']]],
+  ['queryid_2',['QueryId',['../structImGuiIDStackTool.html#ae826b9b0aa19cedbdeded02fff54c08a',1,'ImGuiIDStackTool']]],
+  ['querysuccess_3',['QuerySuccess',['../structImGuiStackLevelInfo.html#af73a14a915d748f1ebe5c4a4aedd5325',1,'ImGuiStackLevelInfo']]],
+  ['quotient_4',['quotient',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#ae02205a4a9283f5df34a455b575fd60c',1,'steppable::__internals::arithmetic::QuotientRemainder']]]
 ];

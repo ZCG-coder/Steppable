@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['multilengthletterexception_0',['MultiLengthLetterException',['../classsteppable_1_1exceptions_1_1MultiLengthLetterException.html',1,'steppable::exceptions']]]
+  ['glyphinfo_0',['GlyphInfo',['../structanonymous__namespace_02imgui__freetype_8cpp_03_1_1GlyphInfo.html',1,'anonymous_namespace{imgui_freetype.cpp}']]]
 ];
