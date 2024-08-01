@@ -9,7 +9,7 @@ FUNCTION(ADD_GUI SOURCE)
     TARGET_INCLUDE_DIRECTORIES(${NAME} PRIVATE "${STP_BASE_DIRECTORY}/include/imgui")
 
     # Link Steppable stuff
-    TARGET_LINK_LIBRARIES(${NAME} PRIVATE calc util)
+    TARGET_LINK_LIBRARIES(${NAME} PRIVATE calc impl)
     TARGET_INCLUDE_DIRECTORIES(${NAME} PRIVATE ${STP_BASE_DIRECTORY}/include)
 
     if(FREETYPE_FOUND)
@@ -24,5 +24,12 @@ IF (STP_BUILD_GUI EQUAL 1)
     # Find and link SDL2 and OpenGL
     FIND_PACKAGE(SDL2 REQUIRED)
     FIND_PACKAGE(OpenGL REQUIRED)
+    ADD_LIBRARY(impl STATIC impl/gui.cpp impl/window.cpp)
+    TARGET_LINK_LIBRARIES(impl PRIVATE ${SDL2_LIBRARIES} ${OPENGL_LIBRARIES} imgui)
+    TARGET_INCLUDE_DIRECTORIES(impl PRIVATE
+                               ${SDL2_INCLUDE_DIRS}
+                               "${STP_BASE_DIRECTORY}/include/imgui"
+                               "${STP_BASE_DIRECTORY}/include")
+
     ADD_GUI(test.cpp)
 ENDIF()
