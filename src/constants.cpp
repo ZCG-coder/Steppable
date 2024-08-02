@@ -20,66 +20,22 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "fn/basicArithm.hpp"
-#include "output.hpp"
-#include "testing.hpp"
-#include "util.hpp"
+#include "constants.hpp"
 
-#include <iomanip>
-#include <iostream>
+#include <string_view>
 
-TEST_START()
-
-using namespace steppable::__internals::arithmetic;
-
-SECTION(Test hyperbolic sine)
-_.assertIsEqual(sinh("10", 3), "11013.233");
-SECTION_END()
-
-SECTION(Test hyperbolic cosine)
-_.assertIsEqual(cosh("4.75", 4), "57.7965");
-SECTION_END()
-
-SECTION(Test hyperbolic tangent)
-_.assertIsEqual(tanh("0.5", 5), "0.46212");
-SECTION_END()
-
-SECTION(Test hyperbolic cotangent)
-_.assertIsEqual(coth("1.25", 5), "1.17884");
-SECTION_END()
-
-SECTION(Test hyperbolic secant)
-_.assertIsEqual(sech("0.75", 4), "0.7724");
-SECTION_END()
-
-SECTION(Test hyperbolic cosecant)
-_.assertIsEqual(csch("0.25", 4), "3.9588");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic sine)
-_.assertIsEqual(asinh("0.5", 4), "0.4812");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic cosine)
-_.assertIsEqual(acosh("1.25", 4), "0.6931");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic tangent)
-_.assertIsEqual(atanh("0.75", 4), "0.9730");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic cotangent)
-_.assertIsEqual(acoth("5", 4), "0.2028");
-_.assertIsEqual(acoth("1.5", 4), "0.8047");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic secant)
-_.assertIsEqual(asech("0.75", 4), "0.7953");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic cosecant)
-_.assertIsEqual(acsch("0.25", 4), "2.0947");
-SECTION_END()
-
-TEST_END()
+// NOLINTBEGIN(cert-err58-cpp)
+namespace steppable::constants
+{
+    const std::string_view& PI =
+        "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
+    const std::string_view& TWO_PI = "6.283185307179586231995926937088370323181152343750";
+    const std::string_view& PI_OVER_2 =
+        "1.570796326794896619231321691639751442098584699687552910487472296153908203143104499314017412835292542";
+    const std::string_view& PI_OVER_180 =
+        "0.01745329251994329508887757482524547311994764539930555555555555555555555555555555555555555555555555556";
+    const std::string_view& PI_OVER_200 =
+        "0.01570796326794896619231321691639716312084074699687552942986246296153903203140449499314017412671058534";
+    const std::string_view& E = "2.718281828459045090795598298427648842334747314453125";
+} // namespace steppable::constants
+// NOLINTEND(cert-err58-cpp)

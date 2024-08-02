@@ -109,7 +109,7 @@ namespace steppable::__internals::arithmetic
         // %@%&&&%%&&&. .&*@@@@@@@@& | Henri Padé |
         // %&%&&&%&&&%&@&@@@@@@@@@@@ +------------+
 
-        if (compare(abs(x, 0), "0.01", 0) == "0") // If small, use polynomial approximant
+        if (compare(abs(x, 0), "0.001", 0) == "0") // If small, use polynomial approximant
         {
             // double x2 = x * x;
             auto x2 = multiply(x, x, 0);
