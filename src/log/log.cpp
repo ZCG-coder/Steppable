@@ -29,42 +29,19 @@
  */
 
 #include "argParse.hpp"
-#include "constants.hpp"
 #include "fn/basicArithm.hpp"
 #include "getString.hpp"
-#include "logReport.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
 #include "util.hpp"
 
 #include <cstdlib>
-#include <iostream>
 #include <string>
 
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::utils;
 using namespace steppable::localization;
 using namespace std::literals;
-
-double ln(double x, double epsilon)
-{
-    //                    x - exp(y )
-    //                             n
-    // y      = y  + 2 * --------------
-    //  n + 1    n        x + exp(y )
-    //                             n
-
-    double yn = x - 1.0; // using the first term of the Taylor series as initial-value
-    double yn1 = yn;
-
-    do
-    {
-        yn = yn1;
-        yn1 = yn + 2 * (x - exp(yn)) / (x + exp(yn));
-    } while (fabs(yn - yn1) > epsilon);
-
-    return yn1;
-}
 
 namespace steppable::__internals::arithmetic
 {
