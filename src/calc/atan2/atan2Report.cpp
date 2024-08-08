@@ -21,66 +21,19 @@
  **************************************************************************************************/
 
 /**
- * @file platform.hpp
- * @brief This file contains platform-specific functions
- * As the name suggests, this file contains functions that are specific to a certain platform.
- * For example, the programSafeExit function uses std::quick_exit on Windows and exit on macOS,
- * because std::quick_exit is not implemented on macOS.
+ * @file atan2Report.cpp
+ * @brief Desciption
  *
  * @author Andy Zhang
- * @date 13th January 2024
+ * @date 2nd August 2024
  */
 
-#pragma once
+#include "atan2Report.hpp"
 
-#include <cstdlib>
-#include <ctime>
-#include <filesystem>
-#include <mutex>
+#include <string>
 
-using namespace std::literals;
-
-/**
- * @namespace steppable::__internals::utils
- * @brief Namespace for internal functions
- * @note This namespace should not be used by other programs outside of the Steppable core.
- */
-namespace steppable::__internals::utils
+std::string reportAtan2()
 {
-    /**
-     * @brief Exit the program safely
-     *
-     * This function exits the program safely with the given status code.
-     * On Windows, it uses std::quick_exit, and on macOS, it uses exit,
-     * because std::quick_exit is not implemented on macOS.
-     *
-     * @param[in] status The status code to exit with
-     */
-    inline void programSafeExit(const int status)
-    {
-#ifdef MACOSX
-        exit(status); // NOLINT(concurrency-mt-unsafe)
-#else
-        std::quick_exit(status);
-#endif
-    }
-
-    inline std::tm localtime_xp(std::time_t* timer)
-    {
-        std::tm bt{};
-#if defined(__unix__)
-        localtime_r(timer, &bt);
-#elif defined(WINDOWS)
-        localtime_s(&bt, timer);
-#else
-        static std::mutex mtx;
-        std::lock_guard<std::mutex> lock(mtx);
-        bt = *std::localtime(timer); // NOLINT(concurrency-mt-unsafe)
-#endif
-        return bt;
-    }
-
-    std::filesystem::path getHomeDirectory();
-
-    std::filesystem::path getConfDirectory();
-} // namespace steppable::__internals::utils
+    // Intentionally not implemented.
+    return "";
+}

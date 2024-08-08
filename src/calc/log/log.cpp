@@ -86,7 +86,7 @@ namespace steppable::__internals::arithmetic
         auto yn1 = yn;
 
         auto error = abs(subtract(yn, yn1, 0), 0);
-        do
+        do // NOLINT(cppcoreguidelines-avoid-do-while)
         {
             yn = yn1;
             auto expYN = exp(yn, decimals);

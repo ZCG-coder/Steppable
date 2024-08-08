@@ -311,6 +311,11 @@ namespace steppable::__internals::arithmetic
         // ------------------ ~= arctan(x)
         //    4      2
         //  9x  + 90x  + 105
+        //
+        //                      1
+        //   d              ---------
+        // ---- arctan(x) =     2
+        //  dx                 x + 1
         auto x2 = power(x, "2", 0);
         auto x3 = multiply(x2, x, 0); // Use multiply to reduce the number of operations.
         auto x4 = multiply(x3, x, 0);
@@ -321,7 +326,9 @@ namespace steppable::__internals::arithmetic
         if (isReduced)
         {
             // If x was reduced, use the identity
-            // arctan(1/x) = pi/2 - arctan(x)
+            //              pi            1
+            // arctan(x) = ---- - arctan(---)
+            //               2            x
             result = subtract(static_cast<std::string>(constants::PI_OVER_2), result, 0);
         }
         result = roundOff(result, decimals);
