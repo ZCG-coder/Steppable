@@ -108,7 +108,7 @@ namespace steppable::__internals::arithmetic
             auto test = power(radicand, base, 0);
 
             if (compare(newAvg, "0", 0) == "2" or compare(test, number, 0) == "2")
-                return roundDown(numUtils::roundOff(radicand, 1));
+                return roundDown(roundOff(radicand, 1));
             if (compare(test, number, 0) == "1")
                 x = radicand;
             else if (compare(test, number, 0) == "0")

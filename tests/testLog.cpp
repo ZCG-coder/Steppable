@@ -33,7 +33,7 @@ TEST_START()
 using namespace steppable::__internals::arithmetic;
 
 SECTION(Test natural logarithm)
-_.assertIsEqual(ln("5.3", 4), "1.6675");
+_.assertIsEqual(ln("5.3", 4), "1.6677");
 SECTION_END()
 
 TEST_END()

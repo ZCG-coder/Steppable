@@ -25,6 +25,10 @@
 #include <string>
 #include <vector>
 
+/**
+ * @namespace steppable::localization
+ * @brief The namespace for the localization utilities.
+ */
 namespace steppable::localization
 {
     /**

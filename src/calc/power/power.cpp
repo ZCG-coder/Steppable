@@ -28,10 +28,12 @@
  * @date 8rd November 2023
  */
 #include "argParse.hpp"
+#include "constants.hpp"
 #include "fn/basicArithm.hpp"
 #include "fraction.hpp"
 #include "getString.hpp"
 #include "powerReport.hpp"
+#include "rounding.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
@@ -115,6 +117,21 @@ namespace steppable::__internals::arithmetic
             negative = true;
         }
         return reportPower(number, raiseTo, numberTrailingZeros, negative, steps);
+    }
+
+    std::string exp(const std::string& x, const size_t decimals)
+    {
+        constexpr size_t iter = 200;
+        std::string sum = "1";
+        std::string term = "1";
+        for (size_t i = 1; i < iter; i++)
+        {
+            std::string frac = divide(x, std::to_string(i), 0, static_cast<int>(decimals));
+            term = multiply(term, frac, 0);
+            sum = add(sum, term, 0);
+        }
+
+        return sum;
     }
 } // namespace steppable::__internals::arithmetic
 

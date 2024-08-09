@@ -110,7 +110,7 @@ namespace steppable::__internals::arithmetic
      * @brief Converts a string representation of a number from decimal to another one.
      *
      * @param[in] _number The string representation of the number.
-     * @param[in] baseString The desired base.
+     * @param[in] baseStr The desired base.
      * @param[in] steps The number of steps to perform the conversion.
      * @return The converted number as a string.
      */
@@ -165,6 +165,15 @@ namespace steppable::__internals::arithmetic
      * @return The result of the power operation as a string.
      */
     std::string power(const std::string& _number, const std::string& raiseTo, int steps = 2);
+
+    /**
+     * @brief Calculates e^x. Shorthand of power(x, E, 0);
+     *
+     * @param x The string representation of the number.
+     * @param decimals The number of decimals to output.
+     * @return The exponent of the number.
+     */
+    std::string exp(const std::string& x, size_t decimals = 10);
 
     /**
      * @brief Subtracts one string representation of a number from another string representation of a number.

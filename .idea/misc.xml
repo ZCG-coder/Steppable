@@ -8,6 +8,13 @@
   </component>
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
+    <sourceRoots>
+      <file path="$PROJECT_DIR$/include" />
+      <file path="$PROJECT_DIR$/src" />
+    </sourceRoots>
+    <libraryRoots>
+      <file path="$PROJECT_DIR$/include/imgui" />
+    </libraryRoots>
     <excludeRoots>
       <file path="$PROJECT_DIR$/.cache" />
       <file path="$PROJECT_DIR$/build" />

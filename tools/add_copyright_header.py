@@ -158,6 +158,9 @@ def process(file: Path) -> None:
     Process the file, adding or updating the header if necessary.
     :param file: The file to process.
     """
+    if "imgui" in file.as_posix():
+        return
+
     if (
         file.suffix in (".cpp", ".hpp")  # C++ Source / Header
         or file.name == "cpp.hint"  # C++ Hint file

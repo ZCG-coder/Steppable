@@ -22,170 +22,70 @@
 
 #pragma once
 
-#include "output.hpp"
-
 #include <backends/imgui_impl_opengl3.h>
 #include <backends/imgui_impl_sdl2.h>
 #include <filesystem>
+#include <functional>
 #include <imgui.h>
 #include <string>
 
 using namespace std::literals;
 
+/**
+ * @brief The namespace for the internal components of the GUI module of the Steppable library.
+ * @details This namespace contains the internal components of the GUI module of the Steppable library.
+ * For example, methods that gets the system fonts, checks if the dark mode is enabled, and loads the fonts.
+ * @note This namespace is not intended for use by the end user.
+ */
 namespace steppable::gui::__internals
 {
-#ifdef MACOSX
-    #include <CoreFoundation/CoreFoundation.h>
+    /**
+     * @brief Checks if the dark mode is enabled.
+     * @return True if the dark mode is enabled, false otherwise.
+     */
+    bool isDarkModeEnabled();
 
-    bool isDarkModeEnabled()
-    {
-        bool isDarkMode = false;
-        CFPreferencesAppSynchronize(CFSTR("AppleInterfaceStyle"));
-        CFPropertyListRef value = CFPreferencesCopyAppValue(CFSTR("AppleInterfaceStyle"), kCFPreferencesAnyApplication);
-        if (value != nullptr)
-        {
-            const auto* interfaceStyle = static_cast<CFStringRef>(value);
-            if (CFStringCompare(interfaceStyle, CFSTR("Dark"), 0) == kCFCompareEqualTo)
-                isDarkMode = true;
-            CFRelease(value);
-        }
-        return isDarkMode;
-    }
-#elif defined(LINUX)
-    bool isDarkModeEnabled() { return std::filesystem::exists("/usr/share/themes/Adwaita-dark/gtk-3.0"); }
-#elif defined(WINDOWS)
-    bool isDarkModeEnabled()
-    {
-        HKEY key;
-        if (RegOpenKeyExA(HKEY_CURRENT_USER,
-                          "Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
-                          0,
-                          KEY_QUERY_VALUE,
-                          &key) == ERROR_SUCCESS)
-        {
-            DWORD value = 0;
-            DWORD size = sizeof(DWORD);
-            if (RegQueryValueExA(key, "AppsUseLightTheme", nullptr, nullptr, reinterpret_cast<LPBYTE>(&value), &size) ==
-                ERROR_SUCCESS)
-                return value == 0;
-        }
-        return false;
-    }
-#else
-    bool isDarkModeEnabled() { return false; }
-#endif
+    /**
+     * Attempts to add a font to the application if it exists in the system.
+     *
+     * This method checks if a specified font is available on the system. If the font is found,
+     * it is added to the application's font resources, making it available for use within the application.
+     * If the font does not exist, the method will not perform any action or may log an error or warning,
+     * depending on implementation details.
+     *
+     * @param io A pointer to an ImGuiIO object to enable configuration.
+     * @param path The absolute path to the font file.
+     * @param config A pointer to an ImFontConfig object to enable font configuration.
+     * @param ranges A pointer to an array of ImWchar objects to enable character range configuration.
+     */
+    void addFontIfExistent(const ImGuiIO* io,
+                           const std::filesystem::path& path,
+                           const ImFontConfig* config,
+                           const ImWchar* ranges) noexcept;
 
-    inline void addIfExistent(const ImGuiIO* io,
-                              const std::filesystem::path& path,
-                              const ImFontConfig* config,
-                              const ImWchar* ranges) noexcept
-    {
-        if (io->Fonts->Fonts.empty() and config->MergeMode)
-            config = nullptr;
-        if (std::filesystem::exists(path))
-        {
-#ifdef DEBUG
-            output::info("addIfExistent"s, "Added font {0}"s, { path });
-#endif
-            io->Fonts->AddFontFromFileTTF(path.c_str(), 15.0F, config, ranges);
-        }
-    }
-
-    inline void loadFonts(const ImGuiIO* io) noexcept
-    {
-        ImFontConfig config;
-        config.MergeMode = true;
-#ifdef WINDOWS
-        // WINDOWS fonts
-        // -------------
-        // Chinese    -> Microsoft YaHei
-        // Cyrillic   -> Segoe UI -----------------+
-        // Greek      -> Segoe UI -----------------|
-        // Japanese   -> Meiryo                    |
-        // Korean     -> Malgun Gothic             +--> Top-priority
-        // Thai       -> Leelawadee                |
-        // Vietnamese -> Segoe UI -----------------+
-
-        // Load top-priority fonts
-        addIfExistent(io, "C:/Windows/Fonts/segoeui.ttf", &config, io->Fonts->GetGlyphRangesCyrillic());
-        addIfExistent(io, "C:/Windows/Fonts/segoeui.ttf", &config, io->Fonts->GetGlyphRangesDefault());
-        addIfExistent(io, "C:/Windows/Fonts/segoeui.ttf", &config, io->Fonts->GetGlyphRangesGreek());
-        addIfExistent(io, "C:/Windows/Fonts/segoeui.ttf", &config, io->Fonts->GetGlyphRangesVietnamese());
-
-        // Load Chinese fonts
-        addIfExistent(io, "C:/Windows/Fonts/msyh.ttc", &config, io->Fonts->GetGlyphRangesChineseFull());
-
-        // Load Japanese fonts
-        addIfExistent(io, "C:/Windows/Fonts/meiryo.ttc", &config, io->Fonts->GetGlyphRangesJapanese());
-
-        // Load Korean fonts
-        addIfExistent(io, "C:/Windows/Fonts/malgun.ttf", &config, io->Fonts->GetGlyphRangesKorean());
-
-        // Load Thai fonts
-        addIfExistent(io, "C:/Windows/Fonts/leelawad.ttf", &config, io->Fonts->GetGlyphRangesThai());
-#elif defined(MACOSX)
-        // MACOS fonts
-        // -------------
-        // Chinese    -> PingFang SC (*)
-        // Cyrillic   -> SF Pro -----------------+
-        // Greek      -> SF Pro -----------------|
-        // Japanese   -> Hiragino Sans           |
-        // Korean     -> Apple SD Gothic Neo     +--> Top-priority
-        // Thai       -> Thonburi                |
-        // Vietnamese -> SF Pro -----------------+
-        //
-        // (*) NOTE: PingFang may not be available on all systems, but STHeiti Medium is a good alternative.
-
-        // Load top-priority fonts
-        addIfExistent(io, "/Library/Fonts/SF-Pro.ttf", &config, io->Fonts->GetGlyphRangesCyrillic());
-        addIfExistent(io, "/Library/Fonts/SF-Pro.ttf", &config, io->Fonts->GetGlyphRangesDefault());
-        addIfExistent(io, "/Library/Fonts/SF-Pro.ttf", &config, io->Fonts->GetGlyphRangesGreek());
-        addIfExistent(io, "/Library/Fonts/SF-Pro.ttf", &config, io->Fonts->GetGlyphRangesVietnamese());
-
-        // Load Chinese fonts
-        addIfExistent(io, "/System/Library/Fonts/PingFang.ttc", &config, io->Fonts->GetGlyphRangesChineseFull());
-        addIfExistent(io, "/System/Library/Fonts/STHeiti Medium.ttc", &config, io->Fonts->GetGlyphRangesChineseFull());
-
-        // Load Japanese fonts
-        addIfExistent(io, "/System/Library/Fonts/Hiragino.ttc", &config, io->Fonts->GetGlyphRangesJapanese());
-
-        // Load Korean fonts
-        addIfExistent(io, "/System/Library/Fonts/AppleSDGothicNeo.ttc", &config, io->Fonts->GetGlyphRangesKorean());
-
-        // Load Thai fonts
-        addIfExistent(io, "/System/Library/Fonts/Thonburi.ttf", &config, io->Fonts->GetGlyphRangesThai());
-        addIfExistent(io, "/System/Library/Fonts/Supplemental/Ayuthaya.ttf", &config, io->Fonts->GetGlyphRangesThai());
-#elif defined(LINUX)
-        // LINUX fonts
-        // -------------
-        // Chinese    -> WenQuanYi Zen Hei
-        // Cyrillic   -> DejaVu Sans -----------------+
-        // Greek      -> DejaVu Sans -----------------|
-        // Japanese   -> Takao Gothic                 |
-        // Korean     -> Nanum Gothic                 +--> Top-priority
-        // Thai       -> Garuda                       |
-        // Vietnamese -> DejaVu Sans -----------------+
-
-        // Load top-priority fonts
-        addIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesCyrillic());
-        addIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesDefault());
-        addIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesGreek());
-        addIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesVietnamese());
-
-        // Load Chinese fonts
-        addIfExistent(io, "/usr/share/fonts/TTF/wqy-zenhei.ttc", &config, io->Fonts->GetGlyphRangesChineseFull());
-
-        // Load Japanese fonts
-        addIfExistent(io, "/usr/share/fonts/TTF/takao-mincho.ttf", &config, io->Fonts->GetGlyphRangesJapanese());
-
-        // Load Korean fonts
-        addIfExistent(io, "/usr/share/fonts/TTF/NanumGothic.ttf", &config, io->Fonts->GetGlyphRangesKorean());
-
-        // Load Thai fonts
-        addIfExistent(io, "/usr/share/fonts/TTF/garuda.ttf", &config, io->Fonts->GetGlyphRangesThai());
-#endif
-        // Add the default font as well.
-        io->Fonts->AddFontDefault(&config);
-        io->Fonts->Build();
-    }
+    /**
+     * @brief Loads the fonts for the application.
+     * @details This method tries to find the system fonts that can display most character sets.
+     * @param io A pointer to an ImGuiIO object to enable configuration
+     */
+    void loadFonts(const ImGuiIO* io) noexcept;
 } // namespace steppable::gui::__internals
+
+/**
+ * @brief The namespace for the GUI components of the Steppable library. This is the main namespace for the GUI
+ * components.
+ */
+namespace steppable::gui
+{
+    /**
+     * @brief Runs the main window of the application.
+     * @details This method replaces the long ininitalization process of the application with a simple
+     * call to the runWindow method. This method initializes the SDL2 and OpenGL backends for the application,
+     * then runs the main window loop. The main window loop is responsible for rendering the application's
+     * contents and handling user input.
+     *
+     * @param name The name of the window.
+     * @param predicate The function that will be called to render the window.
+     */
+    void runWindow(const std::string& name, const std::function<void(void)>& predicate);
+} // namespace steppable::gui
