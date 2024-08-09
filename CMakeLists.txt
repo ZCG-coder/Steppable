@@ -92,21 +92,21 @@ FUNCTION(capitalize IN OUT)
 ENDFUNCTION()
 
 SET(COMPONENTS
+    base::baseConvert
+    base::decimalConvert
     calc::abs
     calc::add
-    base::baseConvert
-    calc::subtract
-    calc::multiply
-    base::decimalConvert
+    calc::atan2
     calc::comparison
-    calc::power
     calc::division
-    calc::root
     calc::factorial
-    calc::trig
     calc::hyp
     calc::log
-    calc::atan2
+    calc::multiply
+    calc::power
+    calc::root
+    calc::subtract
+    calc::trig
 )
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 

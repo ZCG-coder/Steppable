@@ -139,7 +139,13 @@ def make_dir(name: str, date: str, author: str) -> None:
     :param date: The date of creation.
     :param author: The author of the component.
     """
-    path: Path = SRC_DIR / name
+
+    parts = name.split("::")
+    if len(parts) != 2:
+        print("ERROR: Name format is incorrect. Should be a::b.")
+    origin = parts[0]
+    name = parts[1]
+    path: Path = SRC_DIR / origin / name
 
     if not path.is_dir():
         path.mkdir(exist_ok=False)
@@ -185,10 +191,13 @@ def make_dir(name: str, date: str, author: str) -> None:
 #include "{name}Report.hpp"
 #include <string>
 
-std::string {name}(/* Arguments... */)
+namespace steppable::__internals::arithmetic
 {BRACE}
-    // Your code here...
-{END_BRACE}
+    std::string {name}(/* Arguments... */)
+    {BRACE}
+        // Your code here...
+    {END_BRACE}
+{END_BRACE} // namespace steppable::__internals::arithmetic
 """
         )
     print(f"- Added {name}.cpp")
