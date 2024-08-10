@@ -95,6 +95,7 @@ SET(COMPONENTS
     base::baseConvert
     base::decimalConvert
     calc::abs
+    calculus::nInt
     calc::add
     calc::atan2
     calc::comparison
