@@ -31,6 +31,7 @@
 #include "argParse.hpp"
 #include "constants.hpp"
 #include "fn/basicArithm.hpp"
+#include "fn/calculus.hpp"
 #include "getString.hpp"
 #include "rounding.hpp"
 #include "trigReport.hpp"
@@ -304,25 +305,18 @@ namespace steppable::__internals::arithmetic
             // Reduce x to a small number
             x = divide("1", x, 0, decimals * 2);
         }
-        // Otherwise, use Padé series.
-        // (https://journalofinequalitiesandapplications.springeropen.com/articles/10.1186/s13660-017-1310-6/tables/1)
-        //        3
-        //     55x  + 105x
-        // ------------------ ~= arctan(x)
-        //    4      2
-        //  9x  + 90x  + 105
-        //
-        //                      1
-        //   d              ---------
-        // ---- arctan(x) =     2
-        //  dx                 x + 1
-        auto x2 = power(x, "2", 0);
-        auto x3 = multiply(x2, x, 0); // Use multiply to reduce the number of operations.
-        auto x4 = multiply(x3, x, 0);
-        auto numerator = add(multiply("55", x3, 0), multiply("105", x, 0), 0);
-        auto denominator = add(add(x4, multiply("90", x2, 0), 0), "105", 0);
-        auto result = standardizeNumber(divide(numerator, denominator, 0, decimals * 2));
-
+        // Otherwise, use integration.
+        //                      1                       / x
+        //   d              ---------  ==>              |       1
+        // ---- arctan(x) =     2           arctan(x) = |   ----------  dt
+        //  dx                 x + 1                    |      2
+        //                                              / 0   t  + 1
+        auto fx = [&](const std::string& y) {
+            const auto& y2 = power(y, "2", 0);
+            const auto& denominator = add(y2, "1", 0);
+            return divide("1", denominator, 0, decimals + 1);
+        };
+        auto result = calculus::romberg(fx, "0", x, 10, decimals + 1);
         if (isReduced)
         {
             // If x was reduced, use the identity
@@ -346,6 +340,8 @@ namespace steppable::__internals::arithmetic
             break;
         }
 
+        if (_x.front() == '-')
+            result = "-" + result;
         return result;
     }
 

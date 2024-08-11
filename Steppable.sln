@@ -4,19 +4,19 @@ VisualStudioVersion = 17.11.35017.193
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "calc", "calc.vcxproj", "{0A900AAA-AC12-48CF-85CF-8BB0C0130512}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "add", "src\add\add.vcxproj", "{50F5EB82-9639-40D9-A6A1-62BE499E4528}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "add", "src\calc\add\add.vcxproj", "{50F5EB82-9639-40D9-A6A1-62BE499E4528}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "util", "util.vcxproj", "{F6AF63F8-9E0F-4DA2-89B3-3096B56BA251}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "subtract", "src\subtract\subtract.vcxproj", "{8F1DF35F-1D30-4703-8B94-B1A3753D60C4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "subtract", "src\calc\subtract\subtract.vcxproj", "{8F1DF35F-1D30-4703-8B94-B1A3753D60C4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "comparison", "src\comparison\comparison.vcxproj", "{7666B097-5666-4F12-863A-F7BAACFEDB4E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "comparison", "src\calc\comparison\comparison.vcxproj", "{7666B097-5666-4F12-863A-F7BAACFEDB4E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multiply", "src\multiply\multiply.vcxproj", "{D2D485AA-9E2E-4D6E-8D8A-0C82A6538BFA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multiply", "src\calc\multiply\multiply.vcxproj", "{D2D485AA-9E2E-4D6E-8D8A-0C82A6538BFA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "division", "src\division\division.vcxproj", "{348481F3-C3A4-4D76-A801-54888CB569C4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "division", "src\calc\division\division.vcxproj", "{348481F3-C3A4-4D76-A801-54888CB569C4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "power", "src\power\power.vcxproj", "{0C2C224A-06F4-44F2-847F-B3870608F1EF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "power", "src\calc\power\power.vcxproj", "{0C2C224A-06F4-44F2-847F-B3870608F1EF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testAdd", "tests\testAdd.vcxproj", "{C11E7406-C105-44A5-91DD-71FD0ED96D2A}"
 EndProject
@@ -51,7 +51,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "abs", "src\abs\abs.vcxproj", "{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "abs", "src\calc\abs\abs.vcxproj", "{B0C1EC9C-06CC-47B2-9B93-CD046FC0EF34}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "base", "base.vcxproj", "{867A7B37-C961-4581-AE5B-067FD464CC7C}"
 EndProject
@@ -67,15 +67,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testDecimalConvert", "tests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "base Source", "base Source", "{254B33CA-1687-41C5-9060-FBF4EF09FECD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "baseConvert", "src\baseConvert\baseConvert.vcxproj", "{00B3E92A-8C55-4D70-8A27-8F0AEBF5872D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "baseConvert", "src\base\baseConvert\baseConvert.vcxproj", "{00B3E92A-8C55-4D70-8A27-8F0AEBF5872D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "decimalConvert", "src\decimalConvert\decimalConvert.vcxproj", "{55A00CFD-37B4-4618-A8D3-445A05DA759A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "decimalConvert", "src\base\decimalConvert\decimalConvert.vcxproj", "{55A00CFD-37B4-4618-A8D3-445A05DA759A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "factorial", "src\factorial\factorial.vcxproj", "{C6B85BA3-8B2A-4778-BAB9-CF7BE46F12DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "factorial", "src\calc\factorial\factorial.vcxproj", "{C6B85BA3-8B2A-4778-BAB9-CF7BE46F12DB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "root", "src\root\root.vcxproj", "{127594DF-529C-426F-AE9B-C46EC403CDBA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "root", "src\calc\root\root.vcxproj", "{127594DF-529C-426F-AE9B-C46EC403CDBA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "trig", "src\trig\trig.vcxproj", "{2B7A46CF-F3C3-4EAE-91EB-96B8DB2A2CD2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "trig", "src\calc\trig\trig.vcxproj", "{2B7A46CF-F3C3-4EAE-91EB-96B8DB2A2CD2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testRoot", "tests\testRoot.vcxproj", "{09060239-6270-4BE5-BB4E-FDD22EA3C49D}"
 EndProject
