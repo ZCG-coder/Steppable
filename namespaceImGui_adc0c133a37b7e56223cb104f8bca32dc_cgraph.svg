@@ -7,6 +7,7 @@
 <!--zoomable 307 -->
 
 <svg id="main" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" onload="init(evt)">
+
 <style type="text/css"><![CDATA[
 .node, .edge {opacity: 0.7;}
 .node.selected, .edge.selected {opacity: 1;}
@@ -48,7 +49,7 @@
 <script type="application/ecmascript">
 var viewWidth = 936;
 var viewHeight = 307;
-var sectionId = 'dynsection-301';
+var sectionId = 'dynsection-305';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -276,7 +277,7 @@ var sectionId = 'dynsection-301';
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="structImGuiStorage.html#ac86b64f5c69a15de6c6c326963eca64a" target="_top" xlink:title=" ">
+<g id="a_Node000009"><a xlink:href="structImGuiStorage.html#a9af0043a681938246b80ecd273ce990d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="551.25,-137.75 432.5,-137.75 432.5,-117 551.25,-117 551.25,-137.75"/>
 <text text-anchor="middle" x="491.88" y="-124.25" font-family="Helvetica,sans-Serif" font-size="10.00">ImGuiStorage::GetInt</text>
 </a>

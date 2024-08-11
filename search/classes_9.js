@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['quotientremainder_0',['QuotientRemainder',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html',1,'steppable::__internals::arithmetic']]]
+  ['nscursor_28_29_0',['NSCursor()',['../categoryNSCursor_07_08.html',1,'']]],
+  ['number_1',['Number',['../classsteppable_1_1Number.html',1,'steppable']]]
 ];

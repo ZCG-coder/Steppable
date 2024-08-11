@@ -15,7 +15,11 @@ var searchData=
   ['menuitemex_12',['MenuItemEx',['../namespaceImGui.html#ab5e6e4c78805615fb4d26d4918031f9c',1,'ImGui']]],
   ['merge_13',['Merge',['../structImDrawListSplitter.html#af3fc4bad2abca9e481d476d1877ba5be',1,'ImDrawListSplitter']]],
   ['mousebuttontokey_14',['MouseButtonToKey',['../namespaceImGui.html#a25689086f813c9714c4bbd4e3d5e669c',1,'ImGui']]],
-  ['movedecimalplaces_15',['moveDecimalPlaces',['../namespacesteppable_1_1____internals_1_1numUtils.html#ac4e0b4898321f5e00d72f20dac9fbb4d',1,'steppable::__internals::numUtils']]],
-  ['multiply_16',['multiply',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a96240562a7be93251b4298a83b803731',1,'steppable::__internals::arithmetic']]],
-  ['mydocument_17',['MyDocument',['../structMyDocument.html#adcd14ce86b5e8cb1ac5e013851c24cc9',1,'MyDocument']]]
+  ['moveall_15',['MoveAll',['../structExampleDualListBox.html#ad6cacee15ae085f2074e346c542ec820',1,'ExampleDualListBox']]],
+  ['movedecimalplaces_16',['moveDecimalPlaces',['../namespacesteppable_1_1____internals_1_1numUtils.html#ac4e0b4898321f5e00d72f20dac9fbb4d',1,'steppable::__internals::numUtils']]],
+  ['moveselected_17',['MoveSelected',['../structExampleDualListBox.html#a698e8cfeb3feee52d68b5785bc0c84e1',1,'ExampleDualListBox']]],
+  ['multiply_18',['multiply',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a96240562a7be93251b4298a83b803731',1,'steppable::__internals::arithmetic']]],
+  ['multiselectitemfooter_19',['MultiSelectItemFooter',['../namespaceImGui.html#a69762bfb0eaf3daa730895737bce05e5',1,'ImGui']]],
+  ['multiselectitemheader_20',['MultiSelectItemHeader',['../namespaceImGui.html#a42a98da805c3612b26b829e0567fdc0f',1,'ImGui']]],
+  ['mydocument_21',['MyDocument',['../structMyDocument.html#adcd14ce86b5e8cb1ac5e013851c24cc9',1,'MyDocument']]]
 ];

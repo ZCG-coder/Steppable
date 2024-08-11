@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['number_0',['Number',['../classsteppable_1_1Number.html',1,'steppable']]]
+  ['logger_0',['Logger',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html',1,'steppable::__internals::logging']]]
 ];

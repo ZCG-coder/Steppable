@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['exampleappconsole_0',['ExampleAppConsole',['../structExampleAppConsole.html',1,'']]],
-  ['exampleappdocuments_1',['ExampleAppDocuments',['../structExampleAppDocuments.html',1,'']]],
-  ['exampleapplog_2',['ExampleAppLog',['../structExampleAppLog.html',1,'']]]
+  ['consoleoutput_0',['ConsoleOutput',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html',1,'steppable::prettyPrint']]],
+  ['customvertex_1',['CUSTOMVERTEX',['../structCUSTOMVERTEX.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['questions_20faq_0',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]]
+  ['metal_20example_0',['iOS / OSX Metal example',['../md_include_2imgui_2examples_2example__apple__metal_2README.html',1,'']]]
 ];

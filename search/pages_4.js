@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['faq_0',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]],
-  ['for_20steppable_1',['Download links for Steppable',['../md_wiki_2Downloads.html',1,'']]],
-  ['frequently_20asked_20questions_20faq_2',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]]
+  ['example_0',['iOS / OSX Metal example',['../md_include_2imgui_2examples_2example__apple__metal_2README.html',1,'']]],
+  ['examples_1',['EXAMPLES',['../md_include_2imgui_2docs_2EXAMPLES.html',1,'']]]
 ];
