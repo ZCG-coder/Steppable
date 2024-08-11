@@ -31,9 +31,23 @@
  */
 namespace steppable::__internals::calculus
 {
+    /**
+     * @brief Calculates the Romberg integration of f.
+     *
+     * @param f The function to integrate. It takes in one argument and returns a string.
+     * @param a Lower bound of integral.
+     * @param b Upper bound of integral.
+     * @param max_steps Maximum steps of integral. More steps can produce higher accuracy, but takes a longer time.
+     * @param decimals The decimals to output.
+     * @return The result of the integral.
+     *
+     * @note The function must take in exactly ONE argument, in the form of std::string. The output must be a
+     * std::string object. Wrap your function in a lambda expression if it takes more arguments, or outputs in a
+     * different type.
+     */
     std::string romberg(const std::function<std::string(std::string)>& f,
                         const std::string& a,
                         const std::string& b,
                         int max_steps,
                         int decimals);
-}
+} // namespace steppable::__internals::calculus

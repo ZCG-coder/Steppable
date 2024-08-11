@@ -21,6 +21,7 @@
  **************************************************************************************************/
 
 #include "fn/basicArithm.hpp"
+#include "fn/calculus.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
 
