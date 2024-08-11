@@ -59,8 +59,8 @@ namespace steppable::localization
         else
             return "en-US";
 #else
-        std::string langC = getenv("LANG"); // NOLINT(concurrency-mt-unsafe)
-        if (not langC.empty())
+        char* langC = getenv("LANG"); // NOLINT(concurrency-mt-unsafe)
+        if (langC != nullptr)
             lang = langC;
 
         // If the language contains a period, remove everything after the period. Eg., en-US.UTF-8 -> en-US

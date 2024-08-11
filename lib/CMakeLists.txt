@@ -40,7 +40,7 @@ if(NOT ${STP_NO_BINDINGS}) # Only create the bindings if needed
         target_link_options(steppyble PRIVATE -Bsymbolic)
     endif()
     set_target_properties(steppyble PROPERTIES POSITION_INDEPENDENT_CODE ON)
-    target_link_libraries(steppyble PRIVATE calc steppable)
+    target_link_libraries(steppyble PRIVATE func steppable)
     target_compile_definitions(steppyble PRIVATE NO_MAIN)
     target_include_directories(steppyble PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 endif()

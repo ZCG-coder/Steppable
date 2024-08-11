@@ -128,7 +128,7 @@ namespace steppable::__internals::symbols
     const std::array<std::string, 10>& SUPERSCRIPTS = { "\u2070", "\u00b9", "\u00b2", "\u00b3", "\u2074",
                                                         "\u2075", "\u2076", "\u2077", "\u2078", "\u2079" };
 
-    std::string makeSubscript(const std::string& normal)
+    [[deprecated("Use steppable::prettyPrint instead")]] std::string makeSubscript(const std::string& normal)
     {
         std::string out;
         for (const char c : normal)
@@ -136,9 +136,12 @@ namespace steppable::__internals::symbols
         return out;
     }
 
-    std::string makeSubscript(const int normal) { return unicodeToUtf8(normal + SUB_MAGIC_NUMBER); }
+    [[deprecated("Use steppable::prettyPrint instead")]] std::string makeSubscript(const int normal)
+    {
+        return unicodeToUtf8(normal + SUB_MAGIC_NUMBER);
+    }
 
-    std::string makeSuperscript(const std::string& normal)
+    [[deprecated("Use steppable::prettyPrint instead")]] std::string makeSuperscript(const std::string& normal)
     {
         std::stringstream ss;
         for (const char c : normal)
@@ -150,7 +153,7 @@ namespace steppable::__internals::symbols
         return string;
     }
 
-    std::string makeSuperscript(const char normal)
+    [[deprecated("Use steppable::prettyPrint instead")]] std::string makeSuperscript(const char normal)
     {
         if (normal == '-')
             return "\u207B";
@@ -158,7 +161,7 @@ namespace steppable::__internals::symbols
         return SUPERSCRIPTS.at(normal - '0');
     }
 
-    std::string makeSurd(const std::string& radicand)
+    [[deprecated("Use steppable::prettyPrint instead")]] std::string makeSurd(const std::string& radicand)
     {
         std::stringstream ss;
         ss << SURD;

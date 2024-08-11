@@ -22,6 +22,7 @@
 
 #include "colors.hpp"
 #include "fn/basicArithm.hpp"
+#include "fn/calculus.hpp"
 #include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"
@@ -29,57 +30,14 @@
 #include <iomanip>
 #include <iostream>
 
-TEST_START()
-
+using namespace steppable::__internals::calculus;
 using namespace steppable::__internals::arithmetic;
 
-SECTION(Test hyperbolic sine)
-_.assertIsEqual(sinh("10", 3), "11013.233");
-SECTION_END()
+TEST_START()
 
-SECTION(Test hyperbolic cosine)
-_.assertIsEqual(cosh("4.75", 4), "57.7965");
-SECTION_END()
-
-SECTION(Test hyperbolic tangent)
-_.assertIsEqual(tanh("0.5", 5), "0.46212");
-SECTION_END()
-
-SECTION(Test hyperbolic cotangent)
-_.assertIsEqual(coth("1.25", 5), "1.17884");
-SECTION_END()
-
-SECTION(Test hyperbolic secant)
-_.assertIsEqual(sech("0.75", 4), "0.7724");
-SECTION_END()
-
-SECTION(Test hyperbolic cosecant)
-_.assertIsEqual(csch("0.25", 4), "3.9588");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic sine)
-_.assertIsEqual(asinh("0.5", 4), "0.4812");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic cosine)
-_.assertIsEqual(acosh("1.25", 4), "0.6931");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic tangent)
-_.assertIsEqual(atanh("0.75", 4), "0.9730");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic cotangent)
-_.assertIsEqual(acoth("5", 4), "0.2028");
-_.assertIsEqual(acoth("1.5", 4), "0.8047");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic secant)
-_.assertIsEqual(asech("0.75", 4), "0.7953");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic cosecant)
-_.assertIsEqual(acsch("0.25", 4), "2.0947");
+SECTION(Test Numerical Integration)
+const auto& result = romberg([](const std::string& x) { return add("1", multiply(x, "2", 0), 0); }, "0", "1", 10, 3);
+_.assertIsEqual(result, "2.000");
 SECTION_END()
 
 TEST_END()

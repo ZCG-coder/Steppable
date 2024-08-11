@@ -31,8 +31,7 @@
 namespace steppable::constants
 {
     /// @brief 100 digits of pi.
-    constexpr const std::string_view& PI =
-        "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
+    extern const std::string_view& PI;
 
     /// @brief Pi multiplied by 2.
     // Generated using Python:
@@ -44,7 +43,7 @@ namespace steppable::constants
     // 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
     // 6 | ) * Decimal(2)
     // -------------------------------------------------------
-    constexpr const std::string_view& TWO_PI = "6.283185307179586231995926937088370323181152343750";
+    extern const std::string_view& TWO_PI;
 
     /// @brief Pi divided by 2.
     // Generated using Python:
@@ -56,8 +55,7 @@ namespace steppable::constants
     // 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
     // 6 | ) / Decimal(2)
     // -------------------------------------------------------
-    constexpr const std::string_view& PI_OVER_2 =
-        "1.570796326794896619231321691639751442098584699687552910487472296153908203143104499314017412835292542";
+    extern const std::string_view& PI_OVER_2;
 
     /// @brief Pi divided by 180 (to convert degrees to radians), correct to 100 decimal places.
     // Generated using Python:
@@ -69,8 +67,7 @@ namespace steppable::constants
     // 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
     // 6 | ) / Decimal(180)
     // -------------------------------------------------------
-    constexpr const std::string_view& PI_OVER_180 =
-        "0.01745329251994329508887757482524547311994764539930555555555555555555555555555555555555555555555555556";
+    extern const std::string_view& PI_OVER_180;
 
     /// @brief Pi divided by 200 (to convert grads to radians), correct to 100 decimal places.
     // Generated using Python:
@@ -82,8 +79,7 @@ namespace steppable::constants
     // 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
     // 6 | ) / Decimal(200)
     // -------------------------------------------------------
-    constexpr const std::string_view& PI_OVER_200 =
-        "0.01570796326794896619231321691639716312084074699687552942986246296153903203140449499314017412671058534";
+    extern const std::string_view& PI_OVER_200;
 
-    constexpr const std::string_view& E = "2.718281828459045090795598298427648842334747314453125";
+    extern const std::string_view& E;
 } // namespace steppable::constants

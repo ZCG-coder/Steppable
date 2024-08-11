@@ -31,13 +31,11 @@
 #include "argParse.hpp"
 #include "fn/basicArithm.hpp"
 #include "getString.hpp"
-#include "logReport.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
 #include "util.hpp"
 
 #include <cstdlib>
-#include <iostream>
 #include <string>
 
 using namespace steppable::__internals::arithmetic;
@@ -47,49 +45,60 @@ using namespace std::literals;
 
 namespace steppable::__internals::arithmetic
 {
-    std::string _log(const std::string& _number, const size_t _decimals)
+    std::string _log(const std::string& x, const size_t _decimals)
     {
+        const auto& decimals = _decimals + 2;
         // Zero check
-        if (numUtils::isZeroString(_number))
+        if (numUtils::isZeroString(x))
         {
             output::error("log::_log"s, "The number cannot be zero."s);
             return "-Infinity";
         }
-        if (compare(_number, "1", 0) == "2")
+        if (compare(x, "1", 0) == "2")
             return "0";
 
-        //   /-\   +--------------------------------------------+
-        //  / ! \  | WARNING: DO NOT CALL THIS METHOD DIRECTLY! |
-        // /-----\ +--------------------------------------------+
-        // TODO: Improve accuracy.
-        //                      4        3         2
-        //          (x - 1)(137x  + 1762x  + 3762x  + 1762x + 137)
-        // ln(x) = ------------------------------------------------
-        //                 5      4       3       2
-        //             30(x  + 25x  + 100x  + 100x  + 25x + 1)
+        // ROUND 1 -- Padé approximant
+        //                                          2
+        //          3 * (x + 1) * (x - 1)     3 * (x  - 1)
+        // ln(x) = ----------------------- = --------------
+        //               2                     2
+        //              x  + 4x + 1           x  + 4x + 1
+        const auto& x2 = power(x, "2", 0);
+        const auto& x2Minus1 = subtract(x2, "1", 0);
+        const auto& numerator = multiply("3", x2Minus1, 0);
+        const auto& fourX = multiply(x, "4", 0);
 
-        auto x2 = power(_number, "2", 0);
-        auto x3 = power(_number, "3", 0);
-        auto x4 = multiply(x2, x2, 0);
-        auto x5 = multiply(x2, x3, 0);
-
-        auto xMinus1 = subtract(_number, "1", 0);
-        auto numerator = multiply(x4, "137", 0);
-        numerator = add(numerator, multiply(x3, "1762", 0), 0);
-        numerator = add(numerator, multiply(x2, "3762", 0), 0);
-        numerator = add(numerator, multiply(_number, "1762", 0), 0);
-        numerator = add(numerator, "137", 0);
-        numerator = multiply(xMinus1, numerator, 0);
-
-        auto denominator = add(x5, multiply(x4, "25", 0), 0);
-        denominator = add(denominator, multiply(x3, "100", 0), 0);
-        denominator = add(denominator, multiply(x2, "100", 0), 0);
-        denominator = add(denominator, multiply(_number, "25", 0), 0);
+        auto denominator = add(x2, fourX, 0);
         denominator = add(denominator, "1", 0);
-        denominator = multiply("30", denominator, 0);
 
-        auto result = divide(numerator, denominator, 0, static_cast<int>(_decimals));
-        return result;
+        // ROUND 2 -- Newton's Method
+        //                    x - exp(y )
+        //                             n
+        // y      = y  + 2 * --------------
+        //  n + 1    n        x + exp(y )
+        //                             n
+
+        // ln(x) = y
+        //          n + 1
+
+        const auto& epsilon = "0." + std::string(_decimals + 1, '0') + "1";
+        auto yn = divide(numerator, denominator, 0, static_cast<int>(decimals));
+        auto yn1 = yn;
+
+        auto error = abs(subtract(yn, yn1, 0), 0);
+        do // NOLINT(cppcoreguidelines-avoid-do-while)
+        {
+            yn = yn1;
+            auto expYN = exp(yn, decimals);
+            auto xMinusExpYN = subtract(x, expYN, 0);
+            auto xPlusExpYN = add(x, expYN, 0);
+            auto fraction = divide(xMinusExpYN, xPlusExpYN, 0, static_cast<int>(decimals));
+            auto twoXFraction = multiply(fraction, "2", 0);
+            yn1 = add(yn, twoXFraction, 0);
+            error = abs(subtract(yn, yn1, 0), 0);
+        } while (compare(error, epsilon, 0) == "1");
+
+        return numUtils::roundOff(yn1, _decimals);
     }
 
     // Common logarithms

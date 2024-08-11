@@ -20,66 +20,70 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
 #include "fn/basicArithm.hpp"
 #include "output.hpp"
-#include "testing.hpp"
-#include "util.hpp"
+#include "rounding.hpp"
 
-#include <iomanip>
-#include <iostream>
-
-TEST_START()
+#include <cmath>
+#include <functional>
+#include <string>
+#include <vector>
 
 using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::numUtils;
+using namespace std::literals;
 
-SECTION(Test hyperbolic sine)
-_.assertIsEqual(sinh("10", 3), "11013.233");
-SECTION_END()
+namespace steppable::__internals::calculus
+{
+    std::string romberg(const std::function<std::string(std::string)>& f,
+                        const std::string& a,
+                        const std::string& b,
+                        const int max_steps,
+                        const int decimals)
+    {
+        auto acc = "0." + std::string(decimals - 1, '0') + "1";
+        auto previous = std::vector(max_steps, "0"s);
+        auto current = std::vector(max_steps, "0"s);
 
-SECTION(Test hyperbolic cosine)
-_.assertIsEqual(cosh("4.75", 4), "57.7965");
-SECTION_END()
+        auto h = subtract(b, a, 0);
+        auto fAB = add(f(a), f(b), 0);
+        auto halfH = multiply(h, "0.5", 0);
+        previous.front() = multiply(halfH, fAB, 0);
 
-SECTION(Test hyperbolic tangent)
-_.assertIsEqual(tanh("0.5", 5), "0.46212");
-SECTION_END()
+        for (int i = 1; i < max_steps; i++)
+        {
+            h = multiply(h, "0.5", 0);
+            auto c = "0"s;
+            long ep = 1 << (i - 1); // 2^(i - 1)
+            for (long j = 1; j < (ep + 1); j++)
+            {
+                auto d = multiply(std::to_string((2 * j) - 1), h, 0);
+                c = add(c, f(add(a, d, 0)), 0);
+            }
+            current.front() = add(multiply(h, c, 0), multiply("0.5", previous.front(), 0), 0);
 
-SECTION(Test hyperbolic cotangent)
-_.assertIsEqual(coth("1.25", 5), "1.17884");
-SECTION_END()
+            for (int j = 1; j < (i + 1); j++)
+            {
+                long double n_k = pow(4, j);
+                auto one = multiply(std::to_string(n_k), current.at(j - 1), 0);
+                auto top = subtract(one, previous.at(j - 1), 0);
+                current.at(j) = divide(top, std::to_string(n_k - 1), 0, decimals + 1);
 
-SECTION(Test hyperbolic secant)
-_.assertIsEqual(sech("0.75", 4), "0.7724");
-SECTION_END()
+                if (i > 1 and compare(abs(subtract(previous.at(i - 1), current.at(i), 0), 0), acc, 0) == "0")
+                    return roundOff(current.at(i), decimals);
+            }
 
-SECTION(Test hyperbolic cosecant)
-_.assertIsEqual(csch("0.25", 4), "3.9588");
-SECTION_END()
+            std::ranges::swap(previous, current);
+        }
 
-SECTION(Test inverse hyperbolic sine)
-_.assertIsEqual(asinh("0.5", 4), "0.4812");
-SECTION_END()
+        return roundOff(previous.at(max_steps - 1), decimals);
+    }
+} // namespace steppable::__internals::calculus
 
-SECTION(Test inverse hyperbolic cosine)
-_.assertIsEqual(acosh("1.25", 4), "0.6931");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic tangent)
-_.assertIsEqual(atanh("0.75", 4), "0.9730");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic cotangent)
-_.assertIsEqual(acoth("5", 4), "0.2028");
-_.assertIsEqual(acoth("1.5", 4), "0.8047");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic secant)
-_.assertIsEqual(asech("0.75", 4), "0.7953");
-SECTION_END()
-
-SECTION(Test inverse hyperbolic cosecant)
-_.assertIsEqual(acsch("0.25", 4), "2.0947");
-SECTION_END()
-
-TEST_END()
+#ifndef NO_MAIN
+int main()
+{
+    steppable::output::error("calculus::nInt"s, "This program should not be run directly."s);
+    return 1;
+}
+#endif

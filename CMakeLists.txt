@@ -24,19 +24,21 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
 PROJECT(Steppable)
 
 # Ensure that Python is available to run the development scripts, and build with bindings.
-set(Python_FIND_VIRTUALENV FIRST)
+SET(Python_FIND_VIRTUALENV FIRST)
 
-find_package(
-Python
-COMPONENTS Development Interpreter
-REQUIRED)
+FIND_PACKAGE(
+    Python
+    COMPONENTS Development Interpreter
+    REQUIRED
+)
 
-find_package(
-Python3
-COMPONENTS Development Interpreter
-REQUIRED)
+FIND_PACKAGE(
+    Python3
+    COMPONENTS Development Interpreter
+    REQUIRED
+)
 
-SET(CMAKE_CXX_STANDARD 20)
+SET(CMAKE_CXX_STANDARD 23)
 SET(CMAKE_C_STANDARD 20)
 SET(CMAKE_CXX_EXTENSIONS OFF)
 SET(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -90,20 +92,23 @@ FUNCTION(capitalize IN OUT)
 ENDFUNCTION()
 
 SET(COMPONENTS
-    abs
-    add
-    baseConvert
-    subtract
-    multiply
-    decimalConvert
-    comparison
-    power
-    division
-    root
-    factorial
-    trig
-    hyp
-    log)
+    base::baseConvert
+    base::decimalConvert
+    calc::abs
+    calculus::nInt
+    calc::add
+    calc::atan2
+    calc::comparison
+    calc::division
+    calc::factorial
+    calc::hyp
+    calc::log
+    calc::multiply
+    calc::power
+    calc::root
+    calc::subtract
+    calc::trig
+)
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
 SET(TARGETS ${COMPONENTS} util)
@@ -111,6 +116,12 @@ SET(TEST_TARGETS_TEMP util fraction number factors format ${COMPONENTS})
 
 FOREACH(TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
     SET(TARGET_NAME "test")
+    STRING(REPLACE "::" ";" COMPONENT_PARTS ${TEST_TARGET})
+    LIST(LENGTH COMPONENT_PARTS LEN)
+    IF(LEN EQUAL 2)
+        LIST(GET COMPONENT_PARTS 1 TEST_TARGET)
+    ENDIF()
+
     CAPITALIZE(${TEST_TARGET} FILE_NAME)
     STRING(CONCAT TARGET_NAME ${TARGET_NAME} ${FILE_NAME})
     LIST(APPEND TEST_TARGETS ${TARGET_NAME})

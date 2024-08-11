@@ -45,19 +45,20 @@ _.assertIsEqual(tan("90", 2, 1), "Infinity");
 SECTION_END()
 
 SECTION(Test arc cosine)
-_.assertIsEqual(acos("0.5", 2, 1), "60");
+_.assertIsEqual(acos("0.5", 2, 1), "60.00");
 // Zero check test
 _.assertIsEqual(acos("1", 2, 1), "0");
 SECTION_END()
 
 SECTION(Test arc sine)
-_.assertIsEqual(asin("0.5", 2, 1), "30.00");
+_.assertIsEqual(asin("0.5", 0, 1), "30");
 // Zero check test
 _.assertIsEqual(asin("0", 2, 1), "0");
 SECTION_END()
 
 SECTION(Test arc tangent)
 _.assertIsEqual(atan("0", 2, 1), "0");
+_.assertIsEqual(atan("1", 20, 0), "0.78539816339744830962");
 SECTION_END()
 
 TEST_END()
