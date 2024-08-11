@@ -325,7 +325,6 @@ namespace steppable::__internals::arithmetic
             //               2            x
             result = subtract(static_cast<std::string>(constants::PI_OVER_2), result, 0);
         }
-        result = roundOff(result, decimals);
 
         // Convert the result as needed.
         switch (mode)
@@ -342,7 +341,7 @@ namespace steppable::__internals::arithmetic
 
         if (_x.front() == '-')
             result = "-" + result;
-        return result;
+        return roundOff(result, decimals);
     }
 
     std::string asin(const std::string& x, const int decimals, const int mode)
@@ -355,49 +354,21 @@ namespace steppable::__internals::arithmetic
         if (compare(abs(x, 0), "0", 0) == "2")
             return "0";
 
-        auto x2 = power(x, "2", 0);
-        auto x3 = multiply(x2, x, 0);
-        auto x5 = multiply(x3, x2, 0);
-        auto x7 = multiply(x5, x2, 0);
-        std::string onePlusX;
-        std::string oneMinusX;
-        std::string sqrtOnePlusX;
-        std::string sqrtOneMinusX;
-        std::string result;
+        // / x
+        // |           1
+        // |  ---------------- dy
+        // |       /------|
+        // |      /     2
+        // |    \/ 1 - y
+        // / 0
+        auto integrand = [&](const std::string& y) {
+            auto y2 = power(y, "2", 0);
+            auto oneMinusY2 = subtract("1", y2, 0);
+            auto denominator = root(oneMinusY2, "2", decimals + 1);
+            return divide("1", denominator, 0, decimals + 1);
+        };
+        auto result = calculus::romberg(integrand, "0", x, 10, decimals + 2);
 
-        // For x <= 0.5, use Taylor series.
-        //                   3      5      7
-        //                  x     3x     5x
-        // arcsin(x) = x + --- + ---- + -----
-        //                  6     40     112
-        if (compare(abs(x, 0), "0.5", 0) != "1")
-        {
-            result = add(x, divide(x3, "6", 0), 0);
-            result = add(result, divide(multiply(x5, "3", 0), "40", 0), 0);
-            result = add(result, divide(multiply(x7, "5", 0), "112", 0), 0);
-            goto out; // NOLINT(cppcoreguidelines-avoid-goto)
-        }
-
-        // Othman, S. B.; Bagul, Y. J. An Innovative Method for Approximating Arcsine Function. Preprints 2022,
-        // 2022070388. https://doi.org/10.20944/preprints202207.0388.v1
-        //
-        //                                  /-----|     /-----|           5        3
-        // arcsin(x) = 2 * 0.510774109 * (\/ 1 + x  − \/ 1 − x ) + (0.239x − 0.138x + 0.005x)
-        //
-        //                              /-----|     /-----|           5        3
-        //           = 1.021548218 * (\/ 1 + x  − \/ 1 − x ) + (0.239x − 0.138x + 0.005x)
-
-        onePlusX = add("1", x, 0);
-        oneMinusX = subtract("1", x, 0);
-        sqrtOnePlusX = root(onePlusX, "2", static_cast<long>(decimals) * 2);
-        sqrtOneMinusX = root(oneMinusX, "2", static_cast<long>(decimals) * 2);
-
-        result = multiply("1.021548218", subtract(sqrtOnePlusX, sqrtOneMinusX, 0), 0);
-        result = add(result,
-                     add(multiply("0.239", x5, 0), subtract(multiply("0.138", x3, 0), multiply("0.005", x, 0), 0), 0),
-                     0);
-
-    out:
         switch (mode)
         {
         case 1:
@@ -486,7 +457,7 @@ int main(int _argc, const char* _argv[])
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
     program.addPosArg('c', $("trig", "47dcf91b-847c-48f0-9889-f5ce1b6831e3"), false);
-    program.addPosArg('n', $("trig", "bcd0a3e9-3d89-4921-94b3-d7533d60911f"), false);
+    program.addPosArg('n', $("trig", "bcd0a3e9-3d89-4921-94b3-d7533d60911f"));
     program.addKeywordArg("mode", 0, $("trig", "03fdd1f2-6ea5-49d4-ac3f-27f01f04a518"));
     program.addKeywordArg("decimals", 5, $("trig", "d1df3b60-dac1-496c-99bb-ba763dc551df"));
     program.addSwitch("profile", false, $("trig", "162adb13-c4b2-4418-b3df-edb6f9355d64"));

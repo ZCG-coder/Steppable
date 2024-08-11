@@ -21,6 +21,7 @@
  **************************************************************************************************/
 
 #include "fn/basicArithm.hpp"
+#include "output.hpp"
 #include "rounding.hpp"
 
 #include <cmath>
@@ -41,13 +42,13 @@ namespace steppable::__internals::calculus
                         const int decimals)
     {
         auto acc = "0." + std::string(decimals - 1, '0') + "1";
-        auto Rp = std::vector(max_steps, "0"s);
-        auto Rc = std::vector(max_steps, "0"s);
+        auto previous = std::vector(max_steps, "0"s);
+        auto current = std::vector(max_steps, "0"s);
 
         auto h = subtract(b, a, 0);
         auto fAB = add(f(a), f(b), 0);
         auto halfH = multiply(h, "0.5", 0);
-        Rp.front() = multiply(halfH, fAB, 0);
+        previous.front() = multiply(halfH, fAB, 0);
 
         for (int i = 1; i < max_steps; i++)
         {
@@ -59,26 +60,30 @@ namespace steppable::__internals::calculus
                 auto d = multiply(std::to_string((2 * j) - 1), h, 0);
                 c = add(c, f(add(a, d, 0)), 0);
             }
-            Rc.front() = add(multiply(h, c, 0), multiply("0.5", Rp.front(), 0), 0);
+            current.front() = add(multiply(h, c, 0), multiply("0.5", previous.front(), 0), 0);
 
             for (int j = 1; j < (i + 1); j++)
             {
                 long double n_k = pow(4, j);
-                auto one = multiply(std::to_string(n_k), Rc.at(j - 1), 0);
-                auto top = subtract(one, Rp.at(j - 1), 0);
-                Rc.at(j) = divide(top, std::to_string(n_k - 1), 0, decimals + 1);
+                auto one = multiply(std::to_string(n_k), current.at(j - 1), 0);
+                auto top = subtract(one, previous.at(j - 1), 0);
+                current.at(j) = divide(top, std::to_string(n_k - 1), 0, decimals + 1);
 
-                if (i > 1 and compare(abs(subtract(Rp.at(i - 1), Rc.at(i), 0), 0), acc, 0) == "0")
-                    return roundOff(Rc.at(i), decimals);
+                if (i > 1 and compare(abs(subtract(previous.at(i - 1), current.at(i), 0), 0), acc, 0) == "0")
+                    return roundOff(current.at(i), decimals);
             }
 
-            std::ranges::swap(Rp, Rc);
+            std::ranges::swap(previous, current);
         }
 
-        return roundOff(Rp.at(max_steps - 1), decimals);
+        return roundOff(previous.at(max_steps - 1), decimals);
     }
 } // namespace steppable::__internals::calculus
 
 #ifndef NO_MAIN
-int main() {}
+int main()
+{
+    steppable::output::error("calculus::nInt"s, "This program should not be run directly."s);
+    return 1;
+}
 #endif
