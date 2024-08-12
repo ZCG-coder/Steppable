@@ -36,7 +36,7 @@ To add a new feature:
    ```
    Steppable/
    ├── include/fn/
-   │   └── basicArithm.hpp [ Feature declaration ]
+   │   └── calc.hpp [ Feature declaration ]
    ├── src/abc/
    │   ├── abcReport.hpp   [ Output declaration ]
    │   ├── abc.cpp         [ Feature definition ]
@@ -48,7 +48,7 @@ To add a new feature:
 
 ```diff
 // abc.cpp
-+ #include "fn/basicArithm.hpp"
++ #include "fn/calc.hpp"
 + #include "abcReport.cpp"
 + #include <...> // Other include files
 
@@ -77,10 +77,10 @@ To add a new feature:
 + std::string reportAbc();
 ```
 
-7. Add the following in the `basicArithm.hpp` file:
+7. Add the following in the `calc.hpp` file:
 
 ```diff
-// basicArithm.hpp
+// calc.hpp
 std::string division(...);
 + std::string abc(const std::string_view& in);
 ```

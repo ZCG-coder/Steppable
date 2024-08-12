@@ -32,7 +32,7 @@
 
 #include "argParse.hpp"
 #include "factors.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "fraction.hpp"
 #include "getString.hpp"
 #include "rootReport.hpp"

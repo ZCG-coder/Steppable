@@ -30,7 +30,7 @@
 
 #include "argParse.hpp"
 #include "constants.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "fn/calculus.hpp"
 #include "getString.hpp"
 #include "rounding.hpp"

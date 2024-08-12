@@ -27,7 +27,7 @@
  */
 #include "argParse.hpp"
 #include "decimalConvertReport.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "getString.hpp"
 #include "util.hpp"
 

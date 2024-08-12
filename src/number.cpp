@@ -30,7 +30,7 @@
 
 #include "number.hpp"
 
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "output.hpp"
 
 #ifdef WINDOWS

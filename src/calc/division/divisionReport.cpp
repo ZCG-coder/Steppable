@@ -31,7 +31,7 @@
 
 #include "divisionReport.hpp"
 
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "util.hpp"
 
 #include <sstream>

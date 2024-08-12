@@ -20,7 +20,7 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "fraction.hpp"
 #include "number.hpp"
 

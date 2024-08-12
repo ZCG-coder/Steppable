@@ -30,7 +30,7 @@
 
 #include "atan2Report.hpp"
 #include "constants.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
 #include "util.hpp"

@@ -22,7 +22,7 @@
 
 #include "factors.hpp"
 
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "types/result.hpp"
 
 #include <algorithm>

@@ -20,7 +20,7 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "fn/calculus.hpp"
 #include "output.hpp"
 #include "rounding.hpp"

@@ -29,7 +29,7 @@
  */
 #include "argParse.hpp"
 #include "constants.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "fraction.hpp"
 #include "getString.hpp"
 #include "powerReport.hpp"

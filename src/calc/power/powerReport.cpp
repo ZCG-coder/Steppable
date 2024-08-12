@@ -31,7 +31,7 @@
 
 #include "powerReport.hpp"
 
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "fraction.hpp"
 #include "getString.hpp"
 #include "symbols.hpp"

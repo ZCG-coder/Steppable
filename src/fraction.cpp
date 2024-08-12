@@ -31,7 +31,7 @@
 #include "fraction.hpp"
 
 #include "exceptions.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "number.hpp"
 #include "symbols.hpp"
 #include "util.hpp"

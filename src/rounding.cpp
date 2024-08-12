@@ -22,7 +22,7 @@
 
 #include "rounding.hpp"
 
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "util.hpp"
 
 #include <string>
