@@ -9,6 +9,7 @@ on:
             - "**.cpp"
             - "**.hpp"
             - "**.py"
+            - "**.yml"
 
     pull_request:
         branches: ["main"]
