@@ -25,10 +25,10 @@ jobs:
             #
             # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
             matrix:
-                os: [ubuntu-latest, windows-2019, macos-12, macos-13, macos-14]
+                os: [ubuntu-latest, windows-2019, macos-13, macos-14, macos-15]
                 build_type: [Release]
                 c_compiler: [clang, cl]
-                python_version: ['3.10', '3.11', '3.12']
+                python_version: ['3.11', '3.12', '3.13']
                 include:
                     - os: windows-2019
                       c_compiler: cl
@@ -41,15 +41,15 @@ jobs:
                     # - os: macos-latest
                     #   c_compiler: gcc
                     #   cpp_compiler: g++
-                    - os: macos-12
-                      c_compiler: clang
-                      cpp_compiler: clang++
-                      cmake_extra_options: '-GNinja'
                     - os: macos-13
                       c_compiler: clang
                       cpp_compiler: clang++
                       cmake_extra_options: '-GNinja'
                     - os: macos-14
+                      c_compiler: clang
+                      cpp_compiler: clang++
+                      cmake_extra_options: '-GNinja'
+                    - os: macos-15
                       c_compiler: clang
                       cpp_compiler: clang++
                       cmake_extra_options: '-GNinja'
@@ -58,11 +58,11 @@ jobs:
                       c_compiler: clang
                     - os: ubuntu-latest
                       c_compiler: cl
-                    - os: macos-12
-                      c_compiler: cl
                     - os: macos-13
                       c_compiler: cl
                     - os: macos-14
+                      c_compiler: cl
+                    - os: macos-15
                       c_compiler: cl
         steps:
             - uses: actions/checkout@v4
@@ -79,12 +79,12 @@ jobs:
                 echo "CMAKE_OPTIONS=${{ matrix.cmake_extra_options }}" >> "$GITHUB_ENV"
 
             - name: Set up Homebrew
-              if: ${{ matrix.os == 'macos-12' || matrix.os == 'macos-13' || matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest'}}
+              if: ${{ matrix.os == 'macos-13' || matrix.os == 'macos-14' || matrix.os == 'macos-15' || matrix.os == 'ubuntu-latest'}}
               id: set-up-homebrew
               uses: Homebrew/actions/setup-homebrew@master
 
             - name: Install LLVM
-              if: ${{ matrix.os == 'macos-12' || matrix.os == 'macos-13' || matrix.os == 'macos-14' || matrix.os == 'ubuntu-latest' }}
+              if: ${{ matrix.os == 'macos-13' || matrix.os == 'macos-14' || matrix.os == 'macos-15' || matrix.os == 'ubuntu-latest' }}
               run: |
                 brew install llvm ninja
                 echo "PATH=$(brew --prefix llvm)/bin:$PATH" >> "$GITHUB_ENV"
