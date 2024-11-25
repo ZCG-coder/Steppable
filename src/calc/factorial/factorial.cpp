@@ -30,7 +30,7 @@
 
 #include "argParse.hpp"
 #include "factorialReport.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "getString.hpp"
 #include "output.hpp"
 #include "util.hpp"

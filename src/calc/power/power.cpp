@@ -29,7 +29,7 @@
  */
 #include "argParse.hpp"
 #include "constants.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "fraction.hpp"
 #include "getString.hpp"
 #include "powerReport.hpp"
@@ -121,17 +121,21 @@ namespace steppable::__internals::arithmetic
 
     std::string exp(const std::string& x, const size_t decimals)
     {
-        constexpr size_t iter = 200;
-        std::string sum = "1";
-        std::string term = "1";
-        for (size_t i = 1; i < iter; i++)
+        if (compare(x, "20", 0) == "0")
         {
-            std::string frac = divide(x, std::to_string(i), 0, static_cast<int>(decimals));
-            term = multiply(term, frac, 0);
-            sum = add(sum, term, 0);
+            constexpr size_t iter = 200;
+            std::string sum = "1";
+            std::string term = "1";
+            for (size_t i = 1; i < iter; i++)
+            {
+                std::string frac = divide(x, std::to_string(i), 0, static_cast<int>(decimals));
+                term = multiply(term, frac, 0);
+                sum = add(sum, term, 0);
+            }
+            return sum;
         }
 
-        return sum;
+        return power(exp(divide(x, "4", 0, decimals)), "4", 0);
     }
 } // namespace steppable::__internals::arithmetic
 

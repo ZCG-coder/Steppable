@@ -21,7 +21,7 @@
  **************************************************************************************************/
 
 /**
- * @file basicArithm.hpp
+ * @file calc.hpp
  * @brief This file contains functions for basic arithmetic operations on strings.
  *
  * The functions in this file perform various arithmetic operations on strings, such as absolute value,

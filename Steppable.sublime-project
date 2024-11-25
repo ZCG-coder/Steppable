@@ -5,65 +5,11 @@
             "path": ".",
         },
         {
-			"path": "~/Desktop/Steppable.wiki"
-		},
+            "path": "../Steppable.wiki",
+        },
     ],
     "debugger_configurations":
     [
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Add",
-            "program": "${folder}/build/src/add",
-            "args": ["1", "9", "+steps", "+profile"],
-            "cwd": "${folder}/build",
-            "pre_debug_task": "CMake Build",
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Subtract",
-            "program": "${folder}/build/src/subtract",
-            "args": ["32", "19", "+steps"],
-            "cwd": "${folder}/build/src",
-            "pre_debug_task": "CMake Build",
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Power",
-            "program": "${folder}/build/src/power",
-            "args": ["32", "19", "+steps"],
-            "cwd": "${folder}/build",
-            "pre_debug_task": "CMake Build",
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Comparison",
-            "program": "${folder}/build/src/comparison",
-            "args": ["4", "5"],
-            "cwd": "${folder}/build",
-            "pre_debug_task": "CMake Build",
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Division",
-            "program": "${folder}/build/src/division",
-            "args": ["4", "5"],
-            "cwd": "${folder}/build",
-            "pre_debug_task": "CMake Build",
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Multiply",
-            "program": "${folder}/build/src/multiply",
-            "args": ["4", "5"],
-            "cwd": "${folder}/build/src",
-            "pre_debug_task": "CMake Build",
-        }
     ],
     "debugger_tasks":
     [

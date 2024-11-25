@@ -22,7 +22,7 @@
 
 #include "factorialReport.hpp"
 
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "symbols.hpp"
 
 #include <sstream>

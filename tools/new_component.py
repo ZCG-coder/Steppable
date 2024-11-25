@@ -325,7 +325,7 @@ TEST_END()
         )
     print(f"- Added test{name.capitalize()}.cpp")
 
-    patch_cmakelists(name)
+    patch_cmakelists("::".join(parts))
 
 
 def patch_cmakelists(name: str) -> None:
@@ -371,8 +371,9 @@ def main():
         return show_help()
     elif selection == "A":
         name = input("Name of your component: ")
+        name_parts = name.split("::")
         author = input("Your name: ")
-        if not validate_name(name):
+        if not (validate_name(name_parts[0]) and validate_name(name_parts[1])):
             print(f"INVALID NAME: {name}")
             return
         make_dir(name, today_string, author)

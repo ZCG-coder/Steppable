@@ -29,7 +29,7 @@
  */
 #include "argParse.hpp"
 #include "comparisonReport.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "getString.hpp"
 #include "util.hpp"
 

@@ -22,7 +22,7 @@
 
 // ReSharper disable All
 #include "colors.hpp"
-#include "fn/basicArithm.hpp"
+#include "fn/calc.hpp"
 #include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"

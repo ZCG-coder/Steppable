@@ -33,7 +33,7 @@
 #include "getString.hpp"
 #include "util.hpp"
 
-#include <fn/basicArithm.hpp>
+#include <fn/calc.hpp>
 #include <iostream>
 #include <string>
 
