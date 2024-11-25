@@ -54,7 +54,7 @@ var searchData=
   ['resize_51',['resize',['../structImVector.html#ac371dd62e56ae486b1a5038cf07eee56',1,'ImVector::resize(int new_size)'],['../structImVector.html#abe7f21776ecfb7d0214963fd8c0689f0',1,'ImVector::resize(int new_size, const T &amp;v)']]],
   ['resultbase_52',['ResultBase',['../classsteppable_1_1types_1_1ResultBase.html#a759d2c4eb35bda5148f4fe5f2e9d0e7a',1,'steppable::types::ResultBase::ResultBase()=delete'],['../classsteppable_1_1types_1_1ResultBase.html#a4286541881317ef556d73566a9d338f9',1,'steppable::types::ResultBase::ResultBase(const std::vector&lt; std::string &gt; &amp;_inputs, std::string _out, StatusType _done)']]],
   ['reverse_53',['reverse',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a588a3cdce1fef100d63d64816a37981a',1,'steppable::__internals::utils::formats']]],
-  ['romberg_54',['romberg',['../namespacesteppable_1_1____internals_1_1calculus.html#af7a9bc9673c589e4a128bf765fa0cda6',1,'steppable::__internals::calculus']]],
+  ['romberg_54',['romberg',['../namespacesteppable_1_1____internals_1_1calculus.html#ac4cf5b2420cd546c820238564081db0a',1,'steppable::__internals::calculus']]],
   ['root_55',['root',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a577039aa267ec001fa27cf1b611fe918',1,'steppable::__internals::arithmetic']]],
   ['rootintpart_56',['rootIntPart',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a6f1429e9d7719e6376dc68ae28d36dbe',1,'steppable::__internals::arithmetic']]],
   ['rootsurd_57',['rootSurd',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a118bc6cb979317a7c762ee90fb44d0a4',1,'steppable::__internals::arithmetic']]],

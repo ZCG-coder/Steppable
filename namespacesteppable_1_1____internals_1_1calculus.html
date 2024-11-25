@@ -124,14 +124,15 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af7a9bc9673c589e4a128bf765fa0cda6" id="r_af7a9bc9673c589e4a128bf765fa0cda6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7a9bc9673c589e4a128bf765fa0cda6">romberg</a> (const std::function&lt; std::string(std::string)&gt; &amp;f, const std::string &amp;a, const std::string &amp;b, const int max_steps, const int decimals)</td></tr>
-<tr class="separator:af7a9bc9673c589e4a128bf765fa0cda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4cf5b2420cd546c820238564081db0a" id="r_ac4cf5b2420cd546c820238564081db0a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4cf5b2420cd546c820238564081db0a">romberg</a> (const std::function&lt; std::string(std::string)&gt; &amp;f, const std::string &amp;a, const std::string &amp;b, int max_steps, int decimals)</td></tr>
+<tr class="memdesc:ac4cf5b2420cd546c820238564081db0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the Romberg integration of f.  <br /></td></tr>
+<tr class="separator:ac4cf5b2420cd546c820238564081db0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains calculus functions. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="af7a9bc9673c589e4a128bf765fa0cda6" name="af7a9bc9673c589e4a128bf765fa0cda6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7a9bc9673c589e4a128bf765fa0cda6">&#9670;&#160;</a></span>romberg()</h2>
+<a id="ac4cf5b2420cd546c820238564081db0a" name="ac4cf5b2420cd546c820238564081db0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4cf5b2420cd546c820238564081db0a">&#9670;&#160;</a></span>romberg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,24 +155,38 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>max_steps</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>max_steps</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>decimals</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>decimals</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Calculates the Romberg integration of f. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>The function to integrate. It takes in one argument and returns a string. </td></tr>
+    <tr><td class="paramname">a</td><td>Lower bound of integral. </td></tr>
+    <tr><td class="paramname">b</td><td>Upper bound of integral. </td></tr>
+    <tr><td class="paramname">max_steps</td><td>Maximum steps of integral. More steps can produce higher accuracy, but takes a longer time. </td></tr>
+    <tr><td class="paramname">decimals</td><td>The decimals to output. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the integral.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function must take in exactly ONE argument, in the form of std::string. The output must be a std::string object. Wrap your function in a lambda expression if it takes more arguments, or outputs in a different type. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1calculus_af7a9bc9673c589e4a128bf765fa0cda6_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1calculus_ac4cf5b2420cd546c820238564081db0a_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1calculus_af7a9bc9673c589e4a128bf765fa0cda6_icgraph.svg" width="100%" height="498"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesteppable_1_1____internals_1_1calculus_ac4cf5b2420cd546c820238564081db0a_icgraph.svg" width="100%" height="498"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -195,7 +210,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Sun Aug 11 2024 03:22:43"; // Will get replaced by Doxygen
+        const dateStr = "Mon Nov 25 2024 00:39:38"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

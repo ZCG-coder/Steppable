@@ -145,7 +145,7 @@ var searchData=
   ['reverse_142',['reverse',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#a588a3cdce1fef100d63d64816a37981a',1,'steppable::__internals::utils::formats']]],
   ['rightmostenabledcolumn_143',['RightMostEnabledColumn',['../structImGuiTable.html#a8f297cc1ad1839a3039adf00e9f29047',1,'ImGuiTable']]],
   ['rightmoststretchedcolumn_144',['RightMostStretchedColumn',['../structImGuiTable.html#a40e26ce4a610b6688c956ffa374ad0dc',1,'ImGuiTable']]],
-  ['romberg_145',['romberg',['../namespacesteppable_1_1____internals_1_1calculus.html#af7a9bc9673c589e4a128bf765fa0cda6',1,'steppable::__internals::calculus']]],
+  ['romberg_145',['romberg',['../namespacesteppable_1_1____internals_1_1calculus.html#ac4cf5b2420cd546c820238564081db0a',1,'steppable::__internals::calculus']]],
   ['root_146',['root',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a577039aa267ec001fa27cf1b611fe918',1,'steppable::__internals::arithmetic']]],
   ['rootid_147',['RootId',['../structImGuiDockContextPruneNodeData.html#a7edc8adab912f2e692cb4d3992935c6f',1,'ImGuiDockContextPruneNodeData']]],
   ['rootintpart_148',['rootIntPart',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a6f1429e9d7719e6376dc68ae28d36dbe',1,'steppable::__internals::arithmetic']]],
