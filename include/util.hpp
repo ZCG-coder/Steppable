@@ -208,7 +208,7 @@ namespace steppable::__internals::utils
         if (*decimal > MAX_DECIMALS)
         {
             output::error("checkDecimalArg"s,
-                          "The number of decimals ({}) is more than the accepted {} digits."s,
+                          "The number of decimals ({0}) is more than the accepted {1} digits."s,
                           { std::to_string(*decimal), std::to_string(MAX_DECIMALS) });
             programSafeExit(1);
         }

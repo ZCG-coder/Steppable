@@ -127,6 +127,8 @@ namespace steppable::__internals::arithmetic
 
     std::string _root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)
     {
+        checkDecimalArg(&_decimals);
+
         if (isDecimal(base))
         {
             const auto& fraction = Fraction(base);
@@ -186,6 +188,8 @@ namespace steppable::__internals::arithmetic
 
     std::string root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)
     {
+        checkDecimalArg(&_decimals);
+
         if (isZeroString(_number))
             return "0";
         if (isInteger(_number))

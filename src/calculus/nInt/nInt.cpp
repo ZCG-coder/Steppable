@@ -24,6 +24,7 @@
 #include "fn/calculus.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
+#include "util.hpp"
 
 #include <cmath>
 #include <functional>
@@ -32,6 +33,7 @@
 
 using namespace steppable::__internals::arithmetic;
 using namespace steppable::__internals::numUtils;
+using namespace steppable::__internals::utils;
 using namespace std::literals;
 
 namespace steppable::__internals::calculus
@@ -42,6 +44,8 @@ namespace steppable::__internals::calculus
                         const int max_steps,
                         const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         auto acc = "0." + std::string(decimals - 1, '0') + "1";
         auto previous = std::vector(max_steps, "0"s);
         auto current = std::vector(max_steps, "0"s);
