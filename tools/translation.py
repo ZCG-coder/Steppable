@@ -1,5 +1,5 @@
 #####################################################################################################
-#  Copyright (c) 2023-2024 NWSOFT                                                                   #
+#  Copyright (c) 2023-2025 NWSOFT                                                                   #
 #                                                                                                   #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
 #  of this software and associated documentation files (the "Software"), to deal                    #
@@ -44,7 +44,7 @@ from tools.install import install
 ISO_639_REGEX = re.compile(r"^[a-z]{2}(-[A-Z]{2})?$")
 LOCALIZED_HEADER = """\
 #####################################################################################################
-#  Copyright (c) 2023-2024 NWSOFT                                                                   #
+#  Copyright (c) 2023-2025 NWSOFT                                                                   #
 #                                                                                                   #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
 #  of this software and associated documentation files (the "Software"), to deal                    #

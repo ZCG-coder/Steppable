@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * Copyright (c) 2023-2024 NWSOFT                                                                 *
+ * Copyright (c) 2023-2025 NWSOFT                                                                 *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -50,6 +50,7 @@ namespace steppable::__internals::arithmetic
 {
     std::string atan2(const std::string& y, const std::string& x, const size_t decimals = 10)
     {
+        checkDecimalArg(&decimals);
         //                /
         //                |         y
         //                | arctan(---)         if x > 0,               (1)

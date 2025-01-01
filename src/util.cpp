@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * Copyright (c) 2023-2024 NWSOFT                                                                 *
+ * Copyright (c) 2023-2025 NWSOFT                                                                 *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -22,6 +22,8 @@
 
 #include "util.hpp"
 
+#include "platform.hpp"
+
 #include <cstddef>
 
 #ifdef WINDOWS
@@ -34,6 +36,8 @@
 #include <sstream>
 #include <string>
 #include <vector>
+
+using namespace std::literals;
 
 namespace steppable::__internals::numUtils
 {
@@ -178,8 +182,7 @@ namespace steppable::__internals::numUtils
         if (const auto firstNonZero = std::ranges::find_if(out, [](const int num) { return num != 0; });
             out.begin() != firstNonZero && out.front() == 0)
         {
-            std::replace_if(
-                out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
+            std::replace_if(out.begin(), firstNonZero, [](const int num) { return num == 0; }, -2);
         }
 
         return out;

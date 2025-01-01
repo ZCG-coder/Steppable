@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * Copyright (c) 2023-2024 NWSOFT                                                                 *
+ * Copyright (c) 2023-2025 NWSOFT                                                                 *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -35,16 +35,21 @@
 #pragma once
 
 #include "colors.hpp"
+#include "output.hpp"
+#include "platform.hpp"
 
 #include <algorithm>
 #include <array>
 #include <chrono>
 #include <clocale>
+#include <cstddef>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
+
+using namespace std::literals;
 
 #ifndef TIC
     /**
@@ -70,6 +75,11 @@
         std::cout << colors::brightBlue << std::setw(80) << std::setfill('-');                                        \
         std::cout << reset << '\n';                                                                                   \
         }
+#endif
+
+#ifndef MAX_DECIMALS
+    /// @brief The maximum number of decimals to output
+    #define MAX_DECIMALS 50
 #endif
 
 namespace steppable::__internals::utils
@@ -183,6 +193,26 @@ namespace steppable::__internals::utils
         Utf8CodePage() { ; }
     };
 #endif
+
+    /**
+     * @brief Checks whether the decimal number is correctly specified.
+     * @details Compares the argument `decimal` to `MAX_DECIMALS`. If too much decimals are requested, prints an error
+     * and quits the program.
+     *
+     * @tparam NumberT Type of the number.
+     * @param decimal A pointer to the number of decimals.
+     */
+    template<typename NumberT>
+    void checkDecimalArg(const NumberT* decimal)
+    {
+        if (*decimal > MAX_DECIMALS)
+        {
+            output::error("checkDecimalArg"s,
+                          "The number of decimals ({}) is more than the accepted {} digits."s,
+                          { std::to_string(*decimal), std::to_string(MAX_DECIMALS) });
+            programSafeExit(1);
+        }
+    }
 } // namespace steppable::__internals::utils
 
 /**
