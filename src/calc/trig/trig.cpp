@@ -125,12 +125,12 @@ namespace steppable::__internals::arithmetic
             //  13x  + 660x  + 15120
             auto a = add(subtract(multiply("313", x4, 0), multiply("6900", x2, 0), 0), "15120", 0);
             auto b = add(add(multiply("13", x4, 0), multiply("660", x2, 0), 0), "15120", 0);
-            return standardizeNumber(divide(a, b, 0, decimals * 2));
+            return standardizeNumber(divide(a, b, 0, decimals + 2));
         }
         // otherwise use recursion
         // double C = cos(x / 4);
-        auto result = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals * 2);
-        auto result2 = roundOff(multiply(result, result, 0), static_cast<long>(decimals) * 2);
+        auto result = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals + 2);
+        auto result2 = roundOff(multiply(result, result, 0), static_cast<long>(decimals) + 2);
         // return 8 * C2 * (C2 - 1) + 1;
         return standardizeNumber(add(multiply("8", multiply(result2, subtract(result2, "1", 0), 0), 0), "1", 0));
     }
