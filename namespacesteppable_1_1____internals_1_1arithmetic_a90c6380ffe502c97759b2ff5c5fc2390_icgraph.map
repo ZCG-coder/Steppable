@@ -1,126 +1,119 @@
 <map id="steppable::__internals::arithmetic::abs" name="steppable::__internals::arithmetic::abs">
-<area shape="rect" id="Node000001" title="Calculates the absolute value of a string representation of a number." alt="" coords="2021,1127,2186,1171"/>
-<area shape="rect" id="Node000002" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#aa5a5a2c1bbcd8b9d02be2bb4bb8f2d9c" title=" " alt="" coords="1809,609,1973,654"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2096,1111,2085,1032,2062,927,2046,869,2026,811,2001,755,1971,703,1950,677,1926,656,1929,652,1954,673,1976,699,2006,753,2031,810,2051,868,2068,925,2090,1031,2101,1111"/>
-<area shape="rect" id="Node000009" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ae9c64e94a6b11f6fe650129d1ed60d3d" title=" " alt="" coords="430,547,594,591"/>
-<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="2060,1120,1990,1072,1895,1019,1842,996,1785,977,1727,964,1669,960,1019,960,906,963,816,962,774,955,732,941,688,918,641,883,608,851,582,813,561,772,544,730,523,651,513,592,518,591,528,650,549,729,566,770,587,810,613,847,644,879,691,913,734,936,775,950,816,957,906,958,1018,954,1669,954,1728,959,1787,972,1844,991,1898,1014,1993,1067,2063,1115"/>
-<area shape="rect" id="Node000020" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ab4ece79e035f72d99e34b9579d65977a" title="Calculates the arc cotangent of a number." alt="" coords="430,1253,594,1298"/>
-<area shape="poly" id="edge21_Node000001_Node000020" title=" " alt="" coords="2058,1182,2018,1205,1974,1225,1891,1254,1825,1271,1757,1280,1669,1282,1018,1282,595,1279,595,1274,1019,1277,1669,1277,1756,1275,1824,1266,1890,1249,1972,1220,2016,1200,2055,1178"/>
-<area shape="rect" id="Node000021" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ab6140f6ee4c81b1324337aa0359633ba" title="Calculates the arc cosecant of a number." alt="" coords="430,1184,594,1229"/>
-<area shape="poly" id="edge22_Node000001_Node000021" title=" " alt="" coords="2012,1178,1938,1197,1853,1214,1761,1227,1669,1232,1018,1232,788,1226,595,1215,595,1210,788,1220,1019,1226,1669,1226,1761,1221,1852,1209,1937,1191,2010,1173"/>
-<area shape="rect" id="Node000022" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ae171ff423b2b3c31aae888b48ba654e2" title="Calculates the arc secant of a number." alt="" coords="218,1179,382,1223"/>
-<area shape="poly" id="edge23_Node000001_Node000022" title=" " alt="" coords="2079,1185,2034,1234,2006,1258,1975,1278,1895,1315,1828,1332,1758,1338,1669,1338,765,1338,669,1342,593,1347,557,1346,519,1341,477,1330,429,1313,395,1295,365,1272,318,1226,322,1222,368,1268,398,1290,431,1308,479,1325,520,1336,557,1341,593,1342,669,1337,765,1333,1669,1333,1758,1333,1827,1327,1893,1310,1972,1273,2002,1254,2030,1230,2075,1182"/>
-<area shape="rect" id="Node000023" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a689a1373cc705788f87aa6ec6831c4d2" title="Calculates the arc sine of a number." alt="" coords="684,1045,848,1090"/>
-<area shape="poly" id="edge24_Node000001_Node000023" title=" " alt="" coords="2020,1124,1946,1103,1859,1083,1764,1067,1669,1061,1231,1061,849,1068,848,1062,1231,1056,1669,1056,1765,1062,1860,1077,1948,1098,2022,1119"/>
-<area shape="rect" id="Node000025" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#aec9eeba474f15bca015e0341ba70c35d" title="Calculates the arc tangent of a number." alt="" coords="684,1115,848,1159"/>
-<area shape="poly" id="edge28_Node000001_Node000025" title=" " alt="" coords="2006,1162,1848,1175,1669,1181,1231,1181,1127,1178,1024,1171,848,1151,849,1146,1024,1165,1128,1173,1231,1176,1669,1176,1848,1169,2006,1157"/>
-<area shape="rect" id="Node000027" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a5eeb396144a9e1d3edd3339abb6f434f" title="Get the factors of a number." alt="" coords="1809,713,1973,758"/>
-<area shape="poly" id="edge31_Node000001_Node000027" title=" " alt="" coords="2081,1114,1902,760,1906,757,2086,1111"/>
-<area shape="rect" id="Node000069" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a102ebf6862142b8bc9c128ba6509a1e5" title="Gets the greatest common divisor of two string representations of numbers." alt="" coords="1809,1524,1973,1569"/>
-<area shape="poly" id="edge60_Node000001_Node000069" title=" " alt="" coords="2086,1186,1907,1525,1902,1522,2081,1183"/>
-<area shape="rect" id="Node000051" href="$namespacesteppable_1_1____internals_1_1calculus.html#ac4cf5b2420cd546c820238564081db0a" title="Calculates the Romberg integration of f." alt="" coords="938,1096,1102,1141"/>
-<area shape="poly" id="edge72_Node000001_Node000051" title=" " alt="" coords="2006,1142,1848,1131,1669,1125,1443,1125,1102,1122,1102,1117,1443,1120,1669,1120,1848,1125,2006,1137"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="1926,597,1913,590,1891,588,1871,590,1859,595,1854,601,1856,608,1850,609,1849,599,1856,590,1870,585,1891,583,1914,585,1928,592"/>
-<area shape="rect" id="Node000003" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a46dc3c8049bc38c614754c7a9892a6ef" title="Calculates the cosine of a number." alt="" coords="1586,169,1750,214"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="1870,597,1678,216,1683,213,1874,595"/>
-<area shape="rect" id="Node000004" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a9d77364715abc7098fe635fe98308ea4" title="Calculates the secant of a number." alt="" coords="1362,135,1527,179"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="1570,179,1527,172,1528,167,1571,174"/>
-<area shape="rect" id="Node000005" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a8a56fbd8f485a77e5885350bcaeb6a8a" title="Calculates the sine of a number." alt="" coords="1362,204,1527,249"/>
-<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="1571,209,1528,216,1527,211,1570,204"/>
-<area shape="rect" id="Node000007" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ad4a5eddddfd19bd838a7c3d7b5c63beb" title="Calculates the tangent of a number." alt="" coords="1150,75,1314,119"/>
-<area shape="poly" id="edge9_Node000003_Node000007" title=" " alt="" coords="1616,164,1573,142,1526,125,1472,113,1417,105,1314,99,1315,93,1417,100,1473,107,1527,120,1575,137,1618,159"/>
-<area shape="rect" id="Node000006" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ad6130fb90d02d24ab7ebc673b308eb53" title="Calculates the cosecant of a number." alt="" coords="1150,204,1314,249"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="1347,229,1315,229,1315,224,1347,224"/>
-<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="1371,199,1361,194,1305,157,1259,122,1262,117,1308,153,1364,189,1373,194"/>
-<area shape="rect" id="Node000008" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a7ee5bb970e3ef6576477fe9b84ef05fb" title="Calculates the cotangent of a number." alt="" coords="938,5,1102,50"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="1147,72,1090,53,1092,48,1148,67"/>
-<area shape="rect" id="Node000010" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a553038eacc0f006ff0c6e55e4438a8da" title="Calculates the natural logarithm of a number." alt="" coords="218,472,382,517"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="432,544,365,520,366,515,433,539"/>
-<area shape="rect" id="Node000017" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a1887dfc0111cc10087ce4dbe11faedce" title="Calculates the logarithm with a given base." alt="" coords="218,604,382,649"/>
-<area shape="poly" id="edge18_Node000009_Node000017" title=" " alt="" coords="416,598,383,607,382,602,414,593"/>
-<area shape="rect" id="Node000011" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a284825c9ef7aa393817e5722ae973474" title="Inverse hyperbolic cosine function." alt="" coords="5,247,170,291"/>
-<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="280,460,235,383,204,342,168,306,151,294,154,290,171,302,208,338,240,380,284,457"/>
-<area shape="rect" id="Node000012" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a5e831f056becdb75c5401d989d75de3d" title="Inverse hyperbolic cotangent function." alt="" coords="5,465,170,510"/>
-<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="202,494,170,493,170,488,202,489"/>
-<area shape="rect" id="Node000013" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ab71f051f3e9dd04736bd159d19606a5a" title="Inverse hyperbolic cosecant function." alt="" coords="5,316,170,361"/>
-<area shape="poly" id="edge14_Node000010_Node000013" title=" " alt="" coords="262,463,218,425,168,386,132,364,135,359,171,381,222,421,266,459"/>
-<area shape="rect" id="Node000014" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a30f74a72754366996ff69e5d9b29c0cc" title="Inverse hyperbolic secant function." alt="" coords="5,884,170,929"/>
-<area shape="poly" id="edge15_Node000010_Node000014" title=" " alt="" coords="267,530,242,560,220,593,203,630,193,660,185,692,172,731,102,885,98,883,167,729,180,690,188,659,198,628,215,590,238,556,263,527"/>
-<area shape="rect" id="Node000015" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a8921127f62c92fb384c6066c1d14df1a" title="Inverse hyperbolic sine function." alt="" coords="5,396,170,441"/>
-<area shape="poly" id="edge16_Node000010_Node000015" title=" " alt="" coords="221,469,151,444,153,439,223,464"/>
-<area shape="rect" id="Node000016" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a819f79be9ee055e3ff415cd73a72d0bb" title="Inverse hyperbolic tangent function." alt="" coords="5,535,170,579"/>
-<area shape="poly" id="edge17_Node000010_Node000016" title=" " alt="" coords="208,524,166,537,165,531,207,519"/>
-<area shape="rect" id="Node000018" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a894e1b40cfc62868688d007c8854a23c" title="Calculates the common logarithm of a number." alt="" coords="5,604,170,649"/>
-<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="202,629,170,629,170,624,202,624"/>
-<area shape="rect" id="Node000019" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a8c2eaab2cb7284c5cc56a3b022d5181b" title="Calculates the binary logarithm of a number." alt="" coords="5,673,170,718"/>
-<area shape="poly" id="edge20_Node000017_Node000019" title=" " alt="" coords="216,656,159,675,158,670,214,651"/>
-<area shape="poly" id="edge27_Node000023_Node000021" title=" " alt="" coords="671,1090,644,1104,628,1121,620,1137,612,1155,596,1174,578,1186,575,1181,593,1170,608,1152,615,1135,624,1117,641,1100,668,1085"/>
-<area shape="rect" id="Node000024" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a84f3eeacf23a1682d08489ae18ece557" title="Calculates the arc cosine of a number." alt="" coords="430,1045,594,1090"/>
-<area shape="poly" id="edge25_Node000023_Node000024" title=" " alt="" coords="668,1070,595,1070,595,1065,668,1065"/>
-<area shape="poly" id="edge26_Node000024_Node000022" title=" " alt="" coords="440,1100,431,1105,375,1143,329,1180,325,1176,372,1138,429,1100,438,1095"/>
-<area shape="poly" id="edge29_Node000025_Node000020" title=" " alt="" coords="720,1170,661,1206,596,1243,571,1255,568,1250,593,1239,659,1202,717,1166"/>
-<area shape="rect" id="Node000026" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a4ea728092d39d1f0b39bdcbbb3329a69" title=" " alt="" coords="430,1115,594,1159"/>
-<area shape="poly" id="edge30_Node000025_Node000026" title=" " alt="" coords="668,1140,595,1140,595,1134,668,1134"/>
-<area shape="rect" id="Node000028" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a379086734493f9c5d59b1bca39908074" title="Get the largest factor of a number, that is a root number." alt="" coords="1575,597,1761,642"/>
-<area shape="poly" id="edge32_Node000027_Node000028" title=" " alt="" coords="1832,708,1711,645,1714,640,1834,703"/>
-<area shape="rect" id="Node000068" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a1a51aabb1fe846587df780d136efd45f" title="Check if a number is prime." alt="" coords="1586,713,1750,758"/>
-<area shape="poly" id="edge59_Node000027_Node000068" title=" " alt="" coords="1794,738,1750,738,1750,733,1794,733"/>
-<area shape="rect" id="Node000029" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a118bc6cb979317a7c762ee90fb44d0a4" title="Converts a root operation into a surd." alt="" coords="1362,503,1527,547"/>
-<area shape="poly" id="edge33_Node000028_Node000029" title=" " alt="" coords="1598,593,1498,550,1500,545,1600,588"/>
-<area shape="rect" id="Node000030" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a577039aa267ec001fa27cf1b611fe918" title="Takes the n&#45;th root of a numer." alt="" coords="1150,479,1314,523"/>
-<area shape="poly" id="edge34_Node000029_Node000030" title=" " alt="" coords="1347,517,1314,513,1315,508,1347,511"/>
-<area shape="poly" id="edge35_Node000030_Node000011" title=" " alt="" coords="1217,465,1165,318,1132,246,1116,218,1100,199,1060,164,1022,137,986,118,950,105,911,97,869,92,767,90,511,90,452,95,393,108,336,127,281,151,187,203,120,248,117,244,184,198,279,146,334,122,391,103,451,90,511,85,767,85,870,87,912,91,951,100,988,113,1025,133,1063,160,1104,195,1120,215,1137,243,1170,316,1222,463"/>
-<area shape="poly" id="edge36_Node000030_Node000013" title=" " alt="" coords="1216,465,1199,421,1174,370,1141,319,1100,274,1020,208,984,185,949,168,911,155,870,147,767,141,511,141,455,145,409,157,371,175,336,197,265,250,223,279,171,306,144,318,142,313,169,301,220,274,262,246,333,193,368,170,407,152,454,140,511,136,767,136,871,142,913,150,951,163,987,181,1023,204,1104,270,1145,316,1179,368,1204,419,1221,463"/>
-<area shape="poly" id="edge37_Node000030_Node000014" title=" " alt="" coords="1220,539,1179,632,1148,692,1111,755,1066,818,1015,878,956,931,891,974,863,986,829,996,750,1009,657,1016,558,1016,459,1010,365,1001,282,989,217,976,166,956,121,931,124,927,168,951,218,970,283,984,365,996,459,1005,558,1010,657,1010,749,1004,828,991,861,981,888,969,953,927,1011,874,1062,815,1106,752,1144,689,1174,630,1215,537"/>
-<area shape="poly" id="edge39_Node000030_Node000015" title=" " alt="" coords="1203,468,1153,407,1080,334,1037,298,991,265,941,238,889,217,822,201,767,198,712,204,643,217,568,233,494,254,350,303,226,355,135,398,133,393,224,350,348,299,492,249,567,228,642,212,711,199,767,192,822,195,890,212,943,233,994,261,1041,294,1084,330,1157,403,1207,464"/>
-<area shape="poly" id="edge38_Node000030_Node000023" title=" " alt="" coords="1232,539,1224,617,1203,719,1187,774,1165,828,1138,880,1104,927,1077,954,1047,977,981,1014,912,1040,849,1057,848,1052,911,1035,978,1009,1044,972,1074,950,1100,923,1133,877,1161,826,1182,772,1198,718,1219,616,1227,539"/>
-<area shape="rect" id="Node000031" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#af6182ff1cb4cd038c71e082ce615c334" title="Raises a string representation of a number to a power." alt="" coords="938,581,1102,626"/>
-<area shape="poly" id="edge40_Node000030_Node000031" title=" " alt="" coords="1172,533,1069,583,1067,578,1170,528"/>
-<area shape="poly" id="edge41_Node000031_Node000009" title=" " alt="" coords="984,573,941,539,915,524,889,513,822,495,767,492,712,498,643,513,596,528,553,549,551,544,594,523,642,508,711,493,767,486,822,490,891,508,918,519,944,535,987,568"/>
-<area shape="poly" id="edge45_Node000031_Node000011" title=" " alt="" coords="1005,568,988,526,964,478,930,431,910,410,888,393,832,366,753,343,658,324,553,308,342,287,170,275,170,270,342,281,554,303,658,319,754,338,834,361,891,388,914,406,934,427,968,475,993,523,1010,566"/>
-<area shape="poly" id="edge46_Node000031_Node000013" title=" " alt="" coords="999,569,980,537,955,502,924,469,888,442,830,418,750,399,655,383,551,370,341,352,170,344,170,338,341,347,551,364,656,377,751,393,832,413,891,437,928,465,959,499,985,534,1003,567"/>
-<area shape="poly" id="edge47_Node000031_Node000014" title=" " alt="" coords="1016,642,1004,698,981,765,965,799,945,831,920,859,891,883,848,909,802,930,754,946,705,959,604,974,503,978,406,973,315,962,235,947,169,932,170,927,236,942,316,956,406,967,503,973,604,969,704,954,752,941,800,925,845,904,888,879,916,856,940,828,960,796,976,763,999,697,1011,641"/>
-<area shape="poly" id="edge49_Node000031_Node000015" title=" " alt="" coords="991,570,947,523,919,501,889,483,829,465,748,450,653,439,549,431,339,422,170,421,170,415,339,417,549,426,653,433,749,445,830,459,891,479,922,496,950,519,995,567"/>
-<area shape="poly" id="edge48_Node000031_Node000023" title=" " alt="" coords="1010,642,966,771,932,850,892,926,842,994,793,1047,789,1043,838,991,887,924,928,848,961,769,1005,640"/>
-<area shape="poly" id="edge50_Node000031_Node000025" title=" " alt="" coords="1016,642,1000,749,973,887,956,955,937,1018,915,1069,892,1104,872,1119,849,1129,847,1124,869,1115,888,1101,911,1066,932,1016,951,954,968,885,995,748,1011,641"/>
-<area shape="poly" id="edge58_Node000031_Node000031" title=" " alt="" coords="1054,569,1041,562,1020,560,1000,562,988,567,983,573,984,580,979,581,978,571,985,562,999,557,1020,555,1043,557,1057,564"/>
-<area shape="rect" id="Node000032" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a01e6a5d7221085953ea728aebb5fd998" title=" " alt="" coords="684,251,848,295"/>
-<area shape="poly" id="edge42_Node000031_Node000032" title=" " alt="" coords="998,569,935,433,924,398,918,369,909,343,888,316,869,302,847,292,850,287,872,298,892,312,914,340,923,367,929,396,940,431,1003,566"/>
-<area shape="rect" id="Node000033" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a776dbc8645c8624dde48a244683ae42a" title="Hyperbolic cosine function." alt="" coords="684,824,848,869"/>
-<area shape="poly" id="edge51_Node000031_Node000033" title=" " alt="" coords="1008,641,990,682,965,728,932,774,891,814,871,826,849,835,847,830,869,821,888,810,928,771,961,725,986,679,1003,639"/>
-<area shape="rect" id="Node000037" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a9f3acea6ddd81e9a43f3b48cf809af66" title="Converts a string representation of a number from any base to decimal." alt="" coords="662,616,870,661"/>
-<area shape="poly" id="edge52_Node000031_Node000037" title=" " alt="" coords="923,620,871,627,870,621,922,614"/>
-<area shape="rect" id="Node000038" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#aa150ef39a272f7228ae239679247fab3" title="Determines the scale of the quotient of division." alt="" coords="642,685,890,730"/>
-<area shape="poly" id="edge53_Node000031_Node000038" title=" " alt="" coords="969,636,891,675,858,687,856,682,889,671,967,632"/>
-<area shape="rect" id="Node000049" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a21814bf99bd44bc84194fc8443c2dce4" title="Calculates e^x. Shorthand of power(x, E, 0);." alt="" coords="684,547,848,591"/>
-<area shape="poly" id="edge54_Node000031_Node000049" title=" " alt="" coords="922,593,848,583,849,578,923,588"/>
-<area shape="rect" id="Node000053" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a9af210044669c6dd27a2fca4723fe831" title="Get the greatest root number less than or equal to the given number." alt="" coords="649,755,883,799"/>
-<area shape="poly" id="edge57_Node000031_Node000053" title=" " alt="" coords="997,640,952,694,923,721,891,745,867,757,865,752,888,740,920,717,948,690,993,637"/>
-<area shape="poly" id="edge44_Node000032_Node000030" title=" " alt="" coords="857,299,891,312,978,354,1063,399,1195,476,1193,480,1061,403,976,358,889,317,855,303"/>
-<area shape="poly" id="edge43_Node000032_Node000032" title=" " alt="" coords="808,238,792,232,766,229,742,231,727,236,721,242,723,250,718,251,716,240,725,232,741,226,766,224,793,227,810,233"/>
-<area shape="poly" id="edge55_Node000049_Node000009" title=" " alt="" coords="668,572,595,572,595,566,668,566"/>
-<area shape="poly" id="edge56_Node000049_Node000049" title=" " alt="" coords="808,534,792,528,766,525,742,527,727,532,721,538,723,546,718,547,716,536,725,528,741,522,766,520,793,523,810,529"/>
-<area shape="poly" id="edge61_Node000069_Node000069" title=" " alt="" coords="1926,1511,1913,1505,1891,1503,1871,1505,1859,1509,1854,1515,1856,1523,1850,1524,1849,1514,1856,1505,1870,1499,1891,1497,1914,1500,1928,1506"/>
-<area shape="rect" id="Node000055" href="$classsteppable_1_1Fraction.html#a9cf64d847c268d9334775c572ef75dfa" title="Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom component..." alt="" coords="1595,1616,1740,1661"/>
-<area shape="poly" id="edge62_Node000069_Node000055" title=" " alt="" coords="1822,1578,1725,1618,1723,1613,1820,1573"/>
-<area shape="rect" id="Node000056" href="$classsteppable_1_1Fraction.html#a4647e3f3062426a91d1ef7cdbde23bb6" title="Initialized a fraction from a number." alt="" coords="1372,1443,1517,1487"/>
-<area shape="poly" id="edge63_Node000055_Node000056" title=" " alt="" coords="1637,1606,1587,1553,1525,1502,1505,1490,1508,1486,1528,1497,1591,1550,1641,1602"/>
-<area shape="rect" id="Node000057" href="$classsteppable_1_1Fraction.html#a1fa38ab4cede78e19fa478242f6e5b46" title="Initializes a fraction with a specified top component and bottom component." alt="" coords="1372,1512,1517,1557"/>
-<area shape="poly" id="edge64_Node000055_Node000057" title=" " alt="" coords="1608,1611,1526,1571,1499,1560,1501,1555,1528,1567,1610,1606"/>
-<area shape="rect" id="Node000058" href="$classsteppable_1_1Fraction.html#a21eef8107e9cd1e590f7595c4ecbe147" title="Multiplies two fractions together and stores the result in the current one. This function does it by ..." alt="" coords="1372,1581,1517,1626"/>
-<area shape="poly" id="edge65_Node000055_Node000058" title=" " alt="" coords="1580,1627,1517,1618,1518,1612,1580,1622"/>
-<area shape="rect" id="Node000059" href="$classsteppable_1_1Fraction.html#ab10a5f43f6e60253ab6f4a097c73cf6e" title="Adds two fractions together and stores the result in the current one. This function does it by doing ..." alt="" coords="1372,1651,1517,1695"/>
-<area shape="poly" id="edge66_Node000055_Node000059" title=" " alt="" coords="1580,1655,1518,1664,1517,1659,1580,1649"/>
-<area shape="rect" id="Node000060" href="$classsteppable_1_1Fraction.html#aad3d96fbba7e7a0fa36c3f69f0463b8b" title="Subtracts a fraction from another fraction and stores the result in the current one...." alt="" coords="1372,1720,1517,1765"/>
-<area shape="poly" id="edge67_Node000055_Node000060" title=" " alt="" coords="1610,1670,1528,1710,1501,1722,1499,1717,1526,1705,1608,1665"/>
-<area shape="rect" id="Node000061" href="$classsteppable_1_1Fraction.html#a86913160c5f596b74be3007bd16bda6b" title="Divides a fraction by abother fraction and stores the result in the current one. This function does i..." alt="" coords="1372,1789,1517,1834"/>
-<area shape="poly" id="edge68_Node000055_Node000061" title=" " alt="" coords="1641,1674,1591,1727,1528,1779,1508,1791,1505,1786,1525,1775,1587,1723,1637,1671"/>
-<area shape="rect" id="Node000062" href="$classsteppable_1_1Fraction.html#ac0a3d392ac70f42f74392fe08c1ab8be" title="Raises the fraction to a power and stores the result in the current one." alt="" coords="1372,1859,1517,1903"/>
-<area shape="poly" id="edge69_Node000055_Node000062" title=" " alt="" coords="1653,1676,1632,1715,1604,1761,1569,1807,1528,1848,1511,1860,1508,1856,1525,1844,1565,1804,1600,1758,1628,1712,1648,1673"/>
-<area shape="rect" id="Node000063" href="$classsteppable_1_1Fraction.html#a939fea669a7f630672f7215e77f335b6" title="Returns the fraction as a string. The string is formatted as &quot;top/bottom&quot;, and it will automatically ..." alt="" coords="1372,1928,1517,1973"/>
-<area shape="poly" id="edge70_Node000055_Node000063" title=" " alt="" coords="1659,1676,1642,1729,1615,1793,1577,1859,1554,1890,1528,1918,1513,1930,1509,1925,1525,1914,1550,1887,1573,1856,1610,1791,1637,1727,1654,1675"/>
-<area shape="rect" id="Node000064" href="$classsteppable_1_1Fraction.html#a2d20a7ae3e6a1fd18b06c86db601e6e4" title="Converts a fraction to its reciprocal. This function converts the fraction to its reciprocal." alt="" coords="1372,1373,1517,1418"/>
-<area shape="poly" id="edge71_Node000055_Node000064" title=" " alt="" coords="1648,1603,1628,1564,1600,1519,1565,1473,1525,1432,1508,1421,1511,1416,1528,1428,1569,1469,1604,1516,1632,1562,1653,1601"/>
-<area shape="poly" id="edge73_Node000051_Node000023" title=" " alt="" coords="922,1102,848,1087,849,1081,923,1096"/>
-<area shape="poly" id="edge74_Node000051_Node000025" title=" " alt="" coords="922,1128,849,1134,848,1128,922,1123"/>
+<area shape="rect" id="Node000001" title="Calculates the absolute value of a string representation of a number." alt="" coords="1514,732,1678,777"/>
+<area shape="rect" id="Node000002" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#aa5a5a2c1bbcd8b9d02be2bb4bb8f2d9c" title=" " alt="" coords="1301,309,1466,354"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1582,718,1539,583,1505,501,1463,422,1436,386,1408,356,1412,353,1441,383,1468,420,1510,499,1544,581,1587,716"/>
+<area shape="rect" id="Node000009" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ae9c64e94a6b11f6fe650129d1ed60d3d" title=" " alt="" coords="855,391,1019,435"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="1576,719,1557,684,1532,644,1501,605,1464,571,1411,536,1353,507,1293,483,1233,464,1116,437,1019,422,1020,417,1117,432,1234,459,1295,478,1356,503,1413,532,1467,567,1505,601,1536,641,1562,681,1580,716"/>
+<area shape="rect" id="Node000020" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ab4ece79e035f72d99e34b9579d65977a" title="Calculates the arc cotangent of a number." alt="" coords="855,941,1019,986"/>
+<area shape="poly" id="edge21_Node000001_Node000020" title=" " alt="" coords="1576,791,1532,851,1502,881,1467,905,1411,930,1352,949,1291,962,1230,971,1115,977,1019,975,1020,969,1115,972,1229,966,1290,957,1350,944,1409,925,1464,900,1498,877,1528,848,1572,788"/>
+<area shape="rect" id="Node000021" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ab6140f6ee4c81b1324337aa0359633ba" title="Calculates the arc cosecant of a number." alt="" coords="218,659,382,703"/>
+<area shape="poly" id="edge22_Node000001_Node000021" title=" " alt="" coords="1510,730,1465,718,1314,686,1248,678,1161,676,936,676,382,682,382,677,935,670,1162,670,1248,673,1315,681,1466,713,1511,725"/>
+<area shape="rect" id="Node000022" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ae171ff423b2b3c31aae888b48ba654e2" title="Calculates the arc secant of a number." alt="" coords="5,783,170,827"/>
+<area shape="poly" id="edge23_Node000001_Node000022" title=" " alt="" coords="1547,787,1509,806,1466,821,1388,838,1321,848,1261,851,1204,850,1087,843,938,837,511,837,328,830,170,817,170,811,328,825,511,832,938,832,1088,837,1205,845,1261,846,1320,842,1387,833,1465,816,1506,801,1545,782"/>
+<area shape="rect" id="Node000023" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a689a1373cc705788f87aa6ec6831c4d2" title="Calculates the arc sine of a number." alt="" coords="430,715,594,759"/>
+<area shape="poly" id="edge24_Node000001_Node000023" title=" " alt="" coords="1498,746,1341,733,1161,726,936,726,753,729,595,736,595,730,752,724,935,721,1162,721,1341,728,1499,741"/>
+<area shape="rect" id="Node000025" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#aec9eeba474f15bca015e0341ba70c35d" title="Calculates the arc tangent of a number." alt="" coords="1078,872,1242,917"/>
+<area shape="poly" id="edge28_Node000001_Node000025" title=" " alt="" coords="1567,790,1523,830,1496,850,1467,865,1410,883,1352,894,1294,900,1243,901,1243,896,1294,895,1351,889,1409,878,1465,860,1493,845,1519,826,1563,786"/>
+<area shape="rect" id="Node000027" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a5eeb396144a9e1d3edd3339abb6f434f" title="Get the factors of a number." alt="" coords="1301,581,1466,626"/>
+<area shape="poly" id="edge31_Node000001_Node000027" title=" " alt="" coords="1554,724,1464,657,1422,629,1425,624,1467,652,1557,720"/>
+<area shape="rect" id="Node000079" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a102ebf6862142b8bc9c128ba6509a1e5" title="Gets the greatest common divisor of two string representations of numbers." alt="" coords="1301,1141,1466,1186"/>
+<area shape="poly" id="edge41_Node000001_Node000079" title=" " alt="" coords="1578,792,1399,1142,1394,1140,1574,789"/>
+<area shape="rect" id="Node000051" href="$namespacesteppable_1_1____internals_1_1calculus.html#ac4cf5b2420cd546c820238564081db0a" title="Calculates the Romberg integration of f." alt="" coords="1301,761,1466,806"/>
+<area shape="poly" id="edge65_Node000001_Node000051" title=" " alt="" coords="1499,770,1466,775,1466,770,1498,765"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="1418,297,1405,290,1383,288,1364,290,1352,295,1347,301,1348,308,1343,309,1341,299,1348,290,1363,285,1384,283,1407,285,1420,292"/>
+<area shape="rect" id="Node000003" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a46dc3c8049bc38c614754c7a9892a6ef" title="Calculates the cosine of a number." alt="" coords="1078,136,1242,181"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="1340,302,1189,183,1192,179,1343,298"/>
+<area shape="rect" id="Node000004" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a9d77364715abc7098fe635fe98308ea4" title="Calculates the secant of a number." alt="" coords="855,165,1019,210"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="1063,174,1020,180,1019,174,1063,168"/>
+<area shape="rect" id="Node000005" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a8a56fbd8f485a77e5885350bcaeb6a8a" title="Calculates the sine of a number." alt="" coords="855,45,1019,90"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="1088,132,993,93,995,88,1090,127"/>
+<area shape="rect" id="Node000007" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ad4a5eddddfd19bd838a7c3d7b5c63beb" title="Calculates the tangent of a number." alt="" coords="642,75,807,119"/>
+<area shape="poly" id="edge9_Node000003_Node000007" title=" " alt="" coords="1062,147,807,111,808,106,1063,142"/>
+<area shape="rect" id="Node000006" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ad6130fb90d02d24ab7ebc673b308eb53" title="Calculates the cosecant of a number." alt="" coords="642,5,807,50"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="839,52,807,46,808,41,840,47"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="840,84,807,88,807,83,839,78"/>
+<area shape="rect" id="Node000008" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a7ee5bb970e3ef6576477fe9b84ef05fb" title="Calculates the cotangent of a number." alt="" coords="430,40,594,85"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="627,84,594,78,595,73,627,78"/>
+<area shape="rect" id="Node000010" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a553038eacc0f006ff0c6e55e4438a8da" title="Calculates the natural logarithm of a number." alt="" coords="642,391,807,435"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="839,416,807,416,807,410,839,410"/>
+<area shape="rect" id="Node000017" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a1887dfc0111cc10087ce4dbe11faedce" title="Calculates the logarithm with a given base." alt="" coords="642,179,807,223"/>
+<area shape="poly" id="edge18_Node000009_Node000017" title=" " alt="" coords="900,381,746,225,750,222,904,378"/>
+<area shape="rect" id="Node000011" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a284825c9ef7aa393817e5722ae973474" title="Inverse hyperbolic cosine function." alt="" coords="430,525,594,570"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="688,448,645,482,596,515,573,527,571,522,593,511,642,478,685,443"/>
+<area shape="rect" id="Node000012" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a5e831f056becdb75c5401d989d75de3d" title="Inverse hyperbolic cotangent function." alt="" coords="430,248,594,293"/>
+<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="687,382,644,344,593,307,571,296,574,291,596,303,647,340,691,378"/>
+<area shape="rect" id="Node000013" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#ab71f051f3e9dd04736bd159d19606a5a" title="Inverse hyperbolic cosecant function." alt="" coords="430,595,594,639"/>
+<area shape="poly" id="edge14_Node000010_Node000013" title=" " alt="" coords="706,450,661,517,630,553,596,584,578,596,575,592,593,580,627,549,656,514,701,447"/>
+<area shape="rect" id="Node000014" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a30f74a72754366996ff69e5d9b29c0cc" title="Inverse hyperbolic secant function." alt="" coords="430,387,594,431"/>
+<area shape="poly" id="edge15_Node000010_Node000014" title=" " alt="" coords="627,414,595,413,595,408,627,408"/>
+<area shape="rect" id="Node000015" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a8921127f62c92fb384c6066c1d14df1a" title="Inverse hyperbolic sine function." alt="" coords="430,456,594,501"/>
+<area shape="poly" id="edge16_Node000010_Node000015" title=" " alt="" coords="636,443,588,458,586,453,635,438"/>
+<area shape="rect" id="Node000016" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a819f79be9ee055e3ff415cd73a72d0bb" title="Inverse hyperbolic tangent function." alt="" coords="430,317,594,362"/>
+<area shape="poly" id="edge17_Node000010_Node000016" title=" " alt="" coords="643,388,578,365,580,360,644,383"/>
+<area shape="rect" id="Node000018" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a894e1b40cfc62868688d007c8854a23c" title="Calculates the common logarithm of a number." alt="" coords="430,109,594,154"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="639,176,582,157,584,152,641,171"/>
+<area shape="rect" id="Node000019" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a8c2eaab2cb7284c5cc56a3b022d5181b" title="Calculates the binary logarithm of a number." alt="" coords="430,179,594,223"/>
+<area shape="poly" id="edge20_Node000017_Node000019" title=" " alt="" coords="627,204,595,204,595,198,627,198"/>
+<area shape="poly" id="edge27_Node000023_Node000021" title=" " alt="" coords="414,714,382,705,383,700,416,709"/>
+<area shape="rect" id="Node000024" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a84f3eeacf23a1682d08489ae18ece557" title="Calculates the arc cosine of a number." alt="" coords="218,736,382,781"/>
+<area shape="poly" id="edge25_Node000023_Node000024" title=" " alt="" coords="415,749,383,753,382,747,414,744"/>
+<area shape="poly" id="edge26_Node000024_Node000022" title=" " alt="" coords="203,782,171,790,169,784,202,777"/>
+<area shape="poly" id="edge29_Node000025_Node000020" title=" " alt="" coords="1072,924,1012,943,1011,938,1071,919"/>
+<area shape="rect" id="Node000026" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a4ea728092d39d1f0b39bdcbbb3329a69" title=" " alt="" coords="855,872,1019,917"/>
+<area shape="poly" id="edge30_Node000025_Node000026" title=" " alt="" coords="1063,897,1019,897,1019,892,1063,892"/>
+<area shape="rect" id="Node000028" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a379086734493f9c5d59b1bca39908074" title="Get the largest factor of a number, that is a root number." alt="" coords="1067,581,1253,626"/>
+<area shape="poly" id="edge32_Node000027_Node000028" title=" " alt="" coords="1286,606,1254,606,1254,601,1286,601"/>
+<area shape="rect" id="Node000078" href="$namespacesteppable_1_1____internals_1_1numUtils.html#a1a51aabb1fe846587df780d136efd45f" title="Check if a number is prime." alt="" coords="1078,512,1242,557"/>
+<area shape="poly" id="edge40_Node000027_Node000078" title=" " alt="" coords="1294,579,1234,560,1235,555,1296,574"/>
+<area shape="rect" id="Node000029" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a118bc6cb979317a7c762ee90fb44d0a4" title="Converts a root operation into a surd." alt="" coords="855,573,1019,618"/>
+<area shape="poly" id="edge33_Node000028_Node000029" title=" " alt="" coords="1051,602,1019,601,1020,596,1052,597"/>
+<area shape="rect" id="Node000030" href="$namespacesteppable_1_1____internals_1_1arithmetic.html#a577039aa267ec001fa27cf1b611fe918" title="Takes the n&#45;th root of a numer." alt="" coords="642,556,807,601"/>
+<area shape="poly" id="edge34_Node000029_Node000030" title=" " alt="" coords="839,590,807,588,807,582,840,585"/>
+<area shape="poly" id="edge35_Node000030_Node000011" title=" " alt="" coords="627,567,594,562,595,557,627,562"/>
+<area shape="poly" id="edge36_Node000030_Node000013" title=" " alt="" coords="628,599,595,605,594,599,627,593"/>
+<area shape="poly" id="edge37_Node000030_Node000014" title=" " alt="" coords="695,546,650,495,593,446,573,434,576,430,596,441,654,491,699,542"/>
+<area shape="poly" id="edge39_Node000030_Node000015" title=" " alt="" coords="665,551,593,515,567,504,569,499,595,511,668,546"/>
+<area shape="poly" id="edge38_Node000030_Node000023" title=" " alt="" coords="683,612,545,716,542,712,680,608"/>
+<area shape="poly" id="edge42_Node000079_Node000079" title=" " alt="" coords="1418,1129,1405,1122,1383,1120,1364,1122,1352,1127,1347,1133,1348,1140,1343,1141,1341,1131,1348,1122,1363,1117,1384,1115,1407,1117,1420,1124"/>
+<area shape="rect" id="Node000055" href="$classsteppable_1_1Fraction.html#a9cf64d847c268d9334775c572ef75dfa" title="Simplifies a fraction. This function simplifies the fraction by dividing the top and bottom component..." alt="" coords="1088,1235,1233,1279"/>
+<area shape="poly" id="edge43_Node000079_Node000055" title=" " alt="" coords="1315,1195,1217,1237,1215,1232,1313,1190"/>
+<area shape="rect" id="Node000056" href="$classsteppable_1_1Fraction.html#a4647e3f3062426a91d1ef7cdbde23bb6" title="Initialized a fraction from a number." alt="" coords="864,1149,1010,1194"/>
+<area shape="poly" id="edge44_Node000055_Node000056" title=" " alt="" coords="1085,1231,997,1197,998,1192,1087,1226"/>
+<area shape="rect" id="Node000057" href="$classsteppable_1_1Fraction.html#a1fa38ab4cede78e19fa478242f6e5b46" title="Initializes a fraction with a specified top component and bottom component." alt="" coords="864,1320,1010,1365"/>
+<area shape="poly" id="edge45_Node000055_Node000057" title=" " alt="" coords="1087,1288,998,1322,997,1317,1085,1283"/>
+<area shape="rect" id="Node000060" href="$classsteppable_1_1Fraction.html#a21eef8107e9cd1e590f7595c4ecbe147" title="Multiplies two fractions together and stores the result in the current one. This function does it by ..." alt="" coords="652,904,797,949"/>
+<area shape="poly" id="edge58_Node000055_Node000060" title=" " alt="" coords="1072,1256,1009,1251,945,1242,890,1228,868,1219,853,1208,830,1178,821,1148,820,1117,824,1087,829,1056,830,1025,823,994,805,963,792,951,796,947,809,959,828,992,835,1025,834,1056,830,1087,826,1118,826,1147,835,1176,857,1204,871,1214,891,1223,946,1236,1010,1245,1073,1251"/>
+<area shape="rect" id="Node000062" href="$classsteppable_1_1Fraction.html#ab10a5f43f6e60253ab6f4a097c73cf6e" title="Adds two fractions together and stores the result in the current one. This function does it by doing ..." alt="" coords="652,973,797,1018"/>
+<area shape="poly" id="edge59_Node000055_Node000062" title=" " alt="" coords="1073,1284,1019,1292,960,1292,904,1280,877,1269,853,1252,831,1227,821,1200,820,1173,823,1145,827,1117,828,1089,821,1060,805,1032,792,1020,796,1017,809,1029,826,1058,833,1088,832,1117,828,1146,825,1173,826,1199,835,1224,856,1248,880,1264,905,1275,961,1287,1018,1286,1072,1279"/>
+<area shape="rect" id="Node000064" href="$classsteppable_1_1Fraction.html#aad3d96fbba7e7a0fa36c3f69f0463b8b" title="Subtracts a fraction from another fraction and stores the result in the current one...." alt="" coords="652,1528,797,1573"/>
+<area shape="poly" id="edge60_Node000055_Node000064" title=" " alt="" coords="1125,1292,1021,1379,918,1454,808,1518,784,1530,781,1525,805,1513,915,1450,1017,1375,1122,1288"/>
+<area shape="rect" id="Node000066" href="$classsteppable_1_1Fraction.html#a86913160c5f596b74be3007bd16bda6b" title="Divides a fraction by abother fraction and stores the result in the current one. This function does i..." alt="" coords="652,1597,797,1642"/>
+<area shape="poly" id="edge61_Node000055_Node000066" title=" " alt="" coords="1148,1295,1129,1340,1101,1393,1065,1447,1021,1495,968,1534,909,1564,851,1588,798,1605,796,1600,849,1583,907,1560,965,1529,1017,1491,1061,1444,1096,1390,1124,1337,1143,1293"/>
+<area shape="rect" id="Node000073" href="$classsteppable_1_1Fraction.html#ac0a3d392ac70f42f74392fe08c1ab8be" title="Raises the fraction to a power and stores the result in the current one." alt="" coords="652,1667,797,1711"/>
+<area shape="poly" id="edge62_Node000055_Node000073" title=" " alt="" coords="1156,1295,1142,1358,1116,1436,1099,1477,1077,1517,1051,1555,1021,1588,969,1626,911,1653,852,1672,798,1683,797,1678,850,1667,909,1648,966,1621,1017,1584,1047,1552,1072,1515,1094,1475,1111,1435,1136,1357,1150,1294"/>
+<area shape="rect" id="Node000074" href="$classsteppable_1_1Fraction.html#a939fea669a7f630672f7215e77f335b6" title="Returns the fraction as a string. The string is formatted as &quot;top/bottom&quot;, and it will automatically ..." alt="" coords="864,1011,1010,1055"/>
+<area shape="poly" id="edge63_Node000055_Node000074" title=" " alt="" coords="1138,1222,1089,1146,1056,1106,1017,1070,1000,1058,1002,1054,1021,1066,1059,1102,1093,1143,1142,1220"/>
+<area shape="rect" id="Node000075" href="$classsteppable_1_1Fraction.html#a2d20a7ae3e6a1fd18b06c86db601e6e4" title="Converts a fraction to its reciprocal. This function converts the fraction to its reciprocal." alt="" coords="864,1080,1010,1125"/>
+<area shape="poly" id="edge64_Node000055_Node000075" title=" " alt="" coords="1124,1226,1076,1182,1018,1139,996,1128,999,1123,1020,1135,1079,1178,1128,1222"/>
+<area shape="rect" id="Node000058" href="$classsteppable_1_1Fraction.html#abb223edd73fc68820e151fac052d2fef" title=" " alt="" coords="652,1043,797,1087"/>
+<area shape="poly" id="edge46_Node000057_Node000058" title=" " alt="" coords="862,1312,853,1303,836,1276,829,1249,829,1200,830,1175,829,1151,821,1127,805,1101,792,1090,796,1086,809,1098,826,1124,834,1150,836,1175,834,1200,834,1249,841,1273,857,1299,866,1309"/>
+<area shape="rect" id="Node000059" href="$classsteppable_1_1Fraction.html#ab6f8e1e49b31aa3ddcc096eb1876dce3" title="Multiplies two fractions together. This function does it by doing a simple fraction multiplication an..." alt="" coords="652,1112,797,1157"/>
+<area shape="poly" id="edge47_Node000057_Node000059" title=" " alt="" coords="863,1313,853,1303,840,1285,833,1268,829,1235,824,1203,817,1187,805,1171,791,1159,794,1155,809,1167,822,1184,829,1201,834,1234,838,1266,845,1282,857,1299,867,1309"/>
+<area shape="poly" id="edge48_Node000057_Node000060" title=" " alt="" coords="896,1311,872,1283,852,1251,837,1209,832,1170,837,1100,840,1067,838,1033,827,999,805,963,793,951,796,947,809,959,832,997,843,1032,845,1067,843,1100,838,1170,842,1208,857,1249,876,1280,900,1307"/>
+<area shape="rect" id="Node000061" href="$classsteppable_1_1Fraction.html#a177374401a6d78045720bdf97db60055" title="Adds two fractions together. This function does it by doing a simple fraction addition and returns th..." alt="" coords="652,1181,797,1226"/>
+<area shape="poly" id="edge49_Node000057_Node000061" title=" " alt="" coords="868,1314,853,1303,838,1286,829,1271,820,1256,805,1240,787,1229,790,1224,808,1236,824,1252,833,1268,842,1283,856,1299,871,1310"/>
+<area shape="poly" id="edge50_Node000057_Node000062" title=" " alt="" coords="861,1312,852,1303,832,1266,825,1231,825,1197,829,1164,833,1132,833,1100,825,1066,805,1032,793,1021,796,1017,809,1029,830,1064,839,1099,839,1132,835,1165,830,1198,830,1230,837,1264,857,1299,865,1309"/>
+<area shape="rect" id="Node000063" href="$classsteppable_1_1Fraction.html#a0220c31296f34e81e58d3b57c1aefe62" title="Subtracts a fraction from another fraction. This function does it by doing a simple fraction subtract..." alt="" coords="652,1251,797,1295"/>
+<area shape="poly" id="edge51_Node000057_Node000063" title=" " alt="" coords="851,1317,795,1299,796,1293,853,1312"/>
+<area shape="poly" id="edge52_Node000057_Node000064" title=" " alt="" coords="913,1379,853,1462,808,1518,790,1530,787,1525,805,1514,849,1459,909,1376"/>
+<area shape="rect" id="Node000065" href="$classsteppable_1_1Fraction.html#aab6ff2672317acf3302bfb988cfb3c26" title="Divides a fraction by abother fraction. This function does it by doing a simple fraction division (mu..." alt="" coords="652,1320,797,1365"/>
+<area shape="poly" id="edge53_Node000057_Node000065" title=" " alt="" coords="849,1345,798,1345,798,1340,849,1340"/>
+<area shape="poly" id="edge54_Node000057_Node000066" title=" " alt="" coords="927,1381,910,1427,885,1482,851,1538,808,1587,792,1599,789,1595,805,1583,847,1534,880,1479,905,1425,922,1379"/>
+<area shape="rect" id="Node000067" href="$classsteppable_1_1Fraction.html#a5f88141a1ecd042a1934ebbb6f2af612" title="Compares two numbers for greater than." alt="" coords="652,1389,797,1434"/>
+<area shape="poly" id="edge55_Node000057_Node000067" title=" " alt="" coords="853,1372,796,1391,795,1386,851,1367"/>
+<area shape="rect" id="Node000068" href="$classsteppable_1_1Fraction.html#a1eb79b99d24d94067e2adf2e65c9df9d" title="Compare two fractions for less or equal than." alt="" coords="652,1459,797,1503"/>
+<area shape="poly" id="edge56_Node000057_Node000068" title=" " alt="" coords="902,1377,858,1414,808,1449,786,1460,783,1456,805,1444,855,1409,898,1373"/>
+<area shape="poly" id="edge57_Node000057_Node000073" title=" " alt="" coords="932,1381,919,1440,895,1513,859,1589,836,1624,809,1656,793,1668,790,1664,805,1652,832,1621,854,1586,890,1511,913,1438,927,1379"/>
+<area shape="poly" id="edge66_Node000051_Node000023" title=" " alt="" coords="1286,781,594,744,595,739,1286,776"/>
+<area shape="poly" id="edge67_Node000051_Node000025" title=" " alt="" coords="1324,816,1208,874,1206,869,1322,811"/>
 </map>

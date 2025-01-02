@@ -1,43 +1,32 @@
 <map id="ImGui::RenderColorRectWithAlphaCheckerboard" name="ImGui::RenderColorRectWithAlphaCheckerboard">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,258,213,303"/>
-<area shape="rect" id="Node000002" href="$structImDrawList.html#a6b16ab764160b0251d2e7b3bd08c1ffc" title=" " alt="" coords="261,211,453,238"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,255,277,240,278,245,211,260"/>
-<area shape="rect" id="Node000017" href="$namespaceImGui.html#a0de2d9bd347d9866511eb8d014e62556" title=" " alt="" coords="281,292,432,320"/>
-<area shape="poly" id="edge22_Node000001_Node000017" title=" " alt="" coords="214,288,266,294,266,299,213,294"/>
-<area shape="rect" id="Node000003" href="$structImDrawList.html#aea9301cb99ebf4b27f5d3959017567c9" title=" " alt="" coords="501,263,700,290"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="426,236,518,256,517,261,425,242"/>
-<area shape="rect" id="Node000004" href="$structImDrawList.html#a2251eb264ed8b17a253c409787375053" title=" " alt="" coords="520,159,681,186"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="425,207,517,188,518,193,426,213"/>
-<area shape="rect" id="Node000013" href="$structImDrawList.html#ae2be093563f1d20b8190b7c423113925" title=" " alt="" coords="520,211,682,238"/>
-<area shape="poly" id="edge16_Node000002_Node000013" title=" " alt="" coords="453,222,504,222,504,227,453,227"/>
-<area shape="rect" id="Node000014" href="$structImDrawList.html#a879aa38dbfb0344e3e023d65c002c7d7" title=" " alt="" coords="508,99,694,126"/>
-<area shape="poly" id="edge17_Node000002_Node000014" title=" " alt="" coords="381,208,434,177,500,145,539,129,541,134,502,150,437,182,383,212"/>
-<area shape="rect" id="Node000005" href="$structImDrawList.html#a6d307c6de1a6522e76fa410e8fe96fcc" title=" " alt="" coords="756,159,948,186"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="681,170,740,170,740,175,681,175"/>
-<area shape="rect" id="Node000012" href="$structImDrawList.html#a828d944325ed58d8b57abd3647bffaaf" title=" " alt="" coords="1025,209,1198,237"/>
-<area shape="poly" id="edge14_Node000004_Node000012" title=" " alt="" coords="677,184,749,195,885,208,1010,216,1009,222,884,214,748,200,677,190"/>
-<area shape="rect" id="Node000006" href="$structImDrawList.html#ac25f3a7693ed13ba2dac455675be8654" title=" " alt="" coords="1004,56,1219,84"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="931,156,954,145,969,133,977,120,987,107,1002,94,1016,87,1018,92,1005,99,991,111,982,123,973,137,957,149,933,161"/>
-<area shape="rect" id="Node000008" href="$structImVector.html#aab5df48e0711a48bd12f3206e08c4108" title=" " alt="" coords="1292,125,1448,153"/>
-<area shape="poly" id="edge13_Node000005_Node000008" title=" " alt="" coords="948,164,1276,142,1276,148,949,169"/>
-<area shape="rect" id="Node000007" href="$structImDrawList.html#a52afa32aaab6d581cda90dc5d8726ed6" title=" " alt="" coords="1267,57,1472,102"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1220,71,1252,72,1252,78,1220,76"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="1176,82,1220,94,1268,111,1293,118,1291,124,1266,116,1218,99,1174,87"/>
-<area shape="rect" id="Node000011" href="$structImVector.html#ac371dd62e56ae486b1a5038cf07eee56" title=" " alt="" coords="1306,5,1433,33"/>
-<area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="1185,53,1291,32,1292,37,1186,58"/>
-<area shape="rect" id="Node000009" href="$structImVector.html#a3a097635d464b1b70dc7d59996a88b28" title=" " alt="" coords="1520,92,1709,120"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1448,126,1505,118,1505,123,1449,131"/>
-<area shape="rect" id="Node000010" href="$structImVector.html#a0f14f5736c3372157856eebb67123b75" title=" " alt="" coords="1546,23,1683,50"/>
-<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="1442,122,1471,111,1495,96,1519,78,1565,55,1567,60,1522,83,1498,100,1474,116,1443,127"/>
-<area shape="poly" id="edge11_Node000011_Node000009" title=" " alt="" coords="1434,30,1473,42,1571,82,1569,87,1471,47,1432,36"/>
-<area shape="poly" id="edge12_Node000011_Node000010" title=" " alt="" coords="1434,21,1531,28,1530,33,1433,26"/>
-<area shape="poly" id="edge15_Node000012_Node000008" title=" " alt="" coords="1161,206,1218,189,1314,156,1315,161,1220,194,1163,211"/>
-<area shape="poly" id="edge21_Node000014_Node000011" title=" " alt="" coords="656,95,748,75,898,52,1048,36,1291,20,1291,25,1048,41,898,58,749,80,658,101"/>
-<area shape="rect" id="Node000015" href="$structImDrawList.html#a7f2e315f147acd8b555d86d1557659cc" title=" " alt="" coords="748,90,956,135"/>
-<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="694,110,733,110,733,115,694,115"/>
-<area shape="rect" id="Node000016" href="$structImDrawList.html#a846714bb0321c6f1f908767abc8559e6" title=" " alt="" coords="1015,108,1208,136"/>
-<area shape="poly" id="edge19_Node000015_Node000016" title=" " alt="" coords="956,114,999,115,999,120,956,119"/>
-<area shape="poly" id="edge20_Node000016_Node000008" title=" " alt="" coords="1208,126,1276,130,1276,136,1208,131"/>
-<area shape="rect" id="Node000018" href="$namespaceImGui.html#abe2691de0b1a71c774ab24cc91564a94" title=" " alt="" coords="504,314,698,359"/>
-<area shape="poly" id="edge23_Node000017_Node000018" title=" " alt="" coords="433,313,489,320,488,325,433,318"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,172,213,217"/>
+<area shape="rect" id="Node000002" href="$structImDrawList.html#a6b16ab764160b0251d2e7b3bd08c1ffc" title=" " alt="" coords="261,124,453,152"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,169,277,153,278,159,211,174"/>
+<area shape="rect" id="Node000014" href="$namespaceImGui.html#a0de2d9bd347d9866511eb8d014e62556" title=" " alt="" coords="281,206,432,234"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="214,202,266,208,266,213,213,208"/>
+<area shape="rect" id="Node000003" href="$structImDrawList.html#aea9301cb99ebf4b27f5d3959017567c9" title=" " alt="" coords="501,18,700,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="385,122,500,67,544,49,546,54,502,71,387,126"/>
+<area shape="rect" id="Node000005" href="$structImDrawList.html#a879aa38dbfb0344e3e023d65c002c7d7" title=" " alt="" coords="1016,35,1202,63"/>
+<area shape="poly" id="edge13_Node000002_Node000005" title=" " alt="" coords="434,121,501,110,730,84,1000,57,1001,62,731,89,501,116,434,126"/>
+<area shape="rect" id="Node000008" href="$structImDrawList.html#a2251eb264ed8b17a253c409787375053" title=" " alt="" coords="520,124,681,152"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="453,136,505,136,505,141,453,141"/>
+<area shape="rect" id="Node000013" href="$structImDrawList.html#ae2be093563f1d20b8190b7c423113925" title=" " alt="" coords="520,176,682,204"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="426,150,518,170,517,175,425,155"/>
+<area shape="rect" id="Node000004" href="$structImDrawList.html#ad2accc0a74845b08bd0e6fae6183d6d0" title=" " alt="" coords="748,5,954,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="701,27,733,27,733,32,701,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="954,34,1001,37,1000,43,954,39"/>
+<area shape="rect" id="Node000006" href="$structImDrawList.html#a7f2e315f147acd8b555d86d1557659cc" title=" " alt="" coords="1265,27,1472,71"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1203,46,1250,46,1250,52,1203,52"/>
+<area shape="rect" id="Node000007" href="$structImDrawList.html#a846714bb0321c6f1f908767abc8559e6" title=" " alt="" coords="1520,35,1713,63"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1473,46,1505,46,1505,52,1473,52"/>
+<area shape="rect" id="Node000009" href="$structImDrawList.html#a6d307c6de1a6522e76fa410e8fe96fcc" title=" " alt="" coords="755,124,947,152"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="681,136,739,136,739,141,681,141"/>
+<area shape="rect" id="Node000012" href="$structImDrawList.html#a828d944325ed58d8b57abd3647bffaaf" title=" " alt="" coords="765,176,937,204"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="672,150,766,170,765,175,670,155"/>
+<area shape="rect" id="Node000010" href="$structImDrawList.html#ac25f3a7693ed13ba2dac455675be8654" title=" " alt="" coords="1002,124,1217,152"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="948,136,986,136,986,141,948,141"/>
+<area shape="rect" id="Node000011" href="$structImDrawList.html#a52afa32aaab6d581cda90dc5d8726ed6" title=" " alt="" coords="1266,116,1471,161"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="1218,136,1250,136,1250,141,1218,141"/>
+<area shape="rect" id="Node000015" href="$namespaceImGui.html#abe2691de0b1a71c774ab24cc91564a94" title=" " alt="" coords="504,228,698,273"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="433,227,489,234,488,239,433,232"/>
 </map>
