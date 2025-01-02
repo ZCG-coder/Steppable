@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * Copyright (c) 2023-2024 NWSOFT                                                                 *
+ * Copyright (c) 2023-2025 NWSOFT                                                                 *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -97,6 +97,8 @@ namespace steppable::__internals::arithmetic
 
     std::string _cos(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         //          .,,.   .,    /=====================================================================\
         //         //%,   .(     | NOTE: DO NOT CALL THIS METHOD DIRECTLY IN PRODUCTION CODE!          |
         //       /%(       .,    |   /-\    THIS METHOD ONLY ACCEPTS RADIANS AS INPUT, AND DOES        |
@@ -123,18 +125,20 @@ namespace steppable::__internals::arithmetic
             //  13x  + 660x  + 15120
             auto a = add(subtract(multiply("313", x4, 0), multiply("6900", x2, 0), 0), "15120", 0);
             auto b = add(add(multiply("13", x4, 0), multiply("660", x2, 0), 0), "15120", 0);
-            return standardizeNumber(divide(a, b, 0, decimals * 2));
+            return standardizeNumber(divide(a, b, 0, decimals + 2));
         }
         // otherwise use recursion
         // double C = cos(x / 4);
-        auto result = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals * 2);
-        auto result2 = roundOff(multiply(result, result, 0), static_cast<long>(decimals) * 2);
+        auto result = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals + 2);
+        auto result2 = roundOff(multiply(result, result, 0), static_cast<long>(decimals) + 2);
         // return 8 * C2 * (C2 - 1) + 1;
         return standardizeNumber(add(multiply("8", multiply(result2, subtract(result2, "1", 0), 0), 0), "1", 0));
     }
 
     std::string cos(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         // Mode Options:
         // 0: Radians  (default)
         // 1: Degrees  (converts to radians)
@@ -169,6 +173,8 @@ namespace steppable::__internals::arithmetic
 
     std::string sin(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         // Mode Options:
         // 0: Radians  (default)
         // 1: Degrees  (converts to radians)
@@ -206,6 +212,8 @@ namespace steppable::__internals::arithmetic
 
     std::string tan(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         // Mode Options:
         // 0: Radians  (default)
         // 1: Degrees  (converts to radians)
@@ -260,6 +268,8 @@ namespace steppable::__internals::arithmetic
 
     std::string csc(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         auto sinX = sin(x, decimals + 1, mode);
         if (isZeroString(sinX))
         {
@@ -271,6 +281,8 @@ namespace steppable::__internals::arithmetic
 
     std::string sec(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         auto cosX = cos(x, decimals + 1, mode);
         if (isZeroString(cosX))
         {
@@ -282,6 +294,8 @@ namespace steppable::__internals::arithmetic
 
     std::string cot(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         auto tanX = tan(x, decimals + 1, mode);
         if (isZeroString(tanX))
         {
@@ -293,6 +307,8 @@ namespace steppable::__internals::arithmetic
 
     std::string atan(const std::string& _x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         auto x = _x;
         // Zero check
         if (isZeroString(x))
@@ -346,6 +362,8 @@ namespace steppable::__internals::arithmetic
 
     std::string asin(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         if (compare(abs(x, 0), "1", 0) == "1")
         {
             error("trig::asin", $("trig", "b06650e0-7101-4734-9647-5abb56beb492"));
@@ -386,6 +404,8 @@ namespace steppable::__internals::arithmetic
 
     std::string acos(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         if (compare(x, "1", 0) == "2")
             return "0";
         std::string circleAngle;
@@ -410,6 +430,8 @@ namespace steppable::__internals::arithmetic
 
     std::string asec(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         if (compare(abs(x, 0), "1", 0) == "1")
         {
             error("trig::asec", $("trig", "fffb4742-3712-4c9a-a7ff-65cd51508a0a"));
@@ -424,6 +446,8 @@ namespace steppable::__internals::arithmetic
 
     std::string acsc(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         if (compare(abs(x, 0), "1", 0) != "0")
         {
             error("trig::acsc"s, $("trig", "c021dfde-300c-4d74-a6a1-87a514c1bbe0"));
@@ -438,6 +462,8 @@ namespace steppable::__internals::arithmetic
 
     std::string acot(const std::string& x, const int decimals, const int mode)
     {
+        checkDecimalArg(&decimals);
+
         if (compare(abs(x, 0), "1", 0) != "0")
         {
             error("trig::acot"s, $("trig", "c0c6a29f-abda-4676-9662-1d00f94f10a4"));

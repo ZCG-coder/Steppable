@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * Copyright (c) 2023-2024 NWSOFT                                                                 *
+ * Copyright (c) 2023-2025 NWSOFT                                                                 *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -47,6 +47,8 @@ namespace steppable::__internals::arithmetic
 {
     std::string _log(const std::string& x, const size_t _decimals)
     {
+        checkDecimalArg(&_decimals);
+
         const auto& decimals = _decimals + 2;
         // Zero check
         if (numUtils::isZeroString(x))
@@ -104,6 +106,8 @@ namespace steppable::__internals::arithmetic
     // Common logarithms
     std::string logb(const std::string& _number, const std::string& _base, const size_t _decimals)
     {
+        checkDecimalArg(&_decimals);
+
         //            -ln(1/a)
         // log (x) = ----------
         //    b       -ln(1/b)
@@ -118,11 +122,23 @@ namespace steppable::__internals::arithmetic
         return numUtils::roundOff(result, _decimals);
     }
 
-    std::string log10(const std::string& _number, const size_t _decimals) { return logb(_number, "10", _decimals); }
+    std::string log10(const std::string& _number, const size_t _decimals)
+    {
+        checkDecimalArg(&_decimals);
+        return logb(_number, "10", _decimals);
+    }
 
-    std::string log2(const std::string& _number, const size_t _decimals) { return logb(_number, "2", _decimals); }
+    std::string log2(const std::string& _number, const size_t _decimals)
+    {
+        checkDecimalArg(&_decimals);
+        return logb(_number, "2", _decimals);
+    }
 
-    std::string ln(const std::string& _number, const size_t _decimals) { return _log(_number, _decimals); }
+    std::string ln(const std::string& _number, const size_t _decimals)
+    {
+        checkDecimalArg(&_decimals);
+        return _log(_number, _decimals);
+    }
 } // namespace steppable::__internals::arithmetic
 
 #ifndef NO_MAIN

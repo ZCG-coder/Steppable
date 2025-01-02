@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * Copyright (c) 2023-2024 NWSOFT                                                                 *
+ * Copyright (c) 2023-2025 NWSOFT                                                                 *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -51,6 +51,8 @@ namespace steppable::__internals::arithmetic
 {
     std::string sinh(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         const auto& twoX = multiply(x, "2", 0);
         const auto& eTwoX = roundOff(power(static_cast<std::string>(constants::E), twoX, 0), decimals + 2);
         const auto& eX = roundOff(power(static_cast<std::string>(constants::E), x, 0), decimals + 2);
@@ -63,6 +65,8 @@ namespace steppable::__internals::arithmetic
 
     std::string cosh(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         const auto& twoX = multiply(x, "2", 0);
         const auto& eTwoX = roundOff(power(static_cast<std::string>(constants::E), twoX, 0), decimals + 2);
         const auto& eX = roundOff(power(static_cast<std::string>(constants::E), x, 0), decimals + 2);
@@ -75,6 +79,8 @@ namespace steppable::__internals::arithmetic
 
     std::string tanh(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         const auto& numerator = sinh(x, decimals);
         const auto& denominator = cosh(x, decimals);
 
@@ -83,6 +89,8 @@ namespace steppable::__internals::arithmetic
 
     std::string coth(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         const auto& denominator = tanh(x, decimals);
         if (isZeroString(denominator))
         {
@@ -95,6 +103,8 @@ namespace steppable::__internals::arithmetic
 
     std::string csch(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         const auto& denominator = sinh(x, decimals);
         if (isZeroString(denominator))
         {
@@ -107,6 +117,8 @@ namespace steppable::__internals::arithmetic
 
     std::string sech(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         const auto& denominator = cosh(x, decimals);
         if (isZeroString(denominator))
         {
@@ -119,6 +131,8 @@ namespace steppable::__internals::arithmetic
 
     std::string asinh(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         //                      /------|
         //                     / 2
         // asinh(x) = ln(x + \/ x  + 1  )
@@ -132,6 +146,8 @@ namespace steppable::__internals::arithmetic
 
     std::string acosh(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         //                      /------|
         //                     / 2
         // acosh(x) = ln(x + \/ x  - 1  )
@@ -145,6 +161,8 @@ namespace steppable::__internals::arithmetic
 
     std::string atanh(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         //             1         1 + x
         // atanh(x) = --- * ln( ------- )
         //             2         1 - x
@@ -158,6 +176,8 @@ namespace steppable::__internals::arithmetic
 
     std::string acoth(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         //             1          1 + x
         // acoth(x) = ---  * ln( ------- )
         //             2          x - 1
@@ -171,6 +191,8 @@ namespace steppable::__internals::arithmetic
 
     std::string acsch(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         //                         /-------|
         //                1       / 1
         // acsch(x) = ln(--- +   / ---- + 1  )
@@ -189,6 +211,8 @@ namespace steppable::__internals::arithmetic
 
     std::string asech(const std::string& x, const int decimals)
     {
+        checkDecimalArg(&decimals);
+
         //                         /-------|
         //                1       / 1
         // asech(x) = ln(--- +   / ---- - 1  )
