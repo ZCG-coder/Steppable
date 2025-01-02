@@ -80,6 +80,7 @@ class CMakeBuild(build_ext):
             f"-DPython_EXECUTABLE={sys.executable}",
             f"-DCMAKE_BUILD_TYPE={cfg}",  # not used on MSVC, but no harm
             f"-DSTP_BUILD_COMPONENT_EXECUTABLE=True",  # not used on MSVC, but no harm
+            f"-DSTP_NO_BINDINGS=False",  # Build bindings for Python
         ]
         build_args = []
         # Adding CMake arguments set as environment variable
@@ -188,6 +189,8 @@ setup(
     long_description="Python bindings for Steppable, written using nanobind.",
     ext_modules=[CMakeExtension("steppyble")],
     include_package_data=True,
+    packages=["steppyble"],
+    package_data={"steppyble": ["__init__.pyi", "fraction.pyi", "number.pyi"]},
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
     extras_require={"test": ["pytest>=6.0"]},

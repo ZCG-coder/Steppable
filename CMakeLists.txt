@@ -25,6 +25,7 @@ PROJECT(Steppable)
 
 # Ensure that Python is available to run the development scripts, and build with bindings.
 SET(Python_FIND_VIRTUALENV FIRST)
+SET(Python3_FIND_VIRTUALENV FIRST)
 
 FIND_PACKAGE(
     Python
