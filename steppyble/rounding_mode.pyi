@@ -20,6 +20,23 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from .number import *
-from .fraction import *
-from .rounding_mode import *
+import enum
+
+
+class RoundingMode(enum.Enum):
+    """Specifies how Steppable should round the number in operations."""
+
+    USE_MAXIMUM_PREC = 0xFF
+    """Use the higher precision whenever possible."""
+
+    USE_MINIMUM_PREC = 0x01
+    """Use the lower precision whenever possible."""
+
+    USE_CURRENT_PREC = 0x02
+    """Use the current precision."""
+
+    USE_OTHER_PREC = 0x03
+    """Use the other number's precision."""
+
+    DISCARD_ALL_DECIMALS = 0x00
+    """Do not append any decimal places."""
