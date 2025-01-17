@@ -41,7 +41,7 @@
 
 using namespace std::literals;
 using namespace steppable::__internals::stringUtils;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::symbols;
 using namespace steppable::localization;
 using namespace steppable::output;
@@ -62,7 +62,7 @@ namespace steppable::prettyPrint::printers
     }
 } // namespace steppable::prettyPrint::printers
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     /**
      * @brief Represents a number using alphabets and numberals.

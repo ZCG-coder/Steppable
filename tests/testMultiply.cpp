@@ -31,7 +31,7 @@
 
 TEST_START()
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 SECTION(Multiplication without carry)
 const std::string &a = "2";

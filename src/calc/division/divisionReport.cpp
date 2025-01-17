@@ -40,7 +40,7 @@
 using namespace std::literals;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::__internals::symbols;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string& temp,

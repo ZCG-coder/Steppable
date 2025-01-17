@@ -28,7 +28,7 @@
 #include <algorithm>
 #include <vector>
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::types;
 
 namespace steppable::__internals::numUtils

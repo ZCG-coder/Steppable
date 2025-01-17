@@ -31,7 +31,7 @@
 
 TEST_START()
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 SECTION(Decimal Convert without letters)
 const std::string &a = "46432231133131";

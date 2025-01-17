@@ -46,9 +46,9 @@ using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto& divisor)
     {

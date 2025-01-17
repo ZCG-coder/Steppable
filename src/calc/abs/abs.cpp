@@ -38,10 +38,10 @@
 #include <string>
 
 using namespace steppable::__internals::utils;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::localization;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string abs(const std::string& _number, const int steps)
     {

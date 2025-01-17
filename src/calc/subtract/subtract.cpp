@@ -45,9 +45,9 @@
 using namespace steppable::__internals::numUtils;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string subtract(const std::string& a, const std::string& b, const int steps, const bool noMinus)
     {

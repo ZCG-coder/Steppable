@@ -47,7 +47,7 @@
     #undef min
 #endif
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::__internals::numUtils;
@@ -87,7 +87,7 @@ namespace steppable::prettyPrint::printers
     }
 } // namespace steppable::prettyPrint::printers
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string rootIntPart(const std::string& _number, const std::string& base)
     {

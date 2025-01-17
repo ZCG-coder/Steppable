@@ -40,7 +40,7 @@
 using namespace steppable::__internals::numUtils;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 namespace steppable::prettyPrint::printers
 {
@@ -57,7 +57,7 @@ namespace steppable::prettyPrint::printers
     }
 } // namespace steppable::prettyPrint::printers
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string power(const std::string& _number, const std::string& _raiseTo, const int steps)
     {

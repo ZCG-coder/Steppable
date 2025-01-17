@@ -40,7 +40,7 @@
 
 namespace steppable
 {
-    using namespace steppable::__internals::arithmetic;
+    using namespace steppable::__internals::calc;
 
     Number::Number() : prec(8), value("0") {}
 

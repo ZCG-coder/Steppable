@@ -31,7 +31,7 @@
 #include <string>
 #include <vector>
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::utils;
 using namespace std::literals;

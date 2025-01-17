@@ -24,7 +24,7 @@
 
 #include <string>
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     /**
      * @brief A struct to represent a surd.

@@ -30,7 +30,7 @@
 #include <iostream>
 
 TEST_START()
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 // We can just test the basics of the trigonometric functions, as the rest are based on them.
 SECTION(Test sine and cosine)

@@ -40,13 +40,13 @@
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::utils;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::symbols;
 using namespace steppable::output;
 using namespace steppable::localization;
 using namespace std::literals;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string factorial(const std::string& _number, const int steps)
     {

@@ -41,12 +41,12 @@
 #include <string>
 
 using namespace std::literals;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::numUtils;
 using namespace steppable::localization;
 using namespace steppable::output;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string atan2(const std::string& y, const std::string& x, const size_t decimals = 10)
     {

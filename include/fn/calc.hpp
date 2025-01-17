@@ -46,7 +46,7 @@ using namespace std::literals;
  * @namespace steppable::__internals
  * @brief The namespace containing internal functions for the Steppable library.
  */
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     /**
      * @brief Represents the quotient and remainder of a division operation.

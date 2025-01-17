@@ -47,7 +47,7 @@ using namespace steppable::localization;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::numUtils;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string sinh(const std::string& x, const int decimals)
     {

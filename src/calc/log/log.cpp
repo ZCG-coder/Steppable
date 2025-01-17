@@ -38,12 +38,12 @@
 #include <cstdlib>
 #include <string>
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::utils;
 using namespace steppable::localization;
 using namespace std::literals;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string _log(const std::string& x, const size_t _decimals)
     {

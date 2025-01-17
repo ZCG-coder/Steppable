@@ -53,7 +53,7 @@ namespace steppable::__internals::numUtils
         auto integer = splitNumberResult[0];
         auto decimal = splitNumberResult[1]; // Return the integer part
         if (decimal.front() > '5')
-            integer = arithmetic::add(integer, "1", 0);
+            integer = calc::add(integer, "1", 0);
         return integer;
     }
 
@@ -77,7 +77,7 @@ namespace steppable::__internals::numUtils
         // Modify the integer part if the digit is greater than 5
         if (decimal.front() >= '5' and digits == 0)
         {
-            integer = arithmetic::add(integer, "1", 0);
+            integer = calc::add(integer, "1", 0);
             return integer;
         }
         auto newDecimal = decimal.substr(0, digits);
@@ -94,7 +94,7 @@ namespace steppable::__internals::numUtils
                 {
                     newDecimal[i] = '0';
                     if (i == newDecimal.length() - 1)
-                        integer = arithmetic::add(integer, "1", 0);
+                        integer = calc::add(integer, "1", 0);
                 }
                 else
                 {
