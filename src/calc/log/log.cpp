@@ -139,7 +139,7 @@ namespace steppable::__internals::calc
         checkDecimalArg(&_decimals);
         return _log(_number, _decimals);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
@@ -163,13 +163,13 @@ int main(int _argc, const char* _argv[])
     using namespace steppable::output;
 
     if (command == "logb")
-        std::cout << arithmetic::logb(arg, base, decimals) << "\n";
+        std::cout << calc::logb(arg, base, decimals) << "\n";
     else if (command == "log10")
-        std::cout << arithmetic::log10(arg, decimals) << "\n";
+        std::cout << calc::log10(arg, decimals) << "\n";
     else if (command == "log2")
-        std::cout << arithmetic::log2(arg, decimals) << "\n";
+        std::cout << calc::log2(arg, decimals) << "\n";
     else if (command == "ln")
-        std::cout << arithmetic::ln(arg, decimals) << "\n";
+        std::cout << calc::ln(arg, decimals) << "\n";
     else
     {
         error("log"s, $("log", "0fc4245a-fee9-4e99-bbbd-378d091c5143", { command }));

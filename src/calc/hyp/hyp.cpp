@@ -229,7 +229,7 @@ namespace steppable::__internals::calc
         return ln(lnArg, decimals);
     }
 
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
@@ -253,31 +253,31 @@ int main(int _argc, const char* _argv[])
 
     // Basic trigonometric functions
     if (command == "sinh")
-        function = arithmetic::sinh;
+        function = calc::sinh;
     else if (command == "cosh")
-        function = arithmetic::cosh;
+        function = calc::cosh;
     else if (command == "tanh")
-        function = arithmetic::tanh;
+        function = calc::tanh;
     // Reciprocal trigonometric functions
     else if (command == "csch")
-        function = arithmetic::csch;
+        function = calc::csch;
     else if (command == "sech")
-        function = arithmetic::sech;
+        function = calc::sech;
     else if (command == "coth")
-        function = arithmetic::coth;
+        function = calc::coth;
     // Inverse trigonometric functions
     else if (command == "asinh")
-        function = arithmetic::asinh;
+        function = calc::asinh;
     else if (command == "acosh")
-        function = arithmetic::acosh;
+        function = calc::acosh;
     else if (command == "atanh")
-        function = arithmetic::atanh;
+        function = calc::atanh;
     else if (command == "acsch")
-        function = arithmetic::acsch;
+        function = calc::acsch;
     else if (command == "acoth")
-        function = arithmetic::acoth;
+        function = calc::acoth;
     else if (command == "asech")
-        function = arithmetic::asech;
+        function = calc::asech;
     // Invalid command
     else
     {

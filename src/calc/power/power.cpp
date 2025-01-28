@@ -137,7 +137,7 @@ namespace steppable::__internals::calc
 
         return power(exp(divide(x, "4", 0, decimals)), "4", 0);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

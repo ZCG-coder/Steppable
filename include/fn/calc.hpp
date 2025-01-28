@@ -572,4 +572,4 @@ namespace steppable::__internals::calc
         }
     }
 
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc

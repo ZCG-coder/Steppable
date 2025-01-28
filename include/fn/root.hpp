@@ -38,4 +38,4 @@ namespace steppable::__internals::calc
         /// @brief The multiplier of the surd.
         std::string multiplier;
     };
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc

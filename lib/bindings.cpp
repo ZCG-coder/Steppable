@@ -31,7 +31,7 @@
 #include <nanobind/stl/string_view.h>
 
 namespace nb = nanobind;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace nb::literals;
 
 NB_MODULE(steppyble, mod) // NOLINT
@@ -91,7 +91,7 @@ NB_MODULE(steppyble, mod) // NOLINT
     mod.doc() = "The Python bindings for Steppable.";
 
     internals.def("abs",
-                  &steppable::__internals::arithmetic::abs,
+                  &steppable::__internals::calc::abs,
                   "a"_a,
                   "steps"_a = 2,
                   "Internal function that takes the absolute value of a number.");

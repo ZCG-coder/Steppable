@@ -475,7 +475,7 @@ namespace steppable::__internals::calc
         //                 x
         return atan(divide("1", x, 0, decimals), decimals, mode);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
@@ -501,31 +501,31 @@ int main(int _argc, const char* _argv[])
 
     // Basic trigonometric functions
     if (command == "sin")
-        function = arithmetic::sin;
+        function = calc::sin;
     else if (command == "cos")
-        function = arithmetic::cos;
+        function = calc::cos;
     else if (command == "tan")
-        function = arithmetic::tan;
+        function = calc::tan;
     // Reciprocal trigonometric functions
     else if (command == "csc")
-        function = arithmetic::csc;
+        function = calc::csc;
     else if (command == "sec")
-        function = arithmetic::sec;
+        function = calc::sec;
     else if (command == "cot")
-        function = arithmetic::cot;
+        function = calc::cot;
     // Inverse trigonometric functions
     else if (command == "atan")
-        function = arithmetic::atan;
+        function = calc::atan;
     else if (command == "asin")
-        function = arithmetic::asin;
+        function = calc::asin;
     else if (command == "acos")
-        function = arithmetic::acos;
+        function = calc::acos;
     else if (command == "asec")
-        function = arithmetic::asec;
+        function = calc::asec;
     else if (command == "acsc")
-        function = arithmetic::acsc;
+        function = calc::acsc;
     else if (command == "acot")
-        function = arithmetic::acot;
+        function = calc::acot;
     // Invalid command
     else
     {

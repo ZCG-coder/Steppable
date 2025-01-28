@@ -305,7 +305,7 @@ namespace steppable::__internals::calc
         // The GCD is the absolute value of a
         return abs(a, 0);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

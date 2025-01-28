@@ -161,7 +161,7 @@ namespace steppable::__internals::calc
         return reportAdd(
             aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, resultIsNegative, steps, properlyFormat);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

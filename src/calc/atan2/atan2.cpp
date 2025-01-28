@@ -107,7 +107,7 @@ namespace steppable::__internals::calc
         // Will never be executed. Just here for Clangd.
         return "Impossible! How did you get here?";
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])

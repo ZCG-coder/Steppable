@@ -201,7 +201,7 @@ namespace steppable::__internals::calc
 
         return _root(_number, base, _decimals, steps);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 // NOLINTNEXTLINE(bugprone-exception-escape)

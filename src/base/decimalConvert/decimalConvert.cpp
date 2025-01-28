@@ -100,7 +100,7 @@ namespace steppable::__internals::calc
         ss << reportDecimalConvert(_inputString, baseString, converted, steps);
         return ss.str();
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 
