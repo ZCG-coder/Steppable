@@ -35,7 +35,9 @@
 
 #include <fn/calc.hpp>
 #include <iostream>
+#include <number.hpp>
 #include <string>
+#include <types/result.hpp>
 
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::calc;
@@ -43,11 +45,15 @@ using namespace steppable::localization;
 
 namespace steppable::__internals::calc
 {
-    std::string abs(const std::string& _number, const int steps)
+    types::Result<Number> _abs(const std::string& _number)
     {
-        std::string number = static_cast<std::string>(_number);
-        return reportAbs(number, steps);
+        const auto result = reportAbs(_number, 0);
+        const std::vector outputs = { result, reportAbs(_number, 1), reportAbs(_number, 2) };
+        const std::vector inputs = { _number };
+        return { inputs, outputs, Number(result), types::Status::CALCULATED_UNSIMPLIFIED };
     }
+
+    std::string abs(const std::string& _number, const int steps) { return _abs(_number).getOutput(steps); }
 } // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN

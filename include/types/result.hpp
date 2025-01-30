@@ -22,9 +22,15 @@
 
 #pragma once
 
+#include <output.hpp>
+#include <platform.hpp>
 #include <string>
+#include <util.hpp>
 #include <utility>
 #include <vector>
+
+using namespace std::literals;
+using namespace steppable::__internals::utils;
 
 /**
  * @namespace steppable::types
@@ -35,7 +41,7 @@ namespace steppable::types
     /**
      * @brief The status of the calculation.
      */
-    enum class Status
+    enum class Status : std::uint8_t
     {
         CALCULATED_SIMPLIFIED,
         CALCULATED_UNSIMPLIFIED,
@@ -45,7 +51,7 @@ namespace steppable::types
     /**
      * @brief The status of a boolean calculation.
      */
-    enum class StatusBool
+    enum class StatusBool : std::uint8_t
     {
         CALCULATED_SIMPLIFIED_YES,
         CALCULATED_SIMPLIFIED_NO,
@@ -60,10 +66,9 @@ namespace steppable::types
      *
      * @tparam StatusType The type of the status of the calculation.
      */
-    template<typename StatusType>
+    template<typename StatusType, typename ResultT, StringLiteral ResultTName>
     class ResultBase
     {
-    private:
         /// @brief Whether the calculation is done.
         StatusType done;
 
@@ -71,7 +76,11 @@ namespace steppable::types
         std::vector<std::string> inputs;
 
         /// @brief The output of the calculation.
-        std::string out;
+        std::vector<std::string> outputs;
+
+        /// @brief The result of the calculation
+        /// @attention This is different from `inputs`, as it stores only the result of the operation.
+        ResultT result;
 
     public:
         ResultBase() = delete;
@@ -81,26 +90,42 @@ namespace steppable::types
          *
          * @param[in] _inputs The inputs to the calculation.
          * @param[in] _out The output of the calculation.
+         * @param result The result of the calculation.
          * @param[in] _done A flag indicating how the calculation is done.
          */
-        ResultBase(const std::vector<std::string>& _inputs, std::string _out, StatusType _done) :
-            done(_done), inputs(_inputs), out(std::move(_out))
+        ResultBase(const std::vector<std::string>& _inputs,
+                   std::vector<std::string> _out,
+                   ResultT result,
+                   StatusType _done) :
+            done(_done), inputs(_inputs), outputs(std::move(_out)), result(result)
         {
         }
 
         /// @brief Gets how the calculation is done.
         StatusType getStatus() const { return done; }
 
+        ResultT getResult() const { return result; }
+
         /// @brief Gets the output of the calculation.
-        std::string getOutput() const { return out; }
+        [[nodiscard("Output should be used")]] std::string getOutput(size_t idx = 0) const
+        {
+            if (idx >= outputs.size())
+            {
+                output::error("getOutput"s, "Output index out of range"s);
+                programSafeExit(1);
+            }
+            return outputs[idx];
+        }
 
         /// @brief Gets the inputs to the calculation.
-        std::vector<std::string> getInputs() const { return inputs; }
+        [[nodiscard("Inputs should be used")]] std::vector<std::string> getInputs() const { return inputs; }
     };
 
     /// @brief An alias for a result of a calculation. This represents a calculation with a `Status` status.
-    using Result = ResultBase<Status>;
+    template<typename ResultT>
+    using Result = ResultBase<Status, ResultT, StringLiteral{ "str" }>;
 
     /// @brief An alias for a result of a boolean calculation.
-    using ResultBool = ResultBase<StatusBool>;
+    template<typename ResultT>
+    using ResultBool = ResultBase<StatusBool, ResultT, StringLiteral{ "bool" }>;
 } // namespace steppable::types
