@@ -47,6 +47,7 @@ using namespace steppable::__internals::calc;
 
 namespace steppable::__internals::calc
 {
+    // NOLINTNEXTLINE(readability-function-cognitive-complexity)
     std::string multiply(const std::string& _a, const std::string& _b, const int steps, const int decimals)
     {
         auto a = static_cast<std::string>(_a);
@@ -134,7 +135,7 @@ namespace steppable::__internals::calc
             for (long long indexA = static_cast<long long>(aStr.length()) - 1; indexA != -1; indexA--)
             {
                 const int aDigit = aStr[indexA] - '0';
-                int prodDigit = bDigit * aDigit + currentCarries[indexA + 1];
+                int prodDigit = (bDigit * aDigit) + currentCarries[indexA + 1];
                 currentCarries[indexA] = prodDigit / 10;
                 if (currentCarries[indexA] > 10)
                 {

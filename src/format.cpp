@@ -42,9 +42,8 @@ namespace steppable::__internals::format
         std::string result = format;
         std::string index;
         bool inBrackets = false;
-        for (size_t idx = 0; idx < format.size(); idx++)
+        for (char i : format)
         {
-            char i = format.at(idx);
             switch (i)
             {
             // Start replacing!
@@ -61,7 +60,7 @@ namespace steppable::__internals::format
                 inBrackets = false;
                 // SIZE_MAX is 20 digits long, so we can safely assume that the index must not be longer than 20
                 // characters.
-                if (index.length() > 20 or index.length() < 1)
+                if (index.length() > 20 or index.empty())
                     throw std::length_error("Argument index too long or too short.");
                 if (not std::ranges::all_of(index, [](const char& c) { return std::isdigit(c); }))
                     throw std::invalid_argument("Argument index must be a number.");

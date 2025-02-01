@@ -50,9 +50,9 @@ namespace steppable::prettyPrint::printers
         auto height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
 
         prettyPrint::ConsoleOutput output(height, width);
-        prettyPrint::Position pos{ static_cast<long long>(width - 1), 0 };
+        prettyPrint::Position pos{ .x = static_cast<long long>(width - 1), .y = 0 };
         output.write(superscript, pos, false);
-        output.write(base, { 0, 1 }, false);
+        output.write(base, { .x = 0, .y = 1 }, false);
         return output.asString();
     }
 } // namespace steppable::prettyPrint::printers
@@ -129,13 +129,13 @@ namespace steppable::__internals::calc
             for (size_t i = 1; i < iter; i++)
             {
                 std::string frac = divide(x, std::to_string(i), 0, static_cast<int>(decimals));
-                term = multiply(term, frac, 0, decimals);
+                term = multiply(term, frac, 0, static_cast<int>(decimals));
                 sum = add(sum, term, 0);
             }
             return sum;
         }
 
-        return power(exp(divide(x, "4", 0, decimals)), "4", 0);
+        return power(exp(divide(x, "4", 0, static_cast<int>(decimals))), "4", 0);
     }
 } // namespace steppable::__internals::calc
 

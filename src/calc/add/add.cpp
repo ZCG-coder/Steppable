@@ -120,8 +120,8 @@ namespace steppable::__internals::calc
         std::ranges::reverse(aStr);
         std::ranges::reverse(bStr);
 
-        std::vector sumDigits(aStr.length() + 1, 0);
-        std::vector carries(aStr.length() + 1, false);
+        std::vector<int> sumDigits(aStr.length() + 1, 0);
+        std::vector<int> carries(aStr.length() + 1, 0);
 
         for (size_t index = 0; index < aStr.length(); index++)
         {
@@ -138,7 +138,7 @@ namespace steppable::__internals::calc
             {
                 sumDigits[index] -= 10;
                 sumDigits[index + 1] += 1;
-                carries[index + 1] = true;
+                carries[index + 1] = 1;
             }
         }
 
@@ -150,10 +150,10 @@ namespace steppable::__internals::calc
             const auto& itCarries = carries.begin();
 
             sumDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
-            carries.insert(itCarries + static_cast<long>(decimalPos), false); // Reserve the space
+            carries.insert(itCarries + static_cast<long>(decimalPos), 0); // Reserve the space
         }
 
-        std::reverse(carries.begin(), carries.end());
+        std::ranges::reverse(carries);
         std::ranges::reverse(sumDigits);
         if (sumDigits.front() == 0 and properlyFormat)
             sumDigits.erase(sumDigits.begin());

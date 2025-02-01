@@ -51,7 +51,7 @@ namespace steppable::__internals::numUtils
         // Round up the number
         auto splitNumberResult = splitNumber(number, "0", false, true, true, false).splitNumberArray;
         auto integer = splitNumberResult[0];
-        auto decimal = splitNumberResult[1]; // Return the integer part
+        const auto& decimal = splitNumberResult[1]; // Return the integer part
         if (decimal.front() > '5')
             integer = calc::add(integer, "1", 0);
         return integer;

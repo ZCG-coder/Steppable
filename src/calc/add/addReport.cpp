@@ -47,7 +47,7 @@ std::string reportAdd(const std::string& aInteger,
                       const std::string& bInteger,
                       const std::string& bDecimal,
                       const std::vector<int>& sumDigits,
-                      const std::vector<bool>& carries,
+                      const std::vector<int>& carries,
                       const bool resultIsNegative,
                       const int steps,
                       const bool properlyFormat)
@@ -60,12 +60,8 @@ std::string reportAdd(const std::string& aInteger,
     std::string bOut = bInteger;
     if (aIsDecimal)
         aOut += '.' + aDecimal;
-    else if (steps == 0)
-        ; // Don't use the spaced formatting
     if (bIsDecimal)
         bOut += '.' + bDecimal;
-    else if (steps == 0)
-        ; // Don't use the spaced formatting
 
     if (aIsDecimal and not bIsDecimal and (steps != 0))
         bOut += std::string(aDecimal.length() + 1, ' ');
@@ -87,8 +83,8 @@ std::string reportAdd(const std::string& aInteger,
             ss << bChar << "  ";
 
         ss << '\n' << "   ";
-        for (const bool c : carries)
-            if (c)
+        for (const int c : carries)
+            if (c != 0)
                 ss << makeSubscript("1") << "  ";
             else
                 ss << "   ";

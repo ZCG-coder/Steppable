@@ -26,13 +26,14 @@
 #include "output.hpp"
 
 #include <string>
+#include <utility>
 
 using namespace std::literals;
 using namespace steppable::output;
 
 namespace steppable::testing
 {
-    TestCase::TestCase(const std::string& testCaseName) : testCaseName(testCaseName) {}
+    TestCase::TestCase(std::string testCaseName) : testCaseName(std::move(testCaseName)) {}
 
     void TestCase::assert(const bool condition, const std::string& conditionName)
     {

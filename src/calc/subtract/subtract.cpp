@@ -69,11 +69,9 @@ namespace steppable::__internals::calc
         // Scenario 3: Both a and b are negative
         // Polarity  : Negative
         // Action    : Subtract positive b from positive a
-        resultIsNegative = aIsNegative and bIsNegative or compare(a, b, 0) == "0";
 
         if (aIsNegative and not bIsNegative)
         {
-            resultIsNegative = true;
             if (steps == 2)
                 // Adding {0} and {1} since {0} is negative
                 std::cout << $("subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a.substr(1), b }) << "\n";

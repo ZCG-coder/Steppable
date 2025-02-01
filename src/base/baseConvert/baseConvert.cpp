@@ -55,9 +55,9 @@ namespace steppable::prettyPrint::printers
         auto height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
 
         prettyPrint::ConsoleOutput output(height, width);
-        prettyPrint::Position pos{ static_cast<long long>(width - subscriptWidth - 1), 1 };
+        prettyPrint::Position pos{ .x = static_cast<long long>(width - subscriptWidth - 1), .y = 1 };
         output.write(subscript, pos, false);
-        output.write(base, { 0, 0 }, false);
+        output.write(base, { .x = 0, .y = 0 }, false);
         return output.asString();
     }
 } // namespace steppable::prettyPrint::printers

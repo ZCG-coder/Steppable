@@ -31,7 +31,7 @@
 namespace steppable::constants
 {
     /// @brief 100 digits of pi.
-    extern const std::string_view& PI;
+    extern const std::string_view PI;
 
     /// @brief Pi multiplied by 2.
     // Generated using Python:
@@ -43,7 +43,7 @@ namespace steppable::constants
     // 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
     // 6 | ) * Decimal(2)
     // -------------------------------------------------------
-    extern const std::string_view& TWO_PI;
+    extern const std::string_view TWO_PI;
 
     /// @brief Pi divided by 2.
     // Generated using Python:
@@ -55,7 +55,7 @@ namespace steppable::constants
     // 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
     // 6 | ) / Decimal(2)
     // -------------------------------------------------------
-    extern const std::string_view& PI_OVER_2;
+    extern const std::string_view PI_OVER_2;
 
     /// @brief Pi divided by 180 (to convert degrees to radians), correct to 100 decimal places.
     // Generated using Python:
@@ -67,7 +67,7 @@ namespace steppable::constants
     // 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
     // 6 | ) / Decimal(180)
     // -------------------------------------------------------
-    extern const std::string_view& PI_OVER_180;
+    extern const std::string_view PI_OVER_180;
 
     /// @brief Pi divided by 200 (to convert grads to radians), correct to 100 decimal places.
     // Generated using Python:
@@ -79,7 +79,7 @@ namespace steppable::constants
     // 5 |     3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
     // 6 | ) / Decimal(200)
     // -------------------------------------------------------
-    extern const std::string_view& PI_OVER_200;
+    extern const std::string_view PI_OVER_200;
 
-    extern const std::string_view& E;
+    extern const std::string_view E;
 } // namespace steppable::constants

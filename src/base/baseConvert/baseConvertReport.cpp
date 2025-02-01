@@ -67,7 +67,7 @@ std::string reportBaseConvert(const std::string& _number,
         ss << _number << steppable::__internals::symbols::makeSubscript("10") << " = ";
     // Output the result in reverse order
     auto result = _result;
-    std::reverse(result.begin(), result.end());
+    std::ranges::reverse(result);
     for (const auto& item : result)
         ss << item;
     if (steps == 1)

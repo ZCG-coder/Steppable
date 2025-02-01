@@ -22,8 +22,6 @@
 
 #include "util.hpp"
 
-#include "platform.hpp"
-
 #include <cstddef>
 
 #ifdef WINDOWS
@@ -171,7 +169,9 @@ namespace steppable::__internals::numUtils
                 aDecimal += std::string(-diffLengthDecimal, '0');
         }
         std::array splitNumberResult{ aInteger, aDecimal, bInteger, bDecimal };
-        return SplitNumberResult{ splitNumberResult, aIsNegative, bIsNegative };
+        return SplitNumberResult{ .splitNumberArray = splitNumberResult,
+                                  .aIsNegative = aIsNegative,
+                                  .bIsNegative = bIsNegative };
     }
 
     auto replaceLeadingZeros(const std::vector<int>& vector) -> std::decay_t<decltype(vector)>
@@ -244,8 +244,8 @@ namespace steppable::__internals::numUtils
     long long determineScale(const std::string& number)
     {
         auto splitNumberResult = splitNumber(number, "0", false, false).splitNumberArray;
-        auto numberInteger = splitNumberResult[0];
-        auto numberDecimal = splitNumberResult[1];
+        const auto& numberInteger = splitNumberResult[0];
+        const auto& numberDecimal = splitNumberResult[1];
 
         // If there is an integer component, determine the scale of it
         if (not isZeroString(numberInteger))
