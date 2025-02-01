@@ -129,7 +129,7 @@ namespace steppable::__internals::calc
             for (size_t i = 1; i < iter; i++)
             {
                 std::string frac = divide(x, std::to_string(i), 0, static_cast<int>(decimals));
-                term = multiply(term, frac, 0);
+                term = multiply(term, frac, 0, decimals);
                 sum = add(sum, term, 0);
             }
             return sum;

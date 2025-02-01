@@ -67,8 +67,8 @@ namespace steppable::__internals::calc
         //              x  + 4x + 1           x  + 4x + 1
         const auto& x2 = power(x, "2", 0);
         const auto& x2Minus1 = subtract(x2, "1", 0);
-        const auto& numerator = multiply("3", x2Minus1, 0);
-        const auto& fourX = multiply(x, "4", 0);
+        const auto& numerator = multiply("3", x2Minus1, 0, decimals);
+        const auto& fourX = multiply(x, "4", 0, decimals);
 
         auto denominator = add(x2, fourX, 0);
         denominator = add(denominator, "1", 0);
@@ -95,7 +95,7 @@ namespace steppable::__internals::calc
             auto xMinusExpYN = subtract(x, expYN, 0);
             auto xPlusExpYN = add(x, expYN, 0);
             auto fraction = divide(xMinusExpYN, xPlusExpYN, 0, static_cast<int>(decimals));
-            auto twoXFraction = multiply(fraction, "2", 0);
+            auto twoXFraction = multiply(fraction, "2", 0, decimals);
             yn1 = add(yn, twoXFraction, 0);
             error = abs(subtract(yn, yn1, 0), 0);
         } while (compare(error, epsilon, 0) == "1");

@@ -86,7 +86,7 @@ namespace steppable::__internals::calc
 
     std::string baseConvert(const std::string& _number, const std::string& baseStr, const int steps)
     {
-        const size_t base = std::stoll(static_cast<std::string>(baseStr));
+        const size_t base = std::stoll(baseStr);
         auto numberOrig = static_cast<std::string>(_number);
         auto number = static_cast<std::string>(_number);
 

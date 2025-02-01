@@ -45,7 +45,7 @@ _.assertIsEqual(tan("90", 2, 1), "Infinity");
 SECTION_END()
 
 SECTION(Test arc cosine)
-_.assertIsEqual(acos("0.5", 2, 1), "60.00");
+_.assertIsEqual(acos("0.5", 2, 1), "60");
 // Zero check test
 _.assertIsEqual(acos("1", 2, 1), "0");
 SECTION_END()

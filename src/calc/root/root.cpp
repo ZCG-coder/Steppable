@@ -146,7 +146,7 @@ namespace steppable::__internals::calc
         std::string number = static_cast<std::string>(_number);
         while (compare(number, "1", 0) == "0")
         {
-            number = multiply(number, power("10", base, 0), 0);
+            number = multiply(number, power("10", base, 0), 0, decimals);
             raisedTimes++;
         }
 
@@ -196,7 +196,7 @@ namespace steppable::__internals::calc
         {
             auto result = rootSurd(_number, base);
             auto rootResult = _root(result.radicand, base, _decimals, 0);
-            return multiply(rootResult, result.multiplier, 0);
+            return multiply(rootResult, result.multiplier, 0, _decimals);
         }
 
         return _root(_number, base, _decimals, steps);

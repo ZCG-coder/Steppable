@@ -128,7 +128,7 @@ finish:
     }
 
     if (steps >= 1)
-        ss << numberOrig << makeSuperscript(static_cast<std::string>(raiseTo)) << " = " << number;
+        ss << numberOrig << makeSuperscript(raiseTo) << " = " << number;
     else if (steps == 0)
         ss << number;
 

@@ -46,7 +46,7 @@ _.assertIsEqual(tanh("0.5", 5), "0.46212");
 SECTION_END()
 
 SECTION(Test hyperbolic cotangent)
-_.assertIsEqual(coth("1.25", 5), "1.17884");
+_.assertIsEqual(coth("1.25", 5), "1.17885");
 SECTION_END()
 
 SECTION(Test hyperbolic secant)

@@ -39,6 +39,7 @@
 #include "output.hpp"
 
 #include <string>
+#include <util.hpp>
 
 using namespace std::literals;
 
@@ -154,7 +155,7 @@ namespace steppable::__internals::calc
      * @param[in] steps The number of steps to perform the multiplication.
      * @return The product of the two numbers as a string.
      */
-    std::string multiply(const std::string& a, const std::string& b, int steps = 2);
+    std::string multiply(const std::string& a, const std::string& b, int steps = 2, int decimals = MAX_DECIMALS);
 
     /**
      * @brief Raises a string representation of a number to a power.

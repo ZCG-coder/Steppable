@@ -104,7 +104,7 @@ namespace steppable::types
         /// @brief Gets how the calculation is done.
         StatusType getStatus() const { return done; }
 
-        ResultT getResult() const { return result; }
+        [[nodiscard("Result should be used")]] ResultT getResult() const { return result; }
 
         /// @brief Gets the output of the calculation.
         [[nodiscard("Output should be used")]] std::string getOutput(size_t idx = 0) const

@@ -53,12 +53,12 @@ namespace steppable::__internals::calc
     {
         checkDecimalArg(&decimals);
 
-        const auto& twoX = multiply(x, "2", 0);
+        const auto& twoX = multiply(x, "2", 0, decimals + 2);
         const auto& eTwoX = roundOff(power(static_cast<std::string>(constants::E), twoX, 0), decimals + 2);
         const auto& eX = roundOff(power(static_cast<std::string>(constants::E), x, 0), decimals + 2);
 
         const auto& numerator = subtract(eTwoX, "1", 0);
-        const auto& denominator = multiply("2", eX, 0);
+        const auto& denominator = multiply("2", eX, 0, decimals + 2);
 
         return divide(numerator, denominator, 0, decimals);
     }
@@ -67,12 +67,12 @@ namespace steppable::__internals::calc
     {
         checkDecimalArg(&decimals);
 
-        const auto& twoX = multiply(x, "2", 0);
+        const auto& twoX = multiply(x, "2", 0, decimals + 2);
         const auto& eTwoX = roundOff(power(static_cast<std::string>(constants::E), twoX, 0), decimals + 2);
         const auto& eX = roundOff(power(static_cast<std::string>(constants::E), x, 0), decimals + 2);
 
         const auto& numerator = add(eTwoX, "1", 0);
-        const auto& denominator = multiply("2", eX, 0);
+        const auto& denominator = multiply("2", eX, 0, decimals + 2);
 
         return divide(numerator, denominator, 0, decimals);
     }
@@ -81,8 +81,8 @@ namespace steppable::__internals::calc
     {
         checkDecimalArg(&decimals);
 
-        const auto& numerator = sinh(x, decimals);
-        const auto& denominator = cosh(x, decimals);
+        const auto& numerator = sinh(x, decimals + 2);
+        const auto& denominator = cosh(x, decimals + 2);
 
         return divide(numerator, denominator, 0, decimals);
     }
@@ -91,7 +91,7 @@ namespace steppable::__internals::calc
     {
         checkDecimalArg(&decimals);
 
-        const auto& denominator = tanh(x, decimals);
+        const auto& denominator = tanh(x, decimals + 1);
         if (isZeroString(denominator))
         {
             error("hyp::coth"s, $("hyp", "e1f6e8db-64cd-4882-b5b2-ddd1c79c1e57"));

@@ -52,7 +52,7 @@ namespace steppable
 
     Number Number::operator-(const Number& rhs) const { return subtract(value, rhs.value, 0); }
 
-    Number Number::operator*(const Number& rhs) const { return multiply(value, rhs.value, 0); }
+    Number Number::operator*(const Number& rhs) const { return multiply(value, rhs.value, 0, prec); }
 
     Number Number::operator/(const Number& rhs) const
     {
