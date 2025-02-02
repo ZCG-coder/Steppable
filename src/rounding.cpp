@@ -72,6 +72,9 @@ namespace steppable::__internals::numUtils
         auto decimal = splitNumberArray[1];
         bool isNegative = splitNumberResult.aIsNegative;
 
+        if (decimal.length() < digits)
+            return _number;
+
         // Preserve one digit after the rounded digit
         decimal = decimal.substr(0, digits + 1);
         // Modify the integer part if the digit is greater than 5

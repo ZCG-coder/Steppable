@@ -34,6 +34,7 @@
 #include "fn/calc.hpp"
 #include "fraction.hpp"
 #include "getString.hpp"
+#include "rounding.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
@@ -71,7 +72,8 @@ std::string reportPower(const std::string& _number,
                         const std::string& raiseTo,
                         const size_t numberTrailingZeros,
                         const bool negativePower,
-                        const int steps)
+                        const int steps,
+                        const int decimals)
 {
     std::stringstream ss;
     auto result = "1"s;
@@ -91,9 +93,9 @@ std::string reportPower(const std::string& _number,
 
     loop(raiseTo, [&](const auto& i) {
         if (not negativePower)
-            result = multiply(result, _number, 0);
+            result = multiply(result, _number, 0, decimals + 1);
         else
-            result = divide("1", result, 0);
+            result = divide("1", result, 0, decimals + 1);
         auto currentPower = add(i, "1", 0);
         if (steps == 2)
         {
@@ -110,14 +112,15 @@ std::string reportPower(const std::string& _number,
 
 finish:
     result = numUtils::standardizeNumber(result);
+    result = numUtils::roundOff(result, decimals);
 
     if (negativePower)
     {
         if (steps == 2)
-            ss << BECAUSE << " " << divide("1", result, 1) << '\n';
+            ss << BECAUSE << " " << divide("1", result, 1, decimals) << '\n';
         else if (steps == 1)
         {
-            const auto& divisionResult = divide("1", result, 0);
+            const auto& divisionResult = divide("1", result, 0, decimals);
             ss << _number << makeSuperscript('-') << makeSuperscript(static_cast<std::string>(raiseTo)) << " = "
                << divisionResult;
         }
@@ -130,7 +133,7 @@ finish:
     else if (steps == 0)
         ss << result;
 
-    loop(multiply(raiseTo, std::to_string(numberTrailingZeros), 0), [&](const auto& _) { ss << "0"; });
+    loop(multiply(raiseTo, std::to_string(numberTrailingZeros), 0, 0), [&](const auto& _) { ss << "0"; });
 
     return ss.str();
 }

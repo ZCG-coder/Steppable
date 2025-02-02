@@ -163,9 +163,10 @@ namespace steppable::__internals::calc
      * @param[in] _number The string representation of the number.
      * @param[in] raiseTo The string representation of the power to raise the number to.
      * @param[in] steps The number of steps to perform the power operation.
+     * @param[in] decimals The number of decimals to output from the power operation.
      * @return The result of the power operation as a string.
      */
-    std::string power(const std::string& _number, const std::string& raiseTo, int steps = 2);
+    std::string power(const std::string& _number, const std::string& raiseTo, int steps = 2, int decimals = 8);
 
     /**
      * @brief Calculates e^x. Shorthand of power(x, E, 0);

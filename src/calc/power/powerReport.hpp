@@ -62,4 +62,5 @@ std::string reportPower(const std::string& _number,
                         const std::string& raiseTo,
                         size_t numberTrailingZeros,
                         bool negativePower,
-                        int steps);
+                        int steps,
+                        int decimals);

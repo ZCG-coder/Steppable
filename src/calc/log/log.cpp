@@ -65,10 +65,10 @@ namespace steppable::__internals::calc
         // ln(x) = ----------------------- = --------------
         //               2                     2
         //              x  + 4x + 1           x  + 4x + 1
-        const auto& x2 = power(x, "2", 0);
+        const auto& x2 = multiply(x, x, 0, static_cast<int>(decimals) + 2);
         const auto& x2Minus1 = subtract(x2, "1", 0);
-        const auto& numerator = multiply("3", x2Minus1, 0, static_cast<int>(decimals));
-        const auto& fourX = multiply(x, "4", 0, static_cast<int>(decimals));
+        const auto& numerator = multiply("3", x2Minus1, 0, static_cast<int>(decimals) + 2);
+        const auto& fourX = multiply(x, "4", 0, static_cast<int>(decimals) + 2);
 
         auto denominator = add(x2, fourX, 0);
         denominator = add(denominator, "1", 0);
@@ -84,7 +84,7 @@ namespace steppable::__internals::calc
         //          n + 1
 
         const auto& epsilon = "0." + std::string(_decimals + 1, '0') + "1";
-        auto yn = divide(numerator, denominator, 0, static_cast<int>(decimals));
+        auto yn = divide(numerator, denominator, 0, static_cast<int>(decimals) + 2);
         auto yn1 = yn;
 
         auto error = abs(subtract(yn, yn1, 0), 0);

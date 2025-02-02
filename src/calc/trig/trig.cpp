@@ -133,7 +133,8 @@ namespace steppable::__internals::calc
         auto result = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals + 2);
         auto result2 = roundOff(multiply(result, result, 0, decimals + 2), static_cast<long>(decimals) + 2);
         // return 8 * C2 * (C2 - 1) + 1;
-        return standardizeNumber(add(multiply("8", multiply(result2, subtract(result2, "1", 0), 0, decimals), 0), "1", 0));
+        return standardizeNumber(
+            add(multiply("8", multiply(result2, subtract(result2, "1", 0), 0, decimals), 0), "1", 0));
     }
 
     std::string cos(const std::string& x, const int decimals, const int mode)
@@ -320,7 +321,7 @@ namespace steppable::__internals::calc
         {
             isReduced = true;
             // Reduce x to a small number
-            x = divide("1", x, 0, decimals * 2);
+            x = divide("1", x, 0, decimals + 2);
         }
         // Otherwise, use integration.
         //                      1                       / x
@@ -329,11 +330,11 @@ namespace steppable::__internals::calc
         //  dx                 x + 1                    |      2
         //                                              / 0   t  + 1
         auto fx = [&](const std::string& y) {
-            const auto& y2 = power(y, "2", 0);
+            const auto& y2 = multiply(y, y, 0);
             const auto& denominator = add(y2, "1", 0);
-            return divide("1", denominator, 0, decimals + 1);
+            return divide("1", denominator, 0, decimals * 2);
         };
-        auto result = calculus::romberg(fx, "0", x, 10, decimals + 1);
+        auto result = calculus::romberg(fx, "0", x, 10, decimals + 2);
         if (isReduced)
         {
             // If x was reduced, use the identity
