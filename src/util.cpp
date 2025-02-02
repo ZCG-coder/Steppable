@@ -285,6 +285,27 @@ namespace steppable::__internals::numUtils
         number = number.substr(1, number.length() - 1);
         return not std::ranges::any_of(number, [](const auto& c) { return c != '0' and c != '.'; });
     }
+
+    bool isOdd(const std::string& number)
+    {
+        if (isDecimal(number))
+            return false; // Decimals cannot be classified.
+        if (isZeroString(number))
+            return false; // Zero is neither even nor odd.
+
+        const char lastDigit = number.back();
+        return (lastDigit - '0') % 2 == 1;
+    }
+
+    bool isEven(const std::string& number)
+    {
+        if (isDecimal(number))
+            return false; // Decimals cannot be classified.
+        if (isZeroString(number))
+            return false; // Zero is neither even nor odd.
+
+        return not isOdd(number);
+    }
 } // namespace steppable::__internals::numUtils
 
 namespace steppable::__internals::stringUtils

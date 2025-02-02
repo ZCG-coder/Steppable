@@ -53,7 +53,7 @@ std::string reportPowerRoot(const std::string& _number,
  *
  * @param[in] _number The number to raise to.
  * @param[in] raiseTo The power of the number.
- * @param[in] negative Whether the result should be negative.
+ * @param[in] negativePower Whether the result should be divided by 1.
  * @param[in] steps The steps to show.
  *
  * @return The formatted power report.
@@ -61,5 +61,5 @@ std::string reportPowerRoot(const std::string& _number,
 std::string reportPower(const std::string& _number,
                         const std::string& raiseTo,
                         size_t numberTrailingZeros,
-                        bool negative,
+                        bool negativePower,
                         int steps);

@@ -98,9 +98,10 @@ namespace steppable::__internals::calc
 
         auto numberNoTrailingZeros = standardizeNumber(number);
         size_t numberTrailingZeros = 0;
+        auto result = splitNumber(number, "0", false, false, true, true);
         if (isInteger(number))
         {
-            number = splitNumber(number, "0", false, false, true).splitNumberArray[0];
+            number = result.splitNumberArray[0];
             numberNoTrailingZeros = removeTrailingZeros(number);
             numberTrailingZeros = number.length() - numberNoTrailingZeros.length();
         }
@@ -109,14 +110,15 @@ namespace steppable::__internals::calc
         // Remove the zeros to reduce the workload.
         number = numberNoTrailingZeros;
 
-        bool negative = false;
+        bool negativePower = false;
+
         if (compare(raiseTo, "0", 0) == "0")
         {
             // raiseTo is negative
             raiseTo = raiseTo.substr(1);
-            negative = true;
+            negativePower = true;
         }
-        return reportPower(number, raiseTo, numberTrailingZeros, negative, steps);
+        return reportPower(number, raiseTo, numberTrailingZeros, negativePower, steps);
     }
 
     std::string exp(const std::string& x, const size_t decimals)

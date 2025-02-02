@@ -394,6 +394,22 @@ namespace steppable::__internals::numUtils
      * @return True if it is a power of 10, false otherwise.
      */
     bool isPowerOfTen(const std::string& number);
+
+    /**
+     * @brief Checks if a number is odd.
+     *
+     * @param number The number to be checked.
+     * @return True if the number is odd, false otherwise.
+     */
+    bool isOdd(const std::string& number);
+
+    /**
+     * @brief Checks if a number is even.
+     *
+     * @param number The number to be checked.
+     * @return True if the number is even, false otherwise.
+     */
+    bool isEven(const std::string& number);
 } // namespace steppable::__internals::numUtils
 
 /**
