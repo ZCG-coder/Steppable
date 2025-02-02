@@ -8,7 +8,7 @@ var searchData=
   ['val_5fp_5',['val_p',['../structImGuiStoragePair.html#a79184d133fd2b7807f4157fbec93ea32',1,'ImGuiStoragePair']]],
   ['valid_6',['Valid',['../structImDrawData.html#ad01ab9ce5e8843b7860ccbb3eb9a6554',1,'ImDrawData']]],
   ['value_7',['Value',['../structImColor.html#a4cf43bd58e30decaa0248f839fc85e95',1,'ImColor']]],
-  ['value_8',['value',['../classsteppable_1_1Number.html#a8947c23837fd45577abcaf9e7f07d540',1,'steppable::Number']]],
+  ['value_8',['value',['../classsteppable_1_1Number.html#a8947c23837fd45577abcaf9e7f07d540',1,'steppable::Number::value'],['../classsteppable_1_1Data.html#add9421dd3f0353fe90e2220c4a4a3478',1,'steppable::Data::value'],['../structsteppable_1_1____internals_1_1utils_1_1StringLiteral.html#a35ec70abf239ace9a2f20ce4075e646a',1,'steppable::__internals::utils::StringLiteral::value']]],
   ['values_9',['Values',['../structImGuiPlotArrayGetterData.html#aa40ff2e945549744fc622891089ae0fd',1,'ImGuiPlotArrayGetterData']]],
   ['varidx_10',['VarIdx',['../structImGuiStyleMod.html#ab23c55941dbd0e156ce640a8fecb2feb',1,'ImGuiStyleMod']]],
   ['vbohandle_11',['VboHandle',['../structImGui__ImplOpenGL3__Data.html#a53b57a562a470fa751e2f8fe78576ebd',1,'ImGui_ImplOpenGL3_Data']]],

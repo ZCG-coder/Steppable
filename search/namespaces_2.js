@@ -2,7 +2,7 @@ var searchData=
 [
   ['steppable_0',['steppable',['../namespacesteppable.html',1,'']]],
   ['steppable_3a_3a_5f_5finternals_1',['__internals',['../namespacesteppable_1_1____internals.html',1,'steppable']]],
-  ['steppable_3a_3a_5f_5finternals_3a_3aarithmetic_2',['arithmetic',['../namespacesteppable_1_1____internals_1_1arithmetic.html',1,'steppable::__internals']]],
+  ['steppable_3a_3a_5f_5finternals_3a_3acalc_2',['calc',['../namespacesteppable_1_1____internals_1_1calc.html',1,'steppable::__internals']]],
   ['steppable_3a_3a_5f_5finternals_3a_3acalculus_3',['calculus',['../namespacesteppable_1_1____internals_1_1calculus.html',1,'steppable::__internals']]],
   ['steppable_3a_3a_5f_5finternals_3a_3aformat_4',['format',['../namespacesteppable_1_1____internals_1_1format.html',1,'steppable::__internals']]],
   ['steppable_3a_3a_5f_5finternals_3a_3alogging_5',['logging',['../namespacesteppable_1_1____internals_1_1logging.html',1,'steppable::__internals']]],

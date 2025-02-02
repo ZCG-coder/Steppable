@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['factorial_0',['factorial',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a59af1f3ad78fe203eb847fde390f7742',1,'steppable::__internals::arithmetic']]],
+  ['factorial_0',['factorial',['../namespacesteppable_1_1____internals_1_1calc.html#a1f1b2ad9976b3270d865dfd59dfae4de',1,'steppable::__internals::calc']]],
   ['find_1',['find',['../structImVector.html#a406417c3efef769d4bee47df2188831a',1,'ImVector::find(const T &amp;v)'],['../structImVector.html#a1fb6def3d26d7efeae0881e8dffb3f79',1,'ImVector::find(const T &amp;v) const']]],
   ['find_5ferase_2',['find_erase',['../structImVector.html#a4e9214ecaa413240f76223500dbed912',1,'ImVector']]],
   ['find_5ferase_5funsorted_3',['find_erase_unsorted',['../structImVector.html#a07f501e40783436616156682ec668327',1,'ImVector::find_erase_unsorted()'],['../structImTriangulatorNodeSpan.html#a83c4ca94f08b7eddde15fa6131a9e5d2',1,'ImTriangulatorNodeSpan::find_erase_unsorted()']]],

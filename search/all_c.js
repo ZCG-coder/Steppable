@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['e_0',['E',['../namespacesteppable_1_1constants.html#a5b8f3d3b298702ee7802d99212e2ed3f',1,'steppable::constants']]],
+  ['e_0',['E',['../namespacesteppable_1_1constants.html#acce1df8bc4a95403e937d006ae33fc4a',1,'steppable::constants']]],
   ['e_1',['e',['../structImGuiTextFilter_1_1ImGuiTextRange.html#aa522cbb493ad3e02646938661c37ec0e',1,'ImGuiTextFilter::ImGuiTextRange']]],
   ['easily_20use_20icons_20in_20my_20application_2',['Q: How can I easily use icons in my application?',['../md_include_2imgui_2docs_2FAQ.html#autotoc_md155',1,'']]],
   ['edited_3',['Edited',['../structImGuiInputTextState.html#af1fb8309908443c5d892a635d03a317e',1,'ImGuiInputTextState']]],
@@ -93,7 +93,7 @@ var searchData=
   ['exampleselectionwithdeletion_90',['ExampleSelectionWithDeletion',['../structExampleSelectionWithDeletion.html',1,'']]],
   ['exampletreenode_91',['ExampleTreeNode',['../structExampleTreeNode.html',1,'']]],
   ['execcommand_92',['ExecCommand',['../structExampleAppConsole.html#aa1e8bf1f3795cbc41597e1ff081c6589',1,'ExampleAppConsole']]],
-  ['exp_93',['exp',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a21814bf99bd44bc84194fc8443c2dce4',1,'steppable::__internals::arithmetic']]],
+  ['exp_93',['exp',['../namespacesteppable_1_1____internals_1_1calc.html#adaf0897c4993c923f9200b3a556a1ed0',1,'steppable::__internals::calc']]],
   ['expand_94',['Expand',['../structImRect.html#af33a7424c3341d08acd69da30c27c753',1,'ImRect::Expand(const float amount)'],['../structImRect.html#ac0b0b88fe65725b4694cd7d91d42d382',1,'ImRect::Expand(const ImVec2 &amp;amount)']]],
   ['expected_20windows_20boundaries_95',['Q: I integrated Dear ImGui in my engine and some elements are displaying outside their expected windows boundaries...',['../md_include_2imgui_2docs_2FAQ.html#autotoc_md123',1,'']]],
   ['extra_96',['extra',['../structstbrp__context.html#a0b80e1fbdac125427526f3500d4e7624',1,'stbrp_context']]]

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['face_0',['Face',['../structanonymous__namespace_02imgui__freetype_8cpp_03_1_1FreeTypeFont.html#a55ffda4f3ddffd5fa98279c797d7a067',1,'anonymous_namespace{imgui_freetype.cpp}::FreeTypeFont']]],
-  ['factorial_1',['factorial',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a59af1f3ad78fe203eb847fde390f7742',1,'steppable::__internals::arithmetic']]],
+  ['factorial_1',['factorial',['../namespacesteppable_1_1____internals_1_1calc.html#a1f1b2ad9976b3270d865dfd59dfae4de',1,'steppable::__internals::calc']]],
   ['fails_20to_20upload_20to_20gpu_2',['(4) Font atlas texture fails to upload to GPU.',['../md_include_2imgui_2docs_2FONTS.html#autotoc_md187',1,'']]],
   ['fallbackadvancex_3',['FallbackAdvanceX',['../structImFont.html#ad58a5ee4492a3a9fa56f73e5a40d728d',1,'ImFont']]],
   ['fallbackchar_4',['FallbackChar',['../structImFont.html#ae54c2c4184bfcbc7b8f6da9cbc4f93c0',1,'ImFont']]],
@@ -157,9 +157,10 @@ var searchData=
   ['freezerowsrequest_154',['FreezeRowsRequest',['../structImGuiTable.html#aa90d00342e8c46396854b44101c7355d',1,'ImGuiTable']]],
   ['frequently_20asked_20questions_155',['FAQ (Frequently Asked Questions)',['../md_include_2imgui_2docs_2FAQ.html',1,'']]],
   ['frequently_20asked_20questions_20faq_156',['Frequently Asked Questions FAQ',['../md_wiki_2FAQ.html',1,'Frequently Asked Questions (FAQ)'],['..//home/runner/work/Steppable/Steppable/include/imgui/docs/README.md#autotoc_md244',1,'Support, Frequently Asked Questions (FAQ)']]],
-  ['from_20memory_157',['Loading Font Data from Memory',['../md_include_2imgui_2docs_2FONTS.html#autotoc_md196',1,'']]],
-  ['fromindices_158',['FromIndices',['../structImGuiListClipperRange.html#ae04d9b8993b4fafcbf416fbaeed316b1',1,'ImGuiListClipperRange']]],
-  ['frompositions_159',['FromPositions',['../structImGuiListClipperRange.html#a3aa356015543dd8c9096e412390aacf0',1,'ImGuiListClipperRange']]],
-  ['front_160',['front',['../structImVector.html#a5a21f508086337de2f6739701d22f721',1,'ImVector::front()'],['../structImVector.html#a6f55b8b7351295c06eeb4f4f28af14ae',1,'ImVector::front() const']]],
-  ['futurenode_161',['FutureNode',['../structImGuiDockPreviewData.html#a909747ad6934e0f8892874bbac32151a',1,'ImGuiDockPreviewData']]]
+  ['friday_157',['Friday',['../namespacesteppable.html#a0f6d79fbf300d8b225ba6420f4f65f15ac33b138a163847cdb6caeeb7c9a126b4',1,'steppable']]],
+  ['from_20memory_158',['Loading Font Data from Memory',['../md_include_2imgui_2docs_2FONTS.html#autotoc_md196',1,'']]],
+  ['fromindices_159',['FromIndices',['../structImGuiListClipperRange.html#ae04d9b8993b4fafcbf416fbaeed316b1',1,'ImGuiListClipperRange']]],
+  ['frompositions_160',['FromPositions',['../structImGuiListClipperRange.html#a3aa356015543dd8c9096e412390aacf0',1,'ImGuiListClipperRange']]],
+  ['front_161',['front',['../structImVector.html#a5a21f508086337de2f6739701d22f721',1,'ImVector::front()'],['../structImVector.html#a6f55b8b7351295c06eeb4f4f28af14ae',1,'ImVector::front() const']]],
+  ['futurenode_162',['FutureNode',['../structImGuiDockPreviewData.html#a909747ad6934e0f8892874bbac32151a',1,'ImGuiDockPreviewData']]]
 ];

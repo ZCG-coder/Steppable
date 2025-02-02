@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['level_0',['Level',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7',1,'steppable::__internals::logging']]]
+  ['_5fweekday_0',['_Weekday',['../namespacesteppable.html#a0f6d79fbf300d8b225ba6420f4f65f15',1,'steppable']]]
 ];

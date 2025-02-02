@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['myitemcolumnid_0',['MyItemColumnID',['../namespaceanonymous__namespace_02imgui__demo_8cpp_03.html#a52b25b76f375df5772f876c6ade9b3cd',1,'anonymous_namespace{imgui_demo.cpp}']]]
+  ['level_0',['Level',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7',1,'steppable::__internals::logging']]]
 ];

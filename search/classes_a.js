@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['position_0',['Position',['../structsteppable_1_1prettyPrint_1_1Position.html',1,'steppable::prettyPrint']]],
-  ['programargs_1',['ProgramArgs',['../classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html',1,'steppable::__internals::utils']]]
+  ['nscursor_28_29_0',['NSCursor()',['../categoryNSCursor_07_08.html',1,'']]],
+  ['number_1',['Number',['../classsteppable_1_1Number.html',1,'steppable']]]
 ];

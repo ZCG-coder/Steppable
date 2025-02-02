@@ -32,7 +32,7 @@ var searchData=
   ['poptabstop_29',['PopTabStop',['../namespaceImGui.html#a91f33ba1dbd9ecc5900855fde6b3628f',1,'ImGui']]],
   ['poptextureid_30',['PopTextureID',['../structImDrawList.html#ade9286c5ca58753f7bd571b30e2ff76c',1,'ImDrawList']]],
   ['poptextwrappos_31',['PopTextWrapPos',['../namespaceImGui.html#a08000421b9cc13757430efe54178ae0f',1,'ImGui']]],
-  ['power_32',['power',['../namespacesteppable_1_1____internals_1_1arithmetic.html#af6182ff1cb4cd038c71e082ce615c334',1,'steppable::__internals::arithmetic']]],
+  ['power_32',['power',['../namespacesteppable_1_1____internals_1_1calc.html#a532d43ee7eb8412785f40bbd5c136068',1,'steppable::__internals::calc']]],
   ['ppfraction_33',['ppFraction',['../namespacesteppable_1_1prettyPrint_1_1printers.html#a3719e82a7cebdb935632d16277530279',1,'steppable::prettyPrint::printers']]],
   ['pproot_34',['ppRoot',['../namespacesteppable_1_1prettyPrint_1_1printers.html#a6d34546de5b88d97f80eae7d256611dc',1,'steppable::prettyPrint::printers']]],
   ['ppsubscript_35',['ppSubscript',['../namespacesteppable_1_1prettyPrint_1_1printers.html#a4b6e725f816e08dd8584a88ef0d9d93e',1,'steppable::prettyPrint::printers']]],

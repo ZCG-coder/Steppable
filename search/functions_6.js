@@ -41,6 +41,6 @@ var searchData=
   ['exampleasset_38',['ExampleAsset',['../structExampleAsset.html#a2acc66f97b9ac1dc885eeb354ec13a57',1,'ExampleAsset']]],
   ['exampleassetsbrowser_39',['ExampleAssetsBrowser',['../structExampleAssetsBrowser.html#aa9edf321cf93321b4dd8ee0581fd5a7f',1,'ExampleAssetsBrowser']]],
   ['execcommand_40',['ExecCommand',['../structExampleAppConsole.html#aa1e8bf1f3795cbc41597e1ff081c6589',1,'ExampleAppConsole']]],
-  ['exp_41',['exp',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a21814bf99bd44bc84194fc8443c2dce4',1,'steppable::__internals::arithmetic']]],
+  ['exp_41',['exp',['../namespacesteppable_1_1____internals_1_1calc.html#adaf0897c4993c923f9200b3a556a1ed0',1,'steppable::__internals::calc']]],
   ['expand_42',['Expand',['../structImRect.html#af33a7424c3341d08acd69da30c27c753',1,'ImRect::Expand(const float amount)'],['../structImRect.html#ac0b0b88fe65725b4694cd7d91d42d382',1,'ImRect::Expand(const ImVec2 &amp;amount)']]]
 ];

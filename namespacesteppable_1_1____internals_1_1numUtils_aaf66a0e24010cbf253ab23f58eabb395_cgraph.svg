@@ -49,7 +49,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1400;
 var viewHeight = 468;
-var sectionId = 'dynsection-26';
+var sectionId = 'dynsection-29';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -68,10 +68,10 @@ var sectionId = 'dynsection-26';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a99dd4f107869c73ed900ecf0c5a81248" target="_top" xlink:title="Adds two string representations of numbers, and performs with the column method.">
+<g id="a_Node000002"><a xlink:href="namespacesteppable_1_1____internals_1_1calc.html#a8ee74a3b901b7b3f12f0391a0d2be7b8" target="_top" xlink:title="Adds two string representations of numbers, and performs with the column method.">
 <polygon fill="white" stroke="#666666" points="282.5,-333.5 159.25,-333.5 159.25,-300 282.5,-300 282.5,-333.5"/>
 <text text-anchor="start" x="167.25" y="-320" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
-<text text-anchor="middle" x="220.88" y="-307.25" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::add</text>
+<text text-anchor="middle" x="220.88" y="-307.25" font-family="Helvetica,sans-Serif" font-size="10.00">::calc::add</text>
 </a>
 </g>
 </g>
@@ -152,10 +152,10 @@ var sectionId = 'dynsection-26';
 <!-- Node15 -->
 <g id="Node000015" class="node">
 <title>Node15</title>
-<g id="a_Node000015"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a454dad4035d63cc8f26beff5ae3e85ba" target="_top" xlink:title="Subtracts one string representation of a number from another string representation of a number.">
+<g id="a_Node000015"><a xlink:href="namespacesteppable_1_1____internals_1_1calc.html#a2173185243502a4e962d22b97becdbbb" target="_top" xlink:title="Subtracts one string representation of a number from another string representation of a number.">
 <polygon fill="white" stroke="#666666" points="441.75,-301.5 318.5,-301.5 318.5,-268 441.75,-268 441.75,-301.5"/>
 <text text-anchor="start" x="326.5" y="-288" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
-<text text-anchor="middle" x="380.12" y="-275.25" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::subtract</text>
+<text text-anchor="middle" x="380.12" y="-275.25" font-family="Helvetica,sans-Serif" font-size="10.00">::calc::subtract</text>
 </a>
 </g>
 </g>
@@ -432,10 +432,10 @@ var sectionId = 'dynsection-26';
 <!-- Node16 -->
 <g id="Node000016" class="node">
 <title>Node16</title>
-<g id="a_Node000016"><a xlink:href="namespacesteppable_1_1____internals_1_1arithmetic.html#a53a5988a1ccf479c14e75c2902bbb82d" target="_top" xlink:title="Compares two string representations of numbers.">
+<g id="a_Node000016"><a xlink:href="namespacesteppable_1_1____internals_1_1calc.html#a42acdef9fc1e043591a9f42918ba7984" target="_top" xlink:title="Compares two string representations of numbers.">
 <polygon fill="white" stroke="#666666" points="601,-261.5 477.75,-261.5 477.75,-228 601,-228 601,-261.5"/>
 <text text-anchor="start" x="485.75" y="-248" font-family="Helvetica,sans-Serif" font-size="10.00">steppable::__internals</text>
-<text text-anchor="middle" x="539.38" y="-235.25" font-family="Helvetica,sans-Serif" font-size="10.00">::arithmetic::compare</text>
+<text text-anchor="middle" x="539.38" y="-235.25" font-family="Helvetica,sans-Serif" font-size="10.00">::calc::compare</text>
 </a>
 </g>
 </g>

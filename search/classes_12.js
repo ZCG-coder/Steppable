@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zerodenominatorexception_0',['ZeroDenominatorException',['../classsteppable_1_1exceptions_1_1ZeroDenominatorException.html',1,'steppable::exceptions']]]
+  ['wgl_5fwindowdata_0',['WGL_WindowData',['../structWGL__WindowData.html',1,'']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['back_0',['back',['../structImVector.html#a2d80e87e81b1b01143c8d8be93e6fde1',1,'ImVector::back()'],['../structImVector.html#ab46e61c71932385c2ee96d1dfc94546a',1,'ImVector::back() const']]],
-  ['baseconvert_1',['baseConvert',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ada19cbf0676e8da03445ff72c6b6713b',1,'steppable::__internals::arithmetic']]],
+  ['baseconvert_1',['baseConvert',['../namespacesteppable_1_1____internals_1_1calc.html#a96ba2cf3583589fd149804ce45141500',1,'steppable::__internals::calc']]],
   ['begin_2',['Begin',['../structImGuiListClipper.html#a746fbd724a41dbe88fef4875a2b1e9c7',1,'ImGuiListClipper::Begin()'],['../namespaceImGui.html#a581e58db0bc930bafa4a5d23093a2b99',1,'ImGui::Begin()']]],
   ['begin_3',['begin',['../structImVector.html#ab48ae48675fa779e29c9ae5892bb99f4',1,'ImVector::begin()'],['../structImVector.html#a1e10cf9afeb244d7d42131682531f865',1,'ImVector::begin() const'],['../structImGuiTextBuffer.html#ad971435d81bc0b957cdb59f5d58eaacd',1,'ImGuiTextBuffer::begin()'],['../structImSpan.html#a7ba3b04224a0fb1462e73f7e197bfae3',1,'ImSpan::begin()'],['../structImSpan.html#abb79a7731eb2fc2c87cf2c162a2af9b6',1,'ImSpan::begin() const'],['../structImChunkStream.html#a10a9b29c856b3f84ce8811ebfaf2cfe8',1,'ImChunkStream::begin()']]],
   ['beginboxselect_4',['BeginBoxSelect',['../namespaceImGui.html#a7e87b1344415ee66aa4939523af03134',1,'ImGui']]],

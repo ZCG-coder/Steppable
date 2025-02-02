@@ -6,5 +6,5 @@ var searchData=
   ['querysuccess_3',['QuerySuccess',['../structImGuiStackLevelInfo.html#af73a14a915d748f1ebe5c4a4aedd5325',1,'ImGuiStackLevelInfo']]],
   ['queue_4',['Queue',['../structImGui__ImplVulkan__InitInfo.html#a43144f43d4eeb25a5230a55a1cea2bd4',1,'ImGui_ImplVulkan_InitInfo']]],
   ['queuefamily_5',['QueueFamily',['../structImGui__ImplVulkan__InitInfo.html#a51c934190a99b91180bf95ce56a36407',1,'ImGui_ImplVulkan_InitInfo']]],
-  ['quotient_6',['quotient',['../structsteppable_1_1____internals_1_1arithmetic_1_1QuotientRemainder.html#ae02205a4a9283f5df34a455b575fd60c',1,'steppable::__internals::arithmetic::QuotientRemainder']]]
+  ['quotient_6',['quotient',['../structsteppable_1_1____internals_1_1calc_1_1QuotientRemainder.html#a47ce3f63e85fc058caa355412857131a',1,'steppable::__internals::calc::QuotientRemainder']]]
 ];

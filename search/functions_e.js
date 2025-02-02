@@ -18,7 +18,7 @@ var searchData=
   ['moveall_15',['MoveAll',['../structExampleDualListBox.html#ad6cacee15ae085f2074e346c542ec820',1,'ExampleDualListBox']]],
   ['movedecimalplaces_16',['moveDecimalPlaces',['../namespacesteppable_1_1____internals_1_1numUtils.html#ac4e0b4898321f5e00d72f20dac9fbb4d',1,'steppable::__internals::numUtils']]],
   ['moveselected_17',['MoveSelected',['../structExampleDualListBox.html#a698e8cfeb3feee52d68b5785bc0c84e1',1,'ExampleDualListBox']]],
-  ['multiply_18',['multiply',['../namespacesteppable_1_1____internals_1_1arithmetic.html#a96240562a7be93251b4298a83b803731',1,'steppable::__internals::arithmetic']]],
+  ['multiply_18',['multiply',['../namespacesteppable_1_1____internals_1_1calc.html#a482706d871bb374265b2a361b1fbc590',1,'steppable::__internals::calc']]],
   ['multiselectitemfooter_19',['MultiSelectItemFooter',['../namespaceImGui.html#a69762bfb0eaf3daa730895737bce05e5',1,'ImGui']]],
   ['multiselectitemheader_20',['MultiSelectItemHeader',['../namespaceImGui.html#a42a98da805c3612b26b829e0567fdc0f',1,'ImGui']]],
   ['mydocument_21',['MyDocument',['../structMyDocument.html#adcd14ce86b5e8cb1ac5e013851c24cc9',1,'MyDocument']]]

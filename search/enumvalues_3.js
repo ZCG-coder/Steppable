@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['info_0',['INFO',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7a0add0282959d7a8fb7af0dee9885198a',1,'steppable::__internals::logging']]]
+  ['friday_0',['Friday',['../namespacesteppable.html#a0f6d79fbf300d8b225ba6420f4f65f15ac33b138a163847cdb6caeeb7c9a126b4',1,'steppable']]]
 ];

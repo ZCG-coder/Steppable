@@ -35,7 +35,7 @@ var searchData=
   ['backupprevlinetextbaseoffset_32',['BackupPrevLineTextBaseOffset',['../structImGuiComboPreviewData.html#a5563d91e33a46488ba26d2cfc5576bb4',1,'ImGuiComboPreviewData']]],
   ['backupvalue_33',['BackupValue',['../structImGuiColorMod.html#a99134f8cabbe0c2c45bf7d693bd6dae7',1,'ImGuiColorMod']]],
   ['barrect_34',['BarRect',['../structImGuiTabBar.html#a6cfe603b0077e3ae0dfeec093acce320',1,'ImGuiTabBar']]],
-  ['baseconvert_35',['baseConvert',['../namespacesteppable_1_1____internals_1_1arithmetic.html#ada19cbf0676e8da03445ff72c6b6713b',1,'steppable::__internals::arithmetic']]],
+  ['baseconvert_35',['baseConvert',['../namespacesteppable_1_1____internals_1_1calc.html#a96ba2cf3583589fd149804ce45141500',1,'steppable::__internals::calc']]],
   ['baseline_5fy_5fdelta_36',['baseline_y_delta',['../structImStb_1_1StbTexteditRow.html#ad2d72b74b1a61e331949c7f7ec311880',1,'ImStb::StbTexteditRow::baseline_y_delta'],['../structStbTexteditRow.html#ad2d72b74b1a61e331949c7f7ec311880',1,'StbTexteditRow::baseline_y_delta']]],
   ['baseptr_37',['BasePtr',['../structImSpanAllocator.html#a13ffffaa95637e4c95d215414f9600fd',1,'ImSpanAllocator']]],
   ['basics_38',['Q&amp;A: Basics',['../md_include_2imgui_2docs_2FAQ.html#autotoc_md96',1,'']]],
