@@ -208,7 +208,7 @@ int main(const int _argc, const char* _argv[])
     program.addPosArg('a', $("multiply", "1d54da58-ec3c-4888-80a8-c40565efb603"));
     program.addPosArg('b', $("multiply", "3db8b80f-9667-476a-b096-9323615dd461"));
     program.addKeywordArg("steps", 2, $("multiply", "5ed5291e-6269-4d76-a8f8-db5eec807955"));
-    program.addKeywordArg("decimals", MAX_DECIMALS, $("multiply", "5ed5291e-6269-4d76-a8f8-db5eec807955"));
+    program.addKeywordArg("decimals", MAX_DECIMALS, $("multiply", "02dc437f-814b-4fe3-9fbc-c2616b0c0f4a"));
     program.addSwitch("profile", false, $("multiply", "eec47776-991b-40cc-9956-7227127d2c1f"));
     program.parseArgs();
 
