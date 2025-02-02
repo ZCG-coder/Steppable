@@ -77,7 +77,7 @@ namespace steppable
 
     Number Number::operator%(const Number& rhs) const { return divideWithQuotient(value, rhs.value).remainder; }
 
-    Number Number::operator^(const Number& rhs) const { return power(value, rhs.value, 0); }
+    Number Number::operator^(const Number& rhs) const { return power(value, rhs.value, 0, static_cast<int>(prec)); }
 
     Number& Number::operator+=(const Number& rhs)
     {

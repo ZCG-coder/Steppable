@@ -111,15 +111,18 @@ NB_MODULE(steppyble, mod) // NOLINT
         "Internal function that subtracts two numbers.");
     internals.def(
         "multiply",
-        [](const std::string& a, const std::string& b, const int steps) { return multiply(a, b, steps); },
+        [](const std::string& a, const std::string& b, const int steps, const int decimals) {
+            return multiply(a, b, steps, decimals);
+        },
         "a"_a,
         "b"_a,
         "steps"_a = 2,
+        "decimals"_a = 8,
         "Internal function that multiplies two numbers.");
     internals.def(
         "divide",
         [](const std::string& a, const std::string& b, const int steps, const int decimals) {
-            return divide(a, b, steps);
+            return divide(a, b, steps, decimals);
         },
         "a"_a,
         "b"_a,
@@ -129,5 +132,11 @@ NB_MODULE(steppyble, mod) // NOLINT
     internals.def("divideWithQuotient",
                   &divideWithQuotient,
                   "Internal function that divides two numbers, but separating the quotient and remainder.");
-    internals.def("power", &power, "a"_a, "raiseTo"_a, "steps"_a = 2, "Internal function raises a number to a power.");
+    internals.def("power",
+                  &power,
+                  "a"_a,
+                  "raiseTo"_a,
+                  "steps"_a = 2,
+                  "decimals"_a = 8,
+                  "Internal function raises a number to a power.");
 }

@@ -151,11 +151,13 @@ int main(const int _argc, const char* _argv[])
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
 
+    #if DEBUG
     if (steps == 475)
     {
-        std::cout << steppable::__internals::calc::exp(aStr, decimals) << std::endl;
+        std::cout << steppable::__internals::calc::exp(aStr, decimals) << '\n';
         return 0;
     }
+    #endif
 
     if (profile)
     {
