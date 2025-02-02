@@ -31,7 +31,7 @@
 
 TEST_START()
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 SECTION(Comparison at integer)
 const std::string &a = "6453.55";

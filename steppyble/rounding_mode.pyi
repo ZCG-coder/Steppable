@@ -20,14 +20,23 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-ENABLE_TESTING()
+import enum
 
-FOREACH(ITEM IN LISTS TEST_TARGETS)
-    ADD_EXECUTABLE(${ITEM} ${ITEM}.cpp)
-    TARGET_LINK_LIBRARIES(${ITEM} PRIVATE func)
-    ADD_TEST(NAME ${ITEM} COMMAND ${CMAKE_BINARY_DIR}/tests/${ITEM})
-    MESSAGE(TRACE "Added test case: ${ITEM}: ${ITEM}.cpp")
-ENDFOREACH()
 
-ADD_CUSTOM_TARGET(tests)
-ADD_DEPENDENCIES(tests ${TEST_TARGETS})
+class RoundingMode(enum.Enum):
+    """Specifies how Steppable should round the number in operations."""
+
+    USE_MAXIMUM_PREC = 0xFF
+    """Use the higher precision whenever possible."""
+
+    USE_MINIMUM_PREC = 0x01
+    """Use the lower precision whenever possible."""
+
+    USE_CURRENT_PREC = 0x02
+    """Use the current precision."""
+
+    USE_OTHER_PREC = 0x03
+    """Use the other number's precision."""
+
+    DISCARD_ALL_DECIMALS = 0x00
+    """Do not append any decimal places."""

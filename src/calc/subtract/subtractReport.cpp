@@ -95,7 +95,7 @@ std::string reportSubtract(const std::string& aInteger,
             ss << std::string(aOut.length() - bOut.length(), ' ');
         for (char bChar : bOut)
             ss << bChar << "  ";
-        ss << '\n' << std::string(diffDigits.size() * 3 + 2, '_') << '\n' << "   ";
+        ss << '\n' << std::string((diffDigits.size() * 3) + 2, '_') << '\n' << "   ";
 
         for (int outputDigit : diffDigits)
         {

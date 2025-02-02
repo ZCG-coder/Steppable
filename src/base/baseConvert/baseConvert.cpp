@@ -41,7 +41,7 @@
 
 using namespace std::literals;
 using namespace steppable::__internals::stringUtils;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::symbols;
 using namespace steppable::localization;
 using namespace steppable::output;
@@ -55,14 +55,14 @@ namespace steppable::prettyPrint::printers
         auto height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
 
         prettyPrint::ConsoleOutput output(height, width);
-        prettyPrint::Position pos{ static_cast<long long>(width - subscriptWidth - 1), 1 };
+        prettyPrint::Position pos{ .x = static_cast<long long>(width - subscriptWidth - 1), .y = 1 };
         output.write(subscript, pos, false);
-        output.write(base, { 0, 0 }, false);
+        output.write(base, { .x = 0, .y = 0 }, false);
         return output.asString();
     }
 } // namespace steppable::prettyPrint::printers
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     /**
      * @brief Represents a number using alphabets and numberals.
@@ -86,7 +86,7 @@ namespace steppable::__internals::arithmetic
 
     std::string baseConvert(const std::string& _number, const std::string& baseStr, const int steps)
     {
-        const size_t base = std::stoll(static_cast<std::string>(baseStr));
+        const size_t base = std::stoll(baseStr);
         auto numberOrig = static_cast<std::string>(_number);
         auto number = static_cast<std::string>(_number);
 
@@ -126,7 +126,7 @@ namespace steppable::__internals::arithmetic
 
         return reportBaseConvert(numberOrig, static_cast<std::string>(baseStr), digits, steps);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

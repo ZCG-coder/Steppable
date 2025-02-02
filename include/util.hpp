@@ -213,6 +213,28 @@ namespace steppable::__internals::utils
             programSafeExit(1);
         }
     }
+
+    /**
+     * @brief String literal workaround for templates.
+     * @tparam N The length of the string
+     */
+    template<size_t N>
+    struct StringLiteral
+    {
+        /**
+         * @brief Initializes the wrapper class.
+         * @param str The string literal for the template.
+         */
+        constexpr StringLiteral(const char (&str)[N]) // NOLINT(*-pro-type-member-init, *-explicit-constructor)
+        { // NOLINT(*-avoid-c-arrays)
+            std::copy_n(str, N, value);
+        }
+
+        /**
+         * @brief The value of the wrapper class. Stores the string object.
+         */
+        char value[N]; // NOLINT(*-avoid-c-arrays)
+    };
 } // namespace steppable::__internals::utils
 
 /**
@@ -372,6 +394,22 @@ namespace steppable::__internals::numUtils
      * @return True if it is a power of 10, false otherwise.
      */
     bool isPowerOfTen(const std::string& number);
+
+    /**
+     * @brief Checks if a number is odd.
+     *
+     * @param number The number to be checked.
+     * @return True if the number is odd, false otherwise.
+     */
+    bool isOdd(const std::string& number);
+
+    /**
+     * @brief Checks if a number is even.
+     *
+     * @param number The number to be checked.
+     * @return True if the number is even, false otherwise.
+     */
+    bool isEven(const std::string& number);
 } // namespace steppable::__internals::numUtils
 
 /**
@@ -550,4 +588,18 @@ namespace steppable::__internals::stringUtils
      * @return A vector of strings containing the duplicates.
      */
     std::vector<std::string> duplicates(const std::vector<std::string>& vector);
+
+    template<typename ValueType>
+    std::string vectorToString(const std::vector<ValueType>& vector)
+    {
+        std::ostringstream out;
+        out << "[";
+        for (size_t i = 0; i < vector.size(); ++i)
+        {
+            out << vector[i];
+            if (i != vector.size() - 1)
+                out << ", ";
+        }
+        return out.str();
+    }
 } // namespace steppable::__internals::stringUtils

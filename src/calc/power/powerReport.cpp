@@ -34,6 +34,7 @@
 #include "fn/calc.hpp"
 #include "fraction.hpp"
 #include "getString.hpp"
+#include "rounding.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
@@ -44,7 +45,7 @@ using namespace steppable::output;
 using namespace steppable::localization;
 using namespace steppable::prettyPrint;
 using namespace steppable::__internals::symbols;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 std::string reportPowerRoot(const std::string& _number,
                             const std::string& raiseTo,
@@ -70,18 +71,17 @@ std::string reportPowerRoot(const std::string& _number,
 std::string reportPower(const std::string& _number,
                         const std::string& raiseTo,
                         const size_t numberTrailingZeros,
-                        const bool negative,
-                        const int steps)
+                        const bool negativePower,
+                        const int steps,
+                        const int decimals)
 {
     std::stringstream ss;
-    const auto numberOrig = static_cast<std::string>(_number);
-
-    auto number = "1"s;
+    auto result = "1"s;
 
     // Here, we attempt to give a quick answer, instead of doing pointless iterations.
-    if (numberOrig == "1")
+    if (_number == "1")
         goto finish; // NOLINT(cppcoreguidelines-avoid-goto)
-    if (numberOrig == "0")
+    if (_number == "0")
     {
         if (steps == 2)
             // The number is 0, so the result is 0.
@@ -92,47 +92,48 @@ std::string reportPower(const std::string& _number,
     }
 
     loop(raiseTo, [&](const auto& i) {
-        if (not negative)
-            number = multiply(number, numberOrig, 0);
+        if (not negativePower)
+            result = multiply(result, _number, 0, decimals + 1);
         else
-            number = divide("1", number, 0);
+            result = divide("1", result, 0, decimals + 1);
         auto currentPower = add(i, "1", 0);
         if (steps == 2)
         {
-            if (not negative)
-                ss << BECAUSE << " " << multiply(number, numberOrig, 1) << '\n';
+            if (not negativePower)
+                ss << BECAUSE << " " << multiply(result, _number, 1) << '\n';
             else
-                ss << BECAUSE << " " << divide("1", number, 1) << '\n';
-            if (negative)
+                ss << BECAUSE << " " << divide("1", result, 1) << '\n';
+            if (negativePower)
                 currentPower = "-" + currentPower;
 
-            ss << printers::ppSuperscript(numberOrig, currentPower) << " = " << number << '\n';
+            ss << printers::ppSuperscript(_number, currentPower) << " = " << result << '\n';
         }
     });
 
 finish:
-    number = numUtils::standardizeNumber(number);
+    result = numUtils::standardizeNumber(result);
+    result = numUtils::roundOff(result, decimals);
 
-    if (negative)
+    if (negativePower)
     {
         if (steps == 2)
-            ss << BECAUSE << " " << divide("1", number, 1) << '\n';
+            ss << BECAUSE << " " << divide("1", result, 1, decimals) << '\n';
         else if (steps == 1)
         {
-            const auto& divisionResult = divide("1", number, 0);
-            ss << numberOrig << makeSuperscript('-') << makeSuperscript(static_cast<std::string>(raiseTo)) << " = "
+            const auto& divisionResult = divide("1", result, 0, decimals);
+            ss << _number << makeSuperscript('-') << makeSuperscript(static_cast<std::string>(raiseTo)) << " = "
                << divisionResult;
         }
         else
-            ss << number;
+            ss << result;
     }
 
     if (steps >= 1)
-        ss << numberOrig << makeSuperscript(static_cast<std::string>(raiseTo)) << " = " << number;
+        ss << _number << makeSuperscript(raiseTo) << " = " << result;
     else if (steps == 0)
-        ss << number;
+        ss << result;
 
-    loop(multiply(raiseTo, std::to_string(numberTrailingZeros), 0), [&](const auto& _) { ss << "0"; });
+    loop(multiply(raiseTo, std::to_string(numberTrailingZeros), 0, 0), [&](const auto& _) { ss << "0"; });
 
     return ss.str();
 }

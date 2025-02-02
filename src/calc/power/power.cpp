@@ -40,7 +40,7 @@
 using namespace steppable::__internals::numUtils;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 namespace steppable::prettyPrint::printers
 {
@@ -50,16 +50,16 @@ namespace steppable::prettyPrint::printers
         auto height = prettyPrint::getStringHeight(base) + 1; // +1 for the superscript
 
         prettyPrint::ConsoleOutput output(height, width);
-        prettyPrint::Position pos{ static_cast<long long>(width - 1), 0 };
+        prettyPrint::Position pos{ .x = static_cast<long long>(width - 1), .y = 0 };
         output.write(superscript, pos, false);
-        output.write(base, { 0, 1 }, false);
+        output.write(base, { .x = 0, .y = 1 }, false);
         return output.asString();
     }
 } // namespace steppable::prettyPrint::printers
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
-    std::string power(const std::string& _number, const std::string& _raiseTo, const int steps)
+    std::string power(const std::string& _number, const std::string& _raiseTo, const int steps, const int decimals)
     {
         std::string raiseTo = static_cast<std::string>(_raiseTo);
         std::string number = static_cast<std::string>(_number);
@@ -67,15 +67,12 @@ namespace steppable::__internals::arithmetic
         if (isDecimal(raiseTo))
         {
             // Raising to decimal power.
-            // Steps:
-            // 1. Convert the decimal to a fraction.
-            // 2. Raise the number to the numerator of the fraction.
-            // 3. Take the root of the number to the denominator of the fraction.
-            const auto& fraction = Fraction(raiseTo);
-            const auto& [top, bottom] = fraction.asArray();
-            const auto& powerResult = power(_number, top, 0);
-            const auto rootResult = root(powerResult, bottom, 8);
-            return reportPowerRoot(number, raiseTo, fraction, rootResult, steps);
+            //  b    b ln(a)
+            // a  = e
+            const auto lnNumber = ln(_number, decimals + 2);
+            const auto bLnNumber = multiply(lnNumber, raiseTo, 0, decimals + 2);
+            // return reportPowerRoot(number, raiseTo, fraction, rootResult, steps);
+            return exp(bLnNumber, decimals);
         }
 
         // Here, we attempt to give a quick answer, instead of doing pointless iterations.
@@ -98,9 +95,10 @@ namespace steppable::__internals::arithmetic
 
         auto numberNoTrailingZeros = standardizeNumber(number);
         size_t numberTrailingZeros = 0;
+        auto result = splitNumber(number, "0", false, false, true, true);
         if (isInteger(number))
         {
-            number = splitNumber(number, "0", false, false, true).splitNumberArray[0];
+            number = result.splitNumberArray[0];
             numberNoTrailingZeros = removeTrailingZeros(number);
             numberTrailingZeros = number.length() - numberNoTrailingZeros.length();
         }
@@ -109,35 +107,31 @@ namespace steppable::__internals::arithmetic
         // Remove the zeros to reduce the workload.
         number = numberNoTrailingZeros;
 
-        bool negative = false;
+        bool negativePower = false;
+
         if (compare(raiseTo, "0", 0) == "0")
         {
             // raiseTo is negative
             raiseTo = raiseTo.substr(1);
-            negative = true;
+            negativePower = true;
         }
-        return reportPower(number, raiseTo, numberTrailingZeros, negative, steps);
+        return reportPower(number, raiseTo, numberTrailingZeros, negativePower, steps, decimals);
     }
 
     std::string exp(const std::string& x, const size_t decimals)
     {
-        if (compare(x, "20", 0) == "0")
+        constexpr size_t iter = 50;
+        std::string sum = "1";
+        std::string term = "1";
+        for (size_t i = 1; i < iter; i++)
         {
-            constexpr size_t iter = 200;
-            std::string sum = "1";
-            std::string term = "1";
-            for (size_t i = 1; i < iter; i++)
-            {
-                std::string frac = divide(x, std::to_string(i), 0, static_cast<int>(decimals));
-                term = multiply(term, frac, 0);
-                sum = add(sum, term, 0);
-            }
-            return sum;
+            std::string frac = divide(x, std::to_string(i), 0, static_cast<int>(decimals) + 2);
+            term = multiply(term, frac, 0, static_cast<int>(decimals) + 2);
+            sum = add(sum, term, 0);
         }
-
-        return power(exp(divide(x, "4", 0, decimals)), "4", 0);
+        return roundOff(sum, decimals);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
@@ -147,13 +141,23 @@ int main(const int _argc, const char* _argv[])
     program.addPosArg('a', $("power", "4252ac37-a36b-4605-9ec1-d69e70b91b46"));
     program.addPosArg('b', $("power", "1fefffaf-7731-430b-989f-42e74017a2eb"));
     program.addKeywordArg("steps", 2, $("power", "cb935566-6125-49ce-9ebc-e157410a3005"));
+    program.addKeywordArg("decimals", 2, $("power", "03c15572-a5aa-4b1c-a705-105770999741"));
     program.addSwitch("profile", false, $("power", "e5d48237-e161-494d-940b-e2457411fcfb"));
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");
+    int decimals = program.getKeywordArgument("decimals");
     bool profile = program.getSwitch("profile");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
+
+    #if DEBUG
+    if (steps == 475)
+    {
+        std::cout << steppable::__internals::calc::exp(aStr, decimals) << '\n';
+        return 0;
+    }
+    #endif
 
     if (profile)
     {

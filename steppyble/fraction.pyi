@@ -20,14 +20,60 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-ENABLE_TESTING()
+import steppyble
 
-FOREACH(ITEM IN LISTS TEST_TARGETS)
-    ADD_EXECUTABLE(${ITEM} ${ITEM}.cpp)
-    TARGET_LINK_LIBRARIES(${ITEM} PRIVATE func)
-    ADD_TEST(NAME ${ITEM} COMMAND ${CMAKE_BINARY_DIR}/tests/${ITEM})
-    MESSAGE(TRACE "Added test case: ${ITEM}: ${ITEM}.cpp")
-ENDFOREACH()
 
-ADD_CUSTOM_TARGET(tests)
-ADD_DEPENDENCIES(tests ${TEST_TARGETS})
+class Fraction:
+    def __init__(self, top: str = "1", bottom: str = "1") -> None:
+        ...
+
+    def __repr__(self) -> str:
+        ...
+
+    def __add__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __iadd__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __sub__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __isub__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __mul__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __imul__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __truediv__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __itruediv__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __pow__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __ipow__(self, _: steppyble.Fraction, /) -> steppyble.Fraction:
+        ...
+
+    def __eq__(self, _: object, /) -> bool:
+        ...
+
+    def __ne__(self, _: object, /) -> bool:
+        ...
+
+    def __ge__(self, _: steppyble.Fraction, /) -> bool:
+        ...
+
+    def __gt__(self, _: steppyble.Fraction, /) -> bool:
+        ...
+
+    def __le__(self, _: steppyble.Fraction, /) -> bool:
+        ...
+
+    def __lt__(self, _: steppyble.Fraction, /) -> bool:
+        ...

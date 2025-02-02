@@ -40,9 +40,9 @@ using namespace steppable::__internals::utils;
 using namespace steppable::__internals::symbols;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     /**
      * @brief Converts a numeral character to a number string.
@@ -100,7 +100,7 @@ namespace steppable::__internals::arithmetic
         ss << reportDecimalConvert(_inputString, baseString, converted, steps);
         return ss.str();
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 

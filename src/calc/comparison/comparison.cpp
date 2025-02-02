@@ -39,10 +39,10 @@
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::symbols;
 using namespace steppable::__internals::utils;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::localization;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string compare(const std::string& _a, const std::string& _b, const int steps)
     {
@@ -120,7 +120,7 @@ namespace steppable::__internals::arithmetic
         }
         return "2";
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(int _argc, const char** _argv)

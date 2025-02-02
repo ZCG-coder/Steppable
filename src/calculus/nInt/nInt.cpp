@@ -31,7 +31,7 @@
 #include <string>
 #include <vector>
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::utils;
 using namespace std::literals;
@@ -52,27 +52,28 @@ namespace steppable::__internals::calculus
 
         auto h = subtract(b, a, 0);
         auto fAB = add(f(a), f(b), 0);
-        auto halfH = multiply(h, "0.5", 0);
-        previous.front() = multiply(halfH, fAB, 0);
+        auto halfH = multiply(h, "0.5", 0, decimals + 2);
+        previous.front() = multiply(halfH, fAB, 0, decimals + 2);
 
         for (int i = 1; i < max_steps; i++)
         {
-            h = multiply(h, "0.5", 0);
+            h = multiply(h, "0.5", 0, decimals + 2);
             auto c = "0"s;
             long ep = 1 << (i - 1); // 2^(i - 1)
             for (long j = 1; j < (ep + 1); j++)
             {
-                auto d = multiply(std::to_string((2 * j) - 1), h, 0);
+                auto d = multiply(std::to_string((2 * j) - 1), h, 0, decimals + 2);
                 c = add(c, f(add(a, d, 0)), 0);
             }
-            current.front() = add(multiply(h, c, 0), multiply("0.5", previous.front(), 0), 0);
+            current.front() =
+                add(multiply(h, c, 0, decimals + 2), multiply("0.5", previous.front(), 0, decimals + 2), 0);
 
             for (int j = 1; j < (i + 1); j++)
             {
                 long double n_k = pow(4, j);
-                auto one = multiply(std::to_string(n_k), current.at(j - 1), 0);
+                auto one = multiply(std::to_string(n_k), current.at(j - 1), 0, decimals + 2);
                 auto top = subtract(one, previous.at(j - 1), 0);
-                current.at(j) = divide(top, std::to_string(n_k - 1), 0, decimals + 1);
+                current.at(j) = divide(top, std::to_string(n_k - 1), 0, decimals + 2);
 
                 if (i > 1 and compare(abs(subtract(previous.at(i - 1), current.at(i), 0), 0), acc, 0) == "0")
                     return roundOff(current.at(i), decimals);

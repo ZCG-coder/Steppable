@@ -39,6 +39,7 @@
 #include "output.hpp"
 
 #include <string>
+#include <util.hpp>
 
 using namespace std::literals;
 
@@ -46,7 +47,7 @@ using namespace std::literals;
  * @namespace steppable::__internals
  * @brief The namespace containing internal functions for the Steppable library.
  */
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     /**
      * @brief Represents the quotient and remainder of a division operation.
@@ -154,7 +155,7 @@ namespace steppable::__internals::arithmetic
      * @param[in] steps The number of steps to perform the multiplication.
      * @return The product of the two numbers as a string.
      */
-    std::string multiply(const std::string& a, const std::string& b, int steps = 2);
+    std::string multiply(const std::string& a, const std::string& b, int steps = 2, int decimals = MAX_DECIMALS);
 
     /**
      * @brief Raises a string representation of a number to a power.
@@ -162,9 +163,10 @@ namespace steppable::__internals::arithmetic
      * @param[in] _number The string representation of the number.
      * @param[in] raiseTo The string representation of the power to raise the number to.
      * @param[in] steps The number of steps to perform the power operation.
+     * @param[in] decimals The number of decimals to output from the power operation.
      * @return The result of the power operation as a string.
      */
-    std::string power(const std::string& _number, const std::string& raiseTo, int steps = 2);
+    std::string power(const std::string& _number, const std::string& raiseTo, int steps = 2, int decimals = 8);
 
     /**
      * @brief Calculates e^x. Shorthand of power(x, E, 0);
@@ -572,4 +574,4 @@ namespace steppable::__internals::arithmetic
         }
     }
 
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc

@@ -31,7 +31,7 @@
 
 TEST_START()
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 SECTION(Test hyperbolic sine)
 _.assertIsEqual(sinh("10", 3), "11013.233");
@@ -46,7 +46,7 @@ _.assertIsEqual(tanh("0.5", 5), "0.46212");
 SECTION_END()
 
 SECTION(Test hyperbolic cotangent)
-_.assertIsEqual(coth("1.25", 5), "1.17884");
+_.assertIsEqual(coth("1.25", 5), "1.17885");
 SECTION_END()
 
 SECTION(Test hyperbolic secant)

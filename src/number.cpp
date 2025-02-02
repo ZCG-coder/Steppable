@@ -40,7 +40,7 @@
 
 namespace steppable
 {
-    using namespace steppable::__internals::arithmetic;
+    using namespace steppable::__internals::calc;
 
     Number::Number() : prec(8), value("0") {}
 
@@ -52,7 +52,7 @@ namespace steppable
 
     Number Number::operator-(const Number& rhs) const { return subtract(value, rhs.value, 0); }
 
-    Number Number::operator*(const Number& rhs) const { return multiply(value, rhs.value, 0); }
+    Number Number::operator*(const Number& rhs) const { return multiply(value, rhs.value, 0, static_cast<int>(prec)); }
 
     Number Number::operator/(const Number& rhs) const
     {
@@ -77,7 +77,7 @@ namespace steppable
 
     Number Number::operator%(const Number& rhs) const { return divideWithQuotient(value, rhs.value).remainder; }
 
-    Number Number::operator^(const Number& rhs) const { return power(value, rhs.value, 0); }
+    Number Number::operator^(const Number& rhs) const { return power(value, rhs.value, 0, static_cast<int>(prec)); }
 
     Number& Number::operator+=(const Number& rhs)
     {

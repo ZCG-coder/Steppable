@@ -40,7 +40,7 @@
 using namespace std::literals;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::__internals::symbols;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
 std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string& temp,
@@ -58,8 +58,8 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
     {
         tempFormattedAns << std::string(width - temp.length(), ' ') << makeWider(temp) << '\n';
         formattedAns << std::string(width - ans.length(), ' ') << makeWider(ans) << '\n';
-        formattedAns << std::string(divisor.length() * 3 - 1, ' ');
-        formattedAns << std::string(width - divisor.length() * 2, '_') << '\n';
+        formattedAns << std::string((divisor.length() * 3) - 1, ' ');
+        formattedAns << std::string(width - (divisor.length() * 2), '_') << '\n';
         formattedAns << tempFormattedAns.rdbuf();
 
         formattedAns << THEREFORE << " ";

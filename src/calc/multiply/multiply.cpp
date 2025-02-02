@@ -43,11 +43,12 @@ using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
-    std::string multiply(const std::string& _a, const std::string& _b, const int steps)
+    // NOLINTNEXTLINE(readability-function-cognitive-complexity)
+    std::string multiply(const std::string& _a, const std::string& _b, const int steps, const int decimals)
     {
         auto a = static_cast<std::string>(_a);
         auto b = static_cast<std::string>(_b);
@@ -62,7 +63,7 @@ namespace steppable::__internals::arithmetic
         else
             resultIsNegative = false;
 
-        const auto& [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
+        auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
         std::stringstream out;
         // Multiply by zero gives zero.
         if (isZeroString(a) or isZeroString(b))
@@ -72,7 +73,7 @@ namespace steppable::__internals::arithmetic
             out << "0"; // Since a or b is zero, the result must be zero as well
         }
 
-        // Multiplying by 1 gives the another number.
+        // Multiplying by 1 gives the other number.
         if (a == "1")
         {
             if (steps == 2)
@@ -112,6 +113,13 @@ namespace steppable::__internals::arithmetic
             return out.str();
         }
 
+        // If the precision of a or b is higher than required, reduce it to simplify calculation
+        if (aDecimal.length() + bDecimal.length() > decimals)
+        {
+            aDecimal = aDecimal.substr(0, decimals);
+            bDecimal = bDecimal.substr(0, decimals);
+        }
+
         const std::string& aStr = aInteger + aDecimal;
         const std::string bStr = bInteger + bDecimal;
         std::vector<std::vector<int>> prodDigits;
@@ -127,7 +135,7 @@ namespace steppable::__internals::arithmetic
             for (long long indexA = static_cast<long long>(aStr.length()) - 1; indexA != -1; indexA--)
             {
                 const int aDigit = aStr[indexA] - '0';
-                int prodDigit = bDigit * aDigit + currentCarries[indexA + 1];
+                int prodDigit = (bDigit * aDigit) + currentCarries[indexA + 1];
                 currentCarries[indexA] = prodDigit / 10;
                 if (currentCarries[indexA] > 10)
                 {
@@ -190,7 +198,7 @@ namespace steppable::__internals::arithmetic
                               resultIsNegative,
                               steps);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
@@ -200,10 +208,12 @@ int main(const int _argc, const char* _argv[])
     program.addPosArg('a', $("multiply", "1d54da58-ec3c-4888-80a8-c40565efb603"));
     program.addPosArg('b', $("multiply", "3db8b80f-9667-476a-b096-9323615dd461"));
     program.addKeywordArg("steps", 2, $("multiply", "5ed5291e-6269-4d76-a8f8-db5eec807955"));
+    program.addKeywordArg("decimals", MAX_DECIMALS, $("multiply", "02dc437f-814b-4fe3-9fbc-c2616b0c0f4a"));
     program.addSwitch("profile", false, $("multiply", "eec47776-991b-40cc-9956-7227127d2c1f"));
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");
+    int decimals = program.getKeywordArgument("decimals");
     bool profile = program.getSwitch("profile");
     const auto& aStr = program.getPosArg(0);
     const auto& bStr = program.getPosArg(1);
@@ -212,10 +222,10 @@ int main(const int _argc, const char* _argv[])
     {
         TIC(Column Method Multiplication)
         std::cout << $("multiply", "776a33fd-982a-4888-8b42-83b0f3797dc2") << "\n"
-                  << multiply(aStr, bStr, steps) << '\n';
+                  << multiply(aStr, bStr, steps, decimals) << '\n';
         TOC()
     }
     else
-        std::cout << multiply(aStr, bStr, steps) << '\n';
+        std::cout << multiply(aStr, bStr, steps, decimals) << '\n';
 }
 #endif

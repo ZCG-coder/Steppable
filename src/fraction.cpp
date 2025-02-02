@@ -44,7 +44,7 @@
     #undef min
 #endif
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::numUtils;
 
 namespace steppable::prettyPrint::printers

@@ -186,7 +186,7 @@ def process(file: Path) -> None:
         with open(file, "w", encoding="utf-8") as f:
             f.write(contents)
     elif (
-        file.suffix == ".py"
+        file.suffix in (".py", ".pyi")
         or file.name == "CMakeLists.txt"
         or ".stp_" in file.suffix  # Steppable configuration files
     ):  # Python File or CMake file
@@ -235,3 +235,4 @@ if __name__ == "__main__":
     walk_into_directory(PROJECT_PATH / "src")
     walk_into_directory(PROJECT_PATH / "tests")
     walk_into_directory(PROJECT_PATH / "tools")
+    walk_into_directory(PROJECT_PATH / "steppyble")

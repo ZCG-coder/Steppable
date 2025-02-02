@@ -112,7 +112,7 @@ namespace steppable::testing
          * @brief Constructs a new TestCase object with the given name.
          * @param[in] testCaseName The name of the test case.
          */
-        explicit TestCase(const std::string& testCaseName);
+        explicit TestCase(std::string testCaseName);
 
         /**
          * @brief Asserts that two strings are equal.

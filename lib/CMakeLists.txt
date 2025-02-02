@@ -25,7 +25,7 @@ if(NOT ${STP_NO_BINDINGS}) # Only create the bindings if needed
 
     # Detect the installed nanobind package and import it into CMake
     execute_process(
-        COMMAND "${Python_EXECUTABLE}" -m nanobind --cmake_dir
+        COMMAND "${Python3_EXECUTABLE}" -m nanobind --cmake_dir
         OUTPUT_STRIP_TRAILING_WHITESPACE
         OUTPUT_VARIABLE NB_DIR)
     message(TRACE "Found nanobind: ${NB_DIR}")

@@ -41,11 +41,11 @@
 
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::utils;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::symbols;
 using namespace steppable::localization;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string add(const std::string& a,
                     const std::string& b,
@@ -120,8 +120,8 @@ namespace steppable::__internals::arithmetic
         std::ranges::reverse(aStr);
         std::ranges::reverse(bStr);
 
-        std::vector sumDigits(aStr.length() + 1, 0);
-        std::vector carries(aStr.length() + 1, false);
+        std::vector<int> sumDigits(aStr.length() + 1, 0);
+        std::vector<int> carries(aStr.length() + 1, 0);
 
         for (size_t index = 0; index < aStr.length(); index++)
         {
@@ -138,7 +138,7 @@ namespace steppable::__internals::arithmetic
             {
                 sumDigits[index] -= 10;
                 sumDigits[index + 1] += 1;
-                carries[index + 1] = true;
+                carries[index + 1] = 1;
             }
         }
 
@@ -150,10 +150,10 @@ namespace steppable::__internals::arithmetic
             const auto& itCarries = carries.begin();
 
             sumDigits.insert(itSumDigits + static_cast<long>(decimalPos), -1); // -1 indicating a decimal point
-            carries.insert(itCarries + static_cast<long>(decimalPos), false); // Reserve the space
+            carries.insert(itCarries + static_cast<long>(decimalPos), 0); // Reserve the space
         }
 
-        std::reverse(carries.begin(), carries.end());
+        std::ranges::reverse(carries);
         std::ranges::reverse(sumDigits);
         if (sumDigits.front() == 0 and properlyFormat)
             sumDigits.erase(sumDigits.begin());
@@ -161,7 +161,7 @@ namespace steppable::__internals::arithmetic
         return reportAdd(
             aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, resultIsNegative, steps, properlyFormat);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

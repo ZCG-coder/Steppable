@@ -20,14 +20,6 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-ENABLE_TESTING()
-
-FOREACH(ITEM IN LISTS TEST_TARGETS)
-    ADD_EXECUTABLE(${ITEM} ${ITEM}.cpp)
-    TARGET_LINK_LIBRARIES(${ITEM} PRIVATE func)
-    ADD_TEST(NAME ${ITEM} COMMAND ${CMAKE_BINARY_DIR}/tests/${ITEM})
-    MESSAGE(TRACE "Added test case: ${ITEM}: ${ITEM}.cpp")
-ENDFOREACH()
-
-ADD_CUSTOM_TARGET(tests)
-ADD_DEPENDENCIES(tests ${TEST_TARGETS})
+from .number import *
+from .fraction import *
+from .rounding_mode import *

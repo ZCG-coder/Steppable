@@ -61,7 +61,7 @@ std::string reportMultiply(const std::string& a,
 
     if (steps == 2)
     {
-        const long long outputWidth = static_cast<long long>(prodDigitsOut[0].size()) * 3 - 2;
+        const long long outputWidth = (static_cast<long long>(prodDigitsOut[0].size()) * 3) - 2;
         ss << std::right << std::setw(static_cast<int>(outputWidth + 3)) << makeWider(aStr) << '\n';
         ss << MULTIPLY << std::right << std::setw(static_cast<int>(outputWidth + 2)) << makeWider(bStr) << '\n';
         ss << std::string(outputWidth + 6, '_') << '\n';
@@ -70,7 +70,7 @@ std::string reportMultiply(const std::string& a,
         {
             auto subVector = replaceLeadingZeros(prodDigitsOut[indexProdDigits]);
 
-            ss << std::string(indexProdDigits * 3 + 3, ' ');
+            ss << std::string((indexProdDigits * 3) + 3, ' ');
             for (const int c : carries[indexProdDigits])
                 if (c != 0)
                     ss << makeSubscript(std::to_string(c)) << "  ";
@@ -78,7 +78,7 @@ std::string reportMultiply(const std::string& a,
                     ss << "   ";
             ss << '\n';
 
-            ss << std::string(indexProdDigits * 3 + 3, ' ');
+            ss << std::string((indexProdDigits * 3) + 3, ' ');
             for (const int i : subVector)
                 if (i >= 0)
                     ss << i << "  ";

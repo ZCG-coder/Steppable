@@ -54,7 +54,7 @@ std::string reportAdd(const std::string& aInteger,
                       const std::string& bInteger,
                       const std::string& bDecimal,
                       const std::vector<int>& sumDigits,
-                      const std::vector<bool>& carries,
+                      const std::vector<int>& carries,
                       bool resultIsNegative,
                       int steps,
                       bool properlyFormat);

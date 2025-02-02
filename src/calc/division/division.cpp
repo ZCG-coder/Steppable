@@ -38,7 +38,6 @@
 
 #include <cstddef>
 #include <cstdlib>
-#include <ostream>
 #include <sstream>
 #include <string>
 
@@ -46,9 +45,9 @@ using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto& divisor)
     {
@@ -56,7 +55,7 @@ namespace steppable::__internals::arithmetic
         if (compare(currentRemainder, divisor, 0) == "0")
             return { "0", currentRemainder };
         if (compare(currentRemainder, divisor, 0) == "2")
-            return { "1", "0" }; // Equal
+            return { .quotient = "1", .remainder = "0" }; // Equal
 
         int out = 0;
         while (compare(currentRemainder, divisor, 0) != "0")
@@ -279,7 +278,7 @@ namespace steppable::__internals::arithmetic
         const auto nearestResult = multiply(divisor, quotient, 0);
         const auto& remainder = removeLeadingZeros(subtract(number, nearestResult, 0));
 
-        return { quotient, remainder };
+        return { .quotient = quotient, .remainder = remainder };
     }
 
     std::string getGCD(const std::string& _a, const std::string& _b)
@@ -305,7 +304,7 @@ namespace steppable::__internals::arithmetic
         // The GCD is the absolute value of a
         return abs(a, 0);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

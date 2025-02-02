@@ -20,69 +20,45 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "format.hpp"
+#pragma once
 
-#include <algorithm>
-#include <stdexcept>
 #include <string>
-#include <vector>
 
-namespace steppable::__internals::format
+#include "util.hpp"
+
+using namespace std::literals;
+using namespace steppable::__internals::utils;
+
+namespace steppable
 {
-
-    std::string format(const std::string& format, const std::vector<std::string>& args)
+    template<typename BaseT, StringLiteral BaseTName>
+    class Data
     {
-        // Format string
-        // Original format:
-        // {0} -> args[0]
-        // {1} -> args[1]
-        // ...
-        // {n} -> args[n]
+        BaseT value;
 
-        std::string result = format;
-        std::string index;
-        bool inBrackets = false;
-        for (char i : format)
+    public:
+        std::string getDataType() { return BaseTName.value; }
+
+        Data(const BaseT object) : value(object) {} // NOLINT(*-explicit-constructor)
+        Data() : value() {}
+
+        Data& operator=(const BaseT& object)
         {
-            switch (i)
-            {
-            // Start replacing!
-            case '{':
-            {
-                inBrackets = true;
-                index.erase(index.begin(), index.end());
-                break;
-            }
-
-            // End replacing
-            case '}':
-            {
-                inBrackets = false;
-                // SIZE_MAX is 20 digits long, so we can safely assume that the index must not be longer than 20
-                // characters.
-                if (index.length() > 20 or index.empty())
-                    throw std::length_error("Argument index too long or too short.");
-                if (not std::ranges::all_of(index, [](const char& c) { return std::isdigit(c); }))
-                    throw std::invalid_argument("Argument index must be a number.");
-
-                size_t argIndex = std::stoull(index);
-                if (argIndex >= args.size())
-                    throw std::out_of_range("Argument index out of range.");
-
-                // +1 for the closing bracket
-                result.replace(result.find("{" + index), index.size() + 2, args.at(argIndex));
-                break;
-            }
-
-            default:
-            {
-                if (inBrackets)
-                    index += i;
-                break;
-            }
-            }
+            value = object;
+            return *this;
         }
+    };
 
-        return result;
-    }
-} // namespace steppable::__internals::format
+    enum class _Weekday : std::uint8_t
+    {
+        Sunday = 0,
+        Monday = 1,
+        Tuesday = 2,
+        Wednesday = 3,
+        Thursday = 4,
+        Friday = 5,
+        Saturday = 6,
+    };
+
+    using Weekday = Data<_Weekday, StringLiteral{"Weekday"}>;
+} // namespace steppable

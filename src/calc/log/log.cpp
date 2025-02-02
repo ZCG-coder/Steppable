@@ -38,12 +38,12 @@
 #include <cstdlib>
 #include <string>
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::utils;
 using namespace steppable::localization;
 using namespace std::literals;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string _log(const std::string& x, const size_t _decimals)
     {
@@ -65,10 +65,10 @@ namespace steppable::__internals::arithmetic
         // ln(x) = ----------------------- = --------------
         //               2                     2
         //              x  + 4x + 1           x  + 4x + 1
-        const auto& x2 = power(x, "2", 0);
+        const auto& x2 = multiply(x, x, 0, static_cast<int>(decimals) + 2);
         const auto& x2Minus1 = subtract(x2, "1", 0);
-        const auto& numerator = multiply("3", x2Minus1, 0);
-        const auto& fourX = multiply(x, "4", 0);
+        const auto& numerator = multiply("3", x2Minus1, 0, static_cast<int>(decimals) + 2);
+        const auto& fourX = multiply(x, "4", 0, static_cast<int>(decimals) + 2);
 
         auto denominator = add(x2, fourX, 0);
         denominator = add(denominator, "1", 0);
@@ -84,7 +84,7 @@ namespace steppable::__internals::arithmetic
         //          n + 1
 
         const auto& epsilon = "0." + std::string(_decimals + 1, '0') + "1";
-        auto yn = divide(numerator, denominator, 0, static_cast<int>(decimals));
+        auto yn = divide(numerator, denominator, 0, static_cast<int>(decimals) + 2);
         auto yn1 = yn;
 
         auto error = abs(subtract(yn, yn1, 0), 0);
@@ -95,7 +95,7 @@ namespace steppable::__internals::arithmetic
             auto xMinusExpYN = subtract(x, expYN, 0);
             auto xPlusExpYN = add(x, expYN, 0);
             auto fraction = divide(xMinusExpYN, xPlusExpYN, 0, static_cast<int>(decimals));
-            auto twoXFraction = multiply(fraction, "2", 0);
+            auto twoXFraction = multiply(fraction, "2", 0, static_cast<int>(decimals));
             yn1 = add(yn, twoXFraction, 0);
             error = abs(subtract(yn, yn1, 0), 0);
         } while (compare(error, epsilon, 0) == "1");
@@ -139,7 +139,7 @@ namespace steppable::__internals::arithmetic
         checkDecimalArg(&_decimals);
         return _log(_number, _decimals);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
@@ -163,13 +163,13 @@ int main(int _argc, const char* _argv[])
     using namespace steppable::output;
 
     if (command == "logb")
-        std::cout << arithmetic::logb(arg, base, decimals) << "\n";
+        std::cout << calc::logb(arg, base, decimals) << "\n";
     else if (command == "log10")
-        std::cout << arithmetic::log10(arg, decimals) << "\n";
+        std::cout << calc::log10(arg, decimals) << "\n";
     else if (command == "log2")
-        std::cout << arithmetic::log2(arg, decimals) << "\n";
+        std::cout << calc::log2(arg, decimals) << "\n";
     else if (command == "ln")
-        std::cout << arithmetic::ln(arg, decimals) << "\n";
+        std::cout << calc::ln(arg, decimals) << "\n";
     else
     {
         error("log"s, $("log", "0fc4245a-fee9-4e99-bbbd-378d091c5143", { command }));

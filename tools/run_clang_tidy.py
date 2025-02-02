@@ -324,7 +324,7 @@ def run_tidy(
                 err += msg.encode("utf-8")
             failed_files.append(name)
         with lock:
-            sys.stdout.write(" ".join(invocation) + "\n" + output.decode("utf-8"))
+            sys.stdout.write(output.decode("utf-8"))
             if len(err) > 0:
                 sys.stdout.flush()
                 sys.stderr.write(err.decode("utf-8"))
@@ -552,6 +552,7 @@ def main() -> None:
             args.warnings_as_errors,
         )
         invocation.append("-list-checks")
+        invocation.append("-header-filter=.*")
         invocation.append("-")
         if args.quiet:
             # Even with -quiet we still want to check if we can call clang-tidy.

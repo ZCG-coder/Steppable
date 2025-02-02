@@ -47,7 +47,7 @@
     #undef min
 #endif
 
-using namespace steppable::__internals::arithmetic;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::__internals::numUtils;
@@ -73,7 +73,7 @@ namespace steppable::prettyPrint::printers
 
         prettyPrint::ConsoleOutput output(height, width);
         prettyPrint::Position pos;
-        output.write(spacing + index + '/' + topBar + '\n', { 0, 0 }, false);
+        output.write(spacing + index + '/' + topBar + '\n', { .x = 0, .y = 0 }, false);
         for (size_t i = 0; i < lines.size(); i++)
         {
             const auto& line = lines[i];
@@ -81,13 +81,13 @@ namespace steppable::prettyPrint::printers
             pos.x = static_cast<long long>(spacingWidth - i - 1);
             output.write('/' + line, pos, true);
         }
-        output.write("\\/"s, { pos.x - 1, pos.y }, true);
+        output.write("\\/"s, { .x = pos.x - 1, .y = pos.y }, true);
 
         return output.asString();
     }
 } // namespace steppable::prettyPrint::printers
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string rootIntPart(const std::string& _number, const std::string& base)
     {
@@ -122,7 +122,7 @@ namespace steppable::__internals::arithmetic
         auto radicand = roundDown(divide(_number, largestRootFactor.getOutput(), 0, 1));
         auto multiplier = largestRootFactor.getInputs()[2];
 
-        return { radicand, multiplier };
+        return { .radicand = radicand, .multiplier = multiplier };
     }
 
     std::string _root(const std::string& _number, const std::string& base, const size_t _decimals, const int steps)
@@ -146,7 +146,7 @@ namespace steppable::__internals::arithmetic
         std::string number = static_cast<std::string>(_number);
         while (compare(number, "1", 0) == "0")
         {
-            number = multiply(number, power("10", base, 0), 0);
+            number = multiply(number, power("10", base, 0), 0, static_cast<int>(decimals));
             raisedTimes++;
         }
 
@@ -196,12 +196,12 @@ namespace steppable::__internals::arithmetic
         {
             auto result = rootSurd(_number, base);
             auto rootResult = _root(result.radicand, base, _decimals, 0);
-            return multiply(rootResult, result.multiplier, 0);
+            return multiply(rootResult, result.multiplier, 0, static_cast<int>(_decimals));
         }
 
         return _root(_number, base, _decimals, steps);
     }
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 // NOLINTNEXTLINE(bugprone-exception-escape)

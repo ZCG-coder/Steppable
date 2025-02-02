@@ -47,18 +47,18 @@ using namespace steppable::localization;
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::numUtils;
 
-namespace steppable::__internals::arithmetic
+namespace steppable::__internals::calc
 {
     std::string sinh(const std::string& x, const int decimals)
     {
         checkDecimalArg(&decimals);
 
-        const auto& twoX = multiply(x, "2", 0);
+        const auto& twoX = multiply(x, "2", 0, decimals + 2);
         const auto& eTwoX = roundOff(power(static_cast<std::string>(constants::E), twoX, 0), decimals + 2);
         const auto& eX = roundOff(power(static_cast<std::string>(constants::E), x, 0), decimals + 2);
 
         const auto& numerator = subtract(eTwoX, "1", 0);
-        const auto& denominator = multiply("2", eX, 0);
+        const auto& denominator = multiply("2", eX, 0, decimals + 2);
 
         return divide(numerator, denominator, 0, decimals);
     }
@@ -67,12 +67,12 @@ namespace steppable::__internals::arithmetic
     {
         checkDecimalArg(&decimals);
 
-        const auto& twoX = multiply(x, "2", 0);
-        const auto& eTwoX = roundOff(power(static_cast<std::string>(constants::E), twoX, 0), decimals + 2);
-        const auto& eX = roundOff(power(static_cast<std::string>(constants::E), x, 0), decimals + 2);
+        const auto& twoX = multiply(x, "2", 0, decimals + 2);
+        const auto& eTwoX = exp(twoX, decimals + 2);
+        const auto& eX = exp(x, decimals + 2);
 
         const auto& numerator = add(eTwoX, "1", 0);
-        const auto& denominator = multiply("2", eX, 0);
+        const auto& denominator = multiply("2", eX, 0, decimals + 2);
 
         return divide(numerator, denominator, 0, decimals);
     }
@@ -81,8 +81,8 @@ namespace steppable::__internals::arithmetic
     {
         checkDecimalArg(&decimals);
 
-        const auto& numerator = sinh(x, decimals);
-        const auto& denominator = cosh(x, decimals);
+        const auto& numerator = sinh(x, decimals + 2);
+        const auto& denominator = cosh(x, decimals + 2);
 
         return divide(numerator, denominator, 0, decimals);
     }
@@ -91,7 +91,7 @@ namespace steppable::__internals::arithmetic
     {
         checkDecimalArg(&decimals);
 
-        const auto& denominator = tanh(x, decimals);
+        const auto& denominator = tanh(x, decimals + 1);
         if (isZeroString(denominator))
         {
             error("hyp::coth"s, $("hyp", "e1f6e8db-64cd-4882-b5b2-ddd1c79c1e57"));
@@ -229,7 +229,7 @@ namespace steppable::__internals::arithmetic
         return ln(lnArg, decimals);
     }
 
-} // namespace steppable::__internals::arithmetic
+} // namespace steppable::__internals::calc
 
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
@@ -253,31 +253,31 @@ int main(int _argc, const char* _argv[])
 
     // Basic trigonometric functions
     if (command == "sinh")
-        function = arithmetic::sinh;
+        function = calc::sinh;
     else if (command == "cosh")
-        function = arithmetic::cosh;
+        function = calc::cosh;
     else if (command == "tanh")
-        function = arithmetic::tanh;
+        function = calc::tanh;
     // Reciprocal trigonometric functions
     else if (command == "csch")
-        function = arithmetic::csch;
+        function = calc::csch;
     else if (command == "sech")
-        function = arithmetic::sech;
+        function = calc::sech;
     else if (command == "coth")
-        function = arithmetic::coth;
+        function = calc::coth;
     // Inverse trigonometric functions
     else if (command == "asinh")
-        function = arithmetic::asinh;
+        function = calc::asinh;
     else if (command == "acosh")
-        function = arithmetic::acosh;
+        function = calc::acosh;
     else if (command == "atanh")
-        function = arithmetic::atanh;
+        function = calc::atanh;
     else if (command == "acsch")
-        function = arithmetic::acsch;
+        function = calc::acsch;
     else if (command == "acoth")
-        function = arithmetic::acoth;
+        function = calc::acoth;
     else if (command == "asech")
-        function = arithmetic::asech;
+        function = calc::asech;
     // Invalid command
     else
     {
