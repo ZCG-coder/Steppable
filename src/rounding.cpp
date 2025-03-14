@@ -57,7 +57,7 @@ namespace steppable::__internals::numUtils
         return integer;
     }
 
-    std::string roundOff(const std::string& _number, const size_t digits)
+    std::string roundOff(const std::string& _number, const size_t digits, Rounding mode)
     {
         auto number = _number;
         if (number.empty())
@@ -85,8 +85,22 @@ namespace steppable::__internals::numUtils
         }
         auto newDecimal = decimal.substr(0, digits);
         std::ranges::reverse(newDecimal.begin(), newDecimal.end());
+        bool condition = false;
+        switch (mode)
+        {
+            case Rounding::ROUND_OFF:
+                condition = decimal.back() >= '5';
+                break;
+            case Rounding::ROUND_DOWN:
+                condition = false;
+                break;
+            case Rounding::ROUND_UP:
+                condition = true;
+            default:
+                break;
+        }
 
-        if (decimal.back() >= '5')
+        if (condition)
         {
             // Need to round up the digit
             for (size_t i = 0; i < newDecimal.length(); i++)

@@ -49,7 +49,7 @@ _.assertIsEqual((Number("456") * Number("123")).present(), "56088");
 SECTION_END()
 
 SECTION(Test Division)
-_.assertIsEqual((Number("123", 4, USE_CURRENT_PREC) / Number("456")).present(), "0.2697");
+_.assertIsEqual((Number("123", 4, RoundingMode::USE_CURRENT_PREC) / Number("456")).present(), "0.2697");
 SECTION_END()
 
 SECTION(Test Remainder)

@@ -32,8 +32,10 @@
 #include "argParse.hpp"
 #include "fn/calc.hpp"
 #include "getString.hpp"
+#include "number.hpp"
 #include "subtractReport.hpp"
 #include "symbols.hpp"
+#include "types/result.hpp"
 #include "util.hpp"
 
 #include <algorithm>
@@ -184,6 +186,13 @@ namespace steppable::__internals::calc
                               steps,
                               resultIsNegative,
                               noMinus);
+    }
+
+    types::Result<Number> error(const std::string& a, const std::string& b)
+    {
+        auto difference = subtract(a, b, 0);
+        difference = abs(difference, 0);
+        return { { a, b }, { difference }, Number(difference), types::Status::CALCULATED_UNSIMPLIFIED };
     }
 } // namespace steppable::__internals::calc
 

@@ -36,7 +36,9 @@
 #pragma once
 
 #include "fn/root.hpp"
+#include "number.hpp"
 #include "output.hpp"
+#include "types/result.hpp"
 
 #include <string>
 #include <util.hpp>
@@ -187,6 +189,17 @@ namespace steppable::__internals::calc
      * @return The difference between the two numbers as a string.
      */
     std::string subtract(const std::string& a, const std::string& b, int steps = 2, bool noMinus = false);
+
+    /**
+     * @brief Calculate the error between values a and b.
+     * @details Gets the absolute difference between a and b.
+     *
+     * @param a Value 1
+     * @param b Value 2
+     *
+     * @return The absolute value of the differnece between the values.
+     */
+    types::Result<Number> error(const std::string& a, const std::string& b);
 
     /**
      * @brief Takes the n-th root of a numer.

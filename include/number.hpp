@@ -42,7 +42,7 @@ namespace steppable
      * @enum RoundingMode
      * @brief Specifies how Steppable should round the number in operations.
      */
-    enum RoundingMode
+    enum class RoundingMode : std::uint8_t
     {
         /// @brief Use the higher precision whenever possible.
         USE_MAXIMUM_PREC = 0xFF,
@@ -60,6 +60,13 @@ namespace steppable
         DISCARD_ALL_DECIMALS = 0x00
     };
 
+    enum class Rounding : std::uint8_t
+    {
+        ROUND_DOWN = 0x00,
+        ROUND_UP = 0x01,
+        ROUND_OFF = 0x02,
+    };
+
     /**
      * @class Number
      * @brief Represents a number with arbitrary precision. It basically stores the value as a string.
@@ -74,7 +81,7 @@ namespace steppable
         size_t prec;
 
         /// @brief The rounding mode of the number.
-        RoundingMode mode = USE_CURRENT_PREC;
+        RoundingMode mode = RoundingMode::USE_CURRENT_PREC;
 
     public:
         /// @brief The default constructor. Initializes the number with a value of 0.
@@ -84,7 +91,7 @@ namespace steppable
          * @brief Initializes a number with a specified value.
          * @note By default, the value is 0.
          */
-        Number(std::string value = "0", size_t prec = 0, RoundingMode mode = USE_CURRENT_PREC);
+        Number(std::string value = "0", size_t prec = 0, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
 
         /**
          * @brief Adds two numbers together.
