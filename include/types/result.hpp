@@ -22,6 +22,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <output.hpp>
 #include <platform.hpp>
 #include <string>

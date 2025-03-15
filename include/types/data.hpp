@@ -22,9 +22,10 @@
 
 #pragma once
 
-#include <string>
-
 #include "util.hpp"
+
+#include <cstdint>
+#include <string>
 
 using namespace std::literals;
 using namespace steppable::__internals::utils;
@@ -60,5 +61,5 @@ namespace steppable
         Saturday = 6,
     };
 
-    using Weekday = Data<_Weekday, StringLiteral{"Weekday"}>;
+    using Weekday = Data<_Weekday, StringLiteral{ "Weekday" }>;
 } // namespace steppable
