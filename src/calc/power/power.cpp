@@ -122,15 +122,15 @@ namespace steppable::__internals::calc
     {
         if (compare(x, "4", 0) == "1")
         {
-            std::string halfX = divide(x, "2", 0, decimals + 2);
+            std::string halfX = divide(x, "2", 0, static_cast<int>(decimals) + 2);
             std::string result = _exp(halfX, decimals + 2);
-            return multiply(result, result, 0, decimals);
+            return multiply(result, result, 0, static_cast<int>(decimals + 2));
         }
 
         std::string sum = "1";
         std::string term = "1";
         const auto errorStr = "0." + std::string(decimals + 1, '0') + "1";
-        for (int i = 1; i < MAX_DECIMALS; i++)
+        for (int i = 1;; i++)
         {
             std::string frac = divide(x, std::to_string(i), 0, static_cast<int>(decimals) + 2);
             term = multiply(term, frac, 0, static_cast<int>(decimals) + 2);
@@ -144,7 +144,7 @@ namespace steppable::__internals::calc
 
     std::string exp(const std::string& x, const size_t decimals)
     {
-        const auto result = _exp(x, decimals);
+        const auto result = _exp(x, decimals + 2);
         return roundOff(result, decimals);
     }
 } // namespace steppable::__internals::calc

@@ -49,7 +49,7 @@ NB_MODULE(steppyble, mod) // NOLINT
         .def(nb::init<std::string, size_t, steppable::RoundingMode>(),
              "value"_a = "0",
              "prec"_a = 5,
-             "roundingMode"_a = steppable::USE_CURRENT_PREC)
+             "roundingMode"_a = steppable::RoundingMode::USE_CURRENT_PREC)
         .def(nb::self + nb::self, nb::rv_policy::automatic_reference)
         .def(nb::self += nb::self, nb::rv_policy::automatic_reference)
         .def(nb::self - nb::self, nb::rv_policy::automatic_reference)
