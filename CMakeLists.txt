@@ -131,7 +131,6 @@ ENDFOREACH()
 ADD_SUBDIRECTORY(src/)
 ADD_SUBDIRECTORY(lib/)
 ADD_SUBDIRECTORY(tests/)
-ADD_SUBDIRECTORY(gui/)
 ADD_SUBDIRECTORY(include/) # The CMakeLists file there adds the include/ directory to everything
 
 FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)

@@ -20,6 +20,6 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from .number import *
 from .fraction import *
+from .number import *
 from .rounding_mode import *
