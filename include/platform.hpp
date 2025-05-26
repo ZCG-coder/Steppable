@@ -38,6 +38,8 @@
 #include <filesystem>
 #include <mutex>
 
+#undef timeval
+
 using namespace std::literals;
 
 /**
