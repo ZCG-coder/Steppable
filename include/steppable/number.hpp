@@ -77,7 +77,6 @@ namespace steppable
      */
     class Number
     {
-    private:
         /// @brief The value of the number.
         std::string value;
 
@@ -87,6 +86,30 @@ namespace steppable
         /// @brief The rounding mode of the number.
         RoundingMode mode = RoundingMode::USE_CURRENT_PREC;
 
+        template<__internals::utils::StringLiteral fnName>
+        size_t determinePrec(const Number& rhs)
+        {
+            size_t usePrec = 0;
+            if (mode == RoundingMode::USE_MAXIMUM_PREC)
+                usePrec = std::max(prec, rhs.prec);
+            else if (mode == RoundingMode::USE_MINIMUM_PREC)
+                usePrec = std::min(prec, rhs.prec);
+            else if (mode == RoundingMode::USE_CURRENT_PREC)
+                usePrec = prec;
+            else if (mode == RoundingMode::USE_OTHER_PREC)
+                usePrec = rhs.prec;
+            else if (mode == RoundingMode::DISCARD_ALL_DECIMALS)
+                usePrec = 0;
+            else
+            {
+                usePrec = 0;
+                output::warning(std::string(fnName.value), "Invalid precision specified"s);
+            }
+
+            prec = usePrec;
+            return usePrec;
+        }
+
     public:
         /// @brief The default constructor. Initializes the number with a value of 0.
         Number();
@@ -95,15 +118,21 @@ namespace steppable
          * @brief Initializes a number with a specified value.
          * @note By default, the value is 0.
          */
-        Number(std::string value = "0", size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
+        explicit Number(std::string value = "0", size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
 
         /**
          * @brief Initializes a number with a C/C++ long double value.
          * @note No matter how the number is specified, it will always be converted to a string for storage.
          */
-        Number(long double value, size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
+        explicit Number(long double value, size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
 
         void set(std::string newVal) { value = std::move(newVal); }
+
+        void setPrec(size_t newPrec, RoundingMode mode = RoundingMode::USE_CURRENT_PREC)
+        {
+            this->mode = mode;
+            prec = newPrec;
+        }
 
         /**
          * @brief Adds two numbers together.
@@ -124,14 +153,14 @@ namespace steppable
          * @param rhs The number to multiply.
          * @return The product of the two numbers.
          */
-        Number operator*(const Number& rhs) const;
+        Number operator*(const Number& rhs);
 
         /**
          * @brief Divides two numbers.
          * @param rhs The number to divide.
          * @return The quotient of the two numbers.
          */
-        Number operator/(const Number& rhs) const;
+        Number operator/(const Number& rhs);
 
         /**
          * @brief Calculates the remainder of two numbers. (Modulus)
@@ -145,7 +174,7 @@ namespace steppable
          * @param rhs The power to raise the number to.
          * @return The result of the power operation.
          */
-        Number operator^(const Number& rhs) const;
+        Number operator^(const Number& rhs);
 
         /**
          * @brief Adds the number to another number and assigns the result to the current number.

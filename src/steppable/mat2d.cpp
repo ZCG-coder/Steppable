@@ -67,17 +67,28 @@ namespace steppable
     {
     }
 
-    Matrix::Matrix(const MatVec2D<Number>& data) : _data(data), _cols(data.front().size()), _rows(data.size()) {}
+    Matrix::Matrix(const MatVec2D<Number>& data) : _data(data), _cols(data.front().size()), _rows(data.size())
+    {
+        for (auto& row : _data)
+            for (auto& value : row)
+                value.setPrec(prec + 3, RoundingMode::USE_MAXIMUM_PREC);
+    }
 
-    Matrix Matrix::ref()
+    void Matrix::roundOffValues()
+    {
+        for (auto& row : _data)
+            for (auto& val : row)
+                val.set(roundOff(val.present(), 8));
+    }
+
+    Matrix Matrix::ref() const
     {
         // Adapted from https://stackoverflow.com/a/31761026/14868780
         auto matrix = _data;
-        size_t lead = 0;
-        while (lead < _rows)
+        for (size_t lead = 0; lead < _rows; lead++)
         {
-            Number divisor("0", 10, RoundingMode::USE_CURRENT_PREC);
-            Number multiplier("0", 10, RoundingMode::USE_CURRENT_PREC);
+            Number divisor("0", prec + 3, RoundingMode::USE_MAXIMUM_PREC);
+            Number multiplier("0", prec + 3, RoundingMode::USE_MAXIMUM_PREC);
             for (size_t r = 0; r < _rows; r++)
             {
                 divisor = matrix[lead][lead];
@@ -88,19 +99,15 @@ namespace steppable
                     else
                         matrix[r][c] -= matrix[lead][c] * multiplier;
             }
-            lead++;
             std::cout << prettyPrint::printers::ppMatrix(matrix) << "\n";
         }
 
-        for (auto& row : matrix)
-            for (auto& val : row)
-                val.set(roundOff(val.present(), 8));
         return matrix;
     }
 
-    std::string Matrix::present() { return prettyPrint::printers::ppMatrix(_data); }
+    std::string Matrix::present() const { return prettyPrint::printers::ppMatrix(_data); }
 
-    Matrix Matrix::ones(size_t cols, size_t rows)
+    Matrix Matrix::ones(const size_t cols, const size_t rows)
     {
         auto matrix = Matrix(cols, rows, Number("1"));
         return matrix;

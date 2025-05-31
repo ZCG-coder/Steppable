@@ -56,6 +56,7 @@ namespace steppable
         MatVec2D<Number> _data; ///< The data of the matrix.
         size_t _cols; ///< The number of columns in the matrix.
         size_t _rows; ///< The number of rows in the matrix.
+        size_t prec = 10; ///< Precision of numbers in the matrix.
 
     public:
         /**
@@ -76,18 +77,19 @@ namespace steppable
          * @param data The 2D vector representing the matrix data.
          */
         Matrix(const MatVec2D<Number>& data);
+        void roundOffValues();
 
         /**
          * @brief Converts the matrix to its row echelon form.
          * @return A new Matrix in row echelon form.
          */
-        Matrix ref();
+        Matrix ref() const;
 
         /**
          * @brief Presents the matrix as a string.
          * @return A string representation of the matrix.
          */
-        std::string present();
+        std::string present() const;
 
         /**
          * @brief Creates a matrix filled with ones.

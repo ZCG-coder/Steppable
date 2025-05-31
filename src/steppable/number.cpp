@@ -45,67 +45,45 @@ namespace steppable
 {
     using namespace steppable::__internals::calc;
 
-    Number::Number() : prec(8), value("0") {}
+    Number::Number() : value("0"), prec(8) {}
 
-    Number::Number(long double value, size_t prec, RoundingMode mode) :
+    Number::Number(const long double value, const size_t prec, const RoundingMode mode) :
         value(std::to_string(value)), prec(prec), mode(mode)
     {
     }
-    Number::Number(std::string value, size_t prec, RoundingMode mode) : value(std::move(value)), prec(prec), mode(mode)
+    Number::Number(std::string value, const size_t prec, const RoundingMode mode) :
+        value(std::move(value)), prec(prec), mode(mode)
     {
     }
 
-    Number Number::operator+(const Number& rhs) const { return add(value, rhs.value, 0); }
+    Number Number::operator+(const Number& rhs) const { return Number(add(value, rhs.value, 0), prec, mode); }
 
-    Number Number::operator-(const Number& rhs) const { return subtract(value, rhs.value, 0); }
+    Number Number::operator-(const Number& rhs) const { return Number(subtract(value, rhs.value, 0), prec, mode); }
 
-    Number Number::operator*(const Number& rhs) const
+    Number Number::operator*(const Number& rhs)
     {
-        size_t usePrec = 0;
-        if (mode == RoundingMode::USE_MAXIMUM_PREC)
-            usePrec = std::max(prec, rhs.prec);
-        else if (mode == RoundingMode::USE_MINIMUM_PREC)
-            usePrec = std::min(prec, rhs.prec);
-        else if (mode == RoundingMode::USE_CURRENT_PREC)
-            usePrec = prec;
-        else if (mode == RoundingMode::USE_OTHER_PREC)
-            usePrec = rhs.prec;
-        else if (mode == RoundingMode::DISCARD_ALL_DECIMALS)
-            usePrec = 0;
-        else
-        {
-            usePrec = 0;
-            output::warning("Number::operator*"s, "Invalid precision specified"s);
-        }
-        auto result = multiply(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
-        return __internals::numUtils::roundOff(result, usePrec);
+        const size_t usePrec = determinePrec<"operator*">(rhs);
+        const auto result = multiply(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
+        return Number{ __internals::numUtils::roundOff(result, usePrec), usePrec, mode };
     }
 
-    Number Number::operator/(const Number& rhs) const
+    Number Number::operator/(const Number& rhs)
     {
-        size_t usePrec = 0;
-        if (mode == RoundingMode::USE_MAXIMUM_PREC)
-            usePrec = std::max(prec, rhs.prec);
-        else if (mode == RoundingMode::USE_MINIMUM_PREC)
-            usePrec = std::min(prec, rhs.prec);
-        else if (mode == RoundingMode::USE_CURRENT_PREC)
-            usePrec = prec;
-        else if (mode == RoundingMode::USE_OTHER_PREC)
-            usePrec = rhs.prec;
-        else if (mode == RoundingMode::DISCARD_ALL_DECIMALS)
-            usePrec = 0;
-        else
-        {
-            usePrec = 0;
-            output::warning("Number::operator/"s, "Invalid precision specified"s);
-        }
-        auto result = divide(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
-        return __internals::numUtils::roundOff(result, usePrec);
+        const size_t usePrec = determinePrec<"operator/">(rhs);
+        const auto result = divide(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
+        return Number{ __internals::numUtils::roundOff(result, usePrec), usePrec, mode };
     }
 
-    Number Number::operator%(const Number& rhs) const { return divideWithQuotient(value, rhs.value).remainder; }
+    Number Number::operator%(const Number& rhs) const
+    {
+        return Number(divideWithQuotient(value, rhs.value).remainder, prec, mode);
+    }
 
-    Number Number::operator^(const Number& rhs) const { return power(value, rhs.value, 0, static_cast<int>(prec)); }
+    Number Number::operator^(const Number& rhs)
+    {
+        const size_t usePrec = determinePrec<"operator^">(rhs);
+        return Number(power(value, rhs.value, 0, static_cast<int>(usePrec)), usePrec, mode);
+    }
 
     Number& Number::operator+=(const Number& rhs)
     {
@@ -115,18 +93,21 @@ namespace steppable
 
     Number& Number::operator-=(const Number& rhs)
     {
+        determinePrec<"operator-=">(rhs);
         *this = *this - rhs;
         return *this;
     }
 
     Number& Number::operator*=(const Number& rhs)
     {
+        determinePrec<"operator*=">(rhs);
         *this = *this * rhs;
         return *this;
     }
 
     Number& Number::operator/=(const Number& rhs)
     {
+        determinePrec<"operator/=">(rhs);
         *this = *this / rhs;
         return *this;
     }
