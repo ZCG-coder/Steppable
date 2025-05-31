@@ -126,11 +126,12 @@ namespace steppable::__internals::numUtils
         decimal = newDecimal.substr(0, digits);
         if (isNegative)
             integer = '-' + integer;
-        if (decimal.empty() and digits > 0)
+        else if (decimal.empty() and digits > 0)
             result = integer + "." + std::string(digits, '0');
-        if (decimal.empty())
+        else if (decimal.empty())
             result = integer;
-        result = integer + "." + decimal;
+        else
+            result = integer + "." + decimal;
 
         result = simplifyPolarity(result);
         return result;
