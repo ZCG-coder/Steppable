@@ -23,41 +23,86 @@
 #pragma once
 
 #include "steppable/number.hpp"
-#include "util.hpp"
 
-#include <algorithm>
 #include <cstddef>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
 #include <vector>
 
 namespace steppable
 {
+    /**
+     * @brief Alias for a 2D matrix represented as a vector of vectors.
+     * @tparam NumberT The type of the numbers in the matrix.
+     */
     template<typename NumberT>
     using MatVec2D = std::vector<std::vector<NumberT>>;
 
     namespace prettyPrint::printers
     {
+        /**
+         * @brief Pretty prints a matrix.
+         * @param matrix The matrix to be pretty printed.
+         * @return A string representation of the matrix.
+         */
         std::string ppMatrix(const MatVec2D<Number>& matrix);
     } // namespace prettyPrint::printers
 
+    /**
+     * @class Matrix
+     * @brief Represents a mathematical matrix.
+     */
     class Matrix
     {
     private:
-        MatVec2D<Number> _data;
-        size_t _cols;
-        size_t _rows;
+        MatVec2D<Number> _data; ///< The data of the matrix.
+        size_t _cols; ///< The number of columns in the matrix.
+        size_t _rows; ///< The number of rows in the matrix.
 
     public:
+        /**
+         * @brief Default constructor for the Matrix class.
+         */
         Matrix();
-        Matrix(const size_t cols, const size_t rows, const Number& fill = Number("0"));
+
+        /**
+         * @brief Constructs a matrix with specified dimensions and an optional fill value.
+         * @param cols The number of columns.
+         * @param rows The number of rows.
+         * @param fill The value to fill the matrix with (default is "0").
+         */
+        Matrix(size_t cols, size_t rows, const Number& fill = Number("0"));
+
+        /**
+         * @brief Constructs a matrix from a 2D vector of data.
+         * @param data The 2D vector representing the matrix data.
+         */
         Matrix(const MatVec2D<Number>& data);
 
+        /**
+         * @brief Converts the matrix to its row echelon form.
+         * @return A new Matrix in row echelon form.
+         */
         Matrix ref();
+
+        /**
+         * @brief Presents the matrix as a string.
+         * @return A string representation of the matrix.
+         */
         std::string present();
 
+        /**
+         * @brief Creates a matrix filled with ones.
+         * @param cols The number of columns.
+         * @param rows The number of rows.
+         * @return A Matrix filled with ones.
+         */
         static Matrix ones(size_t cols, size_t rows);
+
+        /**
+         * @brief Creates a matrix filled with zeros.
+         * @param cols The number of columns.
+         * @param rows The number of rows.
+         * @return A Matrix filled with zeros.
+         */
         static Matrix zeros(size_t cols, size_t rows);
     };
 } // namespace steppable

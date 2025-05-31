@@ -88,16 +88,16 @@ namespace steppable::__internals::numUtils
         bool condition = false;
         switch (mode)
         {
-            case Rounding::ROUND_OFF:
-                condition = decimal.back() >= '5';
-                break;
-            case Rounding::ROUND_DOWN:
-                condition = false;
-                break;
-            case Rounding::ROUND_UP:
-                condition = true;
-            default:
-                break;
+        case Rounding::ROUND_OFF:
+            condition = decimal.back() >= '5';
+            break;
+        case Rounding::ROUND_DOWN:
+            condition = false;
+            break;
+        case Rounding::ROUND_UP:
+            condition = true;
+        default:
+            break;
         }
 
         if (condition)
@@ -121,14 +121,19 @@ namespace steppable::__internals::numUtils
             }
         }
         std::ranges::reverse(newDecimal.begin(), newDecimal.end());
+
+        std::string result;
         decimal = newDecimal.substr(0, digits);
         if (isNegative)
             integer = '-' + integer;
         if (decimal.empty() and digits > 0)
-            return integer + "." + std::string(digits, '0');
+            result = integer + "." + std::string(digits, '0');
         if (decimal.empty())
-            return integer;
-        return integer + "." + decimal;
+            result = integer;
+        result = integer + "." + decimal;
+
+        result = simplifyPolarity(result);
+        return result;
     }
 
     std::string moveDecimalPlaces(const std::string& _number, const long places)

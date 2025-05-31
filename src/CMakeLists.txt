@@ -35,7 +35,7 @@ ADD_LIBRARY(
 )
 SET_TARGET_PROPERTIES(util PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-ADD_LIBRARY(steppable STATIC steppable/number.cpp steppable/fraction.cpp)
+ADD_LIBRARY(steppable STATIC steppable/number.cpp steppable/fraction.cpp steppable/mat2d.cpp)
 SET_TARGET_PROPERTIES(steppable PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 SET(CALCULATOR_FILES)
@@ -62,7 +62,12 @@ FOREACH(COMPONENT IN LISTS COMPONENTS)
 ENDFOREACH()
 
 # FUNC: Library containing all Steppable functions.
-ADD_LIBRARY(func STATIC ${CALCULATOR_FILES} steppable/fraction.cpp steppable/number.cpp rounding.cpp factors.cpp)
+ADD_LIBRARY(func STATIC ${CALCULATOR_FILES}
+                        steppable/fraction.cpp
+                        steppable/mat2d.cpp
+                        steppable/number.cpp
+                        rounding.cpp
+                        factors.cpp)
 SET_TARGET_PROPERTIES(func PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 TARGET_INCLUDE_DIRECTORIES(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)

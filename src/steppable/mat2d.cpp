@@ -22,6 +22,9 @@
 
 #include "steppable/mat2d.hpp"
 
+#include "rounding.hpp"
+#include "steppable/number.hpp"
+
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
@@ -30,6 +33,8 @@
 
 namespace steppable
 {
+    using namespace __internals::numUtils;
+
     namespace prettyPrint::printers
     {
         std::string ppMatrix(const MatVec2D<Number>& matrix)
@@ -71,8 +76,8 @@ namespace steppable
         size_t lead = 0;
         while (lead < _rows)
         {
-            Number divisor(0);
-            Number multiplier(0);
+            Number divisor("0", 10, RoundingMode::USE_CURRENT_PREC);
+            Number multiplier("0", 10, RoundingMode::USE_CURRENT_PREC);
             for (size_t r = 0; r < _rows; r++)
             {
                 divisor = matrix[lead][lead];
@@ -84,7 +89,12 @@ namespace steppable
                         matrix[r][c] -= matrix[lead][c] * multiplier;
             }
             lead++;
+            std::cout << prettyPrint::printers::ppMatrix(matrix) << "\n";
         }
+
+        for (auto& row : matrix)
+            for (auto& val : row)
+                val.set(roundOff(val.present(), 8));
         return matrix;
     }
 

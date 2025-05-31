@@ -32,6 +32,7 @@
 
 #include "fn/calc.hpp"
 #include "output.hpp"
+#include "rounding.hpp"
 
 #include <string>
 
@@ -58,7 +59,27 @@ namespace steppable
 
     Number Number::operator-(const Number& rhs) const { return subtract(value, rhs.value, 0); }
 
-    Number Number::operator*(const Number& rhs) const { return multiply(value, rhs.value, 0, static_cast<int>(prec)); }
+    Number Number::operator*(const Number& rhs) const
+    {
+        size_t usePrec = 0;
+        if (mode == RoundingMode::USE_MAXIMUM_PREC)
+            usePrec = std::max(prec, rhs.prec);
+        else if (mode == RoundingMode::USE_MINIMUM_PREC)
+            usePrec = std::min(prec, rhs.prec);
+        else if (mode == RoundingMode::USE_CURRENT_PREC)
+            usePrec = prec;
+        else if (mode == RoundingMode::USE_OTHER_PREC)
+            usePrec = rhs.prec;
+        else if (mode == RoundingMode::DISCARD_ALL_DECIMALS)
+            usePrec = 0;
+        else
+        {
+            usePrec = 0;
+            output::warning("Number::operator*"s, "Invalid precision specified"s);
+        }
+        auto result = multiply(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
+        return __internals::numUtils::roundOff(result, usePrec);
+    }
 
     Number Number::operator/(const Number& rhs) const
     {
@@ -78,7 +99,8 @@ namespace steppable
             usePrec = 0;
             output::warning("Number::operator/"s, "Invalid precision specified"s);
         }
-        return divide(value, rhs.value, 0, static_cast<int>(usePrec));
+        auto result = divide(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
+        return __internals::numUtils::roundOff(result, usePrec);
     }
 
     Number Number::operator%(const Number& rhs) const { return divideWithQuotient(value, rhs.value).remainder; }

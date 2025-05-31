@@ -34,6 +34,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 /**
  * @namespace steppable
@@ -101,6 +102,8 @@ namespace steppable
          * @note No matter how the number is specified, it will always be converted to a string for storage.
          */
         Number(long double value, size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
+
+        void set(std::string newVal) { value = std::move(newVal); }
 
         /**
          * @brief Adds two numbers together.
