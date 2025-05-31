@@ -20,49 +20,44 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "steppable/fraction.hpp"
-#include "output.hpp"
-#include "testing.hpp"
+#pragma once
+
+#include "steppable/number.hpp"
 #include "util.hpp"
 
+#include <algorithm>
+#include <cstddef>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
+#include <vector>
 
-TEST_START()
+namespace steppable
+{
+    template<typename NumberT>
+    using MatVec2D = std::vector<std::vector<NumberT>>;
 
-using namespace steppable;
+    namespace prettyPrint::printers
+    {
+        std::string ppMatrix(const MatVec2D<Number>& matrix);
+    } // namespace prettyPrint::printers
 
-SECTION(Fraction Add)
-_.assertIsEqual((Fraction("13122", "54251") + Fraction("22451", "3423")).present(), "1262905807/185701173");
-_.assertIsEqual((Fraction("22451", "3423") + Fraction("13122", "54251")).present(), "1262905807/185701173");
-SECTION_END()
+    class Matrix
+    {
+    private:
+        MatVec2D<Number> _data;
+        size_t _cols;
+        size_t _rows;
 
-SECTION(Fraction Subtract)
-_.assertIsEqual((Fraction("13122", "54251") - Fraction("22451", "3423")).present(), "-1173072595/185701173");
-_.assertIsEqual((Fraction("22451", "3423") - Fraction("13122", "54251")).present(), "1173072595/185701173");
-SECTION_END()
+    public:
+        Matrix();
+        Matrix(const size_t cols, const size_t rows, const Number& fill = Number("0"));
+        Matrix(const MatVec2D<Number>& data);
 
-SECTION(Fraction Multiply)
-_.assertIsEqual((Fraction("13122", "54251") * Fraction("22451", "3423")).present(), "98200674/61900391");
-_.assertIsEqual((Fraction("22451", "3423") * Fraction("13122", "54251")).present(), "98200674/61900391");
-SECTION_END()
+        Matrix ref();
+        std::string present();
 
-SECTION(Fraction Division)
-_.assertIsEqual((Fraction("13122", "54251") / Fraction("22451", "3423")).present(), "44916606/1217989201");
-_.assertIsEqual((Fraction("22451", "3423") / Fraction("13122", "54251")).present(), "1217989201/44916606");
-SECTION_END()
-
-SECTION(Fraction from Number)
-_.assertIsEqual(Fraction("0.25").present(), "1/4");
-_.assertIsEqual(Fraction("0.5").present(), "1/2");
-_.assertIsEqual(Fraction(Number("0.25")).present(), "1/4");
-SECTION_END()
-
-SECTION(Reciprocal)
-auto fraction = Fraction("1", "4");
-fraction.reciprocal();
-_.assertIsEqual(fraction.present(), "4/1");
-SECTION_END()
-
-TEST_END()
+        static Matrix ones(size_t cols, size_t rows);
+        static Matrix zeros(size_t cols, size_t rows);
+    };
+} // namespace steppable

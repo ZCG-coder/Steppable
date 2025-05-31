@@ -28,11 +28,11 @@
  * @date 13th March 2024
  */
 
-#include "fraction.hpp"
+#include "steppable/fraction.hpp"
 
 #include "exceptions.hpp"
 #include "fn/calc.hpp"
-#include "number.hpp"
+#include "steppable/number.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 

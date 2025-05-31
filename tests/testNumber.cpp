@@ -21,7 +21,7 @@
  **************************************************************************************************/
 
 #include "colors.hpp"
-#include "number.hpp"
+#include "steppable/number.hpp"
 #include "output.hpp"
 #include "testing.hpp"
 #include "util.hpp"

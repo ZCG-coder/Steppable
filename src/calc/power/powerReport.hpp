@@ -27,7 +27,7 @@
  */
 #pragma once
 
-#include "fraction.hpp"
+#include "steppable/fraction.hpp"
 
 #include <string>
 

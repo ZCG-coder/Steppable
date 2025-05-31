@@ -32,7 +32,7 @@
 #include "argParse.hpp"
 #include "fn/calc.hpp"
 #include "getString.hpp"
-#include "number.hpp"
+#include "steppable/number.hpp"
 #include "subtractReport.hpp"
 #include "symbols.hpp"
 #include "types/result.hpp"

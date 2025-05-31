@@ -28,10 +28,12 @@
  * @date 1st April 2024
  */
 
-#include "number.hpp"
+#include "steppable/number.hpp"
 
 #include "fn/calc.hpp"
 #include "output.hpp"
+
+#include <string>
 
 #ifdef WINDOWS
     #undef max
@@ -44,6 +46,10 @@ namespace steppable
 
     Number::Number() : prec(8), value("0") {}
 
+    Number::Number(long double value, size_t prec, RoundingMode mode) :
+        value(std::to_string(value)), prec(prec), mode(mode)
+    {
+    }
     Number::Number(std::string value, size_t prec, RoundingMode mode) : value(std::move(value)), prec(prec), mode(mode)
     {
     }

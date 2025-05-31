@@ -30,14 +30,14 @@
 
 #include "absReport.hpp"
 #include "argParse.hpp"
+#include "fn/calc.hpp"
 #include "getString.hpp"
+#include "steppable/number.hpp"
+#include "types/result.hpp"
 #include "util.hpp"
 
-#include <fn/calc.hpp>
 #include <iostream>
-#include <number.hpp>
 #include <string>
-#include <types/result.hpp>
 
 using namespace steppable::__internals::utils;
 using namespace steppable::__internals::calc;

@@ -296,6 +296,8 @@ namespace steppable::__internals::numUtils
      */
     constexpr bool isZeroString(const std::string& string)
     {
+        if (string.empty())
+            return true;
         return std::ranges::all_of(string, [](const char c) { return c == '0' or c == '.' or c == '-'; });
     }
 

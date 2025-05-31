@@ -109,7 +109,7 @@ SET(COMPONENTS
     calc::root
     calc::subtract
     calc::trig
-)
+    matrix::ref)
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
 SET(TARGETS ${COMPONENTS} util)

@@ -21,8 +21,8 @@
  **************************************************************************************************/
 
 #include "fn/calc.hpp"
-#include "fraction.hpp"
-#include "number.hpp"
+#include "steppable/fraction.hpp"
+#include "steppable/number.hpp"
 
 #include <Python.h>
 #include <nanobind/nanobind.h>

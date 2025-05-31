@@ -30,7 +30,7 @@
 #include "argParse.hpp"
 #include "constants.hpp"
 #include "fn/calc.hpp"
-#include "fraction.hpp"
+#include "steppable/fraction.hpp"
 #include "getString.hpp"
 #include "powerReport.hpp"
 #include "rounding.hpp"

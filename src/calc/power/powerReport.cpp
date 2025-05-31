@@ -32,7 +32,7 @@
 #include "powerReport.hpp"
 
 #include "fn/calc.hpp"
-#include "fraction.hpp"
+#include "steppable/fraction.hpp"
 #include "getString.hpp"
 #include "rounding.hpp"
 #include "symbols.hpp"

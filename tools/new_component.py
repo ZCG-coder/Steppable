@@ -23,8 +23,8 @@
 import datetime
 from pathlib import Path
 
-from lib.paths import PROJECT_PATH, SRC_DIR, TESTS_DIR
 from lib.getch import getch
+from lib.paths import PROJECT_PATH, SRC_DIR, TESTS_DIR
 
 WELCOME_STRING = """\
 WELCOME TO STEPPABLE!
@@ -148,7 +148,7 @@ def make_dir(name: str, date: str, author: str) -> None:
     path: Path = SRC_DIR / origin / name
 
     if not path.is_dir():
-        path.mkdir(exist_ok=False)
+        path.mkdir(exist_ok=True, parents=True)
     else:
         print(
             "COMPONENT EXISTS. Maybe you want to add your code to that component, or choose another name."
@@ -191,13 +191,13 @@ def make_dir(name: str, date: str, author: str) -> None:
 #include "{name}Report.hpp"
 #include <string>
 
-namespace steppable::__internals::arithmetic
-{BRACE}
+namespace steppable::__internals::{origin}
+{{
     std::string {name}(/* Arguments... */)
-    {BRACE}
+    {{
         // Your code here...
-    {END_BRACE}
-{END_BRACE} // namespace steppable::__internals::arithmetic
+    }}
+}} // namespace steppable::__internals::{origin}
 """
         )
     print(f"- Added {name}.cpp")
@@ -239,9 +239,9 @@ namespace steppable::__internals::arithmetic
 #include <string>
 
 std::string report{name.capitalize()}()
-{BRACE}
+{{
     // Your code here...
-{END_BRACE}
+}}
 """
         )
     print(f"- Added {name}Report.cpp")

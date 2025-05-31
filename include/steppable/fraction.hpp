@@ -21,7 +21,7 @@
  **************************************************************************************************/
 
 /**
- * @file fraction.hpp
+ * @file steppable/fraction.hpp
  * @brief This file contains the definition of the Fraction class, which represents a fraction in math.
  *
  * @author Andy Zhang
@@ -30,7 +30,7 @@
 
 #pragma once
 
-#include "number.hpp"
+#include "steppable/number.hpp"
 
 #include <array>
 #include <string>
