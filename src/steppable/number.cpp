@@ -60,14 +60,14 @@ namespace steppable
 
     Number Number::operator-(const Number& rhs) const { return Number(subtract(value, rhs.value, 0), prec, mode); }
 
-    Number Number::operator*(const Number& rhs)
+    Number Number::operator*(const Number& rhs) const
     {
         const size_t usePrec = determinePrec<"operator*">(rhs);
         const auto result = multiply(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
         return Number{ __internals::numUtils::roundOff(result, usePrec), usePrec, mode };
     }
 
-    Number Number::operator/(const Number& rhs)
+    Number Number::operator/(const Number& rhs) const
     {
         const size_t usePrec = determinePrec<"operator/">(rhs);
         const auto result = divide(value, rhs.value, 0, static_cast<int>(usePrec) + 2);

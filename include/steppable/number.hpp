@@ -87,7 +87,7 @@ namespace steppable
         RoundingMode mode = RoundingMode::USE_CURRENT_PREC;
 
         template<__internals::utils::StringLiteral fnName>
-        size_t determinePrec(const Number& rhs)
+        size_t determinePrec(const Number& rhs) const
         {
             size_t usePrec = 0;
             if (mode == RoundingMode::USE_MAXIMUM_PREC)
@@ -106,7 +106,6 @@ namespace steppable
                 output::warning(std::string(fnName.value), "Invalid precision specified"s);
             }
 
-            prec = usePrec;
             return usePrec;
         }
 
@@ -153,14 +152,14 @@ namespace steppable
          * @param rhs The number to multiply.
          * @return The product of the two numbers.
          */
-        Number operator*(const Number& rhs);
+        Number operator*(const Number& rhs) const;
 
         /**
          * @brief Divides two numbers.
          * @param rhs The number to divide.
          * @return The quotient of the two numbers.
          */
-        Number operator/(const Number& rhs);
+        Number operator/(const Number& rhs) const;
 
         /**
          * @brief Calculates the remainder of two numbers. (Modulus)
