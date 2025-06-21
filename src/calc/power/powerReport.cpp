@@ -32,9 +32,9 @@
 #include "powerReport.hpp"
 
 #include "fn/calc.hpp"
-#include "steppable/fraction.hpp"
 #include "getString.hpp"
 #include "rounding.hpp"
+#include "steppable/fraction.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
@@ -93,16 +93,16 @@ std::string reportPower(const std::string& _number,
 
     loop(raiseTo, [&](const auto& i) {
         if (not negativePower)
-            result = multiply(result, _number, 0, decimals + 1);
+            result = multiply(result, _number, 0, decimals + 2);
         else
-            result = divide("1", result, 0, decimals + 1);
+            result = divide("1", result, 0, decimals + 2);
         auto currentPower = add(i, "1", 0);
         if (steps == 2)
         {
             if (not negativePower)
-                ss << BECAUSE << " " << multiply(result, _number, 1) << '\n';
+                ss << BECAUSE << " " << multiply(result, _number, 1, decimals + 2) << '\n';
             else
-                ss << BECAUSE << " " << divide("1", result, 1) << '\n';
+                ss << BECAUSE << " " << divide("1", result, 1, decimals + 2) << '\n';
             if (negativePower)
                 currentPower = "-" + currentPower;
 

@@ -91,6 +91,8 @@ namespace steppable::__internals::numUtils
 
         if (number.empty())
             return "0";
+        if (number == "-")
+            return "-0";
         if (number.front() == '+')
             number.erase(0, 1);
         if (number.front() == '.')
@@ -276,7 +278,11 @@ namespace steppable::__internals::numUtils
         if (number.front() == '-')
             number = number.substr(1, number.length() - 1); // Remove negative sign as it does nothing here.
         if (isDecimal(number))
-            return not std::ranges::any_of(number, [](const auto& c) { return c != '0' and c != '.' and c != '1'; });
+        {
+            return not std::ranges::any_of(number.substr(0, number.length() - 1), [](const auto& c) {
+                return c != '0' and c != '.';
+            }) and number.back() == '1';
+        }
         if (number == "1")
             return true; // 1 is a power of 10.
         if (number.front() != '1')

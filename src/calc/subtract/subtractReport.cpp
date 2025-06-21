@@ -127,6 +127,11 @@ std::string reportSubtract(const std::string& aInteger,
         ansStream << outputChar; // No spaces
     }
 
+#if defined(STP_DEB_CALC_SUBTRACT_RESULT_INSPECT) && DEBUG
+    auto bStr = bInteger + '.' + bDecimal;
+    steppable::output::info("calc::subtract"s, aStr + " - " + bStr + " = " + ansStream.str());
+#endif
+
     ss << standardizeNumber(ansStream.str());
-    return std::move(ss.str());
+    return ss.str();
 }

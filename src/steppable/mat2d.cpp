@@ -22,9 +22,10 @@
 
 #include "steppable/mat2d.hpp"
 
+#include "output.hpp"
 #include "rounding.hpp"
 #include "steppable/number.hpp"
-#include "util.hpp"
+#include "symbols.hpp"
 
 #include <algorithm>
 #include <iomanip>
@@ -61,31 +62,36 @@ namespace steppable
         }
     } // namespace prettyPrint::printers
 
-    Matrix::Matrix() : _data({ {} }) { _cols = _rows = 0; }
+    Matrix::Matrix() : data({ {} }) { _cols = _rows = 0; }
 
     Matrix::Matrix(const size_t cols, const size_t rows, const Number& fill) :
-        _data(std::vector(rows, std::vector(cols, fill))), _cols(cols), _rows(rows)
+        data(std::vector(rows, std::vector(cols, fill))), _cols(cols), _rows(rows)
     {
+        data = roundOffValues(data, prec);
     }
 
-    Matrix::Matrix(const MatVec2D<Number>& data) : _data(data), _cols(data.front().size()), _rows(data.size())
+    Matrix::Matrix(const MatVec2D<Number>& data) : data(data), _cols(data.front().size()), _rows(data.size())
     {
-        for (auto& row : _data)
+        for (auto& row : this->data)
             for (auto& value : row)
                 value.setPrec(prec + 3, RoundingMode::USE_MAXIMUM_PREC);
     }
 
-    void Matrix::roundOffValues()
+    MatVec2D<Number> Matrix::roundOffValues(const MatVec2D<Number>& _data, const int prec)
     {
-        for (auto& row : _data)
+        auto data = _data;
+        for (auto& row : data)
             for (auto& val : row)
-                val.set(roundOff(val.present(), 8));
+                val.set(roundOff(val.present(), prec));
+        return data;
     }
 
-    Matrix Matrix::ref() const
+    Matrix Matrix::ref()
     {
         // Adapted from https://stackoverflow.com/a/31761026/14868780
-        auto matrix = _data;
+        auto matrix = data;
+        matrix = roundOffValues(matrix, prec);
+        std::cout << prettyPrint::printers::ppMatrix(matrix) << "\n";
         for (size_t lead = 0; lead < _rows; lead++)
         {
             Number divisor("0", 30, RoundingMode::USE_MAXIMUM_PREC);
@@ -96,17 +102,47 @@ namespace steppable
                 multiplier = matrix[r][lead] / matrix[lead][lead];
                 for (size_t c = 0; c < _cols; c++)
                     if (r == lead)
+                    {
+#if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
+                        auto oldMatrixRC = matrix[r][c];
+#endif
+
                         matrix[r][c] /= divisor;
+
+#if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
+                        output::info("Matrix::ref"s,
+                                     oldMatrixRC.present() + " " + std::string(__internals::symbols::DIVIDED_BY) + " " +
+                                         divisor.present() + " = " + matrix[r][c].present());
+#endif
+                    }
                     else
+                    {
+#if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
+                        auto oldMatrixRC = matrix[r][c];
+                        auto oldMatrixLeadC = matrix[lead][c];
+#endif
+
                         matrix[r][c] -= matrix[lead][c] * multiplier;
+
+#if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
+                        auto multiplyResult = oldMatrixRC * multiplier;
+                        output::info("Matrix::ref"s,
+                                     oldMatrixRC.present() + " - " + oldMatrixLeadC.present() + " " +
+                                         std::string(__internals::symbols::MULTIPLY) + " " + multiplier.present());
+                        output::info("Matrix::ref"s,
+                                     "    = " + oldMatrixRC.present() + " - " + multiplyResult.present());
+                        output::info("Matrix::ref"s, "    = " + matrix[r][c].present());
+#endif
+                    }
             }
+            // matrix = roundOffValues(matrix, prec);
             std::cout << prettyPrint::printers::ppMatrix(matrix) << "\n";
         }
 
         return matrix;
     }
 
-    std::string Matrix::present() const { return prettyPrint::printers::ppMatrix(_data); }
+    std::string Matrix::present() const { return prettyPrint::printers::ppMatrix(data); }
 
     Matrix Matrix::ones(const size_t cols, const size_t rows)
     {

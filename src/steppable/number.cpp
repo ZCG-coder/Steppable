@@ -93,21 +93,21 @@ namespace steppable
 
     Number& Number::operator-=(const Number& rhs)
     {
-        determinePrec<"operator-=">(rhs);
+        prec = determinePrec<"operator-=">(rhs);
         *this = *this - rhs;
         return *this;
     }
 
     Number& Number::operator*=(const Number& rhs)
     {
-        determinePrec<"operator*=">(rhs);
+        prec = determinePrec<"operator*=">(rhs);
         *this = *this * rhs;
         return *this;
     }
 
     Number& Number::operator/=(const Number& rhs)
     {
-        determinePrec<"operator/=">(rhs);
+        prec = determinePrec<"operator/=">(rhs);
         *this = *this / rhs;
         return *this;
     }
