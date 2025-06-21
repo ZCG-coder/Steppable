@@ -196,7 +196,8 @@ namespace steppable::__internals::calc
                               prodDigitsOut,
                               carries,
                               resultIsNegative,
-                              steps);
+                              steps,
+                              decimals);
     }
 } // namespace steppable::__internals::calc
 

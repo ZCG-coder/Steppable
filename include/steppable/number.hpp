@@ -87,7 +87,7 @@ namespace steppable
         RoundingMode mode = RoundingMode::USE_CURRENT_PREC;
 
         template<__internals::utils::StringLiteral fnName>
-        size_t determinePrec(const Number& rhs) const
+        [[nodiscard]] size_t determinePrec(const Number& rhs) const
         {
             size_t usePrec = 0;
             if (mode == RoundingMode::USE_MAXIMUM_PREC)

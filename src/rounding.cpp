@@ -73,7 +73,7 @@ namespace steppable::__internals::numUtils
         bool isNegative = splitNumberResult.aIsNegative;
 
         if (decimal.length() < digits)
-            return _number;
+            decimal += std::string(digits - decimal.length(), '0');
 
         // Preserve one digit after the rounded digit
         decimal = decimal.substr(0, digits + 1);

@@ -74,7 +74,18 @@ std::string reportDivision(std::stringstream& tempFormattedAns,
         return formattedAns.str();
     }
     if (resultIsNegative)
+    {
+#if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
+        steppable::output::info("calc::division"s,
+                                _number + " " + static_cast<std::string>(DIVIDED_BY) + " " + _divisor + " = -" + ans);
+#endif
         return "-"s + static_cast<std::string>(ans);
+    }
+
+#if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
+    steppable::output::info("calc::division"s,
+                            _number + " " + static_cast<std::string>(DIVIDED_BY) + " " + _divisor + " = " + ans);
+#endif
     return static_cast<std::string>(ans);
 }
 

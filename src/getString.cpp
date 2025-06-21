@@ -87,16 +87,22 @@ namespace steppable::localization
             R"(^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}) >> \"([^\"]+?)\"$)");
 
         const auto& confDir = getConfDirectory();
-        const auto& lang = getLanguage();
+        std::string lang = getLanguage();
 
-        const auto& langDir = confDir / "translations" / lang;
-        const auto& originFile = langDir / (origin + ".stp_localized");
+        auto langDir = confDir / "translations" / lang;
+        auto originFile = langDir / (origin + ".stp_localized");
 
-        if (not exists(originFile))
+        // Since en-US is the default language, not having this language means the package is not properly installed
+        if (not exists(originFile) and lang == "en-US")
         {
             // If the file does not exist, we return the key as the string. Also, we log an error.
-            output::error("getString"s, "Cannot find the localization file: " + originFile.string());
+            output::error("localization::getString"s, "Cannot find the localization file: " + originFile.string());
             return "<"s + key + ">"s; // Since the key is in UUID format, we need to make it look like a placeholder.
+        }
+        if (not exists(originFile))
+        {
+            langDir = confDir / "translations" / "en-US";
+            originFile = langDir / (origin + ".stp_localized");
         }
 
         // Read the file and get the string
@@ -104,7 +110,7 @@ namespace steppable::localization
         if (not file.is_open())
         {
             // If we cannot open the file, we return the key as the string. Also, we log an error.
-            output::error("getString"s, "Cannot open the localization file: " + originFile.string());
+            output::error("localization::getString"s, "Cannot open the localization file: " + originFile.string());
             return "<"s + key + ">"s; // Since the key is in UUID format, we need to make it look like a placeholder.
         }
 
@@ -134,7 +140,7 @@ namespace steppable::localization
             }
             else
             {
-                output::error("getString"s,
+                output::error("localization::getString"s,
                               "Malformed line in localization file: " + originFile.string() + " -> " + line);
                 break;
             }
@@ -143,7 +149,7 @@ namespace steppable::localization
         // If we cannot find the string, we return the key as the string. Also, we log an error.
         if (translation.empty())
         {
-            output::error("getString"s, "Cannot find the string for the key: " + key);
+            output::error("localization::getString"s, "Cannot find the string for the key: " + key);
             return "<" + key + ">"; // Since the key is in UUID format, we need to make it look like a placeholder.
         }
         return translation;

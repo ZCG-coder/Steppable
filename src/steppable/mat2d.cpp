@@ -24,6 +24,7 @@
 
 #include "rounding.hpp"
 #include "steppable/number.hpp"
+#include "util.hpp"
 
 #include <algorithm>
 #include <iomanip>
@@ -87,8 +88,8 @@ namespace steppable
         auto matrix = _data;
         for (size_t lead = 0; lead < _rows; lead++)
         {
-            Number divisor("0", prec + 3, RoundingMode::USE_MAXIMUM_PREC);
-            Number multiplier("0", prec + 3, RoundingMode::USE_MAXIMUM_PREC);
+            Number divisor("0", 30, RoundingMode::USE_MAXIMUM_PREC);
+            Number multiplier("0", 30, RoundingMode::USE_MAXIMUM_PREC);
             for (size_t r = 0; r < _rows; r++)
             {
                 divisor = matrix[lead][lead];
