@@ -60,8 +60,6 @@ namespace steppable::__internals::calc
             resultIsNegative = false; // NOLINT(bugprone-branch-clone)
         else if (aIsNegative or bIsNegative)
             resultIsNegative = true;
-        else
-            resultIsNegative = false;
 
         auto [aInteger, aDecimal, bInteger, bDecimal] = splitNumberArray;
         std::stringstream out;
@@ -74,18 +72,32 @@ namespace steppable::__internals::calc
         }
 
         // Multiplying by 1 gives the other number.
-        if (a == "1")
+        if (compare(a, "1", 0) == "2")
         {
             if (steps == 2)
                 out << $("multiply", "36adc27f-07e8-4118-88ed-f148164044da", { a, b }) << "\n";
             out << b;
             return out.str();
         }
-        if (b == "1")
+        if (compare(b, "1", 0) == "2")
         {
             if (steps == 2)
                 out << $("multiply", "36adc27f-07e8-4118-88ed-f148164044da", { b, a }) << "\n";
             out << a;
+            return out.str();
+        }
+        if (compare(a, "-1", 0) == "2")
+        {
+            if (steps == 2)
+                out << $("multiply", "36adc27f-07e8-4118-88ed-f148164044da", { a, b }) << "\n";
+            out << standardizeNumber("-" + b);
+            return out.str();
+        }
+        if (compare(b, "-1", 0) == "2")
+        {
+            if (steps == 2)
+                out << $("multiply", "36adc27f-07e8-4118-88ed-f148164044da", { b, a }) << "\n";
+            out << standardizeNumber("-" + a);
             return out.str();
         }
 
