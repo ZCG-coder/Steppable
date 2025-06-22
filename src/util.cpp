@@ -68,15 +68,21 @@ namespace steppable::__internals::numUtils
 
     std::string simplifyZeroPolarity(const std::string& string)
     {
+        if (string.empty())
+            return "0";
         // Check if the string is zero
         if (isZeroString(string))
             return "0";
-        return static_cast<std::string>(string);
+        return string;
     }
 
     std::string simplifyPolarity(const std::string& _string)
     {
-        auto string = simplifyZeroPolarity(_string);
+        if (_string.empty())
+            return "0";
+
+        auto string = _string;
+        // string = simplifyZeroPolarity(string);
         while (string[0] == '-' and string[1] == '-')
             string = string.substr(2);
         return string;
@@ -84,6 +90,9 @@ namespace steppable::__internals::numUtils
 
     std::string standardizeNumber(const std::string& _number)
     {
+        if (_number.empty())
+            return "0";
+
         auto number = simplifyPolarity(_number);
         // Remove the trailing decimal point
         if (number.back() == '.')
@@ -114,23 +123,17 @@ namespace steppable::__internals::numUtils
 
         auto a = static_cast<std::string>(_a);
         auto b = static_cast<std::string>(_b);
-        if (properlyFormat)
+        if (a.front() == '-')
         {
-            a = simplifyPolarity(_a), b = simplifyPolarity(_b);
-            if (a.front() == '-')
-            {
-                aIsNegative = true;
-                if (not preserveNegative)
-                    a.erase(a.begin());
-            }
-            if (b.front() == '-')
-            {
-                bIsNegative = true;
-                if (not preserveNegative)
-                    b.erase(b.begin());
-            }
-            a = removeLeadingZeros(a);
-            b = removeLeadingZeros(b);
+            aIsNegative = true;
+            if (not preserveNegative)
+                a.erase(a.begin());
+        }
+        if (b.front() == '-')
+        {
+            bIsNegative = true;
+            if (not preserveNegative)
+                b.erase(b.begin());
         }
         const std::vector<std::string> aParts = stringUtils::split(a, '.');
         const std::vector<std::string> bParts = stringUtils::split(b, '.');

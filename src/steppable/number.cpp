@@ -35,6 +35,7 @@
 #include "rounding.hpp"
 
 #include <string>
+#include <utility>
 
 #ifdef WINDOWS
     #undef max
@@ -46,6 +47,8 @@ namespace steppable
     using namespace steppable::__internals::calc;
 
     Number::Number() : value("0"), prec(8) {}
+
+    Number::Number(const Number& rhs) : value(rhs.value), prec(rhs.prec) {}
 
     Number::Number(const long double value, const size_t prec, const RoundingMode mode) :
         value(std::to_string(value)), prec(prec), mode(mode)

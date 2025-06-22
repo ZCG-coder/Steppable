@@ -113,6 +113,8 @@ namespace steppable
         /// @brief The default constructor. Initializes the number with a value of 0.
         Number();
 
+        Number(const Number& rhs);
+
         /**
          * @brief Initializes a number with a specified value.
          * @note By default, the value is 0.

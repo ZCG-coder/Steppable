@@ -117,15 +117,15 @@ namespace steppable
                     }
                     else
                     {
-#if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
+#if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
                         auto oldMatrixRC = matrix[r][c];
                         auto oldMatrixLeadC = matrix[lead][c];
 #endif
 
-                        matrix[r][c] -= matrix[lead][c] * multiplier;
+                        auto multiplyResult = matrix[lead][c] * multiplier;
+                        matrix[r][c] -= multiplyResult;
 
-#if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
-                        auto multiplyResult = oldMatrixRC * multiplier;
+#if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
                         output::info("Matrix::ref"s,
                                      oldMatrixRC.present() + " - " + oldMatrixLeadC.present() + " " +
                                          std::string(__internals::symbols::MULTIPLY) + " " + multiplier.present());
@@ -135,10 +135,10 @@ namespace steppable
 #endif
                     }
             }
-            // matrix = roundOffValues(matrix, prec);
             std::cout << prettyPrint::printers::ppMatrix(matrix) << "\n";
         }
 
+        matrix = roundOffValues(matrix, prec);
         return matrix;
     }
 

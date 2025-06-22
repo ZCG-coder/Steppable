@@ -64,7 +64,7 @@ namespace steppable::__internals::numUtils
             return "0";
         if (number.find('.') == std::string::npos)
             return number;
-        auto splitNumberResult = splitNumber(number, "0", true, true, false, false);
+        auto splitNumberResult = splitNumber(number, "0", false, false, false, false);
 
         // Round off the number
         auto splitNumberArray = splitNumberResult.splitNumberArray;
@@ -126,7 +126,7 @@ namespace steppable::__internals::numUtils
         decimal = newDecimal.substr(0, digits);
         if (isNegative)
             integer = '-' + integer;
-        else if (decimal.empty() and digits > 0)
+        if (decimal.empty() and digits > 0)
             result = integer + "." + std::string(digits, '0');
         else if (decimal.empty())
             result = integer;
@@ -139,6 +139,8 @@ namespace steppable::__internals::numUtils
 
     std::string moveDecimalPlaces(const std::string& _number, const long places)
     {
+        if (_number.empty())
+            return "0";
         auto number = _number;
         // No change
         if (places == 0)
