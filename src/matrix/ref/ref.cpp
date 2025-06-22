@@ -53,5 +53,5 @@ int main()
     auto mat = steppable::Matrix(matrix);
     mat = mat.ref();
 
-    std::cout << mat.present() << "\n";
+    std::cout << mat.present(1) << "\n";
 }

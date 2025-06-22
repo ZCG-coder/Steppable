@@ -25,6 +25,7 @@
 #include "steppable/number.hpp"
 
 #include <cstddef>
+#include <string_view>
 #include <vector>
 
 namespace steppable
@@ -43,8 +44,18 @@ namespace steppable
          * @param matrix The matrix to be pretty printed.
          * @return A string representation of the matrix.
          */
-        std::string ppMatrix(const MatVec2D<Number>& matrix);
+        std::string ppMatrix(const MatVec2D<Number>& matrix, int endRows = 0);
     } // namespace prettyPrint::printers
+
+    namespace __internals::symbols
+    {
+        constexpr std::string_view MATRIX_LEFT_TOP = "\u23A1";
+        constexpr std::string_view MATRIX_LEFT_MIDDLE = "\u23A2";
+        constexpr std::string_view MATRIX_LEFT_BOTTOM = "\u23A3";
+        constexpr std::string_view MATRIX_RIGHT_TOP = "\u23A4";
+        constexpr std::string_view MATRIX_RIGHT_MIDDLE = "\u23A5";
+        constexpr std::string_view MATRIX_RIGHT_BOTTOM = "\u23A6";
+    } // namespace __internals::symbols
 
     /**
      * @class Matrix
@@ -90,7 +101,7 @@ namespace steppable
          * @brief Presents the matrix as a string.
          * @return A string representation of the matrix.
          */
-        [[nodiscard]] std::string present() const;
+        [[nodiscard]] std::string present(int endRows = 0) const;
 
         /**
          * @brief Creates a matrix filled with ones.

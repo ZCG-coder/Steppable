@@ -26,6 +26,7 @@
 #include "rounding.hpp"
 #include "steppable/number.hpp"
 #include "symbols.hpp"
+#include "util.hpp"
 
 #include <algorithm>
 #include <iomanip>
@@ -35,11 +36,12 @@
 
 namespace steppable
 {
+    using namespace __internals;
     using namespace __internals::numUtils;
 
     namespace prettyPrint::printers
     {
-        std::string ppMatrix(const MatVec2D<Number>& matrix)
+        std::string ppMatrix(const MatVec2D<Number>& matrix, const int endRows)
         {
             int maxLen = 0;
             std::stringstream ss;
@@ -51,12 +53,31 @@ namespace steppable
                     maxLen = std::max(length, maxLen);
                 }
             }
-            for (const auto& row : matrix)
+            for (size_t rowIdx = 0; rowIdx < matrix.size(); rowIdx++)
             {
-                ss << "[";
-                for (const auto& val : row)
+                const auto& row = matrix[rowIdx];
+                if (rowIdx == 0)
+                    ss << symbols::MATRIX_LEFT_TOP;
+                else if (rowIdx == matrix.size() - 1)
+                    ss << symbols::MATRIX_LEFT_BOTTOM;
+                else
+                    ss << symbols::MATRIX_LEFT_MIDDLE;
+                for (size_t valIdx = 0; valIdx < row.size(); valIdx++)
+                {
+                    const auto& val = row[valIdx];
+                    if (valIdx + endRows == row.size())
+                        ss << symbols::MATRIX_LEFT_MIDDLE;
                     ss << std::right << std::setw(maxLen + 1) << val.present();
-                ss << " ]\n";
+                    ss << " ";
+                }
+
+                if (rowIdx == 0)
+                    ss << symbols::MATRIX_RIGHT_TOP;
+                else if (rowIdx == matrix.size() - 1)
+                    ss << symbols::MATRIX_RIGHT_BOTTOM;
+                else
+                    ss << symbols::MATRIX_RIGHT_MIDDLE;
+                ss << "\n";
             }
             return ss.str();
         }
@@ -82,7 +103,12 @@ namespace steppable
         auto data = _data;
         for (auto& row : data)
             for (auto& val : row)
-                val.set(roundOff(val.present(), prec));
+            {
+                auto valueString = val.present();
+                valueString = roundOff(val.present(), prec);
+                valueString = standardizeNumber(valueString);
+                val.set(valueString);
+            }
         return data;
     }
 
@@ -91,7 +117,10 @@ namespace steppable
         // Adapted from https://stackoverflow.com/a/31761026/14868780
         auto matrix = data;
         matrix = roundOffValues(matrix, prec);
-        std::cout << prettyPrint::printers::ppMatrix(matrix) << "\n";
+#if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
+        std::cout << prettyPrint::printers::ppMatrix(matrix, 1) << "\n";
+#endif
+
         for (size_t lead = 0; lead < _rows; lead++)
         {
             Number divisor("0", 30, RoundingMode::USE_MAXIMUM_PREC);
@@ -135,14 +164,16 @@ namespace steppable
 #endif
                     }
             }
-            std::cout << prettyPrint::printers::ppMatrix(matrix) << "\n";
+#if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
+            std::cout << prettyPrint::printers::ppMatrix(matrix, 1) << "\n";
+#endif
         }
 
         matrix = roundOffValues(matrix, prec);
         return matrix;
     }
 
-    std::string Matrix::present() const { return prettyPrint::printers::ppMatrix(data); }
+    std::string Matrix::present(const int endRows) const { return prettyPrint::printers::ppMatrix(data, endRows); }
 
     Matrix Matrix::ones(const size_t cols, const size_t rows)
     {
