@@ -30,6 +30,9 @@
 
 #pragma once
 
+#include "format.hpp"
+#include "types/concepts.hpp"
+
 #include <string>
 
 using namespace std::literals;
@@ -129,18 +132,56 @@ namespace steppable::testing
         void assertIsNotEqual(const std::string& a, const std::string& b);
 
         /**
-         * @brief Asserts that two integers are equal.
-         * @param[in] a The first integer.
-         * @param[in] b The second integer.
+         * @brief Asserts that two numeric values are equal.
+         * @param[in] a The first object.
+         * @param[in] b The second object.
          */
-        void assertIsEqual(int a, int b);
+        template<concepts::Numeric ValueT>
+        void assertIsEqual(ValueT a, ValueT b)
+        {
+            const std::string& conditionName =
+                __internals::format::format("Value {0} == {1}", { std::to_string(a), std::to_string(b) });
+            assert(a == b, conditionName);
+        }
 
         /**
-         * @brief Asserts that two integers are not equal.
-         * @param[in] a The first integer.
-         * @param[in] b The second integer.
+         * @brief Asserts that two numeric values are not equal.
+         * @param[in] a The first object.
+         * @param[in] b The second object.
          */
-        void assertIsNotEqual(int a, int b);
+        template<concepts::Numeric ValueT>
+        void assertIsNotEqual(ValueT a, ValueT b)
+        {
+            const std::string& conditionName =
+                __internals::format::format("Value {0} != {1}", { std::to_string(a), std::to_string(b) });
+            assert(a != b, conditionName);
+        }
+
+        /**
+         * @brief Asserts that two objects with .present() method are equal.
+         * @param[in] a The first object.
+         * @param[in] b The second object.
+         */
+        template<concepts::Presentable ValueT>
+        void assertIsEqual(ValueT a, ValueT b)
+        {
+            const std::string& conditionName =
+                __internals::format::format("Object {0} == {1}", { a.present(), b.present() });
+            assert(a == b, conditionName);
+        }
+
+        /**
+         * @brief Asserts that two objects with .present() method are not equal.
+         * @param[in] a The first object.
+         * @param[in] b The second object.
+         */
+        template<concepts::Presentable ValueT>
+        void assertIsNotEqual(ValueT a, ValueT b)
+        {
+            const std::string& conditionName =
+                __internals::format::format("Object {0} != {1}", { a.present(), b.present() });
+            assert(a != b, conditionName);
+        }
 
         /**
          * @brief Asserts that a boolean value is true.

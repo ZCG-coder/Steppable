@@ -32,6 +32,14 @@ using namespace steppable::__internals::utils;
 
 namespace steppable
 {
+    /**
+     * @class Data
+     * @brief Represents data that is being passed through Steppable.
+     * @details This class contains a data value, and a name of the data.
+     *
+     * @tparam BaseT The type of the data.
+     * @tparam BaseTName A StringLiteral describing the type of the data.
+     */
     template<typename BaseT, StringLiteral BaseTName>
     class Data
     {

@@ -60,20 +60,6 @@ namespace steppable::testing
         assert(a != b, conditionName);
     }
 
-    void TestCase::assertIsEqual(const int a, const int b)
-    {
-        const std::string& conditionName =
-            format::format("Integer {0} == {1}", { std::to_string(a), std::to_string(b) });
-        assert(a == b, conditionName);
-    }
-
-    void TestCase::assertIsNotEqual(const int a, const int b)
-    {
-        const std::string& conditionName =
-            format::format("Integer {0} != {1}", { std::to_string(a), std::to_string(b) });
-        assert(a != b, conditionName);
-    }
-
     void TestCase::assertTrue(const bool value)
     {
         const std::string& conditionName = format::format("{0} is True", { std::to_string(static_cast<int>(value)) });

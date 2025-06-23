@@ -119,13 +119,13 @@ namespace steppable
          * @brief Initializes a number with a specified value.
          * @note By default, the value is 0.
          */
-        explicit Number(std::string value = "0", size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
+        Number(std::string value = "0", size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
 
         /**
          * @brief Initializes a number with a C/C++ long double value.
          * @note No matter how the number is specified, it will always be converted to a string for storage.
          */
-        explicit Number(long double value, size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
+        Number(long double value, size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
 
         void set(std::string newVal) { value = std::move(newVal); }
 

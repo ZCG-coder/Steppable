@@ -20,36 +20,18 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-/**
- * @file ref.cpp
- * @brief Desciption
- *
- * @author Andy Zhang
- * @date 31st May 2025
- */
+#include <cstddef>
 
-#include "refReport.hpp"
-#include "steppable/mat2d.hpp"
-#include "steppable/number.hpp"
-
-#include <iostream>
-#include <string>
-
-namespace steppable::__internals::matrix
+namespace steppable
 {
-    std::string ref(/* Arguments... */) { return ""; }
-} // namespace steppable::__internals::matrix
-
-int main()
-{
-    using namespace steppable;
-    std::vector<std::vector<Number>> matrix = { { 2, 1, -1, 3, 2, 8 },
-                                                { 1, -2, 1, 0, 2, -4 },
-                                                { 3, 1, -3, 4, 1, 6 },
-                                                { 1, 1, 1, 1, 1, 5 },
-                                                { 2, -1, 2, -1, 3, 3 } };
-    auto mat = steppable::Matrix(matrix);
-    mat = mat.ref();
-
-    std::cout << mat.present(1) << "\n";
-}
+    /**
+     * @struct XYPoint
+     * @brief A point object
+     * @details Represents a 2-D point on a 2D plane.
+     */
+    struct XYPoint
+    {
+        size_t x = 0;
+        size_t y = 0;
+    };
+} // namespace steppable

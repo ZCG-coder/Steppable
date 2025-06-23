@@ -115,7 +115,7 @@ SET(COMPONENTS
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
 SET(TARGETS ${COMPONENTS} util)
-SET(TEST_TARGETS_TEMP util fraction number factors format ${COMPONENTS})
+SET(TEST_TARGETS_TEMP util fraction number mat2d factors format ${COMPONENTS})
 
 FOREACH(TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
     SET(TARGET_NAME "test")

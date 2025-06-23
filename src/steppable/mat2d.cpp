@@ -20,6 +20,12 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @brief Implements methods for matrix manipulation.
+ * @author Andy Zhang
+ * @date 31 May 2025
+ */
+
 #include "steppable/mat2d.hpp"
 
 #include "output.hpp"
@@ -90,7 +96,7 @@ namespace steppable
     Matrix::Matrix(const size_t cols, const size_t rows, const Number& fill) :
         data(std::vector(rows, std::vector(cols, fill))), _cols(cols), _rows(rows)
     {
-        data = roundOffValues(data, prec);
+        data = roundOffValues(data, static_cast<int>(prec));
     }
 
     Matrix::Matrix(const MatVec2D<Number>& data) : data(data), _cols(data.front().size()), _rows(data.size())
@@ -118,7 +124,7 @@ namespace steppable
     {
         // Adapted from https://stackoverflow.com/a/31761026/14868780
         auto matrix = data;
-        matrix = roundOffValues(matrix, prec);
+        matrix = roundOffValues(matrix, static_cast<int>(prec));
 #if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
         std::cout << prettyPrint::printers::ppMatrix(matrix, 1) << "\n";
 #endif
@@ -171,7 +177,7 @@ namespace steppable
 #endif
         }
 
-        matrix = roundOffValues(matrix, prec);
+        matrix = roundOffValues(matrix, static_cast<int>(prec));
         return matrix;
     }
 
@@ -200,6 +206,47 @@ namespace steppable
         return output;
     }
 
+    Matrix Matrix::operator+() const { return *this; }
+
+    Matrix Matrix::operator-(const Matrix& rhs) const { return *this + -rhs; }
+
+    Matrix Matrix::operator-() const
+    {
+        Matrix newMatrix = *this;
+        for (auto& row : newMatrix.data)
+            for (auto& value : row)
+                value = -value;
+        return newMatrix;
+    }
+
+    Matrix Matrix::operator*(const Number& rhs) const
+    {
+        Matrix newMatrix = *this;
+        for (auto& row : newMatrix.data)
+            for (auto& value : row)
+                value *= rhs;
+        return newMatrix;
+    }
+
+    Matrix Matrix::operator*(const Matrix& rhs) const
+    {
+        if (_cols != rhs._rows)
+        {
+            output::error("Matrix::operator*"s, "Incorrect matrix dimensions for multiplication."s);
+            // https://en.wikipedia.org/wiki/Matrix_multiplication
+            output::info("Matrix::operator*"s,
+                         "For matrix multiplication, the number of columns in the first matrix must be equal to the "
+                         "number of rows in the second matrix"s);
+            utils::programSafeExit(1);
+        }
+        Matrix matrix = Matrix::zeros(rhs._cols, _rows);
+        for (size_t j = 0; j < rhs._rows; j++)
+            for (size_t k = 0; k < _cols; k++)
+                for (size_t i = 0; i < _rows; i++)
+                    matrix.data[i][j] += data[i][k] * rhs.data[k][j];
+        return matrix;
+    }
+
     std::string Matrix::present(const int endRows) const { return prettyPrint::printers::ppMatrix(data, endRows); }
 
     Matrix Matrix::ones(const size_t cols, const size_t rows)
@@ -214,4 +261,28 @@ namespace steppable
         return matrix;
     }
 
+    bool Matrix::operator==(const Matrix& rhs) const { return data == rhs.data; }
+
+    bool Matrix::operator!=(const Matrix& rhs) const { return not(*this == rhs); }
+
+    Number& Matrix::operator[](const XYPoint& point)
+    {
+        const auto x = point.x;
+        const auto y = point.y;
+
+        if (x > _cols)
+        {
+            output::error("Matrix::operator[]"s,
+                          "Incorrect x parameter. x exceeds the number of columns in this matrix."s);
+            utils::programSafeExit(1);
+        }
+        if (y > _rows)
+        {
+            output::error("Matrix::operator[]"s,
+                          "Incorrect y parameter. y exceeds the number of rows in this matrix."s);
+            utils::programSafeExit(1);
+        }
+
+        return data[y][x];
+    }
 } // namespace steppable

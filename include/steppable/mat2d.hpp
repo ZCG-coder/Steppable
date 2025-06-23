@@ -20,9 +20,16 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+/**
+ * @brief Defines methods for matrix manipulation.
+ * @author Andy Zhang
+ * @date 31 May 2025
+ */
+
 #pragma once
 
 #include "steppable/number.hpp"
+#include "types/point.hpp"
 
 #include <cstddef>
 #include <string_view>
@@ -126,5 +133,76 @@ namespace steppable
          * @return A new matrix with the addition result.
          */
         Matrix operator+(const Matrix& rhs) const;
+
+        /**
+         * @brief Unary plus operator.
+         * @details Does nothing. Simply returns a new instance of the current matrix.
+         * @return A new instance of the current matrix.
+         */
+        Matrix operator+() const;
+
+        /**
+         * @brief Subtract a matrix from another matrix.
+         * @details Performs matrix subtraction, where corresponding elements in both matrices are subtracted.
+         *
+         * @param rhs The other matrix.
+         * @return A new matrix with the subtraction result.
+         */
+        Matrix operator-(const Matrix& rhs) const;
+
+        /**
+         * @brief Unary minus operator.
+         * @details Converts the matrix to itself with all values being converted to the opposite sign. Returns a new
+         * instance of the matrix.
+         * @return A matrix with equal values in the opposite sign.
+         */
+        Matrix operator-() const;
+
+        /**
+         * @brief Scalar multiplication.
+         * @details Multiplies each element of the matrix by a scalar.
+         *
+         * @param rhs The scalar to multiply.
+         * @return A new matrix after the scalar multiplication
+         */
+        Matrix operator*(const Number& rhs) const;
+
+        /**
+         * @brief Matrix multiplication.
+         * @details Multiplies a matrix by another matrix, returning the resulting matrix.
+         *
+         * @param rhs The other matrix to multiply.
+         * @return The new matrix after multiplying.
+         */
+        Matrix operator*(const Matrix& rhs) const;
+
+        /**
+         * @brief Test for equal matrices.
+         * @details If the current matrix is equal to the other matrix, i.e., equal in all of its values, returns True.
+         *
+         * @param rhs The other matrix.
+         * @return Whether the current matrix is equal to the other one.
+         */
+        bool operator==(const Matrix& rhs) const;
+
+        /**
+         * @brief Test for unequal matrices.
+         * @details If the current matrix is not equal to the other matrix, i.e., equal in all of its values, returns
+         * True.
+         *
+         * @param rhs The other matrix.
+         * @return Whether the current matrix is not equal to the other one.
+         */
+        bool operator!=(const Matrix& rhs) const;
+
+        /**
+         * @brief Gets the element at a point in the matrix.
+         * @details Tries to find an element at the index specified by the point. Prints out error and exits when the
+         * index does not exist.
+         *
+         * @param point The position of the element to find.
+         * @return A reference to the element at that position.
+         */
+        Number& operator[](const XYPoint& point);
     };
 } // namespace steppable

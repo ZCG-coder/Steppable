@@ -20,36 +20,34 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-/**
- * @file ref.cpp
- * @brief Desciption
- *
- * @author Andy Zhang
- * @date 31st May 2025
- */
-
-#include "refReport.hpp"
 #include "steppable/mat2d.hpp"
-#include "steppable/number.hpp"
+#include "testing.hpp"
+#include "util.hpp"
 
+#include <iomanip>
 #include <iostream>
-#include <string>
 
-namespace steppable::__internals::matrix
-{
-    std::string ref(/* Arguments... */) { return ""; }
-} // namespace steppable::__internals::matrix
+TEST_START()
+SECTION(Matrix multiplication)
+steppable::Matrix mat1({
+    { 1, 0, 1 },
+    { 2, 1, 1 },
+    { 0, 1, 1 },
+    { 1, 1, 2 },
+});
+steppable::Matrix mat2({
+    { 1, 2, 1 },
+    { 2, 3, 1 },
+    { 4, 2, 2 },
+});
+auto mat3 = mat1 * mat2;
 
-int main()
-{
-    using namespace steppable;
-    std::vector<std::vector<Number>> matrix = { { 2, 1, -1, 3, 2, 8 },
-                                                { 1, -2, 1, 0, 2, -4 },
-                                                { 3, 1, -3, 4, 1, 6 },
-                                                { 1, 1, 1, 1, 1, 5 },
-                                                { 2, -1, 2, -1, 3, 3 } };
-    auto mat = steppable::Matrix(matrix);
-    mat = mat.ref();
-
-    std::cout << mat.present(1) << "\n";
-}
+_.assertIsEqual(mat3,
+                steppable::Matrix({
+                    { 5, 4, 3 },
+                    { 8, 9, 5 },
+                    { 6, 5, 3 },
+                    { 11, 9, 6 },
+                }));
+SECTION_END()
+TEST_END()

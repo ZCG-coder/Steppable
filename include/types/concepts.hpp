@@ -21,35 +21,25 @@
  **************************************************************************************************/
 
 /**
- * @file ref.cpp
- * @brief Desciption
- *
+ * @brief Defines concepts to be used for distinguishing types in the project.
  * @author Andy Zhang
- * @date 31st May 2025
+ * @date 23 Jun 2025
  */
 
-#include "refReport.hpp"
-#include "steppable/mat2d.hpp"
-#include "steppable/number.hpp"
-
-#include <iostream>
+#include <concepts>
 #include <string>
 
-namespace steppable::__internals::matrix
+/**
+ * @namespace steppable::concepts
+ * @brief Defines concepts to be used for distinguishing types in the project.
+ */
+namespace steppable::concepts
 {
-    std::string ref(/* Arguments... */) { return ""; }
-} // namespace steppable::__internals::matrix
+    template<typename T>
+    concept Numeric = std::integral<T> || std::floating_point<T>;
 
-int main()
-{
-    using namespace steppable;
-    std::vector<std::vector<Number>> matrix = { { 2, 1, -1, 3, 2, 8 },
-                                                { 1, -2, 1, 0, 2, -4 },
-                                                { 3, 1, -3, 4, 1, 6 },
-                                                { 1, 1, 1, 1, 1, 5 },
-                                                { 2, -1, 2, -1, 3, 3 } };
-    auto mat = steppable::Matrix(matrix);
-    mat = mat.ref();
-
-    std::cout << mat.present(1) << "\n";
-}
+    template<typename ObjectT>
+    concept Presentable = requires(ObjectT object) {
+        { object.present() } -> std::same_as<std::string>;
+    };
+} // namespace steppable::concepts
