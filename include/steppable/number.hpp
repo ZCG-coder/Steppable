@@ -164,6 +164,15 @@ namespace steppable
         Number operator/(const Number& rhs) const;
 
         /**
+         * @brief Takes a modulus operation.
+         * @details Divides and takes the nearest quotient.
+         *
+         * @param rhs The other number.
+         * @return The modulus of the two numbers.
+         */
+        [[nodiscard]] Number mod(const Number& rhs) const;
+
+        /**
          * @brief Calculates the remainder of two numbers. (Modulus)
          * @param rhs The number to divide.
          * @return The remainder of the two numbers.
@@ -272,6 +281,20 @@ namespace steppable
          * @return The number after decrementing.
          */
         Number operator--();
+
+        /**
+         * @brief Unary minus operator.
+         * @details Converts the number to itself with the opposite sign. Returns a new instance of the number.
+         * @return A number equal in value but opposite in sign.
+         */
+        Number operator-() const;
+
+        /**
+         * @brief Unary plus operator.
+         * @details Does nothing. Simply returns a new instance of the number.
+         * @return A number equal in value and equal in sign.
+         */
+        Number operator+() const;
 
         /**
          * @brief Presents the number in a human-readable format.

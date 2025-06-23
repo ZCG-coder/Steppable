@@ -33,6 +33,7 @@
 #include "fn/calc.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
+#include "util.hpp"
 
 #include <string>
 #include <utility>
@@ -80,6 +81,11 @@ namespace steppable
     Number Number::operator%(const Number& rhs) const
     {
         return Number(divideWithQuotient(value, rhs.value).remainder, prec, mode);
+    }
+
+    Number Number::mod(const Number& rhs) const
+    {
+        return Number(divideWithQuotient(value, rhs.value).quotient, prec, mode);
     }
 
     Number Number::operator^(const Number& rhs)
@@ -138,6 +144,16 @@ namespace steppable
     bool Number::operator<=(const Number& rhs) const { return compare(value, rhs.value, 0) != "1"; }
 
     bool Number::operator>=(const Number& rhs) const { return compare(value, rhs.value, 0) != "0"; }
+
+    Number Number::operator-() const
+    {
+        auto newValue = "-" + value;
+        newValue = __internals::numUtils::standardizeNumber(newValue);
+        Number number(newValue, prec, mode);
+        return number;
+    }
+
+    Number Number::operator+() const { return *this; }
 
     Number Number::operator++()
     {

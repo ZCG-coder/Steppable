@@ -21,8 +21,8 @@
  **************************************************************************************************/
 
 #include "colors.hpp"
-#include "steppable/fraction.hpp"
 #include "output.hpp"
+#include "steppable/fraction.hpp"
 #include "testing.hpp"
 #include "util.hpp"
 
@@ -63,6 +63,16 @@ SECTION(Reciprocal)
 auto fraction = Fraction("1", "4");
 fraction.reciprocal();
 _.assertIsEqual(fraction.present(), "4/1");
+SECTION_END()
+
+SECTION(Unary)
+auto fraction = Fraction("1", "4");
+fraction = -fraction;
+_.assertIsEqual(fraction.present(), "-1/4");
+
+fraction = Fraction("-1", "4");
+fraction = -fraction;
+_.assertIsEqual(fraction.present(), "1/4");
 SECTION_END()
 
 TEST_END()

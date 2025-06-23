@@ -21,8 +21,8 @@
  **************************************************************************************************/
 
 #include "colors.hpp"
-#include "steppable/number.hpp"
 #include "output.hpp"
+#include "steppable/number.hpp"
 #include "testing.hpp"
 #include "util.hpp"
 
@@ -67,6 +67,16 @@ _.assertTrue(Number("123") < Number("456"));
 _.assertTrue(Number("456") > Number("123"));
 _.assertTrue(Number("123") <= Number("456"));
 _.assertTrue(Number("456") >= Number("123"));
+SECTION_END()
+
+SECTION(Test Increment and Decrement)
+_.assertTrue(++Number("123") == Number("124"));
+_.assertTrue(--Number("124") == Number("123"));
+SECTION_END()
+
+SECTION(Test unary operators)
+_.assertTrue(-Number("123") == Number("-123"));
+_.assertTrue(+Number("123") == Number("123"));
 SECTION_END()
 
 TEST_END()

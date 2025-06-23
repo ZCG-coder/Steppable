@@ -66,10 +66,9 @@ namespace steppable
         size_t _cols; ///< The number of columns in the matrix.
         size_t _rows; ///< The number of rows in the matrix.
         size_t prec = 10; ///< Precision of numbers in the matrix.
-
-    public:
         MatVec2D<Number> data; ///< The data of the matrix.
 
+    public:
         /**
          * @brief Default constructor for the Matrix class.
          */
@@ -118,5 +117,14 @@ namespace steppable
          * @return A Matrix filled with zeros.
          */
         static Matrix zeros(size_t cols, size_t rows);
+
+        /**
+         * @brief Add a matrix to another matrix.
+         * @details Performs matrix addition, where corresponding elements in both matrices are added.
+         *
+         * @param rhs The other matrix.
+         * @return A new matrix with the addition result.
+         */
+        Matrix operator+(const Matrix& rhs) const;
     };
 } // namespace steppable

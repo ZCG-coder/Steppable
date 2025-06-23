@@ -230,6 +230,16 @@ namespace steppable
         return compare(thisNewTop, otherNewTop, 0) != "0";
     }
 
+    Fraction Fraction::operator+() const { return *this; }
+
+    Fraction Fraction::operator-() const
+    {
+        auto newTop = "-" + top;
+        auto newFrac = Fraction(newTop, bottom);
+        newFrac.simplify();
+        return newFrac;
+    }
+
     void Fraction::reciprocal()
     {
         std::ranges::swap(top, bottom);
@@ -239,6 +249,8 @@ namespace steppable
     void Fraction::simplify()
     {
         // Make sure the fraction does not contain decimal points.
+        top = standardizeNumber(top);
+        bottom = standardizeNumber(bottom);
         while (isDecimal(top) or isDecimal(bottom))
         {
             top = multiply(top, "10", 0);

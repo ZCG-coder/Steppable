@@ -82,7 +82,7 @@ namespace steppable::__internals::numUtils
             return "0";
 
         auto string = _string;
-        // string = simplifyZeroPolarity(string);
+        string = simplifyZeroPolarity(string);
         while (string[0] == '-' and string[1] == '-')
             string = string.substr(2);
         return string;

@@ -23,6 +23,7 @@
 #include "steppable/mat2d.hpp"
 
 #include "output.hpp"
+#include "platform.hpp"
 #include "rounding.hpp"
 #include "steppable/number.hpp"
 #include "symbols.hpp"
@@ -32,6 +33,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include <string>
 #include <vector>
 
 namespace steppable
@@ -171,6 +173,31 @@ namespace steppable
 
         matrix = roundOffValues(matrix, prec);
         return matrix;
+    }
+
+    Matrix Matrix::operator+(const Matrix& rhs) const
+    {
+        if (rhs._cols != _cols)
+        {
+            output::error("Matrix::operator+"s,
+                          "Matrix dimensions mismatch. Expect {0} columns. Got {1} columns."s,
+                          { std::to_string(_cols), std::to_string(rhs._cols) });
+            utils::programSafeExit(1);
+        }
+        if (rhs._rows != _rows)
+        {
+            output::error("Matrix::operator+"s,
+                          "Matrix dimensions mismatch. Expect {0} rows. Got {1} rows."s,
+                          { std::to_string(_rows), std::to_string(rhs._rows) });
+            utils::programSafeExit(1);
+        }
+
+        Matrix output = Matrix::zeros(_cols, _rows);
+
+        for (size_t i = 0; i < _rows; i++)
+            for (size_t j = 0; j < _cols; j++)
+                output.data[i][j] += rhs.data[i][j];
+        return output;
     }
 
     std::string Matrix::present(const int endRows) const { return prettyPrint::printers::ppMatrix(data, endRows); }
