@@ -20,48 +20,42 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "steppable/mat2d.hpp"
-#include "testing.hpp"
-#include "util.hpp"
+#pragma once
 
-#include <iomanip>
-#include <iostream>
+#include "steppable/fraction.hpp"
 
-TEST_START()
-SECTION(Matrix multiplication)
-steppable::Matrix mat1({
-    { 1, 0, 1 },
-    { 2, 1, 1 },
-    { 0, 1, 1 },
-    { 1, 1, 2 },
-});
-steppable::Matrix mat2({
-    { 1, 2, 1 },
-    { 2, 3, 1 },
-    { 4, 2, 2 },
-});
-auto mat3 = mat1 * mat2;
+#include <Python.h>
+#include <nanobind/nanobind.h>
+#include <nanobind/operators.h>
+#include <nanobind/stl/string.h>
+#include <nanobind/stl/string_view.h>
 
-_.assertIsEqual(mat3,
-                steppable::Matrix({
-                    { 5, 4, 3 },
-                    { 8, 9, 5 },
-                    { 6, 5, 3 },
-                    { 11, 9, 6 },
-                }));
-SECTION_END()
+namespace nb = nanobind;
+using namespace nb::literals;
 
-SECTION(Transpose)
-steppable::Matrix mat2({
-    { 1, 2, 1 },
-    { 2, 3, 1 },
-    { 4, 2, 2 },
-});
-// Two transposes results in the same matrix
-//        T
-// (  T )
-// ( A  )   = A
-_.assertIsEqual(mat2.transpose().transpose(), mat2);
-_.assertIsNotEqual(mat2.transpose(), mat2);
-SECTION_END()
-TEST_END()
+namespace steppable::__internals::bindings
+{
+    void bindingsFraction(nb::module_& mod)
+    {
+        nb::class_<steppable::Fraction>(mod, "Fraction")
+            .def(nb::init<std::string, std::string>(), "top"_a = "1", "bottom"_a = "1")
+            .def(nb::self + nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self += nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self - nb::self, nb::rv_policy::automatic_reference)
+            .def("__neg__", [](steppable::Fraction& fraction) { return -fraction; })
+            .def("__pos__", [](steppable::Fraction& fraction) { return +fraction; })
+            .def(nb::self -= nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self * nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self *= nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self / nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self /= nb::self, nb::rv_policy::automatic_reference)
+            .def("__pow__", &steppable::Fraction::operator^)
+            .def(nb::self == nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self != nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self < nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self > nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self <= nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self >= nb::self, nb::rv_policy::automatic_reference)
+            .def("__repr__", &steppable::Fraction::present);
+    }
+} // namespace steppable::__internals::bindings

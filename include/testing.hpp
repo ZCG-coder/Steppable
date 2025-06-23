@@ -104,7 +104,7 @@ namespace steppable::testing
          * @param[in] condition The condition to be checked.
          * @param[in] conditionName The name of the condition.
          */
-        void assert(bool condition, const std::string& conditionName);
+        void _assertCondition(bool condition, const std::string& conditionName);
 
         std::string testCaseName;
 
@@ -141,7 +141,7 @@ namespace steppable::testing
         {
             const std::string& conditionName =
                 __internals::format::format("Value {0} == {1}", { std::to_string(a), std::to_string(b) });
-            assert(a == b, conditionName);
+            _assertCondition(a == b, conditionName);
         }
 
         /**
@@ -154,7 +154,7 @@ namespace steppable::testing
         {
             const std::string& conditionName =
                 __internals::format::format("Value {0} != {1}", { std::to_string(a), std::to_string(b) });
-            assert(a != b, conditionName);
+            _assertCondition(a != b, conditionName);
         }
 
         /**
@@ -167,7 +167,7 @@ namespace steppable::testing
         {
             const std::string& conditionName =
                 __internals::format::format("Object {0} == {1}", { a.present(), b.present() });
-            assert(a == b, conditionName);
+            _assertCondition(a == b, conditionName);
         }
 
         /**
@@ -180,7 +180,7 @@ namespace steppable::testing
         {
             const std::string& conditionName =
                 __internals::format::format("Object {0} != {1}", { a.present(), b.present() });
-            assert(a != b, conditionName);
+            _assertCondition(a != b, conditionName);
         }
 
         /**

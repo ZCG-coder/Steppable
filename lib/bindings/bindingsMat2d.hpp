@@ -20,48 +20,43 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+#pragma once
+
 #include "steppable/mat2d.hpp"
-#include "testing.hpp"
-#include "util.hpp"
+#include "steppable/number.hpp"
 
-#include <iomanip>
-#include <iostream>
+#include <array>
+#include <nanobind/nanobind.h>
+#include <nanobind/operators.h>
+#include <nanobind/stl/array.h>
+#include <nanobind/stl/string.h>
+#include <nanobind/stl/string_view.h>
+#include <nanobind/stl/vector.h>
 
-TEST_START()
-SECTION(Matrix multiplication)
-steppable::Matrix mat1({
-    { 1, 0, 1 },
-    { 2, 1, 1 },
-    { 0, 1, 1 },
-    { 1, 1, 2 },
-});
-steppable::Matrix mat2({
-    { 1, 2, 1 },
-    { 2, 3, 1 },
-    { 4, 2, 2 },
-});
-auto mat3 = mat1 * mat2;
+namespace nb = nanobind;
+using namespace nb::literals;
 
-_.assertIsEqual(mat3,
-                steppable::Matrix({
-                    { 5, 4, 3 },
-                    { 8, 9, 5 },
-                    { 6, 5, 3 },
-                    { 11, 9, 6 },
-                }));
-SECTION_END()
-
-SECTION(Transpose)
-steppable::Matrix mat2({
-    { 1, 2, 1 },
-    { 2, 3, 1 },
-    { 4, 2, 2 },
-});
-// Two transposes results in the same matrix
-//        T
-// (  T )
-// ( A  )   = A
-_.assertIsEqual(mat2.transpose().transpose(), mat2);
-_.assertIsNotEqual(mat2.transpose(), mat2);
-SECTION_END()
-TEST_END()
+namespace steppable::__internals::bindings
+{
+    void bindingsMatrix(nanobind::module_& mod)
+    {
+        nb::class_<steppable::Matrix>(mod, "Matrix")
+            .def(nb::init<MatVec2D<Number>>(), "values"_a)
+            .def(nb::init<MatVec2D<double>>(), "values"_a)
+            .def("zeros", [](size_t cols, size_t rows) { return steppable::Matrix::zeros(cols, rows); })
+            .def("ones", [](size_t cols, size_t rows) { return steppable::Matrix::ones(cols, rows); })
+            .def("ref", &steppable::Matrix::ref)
+            .def("transpose", &steppable::Matrix::transpose)
+            .def(nb::self + nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self - nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self * nb::self, nb::rv_policy::automatic_reference)
+            .def(nb::self *= nb::self, nb::rv_policy::automatic_reference)
+            .def("__neg__", [](steppable::Matrix& matrix) { return -matrix; })
+            .def("__pos__", [](steppable::Matrix& matrix) { return +matrix; })
+            .def("__repr__", [](steppable::Matrix& matrix) { return matrix.present(0); })
+            .def("__getitem__", [](steppable::Matrix& matrix, std::array<size_t, 2> ij) {
+                auto [i, j] = ij;
+                return matrix[{ .y = i, .x = j }];
+            });
+    }
+} // namespace steppable::__internals::bindings

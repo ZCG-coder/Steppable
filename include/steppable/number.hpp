@@ -30,6 +30,7 @@
 
 #pragma once
 
+#include "testing.hpp"
 #include "util.hpp"
 
 #include <cstdint>
@@ -125,7 +126,11 @@ namespace steppable
          * @brief Initializes a number with a C/C++ long double value.
          * @note No matter how the number is specified, it will always be converted to a string for storage.
          */
-        Number(long double value, size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
+        template<concepts::Numeric ValueT>
+        Number(ValueT value, size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC) :
+            value(std::to_string(value)), prec(prec), mode(mode)
+        {
+        }
 
         void set(std::string newVal) { value = std::move(newVal); }
 

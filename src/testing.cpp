@@ -35,7 +35,7 @@ namespace steppable::testing
 {
     TestCase::TestCase(std::string testCaseName) : testCaseName(std::move(testCaseName)) {}
 
-    void TestCase::assert(const bool condition, const std::string& conditionName)
+    void TestCase::_assertCondition(const bool condition, const std::string& conditionName)
     {
         if (condition)
         {
@@ -51,25 +51,25 @@ namespace steppable::testing
     void TestCase::assertIsEqual(const std::string& a, const std::string& b)
     {
         const std::string& conditionName = format::format("String {0} == {1}", { a, b });
-        assert(a == b, conditionName);
+        _assertCondition(a == b, conditionName);
     }
 
     void TestCase::assertIsNotEqual(const std::string& a, const std::string& b)
     {
         const std::string& conditionName = format::format("String {0} != {1}", { a, b });
-        assert(a != b, conditionName);
+        _assertCondition(a != b, conditionName);
     }
 
     void TestCase::assertTrue(const bool value)
     {
         const std::string& conditionName = format::format("{0} is True", { std::to_string(static_cast<int>(value)) });
-        assert(value, conditionName);
+        _assertCondition(value, conditionName);
     }
 
     void TestCase::assertFalse(const bool value)
     {
         const std::string& conditionName = format::format("{0} is False", { std::to_string(static_cast<int>(value)) });
-        assert(not value, conditionName);
+        _assertCondition(not value, conditionName);
     }
 
     void TestCase::summarize() const

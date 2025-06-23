@@ -21,7 +21,8 @@
  **************************************************************************************************/
 
 /**
- * @brief Defines methods for matrix manipulation.
+ * @file mat2d.hpp
+ * @brief Defines methods and classes for 2D matrix manipulation.
  * @author Andy Zhang
  * @date 31 May 2025
  */
@@ -29,6 +30,7 @@
 #pragma once
 
 #include "steppable/number.hpp"
+#include "testing.hpp"
 #include "types/point.hpp"
 
 #include <cstddef>
@@ -75,6 +77,8 @@ namespace steppable
         size_t prec = 10; ///< Precision of numbers in the matrix.
         MatVec2D<Number> data; ///< The data of the matrix.
 
+        void _checkIdxSanity(const YXPoint* point) const;
+
     public:
         /**
          * @brief Default constructor for the Matrix class.
@@ -94,6 +98,15 @@ namespace steppable
          * @param data The 2D vector representing the matrix data.
          */
         Matrix(const MatVec2D<Number>& data);
+
+        template<concepts::Numeric ValueT>
+        Matrix(const MatVec2D<ValueT>& data) : _cols(data.front().size()), _rows(data.size())
+        {
+            this->data = std::vector(_rows, std::vector(_cols, Number("0")));
+            for (size_t i = 0; i < _rows; i++)
+                for (size_t j = 0; j < _cols; j++)
+                    this->data[i][j] = data[i][j];
+        }
 
         static MatVec2D<Number> roundOffValues(const MatVec2D<Number>& data, int prec);
 
@@ -126,6 +139,13 @@ namespace steppable
         static Matrix zeros(size_t cols, size_t rows);
 
         /**
+         * @brief Transposes a matrix.
+         * @details Flips the rows and columns of the matrix and returns a new instance of the transposed matrix.
+         * @return An instance of the transposed matrix.
+         */
+        [[nodiscard]] Matrix transpose() const;
+
+        /**
          * @brief Add a matrix to another matrix.
          * @details Performs matrix addition, where corresponding elements in both matrices are added.
          *
@@ -133,6 +153,8 @@ namespace steppable
          * @return A new matrix with the addition result.
          */
         Matrix operator+(const Matrix& rhs) const;
+
+        Matrix operator+=(const Matrix& rhs);
 
         /**
          * @brief Unary plus operator.
@@ -149,6 +171,8 @@ namespace steppable
          * @return A new matrix with the subtraction result.
          */
         Matrix operator-(const Matrix& rhs) const;
+
+        Matrix operator-=(const Matrix& rhs);
 
         /**
          * @brief Unary minus operator.
@@ -168,6 +192,17 @@ namespace steppable
         Matrix operator*(const Number& rhs) const;
 
         /**
+         * @brief Multiplies the current matrix by a scalar value and assigns the result to this matrix.
+         *
+         * @details This operator performs in-place scalar multiplication, updating each element of the matrix
+         * by multiplying it with the provided scalar value.
+         *
+         * @param rhs The scalar value to multiply each element of the matrix by.
+         * @return Matrix& Reference to the modified matrix after multiplication.
+         */
+        Matrix operator*=(const Number& rhs);
+
+        /**
          * @brief Matrix multiplication.
          * @details Multiplies a matrix by another matrix, returning the resulting matrix.
          *
@@ -175,6 +210,17 @@ namespace steppable
          * @return The new matrix after multiplying.
          */
         Matrix operator*(const Matrix& rhs) const;
+
+        /**
+         * @brief Multiplies this matrix by another matrix and assigns the result to this matrix.
+         *
+         * @details Performs in-place matrix multiplication with the given right-hand side (rhs) matrix.
+         * The current matrix is updated to be the product of itself and rhs.
+         *
+         * @param rhs The matrix to multiply with this matrix.
+         * @return Matrix The updated matrix after multiplication.
+         */
+        Matrix operator*=(const Matrix& rhs);
 
         /**
          * @brief Test for equal matrices.
@@ -203,6 +249,17 @@ namespace steppable
          * @param point The position of the element to find.
          * @return A reference to the element at that position.
          */
-        Number& operator[](const XYPoint& point);
+        Number& operator[](const YXPoint& point);
+
+        /**
+         * @brief Accesses the matrix element at the specified YXPoint.
+         *
+         * This operator allows read-only access to the matrix element located at the given
+         * YXPoint coordinates.
+         *
+         * @param point The YXPoint specifying the (y, x) coordinates of the element.
+         * @return The value of the matrix element at the specified coordinates.
+         */
+        Number operator[](const YXPoint& point) const;
     };
 } // namespace steppable

@@ -51,10 +51,6 @@ namespace steppable
 
     Number::Number(const Number& rhs) : value(rhs.value), prec(rhs.prec) {}
 
-    Number::Number(const long double value, const size_t prec, const RoundingMode mode) :
-        value(std::to_string(value)), prec(prec), mode(mode)
-    {
-    }
     Number::Number(std::string value, const size_t prec, const RoundingMode mode) :
         value(std::move(value)), prec(prec), mode(mode)
     {

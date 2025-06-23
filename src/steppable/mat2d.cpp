@@ -21,6 +21,7 @@
  **************************************************************************************************/
 
 /**
+ * @file mat2d.cpp
  * @brief Implements methods for matrix manipulation.
  * @author Andy Zhang
  * @date 31 May 2025
@@ -104,6 +105,25 @@ namespace steppable
         for (auto& row : this->data)
             for (auto& value : row)
                 value.setPrec(prec + 3, RoundingMode::USE_MAXIMUM_PREC);
+    }
+
+    void Matrix::_checkIdxSanity(const YXPoint* point) const
+    {
+        const auto x = point->x;
+        const auto y = point->y;
+
+        if (x > _cols)
+        {
+            output::error("Matrix::operator[]"s,
+                          "Incorrect x parameter. x exceeds the number of columns in this matrix."s);
+            utils::programSafeExit(1);
+        }
+        if (y > _rows)
+        {
+            output::error("Matrix::operator[]"s,
+                          "Incorrect y parameter. y exceeds the number of rows in this matrix."s);
+            utils::programSafeExit(1);
+        }
     }
 
     MatVec2D<Number> Matrix::roundOffValues(const MatVec2D<Number>& _data, const int prec)
@@ -208,6 +228,12 @@ namespace steppable
 
     Matrix Matrix::operator+() const { return *this; }
 
+    Matrix Matrix::operator+=(const Matrix& rhs)
+    {
+        *this = *this + rhs;
+        return *this;
+    }
+
     Matrix Matrix::operator-(const Matrix& rhs) const { return *this + -rhs; }
 
     Matrix Matrix::operator-() const
@@ -217,6 +243,12 @@ namespace steppable
             for (auto& value : row)
                 value = -value;
         return newMatrix;
+    }
+
+    Matrix Matrix::operator-=(const Matrix& rhs)
+    {
+        *this = *this - rhs;
+        return *this;
     }
 
     Matrix Matrix::operator*(const Number& rhs) const
@@ -247,6 +279,18 @@ namespace steppable
         return matrix;
     }
 
+    Matrix Matrix::operator*=(const Number& rhs)
+    {
+        *this = *this * rhs;
+        return *this;
+    }
+
+    Matrix Matrix::operator*=(const Matrix& rhs)
+    {
+        *this = *this * rhs;
+        return *this;
+    }
+
     std::string Matrix::present(const int endRows) const { return prettyPrint::printers::ppMatrix(data, endRows); }
 
     Matrix Matrix::ones(const size_t cols, const size_t rows)
@@ -261,28 +305,34 @@ namespace steppable
         return matrix;
     }
 
+    Matrix Matrix::transpose() const
+    {
+        Matrix matrix(_rows, _cols);
+        for (size_t i = 0; i < _cols; i++)
+            for (size_t j = 0; j < _rows; j++)
+                matrix[{ .y = j, .x = i }] = data[i][j];
+        return matrix;
+    }
+
     bool Matrix::operator==(const Matrix& rhs) const { return data == rhs.data; }
 
     bool Matrix::operator!=(const Matrix& rhs) const { return not(*this == rhs); }
 
-    Number& Matrix::operator[](const XYPoint& point)
+    Number& Matrix::operator[](const YXPoint& point)
     {
         const auto x = point.x;
         const auto y = point.y;
 
-        if (x > _cols)
-        {
-            output::error("Matrix::operator[]"s,
-                          "Incorrect x parameter. x exceeds the number of columns in this matrix."s);
-            utils::programSafeExit(1);
-        }
-        if (y > _rows)
-        {
-            output::error("Matrix::operator[]"s,
-                          "Incorrect y parameter. y exceeds the number of rows in this matrix."s);
-            utils::programSafeExit(1);
-        }
+        _checkIdxSanity(&point);
+        return data[y][x];
+    }
 
+    Number Matrix::operator[](const YXPoint& point) const
+    {
+        const auto x = point.x;
+        const auto y = point.y;
+
+        _checkIdxSanity(&point);
         return data[y][x];
     }
 } // namespace steppable
