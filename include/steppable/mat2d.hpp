@@ -156,15 +156,43 @@ namespace steppable
          * @brief Creates a diagnal matrix
          *
          * @param colsRows Number of columns and rows.
+         * @param fill Number to fill into the matrix.
          * @return A diagnal matrix filled with the specified values.
          */
         static Matrix diag(size_t colsRows, const Number& fill = 0);
 
+        /**
+         * @brief Creates a diagnal matrix
+         *
+         * @param colsRows Number of columns and rows.
+         * @param fill Number to fill into the matrix.
+         * @tparam NumberT Type of the number.
+         * @return A diagnal matrix filled with the specified values.
+         */
         template<concepts::Numeric NumberT>
         static Matrix diag(const size_t colsRows, const NumberT& fill = 0)
         {
             diag(colsRows, Number(fill));
         }
+
+        /**
+         * @brief Alias for the data `begin()` method to allow iterating over the matrix rows,
+         * @return The beginning of the matrix rows.
+         */
+        auto begin() { return data.begin(); }
+
+        /**
+         * @brief Alias for the data `end()` method to allow iterating over the matrix rows,
+         * @return The end of the matrix rows.
+         */
+        auto end() { return data.end(); }
+
+        /**
+         * @brief Calculates the rank of a matrix.
+         * @details Calculates the number of non-zero rows when the matrix is converted to row-echelon form.
+         * @return The rank of the matrix.
+         */
+        [[nodiscard]] Number rank() const;
 
         /**
          * @brief Transposes a matrix.

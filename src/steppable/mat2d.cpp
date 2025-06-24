@@ -141,8 +141,14 @@ namespace steppable
             for (auto& val : row)
             {
                 auto valueString = val.present();
-                valueString = roundOff(val.present(), prec);
-                valueString = standardizeNumber(valueString);
+
+                if (valueString == "Indeterminate")
+                    valueString = "0";
+                else
+                {
+                    valueString = roundOff(val.present(), prec);
+                    valueString = standardizeNumber(valueString);
+                }
                 val.set(valueString);
             }
         return data;
@@ -175,7 +181,7 @@ namespace steppable
                         matrix[r][c] /= divisor;
 
 #if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
-                        output::info("Matrix::ref"s,
+                        output::info("Matrix::rref"s,
                                      oldMatrixRC.present() + " " + std::string(__internals::symbols::DIVIDED_BY) + " " +
                                          divisor.present() + " = " + matrix[r][c].present());
 #endif
@@ -191,14 +197,16 @@ namespace steppable
                         matrix[r][c] -= multiplyResult;
 
 #if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
-                        output::info("Matrix::ref"s,
+                        output::info("Matrix::rref"s,
                                      oldMatrixRC.present() + " - " + oldMatrixLeadC.present() + " " +
                                          std::string(__internals::symbols::MULTIPLY) + " " + multiplier.present());
-                        output::info("Matrix::ref"s,
+                        output::info("Matrix::rref"s,
                                      "    = " + oldMatrixRC.present() + " - " + multiplyResult.present());
-                        output::info("Matrix::ref"s, "    = " + matrix[r][c].present());
+                        output::info("Matrix::rref"s, "    = " + matrix[r][c].present());
 #endif
                     }
+
+                matrix = roundOffValues(matrix, static_cast<int>(prec) + 3);
             }
 #if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
             std::cout << prettyPrint::printers::ppMatrix(matrix, 1) << "\n";
@@ -463,6 +471,29 @@ namespace steppable
         for (size_t i = 0; i < colsRows; i++)
             matrix[{ .y = i, .x = i }] = fill;
         return matrix;
+    }
+
+    Number Matrix::rank() const
+    {
+        auto matrix = *this;
+        matrix = matrix.rref();
+
+#if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
+        std::cout << prettyPrint::printers::ppMatrix(matrix.data) << "\n";
+#endif
+        size_t rank = 0;
+
+        for (const auto& row : matrix)
+        {
+            size_t count = 0;
+            for (const auto& val : row)
+                if (val != 0)
+                    count++;
+
+            if (count != 0)
+                rank++;
+        }
+        return { rank };
     }
 
     Matrix Matrix::transpose() const

@@ -113,4 +113,15 @@ _.assertIsEqual(matrix4,
                     { 6, 5, 3, 6, 5, 3 },
                 }));
 SECTION_END()
+
+SECTION(Matrix joining)
+using namespace steppable::literals;
+
+steppable::Matrix matrix1({
+    { 1, 2, 1 },
+    { -2, -3, 1 },
+    { 3, 5, 0 },
+});
+_.assertIsEqual(matrix1.rank(), 2_n);
+SECTION_END()
 TEST_END()

@@ -307,4 +307,15 @@ namespace steppable
          */
         [[nodiscard]] std::string present() const;
     };
+
+    /**
+     * @namespace literals
+     * @brief Literal suffixes for literals to be converted to Steppable objects.
+     */
+    namespace literals
+    {
+        inline Number operator""_n(long double value) { return Number(value); }
+
+        inline Number operator""_n(unsigned long long value) { return Number(value); }
+    } // namespace literals
 } // namespace steppable

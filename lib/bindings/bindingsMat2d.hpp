@@ -26,7 +26,7 @@
 #include "steppable/number.hpp"
 
 #include <array>
-#include <cstddef>
+#include <nanobind/make_iterator.h>
 #include <nanobind/nanobind.h>
 #include <nanobind/operators.h>
 #include <nanobind/stl/array.h>
@@ -41,15 +41,16 @@ namespace steppable::__internals::bindings
 {
     void bindingsMatrix(nanobind::module_& mod)
     {
-        nb::class_<steppable::Matrix>(mod, "Matrix")
+        nb::class_<Matrix>(mod, "Matrix")
             .def(nb::init<MatVec2D<Number>>(), "values"_a)
             .def(nb::init<MatVec2D<double>>(), "values"_a)
-            .def("zeros", [](size_t rows, size_t cols) { return steppable::Matrix::zeros(rows, cols); })
-            .def("ones", [](size_t rows, size_t cols) { return steppable::Matrix::ones(rows, cols); })
-            .def("rref", &steppable::Matrix::rref)
-            .def("ref", &steppable::Matrix::ref)
-            .def("det", &steppable::Matrix::det)
-            .def("transpose", &steppable::Matrix::transpose)
+            .def("zeros", [](size_t rows, size_t cols) { return Matrix::zeros(rows, cols); })
+            .def("ones", [](size_t rows, size_t cols) { return Matrix::ones(rows, cols); })
+            .def("rref", &Matrix::rref)
+            .def("ref", &Matrix::ref)
+            .def("rank", &Matrix::rank)
+            .def("det", &Matrix::det)
+            .def("transpose", &Matrix::transpose)
             .def(nb::self + nb::self, nb::rv_policy::automatic_reference)
             .def(nb::self - nb::self, nb::rv_policy::automatic_reference)
             .def(nb::self += nb::self, nb::rv_policy::automatic_reference)
@@ -60,19 +61,26 @@ namespace steppable::__internals::bindings
             .def(nb::self >>= nb::self, nb::rv_policy::automatic_reference)
             .def(nb::self * nb::self, nb::rv_policy::automatic_reference)
             .def(nb::self *= nb::self, nb::rv_policy::automatic_reference)
-            .def("__neg__", [](steppable::Matrix& matrix) { return -matrix; })
-            .def("__pos__", [](steppable::Matrix& matrix) { return +matrix; })
-            .def("__repr__", [](steppable::Matrix& matrix) { return matrix.present(0); })
+            .def("__neg__", [](Matrix& matrix) { return -matrix; })
+            .def("__pos__", [](Matrix& matrix) { return +matrix; })
+            .def("__repr__", [](Matrix& matrix) { return matrix.present(0); })
             .def("__getitem__",
-                 [](steppable::Matrix& matrix, std::array<size_t, 2> ij) {
+                 [](Matrix& matrix, std::array<size_t, 2> ij) {
                      auto [i, j] = ij;
                      return matrix[{ .y = i, .x = j }];
                  })
-            .def_prop_ro("rows", &steppable::Matrix::getRows, nb::rv_policy::copy)
-            .def_prop_ro("cols", &steppable::Matrix::getCols, nb::rv_policy::copy)
+            .def_prop_ro("rows", &Matrix::getRows, nb::rv_policy::copy)
+            .def_prop_ro("cols", &Matrix::getCols, nb::rv_policy::copy)
             .def_prop_ro(
                 "dims",
-                [](steppable::Matrix& matrix) { return std::array<size_t, 2>{ matrix.getRows(), matrix.getCols() }; },
-                nb::rv_policy::copy);
+                [](Matrix& matrix) { return std::array<size_t, 2>{ matrix.getRows(), matrix.getCols() }; },
+                nb::rv_policy::copy)
+            .def(
+                "__iter__",
+                [](Matrix& self) {
+                    return nb::make_iterator(nb::type<Matrix>(), "MatrixIterator", self.begin(), self.end());
+                },
+                nb::keep_alive<0, 1>()); // Important for lifetime management
+        ;
     }
 } // namespace steppable::__internals::bindings
