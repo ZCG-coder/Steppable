@@ -111,10 +111,24 @@ namespace steppable
         static MatVec2D<Number> roundOffValues(const MatVec2D<Number>& data, int prec);
 
         /**
-         * @brief Converts the matrix to its row echelon form.
+         * @brief Converts the matrix to its reduced row echelon form.
+         * @return A new Matrix in reduced row echelon form.
+         */
+        [[nodiscard]] Matrix rref() const;
+
+        /**
+         * @brief Converts a matrix to row echelon form.
+         * @details Converts a matrix to row echelon form, with row elimation and swapping.
          * @return A new Matrix in row echelon form.
          */
-        [[nodiscard]] Matrix ref();
+        [[nodiscard]] Matrix ref() const;
+
+        /**
+         * @brief Find the determinant of a matrix.
+         * @details Calculates the reduced echelon form of the matrix.
+         * @return A Number object representing the determinant.
+         */
+        [[nodiscard]] Number det() const;
 
         /**
          * @brief Presents the matrix as a string.
@@ -154,6 +168,15 @@ namespace steppable
          */
         Matrix operator+(const Matrix& rhs) const;
 
+        /**
+         * @brief Adds the other matrix to current matrix and assigns result to this matrix.
+         *
+         * @details This operator performs in-place matrix addition, updating each element of the matrix by
+         * addition.
+         *
+         * @param rhs The other matrix.
+         * @return Instance of a new matrix after addition.
+         */
         Matrix operator+=(const Matrix& rhs);
 
         /**
@@ -172,6 +195,15 @@ namespace steppable
          */
         Matrix operator-(const Matrix& rhs) const;
 
+        /**
+         * @brief Subtracts the other matrix from current matrix and assigns result to this matrix.
+         *
+         * @details This operator performs in-place matrix subtraction, updating each element of the matrix by
+         * subtraction.
+         *
+         * @param rhs The other matrix.
+         * @return Instance of a new matrix after subtraction.
+         */
         Matrix operator-=(const Matrix& rhs);
 
         /**
@@ -198,7 +230,7 @@ namespace steppable
          * by multiplying it with the provided scalar value.
          *
          * @param rhs The scalar value to multiply each element of the matrix by.
-         * @return Matrix& Reference to the modified matrix after multiplication.
+         * @return Instance of a modified matrix after multiplication.
          */
         Matrix operator*=(const Number& rhs);
 
@@ -218,7 +250,7 @@ namespace steppable
          * The current matrix is updated to be the product of itself and rhs.
          *
          * @param rhs The matrix to multiply with this matrix.
-         * @return Matrix The updated matrix after multiplication.
+         * @return The updated matrix after multiplication.
          */
         Matrix operator*=(const Matrix& rhs);
 
@@ -261,5 +293,17 @@ namespace steppable
          * @return The value of the matrix element at the specified coordinates.
          */
         Number operator[](const YXPoint& point) const;
+
+        /**
+         * @brief Get the number of rows in the matrix.
+         * @return The number of rows in the matrix.
+         */
+        [[nodiscard]] size_t getRows() const { return _rows; }
+
+        /**
+         * @brief Get the number of columns in the matrix.
+         * @return The number of columns in the matrix.
+         */
+        [[nodiscard]] size_t getCols() const { return _cols; }
     };
 } // namespace steppable

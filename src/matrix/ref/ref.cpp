@@ -49,7 +49,7 @@ int main()
                                                 { 1, 1, 1, 1, 1, 5 },
                                                 { 2, -1, 2, -1, 3, 3 } };
     auto mat = steppable::Matrix(matrix);
-    mat = mat.ref();
+    mat = mat.rref();
 
     std::cout << mat.present(1) << "\n";
 }

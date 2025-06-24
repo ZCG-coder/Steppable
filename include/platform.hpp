@@ -60,6 +60,10 @@ namespace steppable::__internals::utils
      */
     inline void programSafeExit(const int status)
     {
+#ifdef STP_BINDINGS
+        return;
+#endif
+
 #ifdef MACOSX
         exit(status); // NOLINT(concurrency-mt-unsafe)
 #else

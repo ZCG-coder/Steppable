@@ -140,7 +140,7 @@ namespace steppable
         return data;
     }
 
-    Matrix Matrix::ref()
+    Matrix Matrix::rref() const
     {
         // Adapted from https://stackoverflow.com/a/31761026/14868780
         auto matrix = data;
@@ -199,6 +199,88 @@ namespace steppable
 
         matrix = roundOffValues(matrix, static_cast<int>(prec));
         return matrix;
+    }
+
+    Matrix Matrix::ref() const
+    {
+        MatVec2D<Number> mat = data;
+        mat = roundOffValues(mat, static_cast<int>(prec) + 3);
+
+        for (int col = 0, row = 0; col < _cols && row < _rows; ++col)
+        {
+            // Find first non-zero in column col, at or below row
+            int sel = -1;
+            for (int i = row; i < _rows; ++i)
+                if (mat[i][col] != 0.0)
+                {
+                    sel = i;
+                    break;
+                }
+            if (sel == -1)
+                continue; // All zeros in this column
+
+            if (sel != row)
+                std::swap(mat[row], mat[sel]); // Swap if needed
+
+            // Eliminate below
+            for (int i = row + 1; i < _rows; ++i)
+            {
+                Number factor = mat[i][col] / mat[row][col];
+                for (int j = col; j < _cols; ++j)
+                    mat[i][j] -= factor * mat[row][j];
+            }
+            ++row;
+        }
+        mat = roundOffValues(mat, static_cast<int>(prec));
+        return mat;
+    }
+
+    Number Matrix::det() const
+    {
+        if (_rows != _cols)
+        {
+            output::error("Matrix::det"s, "Matrix is not a square."s);
+            utils::programSafeExit(1);
+        }
+        int sign = 1;
+        Number determinant = 1;
+        MatVec2D<Number> mat = data;
+        mat = roundOffValues(mat, static_cast<int>(prec) + 3);
+
+        for (size_t col = 0, row = 0; col < _cols && row < _rows; ++col)
+        {
+            // Find first non-zero in column col, at or below row
+            size_t sel = -1;
+            for (size_t i = row; i < _rows; ++i)
+                if (mat[i][col] != 0.0)
+                {
+                    sel = i;
+                    break;
+                }
+            if (sel == -1)
+                continue; // All zeros in this column
+
+            if (sel != row)
+            {
+                // Swap rows - determinant becomes negative
+                sign = -sign;
+                std::swap(mat[row], mat[sel]);
+            }
+
+            // Eliminate below
+            for (size_t i = row + 1; i < _rows; ++i)
+            {
+                Number factor = mat[i][col] / mat[row][col];
+                for (size_t j = col; j < _cols; ++j)
+                    mat[i][j] -= factor * mat[row][j];
+            }
+            ++row;
+        }
+        determinant *= sign;
+        mat = roundOffValues(mat, static_cast<int>(prec));
+        for (size_t i = 0; i < _cols; i++)
+            determinant *= mat[i][i];
+        return determinant;
     }
 
     Matrix Matrix::operator+(const Matrix& rhs) const

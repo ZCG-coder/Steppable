@@ -21,6 +21,7 @@
  **************************************************************************************************/
 
 #include "steppable/mat2d.hpp"
+#include "steppable/number.hpp"
 #include "testing.hpp"
 #include "util.hpp"
 
@@ -63,5 +64,13 @@ steppable::Matrix mat2({
 // ( A  )   = A
 _.assertIsEqual(mat2.transpose().transpose(), mat2);
 _.assertIsNotEqual(mat2.transpose(), mat2);
+SECTION_END()
+
+SECTION(Determinant)
+steppable::Matrix mat2({
+    { 6, 90 },
+    { 4892, 892 },
+});
+_.assertIsEqual(mat2.det(), steppable::Number(-434928));
 SECTION_END()
 TEST_END()
