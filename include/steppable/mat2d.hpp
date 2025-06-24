@@ -87,11 +87,11 @@ namespace steppable
 
         /**
          * @brief Constructs a matrix with specified dimensions and an optional fill value.
-         * @param cols The number of columns.
          * @param rows The number of rows.
+         * @param cols The number of columns.
          * @param fill The value to fill the matrix with (default is "0").
          */
-        Matrix(size_t cols, size_t rows, const Number& fill = Number("0"));
+        Matrix(size_t rows, size_t cols, const Number& fill = Number("0"));
 
         /**
          * @brief Constructs a matrix from a 2D vector of data.
@@ -138,19 +138,33 @@ namespace steppable
 
         /**
          * @brief Creates a matrix filled with ones.
-         * @param cols The number of columns.
          * @param rows The number of rows.
+         * @param cols The number of columns.
          * @return A Matrix filled with ones.
          */
-        static Matrix ones(size_t cols, size_t rows);
+        static Matrix ones(size_t rows, size_t cols);
 
         /**
          * @brief Creates a matrix filled with zeros.
-         * @param cols The number of columns.
          * @param rows The number of rows.
+         * @param cols The number of columns.
          * @return A Matrix filled with zeros.
          */
-        static Matrix zeros(size_t cols, size_t rows);
+        static Matrix zeros(size_t rows, size_t cols);
+
+        /**
+         * @brief Creates a diagnal matrix
+         *
+         * @param colsRows Number of columns and rows.
+         * @return A diagnal matrix filled with the specified values.
+         */
+        static Matrix diag(size_t colsRows, const Number& fill = 0);
+
+        template<concepts::Numeric NumberT>
+        static Matrix diag(const size_t colsRows, const NumberT& fill = 0)
+        {
+            diag(colsRows, Number(fill));
+        }
 
         /**
          * @brief Transposes a matrix.
@@ -255,6 +269,46 @@ namespace steppable
         Matrix operator*=(const Matrix& rhs);
 
         /**
+         * @brief Join a matrix to the right of the current matrix.
+         * @details Joins a matrix to the right of the current matrix. Requires two matrices to have to same number of
+         * rows.
+         *
+         * @param rhs The other matrix to join.
+         * @return A new matrix where the two matrices are joined.
+         */
+        Matrix operator<<(const Matrix& rhs) const;
+
+        /**
+         * @brief Join a matrix to the right of the current matrix, then assign the result to the current one.
+         * @details Joins a matrix to the right of the current matrix. Requires two matrices to have to same number of
+         * rows. The result is assigned to the current matrix.
+         *
+         * @param rhs The other matrix to join.
+         * @return A new matrix where the two matrices are joined.
+         */
+        Matrix operator<<=(const Matrix& rhs);
+
+        /**
+         * @brief Join a matrix to the left of the current matrix.
+         * @details Joins a matrix to the left of the current matrix. Requires two matrices to have to same number of
+         * rows.
+         *
+         * @param rhs The other matrix to join.
+         * @return A new matrix where the two matrices are joined.
+         */
+        Matrix operator>>(const Matrix& rhs) const;
+
+        /**
+         * @brief Join a matrix to the left of the current matrix, then assign the result to the current one.
+         * @details Joins a matrix to the left of the current matrix. Requires two matrices to have to same number of
+         * rows. The result is assigned to the current matrix.
+         *
+         * @param rhs The other matrix to join.
+         * @return A new matrix where the two matrices are joined.
+         */
+        Matrix operator>>=(const Matrix& rhs);
+
+        /**
          * @brief Test for equal matrices.
          * @details If the current matrix is equal to the other matrix, i.e., equal in all of its values, returns True.
          *
@@ -293,6 +347,17 @@ namespace steppable
          * @return The value of the matrix element at the specified coordinates.
          */
         Number operator[](const YXPoint& point) const;
+
+        /**
+         * @brief Accesses the matrix element at the specified YXPoint.
+         *
+         * This operator allows read-only access to the matrix element located at the given
+         * YXPoint coordinates.
+         *
+         * @param point The YXPoint specifying the (y, x) coordinates of the element.
+         * @return The value of the matrix element at the specified coordinates.
+         */
+        Matrix operator[](const YX2Points& point) const;
 
         /**
          * @brief Get the number of rows in the matrix.

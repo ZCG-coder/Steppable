@@ -73,4 +73,44 @@ steppable::Matrix mat2({
 });
 _.assertIsEqual(mat2.det(), steppable::Number(-434928));
 SECTION_END()
+
+SECTION(Matrix slicing)
+steppable::Matrix matrix({
+    { 5, 4, 3 },
+    { 8, 9, 5 },
+    { 6, 5, 3 },
+    { 11, 9, 6 },
+});
+matrix = matrix[{ .y1 = 1, .x1 = 0, .y2 = 1, .x2 = 2 }];
+_.assertIsEqual(matrix, steppable::Matrix({ { 8, 9, 5 } }));
+SECTION_END()
+
+SECTION(Matrix joining)
+steppable::Matrix matrix1({
+    { 5, 4, 3 },
+    { 8, 9, 5 },
+    { 6, 5, 3 },
+});
+steppable::Matrix matrix2({
+    { 11, 9, 6 },
+    { 8, 9, 5 },
+    { 6, 5, 3 },
+});
+steppable::Matrix matrix3 = matrix1 << matrix2;
+steppable::Matrix matrix4 = matrix1 >> matrix2;
+
+_.assertIsEqual(matrix3,
+                steppable::Matrix({
+                    { 5, 4, 3, 11, 9, 6 },
+                    { 8, 9, 5, 8, 9, 5 },
+                    { 6, 5, 3, 6, 5, 3 },
+                }));
+
+_.assertIsEqual(matrix4,
+                steppable::Matrix({
+                    { 11, 9, 6, 5, 4, 3 },
+                    { 8, 9, 5, 8, 9, 5 },
+                    { 6, 5, 3, 6, 5, 3 },
+                }));
+SECTION_END()
 TEST_END()

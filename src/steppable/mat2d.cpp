@@ -62,12 +62,16 @@ namespace steppable
                     maxLen = std::max(length, maxLen);
                 }
             }
-            for (size_t rowIdx = 0; rowIdx < matrix.size(); rowIdx++)
+
+            size_t matrixRows = matrix.size();
+            for (size_t rowIdx = 0; rowIdx < matrixRows; rowIdx++)
             {
                 const auto& row = matrix[rowIdx];
-                if (rowIdx == 0)
+                if (matrixRows == 1)
+                    ss << "[";
+                else if (rowIdx == 0)
                     ss << symbols::MATRIX_LEFT_TOP;
-                else if (rowIdx == matrix.size() - 1)
+                else if (rowIdx == matrixRows - 1)
                     ss << symbols::MATRIX_LEFT_BOTTOM;
                 else
                     ss << symbols::MATRIX_LEFT_MIDDLE;
@@ -80,9 +84,11 @@ namespace steppable
                     ss << " ";
                 }
 
-                if (rowIdx == 0)
+                if (matrixRows == 1)
+                    ss << "]";
+                else if (rowIdx == 0)
                     ss << symbols::MATRIX_RIGHT_TOP;
-                else if (rowIdx == matrix.size() - 1)
+                else if (rowIdx == matrixRows - 1)
                     ss << symbols::MATRIX_RIGHT_BOTTOM;
                 else
                     ss << symbols::MATRIX_RIGHT_MIDDLE;
@@ -94,7 +100,7 @@ namespace steppable
 
     Matrix::Matrix() : data({ {} }) { _cols = _rows = 0; }
 
-    Matrix::Matrix(const size_t cols, const size_t rows, const Number& fill) :
+    Matrix::Matrix(const size_t rows, const size_t cols, const Number& fill) :
         data(std::vector(rows, std::vector(cols, fill))), _cols(cols), _rows(rows)
     {
         data = roundOffValues(data, static_cast<int>(prec));
@@ -115,13 +121,15 @@ namespace steppable
         if (x > _cols)
         {
             output::error("Matrix::operator[]"s,
-                          "Incorrect x parameter. x exceeds the number of columns in this matrix."s);
+                          "Incorrect x parameter. {0} exceeds the number of columns in this matrix ({1})."s,
+                          { std::to_string(x), std::to_string(_cols) });
             utils::programSafeExit(1);
         }
         if (y > _rows)
         {
             output::error("Matrix::operator[]"s,
-                          "Incorrect y parameter. y exceeds the number of rows in this matrix."s);
+                          "Incorrect y parameter. {0} exceeds the number of rows in this matrix ({1})."s,
+                          { std::to_string(y), std::to_string(_rows) });
             utils::programSafeExit(1);
         }
     }
@@ -353,12 +361,74 @@ namespace steppable
                          "number of rows in the second matrix"s);
             utils::programSafeExit(1);
         }
-        Matrix matrix = Matrix::zeros(rhs._cols, _rows);
+        Matrix matrix = Matrix::zeros(_rows, rhs._cols);
         for (size_t j = 0; j < rhs._rows; j++)
             for (size_t k = 0; k < _cols; k++)
                 for (size_t i = 0; i < _rows; i++)
                     matrix.data[i][j] += data[i][k] * rhs.data[k][j];
         return matrix;
+    }
+
+    Matrix Matrix::operator<<(const Matrix& rhs) const
+    {
+        if (rhs._rows != _rows)
+        {
+            output::error("Matrix::operator<<"s,
+                          "Incorrect RHS matrix dimensions. Expect {0} rows, got {1}"s,
+                          { std::to_string(rhs._rows), std::to_string(rhs._rows) });
+            utils::programSafeExit(1);
+        }
+
+        auto matrix = Matrix(_rows, _cols + rhs._cols);
+
+        // Copy current matrix.
+        for (size_t i = 0; i < _rows; i++)
+            for (size_t j = 0; j < _cols; j++)
+                matrix[{ .y = i, .x = j }] = data[i][j];
+
+        // Copy other matrix.
+        for (size_t i = 0; i < _rows; i++)
+            for (size_t j = 0; j < rhs._cols; j++)
+                matrix[{ .y = i, .x = j + _cols }] = rhs.data[i][j];
+
+        return matrix;
+    }
+
+    Matrix Matrix::operator>>(const Matrix& rhs) const
+    {
+        if (rhs._rows != _rows)
+        {
+            output::error("Matrix::operator>>"s,
+                          "Incorrect RHS matrix dimensions. Expect {0} rows, got {1}"s,
+                          { std::to_string(rhs._rows), std::to_string(rhs._rows) });
+            utils::programSafeExit(1);
+        }
+
+        auto matrix = Matrix(_rows, _cols + rhs._cols);
+
+        // Copy other matrix.
+        for (size_t i = 0; i < _rows; i++)
+            for (size_t j = 0; j < rhs._cols; j++)
+                matrix[{ .y = i, .x = j }] = rhs.data[i][j];
+
+        // Copy current matrix.
+        for (size_t i = 0; i < _rows; i++)
+            for (size_t j = 0; j < _cols; j++)
+                matrix[{ .y = i, .x = j + _cols }] = data[i][j];
+
+        return matrix;
+    }
+
+    Matrix Matrix::operator<<=(const Matrix& rhs)
+    {
+        *this = *this << rhs;
+        return *this;
+    }
+
+    Matrix Matrix::operator>>=(const Matrix& rhs)
+    {
+        *this = *this >> rhs;
+        return *this;
     }
 
     Matrix Matrix::operator*=(const Number& rhs)
@@ -375,21 +445,29 @@ namespace steppable
 
     std::string Matrix::present(const int endRows) const { return prettyPrint::printers::ppMatrix(data, endRows); }
 
-    Matrix Matrix::ones(const size_t cols, const size_t rows)
+    Matrix Matrix::ones(const size_t rows, const size_t cols)
     {
-        auto matrix = Matrix(cols, rows, Number("1"));
+        auto matrix = Matrix(rows, cols, Number("1"));
         return matrix;
     }
 
-    Matrix Matrix::zeros(size_t cols, size_t rows)
+    Matrix Matrix::zeros(const size_t rows, const size_t cols)
     {
-        auto matrix = Matrix(cols, rows);
+        auto matrix = Matrix(rows, cols);
+        return matrix;
+    }
+
+    Matrix Matrix::diag(const size_t colsRows, const Number& fill)
+    {
+        auto matrix = Matrix(colsRows, colsRows);
+        for (size_t i = 0; i < colsRows; i++)
+            matrix[{ .y = i, .x = i }] = fill;
         return matrix;
     }
 
     Matrix Matrix::transpose() const
     {
-        Matrix matrix(_rows, _cols);
+        Matrix matrix(_cols, _rows);
         for (size_t i = 0; i < _cols; i++)
             for (size_t j = 0; j < _rows; j++)
                 matrix[{ .y = j, .x = i }] = data[i][j];
@@ -416,5 +494,29 @@ namespace steppable
 
         _checkIdxSanity(&point);
         return data[y][x];
+    }
+
+    Matrix Matrix::operator[](const YX2Points& point) const
+    {
+        auto [y1, x1, y2, x2] = point;
+        const auto startPoint = YXPoint{ .y = y1, .x = x1 };
+        _checkIdxSanity(&startPoint);
+
+        const auto endPoint = YXPoint{ .y = y2, .x = x2 };
+        _checkIdxSanity(&endPoint);
+
+        // Make sure the end dimensions are always greater
+        if (y2 < y1 or x2 < x1)
+        {
+            std::swap(y2, y1);
+            std::swap(x2, x1);
+        }
+
+        auto matrix = Matrix(y2 - y1 + 1, x2 - x1 + 1);
+
+        for (size_t i = y1; i <= y2; i++)
+            for (size_t j = x1; j <= x2; j++)
+                matrix[{ .y = i - y1, .x = j - x1 }] = data[i][j];
+        return matrix;
     }
 } // namespace steppable

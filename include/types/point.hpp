@@ -45,4 +45,17 @@ namespace steppable
         size_t y = 0;
         size_t x = 0;
     };
+
+    /**
+     * @struct YX2Points
+     * @brief A points object that represents two points
+     * @details Represents two 2-D points on a 2D plane.
+     */
+    struct YX2Points
+    {
+        size_t y1 = 0;
+        size_t x1 = 0;
+        size_t y2 = 0;
+        size_t x2 = 0;
+    };
 } // namespace steppable
