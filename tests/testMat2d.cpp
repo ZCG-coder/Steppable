@@ -114,7 +114,7 @@ _.assertIsEqual(matrix4,
                 }));
 SECTION_END()
 
-SECTION(Matrix joining)
+SECTION(Matrix Rank)
 using namespace steppable::literals;
 
 steppable::Matrix matrix1({
@@ -123,5 +123,31 @@ steppable::Matrix matrix1({
     { 3, 5, 0 },
 });
 _.assertIsEqual(matrix1.rank(), 2_n);
+SECTION_END()
+
+SECTION(Matrix inverse)
+steppable::Matrix matrix1({
+    { -1, 1.5 },
+    { 1, -1 },
+});
+_.assertIsEqual((matrix1 ^ -1),
+                steppable::Matrix({ {
+                                        2.0000000000,
+                                        3.0000000000,
+                                    },
+                                    {
+                                        2.0000000000,
+                                        2.0000000000,
+                                    } }));
+
+steppable::Matrix matrix2(
+    {
+        { 69, 420, 475 },
+        { 589, 4795, 33 },
+        { 52, 47.5, 20.2 },
+    },
+    6);
+auto test = (matrix2 ^ -1 ^ -1).roundOffValues(1);
+_.assertIsEqual(test, matrix2);
 SECTION_END()
 TEST_END()

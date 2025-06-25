@@ -106,7 +106,8 @@ namespace steppable
         data = roundOffValues(data, static_cast<int>(prec));
     }
 
-    Matrix::Matrix(const MatVec2D<Number>& data) : data(data), _cols(data.front().size()), _rows(data.size())
+    Matrix::Matrix(const MatVec2D<Number>& data, const size_t prec) :
+        data(data), _cols(data.front().size()), _rows(data.size()), prec(prec)
     {
         for (auto& row : this->data)
             for (auto& value : row)
@@ -134,7 +135,7 @@ namespace steppable
         }
     }
 
-    MatVec2D<Number> Matrix::roundOffValues(const MatVec2D<Number>& _data, const int prec)
+    MatVec2D<Number> Matrix::roundOffValues(const MatVec2D<Number>& _data, const size_t prec)
     {
         auto data = _data;
         for (auto& row : data)
@@ -153,6 +154,8 @@ namespace steppable
             }
         return data;
     }
+
+    Matrix Matrix::roundOffValues(const size_t prec) const { return roundOffValues(data, prec); }
 
     Matrix Matrix::rref() const
     {
@@ -214,7 +217,7 @@ namespace steppable
         }
 
         matrix = roundOffValues(matrix, static_cast<int>(prec));
-        return matrix;
+        return { matrix, prec };
     }
 
     Matrix Matrix::ref() const
@@ -248,7 +251,7 @@ namespace steppable
             ++row;
         }
         mat = roundOffValues(mat, static_cast<int>(prec));
-        return mat;
+        return { mat, prec };
     }
 
     Number Matrix::det() const
@@ -449,6 +452,29 @@ namespace steppable
     {
         *this = *this * rhs;
         return *this;
+    }
+
+    Matrix Matrix::operator^(const Number& times) const
+    {
+        if (_rows != _cols)
+        {
+            output::error("Matrix::operator^"s, "Matrix is not square."s);
+            utils::programSafeExit(1);
+        }
+
+        auto matrix = *this;
+
+        // Take inverse of matrix
+        if (times == -1)
+        {
+            matrix <<= diag(_rows);
+            matrix = matrix.rref();
+            matrix = matrix[{ .y1 = 0, .x1 = _rows, .y2 = _rows - 1, .x2 = _cols * 2 - 1 }];
+            return matrix;
+        }
+        for (Number i = 0; i < times; ++i)
+            matrix *= matrix;
+        return matrix;
     }
 
     std::string Matrix::present(const int endRows) const { return prettyPrint::printers::ppMatrix(data, endRows); }

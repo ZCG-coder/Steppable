@@ -145,6 +145,20 @@ namespace steppable::testing
         }
 
         /**
+         * @brief Asserts that two numeric values are nearly equal.
+         * @param[in] a The first object.
+         * @param[in] b The second object.
+         */
+        template<concepts::Numeric ValueT>
+        void assertIsNearlyEqual(ValueT a, ValueT b)
+        {
+            const std::string& conditionName =
+                __internals::format::format("Value {0} ≈ {1}", { std::to_string(a), std::to_string(b) });
+            // Take less than 10% error as equal
+            _assertCondition(abs(a - b) / a < 0.1, conditionName);
+        }
+
+        /**
          * @brief Asserts that two numeric values are not equal.
          * @param[in] a The first object.
          * @param[in] b The second object.

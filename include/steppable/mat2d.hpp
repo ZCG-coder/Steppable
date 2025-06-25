@@ -79,7 +79,16 @@ namespace steppable
 
         void _checkIdxSanity(const YXPoint* point) const;
 
+        static MatVec2D<Number> roundOffValues(const MatVec2D<Number>& data, size_t prec);
+
     public:
+        /**
+         * @brief Round off all values to a specified precision.
+         * @param prec Precision of the new matrix.
+         * @return A new instance of the current matrix, with values rounded to the desired precision.
+         */
+        [[nodiscard]] Matrix roundOffValues(size_t prec) const;
+
         /**
          * @brief Default constructor for the Matrix class.
          */
@@ -96,19 +105,19 @@ namespace steppable
         /**
          * @brief Constructs a matrix from a 2D vector of data.
          * @param data The 2D vector representing the matrix data.
+         * @param prec Precision of the numbers.
          */
-        Matrix(const MatVec2D<Number>& data);
+        Matrix(const MatVec2D<Number>& data, size_t prec = 5);
 
         template<concepts::Numeric ValueT>
-        Matrix(const MatVec2D<ValueT>& data) : _cols(data.front().size()), _rows(data.size())
+        Matrix(const MatVec2D<ValueT>& data, const size_t prec) :
+            _cols(data.front().size()), _rows(data.size()), prec(prec)
         {
             this->data = std::vector(_rows, std::vector(_cols, Number("0")));
             for (size_t i = 0; i < _rows; i++)
                 for (size_t j = 0; j < _cols; j++)
-                    this->data[i][j] = data[i][j];
+                    this->data[i][j] = Number(data[i][j], prec);
         }
-
-        static MatVec2D<Number> roundOffValues(const MatVec2D<Number>& data, int prec);
 
         /**
          * @brief Converts the matrix to its reduced row echelon form.
@@ -159,7 +168,7 @@ namespace steppable
          * @param fill Number to fill into the matrix.
          * @return A diagnal matrix filled with the specified values.
          */
-        static Matrix diag(size_t colsRows, const Number& fill = 0);
+        static Matrix diag(size_t colsRows, const Number& fill = 1);
 
         /**
          * @brief Creates a diagnal matrix
@@ -297,6 +306,26 @@ namespace steppable
         Matrix operator*=(const Matrix& rhs);
 
         /**
+         * @brief Raises the current matrix to a certain power.
+         * @details Only positive integers (including zero) and the negative number -1 are allowed. Only square matrices
+         * are supported. The matrix is multiplied by itself for a specified number of times.
+         *
+         * @param times Times to raise the matrix to.
+         * @return A new matrix of the power result.
+         */
+        Matrix operator^(const Number& times) const;
+
+        /**
+         * @brief Raises the current matrix to a certain power, and assigns result to the current matrix.
+         * @details Only positive integers (including zero) and the negative number -1 are allowed. Only square matrices
+         * are supported.
+         *
+         * @param times Times to raise the matrix to.
+         * @return The current matrix.
+         */
+        Matrix operator^=(const Number& times);
+
+        /**
          * @brief Join a matrix to the right of the current matrix.
          * @details Joins a matrix to the right of the current matrix. Requires two matrices to have to same number of
          * rows.
@@ -398,5 +427,7 @@ namespace steppable
          * @return The number of columns in the matrix.
          */
         [[nodiscard]] size_t getCols() const { return _cols; }
+
+        [[nodiscard]] MatVec2D<Number> getData() const { return data; }
     };
 } // namespace steppable
