@@ -42,9 +42,10 @@ namespace steppable::__internals::bindings
     void bindingsMatrix(nanobind::module_& mod)
     {
         nb::class_<Matrix>(mod, "Matrix")
-            .def(nb::init<MatVec2D<Number>>(), "values"_a)
-            .def(nb::init<MatVec2D<double>>(), "values"_a)
+            .def(nb::init<MatVec2D<Number>, size_t>(), "values"_a, "prec"_a = 5)
+            .def(nb::init<MatVec2D<double>, size_t>(), "values"_a, "prec"_a = 5)
             .def("zeros", [](size_t rows, size_t cols) { return Matrix::zeros(rows, cols); })
+            .def("diag", [](size_t rows_cols, const Number& fill) { return Matrix::diag(rows_cols, fill); })
             .def("ones", [](size_t rows, size_t cols) { return Matrix::ones(rows, cols); })
             .def("rref", &Matrix::rref)
             .def("ref", &Matrix::ref)
