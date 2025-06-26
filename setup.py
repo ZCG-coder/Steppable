@@ -194,7 +194,7 @@ try:
         zip_safe=False,
         extras_require={"test": ["pytest>=6.0"]},
         license="MIT",
-        license_files = ('LICENSE',),
+        license_files=("LICENSE",),
         python_requires=">=3.10",
     )
 except Exception as e:
