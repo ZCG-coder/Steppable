@@ -181,7 +181,7 @@ namespace steppable
         template<concepts::Numeric NumberT>
         static Matrix diag(const size_t colsRows, const NumberT& fill = 0)
         {
-            diag(colsRows, Number(fill));
+            return diag(colsRows, Number(fill));
         }
 
         /**
