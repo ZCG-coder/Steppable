@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['faq_0',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]],
-  ['faq_20frequently_20asked_20questions_1',['FAQ (Frequently Asked Questions)',['../md_include_2imgui_2docs_2FAQ.html',1,'']]],
-  ['fonts_2',['FONTS',['../md_include_2imgui_2docs_2FONTS.html',1,'']]],
-  ['for_20steppable_3',['Download links for Steppable',['../md_wiki_2Downloads.html',1,'']]],
-  ['frequently_20asked_20questions_4',['FAQ (Frequently Asked Questions)',['../md_include_2imgui_2docs_2FAQ.html',1,'']]],
-  ['frequently_20asked_20questions_20faq_5',['Frequently Asked Questions (FAQ)',['../md_wiki_2FAQ.html',1,'']]]
+  ['get_20started_0',['Get Started',['../md_wiki_2Building-Steppable-_07build_8py_08.html#autotoc_md8',1,'Get Started'],['../md_wiki_2Building-Steppable.html#autotoc_md11',1,'Get Started']]],
+  ['getting_20the_20source_20code_1',['Getting the Source Code',['../md_wiki_2Getting-the-Source.html',1,'']]],
+  ['graphs_2',['Graphs',['../md_wiki_2Performance.html#autotoc_md59',1,'']]],
+  ['guards_3',['Header Guards',['../md_wiki_2Coding-Style-_07CPP_08.html#autotoc_md20',1,'']]]
 ];

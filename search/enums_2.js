@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['myitemcolumnid_0',['MyItemColumnID',['../namespaceanonymous__namespace_02imgui__demo_8cpp_03.html#a52b25b76f375df5772f876c6ade9b3cd',1,'anonymous_namespace{imgui_demo.cpp}']]]
+  ['rounding_0',['Rounding',['../namespacesteppable.html#a75a40e6d8c86c44dbcbd2381d61762d9',1,'steppable']]],
+  ['roundingmode_1',['RoundingMode',['../namespacesteppable.html#ae24dd98221a466068867d7ef785741f1',1,'steppable']]]
 ];

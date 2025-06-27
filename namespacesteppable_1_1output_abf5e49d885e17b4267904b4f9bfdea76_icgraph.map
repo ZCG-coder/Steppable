@@ -1,17 +1,23 @@
 <map id="steppable::output::info" name="steppable::output::info">
-<area shape="rect" id="Node000001" title="Prints an info message." alt="" coords="445,187,613,215"/>
-<area shape="rect" id="Node000002" href="$classsteppable_1_1testing_1_1TestCase.html#a72a291251c17f79279ad7235120b7e2c" title="Asserts a given condition and logs the condition name if it fails." alt="" coords="259,179,397,223"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="429,204,397,204,397,198,429,198"/>
+<area shape="rect" id="Node000001" title="Prints an info message." alt="" coords="511,299,679,327"/>
+<area shape="rect" id="Node000002" href="$classsteppable_1_1testing_1_1TestCase.html#a16e0ce99e2be1174aa9a714315fec39f" title="Asserts a given condition and logs the condition name if it fails." alt="" coords="259,221,463,266"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="531,297,438,269,440,264,532,292"/>
+<area shape="rect" id="Node000010" href="$classsteppable_1_1Matrix.html#a2ba88a7f183393d87835889a8c49d76e" title="Matrix multiplication." alt="" coords="289,291,432,335"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="496,316,433,316,433,310,496,310"/>
+<area shape="rect" id="Node000011" href="$classsteppable_1_1Matrix.html#a138d4246237d27a368e2080e8c7ce482" title="Converts the matrix to its reduced row echelon form." alt="" coords="278,359,444,387"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="526,334,464,350,421,361,420,356,462,345,525,329"/>
 <area shape="rect" id="Node000003" href="$classsteppable_1_1testing_1_1TestCase.html#a2d411e579a2e94888801e5c86ce0a1c1" title="Asserts that a boolean value is false." alt="" coords="24,5,192,50"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="303,167,263,114,237,87,209,65,189,53,191,48,212,60,241,84,267,111,307,164"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="337,209,284,136,249,98,209,65,189,53,191,48,212,60,253,94,288,133,341,206"/>
 <area shape="rect" id="Node000004" href="$classsteppable_1_1testing_1_1TestCase.html#a3156df668add7e3abe7c0b47fa1f9cfd" title="Asserts that two strings are equal." alt="" coords="17,75,199,119"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="278,172,210,134,182,122,184,118,212,129,281,168"/>
-<area shape="rect" id="Node000005" href="$classsteppable_1_1testing_1_1TestCase.html#a04f2b690d739f3d1c35a3ee7bc62df5f" title="Asserts that two integers are equal." alt="" coords="17,144,199,189"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="243,190,199,183,200,178,244,185"/>
-<area shape="rect" id="Node000006" href="$classsteppable_1_1testing_1_1TestCase.html#a61790bb36fd5283cec131d81df83aa0e" title="Asserts that two strings are not equal." alt="" coords="5,213,211,258"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="244,217,211,222,211,217,243,212"/>
-<area shape="rect" id="Node000007" href="$classsteppable_1_1testing_1_1TestCase.html#a5b2c520e1adfc9dcd388736b55f36aea" title="Asserts that two integers are not equal." alt="" coords="5,283,211,327"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="281,234,212,273,184,284,182,280,210,268,278,230"/>
-<area shape="rect" id="Node000008" href="$classsteppable_1_1testing_1_1TestCase.html#a2eb654185b127e9c62f4fdda127beac1" title="Asserts that a boolean value is true." alt="" coords="27,352,189,397"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="307,238,267,291,241,318,212,342,191,354,188,349,209,337,237,315,263,288,303,235"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="321,213,270,172,209,134,184,122,186,118,212,129,273,168,324,209"/>
+<area shape="rect" id="Node000005" href="$classsteppable_1_1testing_1_1TestCase.html#a39cd58e31701c3d818e5b4f2dea1d24a" title="Asserts that two numeric values are equal." alt="" coords="17,144,199,189"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="270,219,183,192,184,187,271,214"/>
+<area shape="rect" id="Node000006" href="$classsteppable_1_1testing_1_1TestCase.html#a5a36f1c3f2a3ad74594efda06ab011d9" title="Asserts that two numeric values are nearly equal." alt="" coords="13,213,203,274"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="243,246,203,246,203,241,243,241"/>
+<area shape="rect" id="Node000007" href="$classsteppable_1_1testing_1_1TestCase.html#a61790bb36fd5283cec131d81df83aa0e" title="Asserts that two strings are not equal." alt="" coords="5,299,211,343"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="271,274,184,301,183,296,270,269"/>
+<area shape="rect" id="Node000008" href="$classsteppable_1_1testing_1_1TestCase.html#a72ee1e9f72300818515d4331f0211246" title="Asserts that two numeric values are not equal." alt="" coords="5,368,211,413"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="266,276,260,280,245,299,237,318,229,338,212,358,194,370,191,365,209,354,225,335,232,316,240,296,257,276,263,272"/>
+<area shape="rect" id="Node000009" href="$classsteppable_1_1testing_1_1TestCase.html#a2eb654185b127e9c62f4fdda127beac1" title="Asserts that a boolean value is true." alt="" coords="27,437,189,482"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="263,277,261,280,247,298,240,316,237,352,234,389,227,408,213,427,191,443,188,438,209,423,222,405,229,388,232,351,235,314,242,295,257,277,260,274"/>
 </map>

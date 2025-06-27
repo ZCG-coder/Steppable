@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['consoleoutput_0',['ConsoleOutput',['../classsteppable_1_1prettyPrint_1_1ConsoleOutput.html',1,'steppable::prettyPrint']]],
-  ['customvertex_1',['CUSTOMVERTEX',['../structCUSTOMVERTEX.html',1,'']]]
+  ['data_0',['Data',['../classsteppable_1_1Data.html',1,'steppable']]],
+  ['data_3c_20_5fweekday_2c_20stringliteral_7b_20_22weekday_22_20_7d_3e_1',['Data&lt; _Weekday, StringLiteral{ &quot;Weekday&quot; }&gt;',['../classsteppable_1_1Data.html',1,'steppable']]]
 ];

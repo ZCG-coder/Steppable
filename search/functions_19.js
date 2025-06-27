@@ -1,27 +1,4 @@
 var searchData=
 [
-  ['_7eexampleappconsole_0',['~ExampleAppConsole',['../structExampleAppConsole.html#a91ef200056f867cf97a57db91bb991c4',1,'ExampleAppConsole']]],
-  ['_7efreetypefont_1',['~FreeTypeFont',['../structanonymous__namespace_02imgui__freetype_8cpp_03_1_1FreeTypeFont.html#a4ff84ecb11d8ac8c15ae70cd3996afea',1,'anonymous_namespace{imgui_freetype.cpp}::FreeTypeFont']]],
-  ['_7eimdrawlist_2',['~ImDrawList',['../structImDrawList.html#a19fd8d920c202cf8ba5f5c55c43d1d2a',1,'ImDrawList']]],
-  ['_7eimdrawlistsplitter_3',['~ImDrawListSplitter',['../structImDrawListSplitter.html#a712b8ba85de1e4095db67a86a3b80e21',1,'ImDrawListSplitter']]],
-  ['_7eimfont_4',['~ImFont',['../structImFont.html#a377366ed7c5d076363ad4760aeff63ec',1,'ImFont']]],
-  ['_7eimfontatlas_5',['~ImFontAtlas',['../structImFontAtlas.html#a950b4f7586ad7786ae251b957d67a268',1,'ImFontAtlas']]],
-  ['_7eimgui_5fimpldx10_5fviewportdata_6',['~ImGui_ImplDX10_ViewportData',['../structImGui__ImplDX10__ViewportData.html#a960caadee1fba4cbc111525e260430c3',1,'ImGui_ImplDX10_ViewportData']]],
-  ['_7eimgui_5fimpldx11_5fviewportdata_7',['~ImGui_ImplDX11_ViewportData',['../structImGui__ImplDX11__ViewportData.html#ab2f8786ff96e028114d4adead8bd4e02',1,'ImGui_ImplDX11_ViewportData']]],
-  ['_7eimgui_5fimpldx12_5fviewportdata_8',['~ImGui_ImplDX12_ViewportData',['../structImGui__ImplDX12__ViewportData.html#a7f8a2b0fbefeff252f395b835890be93',1,'ImGui_ImplDX12_ViewportData']]],
-  ['_7eimgui_5fimpldx9_5fviewportdata_9',['~ImGui_ImplDX9_ViewportData',['../structImGui__ImplDX9__ViewportData.html#a216d94b2489c8229228da1f7c78b9bf4',1,'ImGui_ImplDX9_ViewportData']]],
-  ['_7eimgui_5fimplsdl2_5fviewportdata_10',['~ImGui_ImplSDL2_ViewportData',['../structImGui__ImplSDL2__ViewportData.html#aeed814a5f800f6437df8a779685a9383',1,'ImGui_ImplSDL2_ViewportData']]],
-  ['_7eimgui_5fimplsdl3_5fviewportdata_11',['~ImGui_ImplSDL3_ViewportData',['../structImGui__ImplSDL3__ViewportData.html#abfda10fc66ddc240ea356b041dcd07ad',1,'ImGui_ImplSDL3_ViewportData']]],
-  ['_7eimgui_5fimplvulkan_5fviewportdata_12',['~ImGui_ImplVulkan_ViewportData',['../structImGui__ImplVulkan__ViewportData.html#ac9700ff72246bee04900b2cb5892594a',1,'ImGui_ImplVulkan_ViewportData']]],
-  ['_7eimgui_5fimplwin32_5fviewportdata_13',['~ImGui_ImplWin32_ViewportData',['../structImGui__ImplWin32__ViewportData.html#a06ec51011b0fe550f8983e4e94b40590',1,'ImGui_ImplWin32_ViewportData']]],
-  ['_7eimguidocknode_14',['~ImGuiDockNode',['../structImGuiDockNode.html#a514e2dee40ce297fe2f35aeabaf62c26',1,'ImGuiDockNode']]],
-  ['_7eimguilistclipper_15',['~ImGuiListClipper',['../structImGuiListClipper.html#ada915f0ae4446df73c1a2372bde65293',1,'ImGuiListClipper']]],
-  ['_7eimguitable_16',['~ImGuiTable',['../structImGuiTable.html#ac9e489ed577c125c930364a4c903132c',1,'ImGuiTable']]],
-  ['_7eimguiviewport_17',['~ImGuiViewport',['../structImGuiViewport.html#a9b9c3bf346b0384cb6a56a6e9bd96b88',1,'ImGuiViewport']]],
-  ['_7eimguiviewportdataosx_18',['~ImGuiViewportDataOSX',['../structImGuiViewportDataOSX.html#a776b91e9e9c3980cac247d9a8214563a',1,'ImGuiViewportDataOSX']]],
-  ['_7eimguiviewportp_19',['~ImGuiViewportP',['../structImGuiViewportP.html#a2110db2d3fff955d9afa36749ca4a90f',1,'ImGuiViewportP']]],
-  ['_7eimguiwindow_20',['~ImGuiWindow',['../structImGuiWindow.html#a8e81d730c3a39a71e6b6ca4654451c53',1,'ImGuiWindow']]],
-  ['_7eimpool_21',['~ImPool',['../structImPool.html#aa0b55e4483e95d6723d51b5106de4bc2',1,'ImPool']]],
-  ['_7eimvector_22',['~ImVector',['../structImVector.html#a9b782359ca26eaa1a6a6138fcf341c54',1,'ImVector']]],
-  ['_7elogger_23',['~Logger',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#a5283de51df21749ce5c3f7c4772c8bc2',1,'steppable::__internals::logging::Logger']]]
+  ['zeros_0',['zeros',['../classsteppable_1_1Matrix.html#a0c2cabab4c7be49c4df14ef35a9f7fe0',1,'steppable::Matrix']]]
 ];

@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['performance_20of_20steppable_0',['Performance of Steppable',['../md_wiki_2Performance.html',1,'']]],
-  ['philosophy_20of_20this_20project_1',['Philosophy of this project',['../md_wiki_2Philosophy.html',1,'']]],
-  ['platforms_2',['Supported Platforms',['../md_wiki_2Supported-Platforms.html',1,'']]],
-  ['project_3',['project',['../md_wiki_2Philosophy.html',1,'Philosophy of this project'],['../md_wiki_2Status.html',1,'Status of this project'],['../md_wiki_2Workflow.html',1,'Workflow of this project']]],
-  ['py_20tt_4',['Building Steppable (&lt;tt&gt;build.py&lt;/tt&gt;)',['../md_wiki_2Building-Steppable-_07build_8py_08.html',1,'']]],
-  ['python_5',['Coding Style (Python)',['../md_wiki_2Coding-Style-_07Python_08.html',1,'']]]
+  ['macos_0',['macOS',['../md_wiki_2Downloads.html#autotoc_md39',1,'macOS'],['../md_wiki_2Supported-Platforms.html#autotoc_md69',1,'macOS']]],
+  ['made_1',['When can the first release be made?',['../md_wiki_2FAQ.html#autotoc_md43',1,'']]],
+  ['main_20branch_2',['&lt;span class=&quot;tt&quot;&gt;main&lt;/span&gt; branch',['../md_wiki_2Workflow.html#autotoc_md72',1,'']]],
+  ['main_20more_20stable_3',['Main (More stable)',['../md_wiki_2Status.html#autotoc_md65',1,'']]],
+  ['miscellaneous_4',['Miscellaneous',['../md_wiki_2Status.html#autotoc_md66',1,'']]],
+  ['more_20stable_5',['Main (More stable)',['../md_wiki_2Status.html#autotoc_md65',1,'']]]
 ];

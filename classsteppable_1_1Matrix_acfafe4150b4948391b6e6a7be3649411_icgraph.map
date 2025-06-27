@@ -1,0 +1,61 @@
+<map id="steppable::Matrix::Matrix" name="steppable::Matrix::Matrix">
+<area shape="rect" id="Node000001" title="Default constructor for the Matrix class." alt="" coords="447,820,590,865"/>
+<area shape="rect" id="Node000002" href="$classsteppable_1_1Matrix.html#a6ac891a0269388f03a6648c6cdaeadf6" title="Creates a diagnal matrix." alt="" coords="5,22,177,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="515,805,513,641,508,530,498,413,484,297,463,192,449,147,434,108,417,76,397,53,369,33,338,20,304,12,269,9,200,13,141,24,140,19,199,8,269,3,304,7,339,14,372,28,401,49,421,73,439,105,455,145,468,191,489,296,504,412,513,530,518,641,520,805"/>
+<area shape="rect" id="Node000003" href="$classsteppable_1_1Matrix.html#a3f2a54c03404d3db189c9bb2472a59b8" title="Creates a diagnal matrix." alt="" coords="226,62,398,90"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="513,805,506,654,486,447,471,341,452,244,427,165,413,134,397,110,374,93,378,88,401,106,417,131,432,163,457,243,476,340,492,446,511,654,519,805"/>
+<area shape="rect" id="Node000004" href="$classsteppable_1_1Matrix.html#a85f41481ee3f8ab3bea5ce8cbf6393d6" title="Raises the current matrix to a certain power." alt="" coords="19,94,163,138"/>
+<area shape="poly" id="edge23_Node000001_Node000004" title=" " alt="" coords="514,805,508,661,490,464,475,364,455,275,429,202,414,174,397,154,382,144,359,136,298,125,229,119,163,118,163,112,229,114,299,119,360,131,384,139,401,150,418,171,434,200,460,273,480,363,495,463,513,660,519,805"/>
+<area shape="rect" id="Node000005" href="$classsteppable_1_1Matrix.html#a3ee553add8e0dfa95886f404e8fe7913" title="Creates a matrix filled with ones." alt="" coords="225,164,399,191"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="513,805,503,672,482,492,467,401,448,318,425,250,411,224,397,205,384,194,387,190,401,201,416,222,429,248,453,317,472,400,488,491,508,671,518,805"/>
+<area shape="rect" id="Node000006" href="$classsteppable_1_1Matrix.html#a4bf1ad94471b15b1a626c743008c0625" title="Test for unequal matrices." alt="" coords="240,215,384,260"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="511,805,498,687,474,531,458,453,440,381,420,322,397,280,376,262,380,258,401,277,425,320,445,379,464,452,479,530,503,687,516,805"/>
+<area shape="rect" id="Node000007" href="$classsteppable_1_1Matrix.html#a2ba88a7f183393d87835889a8c49d76e" title="Matrix multiplication." alt="" coords="19,444,163,489"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="512,805,501,692,479,546,464,474,445,409,423,358,411,339,397,325,376,310,355,301,336,296,316,296,274,305,226,325,187,349,153,382,126,416,107,445,103,442,122,413,149,378,183,345,223,320,273,300,315,290,336,291,357,295,378,305,401,321,415,335,428,355,450,407,469,472,485,545,506,691,517,804"/>
+<area shape="rect" id="Node000008" href="$classsteppable_1_1Matrix.html#adef2eb953e658d7f6f396ff6e1cc2c41" title="Scalar multiplication." alt="" coords="240,335,384,380"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="516,805,512,722,496,612,481,554,460,497,432,443,397,394,382,381,386,377,401,390,437,440,465,495,486,553,501,611,517,721,521,804"/>
+<area shape="rect" id="Node000009" href="$classsteppable_1_1Matrix.html#a922aa943314304d3030354048897bdc2" title="Multiplies this matrix by another matrix and assigns the result to this matrix." alt="" coords="240,404,384,449"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="513,806,506,734,488,643,473,595,453,548,428,503,397,463,382,451,386,447,401,460,432,500,458,545,478,593,493,642,511,734,519,805"/>
+<area shape="rect" id="Node000010" href="$classsteppable_1_1Matrix.html#aee08b3bf0e19df93e327bb52f13add0d" title="Multiplies the current matrix by a scalar value and assigns the result to this matrix." alt="" coords="240,474,384,518"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="510,805,499,746,478,674,445,599,423,564,397,533,382,521,385,517,401,529,428,561,450,596,483,672,504,745,515,804"/>
+<area shape="rect" id="Node000011" href="$classsteppable_1_1Matrix.html#a131d1f45d12532de2ffa766d69856d12" title="Unary plus operator." alt="" coords="240,543,384,588"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="506,806,491,760,469,706,438,650,397,602,381,590,384,586,401,598,442,647,474,703,496,758,511,805"/>
+<area shape="rect" id="Node000012" href="$classsteppable_1_1Matrix.html#a9327350bac85647ee16ff6e1f9b1586c" title="Add a matrix to another matrix." alt="" coords="19,1010,163,1054"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="521,881,520,1052,516,1169,507,1293,493,1415,472,1526,458,1574,441,1615,422,1649,401,1674,357,1703,335,1710,312,1712,290,1710,268,1702,223,1674,205,1655,188,1628,161,1557,138,1469,121,1373,99,1184,91,1055,96,1055,105,1184,127,1372,144,1468,166,1556,193,1626,209,1651,226,1670,270,1697,291,1704,312,1707,333,1705,354,1698,397,1670,418,1646,437,1613,453,1572,466,1524,488,1414,502,1292,511,1168,515,1052,515,881"/>
+<area shape="rect" id="Node000013" href="$classsteppable_1_1Matrix.html#a28520890291440cb135575d9c9233899" title="Adds the other matrix to current matrix and assigns result to this matrix." alt="" coords="240,682,384,726"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="484,812,444,775,398,741,375,729,378,725,400,736,448,771,488,808"/>
+<area shape="rect" id="Node000014" href="$classsteppable_1_1Matrix.html#aa400197142c6df60c6dcf7603f6ea5e6" title="Unary minus operator." alt="" coords="240,751,384,796"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="435,818,380,799,382,794,436,812"/>
+<area shape="rect" id="Node000015" href="$classsteppable_1_1Matrix.html#a4630b177f30b8f023ac761a8fab897d7" title="Subtract a matrix from another matrix." alt="" coords="240,820,384,865"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="432,845,384,845,384,840,432,840"/>
+<area shape="rect" id="Node000016" href="$classsteppable_1_1Matrix.html#a66f869505f75a5c6177069cc0976d612" title="Subtracts the other matrix from current matrix and assigns result to this matrix." alt="" coords="240,890,384,934"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="436,873,382,892,380,887,435,868"/>
+<area shape="rect" id="Node000017" href="$classsteppable_1_1Matrix.html#a940d6c76df1c26befc2d2a9f10200f58" title="Join a matrix to the right of the current matrix." alt="" coords="240,959,384,1004"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="488,878,448,914,400,949,378,961,375,956,398,944,444,910,484,874"/>
+<area shape="rect" id="Node000018" href="$classsteppable_1_1Matrix.html#a6fa8f91fd0b356a4deb9ec15259bd222" title="Join a matrix to the right of the current matrix, then assign the result to the current one." alt="" coords="240,1028,384,1073"/>
+<area shape="poly" id="edge18_Node000001_Node000018" title=" " alt="" coords="503,881,462,950,434,986,401,1018,382,1030,379,1026,397,1014,430,983,458,947,498,878"/>
+<area shape="rect" id="Node000019" href="$classsteppable_1_1Matrix.html#a02d427db09005533dbb2c49e124aeb98" title="Test for equal matrices." alt="" coords="240,1098,384,1142"/>
+<area shape="poly" id="edge19_Node000001_Node000019" title=" " alt="" coords="511,881,496,927,474,982,442,1038,401,1087,384,1099,381,1095,397,1083,438,1035,469,980,491,925,506,879"/>
+<area shape="rect" id="Node000020" href="$classsteppable_1_1Matrix.html#a369f9137e4357fcd14cf449e43868779" title="Join a matrix to the left of the current matrix." alt="" coords="240,1167,384,1212"/>
+<area shape="poly" id="edge20_Node000001_Node000020" title=" " alt="" coords="515,881,504,940,483,1014,450,1089,428,1125,401,1157,385,1169,382,1165,397,1153,423,1122,445,1087,478,1012,499,939,510,880"/>
+<area shape="rect" id="Node000021" href="$classsteppable_1_1Matrix.html#a6e5f9d3b97177e22f7cc204a899451be" title="Join a matrix to the left of the current matrix, then assign the result to the current one." alt="" coords="240,1236,384,1281"/>
+<area shape="poly" id="edge21_Node000001_Node000021" title=" " alt="" coords="519,881,511,952,493,1044,478,1092,458,1140,432,1185,401,1226,386,1239,382,1234,397,1222,428,1182,453,1138,473,1090,488,1042,506,951,513,880"/>
+<area shape="rect" id="Node000022" href="$classsteppable_1_1Matrix.html#aefbf5634e832faf45d3f4d12f08f3baf" title="Accesses the matrix element at the specified YXPoint." alt="" coords="240,1306,384,1350"/>
+<area shape="poly" id="edge22_Node000001_Node000022" title=" " alt="" coords="521,881,517,964,501,1074,486,1133,465,1191,437,1246,401,1295,386,1308,382,1304,397,1292,432,1243,460,1189,481,1131,496,1073,512,964,516,881"/>
+<area shape="rect" id="Node000023" href="$classsteppable_1_1Matrix.html#a63873d36df89b4194bc003e5e07ab106" title="Raises the current matrix to a certain power, and assigns result to the current matrix." alt="" coords="240,1375,384,1420"/>
+<area shape="poly" id="edge24_Node000001_Node000023" title=" " alt="" coords="516,881,502,991,478,1134,462,1206,444,1272,424,1326,401,1364,386,1378,382,1374,397,1361,419,1324,439,1270,457,1205,473,1133,497,990,511,880"/>
+<area shape="rect" id="Node000024" href="$classsteppable_1_1Matrix.html#a945fe27147f2ce99c0bb02427469e57b" title="Converts a matrix to row echelon form." alt="" coords="231,1444,392,1471"/>
+<area shape="poly" id="edge25_Node000001_Node000024" title=" " alt="" coords="517,881,506,1005,484,1170,469,1253,450,1329,428,1391,401,1434,387,1445,384,1441,397,1430,423,1388,445,1327,464,1252,479,1169,501,1004,512,880"/>
+<area shape="rect" id="Node000025" href="$classsteppable_1_1Matrix.html#abdd1de472e9e13ccb5f72cf70937e217" title="Round off all values to a specified precision." alt="" coords="240,1495,384,1540"/>
+<area shape="poly" id="edge26_Node000001_Node000025" title=" " alt="" coords="518,881,507,1014,485,1193,470,1284,451,1367,428,1436,401,1484,386,1498,382,1494,397,1481,423,1434,446,1366,465,1283,480,1193,502,1014,512,881"/>
+<area shape="rect" id="Node000026" href="$classsteppable_1_1Matrix.html#a138d4246237d27a368e2080e8c7ce482" title="Converts the matrix to its reduced row echelon form." alt="" coords="229,1564,395,1591"/>
+<area shape="poly" id="edge27_Node000001_Node000026" title=" " alt="" coords="519,881,511,1028,492,1229,477,1331,457,1424,432,1501,417,1531,401,1554,387,1565,384,1561,397,1550,413,1528,427,1499,452,1422,472,1330,487,1228,506,1027,513,881"/>
+<area shape="rect" id="Node000027" href="$classsteppable_1_1Matrix.html#a1add5789108ccea96e518d4a96a50b98" title="Transposes a matrix." alt="" coords="240,1615,384,1660"/>
+<area shape="poly" id="edge28_Node000001_Node000027" title=" " alt="" coords="519,881,511,1036,492,1251,477,1361,457,1462,432,1546,418,1579,401,1604,386,1618,382,1614,397,1601,413,1576,427,1544,452,1461,472,1360,487,1250,506,1035,514,881"/>
+<area shape="rect" id="Node000028" href="$classsteppable_1_1Matrix.html#a0c2cabab4c7be49c4df14ef35a9f7fe0" title="Creates a matrix filled with zeros." alt="" coords="240,612,384,657"/>
+<area shape="poly" id="edge29_Node000001_Node000028" title=" " alt="" coords="498,808,458,739,430,703,397,671,379,660,382,655,401,667,434,699,462,736,503,805"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="216,62,171,53,172,48,217,56"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="217,96,163,106,163,100,216,91"/>
+<area shape="poly" id="edge30_Node000028_Node000007" title=" " alt="" coords="231,607,223,602,188,576,156,546,108,491,112,488,160,542,192,572,226,598,234,603"/>
+<area shape="poly" id="edge31_Node000028_Node000012" title=" " alt="" coords="230,668,227,671,194,712,167,757,145,805,128,854,106,944,97,1010,92,1009,101,943,123,853,140,803,162,755,189,709,223,668,226,665"/>
+</map>

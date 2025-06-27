@@ -1,4 +1,30 @@
 var searchData=
 [
-  ['4_20font_20atlas_20texture_20fails_20to_20upload_20to_20gpu_0',['(4) Font atlas texture fails to upload to GPU.',['../md_include_2imgui_2docs_2FONTS.html#autotoc_md187',1,'']]]
+  ['data_0',['Data',['../classsteppable_1_1Data.html',1,'steppable::Data&lt; BaseT, BaseTName &gt;'],['../classsteppable_1_1Data.html#a8b34946a30f1b098f2e3d50a1a0afcf2',1,'steppable::Data::Data(const BaseT object)'],['../classsteppable_1_1Data.html#a529621f545d5a425e359141c2466c729',1,'steppable::Data::Data()']]],
+  ['data_1',['data',['../classsteppable_1_1Matrix.html#ab02a34491c4ed5b1436096c986d2e937',1,'steppable::Matrix']]],
+  ['data_3c_20_5fweekday_2c_20stringliteral_7b_20_22weekday_22_20_7d_3e_2',['Data&lt; _Weekday, StringLiteral{ &quot;Weekday&quot; }&gt;',['../classsteppable_1_1Data.html',1,'steppable']]],
+  ['dbg_3',['DBG',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7ad459851155e872145fe0ae3d79036991',1,'steppable::__internals::logging']]],
+  ['debug_4',['debug',['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#aea7bddd607595f37fe9f09624dea23d8',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message)'],['../classsteppable_1_1____internals_1_1logging_1_1Logger.html#ac9f9eff49890890d0887f1d52cfe57b0',1,'steppable::__internals::logging::Logger::debug(const std::string &amp;message, Args... args)']]],
+  ['debug_20build_5',['Debug build',['../md_wiki_2Building-Steppable.html#autotoc_md13',1,'']]],
+  ['decimalconvert_6',['decimalConvert',['../namespacesteppable_1_1____internals_1_1calc.html#a94d644d168dc7b2030c60e6b813094a0',1,'steppable::__internals::calc']]],
+  ['degtorad_7',['degToRad',['../namespacesteppable_1_1____internals_1_1calc.html#a11491a9b5e7fe39d948dc26a24fa2a73',1,'steppable::__internals::calc']]],
+  ['deprecated_20list_8',['Deprecated List',['../deprecated.html',1,'']]],
+  ['det_9',['det',['../classsteppable_1_1Matrix.html#ac941eecbe815a21feb8c5179060ec853',1,'steppable::Matrix']]],
+  ['determineprec_10',['determinePrec',['../classsteppable_1_1Number.html#aafb5fff909c530b3464598259c3b5a89',1,'steppable::Number']]],
+  ['determineresultscale_11',['determineResultScale',['../namespacesteppable_1_1____internals_1_1calc.html#a159dc4047c90c8bc4fb92b36db103de4',1,'steppable::__internals::calc']]],
+  ['determinescale_12',['determineScale',['../namespacesteppable_1_1____internals_1_1numUtils.html#ac1954d140ec56a5e7aed6a50382e8a9f',1,'steppable::__internals::numUtils']]],
+  ['develop_20branch_13',['&lt;span class=&quot;tt&quot;&gt;develop&lt;/span&gt; branch',['../md_wiki_2Workflow.html#autotoc_md73',1,'']]],
+  ['develop_20unstable_14',['Develop (Unstable)',['../md_wiki_2Status.html#autotoc_md64',1,'']]],
+  ['development_15',['Development',['../index.html#autotoc_md55',1,'']]],
+  ['diag_16',['diag',['../classsteppable_1_1Matrix.html#a3f2a54c03404d3db189c9bb2472a59b8',1,'steppable::Matrix::diag(size_t colsRows, const Number &amp;fill=1)'],['../classsteppable_1_1Matrix.html#a6ac891a0269388f03a6648c6cdaeadf6',1,'steppable::Matrix::diag(const size_t colsRows, const NumberT &amp;fill=0)']]],
+  ['dim_17',['dim',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#ace928d552abe20aa441fb499a7c605fe',1,'steppable::__internals::utils::formats']]],
+  ['discard_5fall_5fdecimals_18',['DISCARD_ALL_DECIMALS',['../namespacesteppable.html#ae24dd98221a466068867d7ef785741f1a198a7b69e45d9e56dd8bb884f556ff06',1,'steppable']]],
+  ['divide_19',['divide',['../namespacesteppable_1_1____internals_1_1calc.html#a742c93c4ba25874a18e0ed9f5c685ae1',1,'steppable::__internals::calc']]],
+  ['divided_5fby_20',['DIVIDED_BY',['../namespacesteppable_1_1____internals_1_1symbols.html#af86fa24e9b9fab1c96ef7071634f3bbc',1,'steppable::__internals::symbols']]],
+  ['dividewithquotient_21',['divideWithQuotient',['../namespacesteppable_1_1____internals_1_1calc.html#a8a180ae4101846d5280619a088fae498',1,'steppable::__internals::calc']]],
+  ['documentation_22',['API Documentation',['../index.html#autotoc_md56',1,'']]],
+  ['does_20it_20work_23',['How does it work?',['../md_wiki_2FAQ.html#autotoc_md44',1,'']]],
+  ['done_24',['done',['../classsteppable_1_1types_1_1ResultBase.html#a56675a7dd906d3ac61e11051b1a23be2',1,'steppable::types::ResultBase']]],
+  ['download_20links_20for_20steppable_25',['Download links for Steppable',['../md_wiki_2Downloads.html',1,'']]],
+  ['duplicates_26',['duplicates',['../namespacesteppable_1_1____internals_1_1stringUtils.html#addd78766b99fddfe882bd32318ed0f2b',1,'steppable::__internals::stringUtils']]]
 ];
