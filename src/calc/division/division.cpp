@@ -107,8 +107,8 @@ namespace steppable::__internals::calc
             return 1;
 
         // Step 2: Squeeze!
-        // Method: If number >= divisor -> return numberScale.
-        //         Else                 -> return numberScale - 1.
+        // Method: If number >= divisor -> return diffScale + 1.
+        //         Else                 -> return diffScale.
         if (compare(number, divisor, 0) != "0")
             return diffScale + 1;
         return diffScale;

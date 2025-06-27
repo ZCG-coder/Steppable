@@ -57,14 +57,14 @@ namespace steppable::__internals::numUtils
         return integer;
     }
 
-    std::string roundOff(const std::string& _number, const size_t digits)
+    std::string roundOff(const std::string& _number, const size_t digits, Rounding mode)
     {
         auto number = _number;
         if (number.empty())
             return "0";
         if (number.find('.') == std::string::npos)
             return number;
-        auto splitNumberResult = splitNumber(number, "0", true, true, false, false);
+        auto splitNumberResult = splitNumber(number, "0", false, false, false, false);
 
         // Round off the number
         auto splitNumberArray = splitNumberResult.splitNumberArray;
@@ -73,7 +73,7 @@ namespace steppable::__internals::numUtils
         bool isNegative = splitNumberResult.aIsNegative;
 
         if (decimal.length() < digits)
-            return _number;
+            decimal += std::string(digits - decimal.length(), '0');
 
         // Preserve one digit after the rounded digit
         decimal = decimal.substr(0, digits + 1);
@@ -85,8 +85,22 @@ namespace steppable::__internals::numUtils
         }
         auto newDecimal = decimal.substr(0, digits);
         std::ranges::reverse(newDecimal.begin(), newDecimal.end());
+        bool condition = false;
+        switch (mode)
+        {
+        case Rounding::ROUND_OFF:
+            condition = decimal.back() >= '5';
+            break;
+        case Rounding::ROUND_DOWN:
+            condition = false;
+            break;
+        case Rounding::ROUND_UP:
+            condition = true;
+        default:
+            break;
+        }
 
-        if (decimal.back() >= '5')
+        if (condition)
         {
             // Need to round up the digit
             for (size_t i = 0; i < newDecimal.length(); i++)
@@ -107,18 +121,26 @@ namespace steppable::__internals::numUtils
             }
         }
         std::ranges::reverse(newDecimal.begin(), newDecimal.end());
+
+        std::string result;
         decimal = newDecimal.substr(0, digits);
         if (isNegative)
             integer = '-' + integer;
         if (decimal.empty() and digits > 0)
-            return integer + "." + std::string(digits, '0');
-        if (decimal.empty())
-            return integer;
-        return integer + "." + decimal;
+            result = integer + "." + std::string(digits, '0');
+        else if (decimal.empty())
+            result = integer;
+        else
+            result = integer + "." + decimal;
+
+        result = simplifyPolarity(result);
+        return result;
     }
 
     std::string moveDecimalPlaces(const std::string& _number, const long places)
     {
+        if (_number.empty())
+            return "0";
         auto number = _number;
         // No change
         if (places == 0)

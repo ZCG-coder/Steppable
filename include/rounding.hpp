@@ -21,6 +21,7 @@
  **************************************************************************************************/
 
 #pragma once
+#include <steppable/number.hpp>
 #include <string>
 
 namespace steppable::__internals::numUtils
@@ -46,9 +47,10 @@ namespace steppable::__internals::numUtils
      *
      * @param[in] _number The number to round.
      * @param[in] digits The number of decimal places to round to.
+     * @param[in] mode The mode of rounding. Defaults to rounding off.
      * @return The rounded number.
      */
-    std::string roundOff(const std::string& _number, size_t digits = 0);
+    std::string roundOff(const std::string& _number, size_t digits = 0, Rounding mode = Rounding::ROUND_OFF);
 
     /**
      * @brief Move the decimal places of a number.

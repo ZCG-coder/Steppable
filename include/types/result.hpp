@@ -22,6 +22,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <output.hpp>
 #include <platform.hpp>
 #include <string>
@@ -43,9 +44,9 @@ namespace steppable::types
      */
     enum class Status : std::uint8_t
     {
-        CALCULATED_SIMPLIFIED,
-        CALCULATED_UNSIMPLIFIED,
-        MATH_ERROR
+        CALCULATED_SIMPLIFIED, ///< The calculation is done by taking simplified steps.
+        CALCULATED_UNSIMPLIFIED, ///< The calculation is done.
+        MATH_ERROR ///< The calculation is not done because of an error.
     };
 
     /**
@@ -53,11 +54,11 @@ namespace steppable::types
      */
     enum class StatusBool : std::uint8_t
     {
-        CALCULATED_SIMPLIFIED_YES,
-        CALCULATED_SIMPLIFIED_NO,
-        CALCULATED_UNSIMPLIFIED_YES,
-        CALCULATED_UNSIMPLIFIED_NO,
-        MATH_ERROR
+        CALCULATED_SIMPLIFIED_YES, ///< The calculation is done by taking simplified steps, the result it True.
+        CALCULATED_SIMPLIFIED_NO, ///< The calculation is done by taking simplified steps, the result it False.
+        CALCULATED_UNSIMPLIFIED_YES, ///< The calculation is done, the result it True.
+        CALCULATED_UNSIMPLIFIED_NO, ///< The calculation is done, the result it False.
+        MATH_ERROR ///< The calculation is not done because of an error.
     };
 
     /**

@@ -31,6 +31,7 @@
 
 #include "multiplyReport.hpp"
 
+#include "output.hpp"
 #include "rounding.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
@@ -55,7 +56,8 @@ std::string reportMultiply(const std::string& a,
                            const std::vector<std::vector<int>>& prodDigitsOut,
                            const std::vector<std::vector<int>>& carries,
                            const bool resultIsNegative,
-                           const int steps)
+                           const int steps,
+                           const int decimals)
 {
     std::stringstream ss;
 
@@ -117,7 +119,18 @@ std::string reportMultiply(const std::string& a,
     // Add the decimal point.
     auto places = aDecimal.length() + bDecimal.length();
     out = moveDecimalPlaces(out, -static_cast<long long>(places));
+    out = roundOff(out, decimals);
+    out = standardizeNumber(out);
 
-    ss << standardizeNumber(out);
+#if defined(STP_DEB_CALC_MULTIPLY_RESULT_INSPECT) && DEBUG
+    std::stringstream debOut;
+
+    debOut << a << " " << MULTIPLY << " " << b << " = ";
+    if (resultIsNegative)
+        debOut << "-";
+    debOut << out;
+    steppable::output::info("calc::multiply"s, debOut.str());
+#endif
+    ss << out;
     return ss.str();
 }

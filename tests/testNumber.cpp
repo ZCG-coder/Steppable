@@ -21,8 +21,8 @@
  **************************************************************************************************/
 
 #include "colors.hpp"
-#include "number.hpp"
 #include "output.hpp"
+#include "steppable/number.hpp"
 #include "testing.hpp"
 #include "util.hpp"
 
@@ -49,7 +49,7 @@ _.assertIsEqual((Number("456") * Number("123")).present(), "56088");
 SECTION_END()
 
 SECTION(Test Division)
-_.assertIsEqual((Number("123", 4, USE_CURRENT_PREC) / Number("456")).present(), "0.2697");
+_.assertIsEqual((Number("123", 4, RoundingMode::USE_CURRENT_PREC) / Number("456")).present(), "0.2697");
 SECTION_END()
 
 SECTION(Test Remainder)
@@ -67,6 +67,16 @@ _.assertTrue(Number("123") < Number("456"));
 _.assertTrue(Number("456") > Number("123"));
 _.assertTrue(Number("123") <= Number("456"));
 _.assertTrue(Number("456") >= Number("123"));
+SECTION_END()
+
+SECTION(Test Increment and Decrement)
+_.assertTrue(++Number("123") == Number("124"));
+_.assertTrue(--Number("124") == Number("123"));
+SECTION_END()
+
+SECTION(Test unary operators)
+_.assertTrue(-Number("123") == Number("-123"));
+_.assertTrue(+Number("123") == Number("123"));
 SECTION_END()
 
 TEST_END()

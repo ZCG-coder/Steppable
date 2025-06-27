@@ -21,7 +21,7 @@
  **************************************************************************************************/
 
 /**
- * @file number.hpp
+ * @file steppable/number.hpp
  * @brief Contains the definition of the Number class, which offers an API for arbitrary precision arithmetic.
  *
  * @author Andy Zhang
@@ -30,7 +30,12 @@
 
 #pragma once
 
+#include "testing.hpp"
+#include "util.hpp"
+
+#include <cstdint>
 #include <string>
+#include <utility>
 
 /**
  * @namespace steppable
@@ -42,7 +47,7 @@ namespace steppable
      * @enum RoundingMode
      * @brief Specifies how Steppable should round the number in operations.
      */
-    enum RoundingMode
+    enum class RoundingMode : std::uint8_t
     {
         /// @brief Use the higher precision whenever possible.
         USE_MAXIMUM_PREC = 0xFF,
@@ -60,13 +65,19 @@ namespace steppable
         DISCARD_ALL_DECIMALS = 0x00
     };
 
+    enum class Rounding : std::uint8_t
+    {
+        ROUND_DOWN = 0x00, ///< Rounds the number down.
+        ROUND_UP = 0x01, ///< Rounds the number up.
+        ROUND_OFF = 0x02, ///< Rounds the number off.
+    };
+
     /**
      * @class Number
      * @brief Represents a number with arbitrary precision. It basically stores the value as a string.
      */
     class Number
     {
-    private:
         /// @brief The value of the number.
         std::string value;
 
@@ -74,17 +85,60 @@ namespace steppable
         size_t prec;
 
         /// @brief The rounding mode of the number.
-        RoundingMode mode = USE_CURRENT_PREC;
+        RoundingMode mode = RoundingMode::USE_CURRENT_PREC;
+
+        template<__internals::utils::StringLiteral fnName>
+        [[nodiscard]] size_t determinePrec(const Number& rhs) const
+        {
+            size_t usePrec = 0;
+            if (mode == RoundingMode::USE_MAXIMUM_PREC)
+                usePrec = std::max(prec, rhs.prec);
+            else if (mode == RoundingMode::USE_MINIMUM_PREC)
+                usePrec = std::min(prec, rhs.prec);
+            else if (mode == RoundingMode::USE_CURRENT_PREC)
+                usePrec = prec;
+            else if (mode == RoundingMode::USE_OTHER_PREC)
+                usePrec = rhs.prec;
+            else if (mode == RoundingMode::DISCARD_ALL_DECIMALS)
+                usePrec = 0;
+            else
+            {
+                usePrec = 0;
+                output::warning(std::string(fnName.value), "Invalid precision specified"s);
+            }
+
+            return usePrec;
+        }
 
     public:
         /// @brief The default constructor. Initializes the number with a value of 0.
         Number();
 
+        Number(const Number& rhs);
+
         /**
          * @brief Initializes a number with a specified value.
          * @note By default, the value is 0.
          */
-        Number(std::string value = "0", size_t prec = 0, RoundingMode mode = USE_CURRENT_PREC);
+        Number(std::string value = "0", size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
+
+        /**
+         * @brief Initializes a number with a C/C++ long double value.
+         * @note No matter how the number is specified, it will always be converted to a string for storage.
+         */
+        template<concepts::Numeric ValueT>
+        Number(ValueT value, size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC) :
+            value(std::to_string(value)), prec(prec), mode(mode)
+        {
+        }
+
+        void set(std::string newVal) { value = std::move(newVal); }
+
+        void setPrec(size_t newPrec, RoundingMode mode = RoundingMode::USE_CURRENT_PREC)
+        {
+            this->mode = mode;
+            prec = newPrec;
+        }
 
         /**
          * @brief Adds two numbers together.
@@ -115,6 +169,15 @@ namespace steppable
         Number operator/(const Number& rhs) const;
 
         /**
+         * @brief Takes a modulus operation.
+         * @details Divides and takes the nearest quotient.
+         *
+         * @param rhs The other number.
+         * @return The modulus of the two numbers.
+         */
+        [[nodiscard]] Number mod(const Number& rhs) const;
+
+        /**
          * @brief Calculates the remainder of two numbers. (Modulus)
          * @param rhs The number to divide.
          * @return The remainder of the two numbers.
@@ -126,7 +189,7 @@ namespace steppable
          * @param rhs The power to raise the number to.
          * @return The result of the power operation.
          */
-        Number operator^(const Number& rhs) const;
+        Number operator^(const Number& rhs);
 
         /**
          * @brief Adds the number to another number and assigns the result to the current number.
@@ -225,9 +288,34 @@ namespace steppable
         Number operator--();
 
         /**
+         * @brief Unary minus operator.
+         * @details Converts the number to itself with the opposite sign. Returns a new instance of the number.
+         * @return A number equal in value but opposite in sign.
+         */
+        Number operator-() const;
+
+        /**
+         * @brief Unary plus operator.
+         * @details Does nothing. Simply returns a new instance of the number.
+         * @return A number equal in value and equal in sign.
+         */
+        Number operator+() const;
+
+        /**
          * @brief Presents the number in a human-readable format.
          * @return The number as a string.
          */
         [[nodiscard]] std::string present() const;
     };
+
+    /**
+     * @namespace steppable::literals
+     * @brief Literal suffixes for literals to be converted to Steppable objects.
+     */
+    namespace literals
+    {
+        inline Number operator""_n(long double value) { return Number(value); }
+
+        inline Number operator""_n(unsigned long long value) { return Number(value); }
+    } // namespace literals
 } // namespace steppable

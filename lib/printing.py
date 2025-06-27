@@ -20,8 +20,8 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-import sys
 import os
+import sys
 
 from lib.constants import WINDOWS
 

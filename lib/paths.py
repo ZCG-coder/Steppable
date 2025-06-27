@@ -25,6 +25,7 @@ This module contains the paths that are used in the project.
 """
 
 from pathlib import Path
+
 from lib.constants import WINDOWS
 
 # section Project paths

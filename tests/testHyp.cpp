@@ -34,7 +34,7 @@ TEST_START()
 using namespace steppable::__internals::calc;
 
 SECTION(Test hyperbolic sine)
-_.assertIsEqual(sinh("10", 3), "11013.233");
+_.assertIsEqual(sinh("10", 4), "11013.2329");
 SECTION_END()
 
 SECTION(Test hyperbolic cosine)

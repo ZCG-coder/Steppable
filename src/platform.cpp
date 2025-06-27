@@ -61,9 +61,7 @@ namespace steppable::__internals::utils
             std::array<char, 4096> errBuffer{};
             const char* homeEnv = nullptr;
             int error = 0;
-            struct passwd pw
-            {
-            };
+            struct passwd pw{};
             struct passwd* result = nullptr;
 
             uid_t userId = getuid();

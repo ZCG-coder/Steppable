@@ -3,21 +3,21 @@ name = "steppable"
 version = "0.0.1"
 description = "A CAS built from scratch."
 authors = [
-    { name = "Andy Zhang", email = "andy@nwsoft.tech" }
+    { name = "Andy Zhang", email = "z-c-ge@outlook.com" }
 ]
 license = {file = "LICENSE"}
 readme = "README.md"
-requires-python = ">= 3.10"
+requires-python = ">= 3.11"
 
 dynamic = ["classifiers", "optional-dependencies"]
 
 dependencies = [
-    "matplotlib >= 3.9.0",
-    "black >= 24.4.2",
-    "isort >= 5.13.2",
     "setuptools >= 61.0",
     "nanobind >= 1.9.2",
     "pyyaml >= 6.0.1",
+    "matplotlib >= 3.9.0; 'Windows' not in platform_system",
+    "black >= 24.4.2",
+    "isort >= 5.13.2",
 ]
 
 [build-system]

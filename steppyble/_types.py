@@ -20,67 +20,8 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
+import typing
+
 import steppyble
 
-
-class Number:
-    """A Steppable number, which performs exactly like a Python number, allowing add, subtract, multiply..."""
-
-    def __init__(
-        self,
-        value: str = "0",
-        prec: int = 5,
-        roundingMode: steppyble.RoundingMode = steppyble.RoundingMode.USE_CURRENT_PREC,
-    ) -> None:
-        ...
-
-    def __repr__(self) -> str:
-        ...
-
-    def __add__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __iadd__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __sub__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __isub__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __mul__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __imul__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __truediv__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __itruediv__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __pow__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __ipow__(self, _: steppyble.Number, /) -> steppyble.Number:
-        ...
-
-    def __eq__(self, _: object, /) -> bool:
-        ...
-
-    def __ne__(self, _: object, /) -> bool:
-        ...
-
-    def __ge__(self, _: steppyble.Number, /) -> bool:
-        ...
-
-    def __gt__(self, _: steppyble.Number, /) -> bool:
-        ...
-
-    def __le__(self, _: steppyble.Number, /) -> bool:
-        ...
-
-    def __lt__(self, _: steppyble.Number, /) -> bool:
-        ...
+MatrixIterator: typing.TypeAlias = typing.Iterator[typing.List[steppyble.Number]]

@@ -30,7 +30,7 @@
 #include "argParse.hpp"
 #include "constants.hpp"
 #include "fn/calc.hpp"
-#include "fraction.hpp"
+#include "steppable/fraction.hpp"
 #include "getString.hpp"
 #include "powerReport.hpp"
 #include "rounding.hpp"
@@ -118,18 +118,34 @@ namespace steppable::__internals::calc
         return reportPower(number, raiseTo, numberTrailingZeros, negativePower, steps, decimals);
     }
 
-    std::string exp(const std::string& x, const size_t decimals)
+    std::string _exp(const std::string& x, const size_t decimals) // NOLINT(*-no-recursion)
     {
-        constexpr size_t iter = 50;
+        if (compare(x, "4", 0) == "1")
+        {
+            std::string halfX = divide(x, "2", 0, static_cast<int>(decimals) + 2);
+            std::string result = _exp(halfX, decimals + 2);
+            return multiply(result, result, 0, static_cast<int>(decimals + 2));
+        }
+
         std::string sum = "1";
         std::string term = "1";
-        for (size_t i = 1; i < iter; i++)
+        const auto errorStr = "0." + std::string(decimals + 1, '0') + "1";
+        for (int i = 1;; i++)
         {
             std::string frac = divide(x, std::to_string(i), 0, static_cast<int>(decimals) + 2);
             term = multiply(term, frac, 0, static_cast<int>(decimals) + 2);
+            if (compare(term, errorStr, 0) != "1")
+                break;
+
             sum = add(sum, term, 0);
         }
         return roundOff(sum, decimals);
+    }
+
+    std::string exp(const std::string& x, const size_t decimals)
+    {
+        const auto result = _exp(x, decimals + 2);
+        return roundOff(result, decimals);
     }
 } // namespace steppable::__internals::calc
 

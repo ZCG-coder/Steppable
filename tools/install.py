@@ -24,8 +24,9 @@
 Installs the Steppable settings and resources to the user home.
 """
 
-from lib.paths import DEFAULT_CONFIG_DIR, CONFIG_DIR
 import shutil
+
+from lib.paths import CONFIG_DIR, DEFAULT_CONFIG_DIR
 
 
 def copy_resources() -> None:

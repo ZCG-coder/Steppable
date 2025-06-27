@@ -1,10 +1,35 @@
 {
   "configurations": [
     {
+      "name": "Matrix::rref",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/src/matrix_ref",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "lldb",
+      "internalConsoleOptions": "openOnSessionStart",
+      "preLaunchTask": "CMake: build",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
       "name": "Division",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/src/division",
+      "program": "${workspaceFolder}/build/src/calc_division",
       "args": [
         "1",
         "2"
@@ -14,6 +39,7 @@
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb",
+      "internalConsoleOptions": "openOnSessionStart",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -31,13 +57,14 @@
       "name": "Add",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/src/add",
+      "program": "${workspaceFolder}/build/src/calc_add",
       "args": [
         "-5",
         "6"
       ],
       "cwd": "${workspaceFolder}/build",
       "preLaunchTask": "CMake: build",
+      "internalConsoleOptions": "openOnSessionStart",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -50,14 +77,15 @@
       "type": "cppdbg",
       "request": "launch",
       "name": "Multiply",
-      "program": "${workspaceFolder}/build/src/multiply",
+      "program": "${workspaceFolder}/build/src/calc_multiply",
       "args": [
         "56",
         "76",
         "+profile"
       ],
       "cwd": "${workspaceFolder}",
-      "preLaunchTask": "CMake: build"
+      "preLaunchTask": "CMake: build",
+      "internalConsoleOptions": "openOnSessionStart",
     }
   ]
 }

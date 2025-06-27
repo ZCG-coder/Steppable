@@ -31,6 +31,8 @@
 #include "comparisonReport.hpp"
 #include "fn/calc.hpp"
 #include "getString.hpp"
+#include "steppable/number.hpp"
+#include "types/result.hpp"
 #include "util.hpp"
 
 #include <sstream>

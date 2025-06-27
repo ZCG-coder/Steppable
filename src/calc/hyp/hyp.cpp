@@ -54,8 +54,8 @@ namespace steppable::__internals::calc
         checkDecimalArg(&decimals);
 
         const auto& twoX = multiply(x, "2", 0, decimals + 2);
-        const auto& eTwoX = roundOff(power(static_cast<std::string>(constants::E), twoX, 0), decimals + 2);
-        const auto& eX = roundOff(power(static_cast<std::string>(constants::E), x, 0), decimals + 2);
+        const auto& eTwoX = exp(twoX, decimals + 2);
+        const auto& eX = exp(x, decimals + 2);
 
         const auto& numerator = subtract(eTwoX, "1", 0);
         const auto& denominator = multiply("2", eX, 0, decimals + 2);

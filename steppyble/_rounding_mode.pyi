@@ -22,7 +22,6 @@
 
 import enum
 
-
 class RoundingMode(enum.Enum):
     """Specifies how Steppable should round the number in operations."""
 

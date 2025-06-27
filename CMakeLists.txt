@@ -20,6 +20,8 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
+INCLUDE(cmake/build_special_hacks.cmake)
+
 CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
 PROJECT(Steppable)
 
@@ -109,11 +111,11 @@ SET(COMPONENTS
     calc::root
     calc::subtract
     calc::trig
-)
+    matrix::ref)
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
 SET(TARGETS ${COMPONENTS} util)
-SET(TEST_TARGETS_TEMP util fraction number factors format ${COMPONENTS})
+SET(TEST_TARGETS_TEMP util fraction number mat2d factors format ${COMPONENTS})
 
 FOREACH(TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
     SET(TARGET_NAME "test")
@@ -131,7 +133,6 @@ ENDFOREACH()
 ADD_SUBDIRECTORY(src/)
 ADD_SUBDIRECTORY(lib/)
 ADD_SUBDIRECTORY(tests/)
-ADD_SUBDIRECTORY(gui/)
 ADD_SUBDIRECTORY(include/) # The CMakeLists file there adds the include/ directory to everything
 
 FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)

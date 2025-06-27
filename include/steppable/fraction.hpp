@@ -21,7 +21,7 @@
  **************************************************************************************************/
 
 /**
- * @file fraction.hpp
+ * @file steppable/fraction.hpp
  * @brief This file contains the definition of the Fraction class, which represents a fraction in math.
  *
  * @author Andy Zhang
@@ -30,7 +30,7 @@
 
 #pragma once
 
-#include "number.hpp"
+#include "steppable/number.hpp"
 
 #include <array>
 #include <string>
@@ -96,6 +96,13 @@ namespace steppable
         Fraction operator+(const Fraction& rhs) const;
 
         /**
+         * @brief Unary plus operator.
+         * @details Does nothing. Simply returns a new instance of the fraction.
+         * @return A new instance of the fraction, with euqal value and equal in sign.
+         */
+        Fraction operator+() const;
+
+        /**
          * @brief Subtracts a fraction from another fraction.
          * This function does it by doing a simple fraction subtraction and returns the difference.
          *
@@ -103,6 +110,13 @@ namespace steppable
          * @return The difference of fractions.
          */
         Fraction operator-(const Fraction& rhs) const;
+
+        /**
+         * @brief Unary minus operator.
+         * @details Converts the fraction to itself with the opposite sign. Returns a new instance of the fraction.
+         * @return A fraction equal in value but opposite in sign.
+         */
+        Fraction operator-() const;
 
         /**
          * @brief Multiplies two fractions together.

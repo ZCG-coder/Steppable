@@ -20,6 +20,18 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-from .number import *
-from .fraction import *
-from .rounding_mode import *
+"""
+The Steppable library Python bindings
+=====================================
+This library provides the Python bindings to C++ functions of Steppable.
+
+Steppable
+---------
+This project aims to make a Computer Algebra System (CAS) from scratch, and without any external libraries.
+See https://github.com/ZCG-coder/Steppable for the project.
+"""
+
+from ._fraction import *
+from ._matrix import *
+from ._number import *
+from ._rounding_mode import *

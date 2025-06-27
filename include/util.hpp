@@ -34,6 +34,10 @@
 
 #pragma once
 
+#ifdef WINDOWS
+    #include <windows.h>
+#endif
+
 #include "colors.hpp"
 #include "output.hpp"
 #include "platform.hpp"
@@ -99,7 +103,6 @@ namespace steppable::__internals::utils
 
 #ifdef WINDOWS
     #include <fcntl.h>
-    #include <windows.h>
 
     /**
      * @brief Enables VT mode.
@@ -293,6 +296,8 @@ namespace steppable::__internals::numUtils
      */
     constexpr bool isZeroString(const std::string& string)
     {
+        if (string.empty())
+            return true;
         return std::ranges::all_of(string, [](const char c) { return c == '0' or c == '.' or c == '-'; });
     }
 

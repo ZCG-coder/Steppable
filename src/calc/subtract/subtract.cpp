@@ -32,8 +32,10 @@
 #include "argParse.hpp"
 #include "fn/calc.hpp"
 #include "getString.hpp"
+#include "steppable/number.hpp"
 #include "subtractReport.hpp"
 #include "symbols.hpp"
+#include "types/result.hpp"
 #include "util.hpp"
 
 #include <algorithm>
@@ -96,8 +98,8 @@ namespace steppable::__internals::calc
         if (bIsNegative)
         {
             if (steps == 2)
-                // Adding {0} and {1} since {1} is negative
-                std::cout << $("subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a, b.substr(1) }) << "\n";
+                // Adding {0} and {1} since {2} is negative
+                std::cout << $("subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a, b.substr(1), b }) << "\n";
             resultIsNegative = false;
             return add(a, b.substr(1), steps);
         }
@@ -128,8 +130,8 @@ namespace steppable::__internals::calc
         std::ranges::reverse(aStr);
         std::ranges::reverse(bStr);
 
-        std::vector<int> diffDigits(aStr.length(), 0);
-        std::vector<int> borrows(aStr.length());
+        std::vector diffDigits(aStr.length(), 0);
+        std::vector borrows(aStr.length(), 0);
         std::ranges::copy(aStr, borrows.begin());
         std::ranges::for_each(borrows, [](int& c) { c -= '0'; });
         for (int index = 0; index < aStr.length(); index++)
@@ -184,6 +186,13 @@ namespace steppable::__internals::calc
                               steps,
                               resultIsNegative,
                               noMinus);
+    }
+
+    types::Result<Number> error(const std::string& a, const std::string& b)
+    {
+        auto difference = subtract(a, b, 0);
+        difference = abs(difference, 0);
+        return { { a, b }, { difference }, Number(difference), types::Status::CALCULATED_UNSIMPLIFIED };
     }
 } // namespace steppable::__internals::calc
 
