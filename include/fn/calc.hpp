@@ -36,8 +36,8 @@
 #pragma once
 
 #include "fn/root.hpp"
-#include "steppable/number.hpp"
 #include "output.hpp"
+#include "steppable/number.hpp"
 #include "types/result.hpp"
 
 #include <string>
@@ -46,8 +46,8 @@
 using namespace std::literals;
 
 /**
- * @namespace steppable::__internals
- * @brief The namespace containing internal functions for the Steppable library.
+ * @namespace steppable::__internals::calc
+ * @brief The namespace containing number calculating functions for the Steppable library.
  */
 namespace steppable::__internals::calc
 {

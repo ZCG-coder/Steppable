@@ -36,9 +36,10 @@
 namespace steppable::concepts
 {
     template<typename T>
-    concept Numeric = std::integral<T> || std::floating_point<T>;
+    concept Numeric = std::integral<T> || std::floating_point<T>; ///< Represents any C++ numeral literals.
 
     template<typename ObjectT>
+    /// @brief Represents any object with a `.present()` method.
     concept Presentable = requires(ObjectT object) {
         { object.present() } -> std::same_as<std::string>;
     };

@@ -24,6 +24,10 @@
 
 #include <string>
 
+/**
+ * @namespace steppable::__internals
+ * @brief The namespace containing internal functions for the Steppable library.
+ */
 namespace steppable::__internals::calc
 {
     /**

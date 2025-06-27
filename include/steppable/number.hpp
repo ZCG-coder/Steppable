@@ -67,9 +67,9 @@ namespace steppable
 
     enum class Rounding : std::uint8_t
     {
-        ROUND_DOWN = 0x00,
-        ROUND_UP = 0x01,
-        ROUND_OFF = 0x02,
+        ROUND_DOWN = 0x00, ///< Rounds the number down.
+        ROUND_UP = 0x01, ///< Rounds the number up.
+        ROUND_OFF = 0x02, ///< Rounds the number off.
     };
 
     /**
@@ -309,7 +309,7 @@ namespace steppable
     };
 
     /**
-     * @namespace literals
+     * @namespace steppable::literals
      * @brief Literal suffixes for literals to be converted to Steppable objects.
      */
     namespace literals

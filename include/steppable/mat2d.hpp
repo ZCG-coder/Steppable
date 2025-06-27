@@ -77,8 +77,25 @@ namespace steppable
         size_t prec = 10; ///< Precision of numbers in the matrix.
         MatVec2D<Number> data; ///< The data of the matrix.
 
+        /**
+         * @brief Checks whether a point is inside the matrix. Errors and exits the program if not.
+         * @param point The point to check.
+         */
         void _checkIdxSanity(const YXPoint* point) const;
 
+        /**
+         * @brief Checks whether the matrix data is correct in format.
+         * @details This method checks for non-uniform rows inside the matrix.
+         *
+         * @param data The matrix data vector.
+         */
+        static void _checkDataSanity(const MatVec2D<Number>& data);
+
+        /**
+         * @brief Rounds off all data inside a vector to a specified precision.
+         * @param data A double `std::vector` object containing matrix data.
+         * @param prec Precision of the matrix.
+         */
         static MatVec2D<Number> roundOffValues(const MatVec2D<Number>& data, size_t prec);
 
     public:
@@ -109,6 +126,12 @@ namespace steppable
          */
         Matrix(const MatVec2D<Number>& data, size_t prec = 5);
 
+        /**
+         * @brief Constructs a matrix from a 2D vector of C++ numbers.
+         * @param data The 2D vector representing the matrix data.
+         * @param prec Precision of the numbers.
+         * @tparam ValueT Type of value in the `data` parameter.
+         */
         template<concepts::Numeric ValueT>
         Matrix(const MatVec2D<ValueT>& data, const size_t prec) :
             _cols(data.front().size()), _rows(data.size()), prec(prec)
@@ -428,6 +451,10 @@ namespace steppable
          */
         [[nodiscard]] size_t getCols() const { return _cols; }
 
+        /**
+         * @brief Get the data std::vector object from the matrix.
+         * @return A std::vector object containing all the matrix data.
+         */
         [[nodiscard]] MatVec2D<Number> getData() const { return data; }
     };
 } // namespace steppable

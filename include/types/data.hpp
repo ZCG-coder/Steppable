@@ -60,13 +60,13 @@ namespace steppable
 
     enum class _Weekday : std::uint8_t
     {
-        Sunday = 0,
-        Monday = 1,
-        Tuesday = 2,
-        Wednesday = 3,
-        Thursday = 4,
-        Friday = 5,
-        Saturday = 6,
+        Sunday = 0, ///< Sunday
+        Monday = 1, ///< Monday
+        Tuesday = 2, ///< Tuesday
+        Wednesday = 3, ///< Wednesday
+        Thursday = 4, ///< Thursday
+        Friday = 5, ///< Friday
+        Saturday = 6, ///< Saturday
     };
 
     using Weekday = Data<_Weekday, StringLiteral{ "Weekday" }>;

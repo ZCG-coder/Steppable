@@ -98,12 +98,28 @@ namespace steppable
         }
     } // namespace prettyPrint::printers
 
+    void Matrix::_checkDataSanity(const MatVec2D<Number>& data)
+    {
+        size_t size = 0;
+        for (const auto& row : data)
+        {
+            const size_t rowSize = row.size();
+            if (rowSize != size)
+            {
+                output::error("Matrix::_checkDataSanity"s, "Matrix has non-uniform dimensions."s);
+                utils::programSafeExit(1);
+            }
+            size = rowSize;
+        }
+    }
+
     Matrix::Matrix() : data({ {} }) { _cols = _rows = 0; }
 
     Matrix::Matrix(const size_t rows, const size_t cols, const Number& fill) :
         data(std::vector(rows, std::vector(cols, fill))), _cols(cols), _rows(rows)
     {
         data = roundOffValues(data, static_cast<int>(prec));
+        _checkDataSanity(data);
     }
 
     Matrix::Matrix(const MatVec2D<Number>& data, const size_t prec) :

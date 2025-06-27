@@ -31,8 +31,8 @@ namespace steppable
      */
     struct XYPoint
     {
-        size_t x = 0;
-        size_t y = 0;
+        size_t x = 0; ///< Coordinate x.
+        size_t y = 0; ///< Coordinate y.
     };
 
     /**
@@ -42,8 +42,8 @@ namespace steppable
      */
     struct YXPoint
     {
-        size_t y = 0;
-        size_t x = 0;
+        size_t y = 0; ///< Coordinate y.
+        size_t x = 0; ///< Coordinate x.
     };
 
     /**
@@ -53,9 +53,9 @@ namespace steppable
      */
     struct YX2Points
     {
-        size_t y1 = 0;
-        size_t x1 = 0;
-        size_t y2 = 0;
-        size_t x2 = 0;
+        size_t y1 = 0; ///< Point 1 coordinate y.
+        size_t x1 = 0; ///< Point 1 coordinate x.
+        size_t y2 = 0; ///< Point 2 coordinate y.
+        size_t x2 = 0; ///< Point 2 coordinate x.
     };
 } // namespace steppable
