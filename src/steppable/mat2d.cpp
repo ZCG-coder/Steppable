@@ -100,7 +100,7 @@ namespace steppable
 
     void Matrix::_checkDataSanity(const MatVec2D<Number>& data)
     {
-        size_t size = 0;
+        size_t size = data.front().size();
         for (const auto& row : data)
         {
             const size_t rowSize = row.size();
