@@ -28,11 +28,10 @@
  * @date 31st May 2025
  */
 
+#include "conPlot/conPlot.hpp"
+#include "fn/calc.hpp"
 #include "refReport.hpp"
-#include "steppable/mat2d.hpp"
-#include "steppable/number.hpp"
 
-#include <iostream>
 #include <string>
 
 namespace steppable::__internals::matrix
@@ -43,13 +42,17 @@ namespace steppable::__internals::matrix
 int main()
 {
     using namespace steppable;
-    std::vector<std::vector<Number>> matrix = { { 2, 1, -1, 3, 2, 8 },
-                                                { 1, -2, 1, 0, 2, -4 },
-                                                { 3, 1, -3, 4, 1, 6 },
-                                                { 1, 1, 1, 1, 1, 5 },
-                                                { 2, -1, 2, -1, 3, 3 } };
-    auto mat = steppable::Matrix(matrix);
-    mat = mat.rref();
+    // std::vector<std::vector<Number>> matrix = { { 2, 1, -1, 3, 2, 8 },
+    //                                             { 1, -2, 1, 0, 2, -4 },
+    //                                             { 3, 1, -3, 4, 1, 6 },
+    //                                             { 1, 1, 1, 1, 1, 5 },
+    //                                             { 2, -1, 2, -1, 3, 3 } };
+    // auto mat = steppable::Matrix(matrix);
+    // mat = mat.rref();
 
-    std::cout << mat.present(1) << "\n";
+    // std::cout << mat.present(1) << "\n";
+    graphing::conPlot({ [](const Number& x) { return steppable::__internals::calc::sin(x.present(), 2); },
+                        [](const Number& x) { return steppable::__internals::calc::cos(x.present(), 2); } },
+                      { .width = 90, .xMin = -3.14, .xMax = 3.14, .title = "Sine and cosine graphs from -pi to +pi" },
+                      { {}, { .lineColor = colors::red, .lineDot = "*" } });
 }

@@ -32,10 +32,14 @@
 
 #pragma once
 
+#include "colors.hpp"
+
 #include <array>
 #include <cstddef>
+#include <cstdint>
 #include <string>
 #include <string_view>
+#include <utility>
 #include <vector>
 
 /**
@@ -44,6 +48,8 @@
  */
 namespace steppable::prettyPrint
 {
+    using namespace __internals::utils;
+
     /**
      * @brief Represents a position in the console.
      */
@@ -66,6 +72,13 @@ namespace steppable::prettyPrint
     //     PrintingAlignment alignment;
     // };
 
+    enum class HorizontalAlignment : std::uint8_t
+    {
+        LEFT = 0,
+        CENTER = 1,
+        RIGHT = 2
+    };
+
     /**
      * @brief Represents a console output buffer.
      */
@@ -76,7 +89,7 @@ namespace steppable::prettyPrint
         Position curPos;
 
         /// @brief The buffer object.
-        std::vector<std::vector<char>> buffer;
+        std::vector<std::vector<std::string>> buffer;
 
         /// @brief The height of the buffer.
         size_t height = 10;
@@ -100,8 +113,14 @@ namespace steppable::prettyPrint
          * @param dLine The change in line.
          * @param dCol The change in column.
          * @param updatePos Whether to update the current position.
+         * @param color Color of the text to write.
          */
-        void write(char c, long long dLine, long long dCol, bool updatePos = false);
+        void write(char c,
+                   long long dLine,
+                   long long dCol,
+                   bool updatePos = false,
+                   const ColorFunc& color = colors::keepOriginal,
+                   const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
         /**
          * @brief Writes a character to the buffer.
@@ -109,8 +128,13 @@ namespace steppable::prettyPrint
          * @param c The character to write.
          * @param pos The position to write to.
          * @param updatePos Whether to update the current position.
+         * @param color Color of the text to write.
          */
-        void write(char c, const Position& pos, bool updatePos = false);
+        void write(char c,
+                   const Position& pos,
+                   bool updatePos = false,
+                   const ColorFunc& color = colors::keepOriginal,
+                   const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
         /**
          * @brief Writes a string to the buffer.
@@ -118,8 +142,13 @@ namespace steppable::prettyPrint
          * @param s The string to write.
          * @param pos The position to write to.
          * @param updatePos Whether to update the current position.
+         * @param color Color of the text to write.
          */
-        void write(const std::string& s, const Position& pos, bool updatePos = false);
+        void write(const std::string& s,
+                   const Position& pos,
+                   bool updatePos = false,
+                   const ColorFunc& color = colors::keepOriginal,
+                   const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
         /**
          * @brief Gets the buffer as a string.
@@ -144,6 +173,112 @@ namespace steppable::prettyPrint
      */
     size_t getStringHeight(const std::string& s);
 } // namespace steppable::prettyPrint
+
+namespace steppable::__internals::stringUtils
+{
+
+    /**
+     * @brief Checks if a Unicode code point represents a zero-width character.
+     *
+     * Zero-width characters do not consume display space (e.g., combining marks, zero-width spaces).
+     *
+     * @param codepoint The Unicode code point to check.
+     * @return true if the code point is a zero-width character, false otherwise.
+     */
+    bool isZeroWidthCharacter(uint32_t codepoint);
+
+    /**
+     * @brief Decodes a UTF-8 encoded string into a Unicode code point.
+     *
+     * This function reads one UTF-8 encoded character from the string, starting at index `i`,
+     * and advances the index to the next character.
+     *
+     * @param str The UTF-8 encoded string.
+     * @param i The current position in the string (updated after decoding).
+     * @return The Unicode code point of the character at the given position.
+     */
+    uint32_t getCodepoint(const std::string& str, size_t& i);
+
+    /**
+     * @brief Calculates the display width of a UTF-8 encoded string.
+     *
+     * This function computes the total display width of a string, correctly handling wide, narrow,
+     * zero-width, and CJK characters. CJK characters are counted as one character.
+     *
+     * @param utf8Str The UTF-8 encoded string.
+     * @return The total display width of the string.
+     */
+    size_t getUnicodeDisplayWidth(const std::string& utf8Str);
+
+    bool utf8Decode(const std::string& s, size_t& i, uint32_t& cp);
+
+    bool isEmojiBase(uint32_t cp);
+
+    bool isClusterExtender(uint32_t cp);
+
+    class GraphemeIterator
+    {
+    public:
+        GraphemeIterator(std::string s) : str(std::move(s)) {}
+
+        // Returns false when there are no more clusters
+        bool next(std::string& cluster)
+        {
+            if (pos >= str.size())
+                return false;
+            size_t start = pos;
+            uint32_t cp = 0;
+            size_t temp = pos;
+            if (!utf8Decode(str, temp, cp))
+                return false;
+
+            // For emoji: group sequences with ZWJ or skin tone
+            if (isEmojiBase(cp) || (cp >= 0x1F1E6 && cp <= 0x1F1FF))
+            {
+                pos = temp;
+                while (true)
+                {
+                    size_t save = pos;
+                    uint32_t nextcp = 0;
+                    if (!utf8Decode(str, save, nextcp))
+                        break;
+                    if (isClusterExtender(nextcp) ||
+                        // For flags: two regional indicators
+                        ((cp >= 0x1F1E6 && cp <= 0x1F1FF) && (nextcp >= 0x1F1E6 && nextcp <= 0x1F1FF)))
+                    {
+                        pos = save;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                cluster = str.substr(start, pos - start);
+                return true;
+            }
+
+            // For combining marks: group base + following combining
+            pos = temp;
+            while (true)
+            {
+                size_t save = pos;
+                uint32_t nextcp = 0;
+                if (!utf8Decode(str, save, nextcp))
+                    break;
+                if (isZeroWidthCharacter(nextcp))
+                    pos = save;
+                else
+                    break;
+            }
+            cluster = str.substr(start, pos - start);
+            return true;
+        }
+
+    private:
+        std::string str;
+        size_t pos{};
+    };
+} // namespace steppable::__internals::stringUtils
 
 /**
  * @namespace steppable::__internals::symbols
@@ -249,6 +384,22 @@ namespace steppable::__internals::symbols
      * @return The surd expression.
      */
     std::string makeSurd(const std::string& radicand);
+
+    namespace BoxDrawing
+    {
+        constexpr std::string DOTTED_VERTICAL = "\u2575";
+        constexpr std::string DOTTED_HORIZONTAL = "\u2574";
+
+        constexpr std::string HORIZONTAL = "\u2500";
+        constexpr std::string VERTICAL = "\u2502";
+
+        constexpr std::string HORIZONTAL_UP = "\u2534";
+        constexpr std::string VERTICAL_LEFT = "\u2524";
+
+        constexpr std::string BOTTOM_RIGHT_CORNER = "\u2518";
+
+        constexpr std::string CROSS = "\u253C";
+    } // namespace BoxDrawing
 } // namespace steppable::__internals::symbols
 
 /**

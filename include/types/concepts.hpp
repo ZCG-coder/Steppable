@@ -27,6 +27,7 @@
  */
 
 #include <concepts>
+#include <ostream>
 #include <string>
 
 /**
@@ -42,5 +43,11 @@ namespace steppable::concepts
     /// @brief Represents any object with a `.present()` method.
     concept Presentable = requires(ObjectT object) {
         { object.present() } -> std::same_as<std::string>;
+    };
+
+    template<typename ObjectT>
+    /// @brief Represents any streams with a `.operator<<()` method.
+    concept Stream = requires(ObjectT object) {
+        { object.operator<<() } -> std::same_as<std::ostream&>;
     };
 } // namespace steppable::concepts

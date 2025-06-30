@@ -25,14 +25,14 @@
 #include <ostream>
 
 #ifdef WINDOWS
-#include <windows.h>
-#include <cstdio>
-#include <io.h>
-#include <versionhelpers.h>
-// ReSharper disable once CppInconsistentNaming
-#define isatty _isatty
-// ReSharper disable once CppInconsistentNaming
-#define fileno _fileno
+    #include <cstdio>
+    #include <io.h>
+    #include <versionhelpers.h>
+    #include <windows.h>
+    // ReSharper disable once CppInconsistentNaming
+    #define isatty _isatty
+    // ReSharper disable once CppInconsistentNaming
+    #define fileno _fileno
 #else
     #include <unistd.h>
 #endif
@@ -59,6 +59,12 @@ namespace steppable::__internals::utils
 
     namespace colors
     {
+        std::ostream& keepOriginal(std::ostream& stream)
+        {
+            stream << "";
+            return stream;
+        }
+
         std::ostream& black(std::ostream& stream)
         {
             if (isTerminal(stream))

@@ -21,7 +21,9 @@
  **************************************************************************************************/
 
 #pragma once
-#include <steppable/number.hpp>
+
+#include "types/rounding.hpp"
+
 #include <string>
 
 namespace steppable::__internals::numUtils
