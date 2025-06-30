@@ -54,5 +54,6 @@ int main()
     graphing::conPlot({ [](const Number& x) { return steppable::__internals::calc::sin(x.present(), 2); },
                         [](const Number& x) { return steppable::__internals::calc::cos(x.present(), 2); } },
                       { .width = 90, .xMin = -3.14, .xMax = 3.14, .title = "Sine and cosine graphs from -pi to +pi" },
-                      { { .title = "Sine" }, { .lineColor = colors::red, .lineDot = "*", .title = "Cosine" } });
+                      { { .title = "Sine", .samplesSpacing = 3 },
+                        { .lineColor = colors::red, .lineDot = "*", .title = "Cosine", .samplesSpacing = 3 } });
 }

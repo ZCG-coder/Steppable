@@ -1,12 +1,11 @@
 #include "colors.hpp"
+#include "conPlot/conPlotInterpolation.hpp"
 #include "conPlotTypes.hpp"
 #include "steppable/number.hpp"
 #include "symbols.hpp" // Adjust the path as needed
-#include "types/rounding.hpp"
 
 #include <algorithm>
 #include <cstddef>
-#include <functional>
 #include <iostream>
 #include <map>
 #include <string>
@@ -22,14 +21,34 @@ namespace steppable::graphing
                      std::map<Number, Number>& fnValues)
     {
         // Plot function
-        for (long long i = 0; i < graphOptions->width; ++i)
+        std::map<long long, long long> gridPos;
+        for (const auto& [i, y] : fnValues)
         {
-            Number x = graphOptions->xMin + Number(i) * xGridSize;
-            Number y = fnValues[x];
             auto gridY = std::stoll(((yMax - y) / yGridSize).present());
+            auto gridX = std::stoll(((graphOptions->xMax - i) / xGridSize).present());
+            gridPos[gridX] = gridY;
+        }
+        if (lineOptions->samplesSpacing > 1)
+            cubicInterpolateFill(&gridPos, 0, graphOptions->width);
 
+        long long lastGridY = gridPos[0];
+        for (const auto& [gridX, gridY] : gridPos)
+        {
             // Plot point
-            canvas->write(lineOptions->lineDot, { .x = i, .y = 3 + gridY }, false, lineOptions->lineColor);
+            const long long diffY = gridY - lastGridY;
+            const long long absDiffY = std::abs(diffY);
+            const long long sgn = diffY / absDiffY;
+            if (absDiffY > graphOptions->height / 2)
+            {
+                // Create more points to connect the dots
+                for (long long j = 1; j < absDiffY + 1; j++)
+                    canvas->write(lineOptions->lineDot,
+                                  { .x = gridX, .y = 3 + gridY + (-sgn * j) },
+                                  false,
+                                  lineOptions->lineColor);
+            }
+            canvas->write(lineOptions->lineDot, { .x = gridX, .y = 3 + gridY }, false, lineOptions->lineColor);
+            lastGridY = 3 + gridY;
         }
     }
 
@@ -42,7 +61,7 @@ namespace steppable::graphing
         for (size_t fnIdx = 0; fnIdx < lineOptions->size(); fnIdx++)
         {
             const auto& lineOption = lineOptions->at(fnIdx);
-            yLoc += fnIdx;
+            yLoc += static_cast<long long>(fnIdx);
             canvas->write(lineOption.title, { .x = 0, .y = yLoc }, false);
 
             for (int i = 0; i < graphOptions->xTickSpacing; i++)
@@ -67,7 +86,7 @@ namespace steppable::graphing
         canvas.write(
             graphOptions.title, { .x = 0, .y = 1 }, false, formats::bold, prettyPrint::HorizontalAlignment::CENTER);
 
-        // Ticks spacing
+        // Sample min/max
         Number yMin;
         for (size_t fnIdx = 0; fnIdx < f.size(); ++fnIdx)
         {
@@ -83,12 +102,14 @@ namespace steppable::graphing
         {
             for (long long i = 0; i <= graphOptions.width; ++i)
             {
-                Number x = graphOptions.xMin + Number(i) * xGridSize;
-                Number y = f[fnIdx](x);
-                fnValues[fnIdx][x] = y;
-
-                yMin = std::min(y, yMin);
-                yMax = std::max(y, yMax);
+                if (i % lineOptions[fnIdx].samplesSpacing == 0)
+                {
+                    Number x = graphOptions.xMin + Number(i) * xGridSize;
+                    Number y = f[fnIdx](x);
+                    fnValues[fnIdx][x] = y;
+                    yMin = std::min(y, yMin);
+                    yMax = std::max(y, yMax);
+                }
 
                 // Write base frame
                 canvas.write(BoxDrawing::HORIZONTAL, { .x = i, .y = 3 + graphOptions.height });
@@ -149,7 +170,7 @@ namespace steppable::graphing
             false,
             formats::bold);
         canvas.write(graphOptions.yAxisTitle,
-                     { .x = graphOptions.width + 10, .y = graphOptions.height / 2 + 1 },
+                     { .x = graphOptions.width + 10, .y = (graphOptions.height / 2) + 1 },
                      false,
                      formats::bold);
 

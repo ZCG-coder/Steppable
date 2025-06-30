@@ -40,5 +40,6 @@ namespace steppable::graphing
         std::string lineDot = GraphDot::BLOCK;
         ColorFunc lineColor = colors::green;
         std::string title = "Line";
+        long long samplesSpacing = 2;
     };
 } // namespace steppable::graphing
