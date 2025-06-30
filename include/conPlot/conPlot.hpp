@@ -33,6 +33,26 @@ namespace steppable::graphing
         }
     }
 
+    void conPlotLegend(const GraphOptions* graphOptions,
+                       const std::vector<LineOptions>* lineOptions,
+                       prettyPrint::ConsoleOutput* canvas)
+    {
+        long long yLoc = graphOptions->height + 7;
+        canvas->write("Legend", { .x = 0, .y = yLoc++ }, false, formats::bold);
+        for (size_t fnIdx = 0; fnIdx < lineOptions->size(); fnIdx++)
+        {
+            const auto& lineOption = lineOptions->at(fnIdx);
+            yLoc += fnIdx;
+            canvas->write(lineOption.title, { .x = 0, .y = yLoc }, false);
+
+            for (int i = 0; i < graphOptions->xTickSpacing; i++)
+                canvas->write(lineOption.lineDot,
+                              { .x = static_cast<long long>(lineOption.title.length()) + 1 + i, .y = yLoc },
+                              false,
+                              lineOption.lineColor);
+        }
+    }
+
     void conPlot(const std::vector<GraphFn>& f,
                  const GraphOptions& graphOptions,
                  const std::vector<LineOptions>& lineOptions)
@@ -135,6 +155,7 @@ namespace steppable::graphing
 
         for (size_t fnIdx = 0; fnIdx < f.size(); ++fnIdx)
             conPlotLine(xGridSize, yGridSize, yMax, &graphOptions, &lineOptions[fnIdx], &canvas, fnValues[fnIdx]);
+        conPlotLegend(&graphOptions, &lineOptions, &canvas);
         std::cout << canvas.asString() << "\n";
     }
 } // namespace steppable::graphing
