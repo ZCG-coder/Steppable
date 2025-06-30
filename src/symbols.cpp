@@ -44,11 +44,11 @@ namespace steppable::prettyPrint
         buffer = std::vector(height, std::vector(width, " "s));
     }
 
-    void ConsoleOutput::write(const std::string& s,
-                              const Position& pos,
-                              bool updatePos,
-                              const ColorFunc& color,
-                              const HorizontalAlignment& alignment)
+    void ConsoleOutput::_write(const std::string& s,
+                               const Position& pos,
+                               bool updatePos,
+                               const ColorFunc& color,
+                               const HorizontalAlignment& alignment)
     {
         auto outputString = s;
         switch (alignment)
@@ -132,7 +132,7 @@ namespace steppable::prettyPrint
         }
         else
             curPos.x += dCol;
-        write(c, curPos, updatePos, color, alignment);
+        _write(std::string(1, c), curPos, updatePos, color, alignment);
     }
 
     void ConsoleOutput::write(const char c,
@@ -141,7 +141,7 @@ namespace steppable::prettyPrint
                               const ColorFunc& color,
                               const HorizontalAlignment& alignment)
     {
-        write(std::string(1, c), pos, updatePos, color, alignment);
+        _write(std::string(1, c), pos, updatePos, color, alignment);
     }
 
     std::string ConsoleOutput::asString() const

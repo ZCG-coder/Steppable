@@ -2,9 +2,9 @@
 
 #include "colors.hpp"
 #include "steppable/number.hpp"
-#include "symbols.hpp"
 
 #include <string>
+#include <string_view>
 
 namespace steppable::graphing
 {
@@ -15,11 +15,11 @@ namespace steppable::graphing
 
     namespace GraphDot
     {
-        constexpr std::string ROUND_DOT = "\u25CF";
-        constexpr std::string BLOCK = "\u2588";
-        constexpr std::string LIGHT_BLOCK_1 = "\u2591";
-        constexpr std::string LIGHT_BLOCK_2 = "\u2592";
-        constexpr std::string LIGHT_BLOCK_3 = "\u2593";
+        constexpr std::string_view ROUND_DOT = "\u25CF";
+        constexpr std::string_view BLOCK = "\u2588";
+        constexpr std::string_view LIGHT_BLOCK_1 = "\u2591";
+        constexpr std::string_view LIGHT_BLOCK_2 = "\u2592";
+        constexpr std::string_view LIGHT_BLOCK_3 = "\u2593";
     } // namespace GraphDot
 
     struct GraphOptions
@@ -37,7 +37,7 @@ namespace steppable::graphing
 
     struct LineOptions
     {
-        std::string lineDot = GraphDot::BLOCK;
+        std::string_view lineDot = GraphDot::BLOCK;
         ColorFunc lineColor = colors::green;
         std::string title = "Line";
         long long samplesSpacing = 2;

@@ -97,6 +97,20 @@ namespace steppable::prettyPrint
         /// @brief The width of the buffer.
         size_t width = 10;
 
+        /**
+         * @brief Writes a string to the buffer.
+         *
+         * @param s The string to write.
+         * @param pos The position to write to.
+         * @param updatePos Whether to update the current position.
+         * @param color Color of the text to write.
+         */
+        void _write(const std::string& s,
+                    const Position& pos,
+                    bool updatePos = false,
+                    const ColorFunc& color = colors::keepOriginal,
+                    const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
+
     public:
         /**
          * @brief Creates a new console output buffer.
@@ -137,18 +151,21 @@ namespace steppable::prettyPrint
                    const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
         /**
-         * @brief Writes a string to the buffer.
+         * @brief Writes a `string_view` object to the buffer.
          *
          * @param s The string to write.
          * @param pos The position to write to.
          * @param updatePos Whether to update the current position.
          * @param color Color of the text to write.
          */
-        void write(const std::string& s,
+        void write(const std::string_view& s,
                    const Position& pos,
                    bool updatePos = false,
                    const ColorFunc& color = colors::keepOriginal,
-                   const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
+                   const HorizontalAlignment& alignment = HorizontalAlignment::LEFT)
+        {
+            _write(static_cast<std::string>(s), pos, updatePos, color, alignment);
+        }
 
         /**
          * @brief Gets the buffer as a string.
