@@ -404,18 +404,18 @@ namespace steppable::__internals::symbols
 
     namespace BoxDrawing
     {
-        constexpr std::string DOTTED_VERTICAL = "\u2575";
-        constexpr std::string DOTTED_HORIZONTAL = "\u2574";
+        constexpr std::string_view DOTTED_VERTICAL = "\u2575";
+        constexpr std::string_view DOTTED_HORIZONTAL = "\u2574";
 
-        constexpr std::string HORIZONTAL = "\u2500";
-        constexpr std::string VERTICAL = "\u2502";
+        constexpr std::string_view HORIZONTAL = "\u2500";
+        constexpr std::string_view VERTICAL = "\u2502";
 
-        constexpr std::string HORIZONTAL_UP = "\u2534";
-        constexpr std::string VERTICAL_LEFT = "\u2524";
+        constexpr std::string_view HORIZONTAL_UP = "\u2534";
+        constexpr std::string_view VERTICAL_LEFT = "\u2524";
 
-        constexpr std::string BOTTOM_RIGHT_CORNER = "\u2518";
+        constexpr std::string_view BOTTOM_RIGHT_CORNER = "\u2518";
 
-        constexpr std::string CROSS = "\u253C";
+        constexpr std::string_view CROSS = "\u253C";
     } // namespace BoxDrawing
 } // namespace steppable::__internals::symbols
 
