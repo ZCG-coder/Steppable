@@ -31,6 +31,7 @@
 #include "conPlot/conPlot.hpp"
 #include "fn/calc.hpp"
 #include "refReport.hpp"
+#include "steppable/number.hpp"
 #include "steppable/parameter.hpp"
 
 #include <string>
@@ -58,10 +59,12 @@ int main()
     // mat = mat.rref();
 
     // std::cout << mat.present(1) << "\n";
-    graphing::conPlot(
-        { [](const Number& x) { return steppable::__internals::calc::sin(x.present(), 2); },
-          [](const Number& x) { return steppable::__internals::calc::cos(x.present(), 2); } },
-        { "width"_p = 90, "xMin"_p = -3.14, "xMax"_p = 3.14, "title"_p = "Sine and cosine graphs from -pi to +pi"s },
-        { { "title"_p = "Sine"s },
-          { "lineColor"_p = colors::red, "lineDot"_p = "*"sv, "title"_p = "Cosine"s } });
+    graphing::conPlot({ [](const Number& x) { return steppable::__internals::calc::sin(x.present(), 2); },
+                        [](const Number& x) { return steppable::__internals::calc::cos(x.present(), 2); } },
+                      { "width"_p = 90LL,
+                        "xMin"_p = Number(-3.14),
+                        "xMax"_p = Number(3.14),
+                        "title"_p = "Sine and cosine graphs from -pi to +pi"s },
+                      { { "title"_p = "Sine"s },
+                        { "lineColor"_p = (ColorFunc)colors::red, "lineDot"_p = "*"sv, "title"_p = "Cosine"s } });
 }

@@ -43,10 +43,10 @@ namespace steppable::graphing
 
             PARAM_GET_FALLBACK(map, Number, xMin, -1);
             PARAM_GET_FALLBACK(map, Number, xMax, 1);
-            PARAM_GET_FALLBACK(map, long long, width, 30);
-            PARAM_GET_FALLBACK(map, long long, height, 20);
-            PARAM_GET_FALLBACK(map, long long, xTickSpacing, 10);
-            PARAM_GET_FALLBACK(map, long long, yTickSpacing, 5);
+            PARAM_GET_FALLBACK(map, long long, width, 30LL);
+            PARAM_GET_FALLBACK(map, long long, height, 20LL);
+            PARAM_GET_FALLBACK(map, long long, xTickSpacing, 10LL);
+            PARAM_GET_FALLBACK(map, long long, yTickSpacing, 5LL);
             PARAM_GET_FALLBACK(map, std::string, title, "Graph");
             PARAM_GET_FALLBACK(map, std::string, xAxisTitle, "X Axis Title");
             PARAM_GET_FALLBACK(map, std::string, yAxisTitle, "Y Axis Title");
@@ -70,14 +70,14 @@ namespace steppable::graphing
         std::string title = "Line";
         long long samplesSpacing = 2;
 
-        template <typename... Params>
+        template<typename... Params>
         LineOptions(Params... params)
         {
             auto map = processParams(params...);
             PARAM_GET_FALLBACK(map, std::string_view, lineDot, GraphDot::BLOCK);
-            PARAM_GET_FALLBACK(map, ColorFunc, lineColor, colors::green);
-            PARAM_GET_FALLBACK(map, std::string, title, "Line");
-            PARAM_GET_FALLBACK(map, long long, samplesSpacing, 2);
+            PARAM_GET_FALLBACK(map, ColorFunc, lineColor, (ColorFunc)colors::green);
+            PARAM_GET_FALLBACK(map, std::string, title, "Line"s);
+            PARAM_GET_FALLBACK(map, long long, samplesSpacing, 2LL);
 
             this->lineDot = lineDot;
             this->lineColor = lineColor;
