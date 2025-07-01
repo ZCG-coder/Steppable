@@ -130,6 +130,10 @@ namespace steppable::__internals::calc
             error("division", $("division", "977f3c9f-01c3-49e4-bf4a-94d7c58bbe82", { _number }));
             return "Infinity";
         }
+        if (isZeroString(_number))
+        {
+            return "0";
+        }
 
         if (compare(_number, _divisor, 0) == "2")
         {

@@ -204,7 +204,7 @@ namespace steppable::__internals::numUtils
 
     auto removeLeadingZeros(const std::string& string) -> std::decay_t<decltype(string)>
     {
-        if (string == "0")
+        if (string == "0" or string.empty())
             return "0";
         auto out = string;
         bool negative = false;

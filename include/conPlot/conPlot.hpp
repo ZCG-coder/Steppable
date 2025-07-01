@@ -37,7 +37,9 @@ namespace steppable::graphing
             // Plot point
             const long long diffY = gridY - lastGridY;
             const long long absDiffY = std::abs(diffY);
-            const long long sgn = diffY / absDiffY;
+            long long sgn = 1;
+            if (absDiffY != 0)
+                sgn = diffY / absDiffY;
             if (absDiffY > graphOptions->height / 2)
             {
                 // Create more points to connect the dots

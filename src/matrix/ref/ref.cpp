@@ -31,6 +31,7 @@
 #include "conPlot/conPlot.hpp"
 #include "fn/calc.hpp"
 #include "refReport.hpp"
+#include "steppable/parameter.hpp"
 
 #include <string>
 
@@ -42,6 +43,7 @@ namespace steppable::__internals::matrix
 int main()
 {
     using namespace steppable;
+    using namespace steppable::__internals::parameter;
     // std::vector<std::vector<Number>> matrix = { { 2, 1, -1, 3, 2, 8 },
     //                                             { 1, -2, 1, 0, 2, -4 },
     //                                             { 3, 1, -3, 4, 1, 6 },
@@ -51,9 +53,10 @@ int main()
     // mat = mat.rref();
 
     // std::cout << mat.present(1) << "\n";
-    graphing::conPlot({ [](const Number& x) { return steppable::__internals::calc::sin(x.present(), 2); },
-                        [](const Number& x) { return steppable::__internals::calc::cos(x.present(), 2); } },
-                      { .width = 90, .xMin = -3.14, .xMax = 3.14, .title = "Sine and cosine graphs from -pi to +pi" },
-                      { { .title = "Sine", .samplesSpacing = 3 },
-                        { .lineColor = colors::red, .lineDot = "*", .title = "Cosine", .samplesSpacing = 3 } });
+    graphing::conPlot(
+        { [](const Number& x) { return steppable::__internals::calc::sin(x.present(), 2); },
+          [](const Number& x) { return steppable::__internals::calc::cos(x.present(), 2); } },
+        { "width"_p = 90, "xMin"_p = -3.14, "xMax"_p = 3.14, "title"_p = "Sine and cosine graphs from -pi to +pi" },
+        { { "title"_p = "Sine", "samplesSpacing"_p = 3 },
+          { "lineColor"_p = colors::red, "lineDot"_p = "*", "title"_p = "Cosine", "samplesSpacing"_p = 3 } });
 }
