@@ -92,7 +92,7 @@ namespace steppable::__internals::parameter
             if (values.find(name) == values.end())
                 return fallback;
 
-            checkParameterTypes(name, &typeid(ValueT));
+            // checkParameterTypes(name, &typeid(ValueT));
             return std::any_cast<ValueT>(values.at(name));
         }
     };

@@ -41,25 +41,25 @@ namespace steppable::graphing
         {
             auto map = processParams(params...);
 
-            PARAM_GET_FALLBACK(map, Number, _xMin, -1);
-            PARAM_GET_FALLBACK(map, Number, _xMax, 1);
-            PARAM_GET_FALLBACK(map, long long, _width, 30);
-            PARAM_GET_FALLBACK(map, long long, _height, 20);
-            PARAM_GET_FALLBACK(map, long long, _xTickSpacing, 10);
-            PARAM_GET_FALLBACK(map, long long, _yTickSpacing, 5);
-            PARAM_GET_FALLBACK(map, std::string, _title, "Graph");
-            PARAM_GET_FALLBACK(map, std::string, _xAxisTitle, "X Axis Title");
-            PARAM_GET_FALLBACK(map, std::string, _yAxisTitle, "Y Axis Title");
+            PARAM_GET_FALLBACK(map, Number, xMin, -1);
+            PARAM_GET_FALLBACK(map, Number, xMax, 1);
+            PARAM_GET_FALLBACK(map, long long, width, 30);
+            PARAM_GET_FALLBACK(map, long long, height, 20);
+            PARAM_GET_FALLBACK(map, long long, xTickSpacing, 10);
+            PARAM_GET_FALLBACK(map, long long, yTickSpacing, 5);
+            PARAM_GET_FALLBACK(map, std::string, title, "Graph");
+            PARAM_GET_FALLBACK(map, std::string, xAxisTitle, "X Axis Title");
+            PARAM_GET_FALLBACK(map, std::string, yAxisTitle, "Y Axis Title");
 
-            xMin = _xMin;
-            xMax = _xMax;
-            width = _width;
-            height = _height;
-            xTickSpacing = _xTickSpacing;
-            yTickSpacing = _yTickSpacing;
-            title = _title;
-            xAxisTitle = _xAxisTitle;
-            yAxisTitle = _yAxisTitle;
+            this->xMin = xMin;
+            this->xMax = xMax;
+            this->width = width;
+            this->height = height;
+            this->xTickSpacing = xTickSpacing;
+            this->yTickSpacing = yTickSpacing;
+            this->title = title;
+            this->xAxisTitle = xAxisTitle;
+            this->yAxisTitle = yAxisTitle;
         }
     };
 
@@ -74,10 +74,15 @@ namespace steppable::graphing
         LineOptions(Params... params)
         {
             auto map = processParams(params...);
-            PARAM_GET_FALLBACK(map, std::string_view, _lineDot, GraphDot::BLOCK);
-            PARAM_GET_FALLBACK(map, ColorFunc, _lineColor, colors::green);
-            PARAM_GET_FALLBACK(map, std::string, _title, "Line");
-            PARAM_GET_FALLBACK(map, long long, _samplesSpacing, 2);
+            PARAM_GET_FALLBACK(map, std::string_view, lineDot, GraphDot::BLOCK);
+            PARAM_GET_FALLBACK(map, ColorFunc, lineColor, colors::green);
+            PARAM_GET_FALLBACK(map, std::string, title, "Line");
+            PARAM_GET_FALLBACK(map, long long, samplesSpacing, 2);
+
+            this->lineDot = lineDot;
+            this->lineColor = lineColor;
+            this->title = title;
+            this->samplesSpacing = samplesSpacing;
         }
     };
 } // namespace steppable::graphing
