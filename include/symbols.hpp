@@ -402,20 +402,31 @@ namespace steppable::__internals::symbols
      */
     std::string makeSurd(const std::string& radicand);
 
+    /**
+     * @namespace steppable::__internals::symbols::BoxDrawing
+     * @brief Defines easy ascess to Unicode box-drawing characters.
+     */
     namespace BoxDrawing
     {
-        constexpr std::string_view DOTTED_VERTICAL = "\u2575";
-        constexpr std::string_view DOTTED_HORIZONTAL = "\u2574";
+        constexpr std::string_view DOTTED_VERTICAL = "\u2575"; ///< Dashed vertical line
+        constexpr std::string_view DOTTED_HORIZONTAL = "\u2574"; ///< Dashed horizontal line
 
-        constexpr std::string_view HORIZONTAL = "\u2500";
-        constexpr std::string_view VERTICAL = "\u2502";
+        constexpr std::string_view HORIZONTAL = "\u2500"; ///< Solid horizontal line
+        constexpr std::string_view VERTICAL = "\u2502"; ///< Solid vertical line
 
+        // region CONNECTORS
+        /// @brief Horizontal line that connects to a vertical one, i.e.,  in `_|_` shape.
         constexpr std::string_view HORIZONTAL_UP = "\u2534";
+
+        /// @brief Vertical line that connects to a left one, i.e.,  in `-|` shape.
         constexpr std::string_view VERTICAL_LEFT = "\u2524";
+        // endregion
 
-        constexpr std::string_view BOTTOM_RIGHT_CORNER = "\u2518";
+        // region CORNERS
+        constexpr std::string_view BOTTOM_RIGHT_CORNER = "\u2518"; ///< The bottom right corner
+        // endregion
 
-        constexpr std::string_view CROSS = "\u253C";
+        constexpr std::string_view CROSS = "\u253C"; ///< A combining cross between a horizontal and vertical line.
     } // namespace BoxDrawing
 } // namespace steppable::__internals::symbols
 

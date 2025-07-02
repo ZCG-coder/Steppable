@@ -20,20 +20,40 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "conPlot/conPlotTypes.hpp"
-#include "symbols.hpp"
+#include "steppable/parameter.hpp"
 
-#include <cstddef>
-#include <string>
-
-/**
- * @namespace steppable::graphing
- * @brief Graphing utilities for showing graphs in the console.
- */
-namespace steppable::graphing
+namespace steppable::__internals::parameter
 {
-    void conPlot(const std::vector<GraphFn>& f,
-                 const GraphOptions& graphOptions,
-                 const std::vector<LineOptions>& lineOptions);
-} // namespace steppable::graphing
+    void ParameterMap::checkParameterOrder(const std::vector<std::string>& names)
+    {
+        if (names.size() != values.size())
+        {
+            output::error("ParameterMap::checkParameterOrder"s, "Incorrect name vector size."s);
+            utils::programSafeExit(1);
+        }
+
+        for (size_t i = 0; i < values.size(); i++)
+            if (names[i] != values[i].name)
+            {
+                output::error("ParameterMap::checkParameterOrder"s,
+                              "Name {0} mismatch. Expect {1}"s,
+                              { values[i].name, names[i] });
+                utils::programSafeExit(1);
+            }
+    }
+
+    void ParameterMap::checkParameterNameUnordered(const std::vector<std::string>& names)
+    {
+        if (names.size() != values.size())
+        {
+            output::error("ParameterMap::checkParameterNameUnordered"s, "Incorrect name vector size."s);
+            utils::programSafeExit(1);
+        }
+        for (const auto& obj : values)
+            if (std::ranges::find(names, obj.name) == names.end())
+            {
+                output::error("ParameterMap::checkParameterNameUnordered"s, "Name {0} not found."s, { obj.name });
+                utils::programSafeExit(1);
+            }
+    }
+}
