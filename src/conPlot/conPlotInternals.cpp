@@ -42,6 +42,18 @@ namespace steppable::graphing::__internals
                      prettyPrint::ConsoleOutput* canvas,
                      std::map<Number, Number>& fnValues)
     {
+        const auto& yMin = yMax - yGridSize * graphOptions->height;
+        long long minShadeGrid = 0;
+        long long maxShadeGrid = 0;
+        if (lineOptions->shadeOptions != ShadeOptions::NO_SHADE)
+        {
+            auto [minShade, maxShade] = lineOptions->shadeValues;
+            if (minShade > maxShade)
+                std::swap(minShade, maxShade);
+
+            minShadeGrid = 3 + std::stoll(((yMax - minShade) / yGridSize).present());
+            maxShadeGrid = 3 + std::stoll(((yMax - maxShade) / yGridSize).present());
+        }
         // Plot function
         std::map<long long, long long> gridPos;
         for (const auto& [i, y] : fnValues)
@@ -73,6 +85,56 @@ namespace steppable::graphing::__internals
             }
             canvas->write(lineOptions->lineDot, { .x = gridX, .y = 3 + gridY }, false, lineOptions->lineColor);
             lastGridY = 3 + gridY;
+
+            switch (lineOptions->shadeOptions)
+            {
+            case ShadeOptions::NO_SHADE:
+                break;
+
+            case ShadeOptions::SHADE_BELOW_FIRST:
+            {
+                for (long long j = lastGridY - 1; j >= minShadeGrid; j--)
+                    canvas->write(lineOptions->shadeDot, { .x = gridX, .y = j }, false, lineOptions->lineColor);
+                break;
+            }
+            case ShadeOptions::SHADE_ABOVE_FIRST:
+            {
+                for (long long j = lastGridY + 1; j <= minShadeGrid; j++)
+                    canvas->write(lineOptions->shadeDot, { .x = gridX, .y = j }, false, lineOptions->lineColor);
+                break;
+            }
+            case ShadeOptions::SHADE_BELOW_SECOND:
+            {
+                for (long long j = lastGridY - 1; j >= maxShadeGrid; j--)
+                    canvas->write(lineOptions->shadeDot, { .x = gridX, .y = j }, false, lineOptions->lineColor);
+                break;
+            }
+            case ShadeOptions::SHADE_ABOVE_SECOND:
+            {
+                for (long long j = lastGridY + 1; j <= maxShadeGrid; j++)
+                    canvas->write(lineOptions->shadeDot, { .x = gridX, .y = j }, false, lineOptions->lineColor);
+                break;
+            }
+            case ShadeOptions::SHADE_BETWEEN_BOTH:
+            {
+                for (long long j = std::max(lastGridY + 1, maxShadeGrid); j <= minShadeGrid; j++)
+                    canvas->write(lineOptions->shadeDot, { .x = gridX, .y = j }, false, lineOptions->lineColor);
+                break;
+            }
+            case ShadeOptions::SHADE_OUTSIDE_BOTH:
+            {
+                // Shade below first
+                for (long long j = lastGridY - 1; j >= minShadeGrid; j--)
+                    canvas->write(lineOptions->shadeDot, { .x = gridX, .y = j }, false, lineOptions->lineColor);
+
+                // Shade above second
+                for (long long j = lastGridY + 1; j <= maxShadeGrid; j++)
+                    canvas->write(lineOptions->shadeDot, { .x = gridX, .y = j }, false, lineOptions->lineColor);
+                break;
+            }
+            default:
+                break;
+            }
         }
     }
 

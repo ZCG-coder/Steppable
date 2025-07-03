@@ -20,9 +20,9 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "conPlot/conPlotTypes.hpp"
+#pragma once
 
-#include <cstddef>
+#include "conPlot/conPlotTypes.hpp"
 
 /**
  * @namespace steppable::graphing

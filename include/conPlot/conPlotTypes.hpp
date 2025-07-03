@@ -28,6 +28,7 @@
 
 #include <string>
 #include <string_view>
+#include <utility>
 
 namespace steppable::graphing
 {
@@ -65,6 +66,19 @@ namespace steppable::graphing
         Number xMin = -1; ///< Minimum `x` value.
         Number xMax = 1; ///< Maximum `x` value.
     };
+
+    enum class ShadeOptions : std::uint8_t
+    {
+        NO_SHADE = 0,
+        SHADE_ABOVE_FIRST = 1,
+        SHADE_BELOW_SECOND = 2,
+        SHADE_BETWEEN_BOTH = 3,
+        SHADE_OUTSIDE_BOTH = 4,
+        SHADE_ABOVE_SECOND = 5,
+        SHADE_BELOW_FIRST = 6,
+    };
+
+    using NumberPair = std::pair<Number, Number>;
 
     /**
      * @struct steppable::graphing::GraphOptions
@@ -156,6 +170,9 @@ namespace steppable::graphing
     struct LineOptions : LineOptionsBase
     {
         long long samplesSpacing = 2; ///< Frequency to take a sample, units: grids.
+        NumberPair shadeValues = { 0, 0 };
+        ShadeOptions shadeOptions = ShadeOptions::NO_SHADE;
+        std::string_view shadeDot = GraphDot::LIGHT_BLOCK_1;
 
         /**
          * @brief Initializes a new `LineOptions` instance.
@@ -171,10 +188,18 @@ namespace steppable::graphing
             PARAM_GET_FALLBACK(map, std::string, title, "Line"s);
             PARAM_GET_FALLBACK(map, long long, samplesSpacing, 2LL);
 
+            PARAM_GET_FALLBACK(map, NumberPair, shadeValues, {});
+            PARAM_GET_FALLBACK(map, ShadeOptions, shadeOptions, ShadeOptions::NO_SHADE);
+            PARAM_GET_FALLBACK(map, std::string_view, shadeBlock, GraphDot::LIGHT_BLOCK_1);
+
             this->lineDot = lineDot;
             this->lineColor = lineColor;
             this->title = title;
             this->samplesSpacing = samplesSpacing;
+
+            this->shadeValues = shadeValues;
+            this->shadeOptions = shadeOptions;
+            this->shadeDot = shadeBlock;
         }
     };
 
