@@ -59,12 +59,43 @@ int main()
     // mat = mat.rref();
 
     // std::cout << mat.present(1) << "\n";
-    graphing::conPlot({ [](const Number& x) { return steppable::__internals::calc::sin(x.present(), 2); },
-                        [](const Number& x) { return steppable::__internals::calc::cos(x.present(), 2); } },
-                      { "width"_p = 90LL,
-                        "xMin"_p = Number(-3.14),
-                        "xMax"_p = Number(3.14),
-                        "title"_p = "Sine and cosine graphs from -pi to +pi"s },
+    graphing::conPlot({
+                          [](const Number& x) { return steppable::__internals::calc::sin(x.present(), 2); },
+                          [](const Number& x) { return steppable::__internals::calc::cos(x.present(), 2); },
+                      },
+                      {
+                          "width"_p = 90LL,
+                          "xMin"_p = Number(-3.14),
+                          "xMax"_p = Number(3.14),
+                          "title"_p = "Sine and cosine graphs from -pi to +pi"s,
+                      },
                       { { "title"_p = "Sine"s },
-                        { "lineColor"_p = (ColorFunc)colors::red, "lineDot"_p = "*"sv, "title"_p = "Cosine"s } });
+                        {
+                            "lineColor"_p = (ColorFunc)colors::red,
+                            "lineDot"_p = "*"sv,
+                            "title"_p = "Cosine"s,
+                        } });
+
+    graphing::conPlotBar(
+        {
+            { 10, 12, 50, 12, 56, 6 },
+            { 13, 14, 42, 64, 23, 10 },
+        },
+        {
+            "width"_p = 110LL,
+            "height"_p = 20LL,
+            "title"_p = "Bar plot"s,
+            "xAxisTitle"_p = "X axis"s,
+            "barWidth"_p = 5LL,
+        },
+        {
+            {
+                "title"_p = "Bar 1"s,
+                "color"_p = (ColorFunc)colors::blue,
+            },
+            {
+                "title"_p = "Bar 2"s,
+                "color"_p = (ColorFunc)colors::red,
+            },
+        });
 }

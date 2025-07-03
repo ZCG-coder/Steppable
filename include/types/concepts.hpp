@@ -26,6 +26,8 @@
  * @date 23 Jun 2025
  */
 
+#pragma once
+
 #include <concepts>
 #include <ostream>
 #include <string>

@@ -21,26 +21,28 @@
  **************************************************************************************************/
 
 #pragma once
+#include <iostream>
+#include <vector>
 
-#include <map>
-
-namespace steppable::graphing
+namespace steppable::inspect
 {
-    /**
-     * @brief Fill in integral values with linear interpolation.
-     *
-     * @param data An x-y corresponding table of values. Must have at least 2 items.
-     * @param xMin Minimum `x` value.
-     * @param xMax Maximum `x` value.
-     */
-    void linearInterpolateFill(std::map<long long, long long>* data, long long xMin, long long xMax);
+    template<typename VectorValueT>
+    void printVector(const std::vector<VectorValueT>& vector)
+    {
+#ifndef DEBUG
+        return;
+#endif
 
-    /**
-     * @brief Fill in integral values with cubic interpolation.
-     *
-     * @param data An x-y corresponding table of values. Must have at least 4 items.
-     * @param xMin Minimum `x` value.
-     * @param xMax Maximum `x` value.
-     */
-    void cubicInterpolateFill(std::map<long long, long long>* data, long long xMin, long long xMax);
-} // namespace steppable::graphing
+        std::cout << "[";
+        for (size_t i = 0; i < vector.size(); i++)
+        {
+            std::cout << vector[i];
+
+            if (i != vector.size() - 1)
+                std::cout << ", ";
+            if (i % 5 == 0)
+                std::cout << "\n";
+        }
+        std::cout << "]\n";
+    }
+} // namespace steppable::inspect

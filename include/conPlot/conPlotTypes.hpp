@@ -50,22 +50,28 @@ namespace steppable::graphing
         constexpr std::string_view LIGHT_BLOCK_3 = "\u2593"; ///< More densly-filled block
     } // namespace GraphDot
 
-    /**
-     * @struct steppable::graphing::GraphOptions
-     * @brief Stores the opotions for each graph shown on screen.
-     */
-    struct GraphOptions
+    struct GraphOptionsBase
     {
-        Number xMin = -1; ///< Minimum `x` value.
-        Number xMax = 1; ///< Maximum `x` value.
-        long long width = 30; ///< Width of the graph.
-        long long height = 20; ///< Height of the graph.
-        long long xTickSpacing = 10; ///< Spacing between each `x` axis tick.
-        long long yTickSpacing = 5; ///< Spacing between each `y` axis tick.
         std::string title = "Graph"; ///< Title of the graph.
         std::string xAxisTitle = "X Axis Title"; ///< Title of the `x` axis.
         std::string yAxisTitle = "Y Axis Title"; ///< Title of the `y` axis.
 
+        long long width = 30; ///< Width of the graph.
+        long long height = 20; ///< Height of the graph.
+
+        long long xTickSpacing = 10; ///< Spacing between each `x` axis tick.
+        long long yTickSpacing = 5; ///< Spacing between each `y` axis tick.
+
+        Number xMin = -1; ///< Minimum `x` value.
+        Number xMax = 1; ///< Maximum `x` value.
+    };
+
+    /**
+     * @struct steppable::graphing::GraphOptions
+     * @brief Stores the opotions for each graph shown on screen.
+     */
+    struct GraphOptions : GraphOptionsBase
+    {
         /**
          * @brief Initializes a new `GraphOptions` instance.
          *
@@ -98,15 +104,57 @@ namespace steppable::graphing
         }
     };
 
-    /**
-     * @struct steppable::graphing::LineOptions
-     * @brief Stores options for each line graphed on screen.
-     */
-    struct LineOptions
+    struct BarGraphOptions : GraphOptionsBase
+    {
+        long long yTickSpacing = 5; ///< Spacing between each `y` axis tick.
+        long long xTickSpacing = 2; ///< Width of a single bar
+        Number xMin = 0;
+        Number xMax = 100;
+
+        /**
+         * @brief Initializes a new `GraphOptions` instance.
+         *
+         * @param params The parameters to be passed to initialize the instance.
+         */
+        template<typename... Params>
+        BarGraphOptions(Params... params)
+        {
+            auto map = processParams(params...);
+
+            PARAM_GET_FALLBACK(map, long long, width, 30LL);
+            PARAM_GET_FALLBACK(map, long long, height, 20LL);
+            PARAM_GET_FALLBACK(map, long long, yTickSpacing, 5LL);
+            PARAM_GET_FALLBACK(map, long long, barWidth, 2LL);
+            PARAM_GET_FALLBACK(map, std::string, title, "Bar Graph");
+            PARAM_GET_FALLBACK(map, std::string, xAxisTitle, "X Axis Title");
+            PARAM_GET_FALLBACK(map, std::string, yAxisTitle, "Y Axis Title");
+
+            this->width = width;
+            this->height = height;
+            this->yTickSpacing = yTickSpacing;
+            this->title = title;
+            this->xAxisTitle = xAxisTitle;
+            this->yAxisTitle = yAxisTitle;
+            this->xTickSpacing = barWidth;
+        }
+    };
+
+    struct LineOptionsBase
     {
         std::string_view lineDot = GraphDot::BLOCK; ///< Dot type to be drawn on screen.
         ColorFunc lineColor = colors::green; ///< Color of the dot to output.
         std::string title = "Line"; ///< Name of the line to be shown in the legend.
+    };
+
+    template<typename T>
+    concept LineOptionsDerivation = std::derived_from<T, LineOptionsBase>;
+
+    /**
+     * @struct steppable::graphing::LineOptions
+     * @brief Stores options for each line graphed on screen.
+     */
+    struct LineOptions : LineOptionsBase
+    {
         long long samplesSpacing = 2; ///< Frequency to take a sample, units: grids.
 
         /**
@@ -127,6 +175,25 @@ namespace steppable::graphing
             this->lineColor = lineColor;
             this->title = title;
             this->samplesSpacing = samplesSpacing;
+        }
+    };
+
+    struct BarOptions : LineOptionsBase
+    {
+        std::string title = "Bar";
+
+        template<typename... Params>
+        BarOptions(Params... params)
+        {
+            auto map = processParams(params...);
+            PARAM_GET_FALLBACK(map, std::string_view, block, GraphDot::BLOCK);
+            PARAM_GET_FALLBACK(map, ColorFunc, color, colors::keepOriginal);
+            PARAM_GET_FALLBACK(map, long long, barWidth, 2);
+            PARAM_GET_FALLBACK(map, std::string, title, "Bar"s);
+
+            this->lineDot = block;
+            this->lineColor = color;
+            this->title = title;
         }
     };
 } // namespace steppable::graphing

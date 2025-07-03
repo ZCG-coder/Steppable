@@ -20,12 +20,9 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
 #include "conPlot/conPlotTypes.hpp"
-#include "symbols.hpp"
 
 #include <cstddef>
-#include <string>
 
 /**
  * @namespace steppable::graphing
@@ -35,5 +32,9 @@ namespace steppable::graphing
 {
     void conPlot(const std::vector<GraphFn>& f,
                  const GraphOptions& graphOptions,
-                 const std::vector<LineOptions>& lineOptions);
+                 const std::vector<LineOptions>& linesOptions);
+
+    void conPlotBar(const std::vector<std::vector<Number>>& numbers,
+                    const BarGraphOptions& graphOptions,
+                    const std::vector<BarOptions>& barsOptions);
 } // namespace steppable::graphing

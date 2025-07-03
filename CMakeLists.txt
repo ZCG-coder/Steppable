@@ -111,11 +111,11 @@ SET(COMPONENTS
     calc::root
     calc::subtract
     calc::trig
-    matrix::ref)
+    matrix::ref
+)
 # NEW_COMPONENT: PATCH Do NOT remove the previous comment.
 
 SET(TARGETS ${COMPONENTS} util)
-SET(TEST_TARGETS_TEMP steppable::util steppable::fraction steppable::number steppable::mat2d steppable::factors steppable::format ${COMPONENTS})
 
 ADD_SUBDIRECTORY(src/)
 ADD_SUBDIRECTORY(lib/)

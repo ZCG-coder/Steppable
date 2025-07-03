@@ -20,44 +20,10 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-ENABLE_TESTING()
-
-SET(TEST_TARGETS_TEMP
-    steppable::util
-    steppable::fraction
-    steppable::number
-    steppable::mat2d
-    steppable::factors
-    steppable::format
-    ${COMPONENTS}
+SET(CONPLOT_FILES ${STP_BASE_DIRECTORY}/src/conPlot/conPlot.cpp ${STP_BASE_DIRECTORY}/src/conPlot/conPlotInternals.cpp
+                  ${STP_BASE_DIRECTORY}/src/conPlot/conPlotInterpolation.cpp
 )
 
-FOREACH(TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
-    SET(TARGET_NAME "test")
-    STRING(REPLACE "::" ";" TEST_TARGET_PARTS ${TEST_TARGET})
-    LIST(GET TEST_TARGET_PARTS 0 DIR_NAME)
-    LIST(GET TEST_TARGET_PARTS 1 FILE_NAME)
-    STRING(REPLACE "::" "_" TEST_TARGET ${TEST_TARGET})
-
-    CAPITALIZE(${DIR_NAME} DIR_NAME)
-    CAPITALIZE(${FILE_NAME} FILE_NAME)
-    CAPITALIZE(${TEST_TARGET} TEST_TARGET)
-    STRING(CONCAT DIR_NAME "test" ${DIR_NAME})
-    STRING(CONCAT FILE_NAME "test" ${FILE_NAME})
-    STRING(CONCAT TEST_TARGET "test" ${TEST_TARGET})
-
-    ADD_EXECUTABLE(${TEST_TARGET} ${DIR_NAME}/${FILE_NAME}.cpp)
-    TARGET_LINK_LIBRARIES(${TEST_TARGET} PRIVATE func)
-    ADD_TEST(NAME ${TEST_TARGET} COMMAND ${CMAKE_BINARY_DIR}/tests/${TEST_TARGET})
-
-    LIST(APPEND TEST_TARGETS ${TEST_TARGET})
-    MESSAGE(TRACE "Added test case: ${TEST_TARGET}: ${DIR_NAME}/${FILE_NAME}.cpp")
-ENDFOREACH()
-
-SET(TEST_TARGETS
-    ${TEST_TARGETS}
-    PARENT_SCOPE
-)
-
-ADD_CUSTOM_TARGET(tests)
-ADD_DEPENDENCIES(tests ${TEST_TARGETS})
+ADD_LIBRARY(conPlot STATIC ${CONPLOT_FILES})
+SET_TARGET_PROPERTIES(conPlot PROPERTIES POSITION_INDEPENDENT_CODE ON)
+TARGET_INCLUDE_DIRECTORIES(conPlot PRIVATE ${STP_BASE_DIRECTORY}/include/)

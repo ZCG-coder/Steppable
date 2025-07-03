@@ -20,27 +20,31 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-if(NOT ${STP_NO_BINDINGS}) # Only create the bindings if needed
-    set(Python_EXECUTABLE ${Python3_EXECUTABLE})
+IF(NOT ${STP_NO_BINDINGS}) # Only create the bindings if needed
+    SET(Python_EXECUTABLE ${Python3_EXECUTABLE})
 
     # Detect the installed nanobind package and import it into CMake
-    execute_process(
+    EXECUTE_PROCESS(
         COMMAND "${Python3_EXECUTABLE}" -m nanobind --cmake_dir
         OUTPUT_STRIP_TRAILING_WHITESPACE
-        OUTPUT_VARIABLE NB_DIR)
-    message(TRACE "Found nanobind: ${NB_DIR}")
-    list(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
-    find_package(nanobind CONFIG REQUIRED)
+        OUTPUT_VARIABLE NB_DIR
+    )
+    MESSAGE(TRACE "Found nanobind: ${NB_DIR}")
+    LIST(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
+    FIND_PACKAGE(nanobind CONFIG REQUIRED)
 
     # Python bindings for Steppable.
-    set(Python_INTERPRETER_ID ${Python3_INTERPRETER_ID} CACHE INTERNAL "Compatibility for nanobind")
-    nanobind_add_module(steppyble STABLE_ABI NB_STATIC LTO bindings.cpp)
+    SET(Python_INTERPRETER_ID
+        ${Python3_INTERPRETER_ID}
+        CACHE INTERNAL "Compatibility for nanobind"
+    )
+    NANOBIND_ADD_MODULE(steppyble STABLE_ABI NB_STATIC LTO bindings.cpp)
 
-    if(NOT ${WINDOWS})
-        target_link_options(steppyble PRIVATE -Bsymbolic)
-    endif()
-    set_target_properties(steppyble PROPERTIES POSITION_INDEPENDENT_CODE ON)
-    target_link_libraries(steppyble PRIVATE func steppable)
-    target_compile_definitions(steppyble PRIVATE NO_MAIN STP_BINDINGS)
-    target_include_directories(steppyble PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
-endif()
+    IF(NOT ${WINDOWS})
+        TARGET_LINK_OPTIONS(steppyble PRIVATE -Bsymbolic)
+    ENDIF()
+    SET_TARGET_PROPERTIES(steppyble PROPERTIES POSITION_INDEPENDENT_CODE ON)
+    TARGET_LINK_LIBRARIES(steppyble PRIVATE func steppable)
+    TARGET_COMPILE_DEFINITIONS(steppyble PRIVATE NO_MAIN STP_BINDINGS)
+    TARGET_INCLUDE_DIRECTORIES(steppyble PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+ENDIF()

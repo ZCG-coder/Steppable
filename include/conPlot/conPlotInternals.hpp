@@ -22,25 +22,30 @@
 
 #pragma once
 
+#include "conPlot/conPlotTypes.hpp"
+#include "steppable/number.hpp"
+
 #include <map>
 
-namespace steppable::graphing
+/**
+ * @namespace steppable::graphing::__internals
+ * @brief Graphing utilities for showing graphs in the console.
+ */
+namespace steppable::graphing::__internals
 {
-    /**
-     * @brief Fill in integral values with linear interpolation.
-     *
-     * @param data An x-y corresponding table of values. Must have at least 2 items.
-     * @param xMin Minimum `x` value.
-     * @param xMax Maximum `x` value.
-     */
-    void linearInterpolateFill(std::map<long long, long long>* data, long long xMin, long long xMax);
+    void conPlotLine(const Number& xGridSize,
+                     const Number& yGridSize,
+                     const Number& yMax,
+                     const GraphOptions* graphOptions,
+                     const LineOptions* lineOptions,
+                     prettyPrint::ConsoleOutput* canvas,
+                     std::map<Number, Number>& fnValues);
 
-    /**
-     * @brief Fill in integral values with cubic interpolation.
-     *
-     * @param data An x-y corresponding table of values. Must have at least 4 items.
-     * @param xMin Minimum `x` value.
-     * @param xMax Maximum `x` value.
-     */
-    void cubicInterpolateFill(std::map<long long, long long>* data, long long xMin, long long xMax);
-} // namespace steppable::graphing
+    void drawTicks(prettyPrint::ConsoleOutput* canvas,
+                   const Number& xGridSize,
+                   const Number& yGridSize,
+                   const Number& yMax,
+                   const GraphOptionsBase* graphOptions);
+
+    void drawGrid(prettyPrint::ConsoleOutput* canvas, const GraphOptionsBase* graphOptions);
+} // namespace steppable::graphing::__internals

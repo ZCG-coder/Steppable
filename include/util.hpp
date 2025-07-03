@@ -41,9 +41,11 @@
 #include "colors.hpp"
 #include "output.hpp"
 #include "platform.hpp"
+#include "types/concepts.hpp"
 
 #include <algorithm>
 #include <array>
+#include <charconv>
 #include <chrono>
 #include <clocale>
 #include <cstddef>
@@ -606,5 +608,18 @@ namespace steppable::__internals::stringUtils
                 out << ", ";
         }
         return out.str();
+    }
+
+    template<concepts::Numeric T>
+    T toNumeric(const std::string& s)
+    {
+        auto value = T{};
+
+        if (auto result = std::from_chars(s.data(), s.data() + s.size(), value); result.ec != std::errc{})
+        {
+            output::error("toNumeric"s, "Invalid argument"s);
+            utils::programSafeExit(1);
+        }
+        return value;
     }
 } // namespace steppable::__internals::stringUtils
