@@ -5,4 +5,9 @@
 [![CMake Build](https://github.com/ZCG-coder/Steppable/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/ZCG-coder/Steppable/actions/workflows/cmake-multi-platform.yml)
 [![Doxygen Deploy](https://github.com/ZCG-coder/Steppable/actions/workflows/doxygen-gh-pages.yml/badge.svg)](https://github.com/ZCG-coder/Steppable/actions/workflows/doxygen-gh-pages.yml)
 
-This project aims to make a Computer Algebra System (CAS) from scratch, and without any external libraries.
+This project aims to build a Computer Algebra System (CAS) from scratch, without any external libraries.
+
+All documentation, usage instructions, and developer guides are available in the [project Wiki](https://github.com/ZCG-coder/Steppable/wiki).
+
+---
+For contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).

@@ -168,4 +168,6 @@ namespace steppable::graphing
         conPlotLegend(&graphOptions, &linesOptions, &canvas);
         std::cout << canvas.asString() << "\n";
     }
+
+    void pieChart() {}
 } // namespace steppable::graphing
