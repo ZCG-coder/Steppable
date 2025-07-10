@@ -76,7 +76,7 @@ namespace steppable::__internals::calc
         {
             if (steps == 2)
                 // Adding {0} and {1} since {0} is negative
-                std::cout << $("subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a.substr(1), b }) << "\n";
+                std::cout << $("subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a.substr(1), b, b }) << "\n";
             auto addResult = add(a.substr(1), b, steps, true);
             auto res = addResult.substr(addResult.find_last_of(' ') + 1);
             if (steps == 2)
