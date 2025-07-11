@@ -84,23 +84,22 @@ namespace steppable::__internals::calc
                 // Replace last line with a subtraction report
                 std::stringstream ss;
                 ss << addResult.substr(0, addResult.find_last_of('\n')) << '\n';
-                ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
+                ss << THEREFORE << ' ' << a << " - " << b << " = " << res;
                 return ss.str();
             }
             if (steps == 1)
             {
                 std::stringstream ss;
-                ss << THEREFORE << ' ' << a << " - " << b << " = -" << res;
+                ss << THEREFORE << ' ' << a << " - " << b << " = " << res;
                 return ss.str();
             }
-            return "-" + addResult;
+            return standardizeNumber(addResult);
         }
         if (bIsNegative)
         {
             if (steps == 2)
                 // Adding {0} and {1} since {2} is negative
                 std::cout << $("subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a, b.substr(1), b }) << "\n";
-            resultIsNegative = false;
             return add(a, b.substr(1), steps);
         }
         if (compare(a, b, 0) == "0")
@@ -122,7 +121,7 @@ namespace steppable::__internals::calc
                    << subtractResult.substr(subtractResult.find_last_of(' ') + 1);
                 return ss.str();
             }
-            return "-" + subtractResult;
+            return standardizeNumber("-" + subtractResult);
         }
 
         std::string aStr = aInteger + aDecimal;

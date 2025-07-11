@@ -241,11 +241,11 @@ namespace steppable
         MatVec2D<Number> mat = data;
         mat = roundOffValues(mat, static_cast<int>(prec) + 3);
 
-        for (int col = 0, row = 0; col < _cols && row < _rows; ++col)
+        for (long long signed col = 0, row = 0; col < _cols && row < _rows; ++col)
         {
             // Find first non-zero in column col, at or below row
-            int sel = -1;
-            for (int i = row; i < _rows; ++i)
+            long long signed sel = -1;
+            for (long long signed i = row; i < _rows; ++i)
                 if (mat[i][col] != 0.0)
                 {
                     sel = i;
@@ -258,10 +258,10 @@ namespace steppable
                 std::swap(mat[row], mat[sel]); // Swap if needed
 
             // Eliminate below
-            for (int i = row + 1; i < _rows; ++i)
+            for (long long signed i = row + 1; i < _rows; ++i)
             {
                 Number factor = mat[i][col] / mat[row][col];
-                for (int j = col; j < _cols; ++j)
+                for (long long signed j = col; j < _cols; ++j)
                     mat[i][j] -= factor * mat[row][j];
             }
             ++row;
