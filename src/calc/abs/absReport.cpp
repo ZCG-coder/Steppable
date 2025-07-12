@@ -49,28 +49,30 @@ std::string reportAbs(const std::string& number, int steps = 2)
         if (number[0] == '-')
         {
             // Since
-            ss << $("abs", "f39c432d-9031-423a-a12f-1efcd3e113b2")
+            ss << $("calc::abs", "f39c432d-9031-423a-a12f-1efcd3e113b2")
                << number
                // is negative,
-               << $("abs", "5c8a89a7-4cb1-40d8-b926-6ae84fc3a3ef") << "abs(" << number << ") = -(" << number << ")\n";
+               << $("calc::abs", "5c8a89a7-4cb1-40d8-b926-6ae84fc3a3ef") << "abs(" << number << ") = -(" << number
+               << ")\n";
             // The absolute value of...
             ss << THEREFORE
-               << $("abs", "8fd01dbe-c921-4f22-a0ab-d1348967e4b0", { number })
+               << $("calc::abs", "8fd01dbe-c921-4f22-a0ab-d1348967e4b0", { number })
                // is
-               << $("abs", "7066c6e7-6b80-4671-bc61-6c0322204c87") << standardizeNumber(number.substr(1));
+               << $("calc::abs", "7066c6e7-6b80-4671-bc61-6c0322204c87") << standardizeNumber(number.substr(1));
         }
         else
         {
             // Since
-            ss << $("abs", "f39c432d-9031-423a-a12f-1efcd3e113b2")
+            ss << $("calc::abs", "f39c432d-9031-423a-a12f-1efcd3e113b2")
                << number
                // Is positive,...
-               << $("abs", "b119f705-751b-425e-a758-47d755307700") << "abs(" << number << ") = " << number << '\n';
+               << $("calc::abs", "b119f705-751b-425e-a758-47d755307700") << "abs(" << number << ") = " << number
+               << '\n';
             // The absolute value of...
             ss << THEREFORE
-               << $("abs", "8fd01dbe-c921-4f22-a0ab-d1348967e4b0", { number })
+               << $("calc::abs", "8fd01dbe-c921-4f22-a0ab-d1348967e4b0", { number })
                // is
-               << $("abs", "7066c6e7-6b80-4671-bc61-6c0322204c87") << standardizeNumber(number);
+               << $("calc::abs", "7066c6e7-6b80-4671-bc61-6c0322204c87") << standardizeNumber(number);
         }
     }
     else if (steps == 1)

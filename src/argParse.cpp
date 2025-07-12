@@ -59,8 +59,8 @@ namespace steppable::__internals::utils
     void ProgramArgs::printUsage(const std::string& reason) const
     {
         // Usage: <programName> <switches> <keywordArgs>
-        std::cout << $("argParse", "91408f1e-6627-41e5-9707-d8a660c2b86b") << formats::bold << programName << reset
-                  << " ";
+        std::cout << $("steppable::argParse", "91408f1e-6627-41e5-9707-d8a660c2b86b") << formats::bold << programName
+                  << reset << " ";
 
         if (not posArgDescriptions.empty())
             for (const auto& posArg : posArgDescriptions | std::views::keys)
@@ -68,16 +68,19 @@ namespace steppable::__internals::utils
 
         if (not switchDescriptions.empty())
             // Siwtches
-            std::cout << colors::brightGreen << $("argParse", "38f61169-17f1-4a49-870b-814745cdf4c6") << reset;
+            std::cout << colors::brightGreen << $("steppable::argParse", "38f61169-17f1-4a49-870b-814745cdf4c6")
+                      << reset;
         if (not keywordArgDescriptions.empty())
             // Keyword arguments
-            std::cout << colors::brightGreen << $("argParse", "4f332974-1fd1-43eb-bbbc-8d32071ed735") << reset;
+            std::cout << colors::brightGreen << $("steppable::argParse", "4f332974-1fd1-43eb-bbbc-8d32071ed735")
+                      << reset;
         std::cout << '\n';
 
         if (not posArgDescriptions.empty())
         {
             // Available positional arguments
-            std::cout << formats::bold << $("argParse", "5d482eea-c4e4-4c4d-89f0-6b33fcc9618c") << reset << '\n';
+            std::cout << formats::bold << $("steppable::argParse", "5d482eea-c4e4-4c4d-89f0-6b33fcc9618c") << reset
+                      << '\n';
             for (const auto& [posArgName, posArgDescription] : posArgDescriptions)
             {
                 std::cout << colors::brightGreen << formats::bold << '<' << posArgName << '>' << reset;
@@ -92,14 +95,16 @@ namespace steppable::__internals::utils
         if (not switchDescriptions.empty())
         {
             // Available switches
-            std::cout << formats::bold << $("argParse", "10b1c33b-070f-4dfb-be12-a1a4349e76bc") << reset << '\n';
+            std::cout << formats::bold << $("steppable::argParse", "10b1c33b-070f-4dfb-be12-a1a4349e76bc") << reset
+                      << '\n';
             for (const auto& [switchName, switchDescription] : switchDescriptions)
             {
                 std::cout << colors::brightGreen << formats::bold << '[' << '-' << switchName << "] ";
                 std::cout << '[' << '+' << switchName << "]" << reset << '\n';
 
                 // Enables/Disables {0}.
-                std::cout << $("argParse", "227375c6-6ec8-479e-ad39-59f975272c6b", { switchDescription }) << '\n';
+                std::cout << $("steppable::argParse", "227375c6-6ec8-479e-ad39-59f975272c6b", { switchDescription })
+                          << '\n';
             }
             std::cout << reset << '\n';
         }
@@ -107,7 +112,8 @@ namespace steppable::__internals::utils
         if (not keywordArgDescriptions.empty())
         {
             // Available keyword arguments
-            std::cout << formats::bold << $("argParse", "be2d8c84-0dfc-4f52-b450-e34d1cf20c91") << reset << '\n';
+            std::cout << formats::bold << $("steppable::argParse", "be2d8c84-0dfc-4f52-b450-e34d1cf20c91") << reset
+                      << '\n';
             for (const auto& [keywordArgName, keywordArgDescription] : keywordArgDescriptions)
             {
                 std::cout << colors::brightGreen << formats::bold << '[' << '-' << keywordArgName << ": <VALUE>]"
@@ -126,7 +132,7 @@ namespace steppable::__internals::utils
         // Print the footnote only if there are positional arguments that require a number
         if (std::ranges::any_of(posArgIsNumber, [](const bool isNumber) { return isNumber; }))
             // Requires number
-            std::cout << $("argParse", "fd67fddb-ca42-4a79-b852-c0bc71aa9969") << "\n";
+            std::cout << $("steppable::argParse", "fd67fddb-ca42-4a79-b852-c0bc71aa9969") << "\n";
         programSafeExit(-1);
     }
 
@@ -134,7 +140,7 @@ namespace steppable::__internals::utils
     {
         if (posArgs.size() <= index)
             // Invalid positional argument
-            printUsage($("argParse", "b782de55-513d-4eda-b068-98d2d6210603") + std::to_string(index));
+            printUsage($("steppable::argParse", "b782de55-513d-4eda-b068-98d2d6210603") + std::to_string(index));
         return posArgs[index];
     }
 
@@ -142,7 +148,7 @@ namespace steppable::__internals::utils
     {
         if (not keywordArgs.contains(name))
             // Invalid keyword argument
-            printUsage($("argParse", "aa26a7f2-0949-454e-b987-42b40348e104") + name);
+            printUsage($("steppable::argParse", "aa26a7f2-0949-454e-b987-42b40348e104") + name);
         return keywordArgs[name];
     }
 
@@ -150,7 +156,7 @@ namespace steppable::__internals::utils
     {
         if (not switches.contains(name))
             // Invalid switch
-            printUsage($("argParse", "2b854b9f-da27-483e-a016-0eb0d26eb9e9") + name);
+            printUsage($("steppable::argParse", "2b854b9f-da27-483e-a016-0eb0d26eb9e9") + name);
         return switches[name];
     }
 
@@ -191,7 +197,7 @@ namespace steppable::__internals::utils
                 {
                     // Positional argument is not a number.
                     output::error("ProgramArgs::parseArgs"s,
-                                  $("argParse", "34782921-b560-4706-a2c9-d5c326af2cff", { _arg }));
+                                  $("steppable::argParse", "34782921-b560-4706-a2c9-d5c326af2cff", { _arg }));
                     programSafeExit(-1);
                 }
                 posArgs.push_back(_arg);

@@ -76,7 +76,7 @@ namespace steppable::__internals::calc
         {
             if (steps == 2)
                 // Adding {0} and {1} since {0} is negative
-                std::cout << $("subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a.substr(1), b, b }) << "\n";
+                std::cout << $("calc::subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a.substr(1), b, b }) << "\n";
             auto addResult = add(a.substr(1), b, steps, true);
             auto res = addResult.substr(addResult.find_last_of(' ') + 1);
             if (steps == 2)
@@ -99,7 +99,7 @@ namespace steppable::__internals::calc
         {
             if (steps == 2)
                 // Adding {0} and {1} since {2} is negative
-                std::cout << $("subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a, b.substr(1), b }) << "\n";
+                std::cout << $("calc::subtract", "063f0bd2-a4ca-4433-97c0-8baa73cd0e7c", { a, b.substr(1), b }) << "\n";
             return add(a, b.substr(1), steps);
         }
         if (compare(a, b, 0) == "0")
@@ -200,11 +200,11 @@ int main(int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', $("subtract", "3db38a7c-58e9-44f2-ba36-47e355b60294"));
-    program.addPosArg('b', $("subtract", "a697967c-5010-423c-9a84-201c955310de"));
-    program.addKeywordArg("steps", 2, $("subtract", "645b0f26-3c2a-49ae-a9d6-1e06c11fe15e"));
-    program.addSwitch("noMinus", false, $("subtract", "7704320c-1391-405f-8147-0b4023d769f6"));
-    program.addSwitch("profile", false, $("subtract", "4c13dd96-fb5b-4e99-b8e6-08e8be07b446"));
+    program.addPosArg('a', $("calc::subtract", "3db38a7c-58e9-44f2-ba36-47e355b60294"));
+    program.addPosArg('b', $("calc::subtract", "a697967c-5010-423c-9a84-201c955310de"));
+    program.addKeywordArg("steps", 2, $("calc::subtract", "645b0f26-3c2a-49ae-a9d6-1e06c11fe15e"));
+    program.addSwitch("noMinus", false, $("calc::subtract", "7704320c-1391-405f-8147-0b4023d769f6"));
+    program.addSwitch("profile", false, $("calc::subtract", "4c13dd96-fb5b-4e99-b8e6-08e8be07b446"));
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");
@@ -216,7 +216,7 @@ int main(int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Column Method Subtraction)
-        std::cout << $("subtract", "4dee3c00-c204-4cb0-afad-e57e41763bf5") << "\n"
+        std::cout << $("calc::subtract", "4dee3c00-c204-4cb0-afad-e57e41763bf5") << "\n"
                   << subtract(aStr, bStr, steps, noMinus) << '\n';
         TOC()
     }

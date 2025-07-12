@@ -59,7 +59,7 @@ namespace steppable::__internals::calc
             if (steps == 2)
             {
                 // The result is...
-                ss << BECAUSE << " a = 0" << $("add", "ca3f0783-02d8-4006-8bbe-2311ffd708fa") << b << '\n';
+                ss << BECAUSE << " a = 0" << $("calc::add", "ca3f0783-02d8-4006-8bbe-2311ffd708fa") << b << '\n';
                 ss << THEREFORE << " " << a << " + " << b << " = " << b;
             }
             else if (steps == 1)
@@ -76,7 +76,7 @@ namespace steppable::__internals::calc
             if (steps == 2)
             {
                 // The result is...
-                ss << BECAUSE << " b = 0" << $("add", "ca3f0783-02d8-4006-8bbe-2311ffd708fa") << a << '\n';
+                ss << BECAUSE << " b = 0" << $("calc::add", "ca3f0783-02d8-4006-8bbe-2311ffd708fa") << a << '\n';
                 ss << THEREFORE << " " << a << " + " << b << " = " << a;
             }
             else if (steps == 1)
@@ -98,14 +98,14 @@ namespace steppable::__internals::calc
         {
             if (steps == 2)
                 // Subtracting {0} from {1} since {2} is negative
-                std::cout << $("add", "547d6d96-de8d-4f2e-af3b-2da475d8d161", { b, a.substr(1), a }) << "\n";
+                std::cout << $("calc::add", "547d6d96-de8d-4f2e-af3b-2da475d8d161", { b, a.substr(1), a }) << "\n";
             return subtract(b, a.substr(1), steps);
         }
         else if (bIsNegative)
         {
             if (steps == 2)
                 // Subtracting {0} from {1} since {2} is negative
-                std::cout << $("add", "547d6d96-de8d-4f2e-af3b-2da475d8d161", { a, b.substr(1), b }) << "\n";
+                std::cout << $("calc::add", "547d6d96-de8d-4f2e-af3b-2da475d8d161", { a, b.substr(1), b }) << "\n";
             return subtract(a, b.substr(1), steps);
         }
 
@@ -168,13 +168,13 @@ int main(const int _argc, const char* _argv[])
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
     // Number 1
-    program.addPosArg('a', $("add", "6e1121d2-75a4-4173-a54b-0b6c2f98abfc"));
+    program.addPosArg('a', $("calc::add", "6e1121d2-75a4-4173-a54b-0b6c2f98abfc"));
     // Number 2
-    program.addPosArg('b', $("add", "852e4cdb-cb19-4717-95b3-eaec08777ebc"));
+    program.addPosArg('b', $("calc::add", "852e4cdb-cb19-4717-95b3-eaec08777ebc"));
     // Steps while adding...
-    program.addKeywordArg("steps", 2, $("add", "c935c960-609c-4ecd-97f5-d4f36d3bbc9f"));
+    program.addKeywordArg("steps", 2, $("calc::add", "c935c960-609c-4ecd-97f5-d4f36d3bbc9f"));
     // Profiling
-    program.addSwitch("profile", false, $("add", "6959b967-151d-44b0-a250-464f871d6dc1"));
+    program.addSwitch("profile", false, $("calc::add", "6959b967-151d-44b0-a250-464f871d6dc1"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");
@@ -185,7 +185,7 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Column Method Addition)
-        std::cout << $("add", "0c7e9691-2777-4cb8-8ae6-e21206859c5d") << "\n" << add(aStr, bStr) << '\n';
+        std::cout << $("calc::add", "0c7e9691-2777-4cb8-8ae6-e21206859c5d") << "\n" << add(aStr, bStr) << '\n';
         TOC()
     }
     else

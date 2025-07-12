@@ -47,20 +47,20 @@ std::string reportComparisonAtInteger(const std::string& a, const std::string& b
 
     if (steps == 2)
     {
-        ss << $("comparison", "0095d521-ccba-4c5b-b33f-9d9f2b3d18e3", { a, b }) << '\n';
+        ss << $("calc::comparison", "0095d521-ccba-4c5b-b33f-9d9f2b3d18e3", { a, b }) << '\n';
         if (bigger)
         {
             // The integer part of {0} is greater than that of {1}
-            ss << BECAUSE << $("comparison", "1b7ea6d8-9909-4589-8d59-b3eb7121cdee", { a, b }) << '\n';
+            ss << BECAUSE << $("calc::comparison", "1b7ea6d8-9909-4589-8d59-b3eb7121cdee", { a, b }) << '\n';
             // {0} is greater than {1}
-            ss << THEREFORE << $("comparison", "aaad3a6a-1257-478a-b3d1-245c4dc0e6fb", { a, b });
+            ss << THEREFORE << $("calc::comparison", "aaad3a6a-1257-478a-b3d1-245c4dc0e6fb", { a, b });
         }
         else
         {
             // The integer part of {0} is greater than that of {1}
-            ss << BECAUSE << $("comparison", "1b7ea6d8-9909-4589-8d59-b3eb7121cdee", { b, a }) << '\n';
+            ss << BECAUSE << $("calc::comparison", "1b7ea6d8-9909-4589-8d59-b3eb7121cdee", { b, a }) << '\n';
             // {0} is less than {1}
-            ss << THEREFORE << $("comparison", "ec120274-c8f2-4a41-9e64-b7b0d011d20e", { a, b });
+            ss << THEREFORE << $("calc::comparison", "ec120274-c8f2-4a41-9e64-b7b0d011d20e", { a, b });
         }
     }
     else if (steps == 1)
@@ -78,17 +78,17 @@ std::string reportComparisonByPolarity(const std::string& a, const std::string& 
     if (steps == 2)
     {
         // Comparing the polarities of {0} and {1}
-        ss << $("comparison", "09a9b12d-7b58-4626-b7c8-62a16933bfce", { a, b }) << '\n';
+        ss << $("calc::comparison", "09a9b12d-7b58-4626-b7c8-62a16933bfce", { a, b }) << '\n';
         if (greater)
         {
             // {0} is positive and {1} is negative
-            ss << BECAUSE << $("comparison", "eb150ad5-09a5-4be6-8400-988e6f0eb252", { a, b }) << '\n';
-            ss << THEREFORE << $("comparison", "aaad3a6a-1257-478a-b3d1-245c4dc0e6fb", { a, b });
+            ss << BECAUSE << $("calc::comparison", "eb150ad5-09a5-4be6-8400-988e6f0eb252", { a, b }) << '\n';
+            ss << THEREFORE << $("calc::comparison", "aaad3a6a-1257-478a-b3d1-245c4dc0e6fb", { a, b });
         }
         else
         {
-            ss << BECAUSE << $("comparison", "237615f7-6c35-4ca2-a791-43d8ccc925dd", { a, b }) << '\n';
-            ss << THEREFORE << $("comparison", "ec120274-c8f2-4a41-9e64-b7b0d011d20e", { a, b });
+            ss << BECAUSE << $("calc::comparison", "237615f7-6c35-4ca2-a791-43d8ccc925dd", { a, b }) << '\n';
+            ss << THEREFORE << $("calc::comparison", "ec120274-c8f2-4a41-9e64-b7b0d011d20e", { a, b });
         }
     }
     else if (steps == 1)
@@ -117,21 +117,21 @@ std::string reportComparisonByDigit(const std::string& a,
         {
             // At digit {0}...
             ss << std::string(digit + 4, ' ') << "^~~~~ " << BECAUSE
-               << $("comparison",
+               << $("calc::comparison",
                     "ab1363eb-bfdb-44a9-89ee-b125a8d60cbd",
                     { std::to_string(digit + 1), std::string(1, a[digit]), std::string(1, b[digit]) })
                << '\n';
-            ss << THEREFORE << $("comparison", "aaad3a6a-1257-478a-b3d1-245c4dc0e6fb", { a, b });
+            ss << THEREFORE << $("calc::comparison", "aaad3a6a-1257-478a-b3d1-245c4dc0e6fb", { a, b });
         }
         else
         {
             // At digit {0}...
             ss << std::string(digit + 4, ' ') << "^~~~~ " << BECAUSE
-               << $("comparison",
+               << $("calc::comparison",
                     "ab1363eb-bfdb-44a9-89ee-b125a8d60cbd",
                     { std::to_string(digit + 1), std::string(1, b[digit]), std::string(1, a[digit]) })
                << '\n';
-            ss << THEREFORE << $("comparison", "ec120274-c8f2-4a41-9e64-b7b0d011d20e", { a, b });
+            ss << THEREFORE << $("calc::comparison", "ec120274-c8f2-4a41-9e64-b7b0d011d20e", { a, b });
         }
     }
     else if (steps == 1)

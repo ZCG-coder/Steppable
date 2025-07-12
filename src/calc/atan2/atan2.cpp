@@ -79,7 +79,7 @@ namespace steppable::__internals::calc
         // (6)
         if (isZeroString(x) and isZeroString(y)) [[unlikely]]
         {
-            error("atan2"s, $("atan2", "8d78a4a1-4b3e-431a-a0fc-9a0e663b3281"));
+            error("atan2"s, $("calc::atan2", "8d78a4a1-4b3e-431a-a0fc-9a0e663b3281"));
             return "Undefined";
         }
 
@@ -114,9 +114,9 @@ int main(int _argc, const char* _argv[])
 {
     Utf8CodePage();
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('y', $("atan2", "799378d1-3edd-4f97-97d2-8662b17a1819"));
-    program.addPosArg('x', $("atan2", "7f146d0f-4f58-4dcd-9333-2e27d7e7dcf9"));
-    program.addKeywordArg("decimals", 2, $("atan2", "fc72b8b9-bc77-4d44-9e99-65e1f11150e2"));
+    program.addPosArg('y', $("calc::atan2", "799378d1-3edd-4f97-97d2-8662b17a1819"));
+    program.addPosArg('x', $("calc::atan2", "7f146d0f-4f58-4dcd-9333-2e27d7e7dcf9"));
+    program.addKeywordArg("decimals", 2, $("calc::atan2", "fc72b8b9-bc77-4d44-9e99-65e1f11150e2"));
     program.parseArgs();
 
     int decimals = program.getKeywordArgument("decimals");

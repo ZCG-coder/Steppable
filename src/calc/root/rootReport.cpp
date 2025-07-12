@@ -42,7 +42,7 @@ std::string reportRootPower(const std::string& _number,
     std::stringstream ss;
 
     if (steps == 2)
-        ss << $("root", "248c0c3b-05f8-45d6-868f-ec921c088ce1", { _number }) << '\n';
+        ss << $("calc::root", "248c0c3b-05f8-45d6-868f-ec921c088ce1", { _number }) << '\n';
     if (steps >= 1)
     {
         ss << ppRoot(_number, base) << '\n';

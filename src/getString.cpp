@@ -76,11 +76,27 @@ namespace steppable::localization
         return lang;
     }
 
-    std::string $(const std::string& origin, const std::string& key)
+    std::string $(const std::string& _origin, const std::string& key)
     {
         // Get localization directory -> origin -> key -> **string**
         // If we cannot find the string, return the default string.
         // Localization is in <configuration directory>/translations/<language>/<origin>.stp_localized
+
+        const std::regex ORIGIN_REGEX(R"(^([a-zA-Z0-9]+?)::([a-zA-Z0-9]+?)$)");
+        std::string origin;
+        std::string originDirectory;
+        std::smatch match_result;
+        if (std::regex_match(_origin, match_result, ORIGIN_REGEX))
+        {
+            originDirectory = match_result[1];
+            origin = match_result[2];
+        }
+        else
+        {
+            output::error("localization::getString"s, "Malformed origin name. Expect directory::component."s);
+            return "<"s + key + ">"s; // Since the key is in UUID format, we need to make it look like a placeholder.
+        }
+        std::string originFileName = origin + ".stp_localized";
 
         // Group 1: Key, Group 2: String
         const std::regex STRING_REGEX(
@@ -90,7 +106,7 @@ namespace steppable::localization
         std::string lang = getLanguage();
 
         auto langDir = confDir / "translations" / lang;
-        auto originFile = langDir / (origin + ".stp_localized");
+        auto originFile = langDir / originDirectory / originFileName;
 
         // Since en-US is the default language, not having this language means the package is not properly installed
         if (not exists(originFile) and lang == "en-US")
@@ -102,7 +118,7 @@ namespace steppable::localization
         if (not exists(originFile))
         {
             langDir = confDir / "translations" / "en-US";
-            originFile = langDir / (origin + ".stp_localized");
+            originFile = langDir / originDirectory / originFileName;
         }
 
         // Read the file and get the string

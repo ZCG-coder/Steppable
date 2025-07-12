@@ -146,11 +146,11 @@ int main(int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('c', $("log", "e8227bec-443c-4d2d-a569-06e3d20c11ad"), false);
-    program.addPosArg('n', $("log", "d67686ce-2bad-48c9-a8ff-ec709d23ccea"), true);
-    program.addPosArg('b', $("log", "4a3f8558-00dd-430e-921c-792542d9c29a"), true);
-    program.addKeywordArg("decimals", 5, $("log", "56363a7f-4277-4805-95b2-ef3b8ccc1671"));
-    program.addSwitch("profile", false, $("log", "8623ed47-e7bd-46a2-a1db-3c0746520e2e"));
+    program.addPosArg('c', $("calc::log", "e8227bec-443c-4d2d-a569-06e3d20c11ad"), false);
+    program.addPosArg('n', $("calc::log", "d67686ce-2bad-48c9-a8ff-ec709d23ccea"), true);
+    program.addPosArg('b', $("calc::log", "4a3f8558-00dd-430e-921c-792542d9c29a"), true);
+    program.addKeywordArg("decimals", 5, $("calc::log", "56363a7f-4277-4805-95b2-ef3b8ccc1671"));
+    program.addSwitch("profile", false, $("calc::log", "8623ed47-e7bd-46a2-a1db-3c0746520e2e"));
     program.parseArgs();
 
     const bool profile = program.getSwitch("profile");
@@ -172,7 +172,7 @@ int main(int _argc, const char* _argv[])
         std::cout << calc::ln(arg, decimals) << "\n";
     else
     {
-        error("log"s, $("log", "0fc4245a-fee9-4e99-bbbd-378d091c5143", { command }));
+        error("log"s, $("calc::log", "0fc4245a-fee9-4e99-bbbd-378d091c5143", { command }));
         return EXIT_FAILURE;
     }
 }

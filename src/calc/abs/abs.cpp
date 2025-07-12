@@ -61,9 +61,9 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', $("abs", "ca70a6a7-d1d8-4e43-a94e-014d8f9839c9"));
-    program.addKeywordArg("steps", 2, $("abs", "3860a4ae-1073-4a6d-a75e-f64426291573"));
-    program.addSwitch("profile", false, $("abs", "5d7bddda-e33f-4f9c-81b2-d30baad2ec5c"));
+    program.addPosArg('a', $("calc::abs", "ca70a6a7-d1d8-4e43-a94e-014d8f9839c9"));
+    program.addKeywordArg("steps", 2, $("calc::abs", "3860a4ae-1073-4a6d-a75e-f64426291573"));
+    program.addSwitch("profile", false, $("calc::abs", "5d7bddda-e33f-4f9c-81b2-d30baad2ec5c"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");

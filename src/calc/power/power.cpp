@@ -30,10 +30,10 @@
 #include "argParse.hpp"
 #include "constants.hpp"
 #include "fn/calc.hpp"
-#include "steppable/fraction.hpp"
 #include "getString.hpp"
 #include "powerReport.hpp"
 #include "rounding.hpp"
+#include "steppable/fraction.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
@@ -79,7 +79,7 @@ namespace steppable::__internals::calc
         if (number == "1")
         {
             if (steps == 2)
-                return $("power", "7c866c46-d67e-4c1e-8fd5-b3bfa07d005d");
+                return $("calc::power", "7c866c46-d67e-4c1e-8fd5-b3bfa07d005d");
             if (steps == 1)
                 return "1"s + symbols::makeSuperscript(raiseTo) + " = 1";
             return "1";
@@ -87,7 +87,7 @@ namespace steppable::__internals::calc
         if (number == "0")
         {
             if (steps == 2)
-                return $("power", "261e4299-0132-4ab5-a37d-aa376efbdd5f");
+                return $("calc::power", "261e4299-0132-4ab5-a37d-aa376efbdd5f");
             if (steps == 1)
                 return "0"s + symbols::makeSuperscript(raiseTo) + " = 0";
             return "0";
@@ -154,11 +154,11 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage();
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', $("power", "4252ac37-a36b-4605-9ec1-d69e70b91b46"));
-    program.addPosArg('b', $("power", "1fefffaf-7731-430b-989f-42e74017a2eb"));
-    program.addKeywordArg("steps", 2, $("power", "cb935566-6125-49ce-9ebc-e157410a3005"));
-    program.addKeywordArg("decimals", 2, $("power", "03c15572-a5aa-4b1c-a705-105770999741"));
-    program.addSwitch("profile", false, $("power", "e5d48237-e161-494d-940b-e2457411fcfb"));
+    program.addPosArg('a', $("calc::power", "4252ac37-a36b-4605-9ec1-d69e70b91b46"));
+    program.addPosArg('b', $("calc::power", "1fefffaf-7731-430b-989f-42e74017a2eb"));
+    program.addKeywordArg("steps", 2, $("calc::power", "cb935566-6125-49ce-9ebc-e157410a3005"));
+    program.addKeywordArg("decimals", 2, $("calc::power", "03c15572-a5aa-4b1c-a705-105770999741"));
+    program.addSwitch("profile", false, $("calc::power", "e5d48237-e161-494d-940b-e2457411fcfb"));
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");
@@ -178,7 +178,8 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Power)
-        std::cout << $("power", "2a9fd067-59a3-4a65-b1a6-2ca479e0f1a1") << "\n" << power(aStr, bStr, steps) << '\n';
+        std::cout << $("calc::power", "2a9fd067-59a3-4a65-b1a6-2ca479e0f1a1") << "\n"
+                  << power(aStr, bStr, steps) << '\n';
         TOC()
     }
     else

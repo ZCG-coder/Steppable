@@ -228,7 +228,7 @@ namespace steppable::__internals::calc
             auto cosX = cos(divideWithQuotient(x, static_cast<std::string>(constants::TWO_PI)).remainder, decimals + 1);
             if (isZeroString(cosX))
             {
-                error("trig::tan"s, $("trig", "a7ed4324-5cc3-48d2-9798-d3e743b809d3"));
+                error("trig::tan"s, $("calc::trig", "a7ed4324-5cc3-48d2-9798-d3e743b809d3"));
                 return "Infinity";
             }
             result = divide(sin(x, decimals + 1), cosX, 0, decimals);
@@ -240,7 +240,7 @@ namespace steppable::__internals::calc
             auto cosX = cos(xRad, decimals + 1);
             if (isZeroString(cosX))
             {
-                error("trig::tan"s, $("trig", "a7ed4324-5cc3-48d2-9798-d3e743b809d3"));
+                error("trig::tan"s, $("calc::trig", "a7ed4324-5cc3-48d2-9798-d3e743b809d3"));
                 return "Infinity";
             }
             result = divide(sin(xRad, decimals + 1), cosX, 0, decimals);
@@ -252,7 +252,7 @@ namespace steppable::__internals::calc
             auto cosX = cos(xRad, decimals + 1);
             if (isZeroString(cosX))
             {
-                error("trig::tan"s, $("trig", "a7ed4324-5cc3-48d2-9798-d3e743b809d3"));
+                error("trig::tan"s, $("calc::trig", "a7ed4324-5cc3-48d2-9798-d3e743b809d3"));
                 return "Infinity";
             }
             result = divide(sin(xRad, decimals + 1), cosX, 0, decimals);
@@ -275,7 +275,7 @@ namespace steppable::__internals::calc
         auto sinX = sin(x, decimals + 1, mode);
         if (isZeroString(sinX))
         {
-            error("trig::csc"s, $("trig", "0dd11fcc-bdd0-48d1-9b4a-7ebcccb4915f"));
+            error("trig::csc"s, $("calc::trig", "0dd11fcc-bdd0-48d1-9b4a-7ebcccb4915f"));
             return "Infinity";
         }
         return divide("1", sinX, 0, decimals);
@@ -288,7 +288,7 @@ namespace steppable::__internals::calc
         auto cosX = cos(x, decimals + 1, mode);
         if (isZeroString(cosX))
         {
-            error("trig::sec"s, $("trig", "62792c6c-6751-4850-bf66-5e6366322cc0"));
+            error("trig::sec"s, $("calc::trig", "62792c6c-6751-4850-bf66-5e6366322cc0"));
             return "Infinity";
         }
         return divide("1", cosX, 0, decimals);
@@ -301,7 +301,7 @@ namespace steppable::__internals::calc
         auto tanX = tan(x, decimals + 1, mode);
         if (isZeroString(tanX))
         {
-            error("trig::cot"s, $("trig", "65650a93-4298-4e19-8c81-f5fbd9f14ac2"));
+            error("trig::cot"s, $("calc::trig", "65650a93-4298-4e19-8c81-f5fbd9f14ac2"));
             return "Infinity";
         }
         return divide("1", tanX, 0, decimals);
@@ -368,7 +368,7 @@ namespace steppable::__internals::calc
 
         if (compare(abs(x, 0), "1", 0) == "1")
         {
-            error("trig::asin", $("trig", "b06650e0-7101-4734-9647-5abb56beb492"));
+            error("trig::asin", $("calc::trig", "b06650e0-7101-4734-9647-5abb56beb492"));
             return "Infinity";
         }
         if (compare(abs(x, 0), "0", 0) == "2")
@@ -436,7 +436,7 @@ namespace steppable::__internals::calc
 
         if (compare(abs(x, 0), "1", 0) == "1")
         {
-            error("trig::asec", $("trig", "fffb4742-3712-4c9a-a7ff-65cd51508a0a"));
+            error("trig::asec", $("calc::trig", "fffb4742-3712-4c9a-a7ff-65cd51508a0a"));
             return "Infinity";
         }
 
@@ -452,7 +452,7 @@ namespace steppable::__internals::calc
 
         if (compare(abs(x, 0), "1", 0) != "0")
         {
-            error("trig::acsc"s, $("trig", "c021dfde-300c-4d74-a6a1-87a514c1bbe0"));
+            error("trig::acsc"s, $("calc::trig", "c021dfde-300c-4d74-a6a1-87a514c1bbe0"));
             return "Infinity";
         }
 
@@ -468,7 +468,7 @@ namespace steppable::__internals::calc
 
         if (compare(abs(x, 0), "1", 0) != "0")
         {
-            error("trig::acot"s, $("trig", "c0c6a29f-abda-4676-9662-1d00f94f10a4"));
+            error("trig::acot"s, $("calc::trig", "c0c6a29f-abda-4676-9662-1d00f94f10a4"));
             return "Infinity";
         }
 
@@ -484,11 +484,11 @@ int main(int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('c', $("trig", "47dcf91b-847c-48f0-9889-f5ce1b6831e3"), false);
-    program.addPosArg('n', $("trig", "bcd0a3e9-3d89-4921-94b3-d7533d60911f"));
-    program.addKeywordArg("mode", 0, $("trig", "03fdd1f2-6ea5-49d4-ac3f-27f01f04a518"));
-    program.addKeywordArg("decimals", 5, $("trig", "d1df3b60-dac1-496c-99bb-ba763dc551df"));
-    program.addSwitch("profile", false, $("trig", "162adb13-c4b2-4418-b3df-edb6f9355d64"));
+    program.addPosArg('c', $("calc::trig", "47dcf91b-847c-48f0-9889-f5ce1b6831e3"), false);
+    program.addPosArg('n', $("calc::trig", "bcd0a3e9-3d89-4921-94b3-d7533d60911f"));
+    program.addKeywordArg("mode", 0, $("calc::trig", "03fdd1f2-6ea5-49d4-ac3f-27f01f04a518"));
+    program.addKeywordArg("decimals", 5, $("calc::trig", "d1df3b60-dac1-496c-99bb-ba763dc551df"));
+    program.addSwitch("profile", false, $("calc::trig", "162adb13-c4b2-4418-b3df-edb6f9355d64"));
     program.parseArgs();
 
     const int mode = program.getKeywordArgument("mode");
@@ -531,7 +531,7 @@ int main(int _argc, const char* _argv[])
     // Invalid command
     else
     {
-        error("trig::main", $("trig", "6ad9958f-f127-4ee4-a4c6-94cf19576b9a", { command }));
+        error("trig::main", $("calc::trig", "6ad9958f-f127-4ee4-a4c6-94cf19576b9a", { command }));
         return EXIT_FAILURE;
     }
     std::cout << function(arg, decimals, mode) << '\n';

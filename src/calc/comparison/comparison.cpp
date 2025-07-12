@@ -53,7 +53,7 @@ namespace steppable::__internals::calc
             std::stringstream ss;
             if (steps == 2)
             {
-                ss << BECAUSE << $("comparison", "bd4f865a-ce08-4825-ac74-f824e4da2fed", { _a, _b }) << THEREFORE
+                ss << BECAUSE << $("calc::comparison", "bd4f865a-ce08-4825-ac74-f824e4da2fed", { _a, _b }) << THEREFORE
                    << " a = b";
                 return ss.str();
             }
@@ -113,7 +113,7 @@ namespace steppable::__internals::calc
         }
 
         if (steps == 1)
-            return $("comparison", "c49d968f-31df-4654-b13b-0f16212f4591");
+            return $("calc::comparison", "c49d968f-31df-4654-b13b-0f16212f4591");
         if (steps == 2)
         {
             std::stringstream ss;
@@ -129,10 +129,10 @@ int main(int _argc, const char** _argv)
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', $("comparison", "1d411edd-f7a6-4ad5-8a0a-cc8b5eea01b1"));
-    program.addPosArg('b', $("comparison", "0972be2d-ce73-4226-82d8-778fb5293894"));
-    program.addKeywordArg("steps", 2, $("comparison", "07ff2704-10c1-4eea-bba2-bd63116ca34b"));
-    program.addSwitch("profile", false, $("comparison", "b930c709-22e7-46f8-9cdf-5ed193469964"));
+    program.addPosArg('a', $("calc::comparison", "1d411edd-f7a6-4ad5-8a0a-cc8b5eea01b1"));
+    program.addPosArg('b', $("calc::comparison", "0972be2d-ce73-4226-82d8-778fb5293894"));
+    program.addKeywordArg("steps", 2, $("calc::comparison", "07ff2704-10c1-4eea-bba2-bd63116ca34b"));
+    program.addSwitch("profile", false, $("calc::comparison", "b930c709-22e7-46f8-9cdf-5ed193469964"));
     program.parseArgs();
 
     int steps = program.getKeywordArgument("steps");

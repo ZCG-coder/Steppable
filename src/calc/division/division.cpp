@@ -121,26 +121,24 @@ namespace steppable::__internals::calc
         if (isZeroString(_number) and isZeroString(_divisor))
         {
             // Easter egg in open-source code
-            error("division", $("division", "e8ad759d-fcb8-4280-a7a8-a637ae834ffc"));
+            error("division", $("calc::division", "e8ad759d-fcb8-4280-a7a8-a637ae834ffc"));
             return "Indeterminate";
         }
         if (isZeroString(_divisor))
         {
             // Division by zero leads to infinity.
-            error("division", $("division", "977f3c9f-01c3-49e4-bf4a-94d7c58bbe82", { _number }));
+            error("division", $("calc::division", "977f3c9f-01c3-49e4-bf4a-94d7c58bbe82", { _number }));
             return "Infinity";
         }
         if (isZeroString(_number))
-        {
             return "0";
-        }
 
         if (compare(_number, _divisor, 0) == "2")
         {
             std::stringstream ss;
             if (steps == 2)
                 // Since the number is equal to the divisor, the result is 1.
-                ss << $("division", "b4cace82-0076-40f3-85de-92aa1a81df44", { _number, _divisor });
+                ss << $("calc::division", "b4cace82-0076-40f3-85de-92aa1a81df44", { _number, _divisor });
             else if (steps == 1)
                 ss << _number << " " << DIVIDED_BY << " " << _divisor << " = 1";
             else
@@ -229,7 +227,7 @@ namespace steppable::__internals::calc
         {
             if (steps != 0)
                 // Warn the user that the result is inaccurate.
-                warning("division"s, $("division", "d38c283c-e75d-4cc2-a634-bf1b3361d489"));
+                warning("division"s, $("calc::division", "d38c283c-e75d-4cc2-a634-bf1b3361d489"));
             return "0";
         }
 
@@ -315,11 +313,11 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', $("division", "e7bbfa43-684d-498a-b10f-d8a76a371583"));
-    program.addPosArg('b', $("division", "9e6d7430-7006-4c77-ad4a-00955080765c"));
-    program.addKeywordArg("steps", 2, $("division", "797de85c-787c-4c05-bc42-763da058f9e0"));
-    program.addKeywordArg("decimals", 5, $("division", "e10fcce8-4bb3-4b3b-9820-33571065a8ee"));
-    program.addSwitch("profile", false, $("division", "98a3f915-5e93-4417-942a-071b2d9a13b3"));
+    program.addPosArg('a', $("calc::division", "e7bbfa43-684d-498a-b10f-d8a76a371583"));
+    program.addPosArg('b', $("calc::division", "9e6d7430-7006-4c77-ad4a-00955080765c"));
+    program.addKeywordArg("steps", 2, $("calc::division", "797de85c-787c-4c05-bc42-763da058f9e0"));
+    program.addKeywordArg("decimals", 5, $("calc::division", "e10fcce8-4bb3-4b3b-9820-33571065a8ee"));
+    program.addSwitch("profile", false, $("calc::division", "98a3f915-5e93-4417-942a-071b2d9a13b3"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");
@@ -336,7 +334,7 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(Column method division)
-        std::cout << $("division", "bc2c8ff9-2d67-45e9-8824-2bc971e21cc9") << "\n"
+        std::cout << $("calc::division", "bc2c8ff9-2d67-45e9-8824-2bc971e21cc9") << "\n"
                   << divide(aStr, bStr, steps, decimals) << '\n';
         TOC()
     }

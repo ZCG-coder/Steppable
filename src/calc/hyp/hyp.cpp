@@ -94,7 +94,7 @@ namespace steppable::__internals::calc
         const auto& denominator = tanh(x, decimals + 1);
         if (isZeroString(denominator))
         {
-            error("hyp::coth"s, $("hyp", "e1f6e8db-64cd-4882-b5b2-ddd1c79c1e57"));
+            error("hyp::coth"s, $("calc::hyp", "e1f6e8db-64cd-4882-b5b2-ddd1c79c1e57"));
             return "Infinity";
         }
 
@@ -108,7 +108,7 @@ namespace steppable::__internals::calc
         const auto& denominator = sinh(x, decimals);
         if (isZeroString(denominator))
         {
-            error("hyp::csch"s, $("hyp", "30735b1c-5f92-4d2a-ab4a-056dd0f03c9b"));
+            error("hyp::csch"s, $("calc::hyp", "30735b1c-5f92-4d2a-ab4a-056dd0f03c9b"));
             return "Infinity";
         }
 
@@ -122,7 +122,7 @@ namespace steppable::__internals::calc
         const auto& denominator = cosh(x, decimals);
         if (isZeroString(denominator))
         {
-            error("hyp::sech"s, $("hyp", "1f091fa2-47c1-4432-8951-c7db1dff0995"));
+            error("hyp::sech"s, $("calc::hyp", "1f091fa2-47c1-4432-8951-c7db1dff0995"));
             return "Infinity";
         }
 
@@ -236,10 +236,10 @@ int main(int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('c', $("hyp", "4c28b4d6-3002-458a-88bd-9d7c03b9b614"), false);
-    program.addPosArg('n', $("hyp", "1d369138-f330-42b2-9aa9-40ab5f7f3df8"), false);
-    program.addKeywordArg("decimals", 5, $("hyp", "92717527-91df-4fa8-905c-cde0525612af"));
-    program.addSwitch("profile", false, $("hyp", "ba4083c0-788f-4f3c-9748-df0cf7b7b41c"));
+    program.addPosArg('c', $("calc::hyp", "4c28b4d6-3002-458a-88bd-9d7c03b9b614"), false);
+    program.addPosArg('n', $("calc::hyp", "1d369138-f330-42b2-9aa9-40ab5f7f3df8"), false);
+    program.addKeywordArg("decimals", 5, $("calc::hyp", "92717527-91df-4fa8-905c-cde0525612af"));
+    program.addSwitch("profile", false, $("calc::hyp", "ba4083c0-788f-4f3c-9748-df0cf7b7b41c"));
     program.parseArgs();
 
     const bool profile = program.getSwitch("profile");
@@ -281,7 +281,7 @@ int main(int _argc, const char* _argv[])
     // Invalid command
     else
     {
-        error("hyp::main", $("hyp", "b2f5e0cd-3c21-4fb6-8964-7b411c27785a"));
+        error("hyp::main", $("calc::hyp", "b2f5e0cd-3c21-4fb6-8964-7b411c27785a"));
         return EXIT_FAILURE;
     }
     std::cout << function(arg, decimals) << '\n';

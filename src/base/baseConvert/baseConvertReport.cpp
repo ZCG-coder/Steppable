@@ -62,7 +62,7 @@ std::string reportBaseConvert(const std::string& _number,
     std::stringstream ss;
 
     if (steps == 2)
-        ss << THEREFORE << $("baseConvert", "8a0b5c6d-b1a8-49b4-99fd-b1710744f4bf", { _number, _base });
+        ss << THEREFORE << $("base::baseConvert", "8a0b5c6d-b1a8-49b4-99fd-b1710744f4bf", { _number, _base });
     else if (steps == 1)
         ss << _number << steppable::__internals::symbols::makeSubscript("10") << " = ";
     // Output the result in reverse order

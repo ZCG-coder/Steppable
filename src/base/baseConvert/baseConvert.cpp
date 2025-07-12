@@ -93,13 +93,13 @@ namespace steppable::__internals::calc
         if (base > 36)
         {
             // It is impossible to convert to a base greater than 36.
-            error("baseConvert"s, $("baseConvert", "4e5a4863-4e4a-44f1-a782-e74de6b93469"));
+            error("baseConvert"s, $("base::baseConvert", "4e5a4863-4e4a-44f1-a782-e74de6b93469"));
             return "Impossible";
         }
         if (base == 0 or base == 1)
         {
             // It is impossible to convert to a base of 0 or 1.
-            error("baseConvert"s, $("baseConvert", "783e7915-f4a3-4973-9747-2d8de3de5545"));
+            error("baseConvert"s, $("base::baseConvert", "783e7915-f4a3-4973-9747-2d8de3de5545"));
             return "Impossible";
         }
 
@@ -133,10 +133,10 @@ int main(const int _argc, const char* _argv[])
 {
     Utf8CodePage _;
     ProgramArgs program(_argc, _argv);
-    program.addPosArg('a', $("baseConvert", "f3211410-9b0d-49f6-8797-c4756b2fee28"));
-    program.addPosArg('b', $("baseConvert", "61826029-8d77-4133-8bc7-7f03365bd9a3"));
-    program.addKeywordArg("steps", 2, $("baseConvert", "f988a0b2-decd-4d0c-a2e2-dd4127c1e83b"));
-    program.addSwitch("profile", false, $("baseConvert", "0826ae41-c7f6-4e1f-a932-2f6c00930a05"));
+    program.addPosArg('a', $("base::baseConvert", "f3211410-9b0d-49f6-8797-c4756b2fee28"));
+    program.addPosArg('b', $("base::baseConvert", "61826029-8d77-4133-8bc7-7f03365bd9a3"));
+    program.addKeywordArg("steps", 2, $("base::baseConvert", "f988a0b2-decd-4d0c-a2e2-dd4127c1e83b"));
+    program.addSwitch("profile", false, $("base::baseConvert", "0826ae41-c7f6-4e1f-a932-2f6c00930a05"));
     program.parseArgs();
 
     const int steps = program.getKeywordArgument("steps");
@@ -147,7 +147,7 @@ int main(const int _argc, const char* _argv[])
     if (profile)
     {
         TIC(baseConvert)
-        std::cout << $("baseConvert", "74dd79f5-7c24-4b39-bf66-59a3570e4a03") << "\n"
+        std::cout << $("base::baseConvert", "74dd79f5-7c24-4b39-bf66-59a3570e4a03") << "\n"
                   << baseConvert(aStr, bStr) << '\n';
         TOC()
     }
