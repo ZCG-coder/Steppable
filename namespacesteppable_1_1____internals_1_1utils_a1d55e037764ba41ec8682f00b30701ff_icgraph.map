@@ -1,13 +1,38 @@
 <map id="steppable::__internals::utils::reset" name="steppable::__internals::utils::reset">
-<area shape="rect" id="Node000001" title="Reset the text color and format to the default values." alt="" coords="434,138,598,182"/>
-<area shape="rect" id="Node000002" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af23f24f2657aad9931800258c08cd49f" title="This function is used to print the possible command&#45;line arguments. Usually called when the user spec..." alt="" coords="220,91,384,152"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="418,145,384,139,385,134,419,140"/>
-<area shape="rect" id="Node000006" href="$classsteppable_1_1testing_1_1TestCase.html#a2cb156d120e70f37ceb5421fbf04f8f7" title="Prints a summary of the test case, including the number of errors encountered." alt="" coords="218,176,386,221"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="419,180,387,186,386,181,418,175"/>
-<area shape="rect" id="Node000003" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a48a7085a74430f9340efa6a881f0ab43" title="This function is used to get the value of a keyword argument." alt="" coords="5,5,170,67"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="208,87,166,70,168,65,210,82"/>
-<area shape="rect" id="Node000004" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a77706ab8fe8be24d76f50ddd2094dfe0" title="This function is used to get the value of a positional argument." alt="" coords="5,91,170,152"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="204,124,170,124,170,119,204,119"/>
-<area shape="rect" id="Node000005" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a3db1d70b9bfd3f98824f1d241d8a01b7" title="This function is used to get the value of a switch." alt="" coords="5,176,170,238"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="210,161,168,178,166,173,208,156"/>
+<area shape="rect" id="Node000001" title="Reset the text color and format to the default values." alt="" coords="907,301,1071,345"/>
+<area shape="rect" id="Node000002" href="$classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#a69ac944c1ac894a103bbb81a6886cc31" title="Writes a string to the buffer." alt="" coords="685,146,859,191"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="942,294,804,194,807,189,945,289"/>
+<area shape="rect" id="Node000012" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#af23f24f2657aad9931800258c08cd49f" title="This function is used to print the possible command&#45;line arguments. Usually called when the user spec..." alt="" coords="690,292,854,354"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="891,326,855,326,855,320,891,320"/>
+<area shape="rect" id="Node000016" href="$classsteppable_1_1testing_1_1TestCase.html#a2cb156d120e70f37ceb5421fbf04f8f7" title="Prints a summary of the test case, including the number of errors encountered." alt="" coords="688,378,856,423"/>
+<area shape="poly" id="edge20_Node000001_Node000016" title=" " alt="" coords="911,354,838,380,836,375,909,349"/>
+<area shape="rect" id="Node000003" href="$classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#ac8200290d8baa9e453df8e8d9adb2878" title="Writes a character to the buffer." alt="" coords="471,42,637,87"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="714,141,636,102,610,90,612,85,638,97,717,136"/>
+<area shape="rect" id="Node000004" href="$classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#ab5cec970f8eba7b6ca23db89f094dece" title="Writes a character to the buffer." alt="" coords="471,111,637,156"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="669,155,637,150,638,144,670,150"/>
+<area shape="rect" id="Node000011" href="$classsteppable_1_1prettyPrint_1_1ConsoleOutput.html#afeb8d1e89269705cc5b5afcaa2f6ffb1" title="Writes a string_view object to the buffer." alt="" coords="471,181,637,225"/>
+<area shape="poly" id="edge15_Node000002_Node000011" title=" " alt="" coords="670,187,638,193,637,187,669,182"/>
+<area shape="rect" id="Node000005" href="$namespacesteppable_1_1graphing.html#a64db77b3ee20711fc1eb79242f1bbb57" title=" " alt="" coords="5,42,156,87"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="474,105,469,101,454,82,446,63,438,46,422,32,386,18,349,10,310,8,271,10,198,24,136,44,135,39,197,19,271,5,310,3,350,5,388,13,424,28,443,43,451,61,458,79,473,97,477,101"/>
+<area shape="rect" id="Node000006" href="$namespacesteppable_1_1graphing_1_1anonymous__namespace_02conPlot_8cpp_03.html#a4b51332b7cd965f9a214083e16673c96" title=" " alt="" coords="204,274,423,335"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="477,167,473,170,457,187,449,204,440,221,425,240,377,275,374,271,421,236,436,218,444,201,453,184,469,167,474,163"/>
+<area shape="rect" id="Node000007" href="$namespacesteppable_1_1graphing_1_1____internals.html#a74a1e8ee67ccb31d4440d91f8e801e08" title=" " alt="" coords="222,181,405,225"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="461,163,394,183,393,178,459,158"/>
+<area shape="rect" id="Node000009" href="$namespacesteppable_1_1graphing_1_1____internals.html#af1f0d4471f220c173d3adea9d3a1b3d5" title=" " alt="" coords="230,111,397,156"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="455,136,397,136,397,131,455,131"/>
+<area shape="rect" id="Node000010" href="$namespacesteppable_1_1graphing_1_1____internals.html#acdecbb80953262caa8fb8c9a01170670" title=" " alt="" coords="226,42,400,87"/>
+<area shape="poly" id="edge12_Node000004_Node000010" title=" " alt="" coords="459,109,393,90,394,85,461,104"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="350,262,336,255,313,252,293,254,280,259,273,265,273,274,267,273,269,263,277,254,292,249,313,247,338,250,353,257"/>
+<area shape="rect" id="Node000008" href="$namespacesteppable_1_1graphing.html#a56069e71ca1aa10e4ee202eb85b6b29d" title=" " alt="" coords="5,111,156,156"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="221,179,155,159,157,154,223,173"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="221,109,155,89,157,84,223,104"/>
+<area shape="poly" id="edge10_Node000009_Node000008" title=" " alt="" coords="215,136,156,136,156,131,215,131"/>
+<area shape="poly" id="edge14_Node000010_Node000005" title=" " alt="" coords="210,67,156,67,156,62,210,62"/>
+<area shape="poly" id="edge13_Node000010_Node000008" title=" " alt="" coords="223,94,157,114,155,109,221,89"/>
+<area shape="rect" id="Node000013" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a48a7085a74430f9340efa6a881f0ab43" title="This function is used to get the value of a keyword argument." alt="" coords="472,250,636,311"/>
+<area shape="poly" id="edge17_Node000012_Node000013" title=" " alt="" coords="674,307,636,299,637,294,675,301"/>
+<area shape="rect" id="Node000014" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a77706ab8fe8be24d76f50ddd2094dfe0" title="This function is used to get the value of a positional argument." alt="" coords="472,335,636,397"/>
+<area shape="poly" id="edge18_Node000012_Node000014" title=" " alt="" coords="675,345,637,352,636,347,674,340"/>
+<area shape="rect" id="Node000015" href="$classsteppable_1_1____internals_1_1utils_1_1ProgramArgs.html#a3db1d70b9bfd3f98824f1d241d8a01b7" title="This function is used to get the value of a switch." alt="" coords="472,420,636,482"/>
+<area shape="poly" id="edge19_Node000012_Node000015" title=" " alt="" coords="692,364,687,368,663,389,639,411,621,422,618,418,636,406,660,385,684,364,689,360"/>
 </map>

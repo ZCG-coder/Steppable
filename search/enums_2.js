@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rounding_0',['Rounding',['../namespacesteppable.html#a75a40e6d8c86c44dbcbd2381d61762d9',1,'steppable']]],
-  ['roundingmode_1',['RoundingMode',['../namespacesteppable.html#ae24dd98221a466068867d7ef785741f1',1,'steppable']]]
+  ['level_0',['Level',['../namespacesteppable_1_1____internals_1_1logging.html#a77a14410520707abd5010749ff93ecb7',1,'steppable::__internals::logging']]]
 ];

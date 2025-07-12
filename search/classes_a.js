@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['testcase_0',['TestCase',['../classsteppable_1_1testing_1_1TestCase.html',1,'steppable::testing']]]
+  ['quotientremainder_0',['QuotientRemainder',['../structsteppable_1_1____internals_1_1calc_1_1QuotientRemainder.html',1,'steppable::__internals::calc']]]
 ];

@@ -103,6 +103,7 @@ $(function() {
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">steppable::prettyPrint Namespace Reference</div></div>
 </div><!--header-->
@@ -123,6 +124,13 @@ Classes</h2></td></tr>
 <tr class="memitem:Position" id="r_Position"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsteppable_1_1prettyPrint_1_1Position.html">Position</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a position in the console.  <a href="structsteppable_1_1prettyPrint_1_1Position.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a03c969fbc66c0e87d9c9da3d46c9be30" id="r_a03c969fbc66c0e87d9c9da3d46c9be30"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03c969fbc66c0e87d9c9da3d46c9be30">HorizontalAlignment</a> : std::uint8_t { <a class="el" href="#a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758">LEFT</a> = 0
+, <a class="el" href="#a03c969fbc66c0e87d9c9da3d46c9be30ac397289ee45877be0cd49811fe245b4e">CENTER</a> = 1
+, <a class="el" href="#a03c969fbc66c0e87d9c9da3d46c9be30a21507b40c80068eda19865706fdc2403">RIGHT</a> = 2
+ }</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1a21e6713926f95247a2db8963a0ae2d" id="r_a1a21e6713926f95247a2db8963a0ae2d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a21e6713926f95247a2db8963a0ae2d">getStringWidth</a> (const std::string &amp;s)</td></tr>
@@ -132,7 +140,35 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The namespace containing utilities for pretty printing. </p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
+<a id="a03c969fbc66c0e87d9c9da3d46c9be30" name="a03c969fbc66c0e87d9c9da3d46c9be30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03c969fbc66c0e87d9c9da3d46c9be30">&#9670;&#160;</a></span>HorizontalAlignment</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a03c969fbc66c0e87d9c9da3d46c9be30">steppable::prettyPrint::HorizontalAlignment</a> : std::uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758" name="a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758"></a>LEFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a03c969fbc66c0e87d9c9da3d46c9be30ac397289ee45877be0cd49811fe245b4e" name="a03c969fbc66c0e87d9c9da3d46c9be30ac397289ee45877be0cd49811fe245b4e"></a>CENTER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a03c969fbc66c0e87d9c9da3d46c9be30a21507b40c80068eda19865706fdc2403" name="a03c969fbc66c0e87d9c9da3d46c9be30a21507b40c80068eda19865706fdc2403"></a>RIGHT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a6c89a78ae09a4f71eb5b95a4549d40d1" name="a6c89a78ae09a4f71eb5b95a4549d40d1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c89a78ae09a4f71eb5b95a4549d40d1">&#9670;&#160;</a></span>getStringHeight()</h2>
 
@@ -195,7 +231,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1prettyPrint_a1a21e6713926f95247a2db8963a0ae2d_cgraph.svg" width="386" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1prettyPrint_a1a21e6713926f95247a2db8963a0ae2d_cgraph.svg" width="100%" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -224,7 +260,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri Jun 27 2025 15:08:33"; // Will get replaced by Doxygen
+        const dateStr = "Sat Jul 12 2025 01:31:13"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

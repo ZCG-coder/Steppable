@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['status_0',['Status',['../namespacesteppable_1_1types.html#acff2f2520d0d7f1a6750d8a9ff53b0d1',1,'steppable::types']]],
-  ['statusbool_1',['StatusBool',['../namespacesteppable_1_1types.html#afc54988f640ee8b26f3778b93732ce1e',1,'steppable::types']]]
+  ['rounding_0',['Rounding',['../namespacesteppable.html#a75a40e6d8c86c44dbcbd2381d61762d9',1,'steppable']]],
+  ['roundingmode_1',['RoundingMode',['../namespacesteppable.html#ae24dd98221a466068867d7ef785741f1',1,'steppable']]]
 ];

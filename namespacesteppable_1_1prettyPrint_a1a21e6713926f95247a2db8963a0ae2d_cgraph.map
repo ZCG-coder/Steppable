@@ -1,5 +1,14 @@
 <map id="steppable::prettyPrint::getStringWidth" name="steppable::prettyPrint::getStringWidth">
-<area shape="rect" id="Node000001" title="Gets the minimal width needed to print a string." alt="" coords="5,5,168,50"/>
-<area shape="rect" id="Node000002" href="$namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7" title="Splits a string into substrings based on a separator." alt="" coords="216,5,380,50"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,25,200,25,200,30,168,30"/>
+<area shape="rect" id="Node000001" title="Gets the minimal width needed to print a string." alt="" coords="5,111,168,155"/>
+<area shape="rect" id="Node000002" href="$namespacesteppable_1_1____internals_1_1stringUtils.html#a168a60d3cf0edf7440fe4a41dbaa80ee" title="Calculates the display width of a UTF&#45;8 encoded string." alt="" coords="216,76,481,121"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,120,200,115,201,121,168,125"/>
+<area shape="rect" id="Node000005" href="$namespacesteppable_1_1____internals_1_1stringUtils.html#a2600efb348f0dd19cc0068946d06b1b7" title="Splits a string into substrings based on a separator." alt="" coords="266,145,430,190"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="168,141,251,152,251,157,168,146"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="299,76,297,66,306,57,323,51,348,49,377,52,393,58,391,63,375,57,348,55,324,57,308,61,302,67,304,75"/>
+<area shape="rect" id="Node000003" href="$namespacesteppable_1_1____internals_1_1stringUtils.html#ae19bbfb6c1f7d3724b6db65c9efc3315" title="Decodes a UTF&#45;8 encoded string into a Unicode code point." alt="" coords="556,29,748,74"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="481,75,541,66,542,71,482,81"/>
+<area shape="rect" id="Node000004" href="$namespacesteppable_1_1____internals_1_1stringUtils.html#a0bc9c3e3de39edf347d4391c4a7eec46" title="Checks if a Unicode code point represents a zero&#45;width character." alt="" coords="529,123,775,167"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="482,116,514,121,513,126,481,121"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="595,29,593,19,603,10,623,5,652,3,685,5,704,12,702,17,684,10,652,8,623,10,606,15,598,21,600,28"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="595,123,593,112,603,103,623,98,652,96,685,98,704,105,702,110,684,104,652,101,623,103,606,108,598,114,600,122"/>
 </map>

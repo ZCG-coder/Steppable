@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['numeric_0',['Numeric',['../conceptsteppable_1_1concepts_1_1Numeric.html',1,'steppable::concepts']]]
+  ['lineoptionsderivation_0',['LineOptionsDerivation',['../conceptsteppable_1_1graphing_1_1LineOptionsDerivation.html',1,'steppable::graphing']]]
 ];

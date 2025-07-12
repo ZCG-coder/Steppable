@@ -118,6 +118,9 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespacesteppable_1_1constants"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerical constants used in Steppable. <br /></td></tr>
 <tr class="memitem:exceptions" id="r_exceptions"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1exceptions.html">exceptions</a></td></tr>
 <tr class="memdesc:namespacesteppable_1_1exceptions"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains Steppable exceptions. <br /></td></tr>
+<tr class="memitem:graphing" id="r_graphing"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1graphing.html">graphing</a></td></tr>
+<tr class="memdesc:namespacesteppable_1_1graphing"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphing utilities for showing graphs in the console. <br /></td></tr>
+<tr class="memitem:inspect" id="r_inspect"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1inspect.html">inspect</a></td></tr>
 <tr class="memitem:literals" id="r_literals"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1literals.html">literals</a></td></tr>
 <tr class="memdesc:namespacesteppable_1_1literals"><td class="mdescLeft">&#160;</td><td class="mdescRight">Literal suffixes for literals to be converted to Steppable objects. <br /></td></tr>
 <tr class="memitem:localization" id="r_localization"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesteppable_1_1localization.html">localization</a></td></tr>
@@ -157,6 +160,17 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a0f6d79fbf300d8b225ba6420f4f65f15" id="r_a0f6d79fbf300d8b225ba6420f4f65f15"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15">_Weekday</a> : std::uint8_t { <br />
+&#160;&#160;<a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a9d1a0949c39e66a0cd65240bc0ac9177">Sunday</a> = 0
+, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a6f8522e0610541f1ef215a22ffa66ff6">Monday</a> = 1
+, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a5792315f09a5d54fb7e3d066672b507f">Tuesday</a> = 2
+, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a796c163589f295373e171842f37265d5">Wednesday</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a78ae6f0cd191d25147e252dc54768238">Thursday</a> = 4
+, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15ac33b138a163847cdb6caeeb7c9a126b4">Friday</a> = 5
+, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a8b7051187b9191cdcdae6ed5a10e5adc">Saturday</a> = 6
+<br />
+ }</td></tr>
 <tr class="memitem:ae24dd98221a466068867d7ef785741f1" id="r_ae24dd98221a466068867d7ef785741f1"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae24dd98221a466068867d7ef785741f1">RoundingMode</a> : std::uint8_t { <br />
 &#160;&#160;<a class="el" href="#ae24dd98221a466068867d7ef785741f1ae52db8df6dd26b8912ece9a8644b74f5">USE_MAXIMUM_PREC</a> = 0xFF
 , <a class="el" href="#ae24dd98221a466068867d7ef785741f1a1a52fec5be628bfaa9d538a9d8ba22b2">USE_MINIMUM_PREC</a> = 0x01
@@ -170,17 +184,6 @@ Enumerations</h2></td></tr>
 <tr class="memitem:a75a40e6d8c86c44dbcbd2381d61762d9" id="r_a75a40e6d8c86c44dbcbd2381d61762d9"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75a40e6d8c86c44dbcbd2381d61762d9">Rounding</a> : std::uint8_t { <a class="el" href="#a75a40e6d8c86c44dbcbd2381d61762d9aa61a82e1bd607bad23985115785597bb">ROUND_DOWN</a> = 0x00
 , <a class="el" href="#a75a40e6d8c86c44dbcbd2381d61762d9ad37fe1215db68c6abe92a81e11852711">ROUND_UP</a> = 0x01
 , <a class="el" href="#a75a40e6d8c86c44dbcbd2381d61762d9aedca4aaa5d9a9dbffcd0059cfac07cb8">ROUND_OFF</a> = 0x02
- }</td></tr>
-<tr class="memitem:a0f6d79fbf300d8b225ba6420f4f65f15" id="r_a0f6d79fbf300d8b225ba6420f4f65f15"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15">_Weekday</a> : std::uint8_t { <br />
-&#160;&#160;<a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a9d1a0949c39e66a0cd65240bc0ac9177">Sunday</a> = 0
-, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a6f8522e0610541f1ef215a22ffa66ff6">Monday</a> = 1
-, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a5792315f09a5d54fb7e3d066672b507f">Tuesday</a> = 2
-, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a796c163589f295373e171842f37265d5">Wednesday</a> = 3
-, <br />
-&#160;&#160;<a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a78ae6f0cd191d25147e252dc54768238">Thursday</a> = 4
-, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15ac33b138a163847cdb6caeeb7c9a126b4">Friday</a> = 5
-, <a class="el" href="#a0f6d79fbf300d8b225ba6420f4f65f15a8b7051187b9191cdcdae6ed5a10e5adc">Saturday</a> = 6
-<br />
  }</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
@@ -348,7 +351,7 @@ template&lt;typename NumberT&gt; </div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri Jun 27 2025 15:08:33"; // Will get replaced by Doxygen
+        const dateStr = "Sat Jul 12 2025 01:31:13"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

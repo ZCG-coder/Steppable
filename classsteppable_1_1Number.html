@@ -116,9 +116,6 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa0f61e0551226d672ce17f5b4af01ab5" id="r_aa0f61e0551226d672ce17f5b4af01ab5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0f61e0551226d672ce17f5b4af01ab5">Number</a> ()</td></tr>
-<tr class="memdesc:aa0f61e0551226d672ce17f5b4af01ab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default constructor. Initializes the number with a value of 0.  <br /></td></tr>
-<tr class="memitem:a6eb002e08b5ba9890cc0a5e95b94bfa6" id="r_a6eb002e08b5ba9890cc0a5e95b94bfa6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6eb002e08b5ba9890cc0a5e95b94bfa6">Number</a> (const <a class="el" href="classsteppable_1_1Number.html">Number</a> &amp;rhs)</td></tr>
 <tr class="memitem:a411e0dc79f44c1e08c866cdfac588fe9" id="r_a411e0dc79f44c1e08c866cdfac588fe9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a411e0dc79f44c1e08c866cdfac588fe9">Number</a> (std::string <a class="el" href="#a8947c23837fd45577abcaf9e7f07d540">value</a>=&quot;0&quot;, size_t <a class="el" href="#a2e23e169025f1308a248a0d508d2e33c">prec</a>=10, <a class="el" href="namespacesteppable.html#ae24dd98221a466068867d7ef785741f1">RoundingMode</a> <a class="el" href="#a8f789d22f723c1957ad6a38c42075eed">mode</a>=<a class="el" href="namespacesteppable.html#ae24dd98221a466068867d7ef785741f1af487465b5bd11c57091f25493c68f9fb">RoundingMode::USE_CURRENT_PREC</a>)</td></tr>
 <tr class="memdesc:a411e0dc79f44c1e08c866cdfac588fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a number with a specified value.  <br /></td></tr>
 <tr class="memitem:a8b33dcd6655e5019dcb131212622c08c" id="r_a8b33dcd6655e5019dcb131212622c08c"><td class="memTemplParams" colspan="2">template&lt;concepts::Numeric ValueT&gt; </td></tr>
@@ -174,6 +171,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa448a82bd5c8a3aa1ab30e31d03062be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unary plus operator.  <br /></td></tr>
 <tr class="memitem:aa512ee40e93e4cd6b891fb6d6f76be2c" id="r_aa512ee40e93e4cd6b891fb6d6f76be2c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa512ee40e93e4cd6b891fb6d6f76be2c">present</a> () const</td></tr>
 <tr class="memdesc:aa512ee40e93e4cd6b891fb6d6f76be2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Presents the number in a human-readable format.  <br /></td></tr>
+<tr class="memitem:ace24c0e8e78d13a87043daebdfd85765" id="r_ace24c0e8e78d13a87043daebdfd85765"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsteppable_1_1Number.html">Number</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace24c0e8e78d13a87043daebdfd85765">abs</a> () const</td></tr>
+<tr class="memdesc:ace24c0e8e78d13a87043daebdfd85765"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the absolute value of the number.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -192,54 +191,8 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a number with arbitrary precision. It basically stores the value as a string. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa0f61e0551226d672ce17f5b4af01ab5" name="aa0f61e0551226d672ce17f5b4af01ab5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0f61e0551226d672ce17f5b4af01ab5">&#9670;&#160;</a></span>Number() <span class="overload">[1/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">steppable::Number::Number </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The default constructor. Initializes the number with a value of 0. </p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1Number_aa0f61e0551226d672ce17f5b4af01ab5_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a6eb002e08b5ba9890cc0a5e95b94bfa6" name="a6eb002e08b5ba9890cc0a5e95b94bfa6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6eb002e08b5ba9890cc0a5e95b94bfa6">&#9670;&#160;</a></span>Number() <span class="overload">[2/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">steppable::Number::Number </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsteppable_1_1Number.html">Number</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1Number_a6eb002e08b5ba9890cc0a5e95b94bfa6_cgraph.svg" width="366" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
 <a id="a411e0dc79f44c1e08c866cdfac588fe9" name="a411e0dc79f44c1e08c866cdfac588fe9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a411e0dc79f44c1e08c866cdfac588fe9">&#9670;&#160;</a></span>Number() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a411e0dc79f44c1e08c866cdfac588fe9">&#9670;&#160;</a></span>Number() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,11 +217,16 @@ Here is the call graph for this function:</div>
 
 <p>Initializes a number with a specified value. </p>
 <dl class="section note"><dt>Note</dt><dd>By default, the value is 0. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1Number_a411e0dc79f44c1e08c866cdfac588fe9_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
 <a id="a8b33dcd6655e5019dcb131212622c08c" name="a8b33dcd6655e5019dcb131212622c08c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b33dcd6655e5019dcb131212622c08c">&#9670;&#160;</a></span>Number() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b33dcd6655e5019dcb131212622c08c">&#9670;&#160;</a></span>Number() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -307,6 +265,39 @@ template&lt;concepts::Numeric ValueT&gt; </div>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ace24c0e8e78d13a87043daebdfd85765" name="ace24c0e8e78d13a87043daebdfd85765"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace24c0e8e78d13a87043daebdfd85765">&#9670;&#160;</a></span>abs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsteppable_1_1Number.html">Number</a> steppable::Number::abs </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the absolute value of the number. </p>
+<dl class="section return"><dt>Returns</dt><dd>The absolute value of the current number. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1Number_ace24c0e8e78d13a87043daebdfd85765_cgraph.svg" width="388" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="aafb5fff909c530b3464598259c3b5a89" name="aafb5fff909c530b3464598259c3b5a89"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aafb5fff909c530b3464598259c3b5a89">&#9670;&#160;</a></span>determinePrec()</h2>
 
@@ -1070,7 +1061,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1Number_aa512ee40e93e4cd6b891fb6d6f76be2c_icgraph.svg" width="379" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1Number_aa512ee40e93e4cd6b891fb6d6f76be2c_icgraph.svg" width="586" height="350"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1126,6 +1117,16 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1Number_ae5ed34d8d435603b80813f0a0c2252db_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1Number_ae5ed34d8d435603b80813f0a0c2252db_icgraph.svg" width="586" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1225,7 +1226,7 @@ Here is the caller graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri Jun 27 2025 15:08:33"; // Will get replaced by Doxygen
+        const dateStr = "Sat Jul 12 2025 01:31:13"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

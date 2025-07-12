@@ -102,6 +102,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classsteppable_1_1prettyPrint_1_1ConsoleOutput-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">steppable::prettyPrint::ConsoleOutput Class Reference</div></div>
@@ -122,21 +123,26 @@ Collaboration diagram for steppable::prettyPrint::ConsoleOutput:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afb69280a91e6a7f2111645143cb2c1ed" id="r_afb69280a91e6a7f2111645143cb2c1ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb69280a91e6a7f2111645143cb2c1ed">ConsoleOutput</a> (size_t <a class="el" href="#a3283bdb0b0fa8c09d19f6c0a53d7009a">height</a>, size_t <a class="el" href="#aed7c39fdb64d5f66f6e9b8dcd56f911f">width</a>)</td></tr>
 <tr class="memdesc:afb69280a91e6a7f2111645143cb2c1ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new console output buffer.  <br /></td></tr>
-<tr class="memitem:af95c3355bad8a330356855c18a4d31cf" id="r_af95c3355bad8a330356855c18a4d31cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af95c3355bad8a330356855c18a4d31cf">write</a> (char c, long long dLine, long long dCol, bool updatePos=false)</td></tr>
-<tr class="memdesc:af95c3355bad8a330356855c18a4d31cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a character to the buffer.  <br /></td></tr>
-<tr class="memitem:a4c25cf4a487a576cde6b690e85a75b02" id="r_a4c25cf4a487a576cde6b690e85a75b02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c25cf4a487a576cde6b690e85a75b02">write</a> (char c, const <a class="el" href="structsteppable_1_1prettyPrint_1_1Position.html">Position</a> &amp;pos, bool updatePos=false)</td></tr>
-<tr class="memdesc:a4c25cf4a487a576cde6b690e85a75b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a character to the buffer.  <br /></td></tr>
-<tr class="memitem:ae44acacbf366b23de1e938f4f59edd90" id="r_ae44acacbf366b23de1e938f4f59edd90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae44acacbf366b23de1e938f4f59edd90">write</a> (const std::string &amp;s, const <a class="el" href="structsteppable_1_1prettyPrint_1_1Position.html">Position</a> &amp;pos, bool updatePos=false)</td></tr>
-<tr class="memdesc:ae44acacbf366b23de1e938f4f59edd90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a string to the buffer.  <br /></td></tr>
+<tr class="memitem:ab5cec970f8eba7b6ca23db89f094dece" id="r_ab5cec970f8eba7b6ca23db89f094dece"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5cec970f8eba7b6ca23db89f094dece">write</a> (char c, long long dLine, long long dCol, bool updatePos=false, const <a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a4d246e6c9523ae53f7aa313ce64cfc06">ColorFunc</a> &amp;color=<a class="el" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4613b58bac79538d5ca29a16ae172a25">colors::keepOriginal</a>, const <a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30">HorizontalAlignment</a> &amp;alignment=<a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758">HorizontalAlignment::LEFT</a>)</td></tr>
+<tr class="memdesc:ab5cec970f8eba7b6ca23db89f094dece"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a character to the buffer.  <br /></td></tr>
+<tr class="memitem:ac8200290d8baa9e453df8e8d9adb2878" id="r_ac8200290d8baa9e453df8e8d9adb2878"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8200290d8baa9e453df8e8d9adb2878">write</a> (char c, const <a class="el" href="structsteppable_1_1prettyPrint_1_1Position.html">Position</a> &amp;pos, bool updatePos=false, const <a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a4d246e6c9523ae53f7aa313ce64cfc06">ColorFunc</a> &amp;color=<a class="el" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4613b58bac79538d5ca29a16ae172a25">colors::keepOriginal</a>, const <a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30">HorizontalAlignment</a> &amp;alignment=<a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758">HorizontalAlignment::LEFT</a>)</td></tr>
+<tr class="memdesc:ac8200290d8baa9e453df8e8d9adb2878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a character to the buffer.  <br /></td></tr>
+<tr class="memitem:afeb8d1e89269705cc5b5afcaa2f6ffb1" id="r_afeb8d1e89269705cc5b5afcaa2f6ffb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeb8d1e89269705cc5b5afcaa2f6ffb1">write</a> (const std::string_view &amp;s, const <a class="el" href="structsteppable_1_1prettyPrint_1_1Position.html">Position</a> &amp;pos, bool updatePos=false, const <a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a4d246e6c9523ae53f7aa313ce64cfc06">ColorFunc</a> &amp;color=<a class="el" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4613b58bac79538d5ca29a16ae172a25">colors::keepOriginal</a>, const <a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30">HorizontalAlignment</a> &amp;alignment=<a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758">HorizontalAlignment::LEFT</a>)</td></tr>
+<tr class="memdesc:afeb8d1e89269705cc5b5afcaa2f6ffb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a <span class="tt">string_view</span> object to the buffer.  <br /></td></tr>
 <tr class="memitem:adbb3b6e09d869b825987871c61f4af32" id="r_adbb3b6e09d869b825987871c61f4af32"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbb3b6e09d869b825987871c61f4af32">asString</a> () const</td></tr>
 <tr class="memdesc:adbb3b6e09d869b825987871c61f4af32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the buffer as a string.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a69ac944c1ac894a103bbb81a6886cc31" id="r_a69ac944c1ac894a103bbb81a6886cc31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69ac944c1ac894a103bbb81a6886cc31">_write</a> (const std::string &amp;s, const <a class="el" href="structsteppable_1_1prettyPrint_1_1Position.html">Position</a> &amp;pos, bool updatePos=false, const <a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a4d246e6c9523ae53f7aa313ce64cfc06">ColorFunc</a> &amp;color=<a class="el" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4613b58bac79538d5ca29a16ae172a25">colors::keepOriginal</a>, const <a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30">HorizontalAlignment</a> &amp;alignment=<a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758">HorizontalAlignment::LEFT</a>)</td></tr>
+<tr class="memdesc:a69ac944c1ac894a103bbb81a6886cc31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a string to the buffer.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a067a158c8695ddc8d875e3c07962502f" id="r_a067a158c8695ddc8d875e3c07962502f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsteppable_1_1prettyPrint_1_1Position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a067a158c8695ddc8d875e3c07962502f">curPos</a></td></tr>
 <tr class="memdesc:a067a158c8695ddc8d875e3c07962502f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current position.  <br /></td></tr>
-<tr class="memitem:accd9148b6c566569642007084c0d08b7" id="r_accd9148b6c566569642007084c0d08b7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; char &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accd9148b6c566569642007084c0d08b7">buffer</a></td></tr>
-<tr class="memdesc:accd9148b6c566569642007084c0d08b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The buffer object.  <br /></td></tr>
+<tr class="memitem:a6f952ab92b9b2d421ca4f173e6556721" id="r_a6f952ab92b9b2d421ca4f173e6556721"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f952ab92b9b2d421ca4f173e6556721">buffer</a></td></tr>
+<tr class="memdesc:a6f952ab92b9b2d421ca4f173e6556721"><td class="mdescLeft">&#160;</td><td class="mdescRight">The buffer object.  <br /></td></tr>
 <tr class="memitem:a3283bdb0b0fa8c09d19f6c0a53d7009a" id="r_a3283bdb0b0fa8c09d19f6c0a53d7009a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3283bdb0b0fa8c09d19f6c0a53d7009a">height</a> = 10</td></tr>
 <tr class="memdesc:a3283bdb0b0fa8c09d19f6c0a53d7009a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The height of the buffer.  <br /></td></tr>
 <tr class="memitem:aed7c39fdb64d5f66f6e9b8dcd56f911f" id="r_aed7c39fdb64d5f66f6e9b8dcd56f911f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed7c39fdb64d5f66f6e9b8dcd56f911f">width</a> = 10</td></tr>
@@ -176,6 +182,71 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a69ac944c1ac894a103bbb81a6886cc31" name="a69ac944c1ac894a103bbb81a6886cc31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69ac944c1ac894a103bbb81a6886cc31">&#9670;&#160;</a></span>_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void steppable::prettyPrint::ConsoleOutput::_write </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structsteppable_1_1prettyPrint_1_1Position.html">Position</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>updatePos</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a4d246e6c9523ae53f7aa313ce64cfc06">ColorFunc</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4613b58bac79538d5ca29a16ae172a25">colors::keepOriginal</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30">HorizontalAlignment</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alignment</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758">HorizontalAlignment::LEFT</a></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a string to the buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>The string to write. </td></tr>
+    <tr><td class="paramname">pos</td><td>The position to write to. </td></tr>
+    <tr><td class="paramname">updatePos</td><td>Whether to update the current position. </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the text to write. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_a69ac944c1ac894a103bbb81a6886cc31_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_a69ac944c1ac894a103bbb81a6886cc31_icgraph.svg" width="100%" height="555"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="adbb3b6e09d869b825987871c61f4af32" name="adbb3b6e09d869b825987871c61f4af32"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adbb3b6e09d869b825987871c61f4af32">&#9670;&#160;</a></span>asString()</h2>
 
@@ -201,11 +272,16 @@ Private Attributes</h2></td></tr>
 
 <p>Gets the buffer as a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>The buffer as a string. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_adbb3b6e09d869b825987871c61f4af32_icgraph.svg" width="396" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
-<a id="a4c25cf4a487a576cde6b690e85a75b02" name="a4c25cf4a487a576cde6b690e85a75b02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c25cf4a487a576cde6b690e85a75b02">&#9670;&#160;</a></span>write() <span class="overload">[1/3]</span></h2>
+<a id="ac8200290d8baa9e453df8e8d9adb2878" name="ac8200290d8baa9e453df8e8d9adb2878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8200290d8baa9e453df8e8d9adb2878">&#9670;&#160;</a></span>write() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,7 +299,17 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>updatePos</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>updatePos</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a4d246e6c9523ae53f7aa313ce64cfc06">ColorFunc</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4613b58bac79538d5ca29a16ae172a25">colors::keepOriginal</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30">HorizontalAlignment</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alignment</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758">HorizontalAlignment::LEFT</a></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -234,14 +320,20 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">c</td><td>The character to write. </td></tr>
     <tr><td class="paramname">pos</td><td>The position to write to. </td></tr>
     <tr><td class="paramname">updatePos</td><td>Whether to update the current position. </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the text to write. </td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_ac8200290d8baa9e453df8e8d9adb2878_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
-<a id="af95c3355bad8a330356855c18a4d31cf" name="af95c3355bad8a330356855c18a4d31cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af95c3355bad8a330356855c18a4d31cf">&#9670;&#160;</a></span>write() <span class="overload">[2/3]</span></h2>
+<a id="ab5cec970f8eba7b6ca23db89f094dece" name="ab5cec970f8eba7b6ca23db89f094dece"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5cec970f8eba7b6ca23db89f094dece">&#9670;&#160;</a></span>write() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,7 +356,17 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>updatePos</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>updatePos</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a4d246e6c9523ae53f7aa313ce64cfc06">ColorFunc</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4613b58bac79538d5ca29a16ae172a25">colors::keepOriginal</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30">HorizontalAlignment</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alignment</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758">HorizontalAlignment::LEFT</a></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -276,32 +378,36 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">dLine</td><td>The change in line. </td></tr>
     <tr><td class="paramname">dCol</td><td>The change in column. </td></tr>
     <tr><td class="paramname">updatePos</td><td>Whether to update the current position. </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the text to write. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_af95c3355bad8a330356855c18a4d31cf_cgraph.svg" width="178" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_ab5cec970f8eba7b6ca23db89f094dece_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_af95c3355bad8a330356855c18a4d31cf_icgraph.svg" width="392" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_ab5cec970f8eba7b6ca23db89f094dece_icgraph.svg" width="643" height="334"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="ae44acacbf366b23de1e938f4f59edd90" name="ae44acacbf366b23de1e938f4f59edd90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae44acacbf366b23de1e938f4f59edd90">&#9670;&#160;</a></span>write() <span class="overload">[3/3]</span></h2>
+<a id="afeb8d1e89269705cc5b5afcaa2f6ffb1" name="afeb8d1e89269705cc5b5afcaa2f6ffb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeb8d1e89269705cc5b5afcaa2f6ffb1">&#9670;&#160;</a></span>write() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void steppable::prettyPrint::ConsoleOutput::write </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
+          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -311,31 +417,47 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>updatePos</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>updatePos</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesteppable_1_1____internals_1_1utils.html#a4d246e6c9523ae53f7aa313ce64cfc06">ColorFunc</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacesteppable_1_1____internals_1_1utils_1_1colors.html#a4613b58bac79538d5ca29a16ae172a25">colors::keepOriginal</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30">HorizontalAlignment</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>alignment</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacesteppable_1_1prettyPrint.html#a03c969fbc66c0e87d9c9da3d46c9be30a684d325a7303f52e64011467ff5c5758">HorizontalAlignment::LEFT</a></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Writes a string to the buffer. </p>
+<p>Writes a <span class="tt">string_view</span> object to the buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td>The string to write. </td></tr>
     <tr><td class="paramname">pos</td><td>The position to write to. </td></tr>
     <tr><td class="paramname">updatePos</td><td>Whether to update the current position. </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the text to write. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_ae44acacbf366b23de1e938f4f59edd90_cgraph.svg" width="392" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classsteppable_1_1prettyPrint_1_1ConsoleOutput_afeb8d1e89269705cc5b5afcaa2f6ffb1_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="accd9148b6c566569642007084c0d08b7" name="accd9148b6c566569642007084c0d08b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accd9148b6c566569642007084c0d08b7">&#9670;&#160;</a></span>buffer</h2>
+<a id="a6f952ab92b9b2d421ca4f173e6556721" name="a6f952ab92b9b2d421ca4f173e6556721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f952ab92b9b2d421ca4f173e6556721">&#9670;&#160;</a></span>buffer</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -344,7 +466,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::vector&lt;char&gt; &gt; steppable::prettyPrint::ConsoleOutput::buffer</td>
+          <td class="memname">std::vector&lt;std::vector&lt;std::string&gt; &gt; steppable::prettyPrint::ConsoleOutput::buffer</td>
         </tr>
       </table>
   </td>
@@ -453,7 +575,7 @@ Here is the call graph for this function:</div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri Jun 27 2025 15:08:33"; // Will get replaced by Doxygen
+        const dateStr = "Sat Jul 12 2025 01:31:13"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

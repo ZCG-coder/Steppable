@@ -101,6 +101,7 @@ $(function() {
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">steppable::__internals::stringUtils Namespace Reference</div></div>
 </div><!--header-->
@@ -109,8 +110,21 @@ $(function() {
 <p>Utilities to operate strings.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:GraphemeIterator" id="r_GraphemeIterator"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsteppable_1_1____internals_1_1stringUtils_1_1GraphemeIterator.html">GraphemeIterator</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a0bc9c3e3de39edf347d4391c4a7eec46" id="r_a0bc9c3e3de39edf347d4391c4a7eec46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bc9c3e3de39edf347d4391c4a7eec46">isZeroWidthCharacter</a> (uint32_t codepoint)</td></tr>
+<tr class="memdesc:a0bc9c3e3de39edf347d4391c4a7eec46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a Unicode code point represents a zero-width character.  <br /></td></tr>
+<tr class="memitem:a3d99742bd2c9dd1f182a681c8c898d88" id="r_a3d99742bd2c9dd1f182a681c8c898d88"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d99742bd2c9dd1f182a681c8c898d88">isEmojiBase</a> (uint32_t cp)</td></tr>
+<tr class="memitem:ad3d6aab0b869f7839a792874caf0bba4" id="r_ad3d6aab0b869f7839a792874caf0bba4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3d6aab0b869f7839a792874caf0bba4">utf8Decode</a> (const std::string &amp;s, size_t &amp;i, uint32_t &amp;cp)</td></tr>
+<tr class="memitem:a6383476c95ce1499dafab1e75d66c2ca" id="r_a6383476c95ce1499dafab1e75d66c2ca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6383476c95ce1499dafab1e75d66c2ca">isClusterExtender</a> (uint32_t cp)</td></tr>
+<tr class="memitem:ae19bbfb6c1f7d3724b6db65c9efc3315" id="r_ae19bbfb6c1f7d3724b6db65c9efc3315"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae19bbfb6c1f7d3724b6db65c9efc3315">getCodepoint</a> (const std::string &amp;str, size_t &amp;i)</td></tr>
+<tr class="memdesc:ae19bbfb6c1f7d3724b6db65c9efc3315"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decodes a UTF-8 encoded string into a Unicode code point.  <br /></td></tr>
+<tr class="memitem:a168a60d3cf0edf7440fe4a41dbaa80ee" id="r_a168a60d3cf0edf7440fe4a41dbaa80ee"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a168a60d3cf0edf7440fe4a41dbaa80ee">getUnicodeDisplayWidth</a> (const std::string &amp;utf8Str)</td></tr>
+<tr class="memdesc:a168a60d3cf0edf7440fe4a41dbaa80ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the display width of a UTF-8 encoded string.  <br /></td></tr>
 <tr class="memitem:ad4fca9a20e9a831347b0c71200f0448d" id="r_ad4fca9a20e9a831347b0c71200f0448d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4fca9a20e9a831347b0c71200f0448d">makeWider</a> (const std::string &amp;orig)</td></tr>
 <tr class="memdesc:ad4fca9a20e9a831347b0c71200f0448d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes the given string wider by adding 2 spaces between each character.  <br /></td></tr>
 <tr class="memitem:ae06e20fa11641400422ac7cbc6ed9f7f" id="r_ae06e20fa11641400422ac7cbc6ed9f7f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae06e20fa11641400422ac7cbc6ed9f7f">utf8ToUnicode</a> (const std::string &amp;utf8_code)</td></tr>
@@ -139,6 +153,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:addd78766b99fddfe882bd32318ed0f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the duplicates in a vector of strings.  <br /></td></tr>
 <tr class="memitem:a30e541355b6a314ad2deb0c9fc5192ce" id="r_a30e541355b6a314ad2deb0c9fc5192ce"><td class="memTemplParams" colspan="2">template&lt;typename ValueType&gt; </td></tr>
 <tr class="memitem:a30e541355b6a314ad2deb0c9fc5192ce template"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30e541355b6a314ad2deb0c9fc5192ce">vectorToString</a> (const std::vector&lt; ValueType &gt; &amp;vector)</td></tr>
+<tr class="memitem:a20f5add62187b3da580dbd0a07b87cc3" id="r_a20f5add62187b3da580dbd0a07b87cc3"><td class="memTemplParams" colspan="2">template&lt;concepts::Numeric T&gt; </td></tr>
+<tr class="memitem:a20f5add62187b3da580dbd0a07b87cc3 template"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20f5add62187b3da580dbd0a07b87cc3">toNumeric</a> (const std::string &amp;s)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utilities to operate strings. </p>
@@ -220,6 +236,176 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A vector of strings containing the duplicates. </dd></dl>
+
+</div>
+</div>
+<a id="ae19bbfb6c1f7d3724b6db65c9efc3315" name="ae19bbfb6c1f7d3724b6db65c9efc3315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae19bbfb6c1f7d3724b6db65c9efc3315">&#9670;&#160;</a></span>getCodepoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t steppable::__internals::stringUtils::getCodepoint </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Decodes a UTF-8 encoded string into a Unicode code point. </p>
+<p>This function reads one UTF-8 encoded character from the string, starting at index <span class="tt">i</span>, and advances the index to the next character.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The UTF-8 encoded string. </td></tr>
+    <tr><td class="paramname">i</td><td>The current position in the string (updated after decoding). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Unicode code point of the character at the given position. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_ae19bbfb6c1f7d3724b6db65c9efc3315_cgraph.svg" width="203" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_ae19bbfb6c1f7d3724b6db65c9efc3315_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a168a60d3cf0edf7440fe4a41dbaa80ee" name="a168a60d3cf0edf7440fe4a41dbaa80ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a168a60d3cf0edf7440fe4a41dbaa80ee">&#9670;&#160;</a></span>getUnicodeDisplayWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t steppable::__internals::stringUtils::getUnicodeDisplayWidth </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>utf8Str</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the display width of a UTF-8 encoded string. </p>
+<p>This function computes the total display width of a string, correctly handling wide, narrow, zero-width, and CJK characters. CJK characters are counted as one character.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">utf8Str</td><td>The UTF-8 encoded string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The total display width of the string. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a168a60d3cf0edf7440fe4a41dbaa80ee_cgraph.svg" width="571" height="174"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a168a60d3cf0edf7440fe4a41dbaa80ee_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a6383476c95ce1499dafab1e75d66c2ca" name="a6383476c95ce1499dafab1e75d66c2ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6383476c95ce1499dafab1e75d66c2ca">&#9670;&#160;</a></span>isClusterExtender()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool steppable::__internals::stringUtils::isClusterExtender </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>cp</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a6383476c95ce1499dafab1e75d66c2ca_cgraph.svg" width="524" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a6383476c95ce1499dafab1e75d66c2ca_icgraph.svg" width="100%" height="555"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a3d99742bd2c9dd1f182a681c8c898d88" name="a3d99742bd2c9dd1f182a681c8c898d88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d99742bd2c9dd1f182a681c8c898d88">&#9670;&#160;</a></span>isEmojiBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool steppable::__internals::stringUtils::isEmojiBase </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>cp</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a3d99742bd2c9dd1f182a681c8c898d88_cgraph.svg" width="195" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a3d99742bd2c9dd1f182a681c8c898d88_icgraph.svg" width="100%" height="555"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a0bc9c3e3de39edf347d4391c4a7eec46" name="a0bc9c3e3de39edf347d4391c4a7eec46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bc9c3e3de39edf347d4391c4a7eec46">&#9670;&#160;</a></span>isZeroWidthCharacter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool steppable::__internals::stringUtils::isZeroWidthCharacter </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>codepoint</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a Unicode code point represents a zero-width character. </p>
+<p>Zero-width characters do not consume display space (e.g., combining marks, zero-width spaces).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">codepoint</td><td>The Unicode code point to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the code point is a zero-width character, false otherwise. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a0bc9c3e3de39edf347d4391c4a7eec46_cgraph.svg" width="258" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a0bc9c3e3de39edf347d4391c4a7eec46_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -467,6 +653,30 @@ template&lt;typename CharT&gt; </div>
 
 </div>
 </div>
+<a id="a20f5add62187b3da580dbd0a07b87cc3" name="a20f5add62187b3da580dbd0a07b87cc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20f5add62187b3da580dbd0a07b87cc3">&#9670;&#160;</a></span>toNumeric()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;concepts::Numeric T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T steppable::__internals::stringUtils::toNumeric </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a20f5add62187b3da580dbd0a07b87cc3_cgraph.svg" width="406" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a5dcad3b5c7b08e6541b5ae68cdf4ef0b" name="a5dcad3b5c7b08e6541b5ae68cdf4ef0b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5dcad3b5c7b08e6541b5ae68cdf4ef0b">&#9670;&#160;</a></span>unicodeToUtf8()</h2>
 
@@ -491,11 +701,47 @@ template&lt;typename CharT&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The UTF-8 encoded string representation of the Unicode character.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>When output goes wrong, make sure to call this function when printing! </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>Utf8CodePage </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classsteppable_1_1____internals_1_1utils_1_1Utf8CodePage.html" title="A class that sets the console output code page to UTF-8 and enables VT mode.">Utf8CodePage</a> </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_a5dcad3b5c7b08e6541b5ae68cdf4ef0b_icgraph.svg" width="100%" height="383"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ad3d6aab0b869f7839a792874caf0bba4" name="ad3d6aab0b869f7839a792874caf0bba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3d6aab0b869f7839a792874caf0bba4">&#9670;&#160;</a></span>utf8Decode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool steppable::__internals::stringUtils::utf8Decode </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t &amp;</td>          <td class="paramname"><span class="paramname"><em>cp</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_ad3d6aab0b869f7839a792874caf0bba4_cgraph.svg" width="191" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesteppable_1_1____internals_1_1stringUtils_ad3d6aab0b869f7839a792874caf0bba4_icgraph.svg" width="100%" height="555"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -564,7 +810,7 @@ template&lt;typename ValueType&gt; </div>
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri Jun 27 2025 15:08:33"; // Will get replaced by Doxygen
+        const dateStr = "Sat Jul 12 2025 01:31:13"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

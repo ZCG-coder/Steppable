@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['abs_0',['abs',['../namespacesteppable_1_1____internals_1_1calc.html#ad4d7034aa4fea1469c85db9ddbb006c2',1,'steppable::__internals::calc']]],
+  ['abs_0',['abs',['../classsteppable_1_1Number.html#ace24c0e8e78d13a87043daebdfd85765',1,'steppable::Number::abs()'],['../namespacesteppable_1_1____internals_1_1calc.html#ad4d7034aa4fea1469c85db9ddbb006c2',1,'steppable::__internals::calc::abs(const std::string &amp;_number, int steps)']]],
   ['acos_1',['acos',['../namespacesteppable_1_1____internals_1_1calc.html#acef854c88179c84fd64b07be379cf7b3',1,'steppable::__internals::calc']]],
   ['acosh_2',['acosh',['../namespacesteppable_1_1____internals_1_1calc.html#a847f38a28b2514c9422586b9fa49498e',1,'steppable::__internals::calc']]],
   ['acot_3',['acot',['../namespacesteppable_1_1____internals_1_1calc.html#a33661263192dbe3eea741c186746ad2e',1,'steppable::__internals::calc']]],

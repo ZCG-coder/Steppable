@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['resultbase_0',['ResultBase',['../classsteppable_1_1types_1_1ResultBase.html',1,'steppable::types']]],
-  ['resultbase_3c_20status_2c_20resultt_2c_20stringliteral_7b_20_22str_22_20_7d_3e_1',['ResultBase&lt; Status, ResultT, StringLiteral{ &quot;str&quot; }&gt;',['../classsteppable_1_1types_1_1ResultBase.html',1,'steppable::types']]],
-  ['resultbase_3c_20statusbool_2c_20resultt_2c_20stringliteral_7b_20_22bool_22_20_7d_3e_2',['ResultBase&lt; StatusBool, ResultT, StringLiteral{ &quot;bool&quot; }&gt;',['../classsteppable_1_1types_1_1ResultBase.html',1,'steppable::types']]]
+  ['number_0',['Number',['../classsteppable_1_1Number.html',1,'steppable']]]
 ];

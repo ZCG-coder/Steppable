@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fraction_0',['Fraction',['../classsteppable_1_1Fraction.html',1,'steppable']]]
+  ['data_0',['Data',['../classsteppable_1_1Data.html',1,'steppable']]],
+  ['data_3c_20_5fweekday_2c_20stringliteral_7b_20_22weekday_22_20_7d_3e_1',['Data&lt; _Weekday, StringLiteral{ &quot;Weekday&quot; }&gt;',['../classsteppable_1_1Data.html',1,'steppable']]]
 ];

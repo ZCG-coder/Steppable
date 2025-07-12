@@ -126,23 +126,34 @@ $(function() {
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> **************************************************************************************************/</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;concepts&gt;</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1concepts.html">steppable::concepts</a></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="conceptsteppable_1_1concepts_1_1Numeric.html">   39</a></span>    <span class="keyword">concept </span><a class="code hl_concept" href="conceptsteppable_1_1concepts_1_1Numeric.html">Numeric</a> = std::integral&lt;T&gt; || std::floating_point&lt;T&gt;; </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> ObjectT&gt;</div>
-<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="conceptsteppable_1_1concepts_1_1Presentable.html">   43</a></span>    <span class="keyword">concept </span><a class="code hl_concept" href="conceptsteppable_1_1concepts_1_1Presentable.html">Presentable</a> = <span class="keyword">requires</span>(ObjectT object) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        { <span class="keywordtype">object</span>.present() } -&gt; std::same_as&lt;std::string&gt;;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    };</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;concepts&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;ostream&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesteppable_1_1concepts.html">steppable::concepts</a></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="conceptsteppable_1_1concepts_1_1Numeric.html">   42</a></span>    <span class="keyword">concept </span><a class="code hl_concept" href="conceptsteppable_1_1concepts_1_1Numeric.html">Numeric</a> = std::integral&lt;T&gt; || std::floating_point&lt;T&gt;; </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> ObjectT&gt;</div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="conceptsteppable_1_1concepts_1_1Presentable.html">   46</a></span>    <span class="keyword">concept </span><a class="code hl_concept" href="conceptsteppable_1_1concepts_1_1Presentable.html">Presentable</a> = <span class="keyword">requires</span>(ObjectT object) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        { <span class="keywordtype">object</span>.present() } -&gt; std::same_as&lt;std::string&gt;;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    };</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <span class="comment">// namespace steppable::concepts</span></div>
-<div class="ttc" id="aconceptsteppable_1_1concepts_1_1Numeric_html"><div class="ttname"><a href="conceptsteppable_1_1concepts_1_1Numeric.html">steppable::concepts::Numeric</a></div><div class="ttdoc">Represents any C++ numeral literals.</div><div class="ttdef"><b>Definition</b> concepts.hpp:39</div></div>
-<div class="ttc" id="aconceptsteppable_1_1concepts_1_1Presentable_html"><div class="ttname"><a href="conceptsteppable_1_1concepts_1_1Presentable.html">steppable::concepts::Presentable</a></div><div class="ttdoc">Represents any object with a .present() method.</div><div class="ttdef"><b>Definition</b> concepts.hpp:43</div></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> ObjectT&gt;</div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="conceptsteppable_1_1concepts_1_1Stream.html">   52</a></span>    <span class="keyword">concept </span><a class="code hl_concept" href="conceptsteppable_1_1concepts_1_1Stream.html">Stream</a> = <span class="keyword">requires</span>(ObjectT object) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        { <span class="keywordtype">object</span>.operator&lt;&lt;() } -&gt; std::same_as&lt;std::ostream&amp;&gt;;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    };</div>
+</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>} <span class="comment">// namespace steppable::concepts</span></div>
+<div class="ttc" id="aconceptsteppable_1_1concepts_1_1Numeric_html"><div class="ttname"><a href="conceptsteppable_1_1concepts_1_1Numeric.html">steppable::concepts::Numeric</a></div><div class="ttdoc">Represents any C++ numeral literals.</div><div class="ttdef"><b>Definition</b> concepts.hpp:42</div></div>
+<div class="ttc" id="aconceptsteppable_1_1concepts_1_1Presentable_html"><div class="ttname"><a href="conceptsteppable_1_1concepts_1_1Presentable.html">steppable::concepts::Presentable</a></div><div class="ttdoc">Represents any object with a .present() method.</div><div class="ttdef"><b>Definition</b> concepts.hpp:46</div></div>
+<div class="ttc" id="aconceptsteppable_1_1concepts_1_1Stream_html"><div class="ttname"><a href="conceptsteppable_1_1concepts_1_1Stream.html">steppable::concepts::Stream</a></div><div class="ttdoc">Represents any streams with a .operator&lt;&lt;() method.</div><div class="ttdef"><b>Definition</b> concepts.hpp:52</div></div>
 <div class="ttc" id="anamespacesteppable_1_1concepts_html"><div class="ttname"><a href="namespacesteppable_1_1concepts.html">steppable::concepts</a></div><div class="ttdoc">Defines concepts to be used for distinguishing types in the project.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!DOCTYPE html>
@@ -163,7 +174,7 @@ $(function() {
 </head>
 <body>
     <script type="text/javascript">
-        const dateStr = "Fri Jun 27 2025 15:08:32"; // Will get replaced by Doxygen
+        const dateStr = "Sat Jul 12 2025 01:31:13"; // Will get replaced by Doxygen
         const ms = Date.parse(dateStr);
         const date = new Date(ms);
         const year = date.getUTCFullYear();

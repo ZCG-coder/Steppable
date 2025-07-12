@@ -25,6 +25,10 @@ var searchData=
   ['documentation_22',['API Documentation',['../index.html#autotoc_md56',1,'']]],
   ['does_20it_20work_23',['How does it work?',['../md_wiki_2FAQ.html#autotoc_md44',1,'']]],
   ['done_24',['done',['../classsteppable_1_1types_1_1ResultBase.html#a56675a7dd906d3ac61e11051b1a23be2',1,'steppable::types::ResultBase']]],
-  ['download_20links_20for_20steppable_25',['Download links for Steppable',['../md_wiki_2Downloads.html',1,'']]],
-  ['duplicates_26',['duplicates',['../namespacesteppable_1_1____internals_1_1stringUtils.html#addd78766b99fddfe882bd32318ed0f2b',1,'steppable::__internals::stringUtils']]]
+  ['dotted_5fhorizontal_25',['DOTTED_HORIZONTAL',['../namespacesteppable_1_1____internals_1_1symbols_1_1BoxDrawing.html#ac99852d55e5aadd9d08a25e05b032f89',1,'steppable::__internals::symbols::BoxDrawing']]],
+  ['dotted_5fvertical_26',['DOTTED_VERTICAL',['../namespacesteppable_1_1____internals_1_1symbols_1_1BoxDrawing.html#a2b5702f774b1438f6ad28e513ccada62',1,'steppable::__internals::symbols::BoxDrawing']]],
+  ['download_20links_20for_20steppable_27',['Download links for Steppable',['../md_wiki_2Downloads.html',1,'']]],
+  ['drawgrid_28',['drawGrid',['../namespacesteppable_1_1graphing_1_1____internals.html#af1f0d4471f220c173d3adea9d3a1b3d5',1,'steppable::graphing::__internals']]],
+  ['drawticks_29',['drawTicks',['../namespacesteppable_1_1graphing_1_1____internals.html#acdecbb80953262caa8fb8c9a01170670',1,'steppable::graphing::__internals']]],
+  ['duplicates_30',['duplicates',['../namespacesteppable_1_1____internals_1_1stringUtils.html#addd78766b99fddfe882bd32318ed0f2b',1,'steppable::__internals::stringUtils']]]
 ];

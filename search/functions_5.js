@@ -12,5 +12,7 @@ var searchData=
   ['dim_9',['dim',['../namespacesteppable_1_1____internals_1_1utils_1_1formats.html#ace928d552abe20aa441fb499a7c605fe',1,'steppable::__internals::utils::formats']]],
   ['divide_10',['divide',['../namespacesteppable_1_1____internals_1_1calc.html#a742c93c4ba25874a18e0ed9f5c685ae1',1,'steppable::__internals::calc']]],
   ['dividewithquotient_11',['divideWithQuotient',['../namespacesteppable_1_1____internals_1_1calc.html#a8a180ae4101846d5280619a088fae498',1,'steppable::__internals::calc']]],
-  ['duplicates_12',['duplicates',['../namespacesteppable_1_1____internals_1_1stringUtils.html#addd78766b99fddfe882bd32318ed0f2b',1,'steppable::__internals::stringUtils']]]
+  ['drawgrid_12',['drawGrid',['../namespacesteppable_1_1graphing_1_1____internals.html#af1f0d4471f220c173d3adea9d3a1b3d5',1,'steppable::graphing::__internals']]],
+  ['drawticks_13',['drawTicks',['../namespacesteppable_1_1graphing_1_1____internals.html#acdecbb80953262caa8fb8c9a01170670',1,'steppable::graphing::__internals']]],
+  ['duplicates_14',['duplicates',['../namespacesteppable_1_1____internals_1_1stringUtils.html#addd78766b99fddfe882bd32318ed0f2b',1,'steppable::__internals::stringUtils']]]
 ];
