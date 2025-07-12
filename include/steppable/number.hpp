@@ -30,10 +30,12 @@
 
 #pragma once
 
+#include "rounding.hpp"
 #include "testing.hpp"
+#include "types/rounding.hpp"
 #include "util.hpp"
 
-#include <cstdint>
+#include <functional>
 #include <string>
 #include <utility>
 
@@ -43,35 +45,6 @@
  */
 namespace steppable
 {
-    /**
-     * @enum RoundingMode
-     * @brief Specifies how Steppable should round the number in operations.
-     */
-    enum class RoundingMode : std::uint8_t
-    {
-        /// @brief Use the higher precision whenever possible.
-        USE_MAXIMUM_PREC = 0xFF,
-
-        /// @brief Use the lower precision whenever possible.
-        USE_MINIMUM_PREC = 0x01,
-
-        /// @brief Use the current precision.
-        USE_CURRENT_PREC = 0x02,
-
-        /// @brief Use the other number's precision.
-        USE_OTHER_PREC = 0x03,
-
-        /// @brief Do not append any decimal places.
-        DISCARD_ALL_DECIMALS = 0x00
-    };
-
-    enum class Rounding : std::uint8_t
-    {
-        ROUND_DOWN = 0x00, ///< Rounds the number down.
-        ROUND_UP = 0x01, ///< Rounds the number up.
-        ROUND_OFF = 0x02, ///< Rounds the number off.
-    };
-
     /**
      * @class Number
      * @brief Represents a number with arbitrary precision. It basically stores the value as a string.
@@ -111,11 +84,6 @@ namespace steppable
         }
 
     public:
-        /// @brief The default constructor. Initializes the number with a value of 0.
-        Number();
-
-        Number(const Number& rhs);
-
         /**
          * @brief Initializes a number with a specified value.
          * @note By default, the value is 0.
@@ -138,6 +106,7 @@ namespace steppable
         {
             this->mode = mode;
             prec = newPrec;
+            value = __internals::numUtils::roundOff(value, prec);
         }
 
         /**
@@ -306,6 +275,17 @@ namespace steppable
          * @return The number as a string.
          */
         [[nodiscard]] std::string present() const;
+
+        /**
+         * @brief Gets the absolute value of the number.
+         * @return The absolute value of the current number.
+         */
+        [[nodiscard]] Number abs() const
+        {
+            if (*this > 0)
+                return *this;
+            return -(*this);
+        }
     };
 
     /**
@@ -319,3 +299,11 @@ namespace steppable
         inline Number operator""_n(unsigned long long value) { return Number(value); }
     } // namespace literals
 } // namespace steppable
+
+template<>
+struct std::hash<steppable::Number>
+{
+    size_t operator()(const steppable::Number& n) const { return hash<std::string>()(n.present()); }
+};
+
+std::ostream& operator<<(std::ostream& os, const steppable::Number& number);

@@ -20,48 +20,40 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#pragma once
+#include "steppable/parameter.hpp"
 
-#include "types/rounding.hpp"
-
-#include <string>
-
-namespace steppable::__internals::numUtils
+namespace steppable::__internals::parameter
 {
-    /**
-     * @brief Round down a number to the nearest integer.
-     *
-     * @param[in] _number The number to round down.
-     * @return The rounded number.
-     */
-    std::string roundDown(const std::string& _number);
+    void ParameterMap::checkParameterOrder(const std::vector<std::string>& names)
+    {
+        if (names.size() != values.size())
+        {
+            output::error("ParameterMap::checkParameterOrder"s, "Incorrect name vector size."s);
+            utils::programSafeExit(1);
+        }
 
-    /**
-     * @brief Round up a number to the nearest integer.
-     *
-     * @param[in] _number The number to round up.
-     * @return The rounded number.
-     */
-    std::string roundUp(const std::string& _number);
+        for (size_t i = 0; i < values.size(); i++)
+            if (names[i] != values[i].name)
+            {
+                output::error("ParameterMap::checkParameterOrder"s,
+                              "Name {0} mismatch. Expect {1}"s,
+                              { values[i].name, names[i] });
+                utils::programSafeExit(1);
+            }
+    }
 
-    /**
-     * @brief Round off a number to the nearest integer.
-     *
-     * @param[in] _number The number to round.
-     * @param[in] digits The number of decimal places to round to.
-     * @param[in] mode The mode of rounding. Defaults to rounding off.
-     * @return The rounded number.
-     */
-    std::string roundOff(const std::string& _number, size_t digits = 0, Rounding mode = Rounding::ROUND_OFF);
-
-    /**
-     * @brief Move the decimal places of a number.
-     *
-     * @param _number The number to process.
-     * @param places The desired decimal places to move. A negative amount indicates moving to the left, while a
-     * positive amount indicates moving to the right.
-     *
-     * @return The processed number.
-     */
-    std::string moveDecimalPlaces(const std::string& _number, long places);
-} // namespace steppable::__internals::numUtils
+    void ParameterMap::checkParameterNameUnordered(const std::vector<std::string>& names)
+    {
+        if (names.size() != values.size())
+        {
+            output::error("ParameterMap::checkParameterNameUnordered"s, "Incorrect name vector size."s);
+            utils::programSafeExit(1);
+        }
+        for (const auto& obj : values)
+            if (std::ranges::find(names, obj.name) == names.end())
+            {
+                output::error("ParameterMap::checkParameterNameUnordered"s, "Name {0} not found."s, { obj.name });
+                utils::programSafeExit(1);
+            }
+    }
+}

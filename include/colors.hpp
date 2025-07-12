@@ -37,6 +37,7 @@
 
 #pragma once
 
+#include <functional>
 #include <ostream>
 
 /**
@@ -61,6 +62,8 @@
 
 namespace steppable::__internals::utils
 {
+    using ColorFunc = std::function<std::ostream&(std::ostream&)>;
+
     /**
      * @brief Check if the output stream is a terminal.
      *
@@ -87,6 +90,14 @@ namespace steppable::__internals::utils
      */
     namespace colors
     {
+        /**
+         * @brief Does nothing.
+         *
+         * @param[in] stream The output stream to modify.
+         * @return The modified output stream.
+         */
+        std::ostream& keepOriginal(std::ostream& stream);
+
         /**
          * @brief Set the text color to black.
          *

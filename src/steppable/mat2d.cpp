@@ -29,6 +29,7 @@
 
 #include "steppable/mat2d.hpp"
 
+#include "getString.hpp"
 #include "output.hpp"
 #include "platform.hpp"
 #include "rounding.hpp"
@@ -47,6 +48,7 @@ namespace steppable
 {
     using namespace __internals;
     using namespace __internals::numUtils;
+    using namespace localization;
 
     namespace prettyPrint::printers
     {
@@ -106,7 +108,7 @@ namespace steppable
             const size_t rowSize = row.size();
             if (rowSize != size)
             {
-                output::error("Matrix::_checkDataSanity"s, "Matrix has non-uniform dimensions."s);
+                output::error("Matrix::_checkDataSanity"s, $("mat2d", "75953952-0eea-4716-a006-d0f2e7a8f6c9"));
                 utils::programSafeExit(1);
             }
             size = rowSize;
@@ -137,16 +139,16 @@ namespace steppable
 
         if (x > _cols)
         {
-            output::error("Matrix::operator[]"s,
-                          "Incorrect x parameter. {0} exceeds the number of columns in this matrix ({1})."s,
-                          { std::to_string(x), std::to_string(_cols) });
+            output::error(
+                "Matrix::operator[]"s,
+                $("mat2d", "8d4e4757-415b-4aed-8f5e-26b3503a95dd"s, { std::to_string(x), std::to_string(_cols) }));
             utils::programSafeExit(1);
         }
         if (y > _rows)
         {
-            output::error("Matrix::operator[]"s,
-                          "Incorrect y parameter. {0} exceeds the number of rows in this matrix ({1})."s,
-                          { std::to_string(y), std::to_string(_rows) });
+            output::error(
+                "Matrix::operator[]"s,
+                $("mat2d", "e7cb3f0b-11d8-4e12-8c93-4a1021b15e10"s, { std::to_string(y), std::to_string(_rows) }));
             utils::programSafeExit(1);
         }
     }
@@ -241,11 +243,11 @@ namespace steppable
         MatVec2D<Number> mat = data;
         mat = roundOffValues(mat, static_cast<int>(prec) + 3);
 
-        for (int col = 0, row = 0; col < _cols && row < _rows; ++col)
+        for (long long signed col = 0, row = 0; col < _cols && row < _rows; ++col)
         {
             // Find first non-zero in column col, at or below row
-            int sel = -1;
-            for (int i = row; i < _rows; ++i)
+            long long signed sel = -1;
+            for (long long signed i = row; i < _rows; ++i)
                 if (mat[i][col] != 0.0)
                 {
                     sel = i;
@@ -258,10 +260,10 @@ namespace steppable
                 std::swap(mat[row], mat[sel]); // Swap if needed
 
             // Eliminate below
-            for (int i = row + 1; i < _rows; ++i)
+            for (long long signed i = row + 1; i < _rows; ++i)
             {
                 Number factor = mat[i][col] / mat[row][col];
-                for (int j = col; j < _cols; ++j)
+                for (long long signed j = col; j < _cols; ++j)
                     mat[i][j] -= factor * mat[row][j];
             }
             ++row;
@@ -274,7 +276,7 @@ namespace steppable
     {
         if (_rows != _cols)
         {
-            output::error("Matrix::det"s, "Matrix is not a square."s);
+            output::error("Matrix::det"s, $("mat2d", "fe78bdc2-b409-4078-8e0e-313c46977f25"));
             utils::programSafeExit(1);
         }
         int sign = 1;
@@ -323,15 +325,17 @@ namespace steppable
         if (rhs._cols != _cols)
         {
             output::error("Matrix::operator+"s,
-                          "Matrix dimensions mismatch. Expect {0} columns. Got {1} columns."s,
-                          { std::to_string(_cols), std::to_string(rhs._cols) });
+                          $("mat2d",
+                            "88331f88-3a4c-4b7e-9b43-b51a1d1020e2",
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
             utils::programSafeExit(1);
         }
         if (rhs._rows != _rows)
         {
             output::error("Matrix::operator+"s,
-                          "Matrix dimensions mismatch. Expect {0} rows. Got {1} rows."s,
-                          { std::to_string(_rows), std::to_string(rhs._rows) });
+                          $("mat2d",
+                            "34e92306-a4d8-4ff0-8441-bfcd29771e94",
+                            { std::to_string(_rows), std::to_string(rhs._rows) }));
             utils::programSafeExit(1);
         }
 
@@ -381,11 +385,9 @@ namespace steppable
     {
         if (_cols != rhs._rows)
         {
-            output::error("Matrix::operator*"s, "Incorrect matrix dimensions for multiplication."s);
+            output::error("Matrix::operator*"s, $("mat2d", "17b6aadd-bce1-4558-a7cc-7a099f00e57c"));
             // https://en.wikipedia.org/wiki/Matrix_multiplication
-            output::info("Matrix::operator*"s,
-                         "For matrix multiplication, the number of columns in the first matrix must be equal to the "
-                         "number of rows in the second matrix"s);
+            output::info("Matrix::operator*"s, $("mat2d", "8966ce13-8ae9-4f14-ba4e-837b98a4c9fa"));
             utils::programSafeExit(1);
         }
         Matrix matrix = Matrix::zeros(_rows, rhs._cols);
@@ -401,8 +403,9 @@ namespace steppable
         if (rhs._rows != _rows)
         {
             output::error("Matrix::operator<<"s,
-                          "Incorrect RHS matrix dimensions. Expect {0} rows, got {1}"s,
-                          { std::to_string(rhs._rows), std::to_string(rhs._rows) });
+                          $("mat2d",
+                            "f255d307-9482-442b-a523-61a1c7465f9c",
+                            { std::to_string(rhs._rows), std::to_string(rhs._rows) }));
             utils::programSafeExit(1);
         }
 
@@ -425,9 +428,10 @@ namespace steppable
     {
         if (rhs._rows != _rows)
         {
-            output::error("Matrix::operator>>"s,
-                          "Incorrect RHS matrix dimensions. Expect {0} rows, got {1}"s,
-                          { std::to_string(rhs._rows), std::to_string(rhs._rows) });
+            output::error("Matrix::operator<<"s,
+                          $("mat2d",
+                            "f255d307-9482-442b-a523-61a1c7465f9c",
+                            { std::to_string(rhs._rows), std::to_string(rhs._rows) }));
             utils::programSafeExit(1);
         }
 

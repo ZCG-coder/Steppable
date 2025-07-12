@@ -92,14 +92,8 @@ namespace steppable::__internals::calc
         const bool aIsDecimal = not isZeroString(aDecimal);
         const bool bIsDecimal = not isZeroString(bDecimal);
 
-        if (negative)
+        if (negative or (aIsNegative and bIsNegative))
             resultIsNegative = true;
-        else if (aIsNegative and bIsNegative)
-        {
-            resultIsNegative = true;
-            aIsNegative = false;
-            bIsNegative = false;
-        }
         else if (aIsNegative)
         {
             if (steps == 2)
@@ -157,6 +151,11 @@ namespace steppable::__internals::calc
         std::ranges::reverse(sumDigits);
         if (sumDigits.front() == 0 and properlyFormat)
             sumDigits.erase(sumDigits.begin());
+
+        if (aIsNegative)
+            aInteger = "-" + aInteger;
+        if (bIsNegative)
+            bInteger = "-" + bInteger;
 
         return reportAdd(
             aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, resultIsNegative, steps, properlyFormat);

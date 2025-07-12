@@ -22,46 +22,36 @@
 
 #pragma once
 
-#include "types/rounding.hpp"
+#include <cstdint>
 
-#include <string>
-
-namespace steppable::__internals::numUtils
+namespace steppable
 {
     /**
-     * @brief Round down a number to the nearest integer.
-     *
-     * @param[in] _number The number to round down.
-     * @return The rounded number.
+     * @enum RoundingMode
+     * @brief Specifies how Steppable should round the number in operations.
      */
-    std::string roundDown(const std::string& _number);
+    enum class RoundingMode : std::uint8_t
+    {
+        /// @brief Use the higher precision whenever possible.
+        USE_MAXIMUM_PREC = 0xFF,
 
-    /**
-     * @brief Round up a number to the nearest integer.
-     *
-     * @param[in] _number The number to round up.
-     * @return The rounded number.
-     */
-    std::string roundUp(const std::string& _number);
+        /// @brief Use the lower precision whenever possible.
+        USE_MINIMUM_PREC = 0x01,
 
-    /**
-     * @brief Round off a number to the nearest integer.
-     *
-     * @param[in] _number The number to round.
-     * @param[in] digits The number of decimal places to round to.
-     * @param[in] mode The mode of rounding. Defaults to rounding off.
-     * @return The rounded number.
-     */
-    std::string roundOff(const std::string& _number, size_t digits = 0, Rounding mode = Rounding::ROUND_OFF);
+        /// @brief Use the current precision.
+        USE_CURRENT_PREC = 0x02,
 
-    /**
-     * @brief Move the decimal places of a number.
-     *
-     * @param _number The number to process.
-     * @param places The desired decimal places to move. A negative amount indicates moving to the left, while a
-     * positive amount indicates moving to the right.
-     *
-     * @return The processed number.
-     */
-    std::string moveDecimalPlaces(const std::string& _number, long places);
-} // namespace steppable::__internals::numUtils
+        /// @brief Use the other number's precision.
+        USE_OTHER_PREC = 0x03,
+
+        /// @brief Do not append any decimal places.
+        DISCARD_ALL_DECIMALS = 0x00
+    };
+
+    enum class Rounding : std::uint8_t
+    {
+        ROUND_DOWN = 0x00, ///< Rounds the number down.
+        ROUND_UP = 0x01, ///< Rounds the number up.
+        ROUND_OFF = 0x02, ///< Rounds the number off.
+    };
+} // namespace steppable

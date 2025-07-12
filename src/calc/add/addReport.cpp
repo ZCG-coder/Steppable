@@ -74,13 +74,15 @@ std::string reportAdd(const std::string& aInteger,
         if (bOut.length() > aOut.length())
             ss << std::string(bOut.length() - aOut.length(), ' ');
         for (const char aChar : aOut)
-            ss << aChar << "  ";
+            if (aChar != '-')
+                ss << aChar << "  ";
 
         ss << '\n' << "+     "; // Print an add sign before printing b
         if (aOut.length() > bOut.length())
             ss << std::string(aOut.length() - bOut.length(), ' ');
         for (const char bChar : bOut)
-            ss << bChar << "  ";
+            if (bChar != '-')
+                ss << bChar << "  ";
 
         ss << '\n' << "   ";
         for (const int c : carries)
@@ -106,6 +108,8 @@ std::string reportAdd(const std::string& aInteger,
         ss << aOut << " + " << bOut << " = ";
 
     std::string outStr;
+    if (resultIsNegative)
+        outStr = "-";
     for (const auto c : sumDigits)
         if (c == -1)
             outStr += ".";

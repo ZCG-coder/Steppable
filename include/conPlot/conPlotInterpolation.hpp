@@ -22,46 +22,25 @@
 
 #pragma once
 
-#include "types/rounding.hpp"
+#include <map>
 
-#include <string>
-
-namespace steppable::__internals::numUtils
+namespace steppable::graphing
 {
     /**
-     * @brief Round down a number to the nearest integer.
+     * @brief Fill in integral values with linear interpolation.
      *
-     * @param[in] _number The number to round down.
-     * @return The rounded number.
+     * @param data An x-y corresponding table of values. Must have at least 2 items.
+     * @param xMin Minimum `x` value.
+     * @param xMax Maximum `x` value.
      */
-    std::string roundDown(const std::string& _number);
+    void linearInterpolateFill(std::map<long long, long long>* data, long long xMin, long long xMax);
 
     /**
-     * @brief Round up a number to the nearest integer.
+     * @brief Fill in integral values with cubic interpolation.
      *
-     * @param[in] _number The number to round up.
-     * @return The rounded number.
+     * @param data An x-y corresponding table of values. Must have at least 4 items.
+     * @param xMin Minimum `x` value.
+     * @param xMax Maximum `x` value.
      */
-    std::string roundUp(const std::string& _number);
-
-    /**
-     * @brief Round off a number to the nearest integer.
-     *
-     * @param[in] _number The number to round.
-     * @param[in] digits The number of decimal places to round to.
-     * @param[in] mode The mode of rounding. Defaults to rounding off.
-     * @return The rounded number.
-     */
-    std::string roundOff(const std::string& _number, size_t digits = 0, Rounding mode = Rounding::ROUND_OFF);
-
-    /**
-     * @brief Move the decimal places of a number.
-     *
-     * @param _number The number to process.
-     * @param places The desired decimal places to move. A negative amount indicates moving to the left, while a
-     * positive amount indicates moving to the right.
-     *
-     * @return The processed number.
-     */
-    std::string moveDecimalPlaces(const std::string& _number, long places);
-} // namespace steppable::__internals::numUtils
+    void cubicInterpolateFill(std::map<long long, long long>* data, long long xMin, long long xMax);
+} // namespace steppable::graphing

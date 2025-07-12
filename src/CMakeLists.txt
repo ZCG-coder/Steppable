@@ -20,6 +20,8 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
+ADD_SUBDIRECTORY(conPlot)
+
 ADD_LIBRARY(
     util STATIC
     argParse.cpp
@@ -62,12 +64,16 @@ FOREACH(COMPONENT IN LISTS COMPONENTS)
 ENDFOREACH()
 
 # FUNC: Library containing all Steppable functions.
-ADD_LIBRARY(func STATIC ${CALCULATOR_FILES}
-                        steppable/fraction.cpp
-                        steppable/mat2d.cpp
-                        steppable/number.cpp
-                        rounding.cpp
-                        factors.cpp)
+ADD_LIBRARY(
+    func STATIC
+    ${CALCULATOR_FILES}
+    ${CONPLOT_FILES}
+    steppable/fraction.cpp
+    steppable/mat2d.cpp
+    steppable/number.cpp
+    rounding.cpp
+    factors.cpp
+)
 SET_TARGET_PROPERTIES(func PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 TARGET_INCLUDE_DIRECTORIES(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
@@ -75,6 +81,8 @@ TARGET_INCLUDE_DIRECTORIES(func PRIVATE ${STP_BASE_DIRECTORY}/include/)
 TARGET_INCLUDE_DIRECTORIES(util PRIVATE ${STP_BASE_DIRECTORY}/include/)
 
 TARGET_LINK_LIBRARIES(steppable PRIVATE util)
-TARGET_LINK_LIBRARIES(func PRIVATE steppable)
+TARGET_LINK_LIBRARIES(steppable PRIVATE conPlot)
+TARGET_LINK_LIBRARIES(func PRIVATE util)
+TARGET_LINK_LIBRARIES(func PRIVATE conPlot)
 TARGET_COMPILE_DEFINITIONS(func PRIVATE NO_MAIN)
 TARGET_COMPILE_DEFINITIONS(steppable PRIVATE NO_MAIN)

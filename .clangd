@@ -28,7 +28,8 @@ Diagnostics:
         'cert-dcl51-cpp',
         'cppcoreguidelines-pro-type-vararg',
         'readability-braces-around-statements',
-        'readability-identifier-length'
+        'readability-identifier-length',
+        'cppcoreguidelines-avoid-do-while'
     ]
 
 ---

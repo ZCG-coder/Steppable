@@ -25,14 +25,46 @@
 #include <ostream>
 
 #ifdef WINDOWS
-#include <windows.h>
-#include <cstdio>
-#include <io.h>
-#include <versionhelpers.h>
-// ReSharper disable once CppInconsistentNaming
-#define isatty _isatty
-// ReSharper disable once CppInconsistentNaming
-#define fileno _fileno
+    // clang-format off
+    #include <windows.h>
+    // clang-format on
+
+    #include <cstdio>
+    #include <io.h>
+    #include <versionhelpers.h>
+    // ReSharper disable once CppInconsistentNaming
+    #define isatty _isatty
+    // ReSharper disable once CppInconsistentNaming
+    #define fileno _fileno
+
+double* sysVersion = nullptr;
+
+// https://stackoverflow.com/a/52122386/14868780
+/**
+* @brief Gets the Windows version as a double.
+* @warning This method is only available on Windows.
+* @returns The Windows version as double, for example, 10.0.
+*/
+double getSysOpType()
+{
+    if (sysVersion != nullptr)
+        return *sysVersion;
+
+    double ret = 0;
+    sysVersion = new double;
+    NTSTATUS(WINAPI * RtlGetVersion)(LPOSVERSIONINFOEXW);
+    OSVERSIONINFOEXW osInfo;
+
+    *(FARPROC*)&RtlGetVersion = GetProcAddress(GetModuleHandleA("ntdll"), "RtlGetVersion");
+
+    if (NULL != RtlGetVersion)
+    {
+        osInfo.dwOSVersionInfoSize = sizeof(osInfo);
+        RtlGetVersion(&osInfo);
+        ret = (double)osInfo.dwMajorVersion;
+    }
+    *sysVersion = ret;
+}
 #else
     #include <unistd.h>
 #endif
@@ -42,7 +74,7 @@ namespace steppable::__internals::utils
     bool isTerminal(const std::ostream& stream)
     {
 #ifdef WINDOWS
-        if (IsWindows10OrGreater())
+        if (getSysOpType() >= 10.0)
             return isatty(fileno(stdout)) != 0;
         return false; // The Windows console in Windows 7 does not support ANSI escapes
 #else
@@ -59,6 +91,12 @@ namespace steppable::__internals::utils
 
     namespace colors
     {
+        std::ostream& keepOriginal(std::ostream& stream)
+        {
+            stream << "";
+            return stream;
+        }
+
         std::ostream& black(std::ostream& stream)
         {
             if (isTerminal(stream))

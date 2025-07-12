@@ -47,10 +47,6 @@ namespace steppable
 {
     using namespace steppable::__internals::calc;
 
-    Number::Number() : value("0"), prec(8) {}
-
-    Number::Number(const Number& rhs) : value(rhs.value), prec(rhs.prec) {}
-
     Number::Number(std::string value, const size_t prec, const RoundingMode mode) :
         value(std::move(value)), prec(prec), mode(mode)
     {
@@ -165,3 +161,9 @@ namespace steppable
 
     std::string Number::present() const { return value; }
 } // namespace steppable
+
+std::ostream& operator<<(std::ostream& os, const steppable::Number& number)
+{
+    os << number.present();
+    return os;
+}

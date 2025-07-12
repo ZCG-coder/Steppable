@@ -20,44 +20,16 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-ENABLE_TESTING()
-
-SET(TEST_TARGETS_TEMP
-    steppable::util
-    steppable::fraction
-    steppable::number
-    steppable::mat2d
-    steppable::factors
-    steppable::format
-    ${COMPONENTS}
-)
-
-FOREACH(TEST_TARGET IN LISTS TEST_TARGETS_TEMP)
-    SET(TARGET_NAME "test")
-    STRING(REPLACE "::" ";" TEST_TARGET_PARTS ${TEST_TARGET})
-    LIST(GET TEST_TARGET_PARTS 0 DIR_NAME)
-    LIST(GET TEST_TARGET_PARTS 1 FILE_NAME)
-    STRING(REPLACE "::" "_" TEST_TARGET ${TEST_TARGET})
-
-    CAPITALIZE(${DIR_NAME} DIR_NAME)
-    CAPITALIZE(${FILE_NAME} FILE_NAME)
-    CAPITALIZE(${TEST_TARGET} TEST_TARGET)
-    STRING(CONCAT DIR_NAME "test" ${DIR_NAME})
-    STRING(CONCAT FILE_NAME "test" ${FILE_NAME})
-    STRING(CONCAT TEST_TARGET "test" ${TEST_TARGET})
-
-    ADD_EXECUTABLE(${TEST_TARGET} ${DIR_NAME}/${FILE_NAME}.cpp)
-    TARGET_LINK_LIBRARIES(${TEST_TARGET} PRIVATE func)
-    ADD_TEST(NAME ${TEST_TARGET} COMMAND ${CMAKE_BINARY_DIR}/tests/${TEST_TARGET})
-
-    LIST(APPEND TEST_TARGETS ${TEST_TARGET})
-    MESSAGE(TRACE "Added test case: ${TEST_TARGET}: ${DIR_NAME}/${FILE_NAME}.cpp")
-ENDFOREACH()
-
-SET(TEST_TARGETS
-    ${TEST_TARGETS}
-    PARENT_SCOPE
-)
-
-ADD_CUSTOM_TARGET(tests)
-ADD_DEPENDENCIES(tests ${TEST_TARGETS})
+# NOTE: This file is generated. Do not edit it manually. Any changes will be overwritten.
+# STR_GUID: (key) / STRING TRANSLATED: (string)
+# eg: a491b7b2-1239-4acb-9045-0747d806b96f >> "Hello World!"
+# Recommended syntax highlighting: Bash Script
+75953952-0eea-4716-a006-d0f2e7a8f6c9 >> "Matrix has non-uniform dimensions."
+8d4e4757-415b-4aed-8f5e-26b3503a95dd >> "Incorrect x parameter. {0} exceeds the number of columns in this matrix ({1})."
+e7cb3f0b-11d8-4e12-8c93-4a1021b15e10 >> "Incorrect y parameter. {0} exceeds the number of rows in this matrix ({1})."
+fe78bdc2-b409-4078-8e0e-313c46977f25 >> "Matrix is not a square."
+88331f88-3a4c-4b7e-9b43-b51a1d1020e2 >> "Matrix dimensions mismatch. Expect {0} columns. Got {1} columns."
+34e92306-a4d8-4ff0-8441-bfcd29771e94 >> "Matrix dimensions mismatch. Expect {0} rows. Got {1} rows."
+17b6aadd-bce1-4558-a7cc-7a099f00e57c >> "Incorrect matrix dimensions for multiplication."
+8966ce13-8ae9-4f14-ba4e-837b98a4c9fa >> "For matrix multiplication, the number of columns in the first matrix must be equal to the number of rows in the second matrix."
+f255d307-9482-442b-a523-61a1c7465f9c >> "Incorrect RHS matrix dimensions. Expect {0} rows, got {1}."
