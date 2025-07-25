@@ -42,6 +42,7 @@ from lib.printing import erase_line, print_error
 from tools.install import install
 
 ISO_639_REGEX = re.compile(r"^[a-z]{2}(-[A-Z]{2})?$")
+COMPONENT_REGEX = re.compile(r"^([a-zA-Z0-9]+?)::([a-zA-Z0-9]+?)$")
 LOCALIZED_HEADER = """\
 #####################################################################################################
 #  Copyright (c) 2023-2025 NWSOFT                                                                   #
@@ -96,6 +97,18 @@ def verify_language(language: str) -> None:
         exit(1)
 
 
+def verify_component(component: str) -> re.Match:
+    """
+    Verifies if the component name is valid.
+    """
+
+    matches = COMPONENT_REGEX.match(component)
+    if not matches:
+        print(f"ERROR: Invalid component name `{component}`")
+        exit(1)
+    return matches
+
+
 def write_indexed_file(component: str, *, append: bool = False) -> None:
     """
     Writes the indexed entries to a file with the given path.
@@ -104,10 +117,15 @@ def write_indexed_file(component: str, *, append: bool = False) -> None:
     :param component: The name of the component to write the indexed file for.
     :param append: If True, appends the strings to the file. If False, overwrites the file.
     """
-    path = Path(f"res/translations/{component}.stp_strings")
+    matches = verify_component(component)
+    component_orig = component
+    component_directory = matches.group(1)
+    component = matches.group(2)
+
+    path = Path(f"res/translations/{component_directory}/{component}.stp_strings")
     mode = "a" if append else "w"
 
-    print(f"Enter the strings in {component}, blank line to quit.")
+    print(f"Enter the strings in {component_orig}, blank line to quit.")
     string = input("> ")
     guid = str(uuid.uuid4())
     strings = [f'{guid} >> "{string}"']

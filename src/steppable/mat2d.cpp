@@ -481,7 +481,7 @@ namespace steppable
     {
         if (_rows != _cols)
         {
-            output::error("Matrix::operator^"s, "Matrix is not square."s);
+            output::error("Matrix::operator^"s, $("steppable::mat2d"s, "fe78bdc2-b409-4078-8e0e-313c46977f25"s));
             utils::programSafeExit(1);
         }
 
@@ -557,6 +557,126 @@ namespace steppable
     bool Matrix::operator==(const Matrix& rhs) const { return data == rhs.data; }
 
     bool Matrix::operator!=(const Matrix& rhs) const { return not(*this == rhs); }
+
+    Matrix Matrix::operator<(const Matrix& rhs) const
+    {
+        if (rhs._cols != _cols)
+        {
+            output::error("Matrix::operator<"s,
+                          $("steppable::mat2d"s,
+                            "88331f88-3a4c-4b7e-9b43-b51a1d1020e2"s,
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        if (rhs._rows != _rows)
+        {
+            output::error("Matrix::operator<"s,
+                          $("steppable::mat2d"s,
+                            "34e92306-a4d8-4ff0-8441-bfcd29771e94"s,
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        Matrix res = zeros(_rows, _cols);
+        for (size_t j = 0; j < _rows; j++)
+        {
+            for (size_t i = 0; i < _cols; i++)
+                if (not(data[j][i] < rhs.data[j][i]))
+                    res[{ .y = j, .x = i }] = 1;
+        }
+        return res;
+    }
+
+    Matrix Matrix::operator<=(const Matrix& rhs) const
+    {
+        if (rhs._cols != _cols)
+        {
+            output::error("Matrix::operator<="s,
+                          $("steppable::mat2d"s,
+                            "88331f88-3a4c-4b7e-9b43-b51a1d1020e2"s,
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        if (rhs._rows != _rows)
+        {
+            output::error("Matrix::operator<="s,
+                          $("steppable::mat2d"s,
+                            "34e92306-a4d8-4ff0-8441-bfcd29771e94"s,
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        Matrix res = zeros(_rows, _cols);
+        for (size_t j = 0; j < _rows; j++)
+        {
+            for (size_t i = 0; i < _cols; i++)
+                if (not(data[j][i] <= rhs.data[j][i]))
+                    res[{ .y = j, .x = i }] = 1;
+        }
+        return res;
+    }
+
+    Matrix Matrix::operator>(const Matrix& rhs) const
+    {
+        if (rhs._cols != _cols)
+        {
+            output::error("Matrix::operator>"s,
+                          $("steppable::mat2d"s,
+                            "88331f88-3a4c-4b7e-9b43-b51a1d1020e2"s,
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        if (rhs._rows != _rows)
+        {
+            output::error("Matrix::operator>"s,
+                          $("steppable::mat2d"s,
+                            "34e92306-a4d8-4ff0-8441-bfcd29771e94"s,
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        Matrix res = zeros(_rows, _cols);
+        for (size_t j = 0; j < _rows; j++)
+        {
+            for (size_t i = 0; i < _cols; i++)
+                if (not(data[j][i] > rhs.data[j][i]))
+                    res[{ .y = j, .x = i }] = 1;
+        }
+        return res;
+    }
+
+    Matrix Matrix::operator>=(const Matrix& rhs) const
+    {
+        if (rhs._cols != _cols)
+        {
+            output::error("Matrix::operator>="s,
+                          $("steppable::mat2d"s,
+                            "88331f88-3a4c-4b7e-9b43-b51a1d1020e2"s,
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        if (rhs._rows != _rows)
+        {
+            output::error("Matrix::operator>="s,
+                          $("steppable::mat2d"s,
+                            "34e92306-a4d8-4ff0-8441-bfcd29771e94"s,
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        Matrix res = zeros(_rows, _cols);
+        for (size_t j = 0; j < _rows; j++)
+        {
+            for (size_t i = 0; i < _cols; i++)
+                if (not(data[j][i] >= rhs.data[j][i]))
+                    res[{ .y = j, .x = i }] = 1;
+        }
+        return res;
+    }
 
     Number& Matrix::operator[](const YXPoint& point)
     {

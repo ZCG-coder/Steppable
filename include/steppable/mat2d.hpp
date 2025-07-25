@@ -350,8 +350,9 @@ namespace steppable
 
         /**
          * @brief Join a matrix to the right of the current matrix.
-         * @details Joins a matrix to the right of the current matrix. Requires two matrices to have to same number of
-         * rows.
+         * @details Joins a matrix to the right of the current matrix.
+         *
+         * @note Requires two matrices to have the same amount of rows.
          *
          * @param rhs The other matrix to join.
          * @return A new matrix where the two matrices are joined.
@@ -360,8 +361,9 @@ namespace steppable
 
         /**
          * @brief Join a matrix to the right of the current matrix, then assign the result to the current one.
-         * @details Joins a matrix to the right of the current matrix. Requires two matrices to have to same number of
-         * rows. The result is assigned to the current matrix.
+         * @details Joins a matrix to the right of the current matrix. The result is assigned to the current matrix.
+         *
+         * @note Requires two matrices to have the same amount of rows.
          *
          * @param rhs The other matrix to join.
          * @return A new matrix where the two matrices are joined.
@@ -370,8 +372,9 @@ namespace steppable
 
         /**
          * @brief Join a matrix to the left of the current matrix.
-         * @details Joins a matrix to the left of the current matrix. Requires two matrices to have to same number of
-         * rows.
+         * @details Joins a matrix to the left of the current matrix.
+         *
+         * @note Requires two matrices to have the same amount of rows.
          *
          * @param rhs The other matrix to join.
          * @return A new matrix where the two matrices are joined.
@@ -380,8 +383,9 @@ namespace steppable
 
         /**
          * @brief Join a matrix to the left of the current matrix, then assign the result to the current one.
-         * @details Joins a matrix to the left of the current matrix. Requires two matrices to have to same number of
-         * rows. The result is assigned to the current matrix.
+         * @details Joins a matrix to the left of the current matrix. The result is assigned to the current matrix.
+         *
+         * @note Requires two matrices to have the same amount of rows.
          *
          * @param rhs The other matrix to join.
          * @return A new matrix where the two matrices are joined.
@@ -390,7 +394,8 @@ namespace steppable
 
         /**
          * @brief Test for equal matrices.
-         * @details If the current matrix is equal to the other matrix, i.e., equal in all of its values, returns True.
+         * @details If the current matrix is equal to the other matrix, i.e., equal in dimensions and equal in all of
+         * its values, returns True. Returns False otherwise.
          *
          * @param rhs The other matrix.
          * @return Whether the current matrix is equal to the other one.
@@ -399,13 +404,65 @@ namespace steppable
 
         /**
          * @brief Test for unequal matrices.
-         * @details If the current matrix is not equal to the other matrix, i.e., equal in all of its values, returns
-         * True.
+         * @details If the current matrix is not equal to the other matrix, i.e., not equal in dimensions or not equal
+         * in all of its values, returns True. Returns False otherwise.
          *
          * @param rhs The other matrix.
          * @return Whether the current matrix is not equal to the other one.
          */
         bool operator!=(const Matrix& rhs) const;
+
+        /**
+         * @brief Performs element-wise less-than comparison.
+         * @details For every element in each matrix, checks whether the element is less than the corresponding one in
+         * the other matrix. In the resulting matrix, 1 represents the corresponding element in the matrix is indeed
+         * less than the one in the other. 0 otherwise.
+         *
+         * @note This method requires two matrices to have the same dimensions.
+         *
+         * @param rhs The other matrix.
+         * @return A matrix equal in dimension to the two matrices.
+         */
+        Matrix operator<(const Matrix& rhs) const;
+
+        /**
+         * @brief Performs element-wise less-than-or-equal-to comparison.
+         * @details For every element in each matrix, checks whether the element is less than or equal to the
+         * corresponding one in the other matrix. In the resulting matrix, 1 represents the corresponding element in the
+         * matrix is indeed less than or equal to the one in the other. 0 otherwise.
+         *
+         * @note This method requires two matrices to have the same dimensions.
+         *
+         * @param rhs The other matrix.
+         * @return A matrix equal in dimension to the two matrices.
+         */
+        Matrix operator<=(const Matrix& rhs) const;
+
+        /**
+         * @brief Performs element-wise greater-than comparison.
+         * @details For every element in each matrix, checks whether the element is greater than the corresponding one
+         * in the other matrix. In the resulting matrix, 1 represents the corresponding element in the matrix is indeed
+         * greater than the one in the other. 0 otherwise.
+         *
+         * @note This method requires two matrices to have the same dimensions.
+         *
+         * @param rhs The other matrix.
+         * @return A matrix equal in dimension to the two matrices.
+         */
+        Matrix operator>(const Matrix& rhs) const;
+
+        /**
+         * @brief Performs element-wise greater-than-or-equal-to comparison.
+         * @details For every element in each matrix, checks whether the element is greater than or equal to the
+         * corresponding one in the other matrix. In the resulting matrix, 1 represents the corresponding element in the
+         * matrix is indeed greater than or equal to the one in the other. 0 otherwise.
+         *
+         * @note This method requires two matrices to have the same dimensions.
+         *
+         * @param rhs The other matrix.
+         * @return A matrix equal in dimension to the two matrices.
+         */
+        Matrix operator>=(const Matrix& rhs) const;
 
         /**
          * @brief Gets the element at a point in the matrix.
