@@ -21,53 +21,70 @@
  **************************************************************************************************/
 
 /**
- * @file mat2d.hpp
- * @brief Defines methods and classes for 2D matrix manipulation.
+ * @file mat2dSpecial.hpp
+ * @brief Defines functions to generate special 2D matrices.
  * @author Andy Zhang
- * @date 31 May 2025
+ * @date 26 Jul 2025
  */
 
 #pragma once
 
 #include "steppable/mat2dBase.hpp"
-#include "steppable/mat2dSpecial.hpp"
-
-#include <cstddef>
-#include <string_view>
 
 namespace steppable
 {
-    namespace prettyPrint::printers
-    {
-        /**
-         * @brief Pretty prints a matrix.
-         * @param matrix The matrix to be pretty printed.
-         * @return A string representation of the matrix.
-         */
-        std::string ppMatrix(const MatVec2D<Number>& matrix, int endRows = 0);
-    } // namespace prettyPrint::printers
 
-    namespace __internals::symbols
-    {
-        constexpr std::string_view MATRIX_LEFT_TOP = "\u23A1";
-        constexpr std::string_view MATRIX_LEFT_MIDDLE = "\u23A2";
-        constexpr std::string_view MATRIX_LEFT_BOTTOM = "\u23A3";
-        constexpr std::string_view MATRIX_RIGHT_TOP = "\u23A4";
-        constexpr std::string_view MATRIX_RIGHT_MIDDLE = "\u23A5";
-        constexpr std::string_view MATRIX_RIGHT_BOTTOM = "\u23A6";
-    } // namespace __internals::symbols
-
-    class Matrix : public MatrixBase, public SpecialMatrix
+    /**
+     * @class SpecialMatrix
+     * @brief Represents special types of matrices and provides static methods to create them.
+     */
+    class SpecialMatrix
     {
     public:
-        using MatrixBase::MatrixBase;
+        /**
+         * @brief Creates a matrix filled with ones.
+         * @param rows The number of rows.
+         * @param cols The number of columns.
+         * @return A Matrix filled with ones.
+         */
+        static MatrixBase ones(size_t rows, size_t cols);
 
-        Matrix(const MatrixBase& rhs) : MatrixBase(rhs) {}
+        /**
+         * @brief Creates a matrix filled with zeros.
+         * @param rows The number of rows.
+         * @param cols The number of columns.
+         * @return A Matrix filled with zeros.
+         */
+        static MatrixBase zeros(size_t rows, size_t cols);
 
-        Matrix& operator=(const MatrixBase& rhs)
+        /**
+         * @brief Creates a diagonal matrix
+         *
+         * @param cols Number of columns and rows.
+         * @param fill Number to fill into the matrix.
+         * @param rows Number of rows in the matrix. If unspecified or left 0, it will create a square matrix.
+         * @param offset Amount to offset from the main diagonal.
+         * @return A diagonal matrix filled with the specified values.
+         */
+        static MatrixBase diag(size_t cols, const Number& fill = 1, size_t rows = 0, long long offset = 0);
+
+        /**
+         * @brief Creates a diagonal matrix
+         *
+         * @param cols Number of columns and rows.
+         * @param fill Number to fill into the matrix.
+         * @param rows Number of rows in the matrix. If unspecified or left 0, it will create a square matrix.
+         * @param offset Amount to offset from the main diagonal.
+         * @tparam NumberT Type of the number.
+         * @return A diagonal matrix filled with the specified values.
+         */
+        template<concepts::Numeric NumberT>
+        static MatrixBase diag(const size_t cols,
+                               const NumberT& fill = 0,
+                               const size_t rows = 0,
+                               const long long offset = 0)
         {
-            MatrixBase::operator=(rhs);
-            return *this;
+            return diag(cols, Number(fill), rows);
         }
     };
 } // namespace steppable

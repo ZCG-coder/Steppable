@@ -70,6 +70,8 @@ ADD_LIBRARY(
     ${CONPLOT_FILES}
     steppable/fraction.cpp
     steppable/mat2d.cpp
+    steppable/mat2dBase.cpp
+    steppable/mat2dSpecial.cpp
     steppable/number.cpp
     rounding.cpp
     factors.cpp
