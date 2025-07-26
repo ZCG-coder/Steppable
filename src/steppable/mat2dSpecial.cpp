@@ -20,21 +20,19 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "getString.hpp"
+#include "steppable/mat2dSpecial.hpp"
+
 #include "output.hpp"
 #include "platform.hpp"
-#include "steppable/mat2d.hpp"
 #include "steppable/number.hpp"
 
 #include <algorithm>
 #include <string>
-#include <vector>
 
 namespace steppable
 {
     using namespace __internals;
     using namespace __internals::numUtils;
-    using namespace localization;
 
     MatrixBase SpecialMatrix::ones(const size_t rows, const size_t cols) { return MatrixBase(rows, cols, Number("1")); }
 
@@ -52,5 +50,76 @@ namespace steppable
             matrix[{ .y = j, .x = j }] = fill;
         }
         return matrix;
+    }
+
+    MatrixBase SpecialMatrix::hankel(const MatrixBase& _firstCol, const MatrixBase& _lastRow)
+    {
+        auto lastRow = _lastRow;
+        auto firstCol = _firstCol;
+        if (firstCol.getRows() != 1)
+        {
+            output::error("SpecialMatrix::hankel"s, "Expect vector for first column."s);
+            utils::programSafeExit(1);
+        }
+        if (lastRow.getRows() != 1)
+        {
+            output::error("SpecialMatrix::hankel"s, "Expect vector for last row."s);
+            utils::programSafeExit(1);
+        }
+        firstCol = firstCol.transpose();
+
+        // Column wins anti-diagonal conflict.
+        Number firstColLast = firstCol[{ .y = firstCol.getRows() - 1, .x = 0 }];
+        if (firstColLast != lastRow[{ .y = 0, .x = 0 }])
+        {
+            output::warning("SpecialMatrix::hankel"s,
+                            "Last element of the first column does not match first element of the last row."s);
+            output::info("SpecialMatrix::hankel"s, "Using column value."s);
+            lastRow[{ .y = 0, .x = 0 }] = firstColLast;
+        }
+        size_t resRows = firstCol.getRows();
+        size_t resCols = lastRow.getCols();
+        MatrixBase res = zeros(resRows, resCols);
+
+        std::vector row = _firstCol.getData().front();
+        const auto lastRowVec = lastRow.getData().front();
+        std::for_each(lastRowVec.begin() + 1, lastRowVec.end(), [&](const auto& val) { row.emplace_back(val); });
+        // Fill in the rest
+        for (size_t j = 0; j < resRows; j++)
+        {
+            for (size_t i = 0; i < resCols; i++)
+                res[{ .y = j, .x = i }] = row[i];
+            row.erase(row.cbegin());
+        }
+        return res;
+    }
+
+    MatrixBase SpecialMatrix::magic(size_t colsRows)
+    {
+        MatrixBase res = zeros(colsRows, colsRows);
+        return res;
+    }
+
+    MatrixBase SpecialMatrix::hilbert(const size_t colsRows)
+    {
+        MatrixBase res = zeros(colsRows, colsRows);
+        res = res.roundOffValues(8);
+
+        for (size_t i = 0; i < colsRows; i++)
+            for (size_t j = 0; j < colsRows; j++)
+                res[{ .y = i, .x = j }] = Number(1) / (i + j + 1);
+        return res;
+    }
+
+    MatrixBase SpecialMatrix::vandermonde(const MatrixBase& vec)
+    {
+        if (vec.getRows() != 1)
+        {
+            output::error("SpecialMatrix::vandermonde"s, "Input is not a vector."s);
+            utils::programSafeExit(1);
+        }
+        MatrixBase res;
+
+        return res;
     }
 } // namespace steppable

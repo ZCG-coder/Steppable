@@ -132,8 +132,8 @@ namespace steppable::output
               const std::basic_string<T>& msg,
               const std::vector<std::string>& args = {})
     {
-        std::cout << colors::brightGreen << formats::bold << LARGE_DOT << name << " - INFO: " << reset
-                  << colors::brightGreen;
+        std::cout << colors::brightCyan << formats::bold << LARGE_DOT << name << " - INFO: " << reset
+                  << colors::brightCyan;
         std::cout << format::format(msg, args) << reset << '\n';
     }
 } // namespace steppable::output

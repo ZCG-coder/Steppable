@@ -150,4 +150,52 @@ steppable::Matrix matrix2(
 auto test = (matrix2 ^ -1 ^ -1).roundOffValues(1);
 _.assertIsEqual(test, matrix2);
 SECTION_END()
+
+SECTION(Test special matrices)
+_.assertIsEqual(steppable::Matrix(
+                    {
+                        // Computed with MATLAB
+                        // 1 | hilb(4)
+                        { 1.0000, 0.5000, 0.3333, 0.2500 },
+                        { 0.5000, 0.3333, 0.2500, 0.2000 },
+                        { 0.3333, 0.2500, 0.2000, 0.1667 },
+                        { 0.2500, 0.2000, 0.1667, 0.1429 },
+                    },
+                    4),
+                steppable::Matrix::hilbert(4).roundOffValues(4));
+
+_.assertIsEqual(steppable::Matrix(
+                    {
+                        // Computed with MATLAB
+                        // 1 | hankel([1 2 5], [5 6 9 10])
+                        { 1, 2, 5, 6 },
+                        { 2, 5, 6, 9 },
+                        { 5, 6, 9, 10 },
+                    },
+                    4),
+                steppable::Matrix::hankel(steppable::Matrix({
+                                              { 1, 2, 5 },
+                                          }),
+                                          steppable::Matrix({
+                                              { 3, 6, 9, 10 },
+                                          }))
+                    .roundOffValues(4));
+
+_.assertIsEqual(steppable::Matrix(
+                    {
+                        // Computed with MATLAB
+                        // 1 | hankel([1 2 5], [5 10])
+                        { 1, 2 },
+                        { 2, 5 },
+                        { 5, 10 },
+                    },
+                    4),
+                steppable::Matrix::hankel(steppable::Matrix({
+                                              { 1, 2, 5 },
+                                          }),
+                                          steppable::Matrix({
+                                              { 5, 10 },
+                                          }))
+                    .roundOffValues(4));
+SECTION_END()
 TEST_END()

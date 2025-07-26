@@ -349,7 +349,7 @@ namespace steppable
             output::error("Matrix::operator<<"s,
                           $("steppable::mat2d",
                             "f255d307-9482-442b-a523-61a1c7465f9c",
-                            { std::to_string(rhs._rows), std::to_string(rhs._rows) }));
+                            { std::to_string(rhs._rows), std::to_string(_rows) }));
             utils::programSafeExit(1);
         }
 
@@ -375,7 +375,7 @@ namespace steppable
             output::error("Matrix::operator<<"s,
                           $("steppable::mat2d",
                             "f255d307-9482-442b-a523-61a1c7465f9c",
-                            { std::to_string(rhs._rows), std::to_string(rhs._rows) }));
+                            { std::to_string(rhs._rows), std::to_string(_rows) }));
             utils::programSafeExit(1);
         }
 
@@ -389,7 +389,7 @@ namespace steppable
         // Copy current matrix.
         for (size_t i = 0; i < _rows; i++)
             for (size_t j = 0; j < _cols; j++)
-                matrix[{ .y = i, .x = j + _cols }] = data[i][j];
+                matrix[{ .y = i, .x = j + rhs._cols }] = data[i][j];
 
         return matrix;
     }
@@ -473,8 +473,8 @@ namespace steppable
     MatrixBase MatrixBase::transpose() const
     {
         MatrixBase matrix(_cols, _rows);
-        for (size_t i = 0; i < _cols; i++)
-            for (size_t j = 0; j < _rows; j++)
+        for (size_t i = 0; i < _rows; i++)
+            for (size_t j = 0; j < _cols; j++)
                 matrix[{ .y = j, .x = i }] = data[i][j];
         return matrix;
     }

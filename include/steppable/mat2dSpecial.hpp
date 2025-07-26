@@ -86,5 +86,13 @@ namespace steppable
         {
             return diag(cols, Number(fill), rows);
         }
+
+        static MatrixBase hankel(const MatrixBase& firstCol, const MatrixBase& lastRow = MatrixBase{ 0, 0 });
+
+        static MatrixBase magic(size_t colsRows);
+
+        static MatrixBase hilbert(size_t colsRows);
+
+        static MatrixBase vandermonde(const MatrixBase& vec);
     };
 } // namespace steppable

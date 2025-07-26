@@ -448,9 +448,15 @@ namespace steppable
         [[nodiscard]] size_t getCols() const { return _cols; }
 
         /**
-         * @brief Get the data std::vector object from the matrix.
-         * @return A std::vector object containing all the matrix data.
+         * @brief Get the data `std::vector` object from the matrix.
+         * @return A `std::vector` object containing all the matrix data.
          */
         [[nodiscard]] MatVec2D<Number> getData() const { return data; }
+
+        /**
+         * @brief Get the reference to the `std::vector` data object from the matrix.
+         * @return A reference to `std::vector` object containing all the matrix data.
+         */
+        [[nodiscard]] MatVec2D<Number>& getDataRef() { return data; }
     };
 } // namespace steppable
