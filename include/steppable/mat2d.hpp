@@ -30,7 +30,6 @@
 #pragma once
 
 #include "steppable/number.hpp"
-#include "testing.hpp"
 #include "types/point.hpp"
 
 #include <cstddef>
@@ -185,26 +184,33 @@ namespace steppable
         static Matrix zeros(size_t rows, size_t cols);
 
         /**
-         * @brief Creates a diagnal matrix
+         * @brief Creates a diagonal matrix
          *
-         * @param colsRows Number of columns and rows.
+         * @param cols Number of columns and rows.
          * @param fill Number to fill into the matrix.
-         * @return A diagnal matrix filled with the specified values.
+         * @param rows Number of rows in the matrix. If unspecified or left 0, it will create a square matrix.
+         * @param offset Amount to offset from the main diagonal.
+         * @return A diagonal matrix filled with the specified values.
          */
-        static Matrix diag(size_t colsRows, const Number& fill = 1);
+        static Matrix diag(size_t cols, const Number& fill = 1, size_t rows = 0, long long offset = 0);
 
         /**
-         * @brief Creates a diagnal matrix
+         * @brief Creates a diagonal matrix
          *
-         * @param colsRows Number of columns and rows.
+         * @param cols Number of columns and rows.
          * @param fill Number to fill into the matrix.
+         * @param rows Number of rows in the matrix. If unspecified or left 0, it will create a square matrix.
+         * @param offset Amount to offset from the main diagonal.
          * @tparam NumberT Type of the number.
-         * @return A diagnal matrix filled with the specified values.
+         * @return A diagonal matrix filled with the specified values.
          */
         template<concepts::Numeric NumberT>
-        static Matrix diag(const size_t colsRows, const NumberT& fill = 0)
+        static Matrix diag(const size_t cols,
+                           const NumberT& fill = 0,
+                           const size_t rows = 0,
+                           const long long offset = 0)
         {
-            return diag(colsRows, Number(fill));
+            return diag(cols, Number(fill), rows);
         }
 
         /**

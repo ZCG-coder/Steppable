@@ -495,6 +495,10 @@ namespace steppable
             matrix = matrix[{ .y1 = 0, .x1 = _rows, .y2 = _rows - 1, .x2 = _cols * 2 - 1 }];
             return matrix;
         }
+        // Matrix to power 0 yields the identity matrix
+        if (times == 0)
+            return diag(_rows, _cols);
+
         for (Number i = 0; i < times; ++i)
             matrix *= matrix;
         return matrix;
@@ -514,11 +518,23 @@ namespace steppable
         return matrix;
     }
 
-    Matrix Matrix::diag(const size_t colsRows, const Number& fill)
+    Matrix Matrix::diag(const size_t cols, const Number& fill, const size_t _rows, const long long offset)
     {
-        auto matrix = Matrix(colsRows, colsRows);
-        for (size_t i = 0; i < colsRows; i++)
-            matrix[{ .y = i, .x = i }] = fill;
+        size_t rows = _rows;
+        if (rows == 0)
+            rows = cols;
+        if (abs(offset) > cols or abs(offset) > rows)
+        {
+        }
+
+        auto matrix = Matrix(cols, rows);
+        for (size_t i = 0; i < cols; i++)
+        {
+            size_t j = i;
+            if (j > rows or j > cols)
+                break;
+            matrix[{ .y = j, .x = j }] = fill;
+        }
         return matrix;
     }
 
