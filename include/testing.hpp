@@ -176,8 +176,8 @@ namespace steppable::testing
          * @param[in] a The first object.
          * @param[in] b The second object.
          */
-        template<concepts::Presentable ValueT>
-        void assertIsEqual(ValueT a, ValueT b)
+        template<concepts::Presentable ValueTA, concepts::Presentable ValueTB>
+        void assertIsEqual(ValueTA a, ValueTB b)
         {
             const std::string& conditionName =
                 __internals::format::format("Object {0} == {1}", { a.present(), b.present() });
@@ -189,8 +189,8 @@ namespace steppable::testing
          * @param[in] a The first object.
          * @param[in] b The second object.
          */
-        template<concepts::Presentable ValueT>
-        void assertIsNotEqual(ValueT a, ValueT b)
+        template<concepts::Presentable ValueTA, concepts::Presentable ValueTB>
+        void assertIsNotEqual(ValueTA a, ValueTB b)
         {
             const std::string& conditionName =
                 __internals::format::format("Object {0} != {1}", { a.present(), b.present() });

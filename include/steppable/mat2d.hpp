@@ -66,10 +66,10 @@ namespace steppable
     } // namespace __internals::symbols
 
     /**
-     * @class Matrix
+     * @class MatrixBase
      * @brief Represents a mathematical matrix.
      */
-    class Matrix
+    class MatrixBase
     {
         size_t _cols; ///< The number of columns in the matrix.
         size_t _rows; ///< The number of rows in the matrix.
@@ -103,12 +103,12 @@ namespace steppable
          * @param prec Precision of the new matrix.
          * @return A new instance of the current matrix, with values rounded to the desired precision.
          */
-        [[nodiscard]] Matrix roundOffValues(size_t prec) const;
+        [[nodiscard]] MatrixBase roundOffValues(size_t prec) const;
 
         /**
          * @brief Default constructor for the Matrix class.
          */
-        Matrix();
+        MatrixBase();
 
         /**
          * @brief Constructs a matrix with specified dimensions and an optional fill value.
@@ -116,14 +116,14 @@ namespace steppable
          * @param cols The number of columns.
          * @param fill The value to fill the matrix with (default is "0").
          */
-        Matrix(size_t rows, size_t cols, const Number& fill = Number("0"));
+        explicit MatrixBase(size_t rows, size_t cols, const Number& fill = Number("0"));
 
         /**
          * @brief Constructs a matrix from a 2D vector of data.
          * @param data The 2D vector representing the matrix data.
          * @param prec Precision of the numbers.
          */
-        Matrix(const MatVec2D<Number>& data, size_t prec = 5);
+        explicit MatrixBase(const MatVec2D<Number>& data, size_t prec = 5);
 
         /**
          * @brief Constructs a matrix from a 2D vector of C++ numbers.
@@ -132,7 +132,7 @@ namespace steppable
          * @tparam ValueT Type of value in the `data` parameter.
          */
         template<concepts::Numeric ValueT>
-        Matrix(const MatVec2D<ValueT>& data, const size_t prec) :
+        MatrixBase(const MatVec2D<ValueT>& data, const size_t prec) :
             _cols(data.front().size()), _rows(data.size()), prec(prec)
         {
             this->data = std::vector(_rows, std::vector(_cols, Number("0")));
@@ -145,14 +145,14 @@ namespace steppable
          * @brief Converts the matrix to its reduced row echelon form.
          * @return A new Matrix in reduced row echelon form.
          */
-        [[nodiscard]] Matrix rref() const;
+        [[nodiscard]] MatrixBase rref() const;
 
         /**
          * @brief Converts a matrix to row echelon form.
          * @details Converts a matrix to row echelon form, with row elimation and swapping.
          * @return A new Matrix in row echelon form.
          */
-        [[nodiscard]] Matrix ref() const;
+        [[nodiscard]] MatrixBase ref() const;
 
         /**
          * @brief Find the determinant of a matrix.
@@ -166,52 +166,6 @@ namespace steppable
          * @return A string representation of the matrix.
          */
         [[nodiscard]] std::string present(int endRows = 0) const;
-
-        /**
-         * @brief Creates a matrix filled with ones.
-         * @param rows The number of rows.
-         * @param cols The number of columns.
-         * @return A Matrix filled with ones.
-         */
-        static Matrix ones(size_t rows, size_t cols);
-
-        /**
-         * @brief Creates a matrix filled with zeros.
-         * @param rows The number of rows.
-         * @param cols The number of columns.
-         * @return A Matrix filled with zeros.
-         */
-        static Matrix zeros(size_t rows, size_t cols);
-
-        /**
-         * @brief Creates a diagonal matrix
-         *
-         * @param cols Number of columns and rows.
-         * @param fill Number to fill into the matrix.
-         * @param rows Number of rows in the matrix. If unspecified or left 0, it will create a square matrix.
-         * @param offset Amount to offset from the main diagonal.
-         * @return A diagonal matrix filled with the specified values.
-         */
-        static Matrix diag(size_t cols, const Number& fill = 1, size_t rows = 0, long long offset = 0);
-
-        /**
-         * @brief Creates a diagonal matrix
-         *
-         * @param cols Number of columns and rows.
-         * @param fill Number to fill into the matrix.
-         * @param rows Number of rows in the matrix. If unspecified or left 0, it will create a square matrix.
-         * @param offset Amount to offset from the main diagonal.
-         * @tparam NumberT Type of the number.
-         * @return A diagonal matrix filled with the specified values.
-         */
-        template<concepts::Numeric NumberT>
-        static Matrix diag(const size_t cols,
-                           const NumberT& fill = 0,
-                           const size_t rows = 0,
-                           const long long offset = 0)
-        {
-            return diag(cols, Number(fill), rows);
-        }
 
         /**
          * @brief Alias for the data `begin()` method to allow iterating over the matrix rows,
@@ -237,7 +191,7 @@ namespace steppable
          * @details Flips the rows and columns of the matrix and returns a new instance of the transposed matrix.
          * @return An instance of the transposed matrix.
          */
-        [[nodiscard]] Matrix transpose() const;
+        [[nodiscard]] MatrixBase transpose() const;
 
         /**
          * @brief Add a matrix to another matrix.
@@ -246,7 +200,7 @@ namespace steppable
          * @param rhs The other matrix.
          * @return A new matrix with the addition result.
          */
-        Matrix operator+(const Matrix& rhs) const;
+        MatrixBase operator+(const MatrixBase& rhs) const;
 
         /**
          * @brief Adds the other matrix to current matrix and assigns result to this matrix.
@@ -257,14 +211,14 @@ namespace steppable
          * @param rhs The other matrix.
          * @return Instance of a new matrix after addition.
          */
-        Matrix operator+=(const Matrix& rhs);
+        MatrixBase operator+=(const MatrixBase& rhs);
 
         /**
          * @brief Unary plus operator.
          * @details Does nothing. Simply returns a new instance of the current matrix.
          * @return A new instance of the current matrix.
          */
-        Matrix operator+() const;
+        MatrixBase operator+() const;
 
         /**
          * @brief Subtract a matrix from another matrix.
@@ -273,7 +227,7 @@ namespace steppable
          * @param rhs The other matrix.
          * @return A new matrix with the subtraction result.
          */
-        Matrix operator-(const Matrix& rhs) const;
+        MatrixBase operator-(const MatrixBase& rhs) const;
 
         /**
          * @brief Subtracts the other matrix from current matrix and assigns result to this matrix.
@@ -284,7 +238,7 @@ namespace steppable
          * @param rhs The other matrix.
          * @return Instance of a new matrix after subtraction.
          */
-        Matrix operator-=(const Matrix& rhs);
+        MatrixBase operator-=(const MatrixBase& rhs);
 
         /**
          * @brief Unary minus operator.
@@ -292,7 +246,7 @@ namespace steppable
          * instance of the matrix.
          * @return A matrix with equal values in the opposite sign.
          */
-        Matrix operator-() const;
+        MatrixBase operator-() const;
 
         /**
          * @brief Scalar multiplication.
@@ -301,7 +255,7 @@ namespace steppable
          * @param rhs The scalar to multiply.
          * @return A new matrix after the scalar multiplication
          */
-        Matrix operator*(const Number& rhs) const;
+        MatrixBase operator*(const Number& rhs) const;
 
         /**
          * @brief Multiplies the current matrix by a scalar value and assigns the result to this matrix.
@@ -312,7 +266,7 @@ namespace steppable
          * @param rhs The scalar value to multiply each element of the matrix by.
          * @return Instance of a modified matrix after multiplication.
          */
-        Matrix operator*=(const Number& rhs);
+        MatrixBase operator*=(const Number& rhs);
 
         /**
          * @brief Matrix multiplication.
@@ -321,7 +275,7 @@ namespace steppable
          * @param rhs The other matrix to multiply.
          * @return The new matrix after multiplying.
          */
-        Matrix operator*(const Matrix& rhs) const;
+        MatrixBase operator*(const MatrixBase& rhs) const;
 
         /**
          * @brief Multiplies this matrix by another matrix and assigns the result to this matrix.
@@ -332,7 +286,7 @@ namespace steppable
          * @param rhs The matrix to multiply with this matrix.
          * @return The updated matrix after multiplication.
          */
-        Matrix operator*=(const Matrix& rhs);
+        MatrixBase operator*=(const MatrixBase& rhs);
 
         /**
          * @brief Raises the current matrix to a certain power.
@@ -342,7 +296,7 @@ namespace steppable
          * @param times Times to raise the matrix to.
          * @return A new matrix of the power result.
          */
-        Matrix operator^(const Number& times) const;
+        MatrixBase operator^(const Number& times) const;
 
         /**
          * @brief Raises the current matrix to a certain power, and assigns result to the current matrix.
@@ -352,7 +306,7 @@ namespace steppable
          * @param times Times to raise the matrix to.
          * @return The current matrix.
          */
-        Matrix operator^=(const Number& times);
+        MatrixBase operator^=(const Number& times);
 
         /**
          * @brief Join a matrix to the right of the current matrix.
@@ -363,7 +317,7 @@ namespace steppable
          * @param rhs The other matrix to join.
          * @return A new matrix where the two matrices are joined.
          */
-        Matrix operator<<(const Matrix& rhs) const;
+        MatrixBase operator<<(const MatrixBase& rhs) const;
 
         /**
          * @brief Join a matrix to the right of the current matrix, then assign the result to the current one.
@@ -374,7 +328,7 @@ namespace steppable
          * @param rhs The other matrix to join.
          * @return A new matrix where the two matrices are joined.
          */
-        Matrix operator<<=(const Matrix& rhs);
+        MatrixBase operator<<=(const MatrixBase& rhs);
 
         /**
          * @brief Join a matrix to the left of the current matrix.
@@ -385,7 +339,7 @@ namespace steppable
          * @param rhs The other matrix to join.
          * @return A new matrix where the two matrices are joined.
          */
-        Matrix operator>>(const Matrix& rhs) const;
+        MatrixBase operator>>(const MatrixBase& rhs) const;
 
         /**
          * @brief Join a matrix to the left of the current matrix, then assign the result to the current one.
@@ -396,7 +350,7 @@ namespace steppable
          * @param rhs The other matrix to join.
          * @return A new matrix where the two matrices are joined.
          */
-        Matrix operator>>=(const Matrix& rhs);
+        MatrixBase operator>>=(const MatrixBase& rhs);
 
         /**
          * @brief Test for equal matrices.
@@ -406,7 +360,7 @@ namespace steppable
          * @param rhs The other matrix.
          * @return Whether the current matrix is equal to the other one.
          */
-        bool operator==(const Matrix& rhs) const;
+        bool operator==(const MatrixBase& rhs) const;
 
         /**
          * @brief Test for unequal matrices.
@@ -416,7 +370,7 @@ namespace steppable
          * @param rhs The other matrix.
          * @return Whether the current matrix is not equal to the other one.
          */
-        bool operator!=(const Matrix& rhs) const;
+        bool operator!=(const MatrixBase& rhs) const;
 
         /**
          * @brief Performs element-wise less-than comparison.
@@ -429,7 +383,7 @@ namespace steppable
          * @param rhs The other matrix.
          * @return A matrix equal in dimension to the two matrices.
          */
-        Matrix operator<(const Matrix& rhs) const;
+        MatrixBase operator<(const MatrixBase& rhs) const;
 
         /**
          * @brief Performs element-wise less-than-or-equal-to comparison.
@@ -442,7 +396,7 @@ namespace steppable
          * @param rhs The other matrix.
          * @return A matrix equal in dimension to the two matrices.
          */
-        Matrix operator<=(const Matrix& rhs) const;
+        MatrixBase operator<=(const MatrixBase& rhs) const;
 
         /**
          * @brief Performs element-wise greater-than comparison.
@@ -455,7 +409,7 @@ namespace steppable
          * @param rhs The other matrix.
          * @return A matrix equal in dimension to the two matrices.
          */
-        Matrix operator>(const Matrix& rhs) const;
+        MatrixBase operator>(const MatrixBase& rhs) const;
 
         /**
          * @brief Performs element-wise greater-than-or-equal-to comparison.
@@ -468,7 +422,7 @@ namespace steppable
          * @param rhs The other matrix.
          * @return A matrix equal in dimension to the two matrices.
          */
-        Matrix operator>=(const Matrix& rhs) const;
+        MatrixBase operator>=(const MatrixBase& rhs) const;
 
         /**
          * @brief Gets the element at a point in the matrix.
@@ -500,7 +454,7 @@ namespace steppable
          * @param point The YXPoint specifying the (y, x) coordinates of the element.
          * @return The value of the matrix element at the specified coordinates.
          */
-        Matrix operator[](const YX2Points& point) const;
+        MatrixBase operator[](const YX2Points& point) const;
 
         /**
          * @brief Get the number of rows in the matrix.
@@ -519,5 +473,73 @@ namespace steppable
          * @return A std::vector object containing all the matrix data.
          */
         [[nodiscard]] MatVec2D<Number> getData() const { return data; }
+    };
+
+    /**
+     * @class SpecialMatrix
+     * @brief Represents special types of matrices and provides static methods to create them.
+     */
+    class SpecialMatrix
+    {
+    public:
+        /**
+         * @brief Creates a matrix filled with ones.
+         * @param rows The number of rows.
+         * @param cols The number of columns.
+         * @return A Matrix filled with ones.
+         */
+        static MatrixBase ones(size_t rows, size_t cols);
+
+        /**
+         * @brief Creates a matrix filled with zeros.
+         * @param rows The number of rows.
+         * @param cols The number of columns.
+         * @return A Matrix filled with zeros.
+         */
+        static MatrixBase zeros(size_t rows, size_t cols);
+
+        /**
+         * @brief Creates a diagonal matrix
+         *
+         * @param cols Number of columns and rows.
+         * @param fill Number to fill into the matrix.
+         * @param rows Number of rows in the matrix. If unspecified or left 0, it will create a square matrix.
+         * @param offset Amount to offset from the main diagonal.
+         * @return A diagonal matrix filled with the specified values.
+         */
+        static MatrixBase diag(size_t cols, const Number& fill = 1, size_t rows = 0, long long offset = 0);
+
+        /**
+         * @brief Creates a diagonal matrix
+         *
+         * @param cols Number of columns and rows.
+         * @param fill Number to fill into the matrix.
+         * @param rows Number of rows in the matrix. If unspecified or left 0, it will create a square matrix.
+         * @param offset Amount to offset from the main diagonal.
+         * @tparam NumberT Type of the number.
+         * @return A diagonal matrix filled with the specified values.
+         */
+        template<concepts::Numeric NumberT>
+        static MatrixBase diag(const size_t cols,
+                               const NumberT& fill = 0,
+                               const size_t rows = 0,
+                               const long long offset = 0)
+        {
+            return diag(cols, Number(fill), rows);
+        }
+    };
+
+    class Matrix : public MatrixBase, public SpecialMatrix
+    {
+    public:
+        using MatrixBase::MatrixBase;
+
+        Matrix(const MatrixBase& rhs) : MatrixBase(rhs) {}
+
+        Matrix& operator=(const MatrixBase& rhs)
+        {
+            MatrixBase::operator=(rhs);
+            return *this;
+        }
     };
 } // namespace steppable

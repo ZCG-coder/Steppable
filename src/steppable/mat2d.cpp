@@ -100,7 +100,7 @@ namespace steppable
         }
     } // namespace prettyPrint::printers
 
-    void Matrix::_checkDataSanity(const MatVec2D<Number>& data)
+    void MatrixBase::_checkDataSanity(const MatVec2D<Number>& data)
     {
         size_t size = data.front().size();
         for (const auto& row : data)
@@ -116,16 +116,16 @@ namespace steppable
         }
     }
 
-    Matrix::Matrix() : data({ {} }) { _cols = _rows = 0; }
+    MatrixBase::MatrixBase() : data({ {} }) { _cols = _rows = 0; }
 
-    Matrix::Matrix(const size_t rows, const size_t cols, const Number& fill) :
+    MatrixBase::MatrixBase(const size_t rows, const size_t cols, const Number& fill) :
         data(std::vector(rows, std::vector(cols, fill))), _cols(cols), _rows(rows)
     {
         data = roundOffValues(data, static_cast<int>(prec));
         _checkDataSanity(data);
     }
 
-    Matrix::Matrix(const MatVec2D<Number>& data, const size_t prec) :
+    MatrixBase::MatrixBase(const MatVec2D<Number>& data, const size_t prec) :
         data(data), _cols(data.front().size()), _rows(data.size()), prec(prec)
     {
         for (auto& row : this->data)
@@ -133,7 +133,7 @@ namespace steppable
                 value.setPrec(prec + 3, RoundingMode::USE_MAXIMUM_PREC);
     }
 
-    void Matrix::_checkIdxSanity(const YXPoint* point) const
+    void MatrixBase::_checkIdxSanity(const YXPoint* point) const
     {
         const auto x = point->x;
         const auto y = point->y;
@@ -156,7 +156,7 @@ namespace steppable
         }
     }
 
-    MatVec2D<Number> Matrix::roundOffValues(const MatVec2D<Number>& _data, const size_t prec)
+    MatVec2D<Number> MatrixBase::roundOffValues(const MatVec2D<Number>& _data, const size_t prec)
     {
         auto data = _data;
         for (auto& row : data)
@@ -176,9 +176,9 @@ namespace steppable
         return data;
     }
 
-    Matrix Matrix::roundOffValues(const size_t prec) const { return roundOffValues(data, prec); }
+    MatrixBase MatrixBase::roundOffValues(const size_t prec) const { return MatrixBase(roundOffValues(data, prec)); }
 
-    Matrix Matrix::rref() const
+    MatrixBase MatrixBase::rref() const
     {
         // Adapted from https://stackoverflow.com/a/31761026/14868780
         auto matrix = data;
@@ -238,10 +238,10 @@ namespace steppable
         }
 
         matrix = roundOffValues(matrix, static_cast<int>(prec));
-        return { matrix, prec };
+        return MatrixBase{ matrix, prec };
     }
 
-    Matrix Matrix::ref() const
+    MatrixBase MatrixBase::ref() const
     {
         MatVec2D<Number> mat = data;
         mat = roundOffValues(mat, static_cast<int>(prec) + 3);
@@ -272,10 +272,10 @@ namespace steppable
             ++row;
         }
         mat = roundOffValues(mat, static_cast<int>(prec));
-        return { mat, prec };
+        return MatrixBase{ mat, prec };
     }
 
-    Number Matrix::det() const
+    Number MatrixBase::det() const
     {
         if (_rows != _cols)
         {
@@ -323,7 +323,7 @@ namespace steppable
         return determinant;
     }
 
-    Matrix Matrix::operator+(const Matrix& rhs) const
+    MatrixBase MatrixBase::operator+(const MatrixBase& rhs) const
     {
         if (rhs._cols != _cols)
         {
@@ -342,7 +342,7 @@ namespace steppable
             utils::programSafeExit(1);
         }
 
-        Matrix output = Matrix::zeros(_cols, _rows);
+        MatrixBase output = SpecialMatrix::zeros(_cols, _rows);
 
         for (size_t i = 0; i < _rows; i++)
             for (size_t j = 0; j < _cols; j++)
@@ -350,41 +350,41 @@ namespace steppable
         return output;
     }
 
-    Matrix Matrix::operator+() const { return *this; }
+    MatrixBase MatrixBase::operator+() const { return *this; }
 
-    Matrix Matrix::operator+=(const Matrix& rhs)
+    MatrixBase MatrixBase::operator+=(const MatrixBase& rhs)
     {
         *this = *this + rhs;
         return *this;
     }
 
-    Matrix Matrix::operator-(const Matrix& rhs) const { return *this + -rhs; }
+    MatrixBase MatrixBase::operator-(const MatrixBase& rhs) const { return *this + -rhs; }
 
-    Matrix Matrix::operator-() const
+    MatrixBase MatrixBase::operator-() const
     {
-        Matrix newMatrix = *this;
+        MatrixBase newMatrix = *this;
         for (auto& row : newMatrix.data)
             for (auto& value : row)
                 value = -value;
         return newMatrix;
     }
 
-    Matrix Matrix::operator-=(const Matrix& rhs)
+    MatrixBase MatrixBase::operator-=(const MatrixBase& rhs)
     {
         *this = *this - rhs;
         return *this;
     }
 
-    Matrix Matrix::operator*(const Number& rhs) const
+    MatrixBase MatrixBase::operator*(const Number& rhs) const
     {
-        Matrix newMatrix = *this;
+        MatrixBase newMatrix = *this;
         for (auto& row : newMatrix.data)
             for (auto& value : row)
                 value *= rhs;
         return newMatrix;
     }
 
-    Matrix Matrix::operator*(const Matrix& rhs) const
+    MatrixBase MatrixBase::operator*(const MatrixBase& rhs) const
     {
         if (_cols != rhs._rows)
         {
@@ -393,7 +393,7 @@ namespace steppable
             output::info("Matrix::operator*"s, $("steppable::mat2d", "8966ce13-8ae9-4f14-ba4e-837b98a4c9fa"));
             utils::programSafeExit(1);
         }
-        Matrix matrix = Matrix::zeros(_rows, rhs._cols);
+        MatrixBase matrix = SpecialMatrix::zeros(_rows, rhs._cols);
         for (size_t j = 0; j < rhs._rows; j++)
             for (size_t k = 0; k < _cols; k++)
                 for (size_t i = 0; i < _rows; i++)
@@ -401,7 +401,7 @@ namespace steppable
         return matrix;
     }
 
-    Matrix Matrix::operator<<(const Matrix& rhs) const
+    MatrixBase MatrixBase::operator<<(const MatrixBase& rhs) const
     {
         if (rhs._rows != _rows)
         {
@@ -412,7 +412,7 @@ namespace steppable
             utils::programSafeExit(1);
         }
 
-        auto matrix = Matrix(_rows, _cols + rhs._cols);
+        auto matrix = MatrixBase(_rows, _cols + rhs._cols);
 
         // Copy current matrix.
         for (size_t i = 0; i < _rows; i++)
@@ -427,7 +427,7 @@ namespace steppable
         return matrix;
     }
 
-    Matrix Matrix::operator>>(const Matrix& rhs) const
+    MatrixBase MatrixBase::operator>>(const MatrixBase& rhs) const
     {
         if (rhs._rows != _rows)
         {
@@ -438,7 +438,7 @@ namespace steppable
             utils::programSafeExit(1);
         }
 
-        auto matrix = Matrix(_rows, _cols + rhs._cols);
+        auto matrix = MatrixBase(_rows, _cols + rhs._cols);
 
         // Copy other matrix.
         for (size_t i = 0; i < _rows; i++)
@@ -453,31 +453,31 @@ namespace steppable
         return matrix;
     }
 
-    Matrix Matrix::operator<<=(const Matrix& rhs)
+    MatrixBase MatrixBase::operator<<=(const MatrixBase& rhs)
     {
         *this = *this << rhs;
         return *this;
     }
 
-    Matrix Matrix::operator>>=(const Matrix& rhs)
+    MatrixBase MatrixBase::operator>>=(const MatrixBase& rhs)
     {
         *this = *this >> rhs;
         return *this;
     }
 
-    Matrix Matrix::operator*=(const Number& rhs)
+    MatrixBase MatrixBase::operator*=(const Number& rhs)
     {
         *this = *this * rhs;
         return *this;
     }
 
-    Matrix Matrix::operator*=(const Matrix& rhs)
+    MatrixBase MatrixBase::operator*=(const MatrixBase& rhs)
     {
         *this = *this * rhs;
         return *this;
     }
 
-    Matrix Matrix::operator^(const Number& times) const
+    MatrixBase MatrixBase::operator^(const Number& times) const
     {
         if (_rows != _cols)
         {
@@ -490,55 +490,41 @@ namespace steppable
         // Take inverse of matrix
         if (times == -1)
         {
-            matrix <<= diag(_rows);
+            matrix <<= SpecialMatrix::diag(_rows);
             matrix = matrix.rref();
             matrix = matrix[{ .y1 = 0, .x1 = _rows, .y2 = _rows - 1, .x2 = _cols * 2 - 1 }];
             return matrix;
         }
         // Matrix to power 0 yields the identity matrix
         if (times == 0)
-            return diag(_rows, _cols);
+            return SpecialMatrix::diag(_rows, _cols);
 
         for (Number i = 0; i < times; ++i)
             matrix *= matrix;
         return matrix;
     }
 
-    std::string Matrix::present(const int endRows) const { return prettyPrint::printers::ppMatrix(data, endRows); }
+    std::string MatrixBase::present(const int endRows) const { return prettyPrint::printers::ppMatrix(data, endRows); }
 
-    Matrix Matrix::ones(const size_t rows, const size_t cols)
+    MatrixBase SpecialMatrix::ones(const size_t rows, const size_t cols) { return MatrixBase(rows, cols, Number("1")); }
+
+    MatrixBase SpecialMatrix::zeros(const size_t rows, const size_t cols) { return MatrixBase(rows, cols); }
+
+    MatrixBase SpecialMatrix::diag(const size_t cols, const Number& fill, const size_t _rows, const long long offset)
     {
-        auto matrix = Matrix(rows, cols, Number("1"));
-        return matrix;
-    }
-
-    Matrix Matrix::zeros(const size_t rows, const size_t cols)
-    {
-        auto matrix = Matrix(rows, cols);
-        return matrix;
-    }
-
-    Matrix Matrix::diag(const size_t cols, const Number& fill, const size_t _rows, const long long offset)
-    {
-        size_t rows = _rows;
-        if (rows == 0)
-            rows = cols;
-        if (abs(offset) > cols or abs(offset) > rows)
-        {
-        }
-
-        auto matrix = Matrix(cols, rows);
+        size_t rows = _rows == 0 ? cols : _rows;
+        MatrixBase matrix(cols, rows);
         for (size_t i = 0; i < cols; i++)
         {
             size_t j = i;
-            if (j > rows or j > cols)
+            if (j >= rows || j >= cols)
                 break;
             matrix[{ .y = j, .x = j }] = fill;
         }
         return matrix;
     }
 
-    Number Matrix::rank() const
+    Number MatrixBase::rank() const
     {
         auto matrix = *this;
         matrix = matrix.rref();
@@ -561,20 +547,20 @@ namespace steppable
         return { rank };
     }
 
-    Matrix Matrix::transpose() const
+    MatrixBase MatrixBase::transpose() const
     {
-        Matrix matrix(_cols, _rows);
+        MatrixBase matrix(_cols, _rows);
         for (size_t i = 0; i < _cols; i++)
             for (size_t j = 0; j < _rows; j++)
                 matrix[{ .y = j, .x = i }] = data[i][j];
         return matrix;
     }
 
-    bool Matrix::operator==(const Matrix& rhs) const { return data == rhs.data; }
+    bool MatrixBase::operator==(const MatrixBase& rhs) const { return data == rhs.data; }
 
-    bool Matrix::operator!=(const Matrix& rhs) const { return not(*this == rhs); }
+    bool MatrixBase::operator!=(const MatrixBase& rhs) const { return not(*this == rhs); }
 
-    Matrix Matrix::operator<(const Matrix& rhs) const
+    MatrixBase MatrixBase::operator<(const MatrixBase& rhs) const
     {
         if (rhs._cols != _cols)
         {
@@ -594,7 +580,7 @@ namespace steppable
             utils::programSafeExit(1);
         }
 
-        Matrix res = zeros(_rows, _cols);
+        MatrixBase res = SpecialMatrix::zeros(_rows, _cols);
         for (size_t j = 0; j < _rows; j++)
         {
             for (size_t i = 0; i < _cols; i++)
@@ -604,7 +590,7 @@ namespace steppable
         return res;
     }
 
-    Matrix Matrix::operator<=(const Matrix& rhs) const
+    MatrixBase MatrixBase::operator<=(const MatrixBase& rhs) const
     {
         if (rhs._cols != _cols)
         {
@@ -624,7 +610,7 @@ namespace steppable
             utils::programSafeExit(1);
         }
 
-        Matrix res = zeros(_rows, _cols);
+        MatrixBase res = SpecialMatrix::zeros(_rows, _cols);
         for (size_t j = 0; j < _rows; j++)
         {
             for (size_t i = 0; i < _cols; i++)
@@ -634,7 +620,7 @@ namespace steppable
         return res;
     }
 
-    Matrix Matrix::operator>(const Matrix& rhs) const
+    MatrixBase MatrixBase::operator>(const MatrixBase& rhs) const
     {
         if (rhs._cols != _cols)
         {
@@ -654,7 +640,7 @@ namespace steppable
             utils::programSafeExit(1);
         }
 
-        Matrix res = zeros(_rows, _cols);
+        MatrixBase res = SpecialMatrix::zeros(_rows, _cols);
         for (size_t j = 0; j < _rows; j++)
         {
             for (size_t i = 0; i < _cols; i++)
@@ -664,7 +650,7 @@ namespace steppable
         return res;
     }
 
-    Matrix Matrix::operator>=(const Matrix& rhs) const
+    MatrixBase MatrixBase::operator>=(const MatrixBase& rhs) const
     {
         if (rhs._cols != _cols)
         {
@@ -684,7 +670,7 @@ namespace steppable
             utils::programSafeExit(1);
         }
 
-        Matrix res = zeros(_rows, _cols);
+        MatrixBase res = SpecialMatrix::zeros(_rows, _cols);
         for (size_t j = 0; j < _rows; j++)
         {
             for (size_t i = 0; i < _cols; i++)
@@ -694,7 +680,7 @@ namespace steppable
         return res;
     }
 
-    Number& Matrix::operator[](const YXPoint& point)
+    Number& MatrixBase::operator[](const YXPoint& point)
     {
         const auto x = point.x;
         const auto y = point.y;
@@ -703,7 +689,7 @@ namespace steppable
         return data[y][x];
     }
 
-    Number Matrix::operator[](const YXPoint& point) const
+    Number MatrixBase::operator[](const YXPoint& point) const
     {
         const auto x = point.x;
         const auto y = point.y;
@@ -712,7 +698,7 @@ namespace steppable
         return data[y][x];
     }
 
-    Matrix Matrix::operator[](const YX2Points& point) const
+    MatrixBase MatrixBase::operator[](const YX2Points& point) const
     {
         auto [y1, x1, y2, x2] = point;
         const auto startPoint = YXPoint{ .y = y1, .x = x1 };
@@ -728,7 +714,7 @@ namespace steppable
             std::swap(x2, x1);
         }
 
-        auto matrix = Matrix(y2 - y1 + 1, x2 - x1 + 1);
+        auto matrix = MatrixBase(y2 - y1 + 1, x2 - x1 + 1);
 
         for (size_t i = y1; i <= y2; i++)
             for (size_t j = x1; j <= x2; j++)
