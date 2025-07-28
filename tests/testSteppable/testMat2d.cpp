@@ -29,6 +29,37 @@
 #include <iostream>
 
 TEST_START()
+SECTION(Matrix concatenation)
+steppable::Matrix mat1({
+    { 1, 2, 3, 4, 5 },
+    { 2, 3, 4, 5, 6 },
+    { 3, 4, 5, 6, 7 },
+});
+steppable::Matrix mat2({
+    { 1, 2, 3, 4 },
+    { 2, 3, 4, 5 },
+    { 3, 4, 5, 6 },
+});
+steppable::Matrix mat3({ { 1, 2, 3, 4 } });
+steppable::Matrix mat4({ { 1, 2, 3, 4, 5 } });
+
+// Computed with MATLAB
+// 1 | A = [
+// 2 |     [1:5;2:6;3:7] [1:4;2:5;3:6]
+// 3 |     1:4 1:5
+// 4 | ]
+_.assertIsEqual(steppable::Matrix({
+                    { mat1, mat2 },
+                    { mat3, mat4 },
+                }),
+                steppable::Matrix({
+                    { 1, 2, 3, 4, 5, 1, 2, 3, 4 },
+                    { 2, 3, 4, 5, 6, 2, 3, 4, 5 },
+                    { 3, 4, 5, 6, 7, 3, 4, 5, 6 },
+                    { 1, 2, 3, 4, 1, 2, 3, 4, 5 },
+                }));
+SECTION_END()
+
 SECTION(Matrix multiplication)
 steppable::Matrix mat1({
     { 1, 0, 1 },
@@ -196,6 +227,22 @@ _.assertIsEqual(steppable::Matrix(
                                           steppable::Matrix({
                                               { 5, 10 },
                                           }))
+                    .roundOffValues(4));
+
+_.assertIsEqual(steppable::Matrix(
+                    {
+                        // Computed with MATLAB
+                        // 1 | A = vander(1:5)
+                        { 1, 1, 1, 1, 1 },
+                        { 16, 8, 4, 2, 1 },
+                        { 81, 27, 9, 3, 1 },
+                        { 256, 64, 16, 4, 1 },
+                        { 625, 125, 25, 5, 1 },
+                    },
+                    4),
+                steppable::Matrix::vandermonde(steppable::Matrix({
+                                                   { 1, 2, 3, 4, 5 },
+                                               }))
                     .roundOffValues(4));
 SECTION_END()
 TEST_END()

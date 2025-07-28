@@ -118,7 +118,12 @@ namespace steppable
             output::error("SpecialMatrix::vandermonde"s, "Input is not a vector."s);
             utils::programSafeExit(1);
         }
-        MatrixBase res;
+        size_t cols = vec.getCols();
+        MatrixBase res = zeros(cols, cols);
+
+        for (size_t j = 0; j < cols; j++)
+            for (size_t i = 0; i < cols; i++)
+                res[{ .y = i, .x = j }] = vec[{ .y = 0, .x = i }] ^ (cols - j - 1);
 
         return res;
     }

@@ -33,6 +33,7 @@
 #include "types/point.hpp"
 
 #include <cstddef>
+#include <utility>
 #include <vector>
 
 namespace steppable
@@ -60,6 +61,8 @@ namespace steppable
          * @param point The point to check.
          */
         void _checkIdxSanity(const YXPoint* point) const;
+
+        void _checkSelfSanity() const;
 
         /**
          * @brief Checks whether the matrix data is correct in format.
@@ -98,11 +101,29 @@ namespace steppable
         explicit MatrixBase(size_t rows, size_t cols, const Number& fill = Number("0"));
 
         /**
+         * @brief Constructs a matrix with specified dimensions and an optional fill value.
+         * @param size The size of the matrix to be created.
+         * @param fill The value to fill the matrix with (default is "0").
+         */
+        explicit MatrixBase(const std::pair<size_t, size_t>& size, const Number& fill = Number("0")) :
+            _rows(size.first), _cols(size.second)
+        {
+            *this = MatrixBase(size.first, size.second, fill);
+        }
+
+        /**
          * @brief Constructs a matrix from a 2D vector of data.
          * @param data The 2D vector representing the matrix data.
          * @param prec Precision of the numbers.
          */
         explicit MatrixBase(const MatVec2D<Number>& data, size_t prec = 5);
+
+        /**
+         * @brief Constructs a matrix from a 2D vector of matrices.
+         * @param data The 2D vector representing the submatrices that make up the final matrix.
+         * @param prec Precision of the numbers.
+         */
+        explicit MatrixBase(const MatVec2D<MatrixBase>& data);
 
         /**
          * @brief Constructs a matrix from a 2D vector of C++ numbers.
@@ -332,6 +353,22 @@ namespace steppable
         MatrixBase operator>>=(const MatrixBase& rhs);
 
         /**
+         * @brief Joins a matrix at the top of the current matrix.
+         *
+         * @param rhs The matrix to join to the current matrix.
+         * @return The resulting matrix after joining.
+         */
+        MatrixBase joinTop(const MatrixBase& rhs);
+
+        /**
+         * @brief Joins a matrix at the bottom of the current matrix.
+         *
+         * @param rhs The matrix to join to the current matrix.
+         * @return The resulting matrix after joining.
+         */
+        MatrixBase joinBottom(const MatrixBase& rhs);
+
+        /**
          * @brief Test for equal matrices.
          * @details If the current matrix is equal to the other matrix, i.e., equal in dimensions and equal in all of
          * its values, returns True. Returns False otherwise.
@@ -446,6 +483,12 @@ namespace steppable
          * @return The number of columns in the matrix.
          */
         [[nodiscard]] size_t getCols() const { return _cols; }
+
+        /**
+         * @brief Get the size of the matrix.
+         * @return A `std::pair` containing the rows and columns.
+         */
+        [[nodiscard]] std::pair<size_t, size_t> size() const { return { _rows, _cols }; }
 
         /**
          * @brief Get the data `std::vector` object from the matrix.

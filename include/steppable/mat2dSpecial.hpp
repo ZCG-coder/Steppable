@@ -94,5 +94,7 @@ namespace steppable
         static MatrixBase hilbert(size_t colsRows);
 
         static MatrixBase vandermonde(const MatrixBase& vec);
+
+        static MatrixBase hadamard(size_t order);
     };
 } // namespace steppable

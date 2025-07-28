@@ -32,6 +32,8 @@
 #include "util.hpp"
 
 #include <algorithm>
+#include <cstddef>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -43,6 +45,9 @@ namespace steppable
 
     void MatrixBase::_checkDataSanity(const MatVec2D<Number>& data)
     {
+        if (data.empty())
+            return;
+
         size_t size = data.front().size();
         for (const auto& row : data)
         {
@@ -54,6 +59,15 @@ namespace steppable
                 utils::programSafeExit(1);
             }
             size = rowSize;
+        }
+    }
+
+    void MatrixBase::_checkSelfSanity() const
+    {
+        if (_rows * _cols == 0)
+        {
+            output::error("Matrix::_checkDataSanity"s, "Attempting to opearte an empty matrix."s);
+            utils::programSafeExit(1);
         }
     }
 
@@ -72,6 +86,64 @@ namespace steppable
         for (auto& row : this->data)
             for (auto& value : row)
                 value.setPrec(prec + 3, RoundingMode::USE_MAXIMUM_PREC);
+    }
+
+    MatrixBase::MatrixBase(const MatVec2D<MatrixBase>& data) : _cols(0), _rows(0)
+    {
+        // Size check
+        //    [ [ 1 2 3 4 5 ] | [ 1 2 3 4 ] ]
+        //    [ [ 2 3 4 5 6 ] | [ 2 3 4 5 ] ]
+        //    [ [ 3 4 5 6 7 ] | [ 3 4 5 6 ] ]
+        //    [ ------------+-+-------------]
+        //    [ [ 1 2 3 4 ] | [ 1 2 3 4 5 ] ]
+        //
+        // - For each row
+        //   => Check if total cols are identical across rows
+        // - For each matrix in a row
+        //   => Check if row numbers are matching
+
+        auto firstMatrix = data.front().front();
+        auto prevRowCols = std::unique_ptr<size_t>();
+        prevRowCols.reset();
+        MatrixBase res(0, 0);
+
+        for (const auto& row : data)
+        {
+            const auto& firstMatrix = row.front();
+            size_t prevMatRows = firstMatrix.getRows();
+            size_t currentRowCols = 0;
+
+            MatrixBase currentRowMatrix(0, 0);
+
+            for (const auto& matrix : row)
+            {
+                if (matrix.getRows() != prevMatRows)
+                {
+                    output::error("MatrixBase::MatrixBase"s, "Inconsistent matrix size."s);
+                    utils::programSafeExit(1);
+                }
+                prevMatRows = matrix.getRows();
+                currentRowCols += matrix.getCols();
+
+                _cols += matrix.getCols();
+
+                currentRowMatrix <<= matrix;
+            }
+            _rows += firstMatrix.getRows();
+
+            if (not prevRowCols)
+                prevRowCols = std::make_unique<size_t>(currentRowCols);
+            else if (currentRowCols != *prevRowCols)
+            {
+                output::error("MatrixBase::MatrixBase"s, "Inconsistent matrix size."s);
+                utils::programSafeExit(1);
+            }
+
+            res = res.joinBottom(currentRowMatrix);
+        }
+        std::cout << res.present() << "\n";
+
+        *this = res;
     }
 
     void MatrixBase::_checkIdxSanity(const YXPoint* point) const
@@ -117,10 +189,17 @@ namespace steppable
         return data;
     }
 
-    MatrixBase MatrixBase::roundOffValues(const size_t prec) const { return MatrixBase(roundOffValues(data, prec)); }
+    MatrixBase MatrixBase::roundOffValues(const size_t prec) const
+    {
+        _checkSelfSanity();
+
+        return MatrixBase(roundOffValues(data, prec));
+    }
 
     MatrixBase MatrixBase::rref() const
     {
+        _checkSelfSanity();
+
         // Adapted from https://stackoverflow.com/a/31761026/14868780
         auto matrix = data;
         matrix = roundOffValues(matrix, static_cast<int>(prec));
@@ -184,6 +263,8 @@ namespace steppable
 
     MatrixBase MatrixBase::ref() const
     {
+        _checkSelfSanity();
+
         MatVec2D<Number> mat = data;
         mat = roundOffValues(mat, static_cast<int>(prec) + 3);
 
@@ -218,6 +299,8 @@ namespace steppable
 
     Number MatrixBase::det() const
     {
+        _checkSelfSanity();
+
         if (_rows != _cols)
         {
             output::error("Matrix::det"s, $("steppable::mat2d", "fe78bdc2-b409-4078-8e0e-313c46977f25"));
@@ -266,6 +349,8 @@ namespace steppable
 
     MatrixBase MatrixBase::operator+(const MatrixBase& rhs) const
     {
+        _checkSelfSanity();
+
         if (rhs._cols != _cols)
         {
             output::error("Matrix::operator+"s,
@@ -291,18 +376,32 @@ namespace steppable
         return output;
     }
 
-    MatrixBase MatrixBase::operator+() const { return *this; }
+    MatrixBase MatrixBase::operator+() const
+    {
+        _checkSelfSanity();
+
+        return *this;
+    }
 
     MatrixBase MatrixBase::operator+=(const MatrixBase& rhs)
     {
+        _checkSelfSanity();
+
         *this = *this + rhs;
         return *this;
     }
 
-    MatrixBase MatrixBase::operator-(const MatrixBase& rhs) const { return *this + -rhs; }
+    MatrixBase MatrixBase::operator-(const MatrixBase& rhs) const
+    {
+        _checkSelfSanity();
+
+        return *this + -rhs;
+    }
 
     MatrixBase MatrixBase::operator-() const
     {
+        _checkSelfSanity();
+
         MatrixBase newMatrix = *this;
         for (auto& row : newMatrix.data)
             for (auto& value : row)
@@ -312,12 +411,16 @@ namespace steppable
 
     MatrixBase MatrixBase::operator-=(const MatrixBase& rhs)
     {
+        _checkSelfSanity();
+
         *this = *this - rhs;
         return *this;
     }
 
     MatrixBase MatrixBase::operator*(const Number& rhs) const
     {
+        _checkSelfSanity();
+
         MatrixBase newMatrix = *this;
         for (auto& row : newMatrix.data)
             for (auto& value : row)
@@ -327,6 +430,8 @@ namespace steppable
 
     MatrixBase MatrixBase::operator*(const MatrixBase& rhs) const
     {
+        _checkSelfSanity();
+
         if (_cols != rhs._rows)
         {
             output::error("Matrix::operator*"s, $("steppable::mat2d", "17b6aadd-bce1-4558-a7cc-7a099f00e57c"));
@@ -344,6 +449,10 @@ namespace steppable
 
     MatrixBase MatrixBase::operator<<(const MatrixBase& rhs) const
     {
+        // Concatenating a matrix to nothing gives the matrix.
+        if (_rows * _cols == 0)
+            return rhs;
+
         if (rhs._rows != _rows)
         {
             output::error("Matrix::operator<<"s,
@@ -370,6 +479,10 @@ namespace steppable
 
     MatrixBase MatrixBase::operator>>(const MatrixBase& rhs) const
     {
+        // Concatenating a matrix to nothing gives the matrix.
+        if (_rows * _cols == 0)
+            return rhs;
+
         if (rhs._rows != _rows)
         {
             output::error("Matrix::operator<<"s,
@@ -406,6 +519,46 @@ namespace steppable
         return *this;
     }
 
+    MatrixBase MatrixBase::joinTop(const MatrixBase& rhs)
+    {
+        // Concatenating a matrix to nothing gives the matrix.
+        if (_rows * _cols == 0)
+            return rhs;
+
+        if (rhs._cols != _cols)
+        {
+            output::error("MatrixBase::joinTop"s,
+                          $("steppable::mat2d",
+                            "88331f88-3a4c-4b7e-9b43-b51a1d1020e2",
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        MatVec2D<Number> resData = rhs.data;
+        std::ranges::for_each(data, [&](const auto& row) { resData.emplace_back(row); });
+        return MatrixBase{ resData };
+    }
+
+    MatrixBase MatrixBase::joinBottom(const MatrixBase& rhs)
+    {
+        // Concatenating a matrix to nothing gives the matrix.
+        if (_rows * _cols == 0)
+            return rhs;
+
+        if (rhs._cols != _cols)
+        {
+            output::error("MatrixBase::joinBottom"s,
+                          $("steppable::mat2d",
+                            "88331f88-3a4c-4b7e-9b43-b51a1d1020e2",
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+
+        MatVec2D<Number> resData = data;
+        std::ranges::for_each(rhs.data, [&](const auto& row) { resData.emplace_back(row); });
+        return MatrixBase{ resData };
+    }
+
     MatrixBase MatrixBase::operator*=(const Number& rhs)
     {
         *this = *this * rhs;
@@ -420,6 +573,8 @@ namespace steppable
 
     MatrixBase MatrixBase::operator^(const Number& times) const
     {
+        _checkSelfSanity();
+
         if (_rows != _cols)
         {
             output::error("Matrix::operator^"s, $("steppable::mat2d"s, "fe78bdc2-b409-4078-8e0e-313c46977f25"s));
@@ -445,10 +600,17 @@ namespace steppable
         return matrix;
     }
 
-    std::string MatrixBase::present(const int endRows) const { return prettyPrint::printers::ppMatrix(data, endRows); }
+    std::string MatrixBase::present(const int endRows) const
+    {
+        _checkSelfSanity();
+
+        return prettyPrint::printers::ppMatrix(data, endRows);
+    }
 
     Number MatrixBase::rank() const
     {
+        _checkSelfSanity();
+
         auto matrix = *this;
         matrix = matrix.rref();
 
@@ -472,6 +634,8 @@ namespace steppable
 
     MatrixBase MatrixBase::transpose() const
     {
+        _checkSelfSanity();
+
         MatrixBase matrix(_cols, _rows);
         for (size_t i = 0; i < _rows; i++)
             for (size_t j = 0; j < _cols; j++)
@@ -479,12 +643,24 @@ namespace steppable
         return matrix;
     }
 
-    bool MatrixBase::operator==(const MatrixBase& rhs) const { return data == rhs.data; }
+    bool MatrixBase::operator==(const MatrixBase& rhs) const
+    {
+        _checkSelfSanity();
 
-    bool MatrixBase::operator!=(const MatrixBase& rhs) const { return not(*this == rhs); }
+        return data == rhs.data;
+    }
+
+    bool MatrixBase::operator!=(const MatrixBase& rhs) const
+    {
+        _checkSelfSanity();
+
+        return not(*this == rhs);
+    }
 
     MatrixBase MatrixBase::operator<(const MatrixBase& rhs) const
     {
+        _checkSelfSanity();
+
         if (rhs._cols != _cols)
         {
             output::error("Matrix::operator<"s,
@@ -515,6 +691,8 @@ namespace steppable
 
     MatrixBase MatrixBase::operator<=(const MatrixBase& rhs) const
     {
+        _checkSelfSanity();
+
         if (rhs._cols != _cols)
         {
             output::error("Matrix::operator<="s,
@@ -545,6 +723,8 @@ namespace steppable
 
     MatrixBase MatrixBase::operator>(const MatrixBase& rhs) const
     {
+        _checkSelfSanity();
+
         if (rhs._cols != _cols)
         {
             output::error("Matrix::operator>"s,
@@ -575,6 +755,8 @@ namespace steppable
 
     MatrixBase MatrixBase::operator>=(const MatrixBase& rhs) const
     {
+        _checkSelfSanity();
+
         if (rhs._cols != _cols)
         {
             output::error("Matrix::operator>="s,
@@ -605,6 +787,8 @@ namespace steppable
 
     Number& MatrixBase::operator[](const YXPoint& point)
     {
+        _checkSelfSanity();
+
         const auto x = point.x;
         const auto y = point.y;
 
@@ -614,6 +798,8 @@ namespace steppable
 
     Number MatrixBase::operator[](const YXPoint& point) const
     {
+        _checkSelfSanity();
+
         const auto x = point.x;
         const auto y = point.y;
 
@@ -623,6 +809,8 @@ namespace steppable
 
     MatrixBase MatrixBase::operator[](const YX2Points& point) const
     {
+        _checkSelfSanity();
+
         auto [y1, x1, y2, x2] = point;
         const auto startPoint = YXPoint{ .y = y1, .x = x1 };
         _checkIdxSanity(&startPoint);
