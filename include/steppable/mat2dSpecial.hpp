@@ -89,6 +89,8 @@ namespace steppable
 
         static MatrixBase hankel(const MatrixBase& firstCol, const MatrixBase& lastRow = MatrixBase{ 0, 0 });
 
+        static MatrixBase toeplitz(const MatrixBase& firstColRow, const MatrixBase& firstRow = MatrixBase{ 0, 0 });
+
         static MatrixBase magic(size_t colsRows);
 
         static MatrixBase hilbert(size_t colsRows);

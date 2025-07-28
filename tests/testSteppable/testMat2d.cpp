@@ -215,6 +215,46 @@ _.assertIsEqual(steppable::Matrix(
 _.assertIsEqual(steppable::Matrix(
                     {
                         // Computed with MATLAB
+                        // 1 | c = [1 2 3 4];
+                        // 2 | r = [1 5 6 7];
+                        // 3 | toeplitz(c,r)
+                        { 1, 5, 6, 7 },
+                        { 2, 1, 5, 6 },
+                        { 3, 2, 1, 5 },
+                        { 4, 3, 2, 1 },
+                    },
+                    4),
+                steppable::Matrix::toeplitz(steppable::Matrix({
+                                                { 1, 2, 3, 4 },
+                                            }),
+                                            steppable::Matrix({
+                                                { 1, 5, 6, 7 },
+                                            }))
+                    .roundOffValues(4));
+
+_.assertIsEqual(steppable::Matrix(
+                    {
+                        // Computed with MATLAB
+                        // 1 | c = [1 2 3 4];
+                        // 2 | r = [4 5 6];
+                        // 3 | toeplitz(c,r)
+                        { 1, 5, 6 },
+                        { 2, 1, 5 },
+                        { 3, 2, 1 },
+                        { 4, 3, 2 },
+                    },
+                    4),
+                steppable::Matrix::toeplitz(steppable::Matrix({
+                                                { 1, 2, 3, 4 },
+                                            }),
+                                            steppable::Matrix({
+                                                { 4, 5, 6 },
+                                            }))
+                    .roundOffValues(4));
+
+_.assertIsEqual(steppable::Matrix(
+                    {
+                        // Computed with MATLAB
                         // 1 | hankel([1 2 5], [5 10])
                         { 1, 2 },
                         { 2, 5 },

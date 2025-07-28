@@ -33,6 +33,7 @@
 #include "types/point.hpp"
 
 #include <cstddef>
+#include <cstdint>
 #include <utility>
 #include <vector>
 
@@ -44,6 +45,15 @@ namespace steppable
      */
     template<typename NumberT>
     using MatVec2D = std::vector<std::vector<NumberT>>;
+
+    enum class MatReverseMode : std::uint8_t
+    {
+        ALL = 0,
+        REVERSE_ROWS = 1,
+        REVERSE_COLS = 2
+    };
+
+    constexpr size_t IDX_START = -1;
 
     /**
      * @class MatrixBase
@@ -472,6 +482,8 @@ namespace steppable
          */
         MatrixBase operator[](const YX2Points& point) const;
 
+        [[nodiscard]] MatrixBase reverse(const MatReverseMode& axis = MatReverseMode::ALL) const;
+
         /**
          * @brief Get the number of rows in the matrix.
          * @return The number of rows in the matrix.
@@ -495,6 +507,8 @@ namespace steppable
          * @return A `std::vector` object containing all the matrix data.
          */
         [[nodiscard]] MatVec2D<Number> getData() const { return data; }
+
+        [[nodiscard]] bool empty() const { return _rows * _cols == 0; }
 
         /**
          * @brief Get the reference to the `std::vector` data object from the matrix.

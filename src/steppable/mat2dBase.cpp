@@ -832,4 +832,37 @@ namespace steppable
                 matrix[{ .y = i - y1, .x = j - x1 }] = data[i][j];
         return matrix;
     }
+
+    MatrixBase MatrixBase::reverse(const MatReverseMode& axis) const
+    {
+        MatrixBase res = *this;
+        auto reverseRows = [&]() -> void { std::ranges::reverse(res.data); };
+        auto reverseCols = [&]() -> void {
+            for (auto& row : res.data)
+                std::ranges::reverse(row);
+        };
+
+        switch (axis)
+        {
+        case MatReverseMode::REVERSE_ROWS:
+        {
+            // Reverse rows
+            reverseRows();
+        }
+        case MatReverseMode::REVERSE_COLS:
+        {
+            // Reverse columns
+            reverseCols();
+            break;
+        }
+        default:
+        {
+            // Reverse both rows and columns
+            reverseRows();
+            reverseCols();
+            break;
+        }
+        }
+        return res;
+    }
 } // namespace steppable

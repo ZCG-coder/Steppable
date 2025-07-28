@@ -24,6 +24,7 @@
 
 #include "output.hpp"
 #include "platform.hpp"
+#include "steppable/mat2dBase.hpp"
 #include "steppable/number.hpp"
 
 #include <algorithm>
@@ -124,6 +125,63 @@ namespace steppable
         for (size_t j = 0; j < cols; j++)
             for (size_t i = 0; i < cols; i++)
                 res[{ .y = i, .x = j }] = vec[{ .y = 0, .x = i }] ^ (cols - j - 1);
+
+        return res;
+    }
+
+    MatrixBase SpecialMatrix::toeplitz(const MatrixBase& _firstColRow, const MatrixBase& _firstRow)
+    {
+        MatrixBase firstRow;
+        MatrixBase firstCol;
+        // Called with toeplitz(r)
+        if (_firstRow.empty())
+            firstRow = _firstColRow;
+
+        // Called with toeplitz(c, r)
+        else
+        {
+            firstCol = _firstColRow;
+            firstRow = _firstRow;
+        }
+
+        if (firstCol.getRows() != 1)
+        {
+            output::error("SpecialMatrix::toeplitz"s, "Expect vector for first column."s);
+            utils::programSafeExit(1);
+        }
+        if (firstRow.getRows() != 1)
+        {
+            output::error("SpecialMatrix::toeplitz"s, "Expect vector for first row."s);
+            utils::programSafeExit(1);
+        }
+
+        if (firstCol[{ .y = 0, .x = 0 }] != firstRow[{ .y = 0, .x = 0 }])
+        {
+            output::warning("SpecialMatrix::toeplitz"s,
+                            "First element of the first column does not match first element of the first row."s);
+            output::info("SpecialMatrix::toeplitz"s, "Using column value."s);
+        }
+
+        MatrixBase res(0, 0);
+        size_t matrixCols = firstRow.getCols();
+        size_t matrixRows = firstCol.getCols();
+        firstRow = firstRow[{ .y1 = 0, .x1 = 1, .y2 = 0, .x2 = matrixCols - 1 }];
+        std::cout << firstRow.present() << "\n";
+
+        for (size_t i = 0; i < matrixCols; i++)
+        {
+            MatrixBase col = firstCol;
+            if (i != 0)
+            {
+                const auto& firstRowElem = firstRow[{ .y1 = 0, .x1 = 0, .y2 = 0, .x2 = i - 1 }];
+                col >>= firstRowElem.reverse(MatReverseMode::REVERSE_COLS);
+            }
+            col = col.transpose();
+            col = col[{ .y1 = 0, .x1 = 0, .y2 = matrixRows - 1, .x2 = 0 }];
+
+            std::cout << col.present() << "\n";
+            res <<= col;
+        }
 
         return res;
     }
