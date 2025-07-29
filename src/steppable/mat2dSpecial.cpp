@@ -24,10 +24,15 @@
 
 #include "output.hpp"
 #include "platform.hpp"
+#include "steppable/mat2d.hpp"
 #include "steppable/mat2dBase.hpp"
 #include "steppable/number.hpp"
 
 #include <algorithm>
+#include <cassert>
+#include <cmath>
+#include <math.h>
+#include <memory>
 #include <string>
 
 namespace steppable
@@ -35,11 +40,14 @@ namespace steppable
     using namespace __internals;
     using namespace __internals::numUtils;
 
-    MatrixBase SpecialMatrix::ones(const size_t rows, const size_t cols) { return MatrixBase(rows, cols, Number("1")); }
+    MatrixBase SpecialMatrix::ones(const size_t& rows, const size_t& cols)
+    {
+        return MatrixBase(rows, cols, Number("1"));
+    }
 
-    MatrixBase SpecialMatrix::zeros(const size_t rows, const size_t cols) { return MatrixBase(rows, cols); }
+    MatrixBase SpecialMatrix::zeros(const size_t& rows, const size_t& cols) { return MatrixBase(rows, cols); }
 
-    MatrixBase SpecialMatrix::diag(const size_t cols, const Number& fill, const size_t _rows, const long long offset)
+    MatrixBase SpecialMatrix::diag(const size_t& cols, const Number& fill, const size_t& _rows, const long long& offset)
     {
         size_t rows = _rows == 0 ? cols : _rows;
         MatrixBase matrix(cols, rows);
@@ -95,13 +103,13 @@ namespace steppable
         return res;
     }
 
-    MatrixBase SpecialMatrix::magic(size_t colsRows)
+    MatrixBase SpecialMatrix::magic(const size_t& colsRows)
     {
         MatrixBase res = zeros(colsRows, colsRows);
         return res;
     }
 
-    MatrixBase SpecialMatrix::hilbert(const size_t colsRows)
+    MatrixBase SpecialMatrix::hilbert(const size_t& colsRows)
     {
         MatrixBase res = zeros(colsRows, colsRows);
         res = res.roundOffValues(8);
@@ -181,6 +189,62 @@ namespace steppable
 
             std::cout << col.present() << "\n";
             res <<= col;
+        }
+
+        return res;
+    }
+
+    MatrixBase SpecialMatrix::hadamard(const size_t& order)
+    {
+        if (order == 1)
+            return ones(1, 1);
+
+        const long double logN = log2(order); // log2(n)
+        const long double logN12 = log2(static_cast<long double>(order) / 12); // log2(n/12)
+        const long double logN20 = log2(static_cast<long double>(order) / 20); // log2(n/20)
+
+        auto discardable = std::make_unique<long double>();
+        long double logNRemainder = modfl(logN, discardable.get());
+        long double logNRemainder12 = modfl(logN12, discardable.get());
+        long double logNRemainder20 = modfl(logN20, discardable.get());
+        discardable.reset();
+
+        if (logNRemainder * logNRemainder12 * logNRemainder20 != 0.0)
+        {
+            output::error("SpecialMatrix::hadamard"s, "n, n/12 or n/20 must be an exponent of 2."s);
+            utils::programSafeExit(1);
+        }
+        long double e = NAN;
+        MatrixBase res;
+
+        if (logNRemainder == 0.0)
+        {
+            e = logN - 1;
+            res = ones(1, 1);
+        }
+        else if (logNRemainder12 == 0.0)
+        {
+            e = logN12 - 1;
+            res = MatrixBase(hadamardKnown12());
+        }
+        else if (logNRemainder20 == 0.0)
+        {
+            e = logN20 - 1;
+            res = MatrixBase(hadamardKnown20());
+        }
+        assert(e != NAN);
+
+        for (size_t i = 0; i <= static_cast<size_t>(e); i++)
+        {
+            // Sylvester's construction
+            // If H is a known Hadamard matrix of order n,
+            // [ H  H ]
+            // [ H -H ]
+            // will be a Hadamard matrix of order 2n.
+            res = MatrixBase({
+                { res, res },
+                { res, -res },
+            });
         }
 
         return res;

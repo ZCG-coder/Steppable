@@ -190,4 +190,9 @@ _.assertTrue(isPowerOfTen("0.01"));
 _.assertFalse(isPowerOfTen("20"));
 SECTION_END()
 
+SECTION(Test toStringView)
+_.assertTrue(toStringView(12) == "12");
+_.assertTrue(toStringView(2) == "2");
+SECTION_END()
+
 TEST_END()

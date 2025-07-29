@@ -425,6 +425,29 @@ namespace steppable::__internals::numUtils
  */
 namespace steppable::__internals::stringUtils
 {
+    // Thread-local scratch buffer for runtime toStringView
+    static thread_local std::string _toStringViewBuffer; // NOLINT
+
+    template<concepts::Numeric ValueT>
+    constexpr std::string_view toStringView(ValueT value)
+    {
+        using namespace std::literals;
+        if (std::is_constant_evaluated())
+        {
+            // Provide constexpr literal mapping for common compile-time values
+            if (value == 0)
+                return "0"sv;
+            if (value == 1)
+                return "1"sv;
+            if (value == -1)
+                return "-1"sv;
+            return ""sv;
+        }
+        // Runtime case: format into thread-local buffer
+        _toStringViewBuffer = std::to_string(value);
+        return std::string_view{ _toStringViewBuffer.data(), _toStringViewBuffer.size() };
+    }
+
     /**
      * @brief Splits a string into substrings based on a separator.
      *
@@ -615,7 +638,7 @@ namespace steppable::__internals::stringUtils
     {
         auto value = T{};
 
-        if (auto result = std::from_chars(s.data(), s.data() + s.size(), value); result.ec != std::errc{})
+        if (auto result = std::from_chars(s.data(), s.data() + s.size(), value); result.ec != std::errc{}) // NOLINT
         {
             output::error("toNumeric"s, "Invalid argument"s);
             utils::programSafeExit(1);

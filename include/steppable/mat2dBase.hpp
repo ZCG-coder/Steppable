@@ -29,6 +29,7 @@
 
 #pragma once
 
+#include "steppable/mat2dConstexpr.hpp"
 #include "steppable/number.hpp"
 #include "types/point.hpp"
 
@@ -100,7 +101,7 @@ namespace steppable
         /**
          * @brief Default constructor for the Matrix class.
          */
-        MatrixBase();
+        constexpr MatrixBase() noexcept : _cols(0), _rows(0) {}
 
         /**
          * @brief Constructs a matrix with specified dimensions and an optional fill value.
@@ -149,6 +150,21 @@ namespace steppable
             for (size_t i = 0; i < _rows; i++)
                 for (size_t j = 0; j < _cols; j++)
                     this->data[i][j] = Number(data[i][j], prec);
+        }
+
+        /**
+         * @brief Construct from a compile-time fixed-size matrix.
+         * @tparam Rows Number of rows.
+         * @tparam Cols Number of columns.
+         * @param m The constexpr matrix to copy from.
+         */
+        template<size_t Rows, size_t Cols>
+        explicit MatrixBase(const ConstexprMatrix<Rows, Cols>& m) :
+            _rows(Rows), _cols(Cols), prec(8), data(Rows, std::vector<Number>(Cols))
+        {
+            for (size_t i = 0; i < Rows; ++i)
+                for (size_t j = 0; j < Cols; ++j)
+                    data[i][j] = m.data[i][j];
         }
 
         /**
@@ -488,19 +504,19 @@ namespace steppable
          * @brief Get the number of rows in the matrix.
          * @return The number of rows in the matrix.
          */
-        [[nodiscard]] size_t getRows() const { return _rows; }
+        [[nodiscard]] constexpr size_t getRows() const noexcept { return _rows; }
 
         /**
          * @brief Get the number of columns in the matrix.
          * @return The number of columns in the matrix.
          */
-        [[nodiscard]] size_t getCols() const { return _cols; }
+        [[nodiscard]] constexpr size_t getCols() const noexcept { return _cols; }
 
         /**
          * @brief Get the size of the matrix.
          * @return A `std::pair` containing the rows and columns.
          */
-        [[nodiscard]] std::pair<size_t, size_t> size() const { return { _rows, _cols }; }
+        [[nodiscard]] constexpr std::pair<size_t, size_t> size() const noexcept { return { _rows, _cols }; }
 
         /**
          * @brief Get the data `std::vector` object from the matrix.
@@ -508,7 +524,7 @@ namespace steppable
          */
         [[nodiscard]] MatVec2D<Number> getData() const { return data; }
 
-        [[nodiscard]] bool empty() const { return _rows * _cols == 0; }
+        [[nodiscard]] constexpr bool empty() const noexcept { return _rows * _cols == 0; }
 
         /**
          * @brief Get the reference to the `std::vector` data object from the matrix.

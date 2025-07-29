@@ -31,12 +31,12 @@
 #pragma once
 
 #include "rounding.hpp"
-#include "testing.hpp"
 #include "types/rounding.hpp"
 #include "util.hpp"
 
 #include <functional>
 #include <string>
+#include <string_view>
 #include <utility>
 
 /**
@@ -45,6 +45,45 @@
  */
 namespace steppable
 {
+    /**
+     * @struct ConstexprNumber
+     * @brief A constexpr-friendly number placeholder storing a string view and precision.
+     */
+    struct ConstexprNumber
+    {
+        std::string_view value; ///< The string representation.
+        size_t prec; ///< The precision.
+        RoundingMode mode; ///< The rounding mode.
+
+        /**
+         * @brief Default constexpr constructor initializes to empty view and default precision/mode.
+         */
+        constexpr ConstexprNumber() noexcept : prec(10), mode(RoundingMode::USE_CURRENT_PREC) {}
+        /**
+         * @brief Construct from a string_view and precision/mode.
+         */
+        constexpr ConstexprNumber(const std::string_view& v,
+                                  const size_t p = 10,
+                                  const RoundingMode& m = RoundingMode::USE_CURRENT_PREC) noexcept :
+            value(v), prec(p), mode(m)
+        {
+        }
+        /**
+         * @brief Construct a ConstexprNumber from a numeric value.
+         * @tparam ValueT A numeric type.
+         * @param v The numeric value.
+         * @param p Precision for representation.
+         * @param m Rounding mode.
+         */
+        template<concepts::Numeric ValueT>
+        constexpr ConstexprNumber(ValueT v,
+                                  const size_t p = 10,
+                                  const RoundingMode m = RoundingMode::USE_CURRENT_PREC) noexcept :
+            value(__internals::stringUtils::toStringView(v)), prec(p), mode(m)
+        {
+        }
+    };
+
     /**
      * @class Number
      * @brief Represents a number with arbitrary precision. It basically stores the value as a string.
@@ -92,13 +131,19 @@ namespace steppable
 
         /**
          * @brief Initializes a number with a C/C++ long double value.
-         * @note No matter how the number is specified, it will always be converted to a string for storage.
+         * @note Always converted to a string for storage.
          */
         template<concepts::Numeric ValueT>
-        Number(ValueT value, size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC) :
-            value(std::to_string(value)), prec(prec), mode(mode)
+        Number(ValueT v, size_t p = 10, RoundingMode m = RoundingMode::USE_CURRENT_PREC) :
+            value(std::to_string(v)), prec(p), mode(m)
         {
         }
+
+        /**
+         * @brief Constructs a Number from a constexpr-friendly placeholder.
+         * @param cn The ConstexprNumber instance.
+         */
+        Number(const ConstexprNumber& cn) : value(cn.value), prec(cn.prec), mode(cn.mode) {}
 
         void set(std::string newVal) { value = std::move(newVal); }
 
@@ -294,9 +339,9 @@ namespace steppable
      */
     namespace literals
     {
-        inline Number operator""_n(long double value) { return Number(value); }
+        inline Number operator""_n(long double value) { return { value }; }
 
-        inline Number operator""_n(unsigned long long value) { return Number(value); }
+        inline Number operator""_n(unsigned long long value) { return { value }; }
     } // namespace literals
 } // namespace steppable
 

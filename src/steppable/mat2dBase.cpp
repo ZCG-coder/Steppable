@@ -71,8 +71,6 @@ namespace steppable
         }
     }
 
-    MatrixBase::MatrixBase() : data({ {} }) { _cols = _rows = 0; }
-
     MatrixBase::MatrixBase(const size_t rows, const size_t cols, const Number& fill) :
         data(std::vector(rows, std::vector(cols, fill))), _cols(cols), _rows(rows)
     {
@@ -141,7 +139,6 @@ namespace steppable
 
             res = res.joinBottom(currentRowMatrix);
         }
-        std::cout << res.present() << "\n";
 
         *this = res;
     }

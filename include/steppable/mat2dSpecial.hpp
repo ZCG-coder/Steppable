@@ -30,16 +30,61 @@
 #pragma once
 
 #include "steppable/mat2dBase.hpp"
+#include "steppable/mat2dConstexpr.hpp"
 
 namespace steppable
 {
-
     /**
      * @class SpecialMatrix
      * @brief Represents special types of matrices and provides static methods to create them.
      */
     class SpecialMatrix
     {
+        static consteval ConstexprMatrix<12, 12> hadamardKnown12()
+        {
+            // https://www.cs.miami.edu/home/burt/learning/Csc670.034/hadamard (Francois)
+            return { {
+                { 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+                { 1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1 },
+                { 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1 },
+                { 1, -1, 1, 1, -1, 1, -1, -1, -1, 1, 1, 1 },
+                { 1, 1, -1, 1, 1, -1, 1, -1, -1, -1, 1, 1 },
+                { 1, 1, 1, -1, 1, 1, -1, 1, -1, -1, -1, 1 },
+                { 1, 1, 1, 1, -1, 1, 1, -1, 1, -1, -1, -1 },
+                { 1, -1, 1, 1, 1, -1, 1, 1, -1, 1, -1, -1 },
+                { 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, 1, -1 },
+                { 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, -1, 1 },
+                { 1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, -1 },
+                { 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1 },
+            } };
+        }
+
+        static consteval ConstexprMatrix<20, 20> hadamardKnown20()
+        {
+            return { {
+                { 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+                { 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1 },
+                { 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1 },
+                { 1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1 },
+                { 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1 },
+                { 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1 },
+                { 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1 },
+                { 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1 },
+                { 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1 },
+                { 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1 },
+                { 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1 },
+                { 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1 },
+                { 1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1 },
+                { 1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1 },
+                { 1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1, -1 },
+                { 1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1 },
+                { 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1 },
+                { 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1 },
+                { 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1 },
+                { 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1 },
+            } };
+        }
+
     public:
         /**
          * @brief Creates a matrix filled with ones.
@@ -47,7 +92,7 @@ namespace steppable
          * @param cols The number of columns.
          * @return A Matrix filled with ones.
          */
-        static MatrixBase ones(size_t rows, size_t cols);
+        static MatrixBase ones(const size_t& rows, const size_t& cols);
 
         /**
          * @brief Creates a matrix filled with zeros.
@@ -55,7 +100,7 @@ namespace steppable
          * @param cols The number of columns.
          * @return A Matrix filled with zeros.
          */
-        static MatrixBase zeros(size_t rows, size_t cols);
+        static MatrixBase zeros(const size_t& rows, const size_t& cols);
 
         /**
          * @brief Creates a diagonal matrix
@@ -66,7 +111,10 @@ namespace steppable
          * @param offset Amount to offset from the main diagonal.
          * @return A diagonal matrix filled with the specified values.
          */
-        static MatrixBase diag(size_t cols, const Number& fill = 1, size_t rows = 0, long long offset = 0);
+        static MatrixBase diag(const size_t& cols,
+                               const Number& fill = 1,
+                               const size_t& rows = 0,
+                               const long long& offset = 0);
 
         /**
          * @brief Creates a diagonal matrix
@@ -79,10 +127,10 @@ namespace steppable
          * @return A diagonal matrix filled with the specified values.
          */
         template<concepts::Numeric NumberT>
-        static MatrixBase diag(const size_t cols,
+        static MatrixBase diag(const size_t& cols,
                                const NumberT& fill = 0,
-                               const size_t rows = 0,
-                               const long long offset = 0)
+                               const size_t& rows = 0,
+                               const long long& offset = 0)
         {
             return diag(cols, Number(fill), rows);
         }
@@ -91,12 +139,12 @@ namespace steppable
 
         static MatrixBase toeplitz(const MatrixBase& firstColRow, const MatrixBase& firstRow = MatrixBase{ 0, 0 });
 
-        static MatrixBase magic(size_t colsRows);
+        static MatrixBase magic(const size_t& colsRows);
 
-        static MatrixBase hilbert(size_t colsRows);
+        static MatrixBase hilbert(const size_t& colsRows);
 
         static MatrixBase vandermonde(const MatrixBase& vec);
 
-        static MatrixBase hadamard(size_t order);
+        static MatrixBase hadamard(const size_t& order);
     };
 } // namespace steppable

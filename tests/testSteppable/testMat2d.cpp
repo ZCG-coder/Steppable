@@ -284,5 +284,14 @@ _.assertIsEqual(steppable::Matrix(
                                                    { 1, 2, 3, 4, 5 },
                                                }))
                     .roundOffValues(4));
+
+// Property of Hadamard matrices
+//      T
+// H * H  = n * I
+const auto& h1 = steppable::Matrix::hadamard(8);
+_.assertIsEqual(h1* h1.transpose(), steppable::Matrix::diag(8, 1) * 8);
+
+const auto& h2 = steppable::Matrix::hadamard(48);
+_.assertIsEqual(h2* h2.transpose(), steppable::Matrix::diag(48, 1) * 48);
 SECTION_END()
 TEST_END()
