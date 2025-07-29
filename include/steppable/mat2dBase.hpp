@@ -213,11 +213,21 @@ namespace steppable
         [[nodiscard]] Number rank() const;
 
         /**
+         * @brief Calculates the trace of a matrix.
+         * @details For a given matrix M, the trace tr(M) is defined as tr(M) = M(1, 1) + M(2, 2) + ... + M(n, n). In
+         * other words, the sum of values along the diagonal.
+         * @return The trace of the matrix.
+         */
+        [[nodiscard]] Number trace() const;
+
+        /**
          * @brief Transposes a matrix.
          * @details Flips the rows and columns of the matrix and returns a new instance of the transposed matrix.
          * @return An instance of the transposed matrix.
          */
         [[nodiscard]] MatrixBase transpose() const;
+
+        [[nodiscard]] bool isSymmetric() const { return *this == transpose(); }
 
         /**
          * @brief Add a matrix to another matrix.

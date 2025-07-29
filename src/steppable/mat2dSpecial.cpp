@@ -174,7 +174,6 @@ namespace steppable
         size_t matrixCols = firstRow.getCols();
         size_t matrixRows = firstCol.getCols();
         firstRow = firstRow[{ .y1 = 0, .x1 = 1, .y2 = 0, .x2 = matrixCols - 1 }];
-        std::cout << firstRow.present() << "\n";
 
         for (size_t i = 0; i < matrixCols; i++)
         {
@@ -187,7 +186,6 @@ namespace steppable
             col = col.transpose();
             col = col[{ .y1 = 0, .x1 = 0, .y2 = matrixRows - 1, .x2 = 0 }];
 
-            std::cout << col.present() << "\n";
             res <<= col;
         }
 

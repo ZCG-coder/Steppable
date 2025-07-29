@@ -95,6 +95,13 @@ steppable::Matrix mat2({
 // ( A  )   = A
 _.assertIsEqual(mat2.transpose().transpose(), mat2);
 _.assertIsNotEqual(mat2.transpose(), mat2);
+
+steppable::Matrix mat3({
+    { 1, 7, 3 },
+    { 7, 4, 5 },
+    { 3, 5, 2 },
+});
+_.assertTrue(mat3.isSymmetric());
 SECTION_END()
 
 SECTION(Determinant)
@@ -293,5 +300,8 @@ _.assertIsEqual(h1* h1.transpose(), steppable::Matrix::diag(8, 1) * 8);
 
 const auto& h2 = steppable::Matrix::hadamard(48);
 _.assertIsEqual(h2* h2.transpose(), steppable::Matrix::diag(48, 1) * 48);
+
+_.assertIsEqual(h1.trace(), steppable::Number(0));
+_.assertIsEqual(h2.trace(), steppable::Number(0));
 SECTION_END()
 TEST_END()

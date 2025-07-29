@@ -54,7 +54,7 @@ namespace steppable
             const size_t rowSize = row.size();
             if (rowSize != size)
             {
-                output::error("Matrix::_checkDataSanity"s,
+                output::error("MatrixBase::_checkDataSanity"s,
                               $("steppable::mat2d", "75953952-0eea-4716-a006-d0f2e7a8f6c9"));
                 utils::programSafeExit(1);
             }
@@ -66,7 +66,7 @@ namespace steppable
     {
         if (_rows * _cols == 0)
         {
-            output::error("Matrix::_checkDataSanity"s, "Attempting to opearte an empty matrix."s);
+            output::error("MatrixBase::_checkDataSanity"s, "Attempting to opearte an empty matrix."s);
             utils::programSafeExit(1);
         }
     }
@@ -150,7 +150,7 @@ namespace steppable
 
         if (x > _cols)
         {
-            output::error("Matrix::operator[]"s,
+            output::error("MatrixBase::operator[]"s,
                           $("steppable::mat2d",
                             "8d4e4757-415b-4aed-8f5e-26b3503a95dd"s,
                             { std::to_string(x), std::to_string(_cols) }));
@@ -158,7 +158,7 @@ namespace steppable
         }
         if (y > _rows)
         {
-            output::error("Matrix::operator[]"s,
+            output::error("MatrixBase::operator[]"s,
                           $("steppable::mat2d",
                             "e7cb3f0b-11d8-4e12-8c93-4a1021b15e10"s,
                             { std::to_string(y), std::to_string(_rows) }));
@@ -222,7 +222,7 @@ namespace steppable
                         matrix[r][c] /= divisor;
 
 #if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
-                        output::info("Matrix::rref"s,
+                        output::info("MatrixBase::rref"s,
                                      oldMatrixRC.present() + " " + std::string(__internals::symbols::DIVIDED_BY) + " " +
                                          divisor.present() + " = " + matrix[r][c].present());
 #endif
@@ -238,12 +238,12 @@ namespace steppable
                         matrix[r][c] -= multiplyResult;
 
 #if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
-                        output::info("Matrix::rref"s,
+                        output::info("MatrixBase::rref"s,
                                      oldMatrixRC.present() + " - " + oldMatrixLeadC.present() + " " +
                                          std::string(__internals::symbols::MULTIPLY) + " " + multiplier.present());
-                        output::info("Matrix::rref"s,
+                        output::info("MatrixBase::rref"s,
                                      "    = " + oldMatrixRC.present() + " - " + multiplyResult.present());
-                        output::info("Matrix::rref"s, "    = " + matrix[r][c].present());
+                        output::info("MatrixBase::rref"s, "    = " + matrix[r][c].present());
 #endif
                     }
 
@@ -300,7 +300,7 @@ namespace steppable
 
         if (_rows != _cols)
         {
-            output::error("Matrix::det"s, $("steppable::mat2d", "fe78bdc2-b409-4078-8e0e-313c46977f25"));
+            output::error("MatrixBase::det"s, $("steppable::mat2d", "fe78bdc2-b409-4078-8e0e-313c46977f25"));
             utils::programSafeExit(1);
         }
         int sign = 1;
@@ -350,7 +350,7 @@ namespace steppable
 
         if (rhs._cols != _cols)
         {
-            output::error("Matrix::operator+"s,
+            output::error("MatrixBase::operator+"s,
                           $("steppable::mat2d",
                             "88331f88-3a4c-4b7e-9b43-b51a1d1020e2",
                             { std::to_string(_cols), std::to_string(rhs._cols) }));
@@ -358,7 +358,7 @@ namespace steppable
         }
         if (rhs._rows != _rows)
         {
-            output::error("Matrix::operator+"s,
+            output::error("MatrixBase::operator+"s,
                           $("steppable::mat2d",
                             "34e92306-a4d8-4ff0-8441-bfcd29771e94",
                             { std::to_string(_rows), std::to_string(rhs._rows) }));
@@ -431,9 +431,9 @@ namespace steppable
 
         if (_cols != rhs._rows)
         {
-            output::error("Matrix::operator*"s, $("steppable::mat2d", "17b6aadd-bce1-4558-a7cc-7a099f00e57c"));
+            output::error("MatrixBase::operator*"s, $("steppable::mat2d", "17b6aadd-bce1-4558-a7cc-7a099f00e57c"));
             // https://en.wikipedia.org/wiki/Matrix_multiplication
-            output::info("Matrix::operator*"s, $("steppable::mat2d", "8966ce13-8ae9-4f14-ba4e-837b98a4c9fa"));
+            output::info("MatrixBase::operator*"s, $("steppable::mat2d", "8966ce13-8ae9-4f14-ba4e-837b98a4c9fa"));
             utils::programSafeExit(1);
         }
         MatrixBase matrix = SpecialMatrix::zeros(_rows, rhs._cols);
@@ -452,7 +452,7 @@ namespace steppable
 
         if (rhs._rows != _rows)
         {
-            output::error("Matrix::operator<<"s,
+            output::error("MatrixBase::operator<<"s,
                           $("steppable::mat2d",
                             "f255d307-9482-442b-a523-61a1c7465f9c",
                             { std::to_string(rhs._rows), std::to_string(_rows) }));
@@ -482,7 +482,7 @@ namespace steppable
 
         if (rhs._rows != _rows)
         {
-            output::error("Matrix::operator<<"s,
+            output::error("MatrixBase::operator<<"s,
                           $("steppable::mat2d",
                             "f255d307-9482-442b-a523-61a1c7465f9c",
                             { std::to_string(rhs._rows), std::to_string(_rows) }));
@@ -574,7 +574,7 @@ namespace steppable
 
         if (_rows != _cols)
         {
-            output::error("Matrix::operator^"s, $("steppable::mat2d"s, "fe78bdc2-b409-4078-8e0e-313c46977f25"s));
+            output::error("MatrixBase::operator^"s, $("steppable::mat2d"s, "fe78bdc2-b409-4078-8e0e-313c46977f25"s));
             utils::programSafeExit(1);
         }
 
@@ -629,6 +629,20 @@ namespace steppable
         return { rank };
     }
 
+    Number MatrixBase::trace() const
+    {
+        if (_rows != _cols)
+        {
+            output::error("MatrixBase::trace"s, $("steppable::mat2d"s, "fe78bdc2-b409-4078-8e0e-313c46977f25"s));
+            utils::programSafeExit(1);
+        }
+
+        Number sum;
+        for (size_t j = 0; j < _rows; j++)
+            sum += data[j][j];
+        return sum;
+    }
+
     MatrixBase MatrixBase::transpose() const
     {
         _checkSelfSanity();
@@ -660,7 +674,7 @@ namespace steppable
 
         if (rhs._cols != _cols)
         {
-            output::error("Matrix::operator<"s,
+            output::error("MatrixBase::operator<"s,
                           $("steppable::mat2d"s,
                             "88331f88-3a4c-4b7e-9b43-b51a1d1020e2"s,
                             { std::to_string(_cols), std::to_string(rhs._cols) }));
@@ -669,7 +683,7 @@ namespace steppable
 
         if (rhs._rows != _rows)
         {
-            output::error("Matrix::operator<"s,
+            output::error("MatrixBase::operator<"s,
                           $("steppable::mat2d"s,
                             "34e92306-a4d8-4ff0-8441-bfcd29771e94"s,
                             { std::to_string(_cols), std::to_string(rhs._cols) }));
@@ -692,7 +706,7 @@ namespace steppable
 
         if (rhs._cols != _cols)
         {
-            output::error("Matrix::operator<="s,
+            output::error("MatrixBase::operator<="s,
                           $("steppable::mat2d"s,
                             "88331f88-3a4c-4b7e-9b43-b51a1d1020e2"s,
                             { std::to_string(_cols), std::to_string(rhs._cols) }));
@@ -701,7 +715,7 @@ namespace steppable
 
         if (rhs._rows != _rows)
         {
-            output::error("Matrix::operator<="s,
+            output::error("MatrixBase::operator<="s,
                           $("steppable::mat2d"s,
                             "34e92306-a4d8-4ff0-8441-bfcd29771e94"s,
                             { std::to_string(_cols), std::to_string(rhs._cols) }));
@@ -724,7 +738,7 @@ namespace steppable
 
         if (rhs._cols != _cols)
         {
-            output::error("Matrix::operator>"s,
+            output::error("MatrixBase::operator>"s,
                           $("steppable::mat2d"s,
                             "88331f88-3a4c-4b7e-9b43-b51a1d1020e2"s,
                             { std::to_string(_cols), std::to_string(rhs._cols) }));
@@ -733,7 +747,7 @@ namespace steppable
 
         if (rhs._rows != _rows)
         {
-            output::error("Matrix::operator>"s,
+            output::error("MatrixBase::operator>"s,
                           $("steppable::mat2d"s,
                             "34e92306-a4d8-4ff0-8441-bfcd29771e94"s,
                             { std::to_string(_cols), std::to_string(rhs._cols) }));
@@ -756,7 +770,7 @@ namespace steppable
 
         if (rhs._cols != _cols)
         {
-            output::error("Matrix::operator>="s,
+            output::error("MatrixBase::operator>="s,
                           $("steppable::mat2d"s,
                             "88331f88-3a4c-4b7e-9b43-b51a1d1020e2"s,
                             { std::to_string(_cols), std::to_string(rhs._cols) }));
@@ -765,7 +779,7 @@ namespace steppable
 
         if (rhs._rows != _rows)
         {
-            output::error("Matrix::operator>="s,
+            output::error("MatrixBase::operator>="s,
                           $("steppable::mat2d"s,
                             "34e92306-a4d8-4ff0-8441-bfcd29771e94"s,
                             { std::to_string(_cols), std::to_string(rhs._cols) }));
