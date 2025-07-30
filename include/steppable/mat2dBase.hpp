@@ -227,6 +227,11 @@ namespace steppable
          */
         [[nodiscard]] MatrixBase transpose() const;
 
+        /**
+         * @brief Determines if the matrix is symmetric.
+         * @details By definition, if M is equal to its transpose, then it is symmetric.
+         * @return True if the matrix is symmetric. False otherwise.
+         */
         [[nodiscard]] bool isSymmetric() const { return *this == transpose(); }
 
         /**
@@ -508,6 +513,11 @@ namespace steppable
          */
         MatrixBase operator[](const YX2Points& point) const;
 
+        /**
+         * @brief Reverses the matrix.
+         * @param axis The axis to flip. Defaults to flip in both the row and column axes.
+         * @return The reversed copy of the current matrix.
+         */
         [[nodiscard]] MatrixBase reverse(const MatReverseMode& axis = MatReverseMode::ALL) const;
 
         /**
@@ -534,6 +544,10 @@ namespace steppable
          */
         [[nodiscard]] MatVec2D<Number> getData() const { return data; }
 
+        /**
+         * @brief Checks whether the current matrix is empty.
+         * @return True if the matrix does not contain any rows or columns, False otherwise.
+         */
         [[nodiscard]] constexpr bool empty() const noexcept { return _rows * _cols == 0; }
 
         /**

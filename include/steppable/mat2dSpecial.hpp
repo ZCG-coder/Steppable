@@ -40,6 +40,10 @@ namespace steppable
      */
     class SpecialMatrix
     {
+        /**
+         * @brief Returns a known form of Hadamard matrix with order 12.
+         * @return A known form of Hadamard matrix with order 12.
+         */
         static consteval ConstexprMatrix<12, 12> hadamardKnown12()
         {
             // https://www.cs.miami.edu/home/burt/learning/Csc670.034/hadamard (Francois)
@@ -59,8 +63,13 @@ namespace steppable
             } };
         }
 
+        /**
+         * @brief Returns a known form of Hadamard matrix with order 20.
+         * @return A known form of Hadamard matrix with order 20.
+         */
         static consteval ConstexprMatrix<20, 20> hadamardKnown20()
         {
+            // Translated from http://neilsloane.com/hadamard/had.20.pal.txt
             return { {
                 { 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
                 { 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, -1, -1, 1 },
@@ -135,16 +144,51 @@ namespace steppable
             return diag(cols, Number(fill), rows);
         }
 
+        /**
+         * @brief Creates a Hankel matrix.
+         *
+         * @param firstCol The first column of the matrix.
+         * @param lastRow The last row of the matrix. If not provided, uses a duplicate of the first column and creates
+         * a symmetrix Hankel matrix.
+         * @return A Hankel matrix.
+         */
         static MatrixBase hankel(const MatrixBase& firstCol, const MatrixBase& lastRow = MatrixBase{ 0, 0 });
 
+        /**
+         * @brief Creates a Toeplitz matrix.
+         *
+         * @param firstCol The first column of the matrix.
+         * @param lastRow The first row of the matrix. If not provided, uses a duplicate of the first column and creates
+         * a symmetrix Toeplitz matrix.
+         * @return A Toeplitz matrix.
+         */
         static MatrixBase toeplitz(const MatrixBase& firstColRow, const MatrixBase& firstRow = MatrixBase{ 0, 0 });
 
         static MatrixBase magic(const size_t& colsRows);
 
+        /**
+         * @brief Creates a Hilbert matrix of given order.
+         *
+         * @param colsRows The order of the matrix.
+         * @return A Hilbert matrix of given order.
+         */
         static MatrixBase hilbert(const size_t& colsRows);
 
+        /**
+         * @brief Creates a Vandermonde matrix from a given vector.
+         *
+         * @param vec The input vector.
+         * @return A Vandermonde matrix from the given vector.
+         */
         static MatrixBase vandermonde(const MatrixBase& vec);
 
+        /**
+         * @brief Creates a Hadamard matrix of given order.
+         *
+         * @param order The order of the Hadamard matrix. Let the order be n, one of `n`, `n/12`, or `n/20` must be an
+         * exponent of 2.
+         * @return A Hadamard matrix of given order.
+         */
         static MatrixBase hadamard(const size_t& order);
     };
 } // namespace steppable
