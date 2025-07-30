@@ -81,6 +81,19 @@ _.assertIsEqual(mat3,
                     { 6, 5, 3 },
                     { 11, 9, 6 },
                 }));
+
+steppable::Matrix mat4({ { 1, 2, 3 } });
+steppable::Matrix mat5({
+    { 1 },
+    { 2 },
+    { 3 },
+});
+_.assertIsEqual(mat4.elemWiseMultiply(mat5),
+                steppable::Matrix({
+                    { 1, 2, 3 },
+                    { 2, 4, 6 },
+                    { 3, 6, 9 },
+                }));
 SECTION_END()
 
 SECTION(Transpose)
@@ -187,6 +200,55 @@ steppable::Matrix matrix2(
     6);
 auto test = (matrix2 ^ -1 ^ -1).roundOffValues(1);
 _.assertIsEqual(test, matrix2);
+SECTION_END()
+
+SECTION(Test matrix sum)
+// Computed by MATLAB
+// 1 | A = [1 2 3 4;5 6 7 8;9 1 2 3;4 7 9 5]
+// 2 | sum(A, 1)
+// > |
+// > | ans =
+// > |
+// > | 19    16    21    20
+// > |
+// 3 | sum(A, 2)
+// > |
+// > | ans =
+// > |
+// > |     10
+// > |     26
+// > |     15
+// > |     25
+// > |
+// 4 | sum(A, "all")
+// > |
+// > | ans =
+// > |
+// > |     76
+
+steppable::Matrix mat({
+    { 1, 2, 3, 4 },
+    { 5, 6, 7, 8 },
+    { 9, 1, 2, 3 },
+    { 4, 7, 9, 5 },
+});
+_.assertIsEqual(mat.sum(), steppable::Number(76));
+_.assertIsEqual(mat.sumDims(steppable::MatDims::COLS), steppable::Matrix({ { 19, 16, 21, 20 } }));
+_.assertIsEqual(mat.sumDims(steppable::MatDims::ROWS), steppable::Matrix({ { 10 }, { 26 }, { 15 }, { 25 } }));
+
+SECTION_END()
+
+SECTION(Test matrix dot - product)
+steppable::Matrix v1({ { 1, 2, 3 } });
+steppable::Matrix v2({ { 4, 5, 6 } });
+_.assertIsEqual(v1.dot(v2), steppable::Matrix({ { 32 } }));
+
+steppable::Matrix mat1({ { 0, 0 }, { 0, 7 } });
+steppable::Matrix mat2({ { 0, 0 }, { 0, 3 } });
+
+_.assertIsEqual(mat1.dot(mat2, steppable::MatDims::ROWS), steppable::Matrix({ { 0, 21 } }).transpose());
+_.assertIsEqual(mat1.dot(mat2, steppable::MatDims::COLS), steppable::Matrix({ { 0, 21 } }));
+
 SECTION_END()
 
 SECTION(Test special matrices)

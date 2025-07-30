@@ -35,6 +35,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <functional>
 #include <utility>
 #include <vector>
 
@@ -52,6 +53,12 @@ namespace steppable
         ALL = 0,
         REVERSE_ROWS = 1,
         REVERSE_COLS = 2
+    };
+
+    enum class MatDims : std::uint8_t
+    {
+        ROWS,
+        COLS
     };
 
     constexpr size_t IDX_START = -1;
@@ -91,6 +98,13 @@ namespace steppable
         static MatVec2D<Number> roundOffValues(const MatVec2D<Number>& data, size_t prec);
 
     public:
+        using MatFn = std::function<Number(const Number& elem, const YXPoint& loc)>;
+
+        using MatFn2 = std::function<Number(const Number& lhs, const Number& rhs, const YXPoint& loc)>;
+
+        using MatFnUserData =
+            std::function<Number(const Number& lhs, const Number& rhs, const void* userData, const YXPoint& loc)>;
+
         /**
          * @brief Round off all values to a specified precision.
          * @param prec Precision of the new matrix.
@@ -330,6 +344,63 @@ namespace steppable
         MatrixBase operator*=(const MatrixBase& rhs);
 
         /**
+         * @brief Performs element-wise multiplication.
+         * @details Automatically performs implicit expansion, then multiplies element-wise to produce a new matrix.
+         *
+         * @param rhs The other matrix.
+         * @returns The element-wise multiplication result.
+         */
+        [[nodiscard]] MatrixBase elemWiseMultiply(const MatrixBase& rhs) const;
+
+        /**
+         * @brief Applies a single-argument function to all elements in the matrix.
+         * @param fn The function to be applied to all elements. It takes a `steppable::Number` and a `YXPoint` point,
+         * returning a `steppable::Number`.
+         * @return The resulting matrix after the function has been applied.
+         */
+        [[nodiscard]] MatrixBase apply(const MatFn& fn) const;
+
+        /**
+         * @brief Applies a two-argument function to all elements in the matrix.
+         * @param fn The function to be applied to all elements. It takes two `steppable::Number` objects (one from the
+         * current matrix and another from the other matrix) and a `YXPoint` point, returning a `steppable::Number`
+         * object.
+         * @return The resulting matrix after the function has been applied.
+         */
+        [[nodiscard]] MatrixBase apply(const MatFn2& fn, const MatrixBase& rhs) const;
+
+        /**
+         * @brief Applies a single-argument function to all elements in the matrix.
+         * @param fn The function to be applied to all elements. It takes two `steppable::Number` objects (one from the
+         * current matrix and another from the other matrix), a user-defined `void*` user data objects, and a `YXPoint`
+         * point, returning a `steppable::Number`.
+         * @return The resulting matrix after the function has been applied.
+         */
+        [[nodiscard]] MatrixBase apply(const MatFnUserData& fn, const MatrixBase& rhs, const void* userData) const;
+
+        /**
+         * @brief Calculates the sum of the matrix.
+         * @return The sum of all elements in the matrix.
+         */
+        [[nodiscard]] Number sum() const;
+
+        /**
+         * @brief Calculates the sum of the matrix along a dimension.
+         * @param dims The dimension to calculate on.
+         * @return The sum of elements along a dimension in the matrix.
+         */
+        [[nodiscard]] MatrixBase sumDims(const MatDims& dims = MatDims::COLS) const;
+
+        /**
+         * @brief Calculates the dot-product between the current matrix and another given matrix.\
+         *
+         * @param rhs The other matrix.
+         * @param dims The dimension to operate on.
+         * @return The result of the dot-product.
+         */
+        [[nodiscard]] MatrixBase dot(const MatrixBase& rhs, const MatDims& dims = MatDims::COLS) const;
+
+        /**
          * @brief Raises the current matrix to a certain power.
          * @details Only positive integers (including zero) and the negative number -1 are allowed. Only square matrices
          * are supported. The matrix is multiplied by itself for a specified number of times.
@@ -519,6 +590,14 @@ namespace steppable
          * @return The reversed copy of the current matrix.
          */
         [[nodiscard]] MatrixBase reverse(const MatReverseMode& axis = MatReverseMode::ALL) const;
+
+        /**
+         * @brief Repeats a matrix by a specified amount of times.
+         * @param rowCopies The copies to make across rows.
+         * @param colCopies The copies to make across columns.
+         * @return A repeated copy of the matrix.
+         */
+        [[nodiscard]] MatrixBase repeat(const size_t& rowCopies, const size_t& colCopies) const;
 
         /**
          * @brief Get the number of rows in the matrix.

@@ -29,6 +29,7 @@
 #include "steppable/mat2d.hpp"
 #include "steppable/mat2dSpecial.hpp"
 #include "steppable/number.hpp"
+#include "types/point.hpp"
 #include "util.hpp"
 
 #include <algorithm>
@@ -444,6 +445,177 @@ namespace steppable
         return matrix;
     }
 
+    MatrixBase MatrixBase::apply(const MatrixBase::MatFn& fn) const
+    {
+        MatrixBase res = *this;
+
+        for (size_t j = 0; j < _rows; j++)
+            for (size_t i = 0; i < _cols; i++)
+                res[{ .y = j, .x = i }] = fn(res[{ .y = j, .x = i }], YXPoint{ .y = j, .x = i });
+
+        return res;
+    }
+
+    MatrixBase MatrixBase::apply(const MatrixBase::MatFn2& fn, const MatrixBase& rhs) const
+    {
+        if (_cols != rhs._cols)
+        {
+            output::error("MatrixBase::apply"s,
+                          $("steppable::mat2d",
+                            "88331f88-3a4c-4b7e-9b43-b51a1d1020e2",
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+        if (_rows != rhs._rows)
+        {
+            output::error("MatrixBase::apply"s,
+                          $("steppable::mat2d",
+                            "34e92306-a4d8-4ff0-8441-bfcd29771e94",
+                            { std::to_string(_rows), std::to_string(rhs._rows) }));
+            utils::programSafeExit(1);
+        }
+
+        MatrixBase res = *this;
+
+        for (size_t j = 0; j < _rows; j++)
+            for (size_t i = 0; i < _cols; i++)
+                res[{ .y = j, .x = i }] =
+                    fn(res[{ .y = j, .x = i }], rhs[{ .y = j, .x = i }], YXPoint{ .y = j, .x = i });
+
+        return res;
+    }
+
+    MatrixBase MatrixBase::apply(const MatrixBase::MatFnUserData& fn, const MatrixBase& rhs, const void* userData) const
+    {
+        if (_cols != rhs._cols)
+        {
+            output::error("MatrixBase::apply"s,
+                          $("steppable::mat2d",
+                            "88331f88-3a4c-4b7e-9b43-b51a1d1020e2",
+                            { std::to_string(_cols), std::to_string(rhs._cols) }));
+            utils::programSafeExit(1);
+        }
+        if (_rows != rhs._rows)
+        {
+            output::error("MatrixBase::apply"s,
+                          $("steppable::mat2d",
+                            "34e92306-a4d8-4ff0-8441-bfcd29771e94",
+                            { std::to_string(_rows), std::to_string(rhs._rows) }));
+            utils::programSafeExit(1);
+        }
+
+        MatrixBase res = *this;
+
+        for (size_t j = 0; j < _rows; j++)
+            for (size_t i = 0; i < _cols; i++)
+                res[{ .y = j, .x = i }] =
+                    fn(res[{ .y = j, .x = i }], rhs[{ .y = j, .x = i }], userData, YXPoint{ .y = j, .x = i });
+
+        return res;
+    }
+
+    Number MatrixBase::sum() const
+    {
+        Number res = 0;
+        for (const auto& row : data)
+            for (const auto& elem : row)
+                res += elem;
+
+        return res;
+    }
+
+    MatrixBase MatrixBase::sumDims(const MatDims& dims) const
+    {
+        switch (dims)
+        {
+        case MatDims::ROWS:
+        {
+            // Row-wise sum
+            // [ 1 2 3 4 ] -> [ 10 ]
+            // [ 5 6 7 8 ] -> [ 26 ]
+            // [ 9 1 2 3 ] -> [ 15 ]
+            // [ 4 7 9 5 ] -> [ 25 ]
+            MatrixBase res(_rows, 1);
+            for (size_t j = 0; j < _rows; j++)
+            {
+                Number rowSum = 0;
+                const auto& row = data[j];
+                for (const auto& elem : row)
+                    rowSum += elem;
+                res[{ .y = j, .x = 0 }] = rowSum;
+            }
+            return res;
+        }
+        case MatDims::COLS:
+        {
+            // Column-wise sum
+            // [ 1      2     3     4 ]
+            // [ 5      6     7     8 ]
+            // [ 9      1     2     3 ]
+            // [ 4      7     9     5 ]
+            //   |      |     |     |
+            //   v      v     v     v
+            // [ 19    16    21    20 ]
+            MatrixBase res(1, _cols);
+            for (size_t i = 0; i < _cols; i++)
+            {
+                Number rowSum = 0;
+                for (size_t j = 0; j < _rows; j++)
+                    rowSum += (*this)[{ .y = j, .x = i }];
+                res[{ .y = 0, .x = i }] = rowSum;
+            }
+            return res;
+        }
+        default:
+            break;
+        }
+    }
+
+    MatrixBase MatrixBase::dot(const MatrixBase& rhs, const MatDims& dims) const
+    {
+        if (_rows == rhs._rows and _rows == 1 or // Row vectors
+            _cols == rhs._cols and _cols == 1) // Column vectors
+        {
+            // Both vectors
+            MatrixBase mulResult = elemWiseMultiply(rhs);
+            return MatrixBase({ { mulResult.sum() } });
+        }
+        switch (dims)
+        {
+        case MatDims::ROWS:
+        {
+            // Row-wise dot product
+            MatrixBase result(_rows, 1, Number("0"));
+            for (size_t i = 0; i < _rows; ++i)
+            {
+                Number acc("0");
+                for (size_t j = 0; j < _cols; ++j)
+                    acc += (*this)[{ .y = i, .x = j }] * rhs[{ .y = i, .x = j }];
+                result[{ .y = i, .x = 0 }] = acc;
+            }
+            return result;
+        }
+        case MatDims::COLS:
+        {
+            // Column-wise dot product
+            MatrixBase result(1, _cols, Number("0"));
+            for (size_t j = 0; j < _cols; ++j)
+            {
+                Number acc("0");
+                for (size_t i = 0; i < _rows; ++i)
+                    acc += (*this)[{ .y = i, .x = j }] * rhs[{ .y = i, .x = j }];
+                result[{ .y = 0, .x = j }] = acc;
+            }
+            return result;
+        }
+        default:
+        {
+            // Never reaches here
+            return {};
+        }
+        }
+    }
+
     MatrixBase MatrixBase::operator<<(const MatrixBase& rhs) const
     {
         // Concatenating a matrix to nothing gives the matrix.
@@ -554,6 +726,24 @@ namespace steppable
         MatVec2D<Number> resData = data;
         std::ranges::for_each(rhs.data, [&](const auto& row) { resData.emplace_back(row); });
         return MatrixBase{ resData };
+    }
+
+    MatrixBase MatrixBase::elemWiseMultiply(const MatrixBase& _rhs) const
+    {
+        MatrixBase lhs = *this;
+        MatrixBase rhs = _rhs;
+
+        // Handle implicit expansion
+        if (rhs._cols != _cols or rhs._rows != _rows)
+        {
+            lhs = lhs.repeat(rhs._rows, 1);
+            rhs = rhs.repeat(1, lhs._cols);
+        }
+
+        return lhs.apply([](const Number& lhsNum,
+                            const Number& rhsNum,
+                            const YXPoint& /* unused */) -> Number { return lhsNum * rhsNum; },
+                         rhs);
     }
 
     MatrixBase MatrixBase::operator*=(const Number& rhs)
@@ -872,8 +1062,22 @@ namespace steppable
             reverseRows();
             reverseCols();
             break;
+        };
         }
-        }
+        return res;
+    }
+
+    MatrixBase MatrixBase::repeat(const size_t& rowCopies, const size_t& colCopies) const
+    {
+        MatrixBase res = *this;
+
+        for (size_t col = 1; col < colCopies; col++)
+            res <<= *this;
+
+        MatrixBase rowRepeated = res;
+        for (size_t row = 1; row < rowCopies; row++)
+            res = res.joinBottom(rowRepeated);
+
         return res;
     }
 } // namespace steppable

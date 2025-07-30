@@ -34,8 +34,8 @@ TEST_START()
 using namespace steppable::__internals::calc;
 
 SECTION(Multiplication without carry)
-const std::string &a = "2";
-const std::string &b = "4";
+const std::string& a = "2";
+const std::string& b = "4";
 const auto& multiplyResult1 = multiply(a, b, 0);
 const auto& multiplyResult2 = multiply(b, a, 0); // Makes sure it works when a and b are reordered.
 _.assertIsEqual(multiplyResult1, "8");
@@ -43,8 +43,8 @@ _.assertIsEqual(multiplyResult1, multiplyResult2);
 SECTION_END()
 
 SECTION(Multiplication with one carry)
-const std::string &a = "56";
-const std::string &b = "45";
+const std::string& a = "56";
+const std::string& b = "45";
 const auto& multiplyResult1 = multiply(a, b, 0);
 const auto& multiplyResult2 = multiply(b, a, 0); // Makes sure it works when a and b are reordered.
 _.assertIsEqual(multiplyResult1, "2520");
@@ -52,8 +52,8 @@ _.assertIsEqual(multiplyResult1, multiplyResult2);
 SECTION_END()
 
 SECTION(Multiplication with two carries)
-const std::string &a = "12";
-const std::string &b = "9";
+const std::string& a = "12";
+const std::string& b = "9";
 const auto& multiplyResult1 = multiply(a, b, 0);
 const auto& multiplyResult2 = multiply(b, a, 0); // Makes sure it works when a and b are reordered.
 _.assertIsEqual(multiplyResult1, "108");
@@ -61,8 +61,8 @@ _.assertIsEqual(multiplyResult1, multiplyResult2);
 SECTION_END()
 
 SECTION(Multiplication with negative numbers)
-const std::string &a = "-12";
-const std::string &b = "9";
+const std::string& a = "-12";
+const std::string& b = "9";
 const auto& multiplyResult1 = multiply(a, b, 0);
 const auto& multiplyResult2 = multiply(b, a, 0); // Makes sure it works when a and b are reordered.
 _.assertIsEqual(multiplyResult1, "-108");

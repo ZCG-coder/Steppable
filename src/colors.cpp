@@ -25,9 +25,9 @@
 #include <ostream>
 
 #ifdef WINDOWS
-    // clang-format off
+// clang-format off
     #include <windows.h>
-    // clang-format on
+// clang-format on
 
     #include <cstdio>
     #include <io.h>
@@ -41,10 +41,10 @@ double* sysVersion = nullptr;
 
 // https://stackoverflow.com/a/52122386/14868780
 /**
-* @brief Gets the Windows version as a double.
-* @warning This method is only available on Windows.
-* @returns The Windows version as double, for example, 10.0.
-*/
+ * @brief Gets the Windows version as a double.
+ * @warning This method is only available on Windows.
+ * @returns The Windows version as double, for example, 10.0.
+ */
 double getSysOpType()
 {
     if (sysVersion != nullptr)

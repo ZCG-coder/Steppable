@@ -34,16 +34,16 @@ TEST_START()
 using namespace steppable::__internals::calc;
 
 SECTION(Decimal Convert without letters)
-const std::string &a = "46432231133131";
-const std::string &b = "8";
+const std::string& a = "46432231133131";
+const std::string& b = "8";
 const auto& result = decimalConvert(a, b, 0);
 
 _.assertIsEqual(result, "2649229669977");
 SECTION_END()
 
 SECTION(Decimal Convert)
-const std::string &a = "88a";
-const std::string &b = "16";
+const std::string& a = "88a";
+const std::string& b = "16";
 const auto& result = decimalConvert(a, b, 0);
 
 _.assertIsEqual(result, "2186");

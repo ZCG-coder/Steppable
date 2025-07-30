@@ -56,4 +56,4 @@ namespace steppable::__internals::parameter
                 utils::programSafeExit(1);
             }
     }
-}
+} // namespace steppable::__internals::parameter
