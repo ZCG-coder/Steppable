@@ -366,11 +366,11 @@ namespace steppable
             utils::programSafeExit(1);
         }
 
-        MatrixBase output = SpecialMatrix::zeros(_cols, _rows);
+        MatrixBase output = *this;
 
-        for (size_t i = 0; i < _rows; i++)
-            for (size_t j = 0; j < _cols; j++)
-                output.data[i][j] += rhs.data[i][j];
+        for (size_t j = 0; j < _rows; j++)
+            for (size_t i = 0; i < _cols; i++)
+                output.data[j][i] += rhs.data[j][i];
         return output;
     }
 

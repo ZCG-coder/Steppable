@@ -21,6 +21,7 @@
  **************************************************************************************************/
 
 #include "steppable/mat2d.hpp"
+#include "steppable/mat2dBase.hpp"
 #include "steppable/number.hpp"
 #include "testing.hpp"
 #include "util.hpp"
@@ -57,6 +58,20 @@ _.assertIsEqual(steppable::Matrix({
                     { 2, 3, 4, 5, 6, 2, 3, 4, 5 },
                     { 3, 4, 5, 6, 7, 3, 4, 5, 6 },
                     { 1, 2, 3, 4, 1, 2, 3, 4, 5 },
+                }));
+SECTION_END()
+
+SECTION(Matrix addition)
+steppable::Matrix mat({
+    { 1, 2, 1 },
+    { 2, 3, 1 },
+    { 4, 2, 2 },
+});
+_.assertIsEqual(mat + steppable::Number(1),
+                steppable::Matrix({
+                    { 2, 3, 2 },
+                    { 3, 4, 2 },
+                    { 5, 3, 3 },
                 }));
 SECTION_END()
 
@@ -252,6 +267,9 @@ _.assertIsEqual(mat1.dot(mat2, steppable::MatDims::COLS), steppable::Matrix({ { 
 SECTION_END()
 
 SECTION(Test special matrices)
+const auto& magicMat = steppable::Matrix::magic(6);
+_.assertIsEqual(magicMat.sumDims(steppable::MatDims::COLS), magicMat.sumDims(steppable::MatDims::ROWS).transpose());
+
 _.assertIsEqual(steppable::Matrix(
                     {
                         // Computed with MATLAB

@@ -35,10 +35,12 @@ namespace steppable::testing
 {
     TestCase::TestCase(std::string testCaseName) : testCaseName(std::move(testCaseName)) {}
 
-    void TestCase::_assertCondition(const bool condition, const std::string& conditionName)
+    void TestCase::_assertCondition(const bool condition, const std::string& _conditionName)
     {
+        std::string conditionName = _conditionName;
         if (condition)
         {
+            conditionName = conditionName.substr(0, 50) + " /* snip */";
             info("TestCase::assert"s, "{0} PASSED"s, { conditionName });
             return;
         }

@@ -177,7 +177,7 @@ namespace steppable::testing
          * @param[in] b The second object.
          */
         template<concepts::Presentable ValueTA, concepts::Presentable ValueTB>
-        void assertIsEqual(ValueTA a, ValueTB b)
+        void assertIsEqual(const ValueTA& a, const ValueTB& b)
         {
             const std::string& conditionName =
                 __internals::format::format("Object {0} == {1}", { a.present(), b.present() });

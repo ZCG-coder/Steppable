@@ -269,6 +269,30 @@ namespace steppable
         MatrixBase operator+=(const MatrixBase& rhs);
 
         /**
+         * @brief Add a given number to another matrix.
+         * @details Performs matrix addition, where corresponding elements in both matrices are added.
+         *
+         * @param rhs The given number.
+         * @return A new matrix with the addition result.
+         */
+        MatrixBase operator+(const Number& rhs) const { return operator+(MatrixBase(_rows, _cols, rhs)); }
+
+        /**
+         * @brief Adds a given number to current matrix and assigns result to this matrix.
+         *
+         * @details This operator performs in-place matrix addition, updating each element of the matrix by
+         * addition.
+         *
+         * @param rhs The given number.
+         * @return Instance of a new matrix after addition.
+         */
+        MatrixBase operator+=(const Number& rhs)
+        {
+            *this = *this + rhs;
+            return *this;
+        }
+
+        /**
          * @brief Unary plus operator.
          * @details Does nothing. Simply returns a new instance of the current matrix.
          * @return A new instance of the current matrix.
@@ -285,6 +309,15 @@ namespace steppable
         MatrixBase operator-(const MatrixBase& rhs) const;
 
         /**
+         * @brief Subtracts a given number from another matrix.
+         * @details Performs matrix subtraction, where corresponding elements in both matrices are subtracted.
+         *
+         * @param rhs The given number.
+         * @return A new matrix with the subtraction result.
+         */
+        MatrixBase operator-(const Number& rhs) const { return operator-(MatrixBase(_rows, _cols, rhs)); }
+
+        /**
          * @brief Subtracts the other matrix from current matrix and assigns result to this matrix.
          *
          * @details This operator performs in-place matrix subtraction, updating each element of the matrix by
@@ -294,6 +327,20 @@ namespace steppable
          * @return Instance of a new matrix after subtraction.
          */
         MatrixBase operator-=(const MatrixBase& rhs);
+
+        /**
+         * @brief Subtracts a given number from another matrix, and assigns result to this matrix.
+         * @details Performs matrix subtraction, where corresponding elements in both matrices are subtracted, updating
+         * each element of the matrix by subtraction.
+         *
+         * @param rhs The given number.
+         * @return A new matrix with the subtraction result.
+         */
+        MatrixBase operator-=(const Number& rhs)
+        {
+            *this = *this - rhs;
+            return *this;
+        }
 
         /**
          * @brief Unary minus operator.
