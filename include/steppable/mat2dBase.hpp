@@ -48,20 +48,26 @@ namespace steppable
     template<typename NumberT>
     using MatVec2D = std::vector<std::vector<NumberT>>;
 
+    /**
+     * @brief The way to reverse a 2D matrix.
+     * @enum MatReverseMode
+     */
     enum class MatReverseMode : std::uint8_t
     {
-        ALL = 0,
-        REVERSE_ROWS = 1,
-        REVERSE_COLS = 2
+        ALL = 0, ///< Reverse in both dimensions
+        REVERSE_ROWS = 1, ///< Reverse only row-wise, preserving column order.
+        REVERSE_COLS = 2 ///< Reverse only column-wise, preserving row order.
     };
 
+    /**
+     * @brief The dimension to operate on in a 2D matrix.
+     * @enum MatDims
+     */
     enum class MatDims : std::uint8_t
     {
-        ROWS,
-        COLS
+        ROWS, ///< Perform row-wise operation.
+        COLS ///< Perform column-wise operation.
     };
-
-    constexpr size_t IDX_START = -1;
 
     /**
      * @class MatrixBase
@@ -80,6 +86,11 @@ namespace steppable
          */
         void _checkIdxSanity(const YXPoint* point) const;
 
+	/**
+	 * @brief Check whether the matrix is empty.
+	 * @details Checks whether the matrix has data. If not, errors and exits. It prevents operating on empty
+	 * matrices.
+	 */
         void _checkSelfSanity() const;
 
         /**
@@ -98,10 +109,13 @@ namespace steppable
         static MatVec2D<Number> roundOffValues(const MatVec2D<Number>& data, size_t prec);
 
     public:
+	/// A single-argument function to be applied on all elements in a matrix.
         using MatFn = std::function<Number(const Number& elem, const YXPoint& loc)>;
 
+	/// A 2-argument function to be applied on all elements in a matrix.
         using MatFn2 = std::function<Number(const Number& lhs, const Number& rhs, const YXPoint& loc)>;
 
+	/// A 2-argument function with a user data parameter to be applied on all elements in a matrix.
         using MatFnUserData =
             std::function<Number(const Number& lhs, const Number& rhs, const void* userData, const YXPoint& loc)>;
 

@@ -164,6 +164,14 @@ namespace steppable
          */
         static MatrixBase toeplitz(const MatrixBase& firstColRow, const MatrixBase& firstRow = MatrixBase{ 0, 0 });
 
+	/**
+	 * @brief Generates a magic matrix.
+	 * @details Generates a matrix with dimensions `nxn`, where each row, each column, and each diagonal sums up to
+	 * a fixed number of $$ S = \frac{n(n^2+1)}{2} $$.
+	 * 
+	 * @params colsRows The dimensions of the matrix.
+	 * @return A magic matrix of given order.
+	 */
         static MatrixBase magic(const size_t& colsRows);
 
         /**
