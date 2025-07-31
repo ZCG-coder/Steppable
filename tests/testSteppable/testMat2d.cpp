@@ -30,6 +30,9 @@
 #include <iostream>
 
 TEST_START()
+
+using namespace steppable::literals;
+
 SECTION(Matrix concatenation)
 steppable::Matrix mat1({
     { 1, 2, 3, 4, 5 },
@@ -97,11 +100,11 @@ _.assertIsEqual(mat3,
                     { 11, 9, 6 },
                 }));
 
-steppable::Matrix mat4({ { 1, 2, 3 } });
+steppable::Matrix mat4({ { 1_n, 2_n, 3_n } });
 steppable::Matrix mat5({
-    { 1 },
-    { 2 },
-    { 3 },
+    { 1_n },
+    { 2_n },
+    { 3_n },
 });
 _.assertIsEqual(mat4.elemWiseMultiply(mat5),
                 steppable::Matrix({
@@ -136,19 +139,19 @@ SECTION(Determinant)
 steppable::Matrix mat2({
     { 6, 90 },
     { 4892, 892 },
-});
+}, 5);
 _.assertIsEqual(mat2.det(), steppable::Number(-434928));
 SECTION_END()
 
 SECTION(Matrix slicing)
 steppable::Matrix matrix({
-    { 5, 4, 3 },
-    { 8, 9, 5 },
-    { 6, 5, 3 },
-    { 11, 9, 6 },
-});
+    { 5_n, 4, 3 },
+    { 8_n, 9, 5 },
+    { 6_n, 5, 3 },
+    { 11_n, 9, 6 },
+}, 5);
 matrix = matrix[{ .y1 = 1, .x1 = 0, .y2 = 1, .x2 = 2 }];
-_.assertIsEqual(matrix, steppable::Matrix({ { 8, 9, 5 } }));
+_.assertIsEqual(matrix, steppable::Matrix({ { 8, 9, 5 } }, 5));
 SECTION_END()
 
 SECTION(Matrix joining)
@@ -156,12 +159,12 @@ steppable::Matrix matrix1({
     { 5, 4, 3 },
     { 8, 9, 5 },
     { 6, 5, 3 },
-});
+}, 5);
 steppable::Matrix matrix2({
     { 11, 9, 6 },
     { 8, 9, 5 },
     { 6, 5, 3 },
-});
+}, 5);
 steppable::Matrix matrix3 = matrix1 << matrix2;
 steppable::Matrix matrix4 = matrix1 >> matrix2;
 
@@ -195,7 +198,7 @@ SECTION(Matrix inverse)
 steppable::Matrix matrix1({
     { -1, 1.5 },
     { 1, -1 },
-});
+}, 5);
 _.assertIsEqual((matrix1 ^ -1),
                 steppable::Matrix({ {
                                         2.0000000000,
@@ -204,7 +207,7 @@ _.assertIsEqual((matrix1 ^ -1),
                                     {
                                         2.0000000000,
                                         2.0000000000,
-                                    } }));
+                                    } }, 5));
 
 steppable::Matrix matrix2(
     {
@@ -248,21 +251,21 @@ steppable::Matrix mat({
     { 4, 7, 9, 5 },
 });
 _.assertIsEqual(mat.sum(), steppable::Number(76));
-_.assertIsEqual(mat.sumDims(steppable::MatDims::COLS), steppable::Matrix({ { 19, 16, 21, 20 } }));
-_.assertIsEqual(mat.sumDims(steppable::MatDims::ROWS), steppable::Matrix({ { 10 }, { 26 }, { 15 }, { 25 } }));
+_.assertIsEqual(mat.sumDims(steppable::MatDims::COLS), steppable::Matrix({ { 19, 16, 21, 20 } }, 5));
+_.assertIsEqual(mat.sumDims(steppable::MatDims::ROWS), steppable::Matrix({ { 10 }, { 26 }, { 15 }, { 25 } }, 5));
 
 SECTION_END()
 
 SECTION(Test matrix dot - product)
-steppable::Matrix v1({ { 1, 2, 3 } });
-steppable::Matrix v2({ { 4, 5, 6 } });
-_.assertIsEqual(v1.dot(v2), steppable::Matrix({ { 32 } }));
+steppable::Matrix v1({ { 1, 2, 3 } }, 5);
+steppable::Matrix v2({ { 4, 5, 6 } }, 5);
+_.assertIsEqual(v1.dot(v2), steppable::Matrix(1, 1, 32_n));
 
-steppable::Matrix mat1({ { 0, 0 }, { 0, 7 } });
-steppable::Matrix mat2({ { 0, 0 }, { 0, 3 } });
+steppable::Matrix mat1({ { 0, 0 }, { 0, 7 } }, 5);
+steppable::Matrix mat2({ { 0, 0 }, { 0, 3 } }, 5);
 
-_.assertIsEqual(mat1.dot(mat2, steppable::MatDims::ROWS), steppable::Matrix({ { 0, 21 } }).transpose());
-_.assertIsEqual(mat1.dot(mat2, steppable::MatDims::COLS), steppable::Matrix({ { 0, 21 } }));
+_.assertIsEqual(mat1.dot(mat2, steppable::MatDims::ROWS), steppable::Matrix({ { 0, 21 } }, 5).transpose());
+_.assertIsEqual(mat1.dot(mat2, steppable::MatDims::COLS), steppable::Matrix({ { 0, 21 } }, 5));
 
 SECTION_END()
 
@@ -293,10 +296,10 @@ _.assertIsEqual(steppable::Matrix(
                     4),
                 steppable::Matrix::hankel(steppable::Matrix({
                                               { 1, 2, 5 },
-                                          }),
+                                          }, 5),
                                           steppable::Matrix({
                                               { 3, 6, 9, 10 },
-                                          }))
+                                          }, 5))
                     .roundOffValues(4));
 
 _.assertIsEqual(steppable::Matrix(
@@ -313,10 +316,10 @@ _.assertIsEqual(steppable::Matrix(
                     4),
                 steppable::Matrix::toeplitz(steppable::Matrix({
                                                 { 1, 2, 3, 4 },
-                                            }),
+                                            }, 5),
                                             steppable::Matrix({
                                                 { 1, 5, 6, 7 },
-                                            }))
+                                            }, 5))
                     .roundOffValues(4));
 
 _.assertIsEqual(steppable::Matrix(
@@ -333,10 +336,10 @@ _.assertIsEqual(steppable::Matrix(
                     4),
                 steppable::Matrix::toeplitz(steppable::Matrix({
                                                 { 1, 2, 3, 4 },
-                                            }),
+                                            }, 5),
                                             steppable::Matrix({
                                                 { 4, 5, 6 },
-                                            }))
+                                            }, 5))
                     .roundOffValues(4));
 
 _.assertIsEqual(steppable::Matrix(
@@ -350,10 +353,10 @@ _.assertIsEqual(steppable::Matrix(
                     4),
                 steppable::Matrix::hankel(steppable::Matrix({
                                               { 1, 2, 5 },
-                                          }),
+                                          }, 5),
                                           steppable::Matrix({
                                               { 5, 10 },
-                                          }))
+                                          }, 5))
                     .roundOffValues(4));
 
 _.assertIsEqual(steppable::Matrix(
@@ -369,7 +372,7 @@ _.assertIsEqual(steppable::Matrix(
                     4),
                 steppable::Matrix::vandermonde(steppable::Matrix({
                                                    { 1, 2, 3, 4, 5 },
-                                               }))
+                                               }, 5))
                     .roundOffValues(4));
 
 // Property of Hadamard matrices

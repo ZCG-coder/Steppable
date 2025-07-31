@@ -567,7 +567,7 @@ namespace steppable
             return res;
         }
         default:
-            break;
+            return {};
         }
     }
 

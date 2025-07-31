@@ -21,6 +21,7 @@
 #####################################################################################################
 
 INCLUDE(cmake/build_special_hacks.cmake)
+INCLUDE(cmake/gcc_special_hacks.cmake)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
 PROJECT(Steppable)
