@@ -16,7 +16,7 @@ void addFontIfExistent(const ImGuiIO* io,
     if (std::filesystem::exists(path))
     {
 #ifdef DEBUG
-        steppable::output::info("addIfExistent"s, "Added font {0}"s, { path });
+        steppable::output::info("addFontIfExistent"s, "Added font {0}"s, { path });
 #endif
         io->Fonts->AddFontFromFileTTF(static_cast<const char*>(path.c_str()), 25.0F, config, ranges);
     }
@@ -108,23 +108,23 @@ void loadFonts(const ImGuiIO* io) noexcept
     // Vietnamese -> DejaVu Sans -----------------+
 
     // Load top-priority fonts
-    addIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesCyrillic());
-    addIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesGreek());
-    addIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesVietnamese());
+    addFontIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesCyrillic());
+    addFontIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesGreek());
+    addFontIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesVietnamese());
 
     // Load Chinese fonts
-    addIfExistent(io, "/usr/share/fonts/TTF/wqy-zenhei.ttc", &config, io->Fonts->GetGlyphRangesChineseFull());
+    addFontIfExistent(io, "/usr/share/fonts/TTF/wqy-zenhei.ttc", &config, io->Fonts->GetGlyphRangesChineseFull());
 
     // Load Japanese fonts
-    addIfExistent(io, "/usr/share/fonts/TTF/takao-mincho.ttf", &config, io->Fonts->GetGlyphRangesJapanese());
+    addFontIfExistent(io, "/usr/share/fonts/TTF/takao-mincho.ttf", &config, io->Fonts->GetGlyphRangesJapanese());
 
     // Load Korean fonts
-    addIfExistent(io, "/usr/share/fonts/TTF/NanumGothic.ttf", &config, io->Fonts->GetGlyphRangesKorean());
+    addFontIfExistent(io, "/usr/share/fonts/TTF/NanumGothic.ttf", &config, io->Fonts->GetGlyphRangesKorean());
 
     // Load Thai fonts
-    addIfExistent(io, "/usr/share/fonts/TTF/garuda.ttf", &config, io->Fonts->GetGlyphRangesThai());
+    addFontIfExistent(io, "/usr/share/fonts/TTF/garuda.ttf", &config, io->Fonts->GetGlyphRangesThai());
 
-    addIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesDefault());
+    addFontIfExistent(io, "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", &config, io->Fonts->GetGlyphRangesDefault());
 #endif
 #if defined(WINDOWS) || defined(LINUX) || defined(MACOSX)
     // Add the default font as well.

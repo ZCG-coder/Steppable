@@ -46,10 +46,6 @@ jobs:
                 echo "py-build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
                 echo "CMAKE_OPTIONS=${{ matrix.cmake_extra_options }}" >> "$GITHUB_ENV"
 
-            - name: Set up Homebrew
-              id: set-up-homebrew
-              uses: Homebrew/actions/setup-homebrew@master
-
             - name: Install Linux dependencies
               run: |
                 sudo apt-get install build-essential git make \
@@ -80,8 +76,6 @@ jobs:
                 -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))")
                 -DPYTHON_EXECUTABLE:FILEPATH=`which python`
                 -DSTP_BUILD_COMPONENT_EXECUTABLE=True
-                -DCMAKE_C_COMPILER="$(brew --prefix llvm)/bin/${{ matrix.c_compiler }}"
-                -DCMAKE_CXX_COMPILER="$(brew --prefix llvm)/bin/${{ matrix.cpp_compiler }}"
               shell: bash
 
             - name: CMake Build
