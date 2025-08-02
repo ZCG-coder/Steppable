@@ -1,22 +1,12 @@
-#include "SDL3/SDL_events.h"
-#include "SDL3/SDL_init.h"
-#include "SDL3/SDL_video.h"
 #define SDL_MAIN_USE_CALLBACKS 1
-#include "backends/imgui_impl_sdl3.h"
-#include "backends/imgui_impl_sdlrenderer3.h"
-#include "imgui.h"
+#include "include/appState.hpp"
 #include "include/guiUtils.hpp"
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
-
-struct AppState
-{
-    SDL_Window* window = nullptr;
-    SDL_Renderer* renderer = nullptr;
-    bool redraw = true;
-    bool imgui_initialized = false;
-};
+#include <backends/imgui_impl_sdl3.h>
+#include <backends/imgui_impl_sdlrenderer3.h>
+#include <imgui.h>
 
 SDL_AppResult SDL_AppInit(void** appstate, int /*unused*/, char** /*unused*/)
 {
@@ -58,7 +48,7 @@ SDL_AppResult SDL_AppInit(void** appstate, int /*unused*/, char** /*unused*/)
     state->imgui_initialized = true;
 
     state->redraw = true;
-    loadFonts(&io);
+    steppable::__internals::gui::loadFonts(&io);
     return SDL_APP_CONTINUE;
 }
 
@@ -75,26 +65,12 @@ SDL_AppResult SDL_AppIterate(void* appstate)
         ImGui_ImplSDLRenderer3_NewFrame();
         ImGui::NewFrame();
 
-        // Your ImGui UI
-        ImGui::Begin("Hello, ImGui!");
-        int win_w = 0;
-        int win_h = 0;
-        int drawable_w = 0;
-        int drawable_h = 0;
-        SDL_GetWindowSize(state->window, &win_w, &win_h); // logical (points)
-        SDL_GetRenderOutputSize(state->renderer, &drawable_w, &drawable_h); // physical (pixels)
-
-        ImGuiIO& io = ImGui::GetIO();
-        io.DisplayFramebufferScale = ImVec2(static_cast<float>(drawable_w) / static_cast<float>(win_w),
-                                            static_cast<float>(drawable_h) / static_cast<float>(win_h));
-        ImGui::Text("Window size: %d x %d", win_w, win_h);
-        ImGui::End();
-
-        ImGui::ShowDemoWindow();
+        state->predicate();
 
         ImGui::Render();
 
         // Clear SDL_Renderer
+        ImGuiIO& io = ImGui::GetIO();
         SDL_SetRenderScale(state->renderer, io.DisplayFramebufferScale.x, io.DisplayFramebufferScale.y);
         SDL_SetRenderDrawColor(state->renderer, 16, 16, 16, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(state->renderer);
