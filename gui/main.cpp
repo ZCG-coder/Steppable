@@ -1,4 +1,6 @@
 #define SDL_MAIN_USE_CALLBACKS 1
+
+#include "SDL3/SDL_init.h"
 #include "include/appState.hpp"
 #include "include/guiUtils.hpp"
 
@@ -8,19 +10,19 @@
 #include <backends/imgui_impl_sdlrenderer3.h>
 #include <imgui.h>
 
+using namespace steppable::__internals::gui;
+
 SDL_AppResult SDL_AppInit(void** appstate, int /*unused*/, char** /*unused*/)
 {
-    *appstate = SDL_malloc(sizeof(AppState));
-    if (appstate == nullptr)
-        return SDL_APP_FAILURE;
+    *appstate = new AppState; // NOLINT(*-owning-memory)
     auto* state = static_cast<AppState*>(*appstate);
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
         return SDL_APP_FAILURE;
 
     float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
     state->window = SDL_CreateWindow(nullptr,
-                                     (int)(500 * main_scale),
-                                     (int)(500 * main_scale),
+                                     static_cast<int>(500 * main_scale),
+                                     static_cast<int>(500 * main_scale),
                                      SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY);
     if (state->window == nullptr)
         return SDL_APP_FAILURE;
@@ -34,13 +36,11 @@ SDL_AppResult SDL_AppInit(void** appstate, int /*unused*/, char** /*unused*/)
     ImGui::CreateContext();
 
     ImGuiStyle& style = ImGui::GetStyle();
-    style.ScaleAllSizes(main_scale); // Bake a fixed style scale. (until we have a solution for dynamic style scaling,
-                                     // changing this requires resetting Style + calling this again)
+    style.ScaleAllSizes(main_scale);
     style.FontScaleDpi = main_scale;
 
     ImGuiIO& io = ImGui::GetIO();
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
-    io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad; // Enable Gamepad Controls
 
     ImGui::StyleColorsDark();
     ImGui_ImplSDL3_InitForSDLRenderer(state->window, state->renderer);
@@ -48,7 +48,9 @@ SDL_AppResult SDL_AppInit(void** appstate, int /*unused*/, char** /*unused*/)
     state->imgui_initialized = true;
 
     state->redraw = true;
-    steppable::__internals::gui::loadFonts(&io);
+    loadAllFonts(state);
+
+    io.Fonts->Build();
     return SDL_APP_CONTINUE;
 }
 
@@ -57,6 +59,7 @@ SDL_AppResult SDL_AppIterate(void* appstate)
     auto* state = static_cast<AppState*>(appstate);
     if (!state->imgui_initialized)
         return SDL_APP_FAILURE;
+    SDL_AppResult res = SDL_APP_CONTINUE;
 
     if (state->redraw)
     {
@@ -65,14 +68,14 @@ SDL_AppResult SDL_AppIterate(void* appstate)
         ImGui_ImplSDLRenderer3_NewFrame();
         ImGui::NewFrame();
 
-        state->predicate();
+        res = state->predicate();
 
         ImGui::Render();
 
         // Clear SDL_Renderer
         ImGuiIO& io = ImGui::GetIO();
         SDL_SetRenderScale(state->renderer, io.DisplayFramebufferScale.x, io.DisplayFramebufferScale.y);
-        SDL_SetRenderDrawColor(state->renderer, 16, 16, 16, SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(state->renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(state->renderer);
 
         // Render ImGui
@@ -82,7 +85,7 @@ SDL_AppResult SDL_AppIterate(void* appstate)
         state->redraw = false;
     }
     SDL_Delay(1);
-    return SDL_APP_CONTINUE;
+    return res;
 }
 
 SDL_AppResult SDL_AppEvent(void* appstate, SDL_Event* event)
@@ -103,6 +106,8 @@ SDL_AppResult SDL_AppEvent(void* appstate, SDL_Event* event)
 void SDL_AppQuit(void* appstate, SDL_AppResult result)
 {
     auto* state = static_cast<AppState*>(appstate);
+    assert(state != nullptr);
+
     if (state->imgui_initialized)
     {
         ImGui_ImplSDLRenderer3_Shutdown();
@@ -112,7 +117,7 @@ void SDL_AppQuit(void* appstate, SDL_AppResult result)
     }
     if (result == SDL_APP_FAILURE)
         SDL_ShowSimpleMessageBox(
-            SDL_MESSAGEBOX_ERROR, "Error", SDL_GetError(), (appstate != nullptr) ? state->window : NULL);
-    if (state != nullptr)
-        SDL_free(state);
+            SDL_MESSAGEBOX_ERROR, "Error", SDL_GetError(), state->window);
+
+    SDL_free(state);
 }

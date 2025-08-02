@@ -4,7 +4,6 @@
 [submodule "wiki"]
 	path = wiki
 	url = https://github.com/ZCG-coder/Steppable.wiki.git
-[submodule "include/imgui"]
-	path = include/imgui
-	url = https://github.com/ZCG-coder/imgui.git
-	branch = docking
+[submodule "gui/include/imNodeEditor"]
+	path = gui/include/imNodeEditor
+	url = https://github.com/ZCG-coder/imgui-node-editor.git
