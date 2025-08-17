@@ -1,5 +1,7 @@
 include(FetchContent)
 
+if (STP_HAS_GUI)
+
 # JSON 11
 add_library(json11 include/json11/json11.cpp)
 
@@ -72,3 +74,5 @@ target_include_directories(steppable_main PRIVATE
         ${STP_BASE_DIRECTORY}/gui/include/imNodeEditor
 )
 target_include_directories(steppable_main PUBLIC include/imnodes)
+
+endif()

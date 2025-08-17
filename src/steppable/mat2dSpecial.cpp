@@ -34,6 +34,9 @@
 #include <math.h>
 #include <memory>
 #include <string>
+#include <getString.hpp>
+
+using namespace steppable::localization;
 
 namespace
 {
@@ -155,12 +158,12 @@ namespace steppable
         auto firstCol = _firstCol;
         if (firstCol.getRows() != 1)
         {
-            output::error("SpecialMatrix::hankel"s, "Expect vector for first column."s);
+            output::error("SpecialMatrix::hankel"s, $("steppable::mat2d", "309f8cba-21f7-4998-9907-09b1dbcb74d1"));
             utils::programSafeExit(1);
         }
         if (lastRow.getRows() != 1)
         {
-            output::error("SpecialMatrix::hankel"s, "Expect vector for last row."s);
+            output::error("SpecialMatrix::hankel"s, $("steppable::mat2d", "032f6d32-397d-4c1c-819a-aa1923a77601"));
             utils::programSafeExit(1);
         }
         firstCol = firstCol.transpose();
@@ -170,8 +173,8 @@ namespace steppable
         if (firstColLast != lastRow[{ .y = 0, .x = 0 }])
         {
             output::warning("SpecialMatrix::hankel"s,
-                            "Last element of the first column does not match first element of the last row."s);
-            output::info("SpecialMatrix::hankel"s, "Using column value."s);
+                            $("steppable::mat2d", "6ecadb84-c406-4cb1-b066-b8db9d479959"));
+            output::info("SpecialMatrix::hankel"s, $("steppable::mat2d", "47ce2948-fd80-441f-8673-b87579e05cd6"));
             lastRow[{ .y = 0, .x = 0 }] = firstColLast;
         }
         size_t resRows = firstCol.getRows();
@@ -206,7 +209,7 @@ namespace steppable
     {
         if (vec.getRows() != 1)
         {
-            output::error("SpecialMatrix::vandermonde"s, "Input is not a vector."s);
+            output::error("SpecialMatrix::vandermonde"s, $("steppable::mat2d", "acaf0788-ad2e-449b-a730-048aa5553701"));
             utils::programSafeExit(1);
         }
         size_t cols = vec.getCols();
@@ -236,20 +239,19 @@ namespace steppable
 
         if (firstCol.getRows() != 1)
         {
-            output::error("SpecialMatrix::toeplitz"s, "Expect vector for first column."s);
+            output::error("SpecialMatrix::toeplitz"s, $("steppable::mat2d", "309f8cba-21f7-4998-9907-09b1dbcb74d1"));
             utils::programSafeExit(1);
         }
         if (firstRow.getRows() != 1)
         {
-            output::error("SpecialMatrix::toeplitz"s, "Expect vector for first row."s);
+            output::error("SpecialMatrix::toeplitz"s, $("steppable::mat2d", "032f6d32-397d-4c1c-819a-aa1923a77601"));
             utils::programSafeExit(1);
         }
 
         if (firstCol[{ .y = 0, .x = 0 }] != firstRow[{ .y = 0, .x = 0 }])
         {
-            output::warning("SpecialMatrix::toeplitz"s,
-                            "First element of the first column does not match first element of the first row."s);
-            output::info("SpecialMatrix::toeplitz"s, "Using column value."s);
+            output::warning("SpecialMatrix::toeplitz"s, $("steppable::mat2d", "93521580-b375-42e1-951f-3c6183f5c091"));
+            output::info("SpecialMatrix::toeplitz"s, $("steppable::mat2d", "47ce2948-fd80-441f-8673-b87579e05cd6"));
         }
 
         MatrixBase res(0, 0);
@@ -291,7 +293,7 @@ namespace steppable
 
         if (logNRemainder * logNRemainder12 * logNRemainder20 != 0.0)
         {
-            output::error("SpecialMatrix::hadamard"s, "n, n/12 or n/20 must be an exponent of 2."s);
+            output::error("SpecialMatrix::hadamard"s, $("steppable::mat2d", "20c6a9f9-1610-4c25-a176-d5601e09f0f9"));
             utils::programSafeExit(1);
         }
         long double e = NAN;
@@ -335,7 +337,7 @@ namespace steppable
     {
         if (colsRows < 3)
         {
-            output::error("SpecialMatrix::magic"s, "The order should be greater or equal to 3"s);
+            output::error("SpecialMatrix::magic"s, $("steppable::mat2d", "28a2d830-16b6-4c85-af43-c6f866716c57"));
             utils::programSafeExit(1);
         }
 
