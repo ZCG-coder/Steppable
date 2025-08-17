@@ -16,6 +16,7 @@ dependencies = [
     "nanobind >= 1.9.2",
     "pyyaml >= 6.0.1",
     "matplotlib >= 3.9.0; 'Windows' not in platform_system",
+    "pyreadline3 == 3.5.4",
     "black >= 24.4.2",
     "isort >= 5.13.2",
 ]

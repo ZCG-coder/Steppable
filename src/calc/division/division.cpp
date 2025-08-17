@@ -121,13 +121,13 @@ namespace steppable::__internals::calc
         if (isZeroString(_number) and isZeroString(_divisor))
         {
             // Easter egg in open-source code
-            error("division", $("calc::division", "e8ad759d-fcb8-4280-a7a8-a637ae834ffc"));
+            output::error("division", $("calc::division", "e8ad759d-fcb8-4280-a7a8-a637ae834ffc"));
             return "Indeterminate";
         }
         if (isZeroString(_divisor))
         {
             // Division by zero leads to infinity.
-            error("division", $("calc::division", "977f3c9f-01c3-49e4-bf4a-94d7c58bbe82", { _number }));
+            output::error("division", $("calc::division", "977f3c9f-01c3-49e4-bf4a-94d7c58bbe82", { _number }));
             return "Infinity";
         }
         if (isZeroString(_number))
@@ -227,7 +227,7 @@ namespace steppable::__internals::calc
         {
             if (steps != 0)
                 // Warn the user that the result is inaccurate.
-                warning("division"s, $("calc::division", "d38c283c-e75d-4cc2-a634-bf1b3361d489"));
+                output::warning("division"s, $("calc::division", "d38c283c-e75d-4cc2-a634-bf1b3361d489"));
             return "0";
         }
 

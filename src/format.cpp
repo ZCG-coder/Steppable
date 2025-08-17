@@ -30,7 +30,7 @@
 namespace steppable::__internals::format
 {
 
-    std::string format(const std::string& format, const std::vector<std::string>& args)
+    std::string format(const std::string& formatStr, const std::vector<std::string>& args)
     {
         // Format string
         // Original format:
@@ -39,10 +39,10 @@ namespace steppable::__internals::format
         // ...
         // {n} -> args[n]
 
-        std::string result = format;
+        std::string result = formatStr;
         std::string index;
         bool inBrackets = false;
-        for (char i : format)
+        for (char i : formatStr)
         {
             switch (i)
             {

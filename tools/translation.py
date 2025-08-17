@@ -34,12 +34,14 @@ Process:
 """
 import argparse
 import re
-import readline as _  # Enables input history and more advanced editing capabilities.
+from pyreadline3 import Readline
 import uuid
 from pathlib import Path
 
 from lib.printing import erase_line, print_error
 from tools.install import install
+
+readline = Readline()
 
 ISO_639_REGEX = re.compile(r"^[a-z]{2}(-[A-Z]{2})?$")
 COMPONENT_REGEX = re.compile(r"^([a-zA-Z0-9]+?)::([a-zA-Z0-9]+?)$")
@@ -80,7 +82,7 @@ def ask_translation(string: str) -> str:
     :return: The translation of the string.
     """
     print(f'String      : "{string}"')
-    translation = input("Translation : ")
+    translation = readline.readline("Translation : ")
     print(erase_line(2))
 
     return translation
@@ -126,11 +128,11 @@ def write_indexed_file(component: str, *, append: bool = False) -> None:
     mode = "a" if append else "w"
 
     print(f"Enter the strings in {component_orig}, blank line to quit.")
-    string = input("> ")
+    string = readline.readline("> ")
     guid = str(uuid.uuid4())
     strings = [f'{guid} >> "{string}"']
     while string != "":
-        string = input("> ")
+        string = readline.readline("> ")
         guid = str(uuid.uuid4())
         strings.append(f'{guid} >> "{string}"')
 
@@ -148,18 +150,18 @@ def write_indexed_file(component: str, *, append: bool = False) -> None:
         f.write(content)
 
 
-def add_translations(file: Path, language: str) -> None:
+def add_translations(component: str, component_directory: str, file: Path, language: str) -> None:
     """
     Adds a new translation to the given file.
     Writes the translations to a new file.
+    :param component: The name of the component to translate.
+    :param component_directory: The directory of the component.
     :param file: The file to translate.
     :param language: The language to translate the strings to.
     """
 
-    verify_language(language)  # Check if the language code is valid
     print("INFO: Thank you for helping us translate the project!")
     print(f"INFO: TRANSLATING {file} TO {language}")
-    component = file.stem
 
     if not file.is_file():
         write_indexed_file(component, append=False)
@@ -207,8 +209,8 @@ def add_translations(file: Path, language: str) -> None:
     # Step 5: Write the translations to a new file
     if not (lang_path := Path(f"res/translations/{language}")).is_dir():
         lang_path.mkdir(parents=True)
-    output_file = Path(f"res/translations/{language}/{component}.stp_localized")
-    with output_file.open("w") as f:
+    output_file = Path(f"res/translations/{language}/{component_directory}/{component}.stp_localized")
+    with output_file.open("w", encoding="utf-8") as f:
         f.write(LOCALIZED_HEADER.format(TYPE="TRANSLATED") + "\n".join(entries))
     print(f"INFO: Translations written to {output_file}. Done.")
 
@@ -245,8 +247,15 @@ def main():
 
     args = parser.parse_args()
     if args.command == "add_tr":
-        path = Path(f"res/translations/{args.component}.stp_strings")
-        add_translations(path, args.language)
+        component_orig = args.component
+        verify_language(args.language)
+        verify_component(component_orig)  # Check if the language code is valid
+        matches = COMPONENT_REGEX.match(component_orig)
+        component_directory = matches.group(1)
+        component = matches.group(2)
+        path = Path(f"res/translations/{component_directory}/{component}.stp_strings")
+
+        add_translations(component, component_directory, path, args.language)
     elif args.command == "wr_idx":
         write_indexed_file(args.component, append=args.append)
 

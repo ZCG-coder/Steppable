@@ -48,5 +48,5 @@
  */
 namespace steppable::__internals::format
 {
-    std::string format(const std::string& format, const std::vector<std::string>& args);
+    std::string format(const std::string& formatStr, const std::vector<std::string>& args);
 } // namespace steppable::__internals::format

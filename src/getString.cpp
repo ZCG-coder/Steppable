@@ -27,10 +27,17 @@
 #include "util.hpp"
 
 #include <algorithm>
+#include <map>
 #include <regex>
 #include <vector>
 
 // DO NOT LOCALIZE
+
+thread_local const std::map<std::string, std::string>& langNameReplacements = {
+    { "en-GB", "en-US" },
+    { "zh-TW", "zh-HK" },
+    { "zh-CN", "zh-HK" },
+};
 
 namespace steppable::localization
 {
@@ -73,6 +80,9 @@ namespace steppable::localization
         // We cannot find the language, so we return "en-US" as the default language.
         if (lang.empty() or lang == "C")
             lang = "en-US";
+
+        if (langNameReplacements.find(lang) != langNameReplacements.end())
+            lang = langNameReplacements.at(lang);
         return lang;
     }
 
@@ -100,7 +110,7 @@ namespace steppable::localization
 
         // Group 1: Key, Group 2: String
         const std::regex STRING_REGEX(
-            R"(^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}) >> \"([^\"]+?)\"$)");
+            R"(^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}) >> \"(.+?)\")");
 
         const auto& confDir = getConfDirectory();
         std::string lang = getLanguage();
