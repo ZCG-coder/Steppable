@@ -80,7 +80,7 @@ namespace steppable
         return Number(divideWithQuotient(value, rhs.value).quotient, prec, mode);
     }
 
-    Number Number::operator^(const Number& rhs)
+    Number Number::operator^(const Number& rhs) const
     {
         const size_t usePrec = determinePrec<"operator^">(rhs);
         return Number(power(value, rhs.value, 0, static_cast<int>(usePrec)), usePrec, mode);

@@ -746,6 +746,42 @@ namespace steppable
                          rhs);
     }
 
+    MatrixBase MatrixBase::elemWiseDivision(const MatrixBase& _rhs) const
+    {
+        MatrixBase lhs = *this;
+        MatrixBase rhs = _rhs;
+
+        // Handle implicit expansion
+        if (rhs._cols != _cols or rhs._rows != _rows)
+        {
+            lhs = lhs.repeat(rhs._rows, 1);
+            rhs = rhs.repeat(1, lhs._cols);
+        }
+
+        return lhs.apply([](const Number& lhsNum,
+                            const Number& rhsNum,
+                            const YXPoint& /* unused */) -> Number { return lhsNum / rhsNum; },
+                         rhs);
+    }
+
+    MatrixBase MatrixBase::elemWisePower(const MatrixBase& _rhs) const
+    {
+        MatrixBase lhs = *this;
+        MatrixBase rhs = _rhs;
+
+        // Handle implicit expansion
+        if (rhs._cols != _cols or rhs._rows != _rows)
+        {
+            lhs = lhs.repeat(rhs._rows, 1);
+            rhs = rhs.repeat(1, lhs._cols);
+        }
+
+        return lhs.apply([](const Number& lhsNum,
+                            const Number& rhsNum,
+                            const YXPoint& /* unused */) -> Number { return lhsNum ^ rhsNum; },
+                         rhs);
+    }
+
     MatrixBase MatrixBase::operator*=(const Number& rhs)
     {
         *this = *this * rhs;
@@ -755,6 +791,29 @@ namespace steppable
     MatrixBase MatrixBase::operator*=(const MatrixBase& rhs)
     {
         *this = *this * rhs;
+        return *this;
+    }
+
+    MatrixBase MatrixBase::operator/(const Number& rhs) const
+    {
+        MatrixBase newMat = *this;
+        for (auto& row : newMat.data)
+            for (auto& num : row)
+                num /= rhs;
+        return newMat;
+    }
+
+    MatrixBase MatrixBase::operator/=(const Number& rhs)
+    {
+        *this = *this / rhs;
+        return *this;
+    }
+
+    MatrixBase MatrixBase::operator/(const MatrixBase& rhs) const { return *this * (rhs ^ -1); }
+
+    MatrixBase MatrixBase::operator/=(const MatrixBase& rhs)
+    {
+        *this = *this / rhs;
         return *this;
     }
 
@@ -785,6 +844,12 @@ namespace steppable
         for (Number i = 0; i < times; ++i)
             matrix *= matrix;
         return matrix;
+    }
+
+    MatrixBase MatrixBase::operator^=(const Number& times)
+    {
+        *this = *this ^ times;
+        return *this;
     }
 
     std::string MatrixBase::present(const int endRows) const

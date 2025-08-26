@@ -203,7 +203,7 @@ namespace steppable
          * @param rhs The power to raise the number to.
          * @return The result of the power operation.
          */
-        Number operator^(const Number& rhs);
+        Number operator^(const Number& rhs) const;
 
         /**
          * @brief Adds the number to another number and assigns the result to the current number.

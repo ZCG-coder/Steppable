@@ -86,11 +86,11 @@ namespace steppable
          */
         void _checkIdxSanity(const YXPoint* point) const;
 
-	/**
-	 * @brief Check whether the matrix is empty.
-	 * @details Checks whether the matrix has data. If not, errors and exits. It prevents operating on empty
-	 * matrices.
-	 */
+        /**
+         * @brief Check whether the matrix is empty.
+         * @details Checks whether the matrix has data. If not, errors and exits. It prevents operating on empty
+         * matrices.
+         */
         void _checkSelfSanity() const;
 
         /**
@@ -109,13 +109,13 @@ namespace steppable
         static MatVec2D<Number> roundOffValues(const MatVec2D<Number>& data, size_t prec);
 
     public:
-	/// A single-argument function to be applied on all elements in a matrix.
+        /// A single-argument function to be applied on all elements in a matrix.
         using MatFn = std::function<Number(const Number& elem, const YXPoint& loc)>;
 
-	/// A 2-argument function to be applied on all elements in a matrix.
+        /// A 2-argument function to be applied on all elements in a matrix.
         using MatFn2 = std::function<Number(const Number& lhs, const Number& rhs, const YXPoint& loc)>;
 
-	/// A 2-argument function with a user data parameter to be applied on all elements in a matrix.
+        /// A 2-argument function with a user data parameter to be applied on all elements in a matrix.
         using MatFnUserData =
             std::function<Number(const Number& lhs, const Number& rhs, const void* userData, const YXPoint& loc)>;
 
@@ -405,6 +405,39 @@ namespace steppable
         MatrixBase operator*=(const MatrixBase& rhs);
 
         /**
+         * @brief Scalar division.
+         * @details Divides each element of the matrix by a scalar.
+         *
+         * @param rhs The scalar to divide.
+         * @return A new matrix after the scalar division
+         */
+        MatrixBase operator/(const Number& rhs) const;
+
+        /**
+         * @brief Scalar division.
+         * @details Divides each element of the matrix by a scalar.
+         *
+         * @param rhs The scalar to divide.
+         * @return A new matrix after the scalar division
+         */
+        MatrixBase operator/=(const Number& rhs);
+
+        /**
+         * @brief Perform matrix division. i.e., multiplying with the other matrix's inverse.
+         * @param rhs The other matrix.
+         * @return The new matrix after the division.
+         */
+        MatrixBase operator/(const MatrixBase& rhs) const;
+
+        /**
+         * @brief Perform matrix division. i.e., multiplying with the other matrix's inverse. Stores the result in the
+         * current matrix.
+         * @param rhs The other matrix.
+         * @return The updated matrix after the division.
+         */
+        MatrixBase operator/=(const MatrixBase& rhs);
+
+        /**
          * @brief Performs element-wise multiplication.
          * @details Automatically performs implicit expansion, then multiplies element-wise to produce a new matrix.
          *
@@ -412,6 +445,25 @@ namespace steppable
          * @returns The element-wise multiplication result.
          */
         [[nodiscard]] MatrixBase elemWiseMultiply(const MatrixBase& rhs) const;
+
+        /**
+         * @brief Performs element-wise division.
+         * @details Automatically performs implicit expansion, then divides element-wise to produce a new matrix.
+         *
+         * @param rhs The other matrix.
+         * @returns The element-wise division result.
+         */
+        [[nodiscard]] MatrixBase elemWiseDivision(const MatrixBase& rhs) const;
+
+        /**
+         * @brief Performs element-wise power.
+         * @details Automatically performs implicit expansion, then raises numbers element-wise to the corresponding
+         * power to produce a new matrix.
+         *
+         * @param rhs The other matrix.
+         * @returns The element-wise exponent result.
+         */
+        [[nodiscard]] MatrixBase elemWisePower(const MatrixBase& rhs) const;
 
         /**
          * @brief Applies a single-argument function to all elements in the matrix.
