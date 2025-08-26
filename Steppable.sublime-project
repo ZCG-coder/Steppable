@@ -4,18 +4,24 @@
         {
             "path": ".",
         },
-        {
-            "path": "../Steppable.wiki",
-        },
     ],
     "debugger_configurations":
     [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Test run parser",
+            "program": "${folder}/build/parser/stp_parse",
+            "args": ["${folder}/parser/tests/stp_files/test1.stp"],
+            "cwd": "${folder}",
+            "pre_debug_task": "CMake Build"
+        },
     ],
     "debugger_tasks":
     [
         {
             "name": "CMake Build",
-            "cmd": "ninja",
+            "cmd": ["ninja", "stp_parse"],
             "working_dir": "$project_path/build",
         },
         {

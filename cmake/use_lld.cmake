@@ -1,0 +1,12 @@
+# Enable LLD linking on macOS and Linux only.
+IF (MACOSX)
+    FIND_PROGRAM(LLD_PATH "ld64.lld")
+    IF (LLD_PATH)
+        ADD_LINK_OPTIONS("-fuse-ld=lld")
+    ENDIF ()
+ELSEIF (LINUX)
+    FIND_PROGRAM(LLD_PATH "ld64.lld")
+    IF (LLD_PATH)
+        ADD_LINK_OPTIONS("-fuse-ld=lld")
+    ENDIF ()
+ENDIF ()
