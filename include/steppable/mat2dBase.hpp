@@ -145,7 +145,7 @@ namespace steppable
          * @param fill The value to fill the matrix with (default is "0").
          */
         explicit MatrixBase(const std::pair<size_t, size_t>& size, const Number& fill = Number("0")) :
-            _rows(size.first), _cols(size.second)
+            _cols(size.second), _rows(size.first)
         {
             *this = MatrixBase(size.first, size.second, fill);
         }
@@ -188,7 +188,7 @@ namespace steppable
          */
         template<size_t Rows, size_t Cols>
         explicit MatrixBase(const ConstexprMatrix<Rows, Cols>& m) :
-            _rows(Rows), _cols(Cols), prec(8), data(Rows, std::vector<Number>(Cols))
+            _cols(Cols), _rows(Rows), prec(8), data(Rows, std::vector<Number>(Cols))
         {
             for (size_t i = 0; i < Rows; ++i)
                 for (size_t j = 0; j < Cols; ++j)

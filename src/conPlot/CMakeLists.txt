@@ -21,9 +21,7 @@
 #####################################################################################################
 
 SET(CONPLOT_FILES ${STP_BASE_DIRECTORY}/src/conPlot/conPlot.cpp ${STP_BASE_DIRECTORY}/src/conPlot/conPlotInternals.cpp
-                  ${STP_BASE_DIRECTORY}/src/conPlot/conPlotInterpolation.cpp
+        ${STP_BASE_DIRECTORY}/src/conPlot/conPlotInterpolation.cpp
+        CACHE PATH "Conplot library files"
 )
 
-ADD_LIBRARY(conPlot STATIC ${CONPLOT_FILES})
-SET_TARGET_PROPERTIES(conPlot PROPERTIES POSITION_INDEPENDENT_CODE ON)
-TARGET_INCLUDE_DIRECTORIES(conPlot PRIVATE ${STP_BASE_DIRECTORY}/include/)

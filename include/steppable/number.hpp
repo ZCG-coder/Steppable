@@ -58,11 +58,12 @@ namespace steppable
         /**
          * @brief Default constexpr constructor initializes to empty view and default precision/mode.
          */
-        constexpr ConstexprNumber() noexcept : prec(10), mode(RoundingMode::USE_CURRENT_PREC) {}
+        constexpr ConstexprNumber() noexcept : prec(10), mode(RoundingMode::USE_CURRENT_PREC) {} // NOLINT(*-avoid-magic-numbers)
         /**
          * @brief Construct from a string_view and precision/mode.
          */
-        constexpr ConstexprNumber(const std::string_view& v,
+        // ReSharper disable once CppNonExplicitConvertingConstructor
+        constexpr ConstexprNumber(const std::string_view& v, // NOLINT(*-explicit-constructor)
                                   const size_t p = 10,
                                   const RoundingMode& m = RoundingMode::USE_CURRENT_PREC) noexcept :
             value(v), prec(p), mode(m)
@@ -76,7 +77,8 @@ namespace steppable
          * @param m Rounding mode.
          */
         template<concepts::Numeric ValueT>
-        constexpr ConstexprNumber(ValueT v,
+        // ReSharper disable once CppNonExplicitConvertingConstructor
+        constexpr ConstexprNumber(ValueT v, // NOLINT(*-explicit-constructor)
                                   const size_t p = 10,
                                   const RoundingMode m = RoundingMode::USE_CURRENT_PREC) noexcept :
             value(__internals::stringUtils::toStringView(v)), prec(p), mode(m)
@@ -127,14 +129,20 @@ namespace steppable
          * @brief Initializes a number with a specified value.
          * @note By default, the value is 0.
          */
-        Number(std::string value = "0", size_t prec = 10, RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
+        // ReSharper disable once CppNonExplicitConvertingConstructor
+        Number(const std::string& _value = "0", // NOLINT(*-explicit-constructor)
+               size_t prec = 10, // NOLINT(*-avoid-magic-numbers)
+               RoundingMode mode = RoundingMode::USE_CURRENT_PREC);
 
         /**
          * @brief Initializes a number with a C/C++ long double value.
          * @note Always converted to a string for storage.
          */
         template<concepts::Numeric ValueT>
-        Number(ValueT v, size_t p = 10, RoundingMode m = RoundingMode::USE_CURRENT_PREC) :
+        // ReSharper disable once CppNonExplicitConvertingConstructor
+        Number(ValueT v, // NOLINT(*-explicit-constructor)
+               const size_t p = 10,
+               const RoundingMode m = RoundingMode::USE_CURRENT_PREC) :
             value(std::to_string(v)), prec(p), mode(m)
         {
         }
@@ -143,13 +151,15 @@ namespace steppable
          * @brief Constructs a Number from a constexpr-friendly placeholder.
          * @param cn The ConstexprNumber instance.
          */
-        Number(const ConstexprNumber& cn) : value(cn.value), prec(cn.prec), mode(cn.mode) {}
+        // ReSharper disable once CppNonExplicitConvertingConstructor
+        Number(const ConstexprNumber& cn) : // NOLINT(*-explicit-constructor)
+            value(cn.value), prec(cn.prec), mode(cn.mode) {}
 
         void set(std::string newVal) { value = std::move(newVal); }
 
-        void setPrec(size_t newPrec, RoundingMode mode = RoundingMode::USE_CURRENT_PREC)
+        void setPrec(const size_t newPrec, const RoundingMode _mode = RoundingMode::USE_CURRENT_PREC)
         {
-            this->mode = mode;
+            this->mode = _mode;
             prec = newPrec;
             value = __internals::numUtils::roundOff(value, prec);
         }
@@ -348,7 +358,7 @@ namespace steppable
 template<>
 struct std::hash<steppable::Number>
 {
-    size_t operator()(const steppable::Number& n) const { return hash<std::string>()(n.present()); }
+    size_t operator()(const steppable::Number& n) const noexcept { return hash<std::string>()(n.present()); }
 };
 
 std::ostream& operator<<(std::ostream& os, const steppable::Number& number);

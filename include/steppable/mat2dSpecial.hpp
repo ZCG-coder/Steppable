@@ -139,7 +139,7 @@ namespace steppable
         static MatrixBase diag(const size_t& cols,
                                const NumberT& fill = 0,
                                const size_t& rows = 0,
-                               const long long& offset = 0)
+                               const long long& /*offset*/ = 0)
         {
             return diag(cols, Number(fill), rows);
         }

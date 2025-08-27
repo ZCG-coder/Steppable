@@ -22,24 +22,6 @@
 
 ADD_SUBDIRECTORY(conPlot)
 
-ADD_LIBRARY(
-    util STATIC
-    argParse.cpp
-    colors.cpp
-    logging.cpp
-    symbols.cpp
-    testing.cpp
-    util.cpp
-    getString.cpp
-    platform.cpp
-    format.cpp
-    constants.cpp
-)
-SET_TARGET_PROPERTIES(util PROPERTIES POSITION_INDEPENDENT_CODE ON)
-
-ADD_LIBRARY(steppable STATIC steppable/number.cpp steppable/fraction.cpp steppable/mat2d.cpp)
-SET_TARGET_PROPERTIES(steppable PROPERTIES POSITION_INDEPENDENT_CODE ON)
-
 SET(CALCULATOR_FILES)
 
 FOREACH(COMPONENT IN LISTS COMPONENTS)
@@ -57,17 +39,26 @@ FOREACH(COMPONENT IN LISTS COMPONENTS)
     IF(STP_BUILD_COMPONENT_EXECUTABLE)
         ADD_EXECUTABLE(${TARGET_NAME} ${ORIGIN}/${NAME}/${NAME}.cpp ${ORIGIN}/${NAME}/${NAME}Report.cpp)
         TARGET_INCLUDE_DIRECTORIES(${TARGET_NAME} PRIVATE ${STP_BASE_DIRECTORY}/include/)
-        TARGET_LINK_LIBRARIES(${TARGET_NAME} PRIVATE func)
+        TARGET_LINK_LIBRARIES(${TARGET_NAME} PRIVATE steppable)
     ENDIF()
 
     LIST(APPEND CALCULATOR_FILES ${ORIGIN}/${NAME}/${NAME}.cpp ${ORIGIN}/${NAME}/${NAME}Report.cpp)
 ENDFOREACH()
 
-# FUNC: Library containing all Steppable functions.
 ADD_LIBRARY(
-    func STATIC
+    steppable SHARED
     ${CALCULATOR_FILES}
     ${CONPLOT_FILES}
+    argParse.cpp
+    colors.cpp
+    logging.cpp
+    symbols.cpp
+    testing.cpp
+    util.cpp
+    getString.cpp
+    platform.cpp
+    format.cpp
+    constants.cpp
     steppable/fraction.cpp
     steppable/mat2d.cpp
     steppable/mat2dBase.cpp
@@ -76,15 +67,5 @@ ADD_LIBRARY(
     rounding.cpp
     factors.cpp
 )
-SET_TARGET_PROPERTIES(func PROPERTIES POSITION_INDEPENDENT_CODE ON)
-
 TARGET_INCLUDE_DIRECTORIES(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
-TARGET_INCLUDE_DIRECTORIES(func PRIVATE ${STP_BASE_DIRECTORY}/include/)
-TARGET_INCLUDE_DIRECTORIES(util PRIVATE ${STP_BASE_DIRECTORY}/include/)
-
-TARGET_LINK_LIBRARIES(steppable PRIVATE util)
-TARGET_LINK_LIBRARIES(steppable PRIVATE conPlot)
-TARGET_LINK_LIBRARIES(func PRIVATE util)
-TARGET_LINK_LIBRARIES(func PRIVATE conPlot)
-TARGET_COMPILE_DEFINITIONS(func PRIVATE NO_MAIN)
 TARGET_COMPILE_DEFINITIONS(steppable PRIVATE NO_MAIN)

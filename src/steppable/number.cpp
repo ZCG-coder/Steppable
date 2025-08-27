@@ -47,14 +47,16 @@ namespace steppable
 {
     using namespace steppable::__internals::calc;
 
-    Number::Number(std::string value, const size_t prec, const RoundingMode mode) :
-        value(std::move(value)), prec(prec), mode(mode)
+    Number::Number(const std::string& _value, const size_t prec, const RoundingMode mode) : prec(prec), mode(mode)
     {
+        std::string newValue = _value;
+        newValue = __internals::stringUtils::bothEndsReplace(newValue, ' ');
+        this->value = std::move(newValue);
     }
 
-    Number Number::operator+(const Number& rhs) const { return Number(add(value, rhs.value, 0), prec, mode); }
+    Number Number::operator+(const Number& rhs) const { return { add(value, rhs.value, 0), prec, mode }; }
 
-    Number Number::operator-(const Number& rhs) const { return Number(subtract(value, rhs.value, 0), prec, mode); }
+    Number Number::operator-(const Number& rhs) const { return { subtract(value, rhs.value, 0), prec, mode }; }
 
     Number Number::operator*(const Number& rhs) const
     {
@@ -72,18 +74,18 @@ namespace steppable
 
     Number Number::operator%(const Number& rhs) const
     {
-        return Number(divideWithQuotient(value, rhs.value).remainder, prec, mode);
+        return { divideWithQuotient(value, rhs.value).remainder, prec, mode };
     }
 
     Number Number::mod(const Number& rhs) const
     {
-        return Number(divideWithQuotient(value, rhs.value).quotient, prec, mode);
+        return { divideWithQuotient(value, rhs.value).quotient, prec, mode };
     }
 
     Number Number::operator^(const Number& rhs) const
     {
         const size_t usePrec = determinePrec<"operator^">(rhs);
-        return Number(power(value, rhs.value, 0, static_cast<int>(usePrec)), usePrec, mode);
+        return { power(value, rhs.value, 0, static_cast<int>(usePrec)), usePrec, mode };
     }
 
     Number& Number::operator+=(const Number& rhs)

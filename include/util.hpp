@@ -568,6 +568,22 @@ namespace steppable::__internals::stringUtils
         return lReplace(rReplace(s, t, replacement), t, replacement);
     }
 
+    template<typename CharT>
+    auto lPad(const std::basic_string<CharT>& s, const size_t& len, const CharT c = ' ')
+    {
+        if (s.length() >= len)
+            return s; // No point to pad if s is larger than desired length
+        return std::string(len - s.length(), c) + s;
+    }
+
+    template<typename CharT>
+    auto rPad(const std::basic_string<CharT>& s, const size_t& len, const CharT c = ' ')
+    {
+        if (s.length() >= len)
+            return s; // No point to pad if s is larger than desired length
+        return s + std::string(len - s.length(), c);
+    }
+
     /**
      * @brief Joins a vector of elements into a single string using a delimiter.
      *
