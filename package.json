@@ -1,0 +1,25 @@
+{
+  "name": "tree-sitter-steppable",
+  "version": "1.0.0",
+  "description": "Tree-sitter grammar for Steppable language",
+  "main": "bindings/node",
+  "keywords": ["parser", "tree-sitter", "steppable"],
+  "author": "Steppable Project",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.14.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.0"
+  },
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.steppable",
+      "file-types": ["stp", "steppable"]
+    }
+  ]
+}
