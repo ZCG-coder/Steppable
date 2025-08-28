@@ -1,0 +1,11 @@
+mat1 = [1 2 3; 4 5 6];
+sum(mat1);
+result = max(mat1, mat2);
+mat2 = [1*2^3 3 4 5 8 9; 4 5 6 8 9 0];
+mat1 = mat1 + mat2;
+value = 2 * 3 + 4;
+function myFunc(x, y) {
+  return x + y;
+}
+power = 2^3^2;
+calc = 2 * 3 + 4;

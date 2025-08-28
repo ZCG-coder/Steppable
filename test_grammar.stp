@@ -1,0 +1,24 @@
+// Examples demonstrating all fixed parsing issues
+
+// 1. Assignment statements with matrices
+mat1 = [1 2 3; 4 5 6];
+
+// 2. Function calls are properly recognized
+sum(mat1);
+result = max(mat1, mat2);
+
+// 3. Matrix syntax with complex expressions
+mat2 = [1*2^3 3 4 5 8 9; 4 5 6 8 9 0];
+
+// 4. Statement separation works correctly
+mat1 = mat1 + mat2;
+value = 2 * 3 + 4;
+
+// 5. Function definitions parse without errors
+function myFunc(x, y) {
+  return x + y;
+}
+
+// 6. Precedence and associativity working correctly
+power = 2^3^2;  // Right associative: 2^(3^2)
+calc = 2 * 3 + 4;  // Left associative: (2 * 3) + 4
