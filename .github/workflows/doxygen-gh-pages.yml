@@ -9,9 +9,9 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - uses: Noob9331/doxygen-gh-pages@v1.4.0
-              with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                branch: gh-pages
-                folder: docs/html
-                config_file: Doxyfile
+            -   uses: Noob9331/doxygen-gh-pages@v1.4.0
+                with:
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    branch: gh-pages
+                    folder: docs/html
+                    config_file: Doxyfile
