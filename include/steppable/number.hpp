@@ -58,7 +58,8 @@ namespace steppable
         /**
          * @brief Default constexpr constructor initializes to empty view and default precision/mode.
          */
-        constexpr ConstexprNumber() noexcept : prec(10), mode(RoundingMode::USE_CURRENT_PREC) {} // NOLINT(*-avoid-magic-numbers)
+        constexpr ConstexprNumber() noexcept :
+            prec(10), mode(RoundingMode::USE_CURRENT_PREC) {} // NOLINT(*-avoid-magic-numbers)
         /**
          * @brief Construct from a string_view and precision/mode.
          */
@@ -153,7 +154,9 @@ namespace steppable
          */
         // ReSharper disable once CppNonExplicitConvertingConstructor
         Number(const ConstexprNumber& cn) : // NOLINT(*-explicit-constructor)
-            value(cn.value), prec(cn.prec), mode(cn.mode) {}
+            value(cn.value), prec(cn.prec), mode(cn.mode)
+        {
+        }
 
         void set(std::string newVal) { value = std::move(newVal); }
 
@@ -163,6 +166,18 @@ namespace steppable
             prec = newPrec;
             value = __internals::numUtils::roundOff(value, prec);
         }
+
+        /**
+         * @brief Gets the decimals of the number.
+         * @return The decimals of the number.
+         */
+        [[nodiscard]] auto getDecimals() const { return prec; }
+
+        /**
+         * @brief Gets the rounding mode of the number.
+         * @return The rounding mode of the number.
+         */
+        [[nodiscard]] auto getRoundingMode() const { return mode; }
 
         /**
          * @brief Adds two numbers together.

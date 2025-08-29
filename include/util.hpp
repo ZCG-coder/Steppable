@@ -85,7 +85,7 @@ using namespace std::literals;
 
 #ifndef MAX_DECIMALS
     /// @brief The maximum number of decimals to output
-    #define MAX_DECIMALS 50
+    #define MAX_DECIMALS 75
 #endif
 
 namespace steppable::__internals::utils

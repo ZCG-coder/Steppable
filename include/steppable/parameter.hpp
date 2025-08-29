@@ -67,7 +67,7 @@ namespace steppable::__internals::parameter
          * @return A `ValuedParameter` object representing the current parameter.
          */
         template<typename T>
-        ValuedParameter operator=(T value) // NOLINT(cppcoreguidelines-c-copy-assignment-signature)
+        ValuedParameter operator=(T value) // NOLINT(cppcoreguidelines-c-copy-assignment-signature, *-unconventional-assign-operator)
         {
             return { .name = name, .value = std::move(value) };
         }
@@ -95,7 +95,8 @@ namespace steppable::__internals::parameter
          *
          * @param values All `ValuedParameter` objects passed to a function.
          */
-        ParameterMap(ValueMap values) : values(std::move(values)) {}
+        // ReSharper disable once CppNonExplicitConvertingConstructor
+        ParameterMap(ValueMap values) : values(std::move(values)) {} // NOLINT(*-explicit-constructor)
 
         /**
          * @brief Checks the presence of all the arguments, in the order which they should be specified. Prints an error

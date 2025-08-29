@@ -29,12 +29,14 @@
  */
 
 #include "argParse.hpp"
+#include "constants.hpp"
 #include "factorialReport.hpp"
 #include "fn/calc.hpp"
 #include "getString.hpp"
 #include "output.hpp"
 #include "util.hpp"
 
+#include <fn/calculus.hpp>
 #include <iostream>
 #include <string>
 
@@ -46,43 +48,98 @@ using namespace steppable::output;
 using namespace steppable::localization;
 using namespace std::literals;
 
+constexpr int GAMMA_A = 12;
+
 namespace steppable::__internals::calc
 {
-    std::string factorial(const std::string& _number, const int steps)
+    namespace
     {
-        auto number = standardizeNumber(_number);
-        if (not isInteger(number))
+        std::string intFactorial(const std::string& _number, const int steps)
         {
-            // We cannot evaluate integrals yet, so this has to be returned.
-            // Correct implementation of the gamma function should be
-            //          / +inf
-            //          |      z-1  -s
-            //   G(z) = |     s    e   ds     ,where z is a non-zero decimal ............ (1)
-            //          |
-            //          / 0
-            // and factorial is defined as
-            //   n! = n * G(n)                ,where n is a non-zero decimal ............ (2)
-            error("factorial"s, $("calc::factorial", "4eeba5fa-a5b8-4abf-ae65-22a466da6d18", { number }));
-            return "0";
+            auto number = standardizeNumber(_number);
+            if (not isInteger(number))
+            {
+                error("intFactorial"s, $("calc::factorial", "4eeba5fa-a5b8-4abf-ae65-22a466da6d18", { number }));
+                return "0";
+            }
+            if (isZeroString(number))
+            {
+                if (steps == 2)
+                    return $("calc::factorial", "d023ddb5-8a71-441b-8c67-8836bd94e93d");
+                return "1"; // By definition, 0! = 1
+            }
+            // Negative numbers do not have a factorial.
+            if (number.front() == '-')
+            {
+                error("intFactorial"s, $("calc::factorial", "69d93fb8-1bb7-4ed2-be6d-8eeafd5f23a6", { number }));
+                return "0";
+            }
+
+            // Calculate the factorial of the number
+            std::string result = "1";
+            loop(_number, [&](const std::string& i) { result = multiply(result, add(i, "1", 0), 0); });
+
+            return reportFactorial(_number, result, steps);
         }
-        if (isZeroString(number))
+    } // namespace
+
+    std::string gamma(const std::string& _number, const int decimals)
+    {
+        // Use Spouge's Approximation to find Gamma(x)
+
+        if (compare(_number, "0", 0) != "1")
         {
-            if (steps == 2)
-                return $("calc::factorial", "d023ddb5-8a71-441b-8c67-8836bd94e93d");
-            return "1"; // By definition, 0! = 1
-        }
-        // Negative numbers do not have a factorial.
-        if (number.front() == '-')
-        {
-            error("factorial"s, $("calc::factorial", "69d93fb8-1bb7-4ed2-be6d-8eeafd5f23a6", { number }));
-            return "0";
+            output::error("gamma"s, "Value of z must be greater than 0."s);
+            programSafeExit(1);
         }
 
-        // Calculate the factorial of the number
-        std::string result = "1";
-        loop(_number, [&](const std::string& i) { result = multiply(result, add(i, "1", 0), 0); });
+        std::vector c = { roundOff(static_cast<std::string>(constants::SQRT_2PI), decimals + 1) };
+        std::string xPlusA = add(_number, std::to_string(GAMMA_A), 0);
+        std::string xPlusHalf = add(_number, "0.5", 0);
+        long double ctrl = 1.0F;
 
-        return reportFactorial(_number, result, steps);
+        for (size_t i = 1; i < GAMMA_A; i++)
+        {
+            const std::string& k = std::to_string(i);
+            const std::string& kMinusHalf = subtract(k, "0.5", 0);
+
+            size_t gammaMinusI = GAMMA_A - i;
+            const std::string& val1 = exp(std::to_string(gammaMinusI), decimals + 1);
+            const std::string& val2 = power(std::to_string(gammaMinusI), kMinusHalf, 0, decimals + 1);
+
+            std::string val = multiply(val1, val2, 0, decimals + 1);
+            val = divide(val, std::to_string(ctrl), 0, decimals + 1);
+            c.emplace_back(val);
+
+            ctrl *= -static_cast<long double>(i);
+        }
+
+        std::string sum = c[0];
+        for (size_t i = 1; i < GAMMA_A; i++)
+        {
+            std::string zPlusK = add(_number, std::to_string(i), 0);
+
+            std::string term = c[i];
+            term = divide(term, zPlusK, 0, decimals + 1);
+            sum = add(sum, term, 0);
+        }
+
+
+        std::string resultMultiplier = exp("-" + xPlusA, decimals + 1);
+        std::string xPlusAToXPlusHalf = power(xPlusA, xPlusHalf, 0, decimals + 1);
+        resultMultiplier = multiply(resultMultiplier, xPlusAToXPlusHalf, 0, decimals + 1);
+        sum = multiply(sum, resultMultiplier, 0, decimals + 1);
+
+        return divide(sum, _number, 0, decimals + 1);
+    }
+
+    std::string factorial(const std::string& number, const int steps)
+    {
+        if (isInteger(number))
+            return intFactorial(number, steps);
+
+        const auto gammaX = gamma(number, 8);
+        return multiply(gammaX, number, 0, 7);
     }
 } // namespace steppable::__internals::calc
 
@@ -98,7 +155,7 @@ int main(const int _argc, const char* _argv[])
 
     const int steps = program.getKeywordArgument("steps");
     const bool profile = program.getSwitch("profile");
-    const auto& number = static_cast<std::string>(program.getPosArg(0));
+    const auto& number = program.getPosArg(0);
 
     if (profile)
     {

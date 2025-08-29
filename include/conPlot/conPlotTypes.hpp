@@ -92,7 +92,7 @@ namespace steppable::graphing
          * @param params The parameters to be passed to initialize the instance.
          */
         template<typename... Params>
-        GraphOptions(Params... params)
+        GraphOptions(Params... params) // NOLINT(*-explicit-constructor)
         {
             auto map = processParams(params...);
 

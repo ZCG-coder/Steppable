@@ -144,7 +144,14 @@ namespace steppable::__internals::calc
 
     std::string exp(const std::string& x, const size_t decimals)
     {
-        const auto result = _exp(x, decimals + 2);
+        if (simplifyPolarity(x).front() != '-')
+        {
+            const auto result = _exp(x, decimals + 2);
+            return roundOff(result, decimals);
+        }
+
+        auto result = _exp(abs(x, 0), decimals + 2);
+        result = divide("1", result, 0, decimals + 1);
         return roundOff(result, decimals);
     }
 } // namespace steppable::__internals::calc
