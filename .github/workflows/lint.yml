@@ -27,6 +27,15 @@ jobs:
                 with:
                     submodules: recursive
 
+            -   name: Set up Homebrew
+                id: set-up-homebrew
+                uses: Homebrew/actions/setup-homebrew@master
+
+            -   name: Install LLVM
+                run: |
+                    brew install llvm
+                    echo "/opt/homebrew/opt/llvm/bin:$GITHUB_PATH" > $GITHUB_PATH
+
             -   name: Set up tree-sitter
                 run: |
                     npm install tree-sitter-cli -g
