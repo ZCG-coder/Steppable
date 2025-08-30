@@ -129,7 +129,7 @@ namespace steppable
         /**
          * @brief Default constructor for the Matrix class.
          */
-        constexpr MatrixBase() noexcept : _cols(0), _rows(0) {}
+        MatrixBase() noexcept : _cols(0), _rows(0) {}
 
         /**
          * @brief Constructs a matrix with specified dimensions and an optional fill value.

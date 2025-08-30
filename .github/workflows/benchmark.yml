@@ -47,6 +47,8 @@ jobs:
                     echo "build-output-dir=${{ github.workspace }}/cmake-build" >> "$GITHUB_OUTPUT"
                     echo "py-build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
                     echo "CMAKE_OPTIONS=${{ matrix.cmake_extra_options }}" >> "$GITHUB_ENV"
+                    echo "CMAKE_C_COMPILER=clang" >> "$GITHUB_ENV"
+                    echo "CMAKE_CXX_COMPILER=clang++" >> "$GITHUB_ENV"
 
             -   name: Install Linux dependencies
                 run: |
