@@ -68,7 +68,7 @@ ENDIF()
 IF(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     ADD_COMPILE_DEFINITIONS(WINDOWS NOMINMAX) # Do not add min() and max() macros.
     IF(MSVC) # MSVC Has no UTF-8 support by default
-        ADD_COMPILE_OPTIONS(/utf-8)
+        ADD_COMPILE_OPTIONS(/utf-8 /W4)
         SET(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
         SET(BUILD_SHARED_LIBS TRUE)
     ENDIF()

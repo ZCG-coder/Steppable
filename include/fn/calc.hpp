@@ -39,7 +39,7 @@ namespace steppable::fn
      */
     inline Number cos(const Number& x)
     {
-      return __internals::calc::cos(x.present(), x.getDecimals());
+      return __internals::calc::cos(x.present(), static_cast<int>(x.getDecimals()));
     }
 
     /**

@@ -116,16 +116,16 @@ namespace steppable::__internals::utils
         // Set output mode to handle virtual terminal sequences
         const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
         if (hOut == INVALID_HANDLE_VALUE)
-            return -1;
+            return (DWORD)-1;
 
         DWORD dwMode = 0;
         if (!GetConsoleMode(hOut, &dwMode))
-            return -1;
+            return (DWORD)-1;
         const DWORD dwModeOrig = dwMode;
 
         dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
         if (!SetConsoleMode(hOut, dwMode))
-            return -1;
+            return (DWORD)-1;
         return dwModeOrig;
     }
 
