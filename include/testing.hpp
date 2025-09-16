@@ -181,7 +181,7 @@ namespace steppable::testing
         {
             const std::string& conditionName =
                 __internals::format::format("Object {0} == {1}", { a.present(), b.present() });
-            _assertCondition(a == b, conditionName);
+            _assertCondition(static_cast<bool>(a == b), conditionName);
         }
 
         /**
@@ -194,7 +194,8 @@ namespace steppable::testing
         {
             const std::string& conditionName =
                 __internals::format::format("Object {0} != {1}", { a.present(), b.present() });
-            _assertCondition(a != b, conditionName);
+            bool res = static_cast<bool>(a != b);
+            _assertCondition(res, conditionName);
         }
 
         /**

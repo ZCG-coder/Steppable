@@ -909,18 +909,43 @@ namespace steppable
         return matrix;
     }
 
-    bool MatrixBase::operator==(const MatrixBase& rhs) const
+    MatrixBase MatrixBase::operator==(const MatrixBase& rhs) const
     {
         _checkSelfSanity();
 
-        return data == rhs.data;
+        MatrixBase retMat(size());
+        for (size_t j = 0; j < _rows; j++)
+            for (size_t i = 0; i < _cols; i++)
+                retMat[{ .y = j, .x = i }] = data[j][i] == rhs.data[j][i];
+
+        return retMat;
     }
 
-    bool MatrixBase::operator!=(const MatrixBase& rhs) const
+    MatrixBase MatrixBase::operator!=(const MatrixBase& rhs) const
     {
         _checkSelfSanity();
 
         return not(*this == rhs);
+    }
+    MatrixBase MatrixBase::operator not() const
+    {
+        _checkSelfSanity();
+
+        MatrixBase retMat(size());
+
+        for (size_t j = 0; j < _rows; j++)
+            for (size_t i = 0; i < _cols; i++)
+                retMat[{ .y = j, .x = i }] = data[j][i] == 0;
+
+        return retMat;
+    }
+
+    MatrixBase::operator bool() const
+    {
+        const bool res = std::ranges::any_of(data, [](const std::vector<Number>& vec) -> bool {
+            return std::ranges::any_of(vec, [](const Number& n) { return n != 0; });
+        });
+        return res;
     }
 
     MatrixBase MatrixBase::operator<(const MatrixBase& rhs) const

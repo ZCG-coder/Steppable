@@ -36,6 +36,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <functional>
+#include <ranges>
 #include <utility>
 #include <vector>
 
@@ -260,7 +261,7 @@ namespace steppable
          * @details By definition, if M is equal to its transpose, then it is symmetric.
          * @return True if the matrix is symmetric. False otherwise.
          */
-        [[nodiscard]] bool isSymmetric() const { return *this == transpose(); }
+        [[nodiscard]] bool isSymmetric() const { return static_cast<bool>(*this == transpose()); }
 
         /**
          * @brief Add a matrix to another matrix.
@@ -595,23 +596,31 @@ namespace steppable
 
         /**
          * @brief Test for equal matrices.
-         * @details If the current matrix is equal to the other matrix, i.e., equal in dimensions and equal in all of
-         * its values, returns True. Returns False otherwise.
+         * @details Goes through each element in the matrix, and outputs a new matrix with corresponding elements as a 0
+         * if they are not equal, 1 if equal.
          *
          * @param rhs The other matrix.
-         * @return Whether the current matrix is equal to the other one.
+         * @return The equality matrix.
          */
-        bool operator==(const MatrixBase& rhs) const;
+        MatrixBase operator==(const MatrixBase& rhs) const;
 
         /**
          * @brief Test for unequal matrices.
-         * @details If the current matrix is not equal to the other matrix, i.e., not equal in dimensions or not equal
-         * in all of its values, returns True. Returns False otherwise.
+         * @details Goes through each element in the matrix, and outputs a new matrix with corresponding elements as a 0
+         * if they are not equal, 1 if equal.
          *
          * @param rhs The other matrix.
-         * @return Whether the current matrix is not equal to the other one.
+         * @return The equality matrix, where 0's are inverted as 1's.
          */
-        bool operator!=(const MatrixBase& rhs) const;
+        MatrixBase operator!=(const MatrixBase& rhs) const;
+
+        /**
+         * @brief Finds the NOT value of the matrix.
+         * @return The NOT value of the matrix.
+         */
+        MatrixBase operator not() const;
+
+        explicit operator bool() const;
 
         /**
          * @brief Performs element-wise less-than comparison.

@@ -48,6 +48,7 @@
 #include "logging.hpp"
 #include "symbols.hpp"
 
+#include <csignal>
 #include <iostream>
 #include <string>
 
@@ -79,6 +80,10 @@ namespace steppable::output
     template<typename T>
     void error(const std::string& name, const std::basic_string<T>& msg, const std::vector<std::string>& args = {})
     {
+#if DEBUG
+        (void)std::raise(SIGINT);
+#endif
+
         auto formattedMsg = format::format(msg, args);
         std::cerr << colors::red << formats::bold << LARGE_DOT << name << " - ERROR: " << reset << colors::red;
         std::cerr << formattedMsg << reset << '\n';

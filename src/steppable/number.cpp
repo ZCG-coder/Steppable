@@ -88,6 +88,8 @@ namespace steppable
         return { power(value, rhs.value, 0, static_cast<int>(usePrec)), usePrec, mode };
     }
 
+    Number Number::operator not() const { return *this == 0; }
+
     Number& Number::operator+=(const Number& rhs)
     {
         *this = *this + rhs;

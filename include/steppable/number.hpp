@@ -230,6 +230,8 @@ namespace steppable
          */
         Number operator^(const Number& rhs) const;
 
+        Number operator not() const;
+
         /**
          * @brief Adds the number to another number and assigns the result to the current number.
          * @param rhs The number to add.
