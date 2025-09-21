@@ -55,6 +55,7 @@ ADD_LIBRARY(
     symbols.cpp
     testing.cpp
     util.cpp
+    calc.cpp
     getString.cpp
     platform.cpp
     format.cpp
@@ -64,6 +65,7 @@ ADD_LIBRARY(
     steppable/mat2dBase.cpp
     steppable/mat2dSpecial.cpp
     steppable/number.cpp
+    steppable/stpArgSpace.cpp
     rounding.cpp
     factors.cpp
 )

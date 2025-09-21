@@ -26,6 +26,10 @@ INCLUDE(cmake/gcc_special_hacks.cmake)
 CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
 PROJECT(Steppable)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 # Ensure that Python is available to run the development scripts, and build with bindings.
 SET(Python_FIND_VIRTUALENV FIRST)
 SET(Python3_FIND_VIRTUALENV FIRST)
