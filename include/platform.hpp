@@ -33,6 +33,7 @@
 
 #pragma once
 
+#include <csignal>
 #include <cstdlib>
 #include <ctime>
 #include <filesystem>
@@ -60,6 +61,10 @@ namespace steppable::__internals::utils
      */
     inline void programSafeExit(const int status)
     {
+#if DEBUG
+        (void)std::raise(SIGINT);
+#endif
+
 #ifdef STP_BINDINGS
         return;
 #endif

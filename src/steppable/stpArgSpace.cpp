@@ -1,9 +1,35 @@
+/**************************************************************************************************
+ * Copyright (c) 2023-2025 NWSOFT                                                                 *
+ *                                                                                                *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
+ * of this software and associated documentation files (the "Software"), to deal                  *
+ * in the Software without restriction, including without limitation the rights                   *
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                      *
+ * copies of the Software, and to permit persons to whom the Software is                          *
+ * furnished to do so, subject to the following conditions:                                       *
+ *                                                                                                *
+ * The above copyright notice and this permission notice shall be included in all                 *
+ * copies or substantial portions of the Software.                                                *
+ *                                                                                                *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                     *
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                       *
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE                    *
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                         *
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,                  *
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                  *
+ * SOFTWARE.                                                                                      *
+ **************************************************************************************************/
+
 #include "steppable/stpArgSpace.hpp"
 
 #include "output.hpp"
 #include "platform.hpp"
+#include "steppable/mat2d.hpp"
+#include "steppable/number.hpp"
 
 #include <utility>
+#include <string>
+#include <sstream>
 
 using namespace steppable::__internals::utils;
 using namespace std::literals;
@@ -35,6 +61,11 @@ namespace steppable::parser
     }
 
     STP_ArgContainer* STP_castToArgList(void* data) { return static_cast<STP_ArgContainer*>(data); }
+
+    STP_Argument::STP_Argument(std::string name, std::any value, const STP_TypeID& typeID) :
+        name(std::move(name)), value(std::move(value)), typeID(typeID)
+    {
+    }
 
     void STP_ArgContainer::checkArgs(const std::vector<STP_ArgumentConstraint>& constraints) const
     {
@@ -84,5 +115,49 @@ namespace steppable::parser
                 }
             }
         }
+    }
+
+    STP_ValuePrimitive::STP_ValuePrimitive(const STP_TypeID& type, std::any data) :
+        typeName(STP_typeNames.at(type)), typeID(type), data(std::move(data))
+    {
+    }
+
+    std::string STP_ValuePrimitive::present(const std::string& name, const bool longFormat) const
+    {
+        std::stringstream ret;
+        std::string presented;
+        std::string line;
+
+        if (longFormat)
+        {
+            ret << name << "(" << typeName << ")";
+            ret << "\n";
+        }
+
+        switch (typeID)
+        {
+        case STP_TypeID_NUMBER:
+            presented = std::any_cast<Number>(data).present();
+            break;
+        case STP_TypeID_MATRIX_2D:
+            presented = std::any_cast<Matrix>(data).present();
+            break;
+        case STP_TypeID_STRING:
+            presented = "\"" + std::any_cast<std::string>(data) + "\"";
+            break;
+        default:
+            break;
+        }
+
+        if (longFormat)
+        {
+            std::istringstream iss(presented);
+            while (getline(iss, line))
+                ret << "    " << line << "\n";
+        }
+        else
+            ret << presented;
+
+        return ret.str();
     }
 } // namespace steppable::parser

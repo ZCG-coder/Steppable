@@ -20,6 +20,8 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
+INCLUDE(${STP_BASE_DIRECTORY}/cmake/install_to_bin.cmake)
+
 ADD_SUBDIRECTORY(conPlot)
 
 SET(CALCULATOR_FILES)
@@ -71,3 +73,5 @@ ADD_LIBRARY(
 )
 TARGET_INCLUDE_DIRECTORIES(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
 TARGET_COMPILE_DEFINITIONS(steppable PRIVATE NO_MAIN)
+
+INSTALL_TO_BIN(steppable)

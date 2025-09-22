@@ -55,7 +55,7 @@ namespace steppable::__internals::logging
      *
      * The Level enum represents different levels of logging, including ERROR, WARNING, INFO, and DBG.
      */
-    enum Level
+    enum class Level
     {
         /// @brief Logs ONLY error messages.
         ERR = 3,
@@ -161,7 +161,7 @@ namespace steppable::__internals::logging
         std::ofstream file;
 
         /// @brief The default logging level.
-        Level level = INFO;
+        Level level = Level::INFO;
 
         /// @brief The name of the logger. This will be prepended to the log messages.
         std::string name;
