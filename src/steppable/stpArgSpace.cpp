@@ -67,12 +67,12 @@ namespace steppable::parser
     {
     }
 
-    void STP_ArgContainer::checkArgs(const std::vector<STP_ArgumentConstraint>& constraints) const
+    void STP_ArgContainer::checkArgs(const std::vector<STP_ArgumentConstraint>& argumentConstraints) const
     {
         // Partition constraints
         std::vector<const STP_ArgumentConstraint*> positionalConstraints;
         std::unordered_map<std::string, const STP_ArgumentConstraint*> keywordConstraints;
-        for (const auto& c : constraints)
+        for (const auto& c : argumentConstraints)
             if (c.requiredName.empty())
                 positionalConstraints.push_back(&c);
             else
@@ -126,7 +126,6 @@ namespace steppable::parser
     {
         std::stringstream ret;
         std::string presented;
-        std::string line;
 
         if (longFormat)
         {
@@ -151,6 +150,7 @@ namespace steppable::parser
 
         if (longFormat)
         {
+            std::string line;
             std::istringstream iss(presented);
             while (getline(iss, line))
                 ret << "    " << line << "\n";

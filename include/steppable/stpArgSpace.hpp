@@ -56,7 +56,7 @@ namespace steppable::parser
     public:
         [[nodiscard]] bool isLoaded() const { return not arguments.empty(); }
 
-        void checkArgs(const std::vector<STP_ArgumentConstraint>& constraints) const;
+        void checkArgs(const std::vector<STP_ArgumentConstraint>& argumentConstraints) const;
 
         explicit STP_ArgContainer(const std::vector<STP_Argument>& args,
                                   const std::vector<STP_ArgumentConstraint>& constraints) :
@@ -69,10 +69,12 @@ namespace steppable::parser
         std::any getArgValue(const ItemT&) const;
 
         template<>
+        // ReSharper disable CppExplicitSpecializationInNonNamespaceScope
         [[nodiscard]] std::any getArgValue<std::string>(const std::string& argName) const;
 
         template<>
         [[nodiscard]] std::any getArgValue<int>(const int& idx) const;
+        // ReSharper restore CppExplicitSpecializationInNonNamespaceScope
     };
 
     struct STP_ValuePrimitive
