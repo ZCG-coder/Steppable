@@ -37,6 +37,7 @@
 #include "rootReport.hpp"
 #include "rounding.hpp"
 #include "steppable/fraction.hpp"
+#include "steppable/stpArgSpace.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
@@ -143,7 +144,7 @@ namespace steppable::__internals::calc
 
         auto decimals = _decimals + 1;
         size_t raisedTimes = 0;
-        std::string number = static_cast<std::string>(_number);
+        std::string number = _number;
         while (compare(number, "1", 0) == "0")
         {
             number = multiply(number, power("10", base, 0), 0, static_cast<int>(decimals));
@@ -219,8 +220,8 @@ int main(const int _argc, const char* _argv[])
     const int decimals = program.getKeywordArgument("decimals");
     const bool profile = program.getSwitch("profile");
     const int steps = program.getKeywordArgument("steps");
-    const auto& number = static_cast<std::string>(program.getPosArg(0));
-    const auto& base = static_cast<std::string>(program.getPosArg(1));
+    const auto& number = program.getPosArg(0);
+    const auto& base = program.getPosArg(1);
 
     if (profile)
     {
@@ -233,3 +234,37 @@ int main(const int _argc, const char* _argv[])
         std::cout << root(number, base, decimals, steps) << '\n';
 }
 #endif
+
+using namespace steppable::parser;
+using namespace steppable::__internals;
+
+STP_EXPORT_FUNC(STP_sqrt)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = root(number.present(), "2", number.getDecimals(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_cbrt)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = root(number.present(), "3", number.getDecimals(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_nthrt)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER }, { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const auto base = std::any_cast<steppable::Number>(container->getArgValue(1));
+    const steppable::Number res = root(number.present(), base.present(), number.getDecimals(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}

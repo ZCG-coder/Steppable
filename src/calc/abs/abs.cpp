@@ -33,6 +33,7 @@
 #include "fn/calc.hpp"
 #include "getString.hpp"
 #include "steppable/number.hpp"
+#include "steppable/stpArgSpace.hpp"
 #include "types/result.hpp"
 #include "util.hpp"
 
@@ -82,3 +83,16 @@ int main(const int _argc, const char* _argv[])
         std::cout << abs(number, steps) << '\n';
 }
 #endif
+
+using namespace steppable::parser;
+using namespace steppable::__internals;
+
+STP_EXPORT_FUNC(STP_abs)
+{
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = abs(number.present(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}

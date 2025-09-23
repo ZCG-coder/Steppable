@@ -33,6 +33,7 @@
 #include "getString.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
+#include "steppable/stpArgSpace.hpp"
 #include "util.hpp"
 
 #include <cstdlib>
@@ -117,6 +118,8 @@ namespace steppable::__internals::calc
 
         auto lnX = "-" + _log(oneOverA, _decimals + 2);
         auto lnB = "-" + _log(oneOverB, _decimals + 2);
+        lnX = numUtils::simplifyPolarity(lnX);
+        lnB = numUtils::simplifyPolarity(lnB);
         auto result = divide(lnX, lnB, 0, static_cast<int>(_decimals));
 
         return numUtils::roundOff(result, _decimals);
@@ -169,7 +172,7 @@ int main(int _argc, const char* _argv[])
     else if (command == "log2")
         std::cout << calc::log2(arg, decimals) << "\n";
     else if (command == "ln")
-        std::cout << calc::ln(arg, decimals) << "\n";
+        std::cout << ln(arg, decimals) << "\n";
     else
     {
         error("log"s, $("calc::log", "0fc4245a-fee9-4e99-bbbd-378d091c5143", { command }));
@@ -177,3 +180,51 @@ int main(int _argc, const char* _argv[])
     }
 }
 #endif
+
+using namespace steppable::parser;
+using namespace steppable::__internals;
+
+STP_EXPORT_FUNC(STP_log10)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = calc::log10(number.present(), number.getDecimals());
+
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_log2)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = calc::log2(number.present(), number.getDecimals());
+
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_ln)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = ln(number.present(), number.getDecimals());
+
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_logb)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER }, { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const auto base = std::any_cast<steppable::Number>(container->getArgValue(1));
+    const steppable::Number res = logb(number.present(), base.present(), number.getDecimals());
+
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}

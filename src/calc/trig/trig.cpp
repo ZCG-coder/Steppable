@@ -34,9 +34,11 @@
 #include "fn/calculus.hpp"
 #include "getString.hpp"
 #include "rounding.hpp"
+#include "steppable/stpArgSpace.hpp"
 #include "trigReport.hpp"
 #include "util.hpp"
 
+#include <any>
 #include <functional>
 #include <iostream>
 #include <string>
@@ -537,3 +539,66 @@ int main(int _argc, const char* _argv[])
     std::cout << function(arg, decimals, mode) << '\n';
 }
 #endif
+
+using namespace steppable::parser;
+using namespace steppable::__internals;
+
+STP_EXPORT_FUNC(STP_cos)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = calc::cos(number.present(), number.getDecimals(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_sin)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = calc::sin(number.present(), number.getDecimals(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_tan)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = calc::tan(number.present(), number.getDecimals(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_asin)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = calc::asin(number.present(), number.getDecimals(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_acos)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = calc::acos(number.present(), number.getDecimals(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}
+
+STP_EXPORT_FUNC(STP_atan)
+{
+    STP_ArgContainer* container = STP_castToArgList(argSpace);
+    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+
+    const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const steppable::Number res = calc::atan(number.present(), number.getDecimals(), 0);
+    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+}

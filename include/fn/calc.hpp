@@ -30,27 +30,3 @@
 
 using STP_ExportFuncPtr = void*(void* in);
 using STP_ExportFuncT = std::function<STP_ExportFuncPtr>;
-
-STP_EXPORT_FUNC(STP_cos);
-
-STP_EXPORT_FUNC(STP_sin);
-
-STP_EXPORT_FUNC(STP_tan);
-
-STP_EXPORT_FUNC(STP_asin);
-
-STP_EXPORT_FUNC(STP_acos);
-
-STP_EXPORT_FUNC(STP_atan);
-
-STP_EXPORT_FUNC(STP_cosh);
-
-STP_EXPORT_FUNC(STP_sinh);
-
-STP_EXPORT_FUNC(STP_tanh);
-
-STP_EXPORT_FUNC(STP_asinh);
-
-STP_EXPORT_FUNC(STP_acosh);
-
-STP_EXPORT_FUNC(STP_atanh);
