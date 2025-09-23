@@ -573,8 +573,8 @@ namespace steppable
 
     MatrixBase MatrixBase::dot(const MatrixBase& rhs, const MatDims& dims) const
     {
-        if (_rows == rhs._rows and _rows == 1 or // Row vectors
-            _cols == rhs._cols and _cols == 1) // Column vectors
+        if ((_rows == rhs._rows and _rows == 1) or // Row vectors
+            (_cols == rhs._cols and _cols == 1)) // Column vectors
         {
             // Both vectors
             MatrixBase mulResult = elemWiseMultiply(rhs);

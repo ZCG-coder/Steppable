@@ -151,7 +151,7 @@ namespace steppable::__internals::calc
         }
 
         auto result = _exp(abs(x, 0), decimals + 2);
-        result = divide("1", result, 0, decimals + 1);
+        result = divide("1", result, 0, static_cast<int>(decimals + 1));
         return roundOff(result, decimals);
     }
 } // namespace steppable::__internals::calc
