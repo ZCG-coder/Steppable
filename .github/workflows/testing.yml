@@ -9,7 +9,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    graph:
+    test:
         runs-on: ${{ matrix.os }}
         strategy:
             # Set fail-fast to false to ensure that feedback is delivered for all matrix combinations. Consider changing this to true when your workflow is stable.
