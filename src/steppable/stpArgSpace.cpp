@@ -135,13 +135,13 @@ namespace steppable::parser
 
         switch (typeID)
         {
-        case STP_TypeID_NUMBER:
+        case STP_TypeID::NUMBER:
             presented = std::any_cast<Number>(data).present();
             break;
-        case STP_TypeID_MATRIX_2D:
+        case STP_TypeID::MATRIX_2D:
             presented = std::any_cast<Matrix>(data).present();
             break;
-        case STP_TypeID_STRING:
+        case STP_TypeID::STRING:
             presented = "\"" + std::any_cast<std::string>(data) + "\"";
             break;
         default:

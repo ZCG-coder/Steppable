@@ -187,44 +187,44 @@ using namespace steppable::__internals;
 STP_EXPORT_FUNC(STP_log10)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::log10(number.present(), number.getDecimals());
 
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }
 
 STP_EXPORT_FUNC(STP_log2)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::log2(number.present(), number.getDecimals());
 
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }
 
 STP_EXPORT_FUNC(STP_ln)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = ln(number.present(), number.getDecimals());
 
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }
 
 STP_EXPORT_FUNC(STP_logb)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER }, { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER }, { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const auto base = std::any_cast<steppable::Number>(container->getArgValue(1));
     const steppable::Number res = logb(number.present(), base.present(), number.getDecimals());
 
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }

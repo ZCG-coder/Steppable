@@ -90,9 +90,9 @@ using namespace steppable::__internals;
 STP_EXPORT_FUNC(STP_abs)
 {
     const STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = abs(number.present(), 0);
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }

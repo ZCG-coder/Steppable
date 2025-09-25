@@ -546,59 +546,59 @@ using namespace steppable::__internals;
 STP_EXPORT_FUNC(STP_cos)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::cos(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }
 
 STP_EXPORT_FUNC(STP_sin)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::sin(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }
 
 STP_EXPORT_FUNC(STP_tan)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::tan(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }
 
 STP_EXPORT_FUNC(STP_asin)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::asin(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }
 
 STP_EXPORT_FUNC(STP_acos)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::acos(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }
 
 STP_EXPORT_FUNC(STP_atan)
 {
     STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID_NUMBER } });
+    container->checkArgs({ { "", STP_TypeID::NUMBER } });
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::atan(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID_NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
 }
