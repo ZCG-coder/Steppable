@@ -213,13 +213,24 @@ def process(file: Path) -> None:
             f.write(contents)
 
 
-def walk_into_directory(path: Path) -> None:
+def walk_into_directory(path: Path, exclude: str = "") -> None:
     """
     Walk into the directory and process all files.
+    :param exclude: Paths to exclude
     :param path: The directory to walk
     """
 
+    exclude_pattern = None
+    if exclude:
+        normalized = exclude.lstrip("/")
+        if not normalized.startswith("**"):
+            normalized = f"**/{normalized}"
+        exclude_pattern = normalized
+
     for subpath in path.rglob("*"):
+        if exclude_pattern and subpath.match(exclude_pattern):
+            continue
+
         if subpath.is_file():
             process(subpath)
 
@@ -236,3 +247,4 @@ if __name__ == "__main__":
     walk_into_directory(PROJECT_PATH / "tests")
     walk_into_directory(PROJECT_PATH / "tools")
     walk_into_directory(PROJECT_PATH / "steppyble")
+    walk_into_directory(PROJECT_PATH / "parser", exclude="/tree-sitter/*")
