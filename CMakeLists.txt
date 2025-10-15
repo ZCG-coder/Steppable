@@ -24,7 +24,9 @@ INCLUDE(cmake/build_special_hacks.cmake)
 INCLUDE(cmake/gcc_special_hacks.cmake)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
-PROJECT(Steppable)
+PROJECT(Steppable VERSION 0.0.1)
+
+ADD_COMPILE_DEFINITIONS(STEPPABLE_VERSION="${CMAKE_PROJECT_VERSION}")
 
 # Ensure that Python is available to run the development scripts, and build with bindings.
 SET(Python_FIND_VIRTUALENV FIRST)
