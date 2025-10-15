@@ -56,13 +56,12 @@ namespace steppable::parser
     public:
         [[nodiscard]] bool isLoaded() const { return not arguments.empty(); }
 
-        void checkArgs(const std::vector<STP_ArgumentConstraint>& argumentConstraints) const;
+        std::string checkArgs(const std::vector<STP_ArgumentConstraint>& argumentConstraints) const;
 
         explicit STP_ArgContainer(const std::vector<STP_Argument>& args,
                                   const std::vector<STP_ArgumentConstraint>& constraints) :
             arguments(args), constraints(constraints)
         {
-            checkArgs(constraints);
         }
 
         template<typename ItemT>
@@ -82,9 +81,11 @@ namespace steppable::parser
         std::string typeName;
         STP_TypeID typeID;
 
+        std::string error;
+
         std::any data;
 
-        explicit STP_ValuePrimitive(const STP_TypeID& type, std::any data = {});
+        explicit STP_ValuePrimitive(const STP_TypeID& type, std::any data = {}, std::string error = "");
 
         [[nodiscard]] std::string present(const std::string& name, bool longFormat = true) const;
     };

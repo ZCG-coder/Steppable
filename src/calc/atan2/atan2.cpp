@@ -35,6 +35,7 @@
 #include "getString.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
+#include "steppable/stpArgSpace.hpp"
 #include "util.hpp"
 
 #include <cstddef>
@@ -45,6 +46,7 @@ using namespace steppable::__internals::calc;
 using namespace steppable::__internals::numUtils;
 using namespace steppable::localization;
 using namespace steppable::output;
+using namespace steppable::parser;
 
 namespace steppable::__internals::calc
 {
@@ -126,3 +128,15 @@ int main(int _argc, const char* _argv[])
     std::cout << atan2(yStr, xStr, decimals) << '\n';
 }
 #endif
+
+STP_EXPORT_FUNC(STP_atan2)
+{
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER }, { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
+
+    const auto y = std::any_cast<steppable::Number>(container->getArgValue(0));
+    const auto x = std::any_cast<steppable::Number>(container->getArgValue(1));
+    const steppable::Number res = atan2(y.present(), x.present(), y.getDecimals());
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
+}

@@ -35,7 +35,6 @@
 #include "getString.hpp"
 #include "rounding.hpp"
 #include "steppable/stpArgSpace.hpp"
-#include "trigReport.hpp"
 #include "util.hpp"
 
 #include <any>
@@ -54,7 +53,7 @@ namespace steppable::__internals::calc
     std::string degToRad(const std::string& _deg)
     {
         // rad = deg * (pi / 180)
-        auto deg = divideWithQuotient(_deg, "360").remainder;
+        const auto deg = divideWithQuotient(_deg, "360").remainder;
         auto rad = multiply(deg, static_cast<std::string>(constants::PI_OVER_180), 0);
         return rad;
     }
@@ -62,7 +61,7 @@ namespace steppable::__internals::calc
     std::string gradToRad(const std::string& _grad)
     {
         // rad = grad * (pi / 200)
-        auto grad = divideWithQuotient(_grad, "400").remainder;
+        const auto grad = divideWithQuotient(_grad, "400").remainder;
         auto rad = multiply(grad, static_cast<std::string>(constants::PI_OVER_200), 0);
         return rad;
     }
@@ -99,7 +98,7 @@ namespace steppable::__internals::calc
 
     std::string _cos(const std::string& x, const int _decimals)
     {
-        int decimals = _decimals;
+        const int decimals = _decimals;
         checkDecimalArg(&_decimals);
 
         //          .,,.   .,    /=====================================================================\
@@ -118,22 +117,22 @@ namespace steppable::__internals::calc
         if (compare(abs(x, 0), "0.001", 0) == "0") // If small, use polynomial approximant
         {
             // double x2 = x * x;
-            auto x2 = multiply(x, x, 0, decimals);
-            auto x4 = multiply(x2, x2, 0, decimals);
+            const auto x2 = multiply(x, x, 0, decimals);
+            const auto x4 = multiply(x2, x2, 0, decimals);
             // (313*x^4 - 6900*x^2 + 15120)/(13*x^4 + 660*x^2 + 15120) // Padé approximant
             //      4        2
             //  313x  - 6900x  + 15120
             // ------------------------
             //     4       2
             //  13x  + 660x  + 15120
-            auto a = add(subtract(multiply("313", x4, 0, decimals), multiply("6900", x2, 0, decimals), 0), "15120", 0);
-            auto b = add(add(multiply("13", x4, 0, decimals), multiply("660", x2, 0, decimals), 0), "15120", 0);
+            const auto a = add(subtract(multiply("313", x4, 0, decimals), multiply("6900", x2, 0, decimals), 0), "15120", 0);
+            const auto b = add(add(multiply("13", x4, 0, decimals), multiply("660", x2, 0, decimals), 0), "15120", 0);
             return standardizeNumber(divide(a, b, 0, decimals + 2));
         }
         // otherwise use recursion
         // double C = cos(x / 4);
-        auto result = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals + 2);
-        auto result2 = roundOff(multiply(result, result, 0, decimals + 2), static_cast<long>(decimals) + 2);
+        const auto result = _cos(standardizeNumber(divide(x, "4", 0, decimals + 1)), decimals + 2);
+        const auto result2 = roundOff(multiply(result, result, 0, decimals + 2), static_cast<long>(decimals) + 2);
         // return 8 * C2 * (C2 - 1) + 1;
         return standardizeNumber(
             add(multiply("8", multiply(result2, subtract(result2, "1", 0), 0, decimals), 0), "1", 0));
@@ -274,7 +273,7 @@ namespace steppable::__internals::calc
     {
         checkDecimalArg(&decimals);
 
-        auto sinX = sin(x, decimals + 1, mode);
+        const auto sinX = sin(x, decimals + 1, mode);
         if (isZeroString(sinX))
         {
             error("trig::csc"s, $("calc::trig", "0dd11fcc-bdd0-48d1-9b4a-7ebcccb4915f"));
@@ -287,7 +286,7 @@ namespace steppable::__internals::calc
     {
         checkDecimalArg(&decimals);
 
-        auto cosX = cos(x, decimals + 1, mode);
+        const auto cosX = cos(x, decimals + 1, mode);
         if (isZeroString(cosX))
         {
             error("trig::sec"s, $("calc::trig", "62792c6c-6751-4850-bf66-5e6366322cc0"));
@@ -300,7 +299,7 @@ namespace steppable::__internals::calc
     {
         checkDecimalArg(&decimals);
 
-        auto tanX = tan(x, decimals + 1, mode);
+        const auto tanX = tan(x, decimals + 1, mode);
         if (isZeroString(tanX))
         {
             error("trig::cot"s, $("calc::trig", "65650a93-4298-4e19-8c81-f5fbd9f14ac2"));
@@ -384,9 +383,9 @@ namespace steppable::__internals::calc
         // |    \/ 1 - y
         // / 0
         auto integrand = [&](const std::string& y) {
-            auto y2 = power(y, "2", 0);
-            auto oneMinusY2 = subtract("1", y2, 0);
-            auto denominator = root(oneMinusY2, "2", decimals + 2);
+            const auto y2 = power(y, "2", 0);
+            const auto oneMinusY2 = subtract("1", y2, 0);
+            const auto denominator = root(oneMinusY2, "2", decimals + 2);
             return divide("1", denominator, 0, decimals + 2);
         };
         auto result = calculus::romberg(integrand, "0", x, 10, decimals + 2);
@@ -428,7 +427,7 @@ namespace steppable::__internals::calc
         //             pi
         // acos(x) = ----- - asin(x)
         //             2
-        auto result = subtract(circleAngle, asin(x, decimals + 2, mode), 0);
+        const auto result = subtract(circleAngle, asin(x, decimals + 2, mode), 0);
         return roundOff(result, decimals);
     }
 
@@ -545,60 +544,66 @@ using namespace steppable::__internals;
 
 STP_EXPORT_FUNC(STP_cos)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::cos(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_sin)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::sin(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_tan)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::tan(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_asin)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::asin(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_acos)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::acos(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_atan)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::atan(number.present(), static_cast<int>(number.getDecimals()), 0);
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }

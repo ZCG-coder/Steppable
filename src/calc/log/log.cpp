@@ -113,14 +113,14 @@ namespace steppable::__internals::calc
         // log (x) = ----------
         //    b       -ln(1/b)
 
-        auto oneOverA = divide("1", _number, 0, static_cast<int>(_decimals + 2));
-        auto oneOverB = divide("1", _base, 0, static_cast<int>(_decimals + 2));
+        const auto oneOverA = divide("1", _number, 0, static_cast<int>(_decimals + 2));
+        const auto oneOverB = divide("1", _base, 0, static_cast<int>(_decimals + 2));
 
         auto lnX = "-" + _log(oneOverA, _decimals + 2);
         auto lnB = "-" + _log(oneOverB, _decimals + 2);
         lnX = numUtils::simplifyPolarity(lnX);
         lnB = numUtils::simplifyPolarity(lnB);
-        auto result = divide(lnX, lnB, 0, static_cast<int>(_decimals));
+        const auto result = divide(lnX, lnB, 0, static_cast<int>(_decimals));
 
         return numUtils::roundOff(result, _decimals);
     }
@@ -186,45 +186,49 @@ using namespace steppable::__internals;
 
 STP_EXPORT_FUNC(STP_log10)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::log10(number.present(), number.getDecimals());
 
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_log2)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = calc::log2(number.present(), number.getDecimals());
 
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_ln)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = ln(number.present(), number.getDecimals());
 
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_logb)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER }, { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER }, { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const auto base = std::any_cast<steppable::Number>(container->getArgValue(1));
     const steppable::Number res = logb(number.present(), base.present(), number.getDecimals());
 
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }

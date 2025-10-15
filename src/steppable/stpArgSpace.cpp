@@ -27,9 +27,9 @@
 #include "steppable/mat2d.hpp"
 #include "steppable/number.hpp"
 
-#include <utility>
-#include <string>
 #include <sstream>
+#include <string>
+#include <utility>
 
 using namespace steppable::__internals::utils;
 using namespace std::literals;
@@ -67,7 +67,7 @@ namespace steppable::parser
     {
     }
 
-    void STP_ArgContainer::checkArgs(const std::vector<STP_ArgumentConstraint>& argumentConstraints) const
+    std::string STP_ArgContainer::checkArgs(const std::vector<STP_ArgumentConstraint>& argumentConstraints) const
     {
         // Partition constraints
         std::vector<const STP_ArgumentConstraint*> positionalConstraints;
@@ -90,7 +90,7 @@ namespace steppable::parser
         // Check positional arguments
         if (positionalArgs.size() < positionalConstraints.size())
         {
-            output::error("runtime"s, "Not enough positional arguments provided."s, {});
+            return __internals::format::format("Not enough positional arguments provided."s, {});
             programSafeExit(1);
         }
         for (std::size_t i = 0; i < positionalConstraints.size(); ++i)
@@ -98,7 +98,7 @@ namespace steppable::parser
             const auto* constraint = positionalConstraints[i];
             if (const auto* arg = positionalArgs[i]; arg->typeID != constraint->valueType)
             {
-                output::error("runtime"s, "Positional argument type mismatch at position {0}"s, { std::to_string(i) });
+                return __internals::format::format("Positional argument type mismatch at position {0}"s, { std::to_string(i) });
                 programSafeExit(1);
             }
         }
@@ -110,15 +110,17 @@ namespace steppable::parser
             {
                 if (const auto* arg = keywordArgs[name]; arg->typeID != constraint->valueType)
                 {
-                    output::error("runtime"s, "Keyword argument '{0}' type mismatch."s, { name });
+                    return __internals::format::format("Keyword argument '{0}' type mismatch."s, { name });
                     programSafeExit(1);
                 }
             }
         }
+
+        return "";
     }
 
-    STP_ValuePrimitive::STP_ValuePrimitive(const STP_TypeID& type, std::any data) :
-        typeName(STP_typeNames.at(type)), typeID(type), data(std::move(data))
+    STP_ValuePrimitive::STP_ValuePrimitive(const STP_TypeID& type, std::any data, std::string error) :
+        typeName(STP_typeNames.at(type)), typeID(type), error(std::move(error)), data(std::move(data))
     {
     }
 

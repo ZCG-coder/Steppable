@@ -26,6 +26,8 @@
 
 #define STP_EXPORT_FUNC(name) extern "C" void*(name)(void* argSpace)
 
+#define STP_RETURN_IF_ERR(err) if (not err.empty()) { return new STP_ValuePrimitive(STP_TypeID::NONE, nullptr, err); }
+
 // #define STP_RETURN(value, type) return STP_Value
 
 using STP_ExportFuncPtr = void*(void* in);

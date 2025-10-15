@@ -63,14 +63,14 @@ namespace steppable::prettyPrint::printers
         //   3/---------
         //   /        2
         // \/ radicand
-        auto indexWidth = prettyPrint::getStringWidth(index);
-        auto width = prettyPrint::getStringWidth(radicand) + indexWidth + 3;
-        auto height = prettyPrint::getStringHeight(radicand) + 1;
-        auto spacingWidth = std::max(height, indexWidth);
-        auto firstLineSpacingWidth = spacingWidth - indexWidth;
-        auto lines = split(radicand, '\n');
-        auto spacing = std::string(firstLineSpacingWidth, ' ');
-        auto topBar = std::string(prettyPrint::getStringWidth(radicand), '-');
+        const auto indexWidth = prettyPrint::getStringWidth(index);
+        const auto width = prettyPrint::getStringWidth(radicand) + indexWidth + 3;
+        const auto height = prettyPrint::getStringHeight(radicand) + 1;
+        const auto spacingWidth = std::max(height, indexWidth);
+        const auto firstLineSpacingWidth = spacingWidth - indexWidth;
+        const auto lines = split(radicand, '\n');
+        const auto spacing = std::string(firstLineSpacingWidth, ' ');
+        const auto topBar = std::string(prettyPrint::getStringWidth(radicand), '-');
 
         prettyPrint::ConsoleOutput output(height, width);
         prettyPrint::Position pos;
@@ -99,7 +99,7 @@ namespace steppable::__internals::calc
         if (compare(base, "1", 0) == "2")
             return numUtils::roundDown(_number); // Root with index 1 returns the number itself.
 
-        auto number = numUtils::roundDown(_number);
+        const auto number = numUtils::roundDown(_number);
         auto x = number;
         auto y = "0"s;
         while (true)
@@ -119,9 +119,9 @@ namespace steppable::__internals::calc
 
     Surd rootSurd(const std::string& _number, const std::string& base)
     {
-        auto largestRootFactor = numUtils::getRootFactor(_number, base);
-        auto radicand = roundDown(divide(_number, largestRootFactor.getOutput(), 0, 1));
-        auto multiplier = largestRootFactor.getInputs()[2];
+        const auto largestRootFactor = numUtils::getRootFactor(_number, base);
+        const auto radicand = roundDown(divide(_number, largestRootFactor.getOutput(), 0, 1));
+        const auto multiplier = largestRootFactor.getInputs()[2];
 
         return { .radicand = radicand, .multiplier = multiplier };
     }
@@ -195,8 +195,8 @@ namespace steppable::__internals::calc
             return "0";
         if (isInteger(_number))
         {
-            auto result = rootSurd(_number, base);
-            auto rootResult = _root(result.radicand, base, _decimals, 0);
+            const auto result = rootSurd(_number, base);
+            const auto rootResult = _root(result.radicand, base, _decimals, 0);
             return multiply(rootResult, result.multiplier, 0, static_cast<int>(_decimals));
         }
 
@@ -240,31 +240,34 @@ using namespace steppable::__internals;
 
 STP_EXPORT_FUNC(STP_sqrt)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = root(number.present(), "2", number.getDecimals(), 0);
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_cbrt)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const steppable::Number res = root(number.present(), "3", number.getDecimals(), 0);
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
 
 STP_EXPORT_FUNC(STP_nthrt)
 {
-    STP_ArgContainer* container = STP_castToArgList(argSpace);
-    container->checkArgs({ { "", STP_TypeID::NUMBER }, { "", STP_TypeID::NUMBER } });
+    const STP_ArgContainer* container = STP_castToArgList(argSpace);
+    const std::string err = container->checkArgs({ { "", STP_TypeID::NUMBER }, { "", STP_TypeID::NUMBER } });
+    STP_RETURN_IF_ERR(err);
 
     const auto number = std::any_cast<steppable::Number>(container->getArgValue(0));
     const auto base = std::any_cast<steppable::Number>(container->getArgValue(1));
     const steppable::Number res = root(number.present(), base.present(), number.getDecimals(), 0);
-    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res);
+    return new STP_ValuePrimitive(STP_TypeID::NUMBER, res, err);
 }
