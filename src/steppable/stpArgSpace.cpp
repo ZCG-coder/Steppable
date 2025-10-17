@@ -98,7 +98,8 @@ namespace steppable::parser
             const auto* constraint = positionalConstraints[i];
             if (const auto* arg = positionalArgs[i]; arg->typeID != constraint->valueType)
             {
-                return __internals::format::format("Positional argument type mismatch at position {0}"s, { std::to_string(i) });
+                return __internals::format::format("Positional argument type mismatch at position {0}"s,
+                                                   { std::to_string(i) });
                 programSafeExit(1);
             }
         }
