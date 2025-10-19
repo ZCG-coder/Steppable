@@ -21,6 +21,15 @@
 #####################################################################################################
 
 IF(NOT ${STP_NO_BINDINGS}) # Only create the bindings if needed
+    # Ensure that Python is available to run the development scripts, and build with bindings.
+    SET(Python3_FIND_VIRTUALENV FIRST)
+
+    FIND_PACKAGE(
+        Python3
+        COMPONENTS Development Interpreter
+        REQUIRED
+    )
+
     SET(Python_EXECUTABLE ${Python3_EXECUTABLE})
 
     # Detect the installed nanobind package and import it into CMake

@@ -28,22 +28,6 @@ PROJECT(Steppable VERSION 0.0.1)
 
 ADD_COMPILE_DEFINITIONS(STEPPABLE_VERSION="${CMAKE_PROJECT_VERSION}")
 
-# Ensure that Python is available to run the development scripts, and build with bindings.
-SET(Python_FIND_VIRTUALENV FIRST)
-SET(Python3_FIND_VIRTUALENV FIRST)
-
-FIND_PACKAGE(
-    Python
-    COMPONENTS Development Interpreter
-    REQUIRED
-)
-
-FIND_PACKAGE(
-    Python3
-    COMPONENTS Development Interpreter
-    REQUIRED
-)
-
 SET(CMAKE_CXX_STANDARD 23)
 SET(CMAKE_C_STANDARD 11)
 SET(CMAKE_CXX_EXTENSIONS OFF)
@@ -132,23 +116,6 @@ ADD_SUBDIRECTORY(tests/)
 ADD_SUBDIRECTORY(include/) # The CMakeLists file there adds the include/ directory to everything
 
 FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
-
-IF(DEBUG)
-    # Patch the compile_commands.json using the Python script
-    ADD_CUSTOM_TARGET(
-        fix_ccjson ALL
-        COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/patch_compile_commands.py
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        COMMENT "Patching compile_commands.json"
-    )
-
-    ADD_CUSTOM_TARGET(
-        add_header_comments ALL
-        COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/add_copyright_header.py
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        COMMENT "Adding header comments"
-    )
-ENDIF()
 
 ADD_SUBDIRECTORY(gui)
 ADD_SUBDIRECTORY(parser)

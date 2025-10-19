@@ -26,7 +26,9 @@
 
 #include <any>
 #include <string>
+#include <stdexcept>
 #include <vector>
+#include <utility>
 
 namespace steppable::parser
 {
@@ -65,15 +67,30 @@ namespace steppable::parser
         }
 
         template<typename ItemT>
-        std::any getArgValue(const ItemT&) const;
-
-        template<>
-        // ReSharper disable CppExplicitSpecializationInNonNamespaceScope
-        [[nodiscard]] std::any getArgValue<std::string>(const std::string& argName) const;
-
-        template<>
-        [[nodiscard]] std::any getArgValue<int>(const int& idx) const;
-        // ReSharper restore CppExplicitSpecializationInNonNamespaceScope
+        std::any getArgValue(const ItemT& idx) const
+        {
+            if constexpr (std::is_same_v<ItemT, std::string>)
+            {
+                // Find argument by name
+                for (const auto& arg : arguments)
+                    if (arg.name == idx)
+                        return arg.value;
+                // Not found: fall back to default from constraint
+                for (const auto& cons : constraints)
+                    if (cons.requiredName == idx)
+                        return cons.defaultVal;
+                throw std::out_of_range("Argument name not found in constraints");
+            }
+            else if constexpr (std::is_same_v<ItemT, int>)
+            {
+                if (idx >= 0 and std::cmp_less(idx, arguments.size()))
+                    return arguments[idx].value;
+                if (idx >= 0 and std::cmp_less(idx, constraints.size()))
+                    return constraints[idx].defaultVal;
+                throw std::out_of_range("Positional index out of range of constraints");
+            }
+            throw std::logic_error("Invalid type specified");
+        }
     };
 
     struct STP_ValuePrimitive

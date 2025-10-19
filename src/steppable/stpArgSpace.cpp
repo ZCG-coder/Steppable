@@ -36,30 +36,6 @@ using namespace std::literals;
 
 namespace steppable::parser
 {
-    template<>
-    std::any STP_ArgContainer::getArgValue<std::string>(const std::string& argName) const
-    {
-        // Find argument by name
-        for (const auto& arg : arguments)
-            if (arg.name == argName)
-                return arg.value;
-        // Not found: fall back to default from constraint
-        for (const auto& cons : constraints)
-            if (cons.requiredName == argName)
-                return cons.defaultVal;
-        throw std::out_of_range("Argument name not found in constraints");
-    }
-
-    template<>
-    std::any STP_ArgContainer::getArgValue<int>(const int& idx) const
-    {
-        if (idx >= 0 and std::cmp_less(idx, arguments.size()))
-            return arguments[idx].value;
-        if (idx >= 0 and std::cmp_less(idx, constraints.size()))
-            return constraints[idx].defaultVal;
-        throw std::out_of_range("Positional index out of range of constraints");
-    }
-
     STP_ArgContainer* STP_castToArgList(void* data) { return static_cast<STP_ArgContainer*>(data); }
 
     STP_Argument::STP_Argument(std::string name, std::any value, const STP_TypeID& typeID) :
