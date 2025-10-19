@@ -11,6 +11,7 @@ on:
             - "**.py"
             - "**.yml"
             - "**.js"
+            - "parser/**"
 jobs:
     build:
         runs-on: ${{ matrix.os }}
