@@ -22,19 +22,17 @@
 
 IF(NOT ${STP_NO_BINDINGS}) # Only create the bindings if needed
     # Ensure that Python is available to run the development scripts, and build with bindings.
-    SET(Python3_FIND_VIRTUALENV FIRST)
+    SET(Python_FIND_VIRTUALENV FIRST)
 
     FIND_PACKAGE(
-        Python3
+        Python
         COMPONENTS Development Interpreter
         REQUIRED
     )
 
-    SET(Python_EXECUTABLE ${Python3_EXECUTABLE})
-
     # Detect the installed nanobind package and import it into CMake
     EXECUTE_PROCESS(
-        COMMAND "${Python3_EXECUTABLE}" -m nanobind --cmake_dir
+        COMMAND "${Python_EXECUTABLE}" -m nanobind --cmake_dir
         OUTPUT_STRIP_TRAILING_WHITESPACE
         OUTPUT_VARIABLE NB_DIR
     )
@@ -42,11 +40,6 @@ IF(NOT ${STP_NO_BINDINGS}) # Only create the bindings if needed
     LIST(APPEND CMAKE_PREFIX_PATH "${NB_DIR}")
     FIND_PACKAGE(nanobind CONFIG REQUIRED)
 
-    # Python bindings for Steppable.
-    SET(Python_INTERPRETER_ID
-        ${Python3_INTERPRETER_ID}
-        CACHE INTERNAL "Compatibility for nanobind"
-    )
     NANOBIND_ADD_MODULE(steppyble STABLE_ABI NB_STATIC LTO bindings.cpp)
 
     IF(NOT ${WINDOWS})
