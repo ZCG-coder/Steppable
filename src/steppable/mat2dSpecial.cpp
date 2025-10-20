@@ -31,12 +31,13 @@
 #include <algorithm>
 #include <cassert>
 #include <cmath>
+#include <getString.hpp>
 #include <math.h>
 #include <memory>
 #include <string>
-#include <getString.hpp>
 
 using namespace steppable::localization;
+using namespace std::literals;
 
 namespace
 {
@@ -172,8 +173,7 @@ namespace steppable
         Number firstColLast = firstCol[{ .y = firstCol.getRows() - 1, .x = 0 }];
         if (firstColLast != lastRow[{ .y = 0, .x = 0 }])
         {
-            output::warning("SpecialMatrix::hankel"s,
-                            $("steppable::mat2d", "6ecadb84-c406-4cb1-b066-b8db9d479959"));
+            output::warning("SpecialMatrix::hankel"s, $("steppable::mat2d", "6ecadb84-c406-4cb1-b066-b8db9d479959"));
             output::info("SpecialMatrix::hankel"s, $("steppable::mat2d", "47ce2948-fd80-441f-8673-b87579e05cd6"));
             lastRow[{ .y = 0, .x = 0 }] = firstColLast;
         }

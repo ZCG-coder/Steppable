@@ -55,8 +55,6 @@
 #include <string>
 #include <vector>
 
-using namespace std::literals;
-
 #ifndef TIC
     /**
      * @brief Starts a timer for profiling code execution time.
@@ -84,8 +82,8 @@ using namespace std::literals;
 #endif
 
 #ifndef MAX_DECIMALS
-    /// @brief The maximum number of decimals to output
-    #define MAX_DECIMALS 75
+/// @brief The maximum number of decimals to output
+constexpr int MAX_DECIMALS = 75;
 #endif
 
 namespace steppable::__internals::utils
@@ -210,6 +208,8 @@ namespace steppable::__internals::utils
     template<typename NumberT>
     void checkDecimalArg(const NumberT* decimal)
     {
+        using namespace std::literals;
+
         if (*decimal > MAX_DECIMALS)
         {
             output::error("checkDecimalArg"s,
@@ -652,6 +652,8 @@ namespace steppable::__internals::stringUtils
     template<concepts::Numeric T>
     T toNumeric(const std::string& s)
     {
+        using namespace std::literals;
+
         auto value = T{};
 
         if (auto result = std::from_chars(s.data(), s.data() + s.size(), value); result.ec != std::errc{}) // NOLINT

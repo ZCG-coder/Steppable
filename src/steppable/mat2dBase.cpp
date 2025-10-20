@@ -43,6 +43,7 @@ namespace steppable
     using namespace __internals;
     using namespace __internals::numUtils;
     using namespace localization;
+    using namespace std::literals;
 
     void MatrixBase::_checkDataSanity(const MatVec2D<Number>& data)
     {

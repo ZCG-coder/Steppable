@@ -32,6 +32,9 @@
 #include <map>
 #include <string>
 
+using namespace steppable::__internals::utils;
+using namespace steppable::__internals::symbols;
+
 namespace steppable::graphing::__internals
 {
     void conPlotLine(const Number& xGridSize,

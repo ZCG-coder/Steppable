@@ -28,19 +28,21 @@
  * @date 8rd November 2023
  */
 #include "argParse.hpp"
-#include "constants.hpp"
 #include "fn/calc.hpp"
 #include "getString.hpp"
 #include "powerReport.hpp"
 #include "rounding.hpp"
-#include "steppable/fraction.hpp"
 #include "symbols.hpp"
 #include "util.hpp"
 
-using namespace steppable::__internals::numUtils;
-using namespace steppable::output;
-using namespace steppable::localization;
+using namespace std::literals;
 using namespace steppable::__internals::calc;
+using namespace steppable::__internals::numUtils;
+using namespace steppable::__internals::stringUtils;
+using namespace steppable::__internals::symbols;
+using namespace steppable::__internals::utils;
+using namespace steppable::localization;
+using namespace steppable::output;
 
 namespace steppable::prettyPrint::printers
 {

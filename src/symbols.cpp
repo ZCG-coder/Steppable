@@ -38,6 +38,7 @@ namespace steppable::prettyPrint
 {
     using namespace steppable::__internals::stringUtils;
     using namespace steppable::__internals::utils;
+    using namespace std::literals;
 
     ConsoleOutput::ConsoleOutput(size_t height, size_t width) : height(height), width(width)
     {

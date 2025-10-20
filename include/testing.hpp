@@ -35,8 +35,6 @@
 
 #include <string>
 
-using namespace std::literals;
-
 /// @brief This macro defines the main function and initializes the Utf8CodePage object, and prepares the error counter.
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define TEST_START()                                         \
@@ -47,6 +45,7 @@ using namespace std::literals;
         using namespace steppable::__internals::utils;       \
         using namespace steppable::testing;                  \
         using namespace steppable::output;                   \
+        using namespace std::literals;                       \
         Utf8CodePage use_utf8;                               \
         int errors = 0;
 

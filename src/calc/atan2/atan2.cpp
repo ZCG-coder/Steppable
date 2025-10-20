@@ -44,9 +44,11 @@
 using namespace std::literals;
 using namespace steppable::__internals::calc;
 using namespace steppable::__internals::numUtils;
+using namespace steppable::__internals::stringUtils;
+using namespace steppable::__internals::symbols;
+using namespace steppable::__internals::utils;
 using namespace steppable::localization;
 using namespace steppable::output;
-using namespace steppable::parser;
 
 namespace steppable::__internals::calc
 {
@@ -128,6 +130,8 @@ int main(int _argc, const char* _argv[])
     std::cout << atan2(yStr, xStr, decimals) << '\n';
 }
 #endif
+
+using namespace steppable::parser;
 
 STP_EXPORT_FUNC(STP_atan2)
 {

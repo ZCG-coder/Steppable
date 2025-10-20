@@ -31,8 +31,6 @@
 #include <utility>
 #include <vector>
 
-using namespace std::literals;
-
 /**
  * @namespace steppable::__internals::parameter
  * @brief Contains the parameter utilities to allow named parameters to be passed into functions.
@@ -67,7 +65,8 @@ namespace steppable::__internals::parameter
          * @return A `ValuedParameter` object representing the current parameter.
          */
         template<typename T>
-        ValuedParameter operator=(T value) // NOLINT(cppcoreguidelines-c-copy-assignment-signature, *-unconventional-assign-operator)
+        ValuedParameter operator=(
+            T value) // NOLINT(cppcoreguidelines-c-copy-assignment-signature, *-unconventional-assign-operator)
         {
             return { .name = name, .value = std::move(value) };
         }
@@ -125,6 +124,8 @@ namespace steppable::__internals::parameter
         template<typename ValueT>
         ValueT getItem(const std::string& name)
         {
+            using namespace std::literals;
+
             ValuedParameter value;
             for (const auto& obj : values)
                 if (obj.name == name)

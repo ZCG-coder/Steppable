@@ -31,6 +31,8 @@
 #include <regex>
 #include <vector>
 
+using namespace std::literals;
+
 // DO NOT LOCALIZE
 
 thread_local const std::map<std::string, std::string>& langNameReplacements = {

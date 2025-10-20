@@ -22,6 +22,7 @@
 
 #include "conPlot/conPlot.hpp"
 
+#include "colors.hpp"
 #include "conPlot/conPlotInternals.hpp"
 #include "conPlot/conPlotTypes.hpp"
 #include "debugging.hpp"
@@ -30,6 +31,9 @@
 
 #include <map>
 #include <string>
+
+using namespace steppable::__internals::utils;
+using namespace std::literals;
 
 namespace steppable::graphing
 {

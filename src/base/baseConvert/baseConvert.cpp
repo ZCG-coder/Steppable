@@ -42,6 +42,7 @@
 using namespace std::literals;
 using namespace steppable::__internals::stringUtils;
 using namespace steppable::__internals::calc;
+using namespace steppable::__internals::utils;
 using namespace steppable::__internals::symbols;
 using namespace steppable::localization;
 using namespace steppable::output;

@@ -33,6 +33,7 @@
 #include "refReport.hpp"
 #include "steppable/number.hpp"
 #include "steppable/parameter.hpp"
+#include "util.hpp"
 
 #include <string>
 #include <string_view>
@@ -47,6 +48,7 @@ namespace steppable::__internals::matrix
 int main()
 {
     using namespace steppable;
+    using namespace steppable::__internals::utils;
     using namespace steppable::__internals::parameter;
 
     Utf8CodePage _;

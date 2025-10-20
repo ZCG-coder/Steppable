@@ -125,7 +125,8 @@ namespace steppable::__internals::calc
             // ------------------------
             //     4       2
             //  13x  + 660x  + 15120
-            const auto a = add(subtract(multiply("313", x4, 0, decimals), multiply("6900", x2, 0, decimals), 0), "15120", 0);
+            const auto a =
+                add(subtract(multiply("313", x4, 0, decimals), multiply("6900", x2, 0, decimals), 0), "15120", 0);
             const auto b = add(add(multiply("13", x4, 0, decimals), multiply("660", x2, 0, decimals), 0), "15120", 0);
             return standardizeNumber(divide(a, b, 0, decimals + 2));
         }

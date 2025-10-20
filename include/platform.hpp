@@ -41,8 +41,6 @@
 
 #undef timeval
 
-using namespace std::literals;
-
 /**
  * @namespace steppable::__internals::utils
  * @brief Namespace for internal functions

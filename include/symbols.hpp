@@ -48,8 +48,6 @@
  */
 namespace steppable::prettyPrint
 {
-    using namespace __internals::utils;
-
     /**
      * @brief Represents a position in the console.
      */
@@ -85,6 +83,8 @@ namespace steppable::prettyPrint
     class ConsoleOutput
     {
     private:
+        using ColorFunc = __internals::utils::ColorFunc;
+
         /// @brief The current position.
         Position curPos;
 
@@ -108,7 +108,7 @@ namespace steppable::prettyPrint
         void _write(const std::string& s,
                     const Position& pos,
                     bool updatePos = false,
-                    const ColorFunc& color = colors::keepOriginal,
+                    const ColorFunc& color = __internals::utils::colors::keepOriginal,
                     const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
     public:
@@ -133,7 +133,7 @@ namespace steppable::prettyPrint
                    long long dLine,
                    long long dCol,
                    bool updatePos = false,
-                   const ColorFunc& color = colors::keepOriginal,
+                   const ColorFunc& color = __internals::utils::colors::keepOriginal,
                    const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
         /**
@@ -147,7 +147,7 @@ namespace steppable::prettyPrint
         void write(char c,
                    const Position& pos,
                    bool updatePos = false,
-                   const ColorFunc& color = colors::keepOriginal,
+                   const ColorFunc& color = __internals::utils::colors::keepOriginal,
                    const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
         /**
@@ -161,7 +161,7 @@ namespace steppable::prettyPrint
         void write(const std::string_view& s,
                    const Position& pos,
                    bool updatePos = false,
-                   const ColorFunc& color = colors::keepOriginal,
+                   const ColorFunc& color = __internals::utils::colors::keepOriginal,
                    const HorizontalAlignment& alignment = HorizontalAlignment::LEFT)
         {
             _write(static_cast<std::string>(s), pos, updatePos, color, alignment);

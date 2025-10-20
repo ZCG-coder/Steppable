@@ -105,6 +105,8 @@ namespace steppable
         template<__internals::utils::StringLiteral fnName>
         [[nodiscard]] size_t determinePrec(const Number& rhs) const
         {
+            using namespace std::literals;
+
             size_t usePrec = 0;
             if (mode == RoundingMode::USE_MAXIMUM_PREC)
                 usePrec = std::max(prec, rhs.prec);

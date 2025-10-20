@@ -44,10 +44,14 @@
 #include <string>
 #include <vector>
 
-using namespace steppable::__internals::numUtils;
-using namespace steppable::output;
-using namespace steppable::localization;
+using namespace std::literals;
 using namespace steppable::__internals::calc;
+using namespace steppable::__internals::numUtils;
+using namespace steppable::__internals::stringUtils;
+using namespace steppable::__internals::symbols;
+using namespace steppable::__internals::utils;
+using namespace steppable::localization;
+using namespace steppable::output;
 
 namespace steppable::__internals::calc
 {

@@ -34,6 +34,7 @@
 #include "getString.hpp"
 #include "output.hpp"
 #include "rounding.hpp"
+#include "symbols.hpp"
 #include "util.hpp"
 
 #include <cstddef>
@@ -41,11 +42,14 @@
 #include <sstream>
 #include <string>
 
+using namespace std::literals;
+using namespace steppable::__internals::calc;
 using namespace steppable::__internals::numUtils;
 using namespace steppable::__internals::stringUtils;
-using namespace steppable::output;
+using namespace steppable::__internals::symbols;
+using namespace steppable::__internals::utils;
 using namespace steppable::localization;
-using namespace steppable::__internals::calc;
+using namespace steppable::output;
 
 namespace steppable::__internals::calc
 {

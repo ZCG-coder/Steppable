@@ -43,8 +43,6 @@
 #include <string>
 #include <util.hpp>
 
-using namespace std::literals;
-
 /**
  * @namespace steppable::__internals::calc
  * @brief The namespace containing number calculating functions for the Steppable library.
@@ -564,6 +562,8 @@ namespace steppable::__internals::calc
     template<typename Pred>
     void loop(const std::string& times, Pred predicate)
     {
+        using namespace std::literals;
+
         // We're done already!
         if (times == "0")
             return;
@@ -590,4 +590,3 @@ namespace steppable::__internals::calc
     }
 
 } // namespace steppable::__internals::calc
-

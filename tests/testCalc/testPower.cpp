@@ -32,6 +32,7 @@
 
 TEST_START()
 
+using namespace steppable::__internals;
 using namespace steppable::__internals::calc;
 
 SECTION(Power)

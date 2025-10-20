@@ -32,10 +32,6 @@
 
 namespace steppable::graphing
 {
-    using namespace steppable::__internals::utils;
-    using namespace steppable::__internals::symbols;
-    using namespace steppable::__internals::parameter;
-
     using GraphFn = std::function<Number(Number)>;
 
     /**
@@ -156,7 +152,7 @@ namespace steppable::graphing
     struct LineOptionsBase
     {
         std::string_view lineDot = GraphDot::BLOCK; ///< Dot type to be drawn on screen.
-        ColorFunc lineColor = colors::green; ///< Color of the dot to output.
+        __internals::utils::ColorFunc lineColor = __internals::utils::colors::green; ///< Color of the dot to output.
         std::string title = "Line"; ///< Name of the line to be shown in the legend.
     };
 
@@ -182,9 +178,14 @@ namespace steppable::graphing
         template<typename... Params>
         LineOptions(Params... params)
         {
+            using namespace std::literals;
+
             auto map = processParams(params...);
             PARAM_GET_FALLBACK(map, std::string_view, lineDot, GraphDot::BLOCK);
-            PARAM_GET_FALLBACK(map, ColorFunc, lineColor, (ColorFunc)colors::green);
+            PARAM_GET_FALLBACK(map,
+                               __internals::utils::ColorFunc,
+                               lineColor,
+                               (__internals::utils::ColorFunc)__internals::utils::colors::green);
             PARAM_GET_FALLBACK(map, std::string, title, "Line"s);
             PARAM_GET_FALLBACK(map, long long, samplesSpacing, 2LL);
 
@@ -210,9 +211,11 @@ namespace steppable::graphing
         template<typename... Params>
         BarOptions(Params... params)
         {
+            using namespace std::literals;
+
             auto map = processParams(params...);
             PARAM_GET_FALLBACK(map, std::string_view, block, GraphDot::BLOCK);
-            PARAM_GET_FALLBACK(map, ColorFunc, color, colors::keepOriginal);
+            PARAM_GET_FALLBACK(map, __internals::utils::ColorFunc, color, __internals::utils::colors::keepOriginal);
             PARAM_GET_FALLBACK(map, long long, barWidth, 2);
             PARAM_GET_FALLBACK(map, std::string, title, "Bar"s);
 

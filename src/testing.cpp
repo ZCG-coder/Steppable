@@ -32,6 +32,7 @@
 using namespace std::literals;
 using namespace steppable::output;
 using namespace steppable::localization;
+using namespace steppable::__internals::utils;
 
 namespace steppable::testing
 {
@@ -43,12 +44,14 @@ namespace steppable::testing
         if (condition)
         {
             conditionName = conditionName.substr(0, 50) + " /* snip */";
-            info("TestCase::assert"s, $("steppable::testing", "21357416-4f5d-4681-9724-bfcd95d222ea", { conditionName }));
+            info("TestCase::assert"s,
+                 $("steppable::testing", "21357416-4f5d-4681-9724-bfcd95d222ea", { conditionName }));
             return;
         }
         error("TestCase::assert",
-            $("steppable::testing", "db27423d-347d-47c6-ba24-66a551a54281",
-              { std::to_string(errorCount + 1), conditionName }));
+              $("steppable::testing",
+                "db27423d-347d-47c6-ba24-66a551a54281",
+                { std::to_string(errorCount + 1), conditionName }));
         errorCount++;
     }
 
@@ -66,13 +69,15 @@ namespace steppable::testing
 
     void TestCase::assertTrue(const bool value)
     {
-        const std::string& conditionName = $("steppable::testing", "20edcf43-774e-4933-a500-313cde4076c9", { std::to_string(static_cast<int>(value)) });
+        const std::string& conditionName = $(
+            "steppable::testing", "20edcf43-774e-4933-a500-313cde4076c9", { std::to_string(static_cast<int>(value)) });
         _assertCondition(value, conditionName);
     }
 
     void TestCase::assertFalse(const bool value)
     {
-        const std::string& conditionName = $("steppable::testing", "f888ae76-1e1b-4174-8ae2-e20fcab98876", { std::to_string(static_cast<int>(value)) });
+        const std::string& conditionName = $(
+            "steppable::testing", "f888ae76-1e1b-4174-8ae2-e20fcab98876", { std::to_string(static_cast<int>(value)) });
         _assertCondition(not value, conditionName);
     }
 
@@ -83,9 +88,9 @@ namespace steppable::testing
                       << $("steppable::testing",
                            "21309d90-48eb-4ba1-a7f1-1683509b7119",
                            { testCaseName, std::to_string(errorCount) })
-                      << reset
-                      << '\n';
+                      << reset << '\n';
         else
-            std::cout << colors::brightGreen << $("steppable::testing", "262c6c76-8078-47de-b782-0085f543bb6e") << reset << '\n';
+            std::cout << colors::brightGreen << $("steppable::testing", "262c6c76-8078-47de-b782-0085f543bb6e") << reset
+                      << '\n';
     }
 } // namespace steppable::testing
