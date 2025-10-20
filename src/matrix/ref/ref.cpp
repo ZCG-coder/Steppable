@@ -40,16 +40,16 @@
 
 using namespace std::literals;
 
-namespace steppable::__internals::matrix
+namespace steppable::matrix
 {
     std::string ref(/* Arguments... */) { return ""; }
-} // namespace steppable::__internals::matrix
+} // namespace steppable::matrix
 
 int main()
 {
     using namespace steppable;
-    using namespace steppable::__internals::utils;
-    using namespace steppable::__internals::parameter;
+    using namespace steppable::utils;
+    using namespace steppable::parameter;
 
     Utf8CodePage _;
     // std::vector<std::vector<Number>> matrix = { { 2, 1, -1, 3, 2, 8 },
@@ -62,8 +62,8 @@ int main()
 
     // std::cout << mat.present(1) << "\n";
     graphing::conPlot({
-                          [](const Number& x) { return steppable::__internals::calc::sin(x.present(), 2); },
-                          [](const Number& x) { return steppable::__internals::calc::cos(x.present(), 2); },
+                          [](const Number& x) { return steppable::calc::sin(x.present(), 2); },
+                          [](const Number& x) { return steppable::calc::cos(x.present(), 2); },
                       },
                       {
                           "width"_p = 90LL,

@@ -191,13 +191,13 @@ def make_dir(name: str, date: str, author: str) -> None:
 #include "{name}Report.hpp"
 #include <string>
 
-namespace steppable::__internals::{origin}
+namespace steppable::{origin}
 {{
     std::string {name}(/* Arguments... */)
     {{
         // Your code here...
     }}
-}} // namespace steppable::__internals::{origin}
+}} // namespace steppable::{origin}
 """
         )
     print(f"- Added {name}.cpp")

@@ -37,7 +37,7 @@
 
 using namespace std::literals;
 
-namespace steppable::__internals::numUtils
+namespace steppable::numUtils
 {
     bool isNumber(const std::string& s)
     {
@@ -315,9 +315,9 @@ namespace steppable::__internals::numUtils
 
         return not isOdd(number);
     }
-} // namespace steppable::__internals::numUtils
+} // namespace steppable::numUtils
 
-namespace steppable::__internals::stringUtils
+namespace steppable::stringUtils
 {
     std::string makeWider(const std::string& orig)
     {
@@ -422,4 +422,4 @@ namespace steppable::__internals::stringUtils
 
         return "";
     }
-} // namespace steppable::__internals::stringUtils
+} // namespace steppable::stringUtils

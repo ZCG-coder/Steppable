@@ -44,10 +44,10 @@
 #include <util.hpp>
 
 /**
- * @namespace steppable::__internals::calc
+ * @namespace steppable::calc
  * @brief The namespace containing number calculating functions for the Steppable library.
  */
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     /**
      * @brief Represents the quotient and remainder of a division operation.
@@ -589,4 +589,4 @@ namespace steppable::__internals::calc
         }
     }
 
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc

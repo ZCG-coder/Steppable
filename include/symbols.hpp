@@ -83,7 +83,7 @@ namespace steppable::prettyPrint
     class ConsoleOutput
     {
     private:
-        using ColorFunc = __internals::utils::ColorFunc;
+        using ColorFunc = utils::ColorFunc;
 
         /// @brief The current position.
         Position curPos;
@@ -108,7 +108,7 @@ namespace steppable::prettyPrint
         void _write(const std::string& s,
                     const Position& pos,
                     bool updatePos = false,
-                    const ColorFunc& color = __internals::utils::colors::keepOriginal,
+                    const ColorFunc& color = utils::colors::keepOriginal,
                     const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
     public:
@@ -133,7 +133,7 @@ namespace steppable::prettyPrint
                    long long dLine,
                    long long dCol,
                    bool updatePos = false,
-                   const ColorFunc& color = __internals::utils::colors::keepOriginal,
+                   const ColorFunc& color = utils::colors::keepOriginal,
                    const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
         /**
@@ -147,7 +147,7 @@ namespace steppable::prettyPrint
         void write(char c,
                    const Position& pos,
                    bool updatePos = false,
-                   const ColorFunc& color = __internals::utils::colors::keepOriginal,
+                   const ColorFunc& color = utils::colors::keepOriginal,
                    const HorizontalAlignment& alignment = HorizontalAlignment::LEFT);
 
         /**
@@ -161,7 +161,7 @@ namespace steppable::prettyPrint
         void write(const std::string_view& s,
                    const Position& pos,
                    bool updatePos = false,
-                   const ColorFunc& color = __internals::utils::colors::keepOriginal,
+                   const ColorFunc& color = utils::colors::keepOriginal,
                    const HorizontalAlignment& alignment = HorizontalAlignment::LEFT)
         {
             _write(static_cast<std::string>(s), pos, updatePos, color, alignment);
@@ -191,7 +191,7 @@ namespace steppable::prettyPrint
     size_t getStringHeight(const std::string& s);
 } // namespace steppable::prettyPrint
 
-namespace steppable::__internals::stringUtils
+namespace steppable::stringUtils
 {
 
     /**
@@ -295,10 +295,10 @@ namespace steppable::__internals::stringUtils
         std::string str;
         size_t pos{};
     };
-} // namespace steppable::__internals::stringUtils
+} // namespace steppable::stringUtils
 
 /**
- * @namespace steppable::__internals::symbols
+ * @namespace steppable::symbols
  * @brief The namespace containing various unicode symbols.
  *
  * @deprecated This namespace is deprecated and will be removed in the future, as the unicode output is not flexible
@@ -306,7 +306,7 @@ namespace steppable::__internals::stringUtils
  * @warning Usage of this namespace is strongly discouraged. Use the steppable::prettyPrint namespace for basic tools,
  * and implement yours in steppable::prettyPrint::printers.
  */
-namespace steppable::__internals::symbols
+namespace steppable::symbols
 {
     /// @brief The because symbol (3 dots in a triangle, Unicode U+2235)
     constexpr std::string_view BECAUSE = "\u2235";
@@ -403,7 +403,7 @@ namespace steppable::__internals::symbols
     std::string makeSurd(const std::string& radicand);
 
     /**
-     * @namespace steppable::__internals::symbols::BoxDrawing
+     * @namespace steppable::symbols::BoxDrawing
      * @brief Defines easy ascess to Unicode box-drawing characters.
      */
     namespace BoxDrawing
@@ -428,7 +428,7 @@ namespace steppable::__internals::symbols
 
         constexpr std::string_view CROSS = "\u253C"; ///< A combining cross between a horizontal and vertical line.
     } // namespace BoxDrawing
-} // namespace steppable::__internals::symbols
+} // namespace steppable::symbols
 
 /**
  * @namespace steppable::prettyPrint::printers

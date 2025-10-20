@@ -31,17 +31,17 @@
 
 TEST_START()
 SECTION(Root with a sqare number)
-using namespace steppable::__internals::calc;
+using namespace steppable::calc;
 _.assertIsEqual(root("4", "2", 0), "2");
 SECTION_END()
 
 SECTION(Root with a decimal index)
-using namespace steppable::__internals::calc;
+using namespace steppable::calc;
 _.assertIsEqual(root("4", "0.5", 0), "16");
 SECTION_END()
 
 SECTION(Surds)
-using namespace steppable::__internals::calc;
+using namespace steppable::calc;
 auto surd = rootSurd("27", "2");
 _.assertIsEqual(surd.multiplier, "3");
 _.assertIsEqual(surd.radicand, "3");

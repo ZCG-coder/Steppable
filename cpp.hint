@@ -27,8 +27,8 @@
     /* NOLINTNEXTLINE(bugprone-exception-escape) */          \
     int main()                                               \
     {                                                        \
-        using namespace steppable::__internals::stringUtils; \
-        using namespace steppable::__internals::utils;       \
+        using namespace steppable::stringUtils; \
+        using namespace steppable::utils;       \
         using namespace steppable::testing;                  \
         using namespace steppable::output;                   \
         Utf8CodePage use_utf8;                               \

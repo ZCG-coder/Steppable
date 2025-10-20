@@ -75,9 +75,9 @@ namespace steppable::output
     template<typename T>
     void error(const std::string& name, const std::basic_string<T>& msg, const std::vector<std::string>& args = {})
     {
-        using namespace steppable::__internals;
-        using namespace steppable::__internals::utils;
-        using namespace steppable::__internals::symbols;
+        using namespace steppable;
+        using namespace steppable::utils;
+        using namespace steppable::symbols;
 
         auto formattedMsg = format::format(msg, args);
         std::cerr << colors::red << formats::bold << LARGE_DOT << name << " - ERROR: " << reset << colors::red;
@@ -108,9 +108,9 @@ namespace steppable::output
                  const std::basic_string<T>& msg,
                  const std::vector<std::string>& args = {})
     {
-        using namespace steppable::__internals;
-        using namespace steppable::__internals::utils;
-        using namespace steppable::__internals::symbols;
+        using namespace steppable;
+        using namespace steppable::utils;
+        using namespace steppable::symbols;
 
         std::cout << colors::yellow << formats::bold << LARGE_DOT << name << " - WARNING: " << reset << colors::yellow;
         std::cout << format::format(msg, args) << reset << '\n';
@@ -136,9 +136,9 @@ namespace steppable::output
               const std::basic_string<T>& msg,
               const std::vector<std::string>& args = {})
     {
-        using namespace steppable::__internals;
-        using namespace steppable::__internals::utils;
-        using namespace steppable::__internals::symbols;
+        using namespace steppable;
+        using namespace steppable::utils;
+        using namespace steppable::symbols;
 
         std::cout << colors::brightCyan << formats::bold << LARGE_DOT << name << " - INFO: " << reset
                   << colors::brightCyan;

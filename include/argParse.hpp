@@ -44,10 +44,10 @@
 #include <vector>
 
 /**
- * @namespace steppable::__internals::utils
+ * @namespace steppable::utils
  * @brief The namespace containing utility functions for the Steppable library.
  */
-namespace steppable::__internals::utils
+namespace steppable::utils
 {
     /// @brief This is the type of the positional arguments. It is equivalent to a vector of string_views.
     using PosArgs = std::vector<std::string>;
@@ -195,4 +195,4 @@ namespace steppable::__internals::utils
          */
         void printUsage(const std::string& reason = "") const;
     };
-} // namespace steppable::__internals::utils
+} // namespace steppable::utils

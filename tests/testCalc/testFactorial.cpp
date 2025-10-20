@@ -29,7 +29,7 @@
 #include <iomanip>
 #include <iostream>
 
-using namespace steppable::__internals::calc;
+using namespace steppable::calc;
 
 TEST_START()
 SECTION(Factorial)

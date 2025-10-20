@@ -39,13 +39,13 @@
 #include <string>
 #include <vector>
 
-using namespace steppable::__internals::numUtils;
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::calc;
-using namespace steppable::__internals::symbols;
+using namespace steppable::numUtils;
+using namespace steppable::utils;
+using namespace steppable::calc;
+using namespace steppable::symbols;
 using namespace steppable::localization;
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     std::string add(const std::string& a,
                     const std::string& b,
@@ -160,7 +160,7 @@ namespace steppable::__internals::calc
         return reportAdd(
             aInteger, aDecimal, bInteger, bDecimal, sumDigits, carries, resultIsNegative, steps, properlyFormat);
     }
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

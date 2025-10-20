@@ -60,7 +60,7 @@
 // RGB Background Colors (8-bit)
 #define RGB_BG(r, g, b) "\x1b[48;2;" #r ";" #g ";" #b "m"
 
-namespace steppable::__internals::utils
+namespace steppable::utils
 {
     using ColorFunc = std::function<std::ostream&(std::ostream&)>;
 
@@ -85,7 +85,7 @@ namespace steppable::__internals::utils
     std::ostream& reset(std::ostream& stream);
 
     /**
-     * @namespace steppable::__internals::utils::colors
+     * @namespace steppable::utils::colors
      * @brief A namespace containing functions to set the text color in an output stream.
      */
     namespace colors
@@ -228,7 +228,7 @@ namespace steppable::__internals::utils
     } // namespace colors
 
     /**
-     * @namespace steppable::__internals::utils::colorsBg
+     * @namespace steppable::utils::colorsBg
      * @brief A namespace containing functions to set the background color in an output stream.
      */
     namespace colorsBg
@@ -291,7 +291,7 @@ namespace steppable::__internals::utils
     } // namespace colorsBg
 
     /**
-     * @namespace steppable::__internals::utils::formats
+     * @namespace steppable::utils::formats
      * @brief A namespace containing functions to set the text format in an output stream.
      */
     namespace formats
@@ -344,4 +344,4 @@ namespace steppable::__internals::utils
          */
         std::ostream& hidden(std::ostream& stream);
     } // namespace formats
-} // namespace steppable::__internals::utils
+} // namespace steppable::utils

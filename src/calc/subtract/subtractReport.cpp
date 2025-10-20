@@ -39,8 +39,8 @@
 #include <utility>
 #include <vector>
 
-using namespace steppable::__internals::numUtils;
-using namespace steppable::__internals::symbols;
+using namespace steppable::numUtils;
+using namespace steppable::symbols;
 
 std::string reportSubtract(const std::string& aInteger,
                            const std::string& aDecimal,

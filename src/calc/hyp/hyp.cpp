@@ -45,10 +45,10 @@
 using namespace std::literals;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::numUtils;
+using namespace steppable::utils;
+using namespace steppable::numUtils;
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     std::string sinh(const std::string& x, const int decimals)
     {
@@ -230,7 +230,7 @@ namespace steppable::__internals::calc
         return ln(lnArg, decimals);
     }
 
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
@@ -248,7 +248,7 @@ int main(int _argc, const char* _argv[])
     const auto& command = program.getPosArg(0);
     const auto& arg = static_cast<std::string>(program.getPosArg(1));
 
-    using namespace steppable::__internals;
+    using namespace steppable;
 
     std::function<std::string(const std::string& x, const int decimals)> function;
 
@@ -290,7 +290,7 @@ int main(int _argc, const char* _argv[])
 #endif
 
 using namespace steppable::parser;
-using namespace steppable::__internals;
+using namespace steppable;
 
 STP_EXPORT_FUNC(STP_cosh)
 {

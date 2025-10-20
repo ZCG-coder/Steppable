@@ -24,7 +24,7 @@
 
 #include <iostream>
 
-namespace steppable::__internals::utils
+namespace steppable::utils
 {
     struct setw
     {
@@ -37,4 +37,4 @@ namespace steppable::__internals::utils
             return os << spaces;
         }
     };
-} // namespace steppable::__internals::utils
+} // namespace steppable::utils

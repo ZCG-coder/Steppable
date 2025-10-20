@@ -42,12 +42,12 @@
 #include <string>
 
 /**
- * @namespace steppable::__internals::logging
+ * @namespace steppable::logging
  * @brief The logging namespace contains classes and functions for logging.
  * The logging namespace contains the Logger class, which provides logging functionality, including logging messages
  * at different levels, such as error, warning, info, and debug. It writes the log messages to a specified log file.
  */
-namespace steppable::__internals::logging
+namespace steppable::logging
 {
     /**
      * @enum Level
@@ -173,4 +173,4 @@ namespace steppable::__internals::logging
          */
         void log(const std::string& message);
     };
-} // namespace steppable::__internals::logging
+} // namespace steppable::logging

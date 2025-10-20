@@ -27,7 +27,7 @@
 
 #include <string>
 
-namespace steppable::__internals::numUtils
+namespace steppable::numUtils
 {
     std::string roundDown(const std::string& _number)
     {
@@ -183,4 +183,4 @@ namespace steppable::__internals::numUtils
         auto result = integer + "." + decimal;
         return standardizeNumber(removeLeadingZeros(result));
     }
-} // namespace steppable::__internals::numUtils
+} // namespace steppable::numUtils

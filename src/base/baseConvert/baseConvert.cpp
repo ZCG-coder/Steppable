@@ -40,10 +40,10 @@
 #include <vector>
 
 using namespace std::literals;
-using namespace steppable::__internals::stringUtils;
-using namespace steppable::__internals::calc;
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::symbols;
+using namespace steppable::stringUtils;
+using namespace steppable::calc;
+using namespace steppable::utils;
+using namespace steppable::symbols;
 using namespace steppable::localization;
 using namespace steppable::output;
 
@@ -63,7 +63,7 @@ namespace steppable::prettyPrint::printers
     }
 } // namespace steppable::prettyPrint::printers
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     /**
      * @brief Represents a number using alphabets and numberals.
@@ -127,7 +127,7 @@ namespace steppable::__internals::calc
 
         return reportBaseConvert(numberOrig, static_cast<std::string>(baseStr), digits, steps);
     }
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

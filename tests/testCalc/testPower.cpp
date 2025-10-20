@@ -32,8 +32,8 @@
 
 TEST_START()
 
-using namespace steppable::__internals;
-using namespace steppable::__internals::calc;
+using namespace steppable;
+using namespace steppable::calc;
 
 SECTION(Power)
 const std::string number = "47";

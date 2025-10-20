@@ -41,8 +41,8 @@
     /* NOLINTNEXTLINE(bugprone-exception-escape) */          \
     int main()                                               \
     {                                                        \
-        using namespace steppable::__internals::stringUtils; \
-        using namespace steppable::__internals::utils;       \
+        using namespace steppable::stringUtils; \
+        using namespace steppable::utils;       \
         using namespace steppable::testing;                  \
         using namespace steppable::output;                   \
         using namespace std::literals;                       \
@@ -139,7 +139,7 @@ namespace steppable::testing
         void assertIsEqual(ValueT a, ValueT b)
         {
             const std::string& conditionName =
-                __internals::format::format("Value {0} == {1}", { std::to_string(a), std::to_string(b) });
+                format::format("Value {0} == {1}", { std::to_string(a), std::to_string(b) });
             _assertCondition(a == b, conditionName);
         }
 
@@ -152,7 +152,7 @@ namespace steppable::testing
         void assertIsNearlyEqual(ValueT a, ValueT b)
         {
             const std::string& conditionName =
-                __internals::format::format("Value {0} ≈ {1}", { std::to_string(a), std::to_string(b) });
+                format::format("Value {0} ≈ {1}", { std::to_string(a), std::to_string(b) });
             // Take less than 10% error as equal
             _assertCondition(abs(a - b) / a < 0.1, conditionName);
         }
@@ -166,7 +166,7 @@ namespace steppable::testing
         void assertIsNotEqual(ValueT a, ValueT b)
         {
             const std::string& conditionName =
-                __internals::format::format("Value {0} != {1}", { std::to_string(a), std::to_string(b) });
+                format::format("Value {0} != {1}", { std::to_string(a), std::to_string(b) });
             _assertCondition(a != b, conditionName);
         }
 
@@ -179,7 +179,7 @@ namespace steppable::testing
         void assertIsEqual(const ValueTA& a, const ValueTB& b)
         {
             const std::string& conditionName =
-                __internals::format::format("Object {0} == {1}", { a.present(), b.present() });
+                format::format("Object {0} == {1}", { a.present(), b.present() });
             _assertCondition(static_cast<bool>(a == b), conditionName);
         }
 
@@ -192,7 +192,7 @@ namespace steppable::testing
         void assertIsNotEqual(ValueTA a, ValueTB b)
         {
             const std::string& conditionName =
-                __internals::format::format("Object {0} != {1}", { a.present(), b.present() });
+                format::format("Object {0} != {1}", { a.present(), b.present() });
             bool res = static_cast<bool>(a != b);
             _assertCondition(res, conditionName);
         }

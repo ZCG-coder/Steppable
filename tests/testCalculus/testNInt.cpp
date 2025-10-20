@@ -30,8 +30,8 @@
 #include <iomanip>
 #include <iostream>
 
-using namespace steppable::__internals::calculus;
-using namespace steppable::__internals::calc;
+using namespace steppable::calculus;
+using namespace steppable::calc;
 
 TEST_START()
 

@@ -86,7 +86,7 @@
 constexpr int MAX_DECIMALS = 75;
 #endif
 
-namespace steppable::__internals::utils
+namespace steppable::utils
 {
 #ifndef MS_STDLIB_BUGS
     #if (_MSC_VER || __MINGW32__ || __MSVCRT__)
@@ -240,13 +240,13 @@ namespace steppable::__internals::utils
          */
         char value[N]; // NOLINT(*-avoid-c-arrays)
     };
-} // namespace steppable::__internals::utils
+} // namespace steppable::utils
 
 /**
- * @namespace steppable::__internals::numUtils
+ * @namespace steppable::numUtils
  * @brief Utilities to operate numbers.
  */
-namespace steppable::__internals::numUtils
+namespace steppable::numUtils
 {
     /**
      * @struct SplitNumberResult
@@ -417,13 +417,13 @@ namespace steppable::__internals::numUtils
      * @return True if the number is even, false otherwise.
      */
     bool isEven(const std::string& number);
-} // namespace steppable::__internals::numUtils
+} // namespace steppable::numUtils
 
 /**
- * @namespace steppable::__internals::stringUtils
+ * @namespace steppable::stringUtils
  * @brief Utilities to operate strings.
  */
-namespace steppable::__internals::stringUtils
+namespace steppable::stringUtils
 {
     // Thread-local scratch buffer for runtime toStringView
     static thread_local std::string _toStringViewBuffer; // NOLINT
@@ -663,4 +663,4 @@ namespace steppable::__internals::stringUtils
         }
         return value;
     }
-} // namespace steppable::__internals::stringUtils
+} // namespace steppable::stringUtils

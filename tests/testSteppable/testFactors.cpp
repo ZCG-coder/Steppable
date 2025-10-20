@@ -30,7 +30,7 @@
 #include <iostream>
 
 TEST_START()
-using namespace steppable::__internals::numUtils;
+using namespace steppable::numUtils;
 
 SECTION(Prime Test)
 _.assertTrue(isPrime("2"));

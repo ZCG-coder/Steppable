@@ -27,7 +27,7 @@
 #include <string>
 #include <vector>
 
-namespace steppable::__internals::numUtils
+namespace steppable::numUtils
 {
     /**
      * @brief Get the factors of a number.
@@ -72,4 +72,4 @@ namespace steppable::__internals::numUtils
      * StatusBool::CALCULATED_SIMPLIFIED_NO otherwise.
      */
     types::ResultBool<std::string> isRoot(const std::string& _number, const std::string& base);
-} // namespace steppable::__internals::numUtils
+} // namespace steppable::numUtils

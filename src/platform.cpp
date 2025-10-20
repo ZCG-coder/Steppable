@@ -40,7 +40,7 @@
 
 using namespace std::literals;
 
-namespace steppable::__internals::utils
+namespace steppable::utils
 {
     std::filesystem::path getHomeDirectory()
     {
@@ -105,4 +105,4 @@ namespace steppable::__internals::utils
             std::filesystem::create_directories(confDir);
         return confDir;
     }
-} // namespace steppable::__internals::utils
+} // namespace steppable::utils

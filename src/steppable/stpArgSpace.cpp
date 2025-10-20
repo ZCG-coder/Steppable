@@ -31,7 +31,7 @@
 #include <string>
 #include <utility>
 
-using namespace steppable::__internals::utils;
+using namespace steppable::utils;
 using namespace std::literals;
 
 namespace steppable::parser
@@ -66,7 +66,7 @@ namespace steppable::parser
         // Check positional arguments
         if (positionalArgs.size() < positionalConstraints.size())
         {
-            return __internals::format::format("Not enough positional arguments provided."s, {});
+            return format::format("Not enough positional arguments provided."s, {});
             programSafeExit(1);
         }
         for (std::size_t i = 0; i < positionalConstraints.size(); ++i)
@@ -74,7 +74,7 @@ namespace steppable::parser
             const auto* constraint = positionalConstraints[i];
             if (const auto* arg = positionalArgs[i]; arg->typeID != constraint->valueType)
             {
-                return __internals::format::format("Positional argument type mismatch at position {0}"s,
+                return format::format("Positional argument type mismatch at position {0}"s,
                                                    { std::to_string(i) });
                 programSafeExit(1);
             }
@@ -87,7 +87,7 @@ namespace steppable::parser
             {
                 if (const auto* arg = keywordArgs[name]; arg->typeID != constraint->valueType)
                 {
-                    return __internals::format::format("Keyword argument '{0}' type mismatch."s, { name });
+                    return format::format("Keyword argument '{0}' type mismatch."s, { name });
                     programSafeExit(1);
                 }
             }

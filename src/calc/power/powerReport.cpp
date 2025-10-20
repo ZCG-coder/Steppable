@@ -44,9 +44,9 @@ using namespace std::literals;
 using namespace steppable::output;
 using namespace steppable::localization;
 using namespace steppable::prettyPrint;
-using namespace steppable::__internals;
-using namespace steppable::__internals::symbols;
-using namespace steppable::__internals::calc;
+using namespace steppable;
+using namespace steppable::symbols;
+using namespace steppable::calc;
 
 std::string reportPowerRoot(const std::string& _number,
                             const std::string& raiseTo,

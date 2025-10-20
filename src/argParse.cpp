@@ -36,7 +36,7 @@
 using namespace std::literals;
 using namespace steppable::localization;
 
-namespace steppable::__internals::utils
+namespace steppable::utils
 {
     void ProgramArgs::addSwitch(const std::string& name, const bool defaultValue, const std::string& description)
     {
@@ -204,4 +204,4 @@ namespace steppable::__internals::utils
             }
         }
     }
-} // namespace steppable::__internals::utils
+} // namespace steppable::utils

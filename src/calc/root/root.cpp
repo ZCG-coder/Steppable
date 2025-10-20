@@ -48,10 +48,10 @@
     #undef min
 #endif
 
-using namespace steppable::__internals::calc;
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::stringUtils;
-using namespace steppable::__internals::numUtils;
+using namespace steppable::calc;
+using namespace steppable::utils;
+using namespace steppable::stringUtils;
+using namespace steppable::numUtils;
 using namespace steppable::localization;
 using namespace std::literals;
 
@@ -88,7 +88,7 @@ namespace steppable::prettyPrint::printers
     }
 } // namespace steppable::prettyPrint::printers
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     std::string rootIntPart(const std::string& _number, const std::string& base)
     {
@@ -202,7 +202,7 @@ namespace steppable::__internals::calc
 
         return _root(_number, base, _decimals, steps);
     }
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 // NOLINTNEXTLINE(bugprone-exception-escape)
@@ -236,7 +236,7 @@ int main(const int _argc, const char* _argv[])
 #endif
 
 using namespace steppable::parser;
-using namespace steppable::__internals;
+using namespace steppable;
 
 STP_EXPORT_FUNC(STP_sqrt)
 {

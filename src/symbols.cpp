@@ -36,8 +36,8 @@
 
 namespace steppable::prettyPrint
 {
-    using namespace steppable::__internals::stringUtils;
-    using namespace steppable::__internals::utils;
+    using namespace steppable::stringUtils;
+    using namespace steppable::utils;
     using namespace std::literals;
 
     ConsoleOutput::ConsoleOutput(size_t height, size_t width) : height(height), width(width)
@@ -169,7 +169,7 @@ namespace steppable::prettyPrint
     size_t getStringHeight(const std::string& s) { return split(s, '\n').size(); }
 } // namespace steppable::prettyPrint
 
-namespace steppable::__internals::stringUtils
+namespace steppable::stringUtils
 {
     bool isZeroWidthCharacter(uint32_t codepoint)
     {
@@ -277,11 +277,11 @@ namespace steppable::__internals::stringUtils
 
         return width;
     }
-} // namespace steppable::__internals::stringUtils
+} // namespace steppable::stringUtils
 
-namespace steppable::__internals::symbols
+namespace steppable::symbols
 {
-    using namespace steppable::__internals::stringUtils;
+    using namespace steppable::stringUtils;
 
     // NOLINTNEXTLINE(cert-err58-cpp)
     const std::array<std::string, 10>& SUPERSCRIPTS = { "\u2070", "\u00b9", "\u00b2", "\u00b3", "\u2074",
@@ -329,4 +329,4 @@ namespace steppable::__internals::symbols
 
         return ss.str();
     }
-} // namespace steppable::__internals::symbols
+} // namespace steppable::symbols

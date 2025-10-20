@@ -22,7 +22,7 @@
 
 #include "steppable/parameter.hpp"
 
-namespace steppable::__internals::parameter
+namespace steppable::parameter
 {
     void ParameterMap::checkParameterOrder(const std::vector<std::string>& names)
     {
@@ -56,4 +56,4 @@ namespace steppable::__internals::parameter
                 utils::programSafeExit(1);
             }
     }
-} // namespace steppable::__internals::parameter
+} // namespace steppable::parameter

@@ -11,7 +11,7 @@
 
 using namespace std::literals;
 
-namespace steppable::__internals::gui
+namespace steppable::gui
 {
     namespace
     {
@@ -442,4 +442,4 @@ namespace steppable::__internals::gui
 
         ImGui::Dummy(size);
     }
-} // namespace steppable::__internals::gui
+} // namespace steppable::gui

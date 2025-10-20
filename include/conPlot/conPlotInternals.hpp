@@ -28,10 +28,10 @@
 #include <map>
 
 /**
- * @namespace steppable::graphing::__internals
+ * @namespace steppable::graphing
  * @brief Graphing utilities for showing graphs in the console.
  */
-namespace steppable::graphing::__internals
+namespace steppable::graphing
 {
     void conPlotLine(const Number& xGridSize,
                      const Number& yGridSize,
@@ -48,4 +48,4 @@ namespace steppable::graphing::__internals
                    const GraphOptionsBase* graphOptions);
 
     void drawGrid(prettyPrint::ConsoleOutput* canvas, const GraphOptionsBase* graphOptions);
-} // namespace steppable::graphing::__internals
+} // namespace steppable::graphing

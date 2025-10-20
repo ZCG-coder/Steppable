@@ -10,13 +10,13 @@
 #include <random>
 #include <string>
 
-namespace steppable::__internals::nodes
+namespace steppable::nodes
 {
-} // namespace steppable::__internals::nodes
+} // namespace steppable::nodes
 
-namespace steppable::__internals::gui
+namespace steppable::gui
 {
-    using namespace steppable::__internals::nodes;
+    using namespace steppable::nodes;
     namespace ed = ax::NodeEditor;
 
     struct AppState
@@ -41,4 +41,4 @@ namespace steppable::__internals::gui
 
         [[nodiscard]] SDL_AppResult predicate();
     };
-} // namespace steppable::__internals::gui
+} // namespace steppable::gui

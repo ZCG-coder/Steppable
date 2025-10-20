@@ -38,7 +38,7 @@
 #include <sstream>
 #include <string>
 
-using namespace steppable::__internals::symbols;
+using namespace steppable::symbols;
 using namespace steppable::localization;
 
 std::string reportComparisonAtInteger(const std::string& a, const std::string& b, const bool bigger, const int steps)

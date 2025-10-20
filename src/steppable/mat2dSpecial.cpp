@@ -129,8 +129,7 @@ namespace
 
 namespace steppable
 {
-    using namespace __internals;
-    using namespace __internals::numUtils;
+    using namespace numUtils;
 
     MatrixBase SpecialMatrix::ones(const size_t& rows, const size_t& cols)
     {

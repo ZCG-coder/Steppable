@@ -36,8 +36,8 @@
 #include <string>
 #include <util.hpp>
 
-using namespace steppable::__internals::numUtils;
-using namespace steppable::__internals::symbols;
+using namespace steppable::numUtils;
+using namespace steppable::symbols;
 using namespace steppable::localization;
 
 std::string reportAbs(const std::string& number, int steps = 2)

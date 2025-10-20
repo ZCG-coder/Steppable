@@ -10,7 +10,7 @@
 #include <backends/imgui_impl_sdlrenderer3.h>
 #include <imgui.h>
 
-using namespace steppable::__internals::gui;
+using namespace steppable::gui;
 
 SDL_AppResult SDL_AppInit(void** appstate, int /*unused*/, char** /*unused*/)
 {

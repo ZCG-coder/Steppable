@@ -4,7 +4,7 @@
 #include <functional>
 #include <string>
 
-namespace steppable::__internals::gui
+namespace steppable::gui
 {
     struct OutPin
     {
@@ -40,4 +40,4 @@ namespace steppable::__internals::gui
         int id = -1;
         bool deleted = false;
     };
-} // namespace steppable::__internals::gui
+} // namespace steppable::gui

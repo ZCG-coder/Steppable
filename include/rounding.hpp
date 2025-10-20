@@ -26,7 +26,7 @@
 
 #include <string>
 
-namespace steppable::__internals::numUtils
+namespace steppable::numUtils
 {
     /**
      * @brief Round down a number to the nearest integer.
@@ -64,4 +64,4 @@ namespace steppable::__internals::numUtils
      * @return The processed number.
      */
     std::string moveDecimalPlaces(const std::string& _number, long places);
-} // namespace steppable::__internals::numUtils
+} // namespace steppable::numUtils

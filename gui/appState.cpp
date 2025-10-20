@@ -6,7 +6,7 @@
 #include <imgui.h>
 #include <imgui_node_editor.h>
 
-namespace steppable::__internals::gui
+namespace steppable::gui
 {
     AppState::AppState()
     {
@@ -321,4 +321,4 @@ namespace steppable::__internals::gui
 
         return SDL_APP_CONTINUE;
     }
-} // namespace steppable::__internals::gui
+} // namespace steppable::gui

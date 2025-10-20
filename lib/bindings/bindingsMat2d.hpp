@@ -37,7 +37,7 @@
 namespace nb = nanobind;
 using namespace nb::literals;
 
-namespace steppable::__internals::bindings
+namespace steppable::bindings
 {
     void bindingsMatrix(nanobind::module_& mod)
     {
@@ -85,4 +85,4 @@ namespace steppable::__internals::bindings
                 nb::keep_alive<0, 1>()); // Important for lifetime management
         ;
     }
-} // namespace steppable::__internals::bindings
+} // namespace steppable::bindings

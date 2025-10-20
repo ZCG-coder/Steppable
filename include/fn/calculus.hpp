@@ -26,10 +26,10 @@
 #include <string>
 
 /**
- * @namespace steppable::__internals::calculus
+ * @namespace steppable::calculus
  * @brief Contains calculus functions.
  */
-namespace steppable::__internals::calculus
+namespace steppable::calculus
 {
     /**
      * @brief Calculates the Romberg integration of f.
@@ -50,4 +50,4 @@ namespace steppable::__internals::calculus
                         const std::string& b,
                         int max_steps,
                         int decimals);
-} // namespace steppable::__internals::calculus
+} // namespace steppable::calculus

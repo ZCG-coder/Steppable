@@ -35,14 +35,14 @@
 #include <string>
 
 using namespace std::literals;
-using namespace steppable::__internals::numUtils;
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::symbols;
+using namespace steppable::numUtils;
+using namespace steppable::utils;
+using namespace steppable::symbols;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::calc;
+using namespace steppable::calc;
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     /**
      * @brief Converts a numeral character to a number string.
@@ -100,7 +100,7 @@ namespace steppable::__internals::calc
         ss << reportDecimalConvert(_inputString, baseString, converted, steps);
         return ss.str();
     }
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 

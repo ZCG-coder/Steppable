@@ -43,10 +43,10 @@
 #include <vector>
 
 /**
- * @namespace steppable::__internals::format
+ * @namespace steppable::format
  * @brief Contains string formatting utilities.
  */
-namespace steppable::__internals::format
+namespace steppable::format
 {
     std::string format(const std::string& formatStr, const std::vector<std::string>& args);
-} // namespace steppable::__internals::format
+} // namespace steppable::format

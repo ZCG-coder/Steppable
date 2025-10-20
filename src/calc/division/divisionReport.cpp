@@ -38,9 +38,9 @@
 #include <string>
 
 using namespace std::literals;
-using namespace steppable::__internals::stringUtils;
-using namespace steppable::__internals::symbols;
-using namespace steppable::__internals::calc;
+using namespace steppable::stringUtils;
+using namespace steppable::symbols;
+using namespace steppable::calc;
 
 std::string reportDivision(std::stringstream& tempFormattedAns,
                            const std::string& temp,

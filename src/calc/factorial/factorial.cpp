@@ -40,17 +40,17 @@
 #include <iostream>
 #include <string>
 
-using namespace steppable::__internals::numUtils;
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::calc;
-using namespace steppable::__internals::symbols;
+using namespace steppable::numUtils;
+using namespace steppable::utils;
+using namespace steppable::calc;
+using namespace steppable::symbols;
 using namespace steppable::output;
 using namespace steppable::localization;
 using namespace std::literals;
 
 constexpr int GAMMA_A = 12;
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     namespace
     {
@@ -141,7 +141,7 @@ namespace steppable::__internals::calc
         const auto gammaX = gamma(number, 8);
         return multiply(gammaX, number, 0, 7);
     }
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

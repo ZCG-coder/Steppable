@@ -33,8 +33,8 @@
 
 TEST_START()
 
-using namespace steppable::__internals::numUtils;
-using namespace steppable::__internals::stringUtils;
+using namespace steppable::numUtils;
+using namespace steppable::stringUtils;
 
 SECTION(isZeroString)
 const std::string& string1 = "0";

@@ -45,12 +45,12 @@
 
 namespace steppable
 {
-    using namespace steppable::__internals::calc;
+    using namespace steppable::calc;
 
     Number::Number(const std::string& _value, const size_t prec, const RoundingMode mode) : prec(prec), mode(mode)
     {
         std::string newValue = _value;
-        newValue = __internals::stringUtils::bothEndsReplace(newValue, ' ');
+        newValue = stringUtils::bothEndsReplace(newValue, ' ');
         this->value = std::move(newValue);
     }
 
@@ -62,14 +62,14 @@ namespace steppable
     {
         const size_t usePrec = determinePrec<"operator*">(rhs);
         const auto result = multiply(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
-        return Number{ __internals::numUtils::roundOff(result, usePrec), usePrec, mode };
+        return Number{ numUtils::roundOff(result, usePrec), usePrec, mode };
     }
 
     Number Number::operator/(const Number& rhs) const
     {
         const size_t usePrec = determinePrec<"operator/">(rhs);
         const auto result = divide(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
-        return Number{ __internals::numUtils::roundOff(result, usePrec), usePrec, mode };
+        return Number{ numUtils::roundOff(result, usePrec), usePrec, mode };
     }
 
     Number Number::operator%(const Number& rhs) const
@@ -144,7 +144,7 @@ namespace steppable
     Number Number::operator-() const
     {
         auto newValue = "-" + value;
-        newValue = __internals::numUtils::standardizeNumber(newValue);
+        newValue = numUtils::standardizeNumber(newValue);
         Number number(newValue, prec, mode);
         return number;
     }

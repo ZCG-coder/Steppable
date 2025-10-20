@@ -37,7 +37,7 @@ namespace steppable
      * @tparam BaseT The type of the data.
      * @tparam BaseTName A StringLiteral describing the type of the data.
      */
-    template<typename BaseT, __internals::utils::StringLiteral BaseTName>
+    template<typename BaseT, utils::StringLiteral BaseTName>
     class Data
     {
         BaseT value;
@@ -66,5 +66,5 @@ namespace steppable
         Saturday = 6, ///< Saturday
     };
 
-    using Weekday = Data<_Weekday, __internals::utils::StringLiteral{ "Weekday" }>;
+    using Weekday = Data<_Weekday, utils::StringLiteral{ "Weekday" }>;
 } // namespace steppable

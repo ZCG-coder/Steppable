@@ -40,11 +40,11 @@
 #include <iostream>
 #include <string>
 
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::calc;
+using namespace steppable::utils;
+using namespace steppable::calc;
 using namespace steppable::localization;
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     types::Result<Number> _abs(const std::string& _number)
     {
@@ -55,7 +55,7 @@ namespace steppable::__internals::calc
     }
 
     std::string abs(const std::string& _number, const int steps) { return _abs(_number).getOutput(steps); }
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
@@ -85,7 +85,7 @@ int main(const int _argc, const char* _argv[])
 #endif
 
 using namespace steppable::parser;
-using namespace steppable::__internals;
+using namespace steppable;
 
 STP_EXPORT_FUNC(STP_abs)
 {

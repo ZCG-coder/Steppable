@@ -64,7 +64,7 @@ namespace steppable::types
      *
      * @tparam StatusType The type of the status of the calculation.
      */
-    template<typename StatusType, typename ResultT, steppable::__internals::utils::StringLiteral ResultTName>
+    template<typename StatusType, typename ResultT, steppable::utils::StringLiteral ResultTName>
     class ResultBase
     {
         /// @brief Whether the calculation is done.
@@ -108,7 +108,7 @@ namespace steppable::types
         [[nodiscard("Output should be used")]] std::string getOutput(size_t idx = 0) const
         {
             using namespace std::literals;
-            using namespace steppable::__internals::utils;
+            using namespace steppable::utils;
 
             if (idx >= outputs.size())
             {
@@ -124,9 +124,9 @@ namespace steppable::types
 
     /// @brief An alias for a result of a calculation. This represents a calculation with a `Status` status.
     template<typename ResultT>
-    using Result = ResultBase<Status, ResultT, steppable::__internals::utils::StringLiteral{ "str" }>;
+    using Result = ResultBase<Status, ResultT, steppable::utils::StringLiteral{ "str" }>;
 
     /// @brief An alias for a result of a boolean calculation.
     template<typename ResultT>
-    using ResultBool = ResultBase<StatusBool, ResultT, steppable::__internals::utils::StringLiteral{ "bool" }>;
+    using ResultBool = ResultBase<StatusBool, ResultT, steppable::utils::StringLiteral{ "bool" }>;
 } // namespace steppable::types

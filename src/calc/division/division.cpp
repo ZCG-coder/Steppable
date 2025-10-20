@@ -43,15 +43,15 @@
 #include <string>
 
 using namespace std::literals;
-using namespace steppable::__internals::calc;
-using namespace steppable::__internals::numUtils;
-using namespace steppable::__internals::stringUtils;
-using namespace steppable::__internals::symbols;
-using namespace steppable::__internals::utils;
+using namespace steppable::calc;
+using namespace steppable::numUtils;
+using namespace steppable::stringUtils;
+using namespace steppable::symbols;
+using namespace steppable::utils;
 using namespace steppable::localization;
 using namespace steppable::output;
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     QuotientRemainder getQuotientRemainder(const auto& _currentRemainder, const auto& divisor)
     {
@@ -310,7 +310,7 @@ namespace steppable::__internals::calc
         // The GCD is the absolute value of a
         return abs(a, 0);
     }
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])

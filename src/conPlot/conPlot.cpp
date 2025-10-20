@@ -32,7 +32,7 @@
 #include <map>
 #include <string>
 
-using namespace steppable::__internals::utils;
+using namespace steppable::utils;
 using namespace std::literals;
 
 namespace steppable::graphing
@@ -68,7 +68,7 @@ namespace steppable::graphing
         // Create buffer
         prettyPrint::ConsoleOutput canvas(graphOptions.height + 10,
                                           graphOptions.width + 12 +
-                                              steppable::__internals::stringUtils::getUnicodeDisplayWidth(
+                                              steppable::stringUtils::getUnicodeDisplayWidth(
                                                   graphOptions.yAxisTitle)); // Extra space for labels
 
         Number maxValue = 0;
@@ -85,8 +85,8 @@ namespace steppable::graphing
         }
         const auto& gridSize = maxValue / graphOptions.height;
 
-        __internals::drawGrid(&canvas, &graphOptions);
-        __internals::drawTicks(&canvas, 0, gridSize, maxValue, &graphOptions);
+        drawGrid(&canvas, &graphOptions);
+        drawTicks(&canvas, 0, gridSize, maxValue, &graphOptions);
 
         for (long long i = 0; i < numbers.size(); i++)
         {
@@ -123,7 +123,7 @@ namespace steppable::graphing
         // Create buffer
         prettyPrint::ConsoleOutput canvas(graphOptions.height + 10,
                                           graphOptions.width + 12 +
-                                              steppable::__internals::stringUtils::getUnicodeDisplayWidth(
+                                              steppable::stringUtils::getUnicodeDisplayWidth(
                                                   graphOptions.yAxisTitle)); // Extra space for labels
         std::map<size_t, std::map<Number, Number>> fnValues;
 
@@ -162,12 +162,12 @@ namespace steppable::graphing
 
         // Axis positions
         Number yGridSize = (yMax - yMin) / graphOptions.height;
-        __internals::drawGrid(&canvas, &graphOptions);
-        __internals::drawTicks(&canvas, xGridSize, yGridSize, yMax, &graphOptions);
+        drawGrid(&canvas, &graphOptions);
+        drawTicks(&canvas, xGridSize, yGridSize, yMax, &graphOptions);
 
         // Plot function
         for (size_t fnIdx = 0; fnIdx < f.size(); ++fnIdx)
-            __internals::conPlotLine(
+            conPlotLine(
                 xGridSize, yGridSize, yMax, &graphOptions, &linesOptions[fnIdx], &canvas, fnValues[fnIdx]);
         conPlotLegend(&graphOptions, &linesOptions, &canvas);
         std::cout << canvas.asString() << "\n";

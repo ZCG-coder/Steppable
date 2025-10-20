@@ -40,8 +40,7 @@
 
 namespace steppable
 {
-    using namespace __internals;
-    using namespace __internals::numUtils;
+    using namespace numUtils;
     using namespace localization;
     using namespace std::literals;
 
@@ -225,7 +224,7 @@ namespace steppable
 
 #if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
                         output::info("MatrixBase::rref"s,
-                                     oldMatrixRC.present() + " " + std::string(__internals::symbols::DIVIDED_BY) + " " +
+                                     oldMatrixRC.present() + " " + std::string(symbols::DIVIDED_BY) + " " +
                                          divisor.present() + " = " + matrix[r][c].present());
 #endif
                     }
@@ -242,7 +241,7 @@ namespace steppable
 #if defined(STP_DEB_MATRIX_REF_RESULT_INSPECT) && DEBUG
                         output::info("MatrixBase::rref"s,
                                      oldMatrixRC.present() + " - " + oldMatrixLeadC.present() + " " +
-                                         std::string(__internals::symbols::MULTIPLY) + " " + multiplier.present());
+                                         std::string(symbols::MULTIPLY) + " " + multiplier.present());
                         output::info("MatrixBase::rref"s,
                                      "    = " + oldMatrixRC.present() + " - " + multiplyResult.present());
                         output::info("MatrixBase::rref"s, "    = " + matrix[r][c].present());

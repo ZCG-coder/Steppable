@@ -31,12 +31,12 @@
 #include <string>
 #include <vector>
 
-using namespace steppable::__internals::calc;
-using namespace steppable::__internals::numUtils;
-using namespace steppable::__internals::utils;
+using namespace steppable::calc;
+using namespace steppable::numUtils;
+using namespace steppable::utils;
 using namespace std::literals;
 
-namespace steppable::__internals::calculus
+namespace steppable::calculus
 {
     std::string romberg(const std::function<std::string(std::string)>& f,
                         const std::string& a,
@@ -84,7 +84,7 @@ namespace steppable::__internals::calculus
 
         return roundOff(previous.at(max_steps - 1), decimals);
     }
-} // namespace steppable::__internals::calculus
+} // namespace steppable::calculus
 
 #ifndef NO_MAIN
 int main()

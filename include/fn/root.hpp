@@ -25,10 +25,10 @@
 #include <string>
 
 /**
- * @namespace steppable::__internals
+ * @namespace steppable
  * @brief The namespace containing internal functions for the Steppable library.
  */
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     /**
      * @brief A struct to represent a surd.
@@ -42,4 +42,4 @@ namespace steppable::__internals::calc
         /// @brief The multiplier of the surd.
         std::string multiplier;
     };
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc

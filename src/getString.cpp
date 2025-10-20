@@ -43,8 +43,8 @@ thread_local const std::map<std::string, std::string>& langNameReplacements = {
 
 namespace steppable::localization
 {
-    using namespace steppable::__internals::utils;
-    using namespace steppable::__internals::stringUtils;
+    using namespace steppable::utils;
+    using namespace steppable::stringUtils;
 
     std::string getLanguage()
     {
@@ -190,6 +190,6 @@ namespace steppable::localization
         // Get the key
         const std::string& key = $(origin, formatKey);
         // Format the string
-        return __internals::format::format(key, formatStrings);
+        return format::format(key, formatStrings);
     }
 } // namespace steppable::localization

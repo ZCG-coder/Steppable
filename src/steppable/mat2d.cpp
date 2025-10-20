@@ -40,8 +40,7 @@
 
 namespace steppable
 {
-    using namespace __internals;
-    using namespace __internals::numUtils;
+    using namespace numUtils;
 
     namespace prettyPrint::printers
     {

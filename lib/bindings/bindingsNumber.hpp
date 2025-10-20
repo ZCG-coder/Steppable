@@ -32,7 +32,7 @@
 namespace nb = nanobind;
 using namespace nb::literals;
 
-namespace steppable::__internals::bindings
+namespace steppable::bindings
 {
     void bindingsNumber(nanobind::module_& mod)
     {
@@ -73,4 +73,4 @@ namespace steppable::__internals::bindings
             .def(nb::self >= nb::self, nb::rv_policy::automatic_reference)
             .def("__repr__", &steppable::Number::present);
     }
-} // namespace steppable::__internals::bindings
+} // namespace steppable::bindings

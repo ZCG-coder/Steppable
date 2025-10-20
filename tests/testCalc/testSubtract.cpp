@@ -31,7 +31,7 @@
 
 TEST_START()
 
-using namespace steppable::__internals::calc;
+using namespace steppable::calc;
 
 SECTION(Subtraction with multiple digits of different length)
 const std::string& a = "54329.334";

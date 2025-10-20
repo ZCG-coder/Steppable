@@ -33,15 +33,15 @@
 namespace nb = nanobind;
 using namespace nb::literals;
 
-namespace steppable::__internals::bindings
+namespace steppable::bindings
 {
     void bindingsCalc(nb::module_& mod)
     {
-        using namespace steppable::__internals::calc;
+        using namespace steppable::calc;
 
         auto internals = mod.def_submodule("_internals", "Internal functions.");
         internals.def("abs",
-                      &steppable::__internals::calc::abs,
+                      &steppable::calc::abs,
                       "a"_a,
                       "steps"_a = 2,
                       "Internal function that takes the absolute value of a number.");
@@ -90,4 +90,4 @@ namespace steppable::__internals::bindings
                       "decimals"_a = 8,
                       "Internal function raises a number to a power.");
     }
-} // namespace steppable::__internals::bindings
+} // namespace steppable::bindings

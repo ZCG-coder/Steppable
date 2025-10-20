@@ -32,10 +32,10 @@
 #include <vector>
 
 /**
- * @namespace steppable::__internals::parameter
+ * @namespace steppable::parameter
  * @brief Contains the parameter utilities to allow named parameters to be passed into functions.
  */
-namespace steppable::__internals::parameter
+namespace steppable::parameter
 {
     /**
      * @struct ValuedParameter
@@ -178,7 +178,7 @@ namespace steppable::__internals::parameter
     {
         return { std::vector{ params... } };
     }
-} // namespace steppable::__internals::parameter
+} // namespace steppable::parameter
 
 /// @brief Get a parameter from a parameter list.
 #define PARAM_GET(map, type, name)                    \

@@ -4,7 +4,7 @@
 
 #include <imgui.h>
 
-namespace steppable::__internals::gui
+namespace steppable::gui
 {
     constexpr float SMALL_FONT_SIZE = 12.0F;
     constexpr float NORMAL_FONT_SIZE = 16.0F;
@@ -27,4 +27,4 @@ namespace steppable::__internals::gui
               bool filled,
               const ImVec4& color /* = ImVec4(1, 1, 1, 1)*/,
               const ImVec4& innerColor /* = ImVec4(0, 0, 0, 0)*/);
-} // namespace steppable::__internals::gui
+} // namespace steppable::gui

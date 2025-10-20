@@ -28,7 +28,7 @@
 #include <sstream>
 #include <string>
 
-using namespace steppable::__internals::symbols;
+using namespace steppable::symbols;
 
 std::string reportDecimalConvertStep(const std::string& baseString,
                                      const std::string& digit,

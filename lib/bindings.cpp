@@ -37,10 +37,10 @@ using namespace nb::literals;
 NB_MODULE(steppyble, mod) // NOLINT
 {
     mod.doc() = "The Python bindings for Steppable.";
-    steppable::__internals::bindings::bindingsNumber(mod);
-    steppable::__internals::bindings::bindingsFraction(mod);
-    steppable::__internals::bindings::bindingsMatrix(mod);
+    steppable::bindings::bindingsNumber(mod);
+    steppable::bindings::bindingsFraction(mod);
+    steppable::bindings::bindingsMatrix(mod);
 
     // Internal functions
-    steppable::__internals::bindings::bindingsCalc(mod);
+    steppable::bindings::bindingsCalc(mod);
 }

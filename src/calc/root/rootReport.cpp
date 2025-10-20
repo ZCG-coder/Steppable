@@ -28,7 +28,7 @@
 #include <sstream>
 #include <string>
 
-using namespace steppable::__internals::symbols;
+using namespace steppable::symbols;
 using namespace steppable::prettyPrint::printers;
 using namespace steppable::localization;
 

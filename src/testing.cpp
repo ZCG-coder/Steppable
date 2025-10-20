@@ -32,7 +32,7 @@
 using namespace std::literals;
 using namespace steppable::output;
 using namespace steppable::localization;
-using namespace steppable::__internals::utils;
+using namespace steppable::utils;
 
 namespace steppable::testing
 {

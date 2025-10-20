@@ -42,11 +42,11 @@
 #undef timeval
 
 /**
- * @namespace steppable::__internals::utils
+ * @namespace steppable::utils
  * @brief Namespace for internal functions
  * @note This namespace should not be used by other programs outside of the Steppable core.
  */
-namespace steppable::__internals::utils
+namespace steppable::utils
 {
     /**
      * @brief Exit the program safely
@@ -92,4 +92,4 @@ namespace steppable::__internals::utils
     std::filesystem::path getHomeDirectory();
 
     std::filesystem::path getConfDirectory();
-} // namespace steppable::__internals::utils
+} // namespace steppable::utils

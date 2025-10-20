@@ -39,12 +39,12 @@
 #include <cstdlib>
 #include <string>
 
-using namespace steppable::__internals::calc;
-using namespace steppable::__internals::utils;
+using namespace steppable::calc;
+using namespace steppable::utils;
 using namespace steppable::localization;
 using namespace std::literals;
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     std::string _log(const std::string& x, const size_t _decimals)
     {
@@ -142,7 +142,7 @@ namespace steppable::__internals::calc
         checkDecimalArg(&_decimals);
         return _log(_number, _decimals);
     }
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 int main(int _argc, const char* _argv[])
@@ -162,7 +162,7 @@ int main(int _argc, const char* _argv[])
     const auto& arg = program.getPosArg(1);
     const auto& base = program.getPosArg(2);
 
-    using namespace steppable::__internals;
+    using namespace steppable;
     using namespace steppable::output;
 
     if (command == "logb")
@@ -182,7 +182,7 @@ int main(int _argc, const char* _argv[])
 #endif
 
 using namespace steppable::parser;
-using namespace steppable::__internals;
+using namespace steppable;
 
 STP_EXPORT_FUNC(STP_log10)
 {

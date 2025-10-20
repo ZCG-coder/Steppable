@@ -69,7 +69,7 @@ double getSysOpType()
     #include <unistd.h>
 #endif
 
-namespace steppable::__internals::utils
+namespace steppable::utils
 {
     bool isTerminal(const std::ostream& stream)
     {
@@ -306,4 +306,4 @@ namespace steppable::__internals::utils
             return stream;
         }
     } // namespace formats
-} // namespace steppable::__internals::utils
+} // namespace steppable::utils

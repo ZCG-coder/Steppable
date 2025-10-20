@@ -32,10 +32,10 @@
 #include <map>
 #include <string>
 
-using namespace steppable::__internals::utils;
-using namespace steppable::__internals::symbols;
+using namespace steppable::utils;
+using namespace steppable::symbols;
 
-namespace steppable::graphing::__internals
+namespace steppable::graphing
 {
     void conPlotLine(const Number& xGridSize,
                      const Number& yGridSize,
@@ -197,7 +197,7 @@ namespace steppable::graphing::__internals
 
         // Axis Titles
         canvas->write(BoxDrawing::BOTTOM_RIGHT_CORNER, { .x = graphOptions->width, .y = 3 + graphOptions->height });
-        canvas->write(std::string((graphOptions->width - ::steppable::__internals::stringUtils::getUnicodeDisplayWidth(
+        canvas->write(std::string((graphOptions->width - ::steppable::stringUtils::getUnicodeDisplayWidth(
                                                              graphOptions->xAxisTitle)) /
                                       2,
                                   ' ') +
@@ -210,4 +210,4 @@ namespace steppable::graphing::__internals
                       false,
                       formats::bold);
     }
-} // namespace steppable::graphing::__internals
+} // namespace steppable::graphing

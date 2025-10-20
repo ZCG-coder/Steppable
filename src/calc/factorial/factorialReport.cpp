@@ -28,8 +28,8 @@
 #include <sstream>
 #include <string>
 
-using namespace steppable::__internals::calc;
-using namespace steppable::__internals::symbols;
+using namespace steppable::calc;
+using namespace steppable::symbols;
 
 std::string reportFactorial(const std::string& number, const std::string& result, int steps)
 {

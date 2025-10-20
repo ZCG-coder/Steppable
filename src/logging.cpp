@@ -28,7 +28,7 @@
 #include <fstream>
 #include <iomanip>
 
-namespace steppable::__internals::logging
+namespace steppable::logging
 {
 #if DEBUG
     Logger::Logger(const std::string& name, const std::string& filename, const Level level) : level(level), name(name)
@@ -74,4 +74,4 @@ namespace steppable::__internals::logging
         if (level <= Level::DBG)
             log(name + " - DEBUG: " + message);
     }
-} // namespace steppable::__internals::logging
+} // namespace steppable::logging

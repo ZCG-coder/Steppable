@@ -31,7 +31,7 @@
 
 TEST_START()
 
-using namespace steppable::__internals::calc;
+using namespace steppable::calc;
 
 SECTION(Integer division)
 // A gogol divided by 50

@@ -36,11 +36,11 @@
 #include "util.hpp"
 
 using namespace std::literals;
-using namespace steppable::__internals::calc;
-using namespace steppable::__internals::numUtils;
-using namespace steppable::__internals::stringUtils;
-using namespace steppable::__internals::symbols;
-using namespace steppable::__internals::utils;
+using namespace steppable::calc;
+using namespace steppable::numUtils;
+using namespace steppable::stringUtils;
+using namespace steppable::symbols;
+using namespace steppable::utils;
 using namespace steppable::localization;
 using namespace steppable::output;
 
@@ -59,7 +59,7 @@ namespace steppable::prettyPrint::printers
     }
 } // namespace steppable::prettyPrint::printers
 
-namespace steppable::__internals::calc
+namespace steppable::calc
 {
     std::string power(const std::string& _number, const std::string& _raiseTo, const int steps, const int decimals)
     {
@@ -156,7 +156,7 @@ namespace steppable::__internals::calc
         result = divide("1", result, 0, static_cast<int>(decimals + 1));
         return roundOff(result, decimals);
     }
-} // namespace steppable::__internals::calc
+} // namespace steppable::calc
 
 #ifndef NO_MAIN
 int main(const int _argc, const char* _argv[])
@@ -179,7 +179,7 @@ int main(const int _argc, const char* _argv[])
     #if DEBUG
     if (steps == 475)
     {
-        std::cout << steppable::__internals::calc::exp(aStr, decimals) << '\n';
+        std::cout << steppable::calc::exp(aStr, decimals) << '\n';
         return 0;
     }
     #endif

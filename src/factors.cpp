@@ -28,10 +28,10 @@
 #include <algorithm>
 #include <vector>
 
-using namespace steppable::__internals::calc;
+using namespace steppable::calc;
 using namespace steppable::types;
 
-namespace steppable::__internals::numUtils
+namespace steppable::numUtils
 {
     std::vector<std::string> getFactors(const std::string& _number)
     {
@@ -92,4 +92,4 @@ namespace steppable::__internals::numUtils
             return { { _number, base }, { iRoot }, { iRoot }, StatusBool::CALCULATED_SIMPLIFIED_YES };
         return { { _number, base }, { "1" }, { "1" }, StatusBool::CALCULATED_SIMPLIFIED_NO };
     }
-} // namespace steppable::__internals::numUtils
+} // namespace steppable::numUtils

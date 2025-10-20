@@ -47,7 +47,7 @@ namespace steppable
         std::string ppMatrix(const MatVec2D<Number>& matrix, int endRows = 0);
     } // namespace prettyPrint::printers
 
-    namespace __internals::symbols
+    namespace symbols
     {
         constexpr std::string_view MATRIX_LEFT_TOP = "\u23A1";
         constexpr std::string_view MATRIX_LEFT_MIDDLE = "\u23A2";
@@ -55,7 +55,7 @@ namespace steppable
         constexpr std::string_view MATRIX_RIGHT_TOP = "\u23A4";
         constexpr std::string_view MATRIX_RIGHT_MIDDLE = "\u23A5";
         constexpr std::string_view MATRIX_RIGHT_BOTTOM = "\u23A6";
-    } // namespace __internals::symbols
+    } // namespace symbols
 
     class Matrix : public MatrixBase, public SpecialMatrix
     {

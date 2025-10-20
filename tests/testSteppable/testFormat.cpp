@@ -30,7 +30,7 @@
 #include <iostream>
 #include <string>
 
-using namespace steppable::__internals;
+using namespace steppable;
 
 TEST_START()
 SECTION(Test format)

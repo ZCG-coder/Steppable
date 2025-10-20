@@ -82,7 +82,7 @@ namespace steppable
         constexpr ConstexprNumber(ValueT v, // NOLINT(*-explicit-constructor)
                                   const size_t p = 10,
                                   const RoundingMode m = RoundingMode::USE_CURRENT_PREC) noexcept :
-            value(__internals::stringUtils::toStringView(v)), prec(p), mode(m)
+            value(stringUtils::toStringView(v)), prec(p), mode(m)
         {
         }
     };
@@ -102,7 +102,7 @@ namespace steppable
         /// @brief The rounding mode of the number.
         RoundingMode mode = RoundingMode::USE_CURRENT_PREC;
 
-        template<__internals::utils::StringLiteral fnName>
+        template<utils::StringLiteral fnName>
         [[nodiscard]] size_t determinePrec(const Number& rhs) const
         {
             using namespace std::literals;
@@ -166,7 +166,7 @@ namespace steppable
         {
             this->mode = _mode;
             prec = newPrec;
-            value = __internals::numUtils::roundOff(value, prec);
+            value = numUtils::roundOff(value, prec);
         }
 
         /**
