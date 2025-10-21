@@ -11,7 +11,7 @@ on:
             - "**.py"
             - "**.yml"
             - "**.js"
-            - "parser/**"
+            - "tree-sitter-stp/**"
 jobs:
     build:
         runs-on: ${{ matrix.os }}

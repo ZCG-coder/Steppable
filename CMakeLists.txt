@@ -118,4 +118,4 @@ ADD_SUBDIRECTORY(include/) # The CMakeLists file there adds the include/ directo
 FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
 ADD_SUBDIRECTORY(gui)
-ADD_SUBDIRECTORY(parser)
+ADD_SUBDIRECTORY(tree-sitter-stp)
