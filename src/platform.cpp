@@ -38,6 +38,22 @@
     #include <unistd.h>
 #endif
 
+#include <filesystem>
+#include <stdexcept>
+#include <vector>
+
+#if defined(WINDOWS)
+    #include <windows.h>
+#elif defined(MACOSX)
+    #include <limits.h>
+    #include <mach-o/dyld.h>
+    #include <stdlib.h>
+#else
+    #include <limits.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+#endif
+
 using namespace std::literals;
 
 namespace steppable::utils
@@ -105,4 +121,73 @@ namespace steppable::utils
             std::filesystem::create_directories(confDir);
         return confDir;
     }
+
+    std::filesystem::path getBinDir()
+    {
+        namespace fs = std::filesystem;
+
+#if defined(WINDOWS)
+        // GetModuleFileNameW returns the full path to the executable (UTF-16).
+        std::vector<wchar_t> buf;
+        buf.resize(MAX_PATH);
+        DWORD len = 0;
+        for (;;)
+        {
+            len = GetModuleFileNameW(nullptr, buf.data(), static_cast<DWORD>(buf.size()));
+            if (len == 0)
+                throw std::system_error(GetLastError(), std::system_category(), "GetModuleFileNameW failed");
+            if (len < buf.size())
+                break; // success and fit in buffer
+            // Buffer was too small, enlarge and retry
+            buf.resize(buf.size() * 2);
+        }
+        // Construct filesystem path from wide string (works on Windows)
+        fs::path exePath = fs::path(std::wstring(buf.data(), buf.data() + len));
+        return exePath.parent_path().string();
+
+#elif defined(MACOSX)
+        // _NSGetExecutablePath gives a path that may be relative; realpath resolves it to an absolute path.
+        uint32_t size = 0;
+        // First call to get required buffer size
+        _NSGetExecutablePath(nullptr, &size); // sets size
+        std::vector<char> buf;
+        buf.resize(size);
+        if (_NSGetExecutablePath(buf.data(), &size) != 0)
+            throw std::runtime_error("_NSGetExecutablePath failed");
+
+        char resolved[PATH_MAX];
+        if (realpath(buf.data(), resolved) == nullptr)
+        {
+            fs::path exePath = fs::path(std::string(buf.data()));
+            return exePath.parent_path().string();
+        }
+        fs::path exePath = fs::path(std::string(resolved));
+        return exePath.parent_path().string();
+
+#elif defined(LINUX)
+        // readlink on /proc/self/exe returns the executable path
+        std::vector<char> buf;
+        buf.resize(PATH_MAX);
+        ssize_t len = 0;
+        for (;;)
+        {
+            len = readlink("/proc/self/exe", buf.data(), buf.size());
+            if (len == -1)
+                throw std::system_error(errno, std::system_category(), "readlink(/proc/self/exe) failed");
+            if (static_cast<size_t>(len) < buf.size())
+            {
+                buf[static_cast<size_t>(len)] = '\0';
+                break;
+            }
+            // Buffer too small, enlarge and retry
+            buf.resize(buf.size() * 2);
+        }
+        fs::path exePath = fs::path(std::string(buf.data()));
+        // Optionally resolve symlinks / canonicalize; uncomment if you want canonical path:
+        // exePath = fs::canonical(exePath);
+        return exePath.parent_path().string();
+
+#endif
+    }
+
 } // namespace steppable::utils

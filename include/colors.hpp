@@ -90,6 +90,16 @@ namespace steppable::utils
      */
     namespace colors
     {
+        constexpr const char* colReset = const_cast<const char*>("\x1b[0m");
+        constexpr const char* colBlack = const_cast<const char*>("\x1b[30m");
+        constexpr const char* colRed = const_cast<const char*>("\x1b[31m");
+        constexpr const char* colGreen = const_cast<const char*>("\x1b[32m");
+        constexpr const char* colYellow = const_cast<const char*>("\x1b[33m");
+        constexpr const char* colBlue = const_cast<const char*>("\x1b[34m");
+        constexpr const char* colMagenta = const_cast<const char*>("\x1b[35m");
+        constexpr const char* colCyan = const_cast<const char*>("\x1b[36m");
+        constexpr const char* colWhite = const_cast<const char*>("\x1b[37m");
+
         /**
          * @brief Does nothing.
          *
