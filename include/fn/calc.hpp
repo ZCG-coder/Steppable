@@ -23,10 +23,15 @@
 #pragma once
 
 #include "fn/_calc.hpp"
+#include "steppable/stpArgSpace.hpp"
 
 #define STP_EXPORT_FUNC(name) extern "C" void*(name)(void* argSpace)
 
-#define STP_RETURN_IF_ERR(err) if (not err.empty()) { return new STP_ValuePrimitive(STP_TypeID::NONE, nullptr, err); }
+#define STP_RETURN_IF_ERR(err)                                                            \
+    if (not err.empty())                                                                  \
+    {                                                                                     \
+        return new steppable::parser::STP_ValuePrimitive(STP_TypeID::NONE, nullptr, err); \
+    }
 
 // #define STP_RETURN(value, type) return STP_Value
 
