@@ -438,14 +438,14 @@ namespace steppable
             utils::programSafeExit(1);
         }
         MatrixBase matrix = SpecialMatrix::zeros(_rows, rhs._cols);
-        for (size_t j = 0; j < rhs._rows; j++)
-            for (size_t k = 0; k < _cols; k++)
+        for (size_t j = 0; j < rhs._cols; j++)
+            for (size_t k = 0; k < rhs._rows; k++)
                 for (size_t i = 0; i < _rows; i++)
                     matrix.data[i][j] += data[i][k] * rhs.data[k][j];
         return matrix;
     }
 
-    MatrixBase MatrixBase::apply(const MatrixBase::MatFn& fn) const
+    MatrixBase MatrixBase::apply(const MatFn& fn) const
     {
         MatrixBase res = *this;
 
@@ -456,7 +456,7 @@ namespace steppable
         return res;
     }
 
-    MatrixBase MatrixBase::apply(const MatrixBase::MatFn2& fn, const MatrixBase& rhs) const
+    MatrixBase MatrixBase::apply(const MatFn2& fn, const MatrixBase& rhs) const
     {
         if (_cols != rhs._cols)
         {
@@ -485,7 +485,7 @@ namespace steppable
         return res;
     }
 
-    MatrixBase MatrixBase::apply(const MatrixBase::MatFnUserData& fn, const MatrixBase& rhs, const void* userData) const
+    MatrixBase MatrixBase::apply(const MatFnUserData& fn, const MatrixBase& rhs, const void* userData) const
     {
         if (_cols != rhs._cols)
         {

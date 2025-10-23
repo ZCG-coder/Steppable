@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Check parser" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/parser/package.json" />
+    <package-json value="$PROJECT_DIR$/tree-sitter-stp/package.json" />
     <command value="run" />
     <scripts>
       <script value="test_cst" />

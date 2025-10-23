@@ -7,11 +7,12 @@
     </profile>
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/doxygen-awesome-css" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/gui/include/imNodeEditor" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/parser" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/parser/tree-sitter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tree-sitter-stp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tree-sitter-stp/replxx" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tree-sitter-stp/tree-sitter" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/wiki" vcs="Git" />
   </component>
 </project>
