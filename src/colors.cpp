@@ -64,6 +64,7 @@ double getSysOpType()
         ret = (double)osInfo.dwMajorVersion;
     }
     *sysVersion = ret;
+    return ret;
 }
 #else
     #include <unistd.h>

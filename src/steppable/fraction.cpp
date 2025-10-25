@@ -178,7 +178,6 @@ namespace steppable
 
     bool Fraction::operator==(const Fraction& rhs) const
     {
-        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
         const auto& thisNewTop = multiply(top, rhs.bottom, 0);
         const auto& otherNewTop = multiply(rhs.top, bottom, 0);
 
@@ -187,7 +186,6 @@ namespace steppable
 
     bool Fraction::operator!=(const Fraction& rhs) const
     {
-        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
         const auto& thisNewTop = multiply(top, rhs.bottom, 0);
         const auto& otherNewTop = multiply(rhs.top, bottom, 0);
 
@@ -196,7 +194,6 @@ namespace steppable
 
     bool Fraction::operator>(const Fraction& rhs) const
     {
-        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
         const auto& thisNewTop = multiply(top, rhs.bottom, 0);
         const auto& otherNewTop = multiply(rhs.top, bottom, 0);
 
@@ -205,7 +202,6 @@ namespace steppable
 
     bool Fraction::operator<(const Fraction& rhs) const
     {
-        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
         const auto& thisNewTop = multiply(top, rhs.bottom, 0);
         const auto& otherNewTop = multiply(rhs.top, bottom, 0);
 
@@ -214,7 +210,6 @@ namespace steppable
 
     bool Fraction::operator<=(const Fraction& rhs) const
     {
-        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
         const auto& thisNewTop = multiply(top, rhs.bottom, 0);
         const auto& otherNewTop = multiply(rhs.top, bottom, 0);
 
@@ -223,7 +218,6 @@ namespace steppable
 
     bool Fraction::operator>=(const Fraction& rhs) const
     {
-        const auto& newBottom = multiply(bottom, rhs.bottom, 0);
         const auto& thisNewTop = multiply(top, rhs.bottom, 0);
         const auto& otherNewTop = multiply(rhs.top, bottom, 0);
 

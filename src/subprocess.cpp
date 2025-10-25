@@ -4,9 +4,6 @@
 #include <fcntl.h>
 #include <iostream>
 #include <string>
-#include <sys/fcntl.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
 #include <unistd.h>
 
 #ifdef WINDOWS
@@ -16,6 +13,9 @@
     #include <csignal>
     #include <sys/types.h>
     #include <sys/wait.h>
+    #include <sys/fcntl.h>
+    #include <sys/mman.h>
+    #include <sys/stat.h>
 #endif
 
 namespace steppable
