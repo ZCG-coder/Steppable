@@ -50,6 +50,14 @@ namespace steppable::utils
         keywordArgDescriptions.insert({ name, description });
     }
 
+    void ProgramArgs::addKeywordArgStr(const std::string& name,
+                                       const std::string& defaultValue,
+                                       const std::string& description)
+    {
+        keywordArgsStr.insert({ name, defaultValue });
+        keywordArgDescriptions.insert({ name, description });
+    }
+
     void ProgramArgs::addPosArg(const char name, const std::string& description, const bool requiresNumber)
     {
         posArgDescriptions.insert({ name, description });

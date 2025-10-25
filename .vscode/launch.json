@@ -1,10 +1,10 @@
 {
   "configurations": [
     {
-      "name": "Matrix::rref",
+      "name": "Parser",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/src/matrix_ref",
+      "program": "${workspaceFolder}/build/bin/stp_parse",
       "args": [],
       "cwd": "${workspaceFolder}",
       "environment": [],
@@ -25,67 +25,5 @@
         }
       ]
     },
-    {
-      "name": "Division",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/build/src/calc_division",
-      "args": [
-        "1",
-        "2"
-      ],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "lldb",
-      "internalConsoleOptions": "openOnSessionStart",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        },
-        {
-          "description": "Set Disassembly Flavor to Intel",
-          "text": "-gdb-set disassembly-flavor intel",
-          "ignoreFailures": true
-        }
-      ]
-    },
-    {
-      "name": "Add",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/build/src/calc_add",
-      "args": [
-        "-5",
-        "6"
-      ],
-      "cwd": "${workspaceFolder}/build",
-      "preLaunchTask": "CMake: build",
-      "internalConsoleOptions": "openOnSessionStart",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
-    },
-    {
-      "type": "cppdbg",
-      "request": "launch",
-      "name": "Multiply",
-      "program": "${workspaceFolder}/build/src/calc_multiply",
-      "args": [
-        "56",
-        "76",
-        "+profile"
-      ],
-      "cwd": "${workspaceFolder}",
-      "preLaunchTask": "CMake: build",
-      "internalConsoleOptions": "openOnSessionStart",
-    }
   ]
 }

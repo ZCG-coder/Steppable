@@ -70,6 +70,7 @@ ADD_LIBRARY(
     steppable/stpArgSpace.cpp
     rounding.cpp
     factors.cpp
+    subprocess.cpp
 )
 TARGET_INCLUDE_DIRECTORIES(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
 TARGET_COMPILE_DEFINITIONS(steppable PRIVATE NO_MAIN)

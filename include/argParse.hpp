@@ -98,6 +98,13 @@ namespace steppable::utils
          * names and values are the values of the keyword arguments.
          */
         std::unordered_map<std::string, int> keywordArgs;
+
+        /**
+         * @brief This map is used to store the values of all keyword arguments specified. Keys are keyword argument
+         * names and values are the values of the keyword arguments.
+         */
+        std::unordered_map<std::string, std::string> keywordArgsStr;
+
         /// @brief This map is used to store the descriptions of all keyword arguments specified.
         std::map<std::string, std::string> keywordArgDescriptions;
 
@@ -155,6 +162,16 @@ namespace steppable::utils
          * @param[in] description The description of the keyword argument.
          */
         void addKeywordArg(const std::string& name, int defaultValue, const std::string& description = "");
+
+        /**
+         * @brief This function is used to add a string keyword argument to the class.
+         * @param[in] name The name of the keyword argument.
+         * @param[in] defaultValue The default value of the keyword argument. The value is stored as a string.
+         * @param[in] description The description of the keyword argument.
+         */
+        void addKeywordArgStr(const std::string& name,
+                              const std::string& defaultValue,
+                              const std::string& description = "");
 
         /**
          * @brief This function is used to get the value of a positional argument.

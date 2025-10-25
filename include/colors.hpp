@@ -67,12 +67,20 @@ namespace steppable::utils
     /**
      * @brief Check if the output stream is a terminal.
      *
-     * This function checks if the given output stream is associated with a terminal.
+     * This function checks if the output stream is associated with a terminal.
      *
-     * @param[in] stream The output stream to check.
      * @return true if the output stream is a terminal, false otherwise.
      */
-    bool isTerminal(const std::ostream& stream);
+    bool isTerminal();
+
+    /**
+     * @brief Check if the output stream is a terminal.
+     *
+     * This function checks if the output stream is associated with a terminal.
+     *
+     * @return true if the output stream is a terminal, false otherwise.
+     */
+    bool isInputTerminal();
 
     /**
      * @brief Reset the text color and format to the default values.
