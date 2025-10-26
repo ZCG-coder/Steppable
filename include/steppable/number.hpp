@@ -127,6 +127,34 @@ namespace steppable
             return usePrec;
         }
 
+        template<utils::StringLiteral fnName>
+        void checkSelfSanity() const
+        {
+            using namespace std::literals;
+
+            // 1. Infinity operations result always in Infinity.
+            if (not numUtils::isNumber(value))
+                goto insane;
+
+            // 2. Nothing is not a number.
+            if (value.empty())
+                goto insane;
+
+            if (value.length() >= 10000)
+                goto insaneTooLong;
+
+            return;
+
+        insane:
+            output::error(std::string(fnName.value), "Invalid operation. Infinity cannot be operated on."s);
+            utils::programSafeExit(1);
+
+        insaneTooLong:
+            output::error(std::string(fnName.value),
+                          "Number exceeds maximum number of digits (10000). It is too long!"s);
+            utils::programSafeExit(1);
+        }
+
     public:
         /**
          * @brief Initializes a number with a specified value.

@@ -54,12 +54,21 @@ namespace steppable
         this->value = std::move(newValue);
     }
 
-    Number Number::operator+(const Number& rhs) const { return { add(value, rhs.value, 0), prec, mode }; }
+    Number Number::operator+(const Number& rhs) const
+    {
+        checkSelfSanity<"operator+">();
+        return { add(value, rhs.value, 0), prec, mode };
+    }
 
-    Number Number::operator-(const Number& rhs) const { return { subtract(value, rhs.value, 0), prec, mode }; }
+    Number Number::operator-(const Number& rhs) const
+    {
+        checkSelfSanity<"operator-">();
+        return { subtract(value, rhs.value, 0), prec, mode };
+    }
 
     Number Number::operator*(const Number& rhs) const
     {
+        checkSelfSanity<"operator*">();
         const size_t usePrec = determinePrec<"operator*">(rhs);
         const auto result = multiply(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
         return Number{ numUtils::roundOff(result, usePrec), usePrec, mode };
@@ -67,6 +76,7 @@ namespace steppable
 
     Number Number::operator/(const Number& rhs) const
     {
+        checkSelfSanity<"operator/">();
         const size_t usePrec = determinePrec<"operator/">(rhs);
         const auto result = divide(value, rhs.value, 0, static_cast<int>(usePrec) + 2);
         return Number{ numUtils::roundOff(result, usePrec), usePrec, mode };
@@ -74,21 +84,28 @@ namespace steppable
 
     Number Number::operator%(const Number& rhs) const
     {
+        checkSelfSanity<"operator%">();
         return { divideWithQuotient(value, rhs.value).remainder, prec, mode };
     }
 
     Number Number::mod(const Number& rhs) const
     {
+        checkSelfSanity<"operator%">();
         return { divideWithQuotient(value, rhs.value).quotient, prec, mode };
     }
 
     Number Number::operator^(const Number& rhs) const
     {
+        checkSelfSanity<"operator^">();
         const size_t usePrec = determinePrec<"operator^">(rhs);
         return { power(value, rhs.value, 0, static_cast<int>(usePrec)), usePrec, mode };
     }
 
-    Number Number::operator not() const { return *this == 0; }
+    Number Number::operator not() const
+    {
+        checkSelfSanity<"operator not">();
+        return *this == 0;
+    }
 
     Number& Number::operator+=(const Number& rhs)
     {
@@ -129,41 +146,76 @@ namespace steppable
         return *this;
     }
 
-    bool Number::operator==(const Number& rhs) const { return compare(value, rhs.value, 0) == "2"; }
+    bool Number::operator==(const Number& rhs) const
+    {
+        checkSelfSanity<"operator==">();
+        return compare(value, rhs.value, 0) == "2";
+    }
 
-    bool Number::operator!=(const Number& rhs) const { return compare(value, rhs.value, 0) != "2"; }
+    bool Number::operator!=(const Number& rhs) const
+    {
+        checkSelfSanity<"operator!=">();
+        return compare(value, rhs.value, 0) != "2";
+    }
 
-    bool Number::operator<(const Number& rhs) const { return compare(value, rhs.value, 0) == "0"; }
+    bool Number::operator<(const Number& rhs) const
+    {
+        checkSelfSanity<"operator<">();
+        return compare(value, rhs.value, 0) == "0";
+    }
 
-    bool Number::operator>(const Number& rhs) const { return compare(value, rhs.value, 0) == "1"; }
+    bool Number::operator>(const Number& rhs) const
+    {
+        checkSelfSanity<"operator>">();
+        return compare(value, rhs.value, 0) == "1";
+    }
 
-    bool Number::operator<=(const Number& rhs) const { return compare(value, rhs.value, 0) != "1"; }
+    bool Number::operator<=(const Number& rhs) const
+    {
+        checkSelfSanity<"operator<=">();
+        return compare(value, rhs.value, 0) != "1";
+    }
 
-    bool Number::operator>=(const Number& rhs) const { return compare(value, rhs.value, 0) != "0"; }
+    bool Number::operator>=(const Number& rhs) const
+    {
+        checkSelfSanity<"operator>=">();
+        return compare(value, rhs.value, 0) != "0";
+    }
 
     Number Number::operator-() const
     {
+        checkSelfSanity<"operator-">();
         auto newValue = "-" + value;
         newValue = numUtils::standardizeNumber(newValue);
         Number number(newValue, prec, mode);
         return number;
     }
 
-    Number Number::operator+() const { return *this; }
+    Number Number::operator+() const
+    {
+        checkSelfSanity<"operator+">();
+        return *this;
+    }
 
     Number Number::operator++()
     {
+        checkSelfSanity<"operator++">();
         *this += Number("1");
         return *this;
     }
 
     Number Number::operator--()
     {
+        checkSelfSanity<"operator--">();
         *this -= Number("1");
         return *this;
     }
 
-    std::string Number::present() const { return value; }
+    std::string Number::present() const
+    {
+        checkSelfSanity<"present">();
+        return value;
+    }
 } // namespace steppable
 
 std::ostream& operator<<(std::ostream& os, const steppable::Number& number)
