@@ -1,7 +1,9 @@
 #pragma once
 
-#include <string>
-#include <vector>
+#ifdef STP_NEED_SUBPROCESS
+
+    #include <string>
+    #include <vector>
 
 namespace steppable
 {
@@ -57,12 +59,12 @@ namespace steppable
         ~Subprocess();
 
     private:
-#ifdef WINDOWS
+    #ifdef WINDOWS
         void* processHandle = nullptr; ///< Windows process handle.
         unsigned long processId = 0; ///< Windows process ID.
-#else
+    #else
         pid_t pid = -1; ///< POSIX process ID.
-#endif
+    #endif
     };
 
     class STP_IPC // NOLINT(cppcoreguidelines-special-member-functions)
@@ -110,3 +112,5 @@ namespace steppable
         std::string shm_name;
     };
 } // namespace steppable
+
+#endif

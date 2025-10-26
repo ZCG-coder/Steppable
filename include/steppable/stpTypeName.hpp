@@ -42,10 +42,11 @@ enum class STP_ExecState : std::uint8_t
     RETURNED,
     CONT,
     BREAK,
+    EXIT,
+    REQUEST_STOP,
 };
 
 inline const std::map<STP_TypeID, std::string> STP_typeNames = {
-    { STP_TypeID::NUMBER, "Number" }, { STP_TypeID::MATRIX_2D, "Mat2D" },
-    { STP_TypeID::STRING, "Str" },    { STP_TypeID::FUNC, "Func" },
-    { STP_TypeID::NONE, "Nothing" },     { STP_TypeID::SYMBOL, "Symbol" },
+    { STP_TypeID::NUMBER, "Number" }, { STP_TypeID::MATRIX_2D, "Mat2D" }, { STP_TypeID::STRING, "Str" },
+    { STP_TypeID::FUNC, "Func" },     { STP_TypeID::NONE, "Nothing" },    { STP_TypeID::SYMBOL, "Symbol" },
 };

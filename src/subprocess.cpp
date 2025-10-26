@@ -1,28 +1,29 @@
 #include "subprocess.hpp"
 
-#include <cstring>
-#include <fcntl.h>
-#include <iostream>
-#include <string>
-#include <unistd.h>
-
-#ifdef WINDOWS
-    #define WIN32_LEAN_AND_MEAN
-    #include <windows.h>
-#else
-    #include <csignal>
-    #include <sys/types.h>
-    #include <sys/wait.h>
+#ifdef STP_NEED_SUBPROCESS
+    #include <cstring>
+    #include <fcntl.h>
+    #include <iostream>
+    #include <string>
     #include <sys/fcntl.h>
     #include <sys/mman.h>
     #include <sys/stat.h>
-#endif
+    #include <unistd.h>
+
+    #ifdef WINDOWS
+        #define WIN32_LEAN_AND_MEAN
+        #include <windows.h>
+    #else
+        #include <csignal>
+        #include <sys/types.h>
+        #include <sys/wait.h>
+    #endif
 
 namespace steppable
 {
     using std::string;
 
-#ifdef WINDOWS
+    #ifdef WINDOWS
     bool Subprocess::start(const std::string& command,
                            const std::vector<std::string>& args,
                            std::istream* stdin_stream,
@@ -212,7 +213,7 @@ namespace steppable
         if (pData && pData != MAP_FAILED)
             msync(pData, region_size, MS_SYNC);
     }
-#else // POSIX
+    #else // POSIX
     bool Subprocess::start(const std::string& command,
                            const std::vector<std::string>& args,
                            std::istream* stdin_stream,
@@ -383,5 +384,6 @@ namespace steppable
         if ((pData != nullptr) && pData != MAP_FAILED)
             msync(pData, region_size, MS_SYNC);
     }
-#endif
+    #endif
 } // namespace steppable
+#endif
