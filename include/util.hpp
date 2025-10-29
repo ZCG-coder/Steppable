@@ -628,6 +628,10 @@ namespace steppable::stringUtils
      */
     std::string unicodeToUtf8(int unicode);
 
+    size_t findFirstNonUtf8(const std::string_view& s);
+
+    std::string intToHex(unsigned int value);
+
     /**
      * @brief Gets the duplicates in a vector of strings.
      * @param[in] vector The vector of strings to check for duplicates.
