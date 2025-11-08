@@ -5,13 +5,6 @@ name: CMake on multiple platforms
 on:
     push:
         branches: [ "develop" ]
-        paths:
-            - "**.cpp"
-            - "**.hpp"
-            - "**.py"
-            - "**.yml"
-            - "**.js"
-            - "tree-sitter-stp/**"
 jobs:
     build:
         runs-on: ${{ matrix.os }}
