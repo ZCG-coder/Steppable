@@ -1,0 +1,97 @@
+mat1 = [
+1 3 4 5 8 9;
+4 5 6 8 9 0;
+4 2 2 1 2 1;
+3 2 4 1 2 4;
+3 2 4 1 2 4
+]
+
+mat2 = [
+1*2^3 3 4 5 8 9 ;
+4 5 6 8 9 0 ;
+4 2 2 1 2 1 ;
+3 2 4 1 2 4 ;
+3 2 4 1 2 4 ;]
+
+mat3 = 3...5
+mat3!
+
+fn fn1(m, n = 3) {
+    a = 0;
+    a = m * (n + 3);
+
+    ret a
+}
+
+fn fn2(a, b) {
+    ret a/b
+}
+
+"fn2(5, 8) = \{fn2(5,8)\} = 0.625"
+
+fn1(3)
+i = 0;
+while i < 3 {
+    i = i+1;
+    if i == 2 {
+        "Let's break"
+        break
+    }
+    "The value of i is \{i\}"
+}
+
+var1 = (5 mod (3+1) + 1);
+if var1 == 1 {
+    "This should not be printed"
+} elseif 0 {
+    "This too should not get printed 1"
+} elseif 0 {
+    "This too should not get printed 2"
+} else {
+    var1 + 2
+    "Totally correct!"
+}
+
+# obj.mat = mat1;
+
+"Using global variables"
+sin(pi/2)
+
+# foreach x in mat1 {
+#     x = x ^ 2
+# }
+
+mat1 .* mat2
+
+# Operators
+# Binary
+# ^ & * / - + == != > < >= <= .* ./ .^
+# Unary
+# ! + -
+
+mat1 = mat1 + mat2
+
+#sum(mat1)
+# import module
+# stat = module.learn()
+
+logb(2, 10)
+
+# stat
+
+#comment
+
+"string string string"
+
+(-12%) + 11% * (1+2)
+
+# sym x
+# expr = x^2 == 4
+# vals = solve(expr)
+
+"Unicode \x4E2D"
+"\033[31;1;4mHello\033[0m" # Even ANSI escapes!
+
+"We now have \{1+1*3\} apples."
+
+if var1 == 1 {}

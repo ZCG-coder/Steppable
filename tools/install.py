@@ -26,7 +26,7 @@ Installs the Steppable settings and resources to the user home.
 
 import shutil
 
-from lib.paths import CONFIG_DIR, DEFAULT_CONFIG_DIR
+from lib.paths import CONFIG_DIR, DATA_DIR
 
 
 def copy_resources() -> None:
@@ -36,7 +36,7 @@ def copy_resources() -> None:
     # Copy the resources
     if CONFIG_DIR.is_dir():
         # Only copy the files
-        for file in DEFAULT_CONFIG_DIR.iterdir():
+        for file in DATA_DIR.iterdir():
             if file.is_file():
                 print(f"Copying FILE {file.name}")
                 shutil.copy(file, CONFIG_DIR)
@@ -44,7 +44,7 @@ def copy_resources() -> None:
                 print(f"Copying DIRECTORY {file.name}")
                 shutil.copytree(file, CONFIG_DIR / file.name, dirs_exist_ok=True)
         return
-    shutil.copytree(DEFAULT_CONFIG_DIR, CONFIG_DIR)
+    shutil.copytree(DATA_DIR, CONFIG_DIR)
 
 
 def install() -> None:

@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS Elements (
+    AtomicNumber int PRIMARY KEY,
+    Symbol       varchar(10),
+    Name         varchar(20),
+    AtomicMass   float,
+    CPKCol       char(6),
+    ElectronConf varchar(255),
+    ElectroNeg   float,
+    AtomicRadius int,
+    IonizaEnergy float,
+    ElectronAff  float,
+    OxidStates   varchar(255),
+    StdState     varchar(10),
+    MeltPtK      float,
+    BoilPtK      float,
+    Density      float,
+    GroupBlk     varchar(127),
+    YearDiscover year,
+    Predicted    bool,
+    ElectronShel varchar(255),
+    NumShells    int
+);

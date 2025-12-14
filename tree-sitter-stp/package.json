@@ -1,0 +1,24 @@
+{
+  "name": "steppable_parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen": "tree-sitter generate",
+    "beautify": "js-beautify -r grammar.js",
+    "test_cst": "tree-sitter parse -r --cst tests/stp_files/test1.stp",
+    "test_hl": "tree-sitter highlight tests/stp_files/test1.stp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "js-beautify": "^1.15.4",
+    "tree-sitter-cli": "^0.25.8"
+  },
+  "dependencies": {
+    "tree-sitter-highlight": "^1.0.1"
+  }
+}

@@ -20,33 +20,59 @@
 #  SOFTWARE.                                                                                        #
 #####################################################################################################
 
-"""
-This module contains the paths that are used in the project.
-"""
+OPTION(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+OPTION(TREE_SITTER_REUSE_ALLOCATOR "Reuse the library allocator" OFF)
 
-from pathlib import Path
+SET(TREE_SITTER_ABI_VERSION
+    15
+    CACHE STRING "Tree-sitter ABI version"
+)
+IF(NOT ${TREE_SITTER_ABI_VERSION} MATCHES "^[0-9]+$")
+    UNSET(TREE_SITTER_ABI_VERSION CACHE)
+    MESSAGE(FATAL_ERROR "TREE_SITTER_ABI_VERSION must be an integer")
+ENDIF()
 
-from lib.constants import WINDOWS
+INCLUDE(GNUInstallDirs)
 
-# section Project paths
-PROJECT = "Steppable"
+ADD_LIBRARY(tree-sitter-stp src/parser.c)
+IF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/scanner.c)
+    TARGET_SOURCES(tree-sitter-stp PRIVATE src/scanner.c)
+ENDIF()
 
-PROJECT_PATH = Path(__file__).parent.parent
-SRC_DIR = PROJECT_PATH / "src"
-TESTS_DIR = PROJECT_PATH / "tests"
-INCLUDE_DIR = PROJECT_PATH / "include"
+TARGET_INCLUDE_DIRECTORIES(
+    tree-sitter-stp
+    PRIVATE src
+    INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/bindings/c>
+              $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
 
-BUILD_DIR = PROJECT_PATH / f"{PROJECT}.build"
-OBJ_DIR = BUILD_DIR / "obj.temp"
-BIN_DIR = BUILD_DIR / "bin"
-LIB_DIR = BUILD_DIR / "lib"
-# endsection
+TARGET_COMPILE_DEFINITIONS(
+    tree-sitter-stp PRIVATE $<$<BOOL:${TREE_SITTER_REUSE_ALLOCATOR}>:TREE_SITTER_REUSE_ALLOCATOR>
+                            $<$<CONFIG:Debug>:TREE_SITTER_DEBUG>
+)
 
-# section Configuration paths
-if not WINDOWS:
-    CONFIG_DIR = Path().home() / ".config" / "steppable"
-else:
-    CONFIG_DIR = Path().home() / "AppData" / "Roaming" / "steppable"
-# endsection
+SET_TARGET_PROPERTIES(
+    tree-sitter-stp
+    PROPERTIES C_STANDARD 11
+               POSITION_INDEPENDENT_CODE ON
+               SOVERSION "${TREE_SITTER_ABI_VERSION}.${PROJECT_VERSION_MAJOR}"
+               DEFINE_SYMBOL ""
+)
 
-DATA_DIR = PROJECT_PATH / "res"
+CONFIGURE_FILE(bindings/c/tree-sitter-stp.pc.in "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-stp.pc" @ONLY)
+
+INSTALL(
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bindings/c/tree_sitter"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+    FILES_MATCHING
+    PATTERN "*.h"
+)
+INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-stp.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+INSTALL(TARGETS tree-sitter-stp LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+
+FILE(GLOB QUERIES queries/*.scm)
+INSTALL(FILES ${QUERIES} DESTINATION "${CMAKE_INSTALL_DATADIR}/tree-sitter/queries/stp")
+
+INCLUDE(buildMain.cmake)
+
+SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "stp",
+      "camelcase": "Steppable",
+      "title": "Steppable File",
+      "scope": "source.steppable",
+      "file-types": [
+        "stp"
+      ],
+      "injection-regex": "^stp$",
+      "highlights": "queries/highlights.scm",
+      "class-name": "TreeSitterStp"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Steppable grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Andy Zhang",
+        "email": "z-c-ge@outlook.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/ZCG-coder/Steppable_Parser"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": false,
+    "python": false,
+    "rust": false,
+    "swift": false,
+    "zig": false
+  }
+}

@@ -4,9 +4,9 @@
 [submodule "wiki"]
 	path = wiki
 	url = https://github.com/ZCG-coder/Steppable.wiki.git
-[submodule "gui/include/imNodeEditor"]
-	path = gui/include/imNodeEditor
-	url = https://github.com/ZCG-coder/imgui-node-editor.git
-[submodule "parser"]
-	path = tree-sitter-stp
-	url = https://github.com/ZCG-coder/Steppable_Parser
+[submodule "deps/tree-sitter"]
+	path = deps/tree-sitter
+	url = https://github.com/tree-sitter/tree-sitter.git
+[submodule "deps/replxx"]
+	path = deps/replxx
+	url = https://github.com/AmokHuginnsson/replxx.git
