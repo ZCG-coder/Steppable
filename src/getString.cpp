@@ -114,7 +114,7 @@ namespace steppable::localization
         const std::regex STRING_REGEX(
             R"(^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}) >> \"(.+?)\")");
 
-        const auto& confDir = getConfDirectory();
+        const auto& confDir = getResDirectory();
         std::string lang = getLanguage();
 
         auto langDir = confDir / "translations" / lang;

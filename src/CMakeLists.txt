@@ -48,9 +48,10 @@ FOREACH(COMPONENT IN LISTS COMPONENTS)
 ENDFOREACH()
 
 ADD_LIBRARY(
-    steppable SHARED
+    steppable STATIC
     ${CALCULATOR_FILES}
     ${CONPLOT_FILES}
+    ${CHEM_FILES}
     argParse.cpp
     colors.cpp
     logging.cpp
@@ -68,11 +69,16 @@ ADD_LIBRARY(
     steppable/mat2dSpecial.cpp
     steppable/number.cpp
     steppable/stpArgSpace.cpp
+    stpSqlite.cpp
     rounding.cpp
     factors.cpp
     subprocess.cpp
 )
 TARGET_INCLUDE_DIRECTORIES(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
 TARGET_COMPILE_DEFINITIONS(steppable PRIVATE NO_MAIN)
+TARGET_LINK_LIBRARIES(steppable PRIVATE SQLite::SQLite3)
 
 INSTALL_TO_BIN(steppable)
+
+# Depends on Steppable base
+ADD_SUBDIRECTORY(chem)

@@ -20,8 +20,37 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "chem.hpp"
+#include "types/chem.hpp"
+
+#include "output.hpp"
+#include "platform.hpp"
+#include "stpSqlite.hpp"
+
+#include <filesystem>
+#include <sqlite3.h>
+#include <string>
+
+using namespace std::literals;
 
 namespace steppable::chem
 {
 }
+
+#ifndef NO_MAIN
+int main()
+{
+    std::filesystem::path chemDbPath = steppable::utils::getResDirectory() / "chem" / "pd_tbl.db";
+    steppable::sqlite::STP_Sqlite db(chemDbPath);
+
+    auto rows = db.select("SELECT * FROM Elements where AtomicNumber = 1");
+    if (not rows.has_value())
+        return 1;
+
+    for (const steppable::sqlite::STP_SqliteRow& row : rows.value())
+    {
+        std::cout<<row.getValue<const char*>(2);
+    }
+
+    db.selectDone();
+}
+#endif

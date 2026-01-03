@@ -1,12 +1,8 @@
 INCLUDE(FetchContent)
 
 # SQLite
-FetchContent_Declare(
-  SqliteTarball
-  URL              https://sqlite.org/src/tarball/sqlite-20251128172825-281fc0e9af.tar.gz
-  SOURCE_DIR       ${STP_BASE_DIRECTORY}/deps/sqlite
-)
-FetchContent_Populate(SqliteTarball)
+FetchContent_Declare(sqlite3 GIT_REPOSITORY https://github.com/sjinks/sqlite3-cmake GIT_TAG v3.50.2)
+FetchContent_MakeAvailable(sqlite3)
 
 # REPLXX for REPL operations
 ADD_SUBDIRECTORY(replxx)

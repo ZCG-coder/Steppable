@@ -91,7 +91,7 @@ namespace steppable::utils
 
     std::filesystem::path getHomeDirectory();
 
-    std::filesystem::path getConfDirectory();
+    std::filesystem::path getResDirectory();
 
     std::filesystem::path getBinDir();
 } // namespace steppable::utils

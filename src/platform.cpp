@@ -102,7 +102,7 @@ namespace steppable::utils
         return homeDir;
     }
 
-    std::filesystem::path getConfDirectory()
+    std::filesystem::path getResDirectory()
     {
         // When we have a full application, we can allow users to change the configuration directory.
         // However, now, we will use the default configuration directory for the platform.
