@@ -1,149 +1,50 @@
+/**************************************************************************************************
+ * Copyright (c) 2023-2026 NWSOFT                                                                 *
+ *                                                                                                *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
+ * of this software and associated documentation files (the "Software"), to deal                  *
+ * in the Software without restriction, including without limitation the rights                   *
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                      *
+ * copies of the Software, and to permit persons to whom the Software is                          *
+ * furnished to do so, subject to the following conditions:                                       *
+ *                                                                                                *
+ * The above copyright notice and this permission notice shall be included in all                 *
+ * copies or substantial portions of the Software.                                                *
+ *                                                                                                *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                     *
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                       *
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE                    *
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                         *
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,                  *
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                  *
+ * SOFTWARE.                                                                                      *
+ **************************************************************************************************/
+
 #include "stpSqlite.hpp"
 
-#include "output.hpp"
-
-#include <optional>
-#include <sqlite3.h>
-#include <string>
-
-using namespace std::literals;
+#include <SQLiteCpp/SQLiteCpp.h>
 
 namespace steppable::sqlite
 {
-    namespace
+    SQLite::Statement STP_DataConnectorBase::createStmt(const std::string& query) const
     {
-        const void* getColValue(sqlite3_stmt* stmt, const int colIdx)
-        {
-            const int colType = sqlite3_column_type(stmt, colIdx);
-
-            const void* result = nullptr;
-
-            switch (colType)
-            {
-            case SQLITE_INTEGER:
-            {
-                const long long data = sqlite3_column_int64(stmt, colIdx);
-                result = &data;
-                break;
-            }
-
-            case SQLITE_FLOAT:
-            {
-                const double data = sqlite3_column_double(stmt, colIdx);
-                result = &data;
-                break;
-            }
-
-            case SQLITE_TEXT:
-            {
-                const unsigned char* data = sqlite3_column_text(stmt, colIdx);
-                result = data;
-                break;
-            }
-            case SQLITE_BLOB:
-            {
-                const void* data = sqlite3_column_blob(stmt, colIdx);
-                result = data;
-                break;
-            }
-            default:
-            {
-                output::error("getColValue"s, "Cannot cast column value to C++ type"s);
-                break;
-            }
-            }
-
-            return result;
-        }
-    } // namespace
-
-    bool STP_Sqlite::checkSelfSanity() const
-    {
-        if (not hasConn())
-        {
-            output::error("STP_SQLite::checkSelfSanity"s, "Database connection not established yet."s);
-            return true;
-        }
-        return false;
+        SQLite::Statement stmt(db, query);
+        return stmt;
     }
 
-    STP_Sqlite::STP_Sqlite(const std::filesystem::path& path)
+    DataRows STP_DataConnectorBase::getRowsForStmt(SQLite::Statement& stmt)
     {
-        if (sqlite3_open(path.string().c_str(), &databaseConn) != 0)
+        DataRows rows;
+
+        while (stmt.executeStep())
         {
-            output::error("STP_SQLite"s, "Cannot open the DB file -- is it there?"s);
-            return;
+            std::vector<SQLite::Column> row;
+            for (int i = 0; i < stmt.getColumnCount(); i++)
+                row.emplace_back(stmt.getColumn(i));
+
+            rows.emplace_back(row);
         }
+
+        return rows;
     }
-
-    STP_Sqlite::~STP_Sqlite()
-    {
-        if (checkSelfSanity())
-            return;
-
-        selectDone();
-        sqlite3_close(databaseConn);
-    }
-
-    std::optional<std::vector<STP_SqliteRow>> STP_Sqlite::select(const std::string& query)
-    {
-        if (checkSelfSanity())
-            return std::nullopt;
-
-        sqlite3_stmt* stmt;
-
-        // Prepare statement
-        if (sqlite3_prepare_v2(databaseConn, query.c_str(), query.length(), &stmt, nullptr) != 0)
-        {
-            output::error("STP_Sqlite::select"s, "Cannot prepare query statement"s);
-            output::info("STP_Sqlite::select"s, std::string(sqlite3_errmsg(databaseConn)));
-            return std::nullopt;
-        }
-
-        // Step through results
-        std::vector<STP_SqliteRow> result;
-
-        int stepResult = sqlite3_step(stmt);
-
-        if (stepResult == SQLITE_NOTFOUND)
-        {
-            output::error("STP_Sqlite::select"s, "Cannot find result with query."s);
-            output::info("STP_Sqlite::select"s, std::string(sqlite3_errmsg(databaseConn)));
-            return std::nullopt;
-        }
-
-        while (stepResult == SQLITE_ROW)
-        {
-            // Encounter ROW
-            const int columns = sqlite3_column_count(stmt);
-
-            std::vector<const void*> data;
-
-            for (int colIdx = 0; colIdx < columns; colIdx++)
-            {
-                const void* colValue = getColValue(stmt, colIdx);
-                data.emplace_back(colValue);
-            }
-
-            STP_SqliteRow row{ .data = data };
-            result.emplace_back(row);
-
-            stepResult = sqlite3_step(stmt);
-        }
-
-        databaseStmt = stmt;
-
-        return result;
-    }
-
-    void STP_Sqlite::selectDone()
-    {
-        if (databaseStmt != nullptr)
-        {
-            sqlite3_finalize(databaseStmt);
-            databaseStmt = nullptr;
-        }
-    }
-
-    bool STP_Sqlite::hasConn() const { return databaseConn != nullptr; }
 } // namespace steppable::sqlite

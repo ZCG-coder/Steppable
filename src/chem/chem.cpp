@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * Copyright (c) 2023-2025 NWSOFT                                                                 *
+ * Copyright (c) 2023-2026 NWSOFT                                                                 *
  *                                                                                                *
  * Permission is hereby granted, free of charge, to any person obtaining a copy                   *
  * of this software and associated documentation files (the "Software"), to deal                  *
@@ -22,6 +22,7 @@
 
 #include "types/chem.hpp"
 
+#include "SQLiteCpp/SQLiteCpp.h"
 #include "output.hpp"
 #include "platform.hpp"
 #include "stpSqlite.hpp"
@@ -39,18 +40,24 @@ namespace steppable::chem
 #ifndef NO_MAIN
 int main()
 {
-    std::filesystem::path chemDbPath = steppable::utils::getResDirectory() / "chem" / "pd_tbl.db";
-    steppable::sqlite::STP_Sqlite db(chemDbPath);
+    using namespace steppable::sqlite;
 
-    auto rows = db.select("SELECT * FROM Elements where AtomicNumber = 1");
-    if (not rows.has_value())
-        return 1;
+    const std::filesystem::path chemDbPath = steppable::utils::getResDirectory() / "chem" / "pd_tbl.db";
 
-    for (const steppable::sqlite::STP_SqliteRow& row : rows.value())
+    try
     {
-        std::cout<<row.getValue<const char*>(2);
-    }
+        STP_DataConnectorBase conn(chemDbPath);
+        auto stmt = conn.createStmt("SELECT * FROM Elements WHERE AtomicNumber=17");
 
-    db.selectDone();
+        for (std::vector<std::string> result =
+                 STP_DataConnectorBase::getColForStmt<const std::string>(stmt, "ElectronShel");
+             const auto& i : result)
+            std::cout << i << "\n";
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << "SQLite exception: " << e.what() << '\n';
+        return EXIT_FAILURE;
+    }
 }
 #endif

@@ -1,5 +1,5 @@
 #####################################################################################################
-#  Copyright (c) 2023-2025 NWSOFT                                                                   #
+#  Copyright (c) 2023-2026 NWSOFT                                                                   #
 #                                                                                                   #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
 #  of this software and associated documentation files (the "Software"), to deal                    #
@@ -47,7 +47,7 @@ ISO_639_REGEX = re.compile(r"^[a-z]{2}(-[A-Z]{2})?$")
 COMPONENT_REGEX = re.compile(r"^([a-zA-Z0-9]+?)::([a-zA-Z0-9]+?)$")
 LOCALIZED_HEADER = """\
 #####################################################################################################
-#  Copyright (c) 2023-2025 NWSOFT                                                                   #
+#  Copyright (c) 2023-2026 NWSOFT                                                                   #
 #                                                                                                   #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
 #  of this software and associated documentation files (the "Software"), to deal                    #

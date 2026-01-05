@@ -1,5 +1,5 @@
 #####################################################################################################
-#  Copyright (c) 2023-2025 NWSOFT                                                                   #
+#  Copyright (c) 2023-2026 NWSOFT                                                                   #
 #                                                                                                   #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy                     #
 #  of this software and associated documentation files (the "Software"), to deal                    #
@@ -76,7 +76,7 @@ ADD_LIBRARY(
 )
 TARGET_INCLUDE_DIRECTORIES(steppable PRIVATE ${STP_BASE_DIRECTORY}/include/)
 TARGET_COMPILE_DEFINITIONS(steppable PRIVATE NO_MAIN)
-TARGET_LINK_LIBRARIES(steppable PRIVATE SQLite::SQLite3)
+TARGET_LINK_LIBRARIES(steppable PRIVATE SQLiteCpp)
 
 INSTALL_TO_BIN(steppable)
 
