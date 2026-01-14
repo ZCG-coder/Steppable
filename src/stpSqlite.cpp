@@ -22,29 +22,28 @@
 
 #include "stpSqlite.hpp"
 
+#include "SQLiteCpp/Column.h"
+
 #include <SQLiteCpp/SQLiteCpp.h>
 
 namespace steppable::sqlite
 {
+    STP_DataConnectorBase::STP_DataConnectorBase(const std::filesystem::path& dbPath) : db(SQLite::Database(":memory:"))
+    {
+        using namespace std::literals;
+
+        std::cout << dbPath << "\n";
+
+        if (not std::filesystem::is_regular_file(dbPath))
+        {
+            output::error("STP_DataConnectorBase"s, "No such database file {0}"s, { dbPath.string() });
+            utils::programSafeExit(1);
+        }
+        db = SQLite::Database(dbPath);
+    }
     SQLite::Statement STP_DataConnectorBase::createStmt(const std::string& query) const
     {
         SQLite::Statement stmt(db, query);
         return stmt;
-    }
-
-    DataRows STP_DataConnectorBase::getRowsForStmt(SQLite::Statement& stmt)
-    {
-        DataRows rows;
-
-        while (stmt.executeStep())
-        {
-            std::vector<SQLite::Column> row;
-            for (int i = 0; i < stmt.getColumnCount(); i++)
-                row.emplace_back(stmt.getColumn(i));
-
-            rows.emplace_back(row);
-        }
-
-        return rows;
     }
 } // namespace steppable::sqlite

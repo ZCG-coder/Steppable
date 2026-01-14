@@ -20,52 +20,96 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
+#include "platform.hpp"
+#include "stpSqlite.hpp"
+
 #include <array>
 #include <string>
+#include <vector>
 
 namespace steppable::chem
 {
-    struct Element
+    class Subshell
     {
+        int order;
+        char type;
+        int electrons;
+
+        friend class Element;
+
+    public:
+        [[nodiscard]] std::string present() const { return std::to_string(order) + type + std::to_string(electrons); }
+
+        [[nodiscard]] int getOrder() const { return order; }
+        [[nodiscard]] char getType() const { return type; }
+        [[nodiscard]] int getElectrons() const { return electrons; }
+    };
+
+    class Element : private sqlite::STP_DataConnectorBase
+    {
+        friend class Atom;
+
         int atomicNumber;
         std::string symbol;
         std::string name;
-        float atomicMass;
-        std::array<char, 6> cpkCol;
-        std::string electronConf;
-        float electroNeg;
+        double atomicMass;
+        std::array<char, 6> cpkCol = {};
+        std::vector<Subshell> electronConf;
+        double electroNeg;
         int atomicRadius;
-        float ionizaEnergy;
-        float electronAff;
+        double ionizaEnergy;
+        double electronAff;
         std::string oxidStates;
         std::string stdState;
-        float meltPtK;
-        float boilPtK;
-        float density;
+        double meltPtK;
+        double boilPtK;
+        double density;
         std::string groupBlk;
         int yearDiscover;
         bool predicted;
-        std::string electronShel;
+        std::vector<int> electronShells;
         int numShells;
 
+    public:
         Element(int atomicNumber);
 
         Element(const std::string& symbol);
 
+        [[nodiscard]] int getAtomicNumber() const { return atomicNumber; }
+        [[nodiscard]] std::string getSymbol() const { return symbol; }
+        [[nodiscard]] std::string getName() const { return name; }
+        [[nodiscard]] double getAtomicMass() const { return atomicMass; }
+        [[nodiscard]] std::array<char, 6> getCpkCol() const { return cpkCol; }
+        [[nodiscard]] std::vector<Subshell> getElectronConf() const { return electronConf; }
+        [[nodiscard]] double getElectroNeg() const { return electroNeg; }
+        [[nodiscard]] int getAtomicRadius() const { return atomicRadius; }
+        [[nodiscard]] double getIonizaEnergy() const { return ionizaEnergy; }
+        [[nodiscard]] double getElectronAff() const { return electronAff; }
+        [[nodiscard]] std::string getOxidStates() const { return oxidStates; }
+        [[nodiscard]] std::string getStdState() const { return stdState; }
+        [[nodiscard]] double getMeltPtK() const { return meltPtK; }
+        [[nodiscard]] double getBoilPtK() const { return boilPtK; }
+        [[nodiscard]] double getDensity() const { return density; }
+        [[nodiscard]] std::string getGroupBlk() const { return groupBlk; }
+        [[nodiscard]] int getYearDiscover() const { return yearDiscover; }
+        [[nodiscard]] bool getPredicted() const { return predicted; }
+        [[nodiscard]] std::vector<int> getElectronShel() const { return electronShells; }
+        [[nodiscard]] int getNumShells() const { return numShells; }
+
         [[nodiscard]] std::string present() const { return symbol; }
     };
 
-    struct Atom
+    class Atom
     {
-        Atom(const Element& elem, int neutrons = -1);
-
-        [[nodiscard]] std::string present();
-
-    private:
         Element elem;
         int protons = elem.atomicNumber;
         int neutrons = -1;
         int electrons = elem.atomicNumber;
+
+    public:
+        Atom(const Element& elem, int neutrons = -1);
+
+        [[nodiscard]] std::string present();
     };
 
     struct Ion : private Atom
