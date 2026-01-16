@@ -32,8 +32,6 @@ namespace steppable::sqlite
     {
         using namespace std::literals;
 
-        std::cout << dbPath << "\n";
-
         if (not std::filesystem::is_regular_file(dbPath))
         {
             output::error("STP_DataConnectorBase"s, "No such database file {0}"s, { dbPath.string() });

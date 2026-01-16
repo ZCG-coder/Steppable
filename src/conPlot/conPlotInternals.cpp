@@ -183,8 +183,11 @@ namespace steppable::graphing
 
     void drawGrid(prettyPrint::ConsoleOutput* canvas, const GraphOptionsBase* graphOptions)
     {
-        canvas->write(
-            graphOptions->title, { .x = 0, .y = 1 }, false, formats::bold, prettyPrint::HorizontalAlignment::CENTER);
+        canvas->write(graphOptions->title,
+                      { .x = 0, .y = 1 },
+                      false,
+                      formats::bold,
+                      prettyPrint::HorizontalAlignment::ABSOLUTE_CENTER);
         for (long long i = 0; i <= graphOptions->width; ++i)
         {
             // Write base frame
@@ -197,14 +200,13 @@ namespace steppable::graphing
 
         // Axis Titles
         canvas->write(BoxDrawing::BOTTOM_RIGHT_CORNER, { .x = graphOptions->width, .y = 3 + graphOptions->height });
-        canvas->write(std::string((graphOptions->width - ::steppable::stringUtils::getUnicodeDisplayWidth(
-                                                             graphOptions->xAxisTitle)) /
-                                      2,
-                                  ' ') +
-                          graphOptions->xAxisTitle,
-                      { .x = 0, .y = 5 + graphOptions->height },
-                      false,
-                      formats::bold);
+        canvas->write(
+            std::string((graphOptions->width - stringUtils::getUnicodeDisplayWidth(graphOptions->xAxisTitle)) / 2,
+                        ' ') +
+                graphOptions->xAxisTitle,
+            { .x = 0, .y = 5 + graphOptions->height },
+            false,
+            formats::bold);
         canvas->write(graphOptions->yAxisTitle,
                       { .x = graphOptions->width + 10, .y = (graphOptions->height / 2) + 1 },
                       false,

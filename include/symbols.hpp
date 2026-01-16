@@ -72,9 +72,10 @@ namespace steppable::prettyPrint
 
     enum class HorizontalAlignment : std::uint8_t
     {
-        LEFT = 0,
-        CENTER = 1,
-        RIGHT = 2
+        LEFT,
+        ABSOLUTE_CENTER,
+        CENTER,
+        RIGHT,
     };
 
     /**
@@ -412,18 +413,44 @@ namespace steppable::symbols
         constexpr std::string_view DOTTED_HORIZONTAL = "\u2574"; ///< Dashed horizontal line
 
         constexpr std::string_view HORIZONTAL = "\u2500"; ///< Solid horizontal line
+
         constexpr std::string_view VERTICAL = "\u2502"; ///< Solid vertical line
+        constexpr std::string_view VERTICAL_THICK = "\u2503"; ///< Thicker version of solid vertical line
 
         // region CONNECTORS
         /// @brief Horizontal line that connects to a vertical one, i.e.,  in `_|_` shape.
         constexpr std::string_view HORIZONTAL_UP = "\u2534";
+        /// @brief Thicker version of horizontal line that connects to a vertical one, i.e.,  in `_|_` shape.
+        constexpr std::string_view HORIZONTAL_UP_THICK = "\u2537";
+
+        /// @brief Horizontal line that connects to a vertical one, i.e.,  in T shape.
+        constexpr std::string_view HORIZONTAL_DOWN = "\u252C";
+        /// @brief Thicker version of horizontal line that connects to a vertical one, i.e.,  in T shape.
+        constexpr std::string_view HORIZONTAL_DOWN_THICK = "\u252F";
+
+        /// @brief Vertical line that connects to a left one, i.e.,  in `|-` shape.
+        constexpr std::string_view VERTICAL_LEFT = "\u2524";
+        /// @brief Thicker version of vertical line that connects to a left one, i.e.,  in `|-` shape.
+        constexpr std::string_view VERTICAL_LEFT_THICK = "\u2525";
 
         /// @brief Vertical line that connects to a left one, i.e.,  in `-|` shape.
-        constexpr std::string_view VERTICAL_LEFT = "\u2524";
+        constexpr std::string_view VERTICAL_RIGHT = "\u251C";
+        /// @brief Thicker version of vertical line that connects to a left one, i.e.,  in `-|` shape.
+        constexpr std::string_view VERTICAL_RIGHT_THICK = "\u251D";
         // endregion
 
         // region CORNERS
-        constexpr std::string_view BOTTOM_RIGHT_CORNER = "\u2518"; ///< The bottom right corner
+        constexpr std::string_view TOP_LEFT_CORNER = "\u250C"; ///< Top left corner
+        constexpr std::string_view TOP_LEFT_CORNER_THICK = "\u250D"; ///< Thicker version of top left corner
+
+        constexpr std::string_view TOP_RIGHT_CORNER = "\u2510"; ///< Top right corner
+        constexpr std::string_view TOP_RIGHT_CORNER_THICK = "\u2511"; ///< Thicker version of top right corner
+
+        constexpr std::string_view BOTTOM_LEFT_CORNER = "\u2514"; ///< Bottom left corner
+        constexpr std::string_view BOTTOM_LEFT_CORNER_THICK = "\u2515"; ///< Thicker version of bottom left corner
+
+        constexpr std::string_view BOTTOM_RIGHT_CORNER = "\u2518"; ///< Bottom right corner
+        constexpr std::string_view BOTTOM_RIGHT_CORNER_THICK = "\u2519"; ///< Thicker version of bottom right corner
         // endregion
 
         constexpr std::string_view CROSS = "\u253C"; ///< A combining cross between a horizontal and vertical line.

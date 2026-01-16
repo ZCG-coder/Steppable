@@ -39,15 +39,15 @@ jobs:
                         c_compiler: clang
                         cpp_compiler: clang++
                         cmake_extra_options: ''
-                    -   os: macos-13
-                        c_compiler: clang
-                        cpp_compiler: clang++
-                        cmake_extra_options: '-GNinja'
                     -   os: macos-14
                         c_compiler: clang
                         cpp_compiler: clang++
                         cmake_extra_options: '-GNinja'
                     -   os: macos-15
+                        c_compiler: clang
+                        cpp_compiler: clang++
+                        cmake_extra_options: '-GNinja'
+                    -   os: macos-26
                         c_compiler: clang
                         cpp_compiler: clang++
                         cmake_extra_options: '-GNinja'
@@ -60,11 +60,11 @@ jobs:
                         c_compiler: cl
                     -   os: ubuntu-24.04-arm
                         c_compiler: cl
-                    -   os: macos-13
-                        c_compiler: cl
                     -   os: macos-14
                         c_compiler: cl
                     -   os: macos-15
+                        c_compiler: cl
+                    -   os: macos-26
                         c_compiler: cl
         steps:
             -   uses: actions/checkout@v4

@@ -46,21 +46,29 @@ namespace steppable::prettyPrint
     }
 
     void ConsoleOutput::_write(const std::string& s,
-                               const Position& pos,
+                               const Position& _pos,
                                bool updatePos,
                                const ColorFunc& color,
                                const HorizontalAlignment& alignment)
     {
         auto outputString = s;
+        Position pos = _pos;
+
         switch (alignment)
         {
         case HorizontalAlignment::LEFT:
             break;
-        case HorizontalAlignment::CENTER:
+        case HorizontalAlignment::ABSOLUTE_CENTER:
             outputString = std::string((width - getUnicodeDisplayWidth(outputString)) / 2, ' ') + outputString;
             break;
+        case HorizontalAlignment::CENTER:
+        {
+            pos = { .x = static_cast<long long>(_pos.x - (getUnicodeDisplayWidth(outputString) / 2)), .y = _pos.y };
+            break;
+        }
         case HorizontalAlignment::RIGHT:
-            outputString = std::string(width - getUnicodeDisplayWidth(outputString), ' ') + outputString;
+            std::ranges::reverse(outputString);
+            pos = { .x = static_cast<long long>(_pos.x - getUnicodeDisplayWidth(outputString) - 1), .y = _pos.y };
             break;
         }
 
@@ -84,6 +92,9 @@ namespace steppable::prettyPrint
             GraphemeIterator graphemeIterator(outputString);
             std::string cluster;
             size_t i = 0;
+            if (alignment == HorizontalAlignment::RIGHT)
+                i = stringWidth - 1;
+
             while (graphemeIterator.next(cluster))
             {
                 if (cluster == "\n")
@@ -96,8 +107,13 @@ namespace steppable::prettyPrint
                 std::stringstream ss;
                 color(ss);
                 ss << cluster << reset;
-                buffer[p.y][p.x + i] = ss.str();
-                i++;
+                if (buffer[p.y][p.x + i] == " " or cluster != " ")
+                    buffer[p.y][p.x + i] = ss.str();
+
+                if (alignment == HorizontalAlignment::RIGHT)
+                    i--;
+                else
+                    i++;
             }
         }
 
