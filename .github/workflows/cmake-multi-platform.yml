@@ -18,10 +18,10 @@ jobs:
             #
             # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
             matrix:
-                os: [ ubuntu-latest, ubuntu-24.04-arm, windows-2025, windows-11-arm, macos-13, macos-14, macos-15 ]
+                os: [ ubuntu-latest, ubuntu-24.04-arm, windows-2025, windows-11-arm, macos-14, macos-15, macos-26 ]
                 build_type: [ Debug, Release ]
                 c_compiler: [ clang, cl ]
-                python_version: [ '3.11', '3.12', '3.13' ]
+                python_version: [ '3.12', '3.13', '3.14' ]
                 include:
                     -   os: windows-2025
                         c_compiler: cl
