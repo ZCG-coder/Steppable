@@ -22,47 +22,41 @@
 
 #pragma once
 
-#include "SQLiteCpp/Database.h"
 #include "SQLiteCpp/SQLiteCpp.h"
 #include "output.hpp"
 #include "platform.hpp"
 
 #include <filesystem>
+#include <list>
+#include <string>
 #include <type_traits>
-#include <vector>
 
 namespace steppable::sqlite
 {
-    using DataRows = std::vector<std::vector<std::string>>;
+    template<size_t Cols>
+    using DataRows = std::vector<std::array<std::string, Cols>>;
 
     class STP_DataConnectorBase
     {
         SQLite::Database db;
-
-        template<typename... ColumnT, std::size_t... Is>
-        std::tuple<ColumnT...> rowToTuple(const std::vector<SQLite::Column>& row, std::index_sequence<Is...> /*unused*/)
-        {
-            return std::make_tuple(static_cast<ColumnT>(row[Is])...);
-        }
 
     public:
         explicit STP_DataConnectorBase(const std::filesystem::path& dbPath);
 
         [[nodiscard]] SQLite::Statement createStmt(const std::string& query) const;
 
-        template<typename... ColumnT>
-        std::vector<std::tuple<ColumnT...>> getRowsForStmt(SQLite::Statement& stmt)
+        template<size_t Cols>
+        std::vector<std::array<std::string, Cols>> getRowsForStmt(SQLite::Statement& stmt)
         {
-            std::vector<std::tuple<ColumnT...>> rows;
+            std::vector<std::array<std::string, Cols>> rows;
 
             while (stmt.executeStep())
             {
-                std::vector<SQLite::Column> row;
-                row.reserve(stmt.getColumnCount());
-                for (int i = 0; i < stmt.getColumnCount(); ++i)
-                    row.emplace_back(stmt.getColumn(i));
+                std::array<std::string, Cols> row;
+                for (int i = 0; i < Cols; ++i)
+                    row[i] = stmt.getColumn(i).getString();
 
-                rows.emplace_back(rowToTuple<ColumnT...>(row, std::index_sequence_for<ColumnT...>()));
+                rows.emplace_back(row);
             }
 
             return rows;

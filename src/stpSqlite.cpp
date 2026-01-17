@@ -22,9 +22,8 @@
 
 #include "stpSqlite.hpp"
 
-#include "SQLiteCpp/Column.h"
-
 #include <SQLiteCpp/SQLiteCpp.h>
+#include <string>
 
 namespace steppable::sqlite
 {

@@ -23,6 +23,7 @@
 #include "colors.hpp"
 #include "platform.hpp"
 #include "rounding.hpp"
+#include "steppable/number.hpp"
 #include "stpSqlite.hpp"
 #include "symbols.hpp"
 
@@ -34,70 +35,70 @@ namespace steppable::chem
 {
     class Subshell
     {
-        int order;
+        Number order;
         char type;
-        int electrons;
+        Number electrons;
 
         friend class Element;
 
     public:
-        [[nodiscard]] std::string present() const { return std::to_string(order) + type + std::to_string(electrons); }
+        [[nodiscard]] std::string present() const { return order.present() + type + electrons.present(); }
 
-        [[nodiscard]] int getOrder() const { return order; }
+        [[nodiscard]] Number getOrder() const { return order; }
         [[nodiscard]] char getType() const { return type; }
-        [[nodiscard]] int getElectrons() const { return electrons; }
+        [[nodiscard]] Number getElectrons() const { return electrons; }
     };
 
     class Element : private sqlite::STP_DataConnectorBase
     {
         friend class Atom;
 
-        int atomicNumber;
+        Number atomicNumber;
         std::string symbol;
         std::string name;
-        double atomicMass;
+        Number atomicMass;
         std::array<char, 6> cpkCol = {};
         std::vector<Subshell> electronConf;
-        double electroNeg;
-        int atomicRadius;
-        double ionizaEnergy;
-        double electronAff;
+        Number electroNeg;
+        Number atomicRadius;
+        Number ionizaEnergy;
+        Number electronAff;
         std::string oxidStates;
         std::string stdState;
-        double meltPtK;
-        double boilPtK;
-        double density;
+        Number meltPtK;
+        Number boilPtK;
+        Number density;
         std::string groupBlk;
         int yearDiscover;
         bool predicted;
-        std::vector<int> electronShells;
-        int numShells;
+        std::vector<Number> electronShells;
+        Number numShells;
 
     public:
         Element(int atomicNumber);
 
         Element(const std::string& symbol);
 
-        [[nodiscard]] int getAtomicNumber() const { return atomicNumber; }
+        [[nodiscard]] Number getAtomicNumber() const { return atomicNumber; }
         [[nodiscard]] std::string getSymbol() const { return symbol; }
         [[nodiscard]] std::string getName() const { return name; }
-        [[nodiscard]] double getAtomicMass() const { return atomicMass; }
+        [[nodiscard]] Number getAtomicMass() const { return atomicMass; }
         [[nodiscard]] std::array<char, 6> getCpkCol() const { return cpkCol; }
         [[nodiscard]] std::vector<Subshell> getElectronConf() const { return electronConf; }
-        [[nodiscard]] double getElectroNeg() const { return electroNeg; }
-        [[nodiscard]] int getAtomicRadius() const { return atomicRadius; }
-        [[nodiscard]] double getIonizaEnergy() const { return ionizaEnergy; }
-        [[nodiscard]] double getElectronAff() const { return electronAff; }
+        [[nodiscard]] Number getElectroNeg() const { return electroNeg; }
+        [[nodiscard]] Number getAtomicRadius() const { return atomicRadius; }
+        [[nodiscard]] Number getIonizaEnergy() const { return ionizaEnergy; }
+        [[nodiscard]] Number getElectronAff() const { return electronAff; }
         [[nodiscard]] std::string getOxidStates() const { return oxidStates; }
         [[nodiscard]] std::string getStdState() const { return stdState; }
-        [[nodiscard]] double getMeltPtK() const { return meltPtK; }
-        [[nodiscard]] double getBoilPtK() const { return boilPtK; }
-        [[nodiscard]] double getDensity() const { return density; }
+        [[nodiscard]] Number getMeltPtK() const { return meltPtK; }
+        [[nodiscard]] Number getBoilPtK() const { return boilPtK; }
+        [[nodiscard]] Number getDensity() const { return density; }
         [[nodiscard]] std::string getGroupBlk() const { return groupBlk; }
         [[nodiscard]] int getYearDiscover() const { return yearDiscover; }
         [[nodiscard]] bool getPredicted() const { return predicted; }
-        [[nodiscard]] std::vector<int> getElectronShel() const { return electronShells; }
-        [[nodiscard]] int getNumShells() const { return numShells; }
+        [[nodiscard]] std::vector<Number> getElectronShel() const { return electronShells; }
+        [[nodiscard]] Number getNumShells() const { return numShells; }
 
         [[nodiscard]] std::string present() const
         {
@@ -135,7 +136,7 @@ namespace steppable::chem
             }
 
             // Write Atomic Mass
-            output.write(numUtils::roundOff(std::to_string(atomicMass), 3),
+            output.write(numUtils::roundOff(atomicMass.present(), 3),
                          { .x = 35, .y = 1 },
                          false,
                          utils::colors::keepOriginal,
@@ -148,7 +149,7 @@ namespace steppable::chem
                          false,
                          utils::colors::keepOriginal,
                          prettyPrint::HorizontalAlignment::RIGHT);
-            output.write(std::to_string(atomicNumber), { .x = 21, .y = 2 });
+            output.write(atomicNumber.present(), { .x = 21, .y = 2 });
 
             // Write Symbol
             output.write(symbol,
@@ -184,9 +185,9 @@ namespace steppable::chem
     class Atom
     {
         Element elem;
-        int protons = elem.atomicNumber;
-        int neutrons = -1;
-        int electrons = elem.atomicNumber;
+        Number protons = elem.atomicNumber;
+        Number neutrons = -1;
+        Number electrons = elem.atomicNumber;
 
     public:
         Atom(const Element& elem, int neutrons = -1);

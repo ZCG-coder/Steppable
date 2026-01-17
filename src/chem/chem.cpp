@@ -48,33 +48,7 @@ namespace steppable::chem
         {
             auto stmt = createStmt("SELECT * FROM Elements WHERE AtomicNumber = ?");
             stmt.bind(1, atomicNumber);
-
-            const auto& rows = getRowsForStmt<int, // AtomicNumber
-                                              std::string, // Symbol
-                                              std::string, // Name
-                                              double, // AtomicMass
-                                              std::string, // CPKCol
-                                              std::string, // ElectronConf
-                                              double, // ElectroNeg
-                                              int, // AtomicRadius
-                                              double, // IonizaEnergy
-                                              double, // ElectronAff
-                                              std::string, // OxidStates
-                                              std::string, // StdState
-                                              double, // MeltPtK
-                                              double, // BoilPtK
-                                              double, // Density
-                                              std::string, // GroupBlk
-                                              int, // YearDiscover
-                                              int, // Predicted
-                                              std::string, // ElectronShel
-                                              int // NumShells
-                                              >(stmt);
-            if (rows.size() != 1)
-            {
-                output::error("Element"s, "Incorrect size of rows selected"s);
-                utils::programSafeExit(1);
-            }
+            auto rows = getRowsForStmt<20>(stmt);
 
             const auto& row = rows.front();
 
@@ -111,8 +85,8 @@ namespace steppable::chem
             this->boilPtK = _boilPtK;
             this->density = _density;
             this->groupBlk = _groupBlk;
-            this->yearDiscover = _yearDiscover;
-            this->predicted = _predicted == 1;
+            this->yearDiscover = std::stoi(_yearDiscover);
+            this->predicted = _predicted == "1";
             this->numShells = _numShells;
 
             // Electron shells -> shells vector
@@ -131,21 +105,21 @@ namespace steppable::chem
                 size_t i = 0;
                 std::string order;
                 for (;; i++)
-                    if ('0' <= subshell.at(i) and subshell.at(i) <= '9')
+                    if ('0' <= subshell.at(i) && subshell.at(i) <= '9')
                         order += subshell.at(i);
                     else
                         break;
-                currentSubshell.order = std::stoi(order);
+                currentSubshell.order = order;
                 currentSubshell.type = subshell[++i];
 
                 std::string electronCount;
                 for (;; i++)
-                    if (('0' <= subshell[i]) and (subshell[i] <= '9'))
+                    if (('0' <= subshell[i]) && (subshell[i] <= '9'))
                         electronCount += subshell[i];
                     else
                         break;
 
-                currentSubshell.electrons = std::stoi(electronCount);
+                currentSubshell.electrons = electronCount;
 
                 this->electronConf.emplace_back(currentSubshell);
             }
@@ -166,6 +140,8 @@ namespace steppable::chem
 #ifndef NO_MAIN
 int main()
 {
+    steppable::utils::Utf8CodePage utf8;
+
     using namespace steppable::sqlite;
     steppable::chem::Element hydrogen(1);
 
