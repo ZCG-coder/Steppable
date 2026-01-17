@@ -78,6 +78,12 @@ namespace steppable::prettyPrint
         RIGHT,
     };
 
+    enum class WrappingOptions : std::uint8_t
+    {
+        BREAK,
+        ELLIPSIS,
+    };
+
     /**
      * @brief Represents a console output buffer.
      */
@@ -174,6 +180,16 @@ namespace steppable::prettyPrint
          */
         [[nodiscard]] std::string asString() const;
     };
+
+    /**
+     * @brief Wraps string around given width.
+     *
+     * @param s String to wrap.
+     * @param options Wrapping options to use.
+     *
+     * @return Wrapped string with maximum width `w`.
+     */
+    std::string wrapString(const std::string& s, long long width, const WrappingOptions& options);
 
     /**
      * @brief Gets the minimal width needed to print a string.

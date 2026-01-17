@@ -23,8 +23,11 @@
 #include "symbols.hpp"
 
 #include "colors.hpp"
+#include "output.hpp"
+#include "platform.hpp"
 #include "util.hpp"
 
+#include <cctype>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -40,6 +43,69 @@ namespace steppable::prettyPrint
     using namespace steppable::utils;
     using namespace std::literals;
 
+    std::string wrapString(const std::string& s, const long long width, const WrappingOptions& options)
+    {
+        if (getStringWidth(s) < width)
+            return s; // String is already properly wrapped.
+
+        const std::vector lines = split(s, '\n');
+        if (lines.size() != 1 and options == WrappingOptions::ELLIPSIS)
+        {
+            output::error("wrapString"s, "Cannot add ellipsis to multi-lined string."s);
+            programSafeExit(1);
+        }
+
+        if (options == WrappingOptions::ELLIPSIS)
+        {
+            const std::string& line = lines.front();
+            GraphemeIterator graphemeIterator(line);
+            std::string cluster;
+            size_t lastSpacePos = 0;
+            size_t currentPos = 0;
+
+            while (graphemeIterator.next(cluster))
+            {
+                if (currentPos > width)
+                    break;
+                if (std::ispunct(cluster.front()) != 0)
+                    lastSpacePos = currentPos;
+
+                currentPos++;
+            }
+            return line.substr(0, lastSpacePos) + "...";
+        }
+
+        std::vector<std::string> outputLines;
+        for (const std::string& line : lines)
+        {
+            long long currentWidth = 0;
+            size_t lastSpacePos = 0;
+            size_t lastBreakPos = 0;
+
+            GraphemeIterator graphemeIterator(line);
+            std::string cluster;
+
+            while (graphemeIterator.next(cluster))
+            {
+                if (cluster == " ")
+                    lastSpacePos = currentWidth;
+
+                if (currentWidth > width)
+                {
+                    outputLines.emplace_back(line.substr(lastBreakPos, lastSpacePos));
+                    lastBreakPos = currentWidth;
+                    currentWidth = 0;
+                    continue;
+                }
+                currentWidth++;
+            }
+
+            outputLines.emplace_back(line.substr(lastBreakPos));
+        }
+
+        return join(outputLines, "\n");
+    }
+
     ConsoleOutput::ConsoleOutput(size_t height, size_t width) : height(height), width(width)
     {
         buffer = std::vector(height, std::vector(width, " "s));
@@ -52,6 +118,7 @@ namespace steppable::prettyPrint
                                const HorizontalAlignment& alignment)
     {
         auto outputString = s;
+        std::vector lines = split(s, '\n');
         Position pos = _pos;
 
         switch (alignment)
@@ -59,17 +126,34 @@ namespace steppable::prettyPrint
         case HorizontalAlignment::LEFT:
             break;
         case HorizontalAlignment::ABSOLUTE_CENTER:
-            outputString = std::string((width - getUnicodeDisplayWidth(outputString)) / 2, ' ') + outputString;
+            outputString = std::string((width - getStringWidth(outputString)) / 2, ' ') + outputString;
             break;
         case HorizontalAlignment::CENTER:
         {
-            pos = { .x = static_cast<long long>(_pos.x - (getUnicodeDisplayWidth(outputString) / 2)), .y = _pos.y };
-            break;
+            // Write each line aligned to center
+            for (size_t lineIdx = 0; lineIdx < lines.size(); lineIdx++)
+            {
+                const std::string& line = lines.at(lineIdx);
+
+                pos = { .x = static_cast<long long>(_pos.x - (getStringWidth(line) / 2)),
+                        .y = static_cast<long long>(_pos.y + lineIdx) };
+                _write(line, pos, false, color, HorizontalAlignment::LEFT);
+            }
+            return;
         }
         case HorizontalAlignment::RIGHT:
-            std::ranges::reverse(outputString);
-            pos = { .x = static_cast<long long>(_pos.x - getUnicodeDisplayWidth(outputString) - 1), .y = _pos.y };
-            break;
+        {
+            // Write each line aligned to right
+            for (size_t lineIdx = 0; lineIdx < lines.size(); lineIdx++)
+            {
+                const std::string& line = lines.at(lineIdx);
+
+                pos = { .x = static_cast<long long>(_pos.x - getStringWidth(line) - 1),
+                        .y = static_cast<long long>(_pos.y + lineIdx) };
+                _write(line, pos, false, color, HorizontalAlignment::LEFT);
+            }
+            return;
+        }
         }
 
         Position p = pos;

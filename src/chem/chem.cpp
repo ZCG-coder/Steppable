@@ -135,6 +135,91 @@ namespace steppable::chem
             output::info("Element"s, std::string(getDb().getErrorMsg()));
         }
     }
+
+    std::string Element::present() const
+    {
+        using namespace symbols;
+        //                   +---------------+
+        //                   |         35.45 | <- Atomic Mass/u
+        // Atomic Number ->  | 17            |
+        //                   |       Cl      | <- Symbol
+        //                   |    Chlorine   | <- Name
+        //   Group Block ->  |     Halogen   |
+        //                   +---------------+
+        // Other properties
+        // +------------------------+----------------------+
+        // | Electron Configuration | [Ne] 3s2 3p5         |
+        // +------------------------+----------------------+
+        // ...
+        prettyPrint::ConsoleOutput output(8, 100);
+
+        constexpr int leftpad = 20;
+        constexpr int width = 19;
+        constexpr int height = 7;
+
+        int i = leftpad;
+        for (; i < leftpad + width; i++)
+            output.write(BoxDrawing::HORIZONTAL, { .x = i, .y = 0 });
+        output.write(BoxDrawing::TOP_LEFT_CORNER, { .x = leftpad, .y = 0 });
+        output.write(BoxDrawing::TOP_RIGHT_CORNER, { .x = i, .y = 0 });
+
+        i = leftpad;
+        for (; i < leftpad + width; i++)
+            output.write(BoxDrawing::HORIZONTAL, { .x = i, .y = height });
+        output.write(BoxDrawing::BOTTOM_LEFT_CORNER, { .x = leftpad, .y = height });
+        output.write(BoxDrawing::BOTTOM_RIGHT_CORNER, { .x = i, .y = height });
+
+        for (int j = 1; j < height; j++)
+        {
+            output.write(BoxDrawing::VERTICAL, { .x = leftpad, .y = j });
+            output.write(BoxDrawing::VERTICAL, { .x = leftpad + width, .y = j });
+        }
+
+        // Write Atomic Mass
+        output.write(numUtils::roundOff(atomicMass.present(), 3),
+                     { .x = leftpad + width, .y = 1 },
+                     false,
+                     utils::colors::keepOriginal,
+                     prettyPrint::HorizontalAlignment::RIGHT);
+        output.write("<- Atomic Mass/u", { .x = leftpad + width + 2, .y = 1 });
+
+        // Write Atomic Number
+        output.write("Atomic Number ->",
+                     { .x = 19, .y = 2 },
+                     false,
+                     utils::colors::keepOriginal,
+                     prettyPrint::HorizontalAlignment::RIGHT);
+        output.write(atomicNumber.present(), { .x = leftpad + 2, .y = 2 });
+
+        // Write Symbol
+        output.write(symbol,
+                     { .x = leftpad + (width / 2), .y = 3 },
+                     false,
+                     utils::colors::keepOriginal,
+                     prettyPrint::HorizontalAlignment::LEFT);
+        output.write("<- Symbol", { .x = leftpad + width + 2, .y = 3 });
+
+        // Write Name
+        output.write(name,
+                     { .x = leftpad + (width / 2), .y = 4 },
+                     false,
+                     utils::colors::keepOriginal,
+                     prettyPrint::HorizontalAlignment::CENTER);
+        output.write("<- Name", { .x = leftpad + width + 2, .y = 4 });
+
+        // Write Group Block
+        output.write(prettyPrint::wrapString(groupBlk, width - 4, prettyPrint::WrappingOptions::BREAK),
+                     { .x = leftpad + (width / 2), .y = 5 },
+                     false,
+                     utils::colors::keepOriginal,
+                     prettyPrint::HorizontalAlignment::CENTER);
+        output.write("Group Block\n->",
+                     { .x = 19, .y = 5 },
+                     false,
+                     utils::colors::keepOriginal,
+                     prettyPrint::HorizontalAlignment::RIGHT);
+        return output.asString();
+    }
 } // namespace steppable::chem
 
 #ifndef NO_MAIN
@@ -143,8 +228,6 @@ int main()
     steppable::utils::Utf8CodePage utf8;
 
     using namespace steppable::sqlite;
-    steppable::chem::Element hydrogen(1);
-
-    std::cout << hydrogen.present() << "\n";
+    std::cout << steppable::chem::Element(1).present() << "\n";
 }
 #endif
