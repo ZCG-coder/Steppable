@@ -115,9 +115,4 @@ namespace steppable::chem
 
         [[nodiscard]] std::string present();
     };
-
-    struct Ion : private Atom
-    {
-        Ion(const Element& elem, int charge, int neutrons = -1);
-    };
 } // namespace steppable::chem

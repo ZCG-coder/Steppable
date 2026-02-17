@@ -29,6 +29,7 @@ SET(TEST_TARGETS_TEMP
     steppable::mat2d
     steppable::factors
     steppable::format
+    steppable::table
     ${COMPONENTS}
 )
 

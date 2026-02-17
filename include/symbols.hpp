@@ -33,6 +33,7 @@
 #pragma once
 
 #include "colors.hpp"
+#include "platform.hpp"
 
 #include <array>
 #include <cstddef>
@@ -179,6 +180,45 @@ namespace steppable::prettyPrint
          * @return The buffer as a string.
          */
         [[nodiscard]] std::string asString() const;
+    };
+
+    class TableCell
+    {
+        friend class Table;
+
+        bool isMerger = false;
+        std::string value;
+        HorizontalAlignment alignment = HorizontalAlignment::LEFT;
+
+    public:
+        TableCell() = delete;
+
+        static TableCell merger()
+        {
+            TableCell cell("");
+            cell.isMerger = true;
+
+            return cell;
+        }
+
+        TableCell(std::string value, const HorizontalAlignment& alignment = HorizontalAlignment::LEFT) :
+            value(std::move(value)), alignment(alignment)
+        {
+            if (alignment == HorizontalAlignment::ABSOLUTE_CENTER)
+                this->alignment = HorizontalAlignment::CENTER;
+        }
+    };
+
+    class Table
+    {
+        std::vector<std::vector<TableCell>> cells;
+
+        void checkSelfSanity();
+
+    public:
+        Table(decltype(cells) cells);
+
+        [[nodiscard]] std::string present();
     };
 
     /**
@@ -429,6 +469,7 @@ namespace steppable::symbols
         constexpr std::string_view DOTTED_HORIZONTAL = "\u2574"; ///< Dashed horizontal line
 
         constexpr std::string_view HORIZONTAL = "\u2500"; ///< Solid horizontal line
+        constexpr std::string_view HORIZONTAL_THICK = "\u2501"; ///< Thicker version of solid horizontal line
 
         constexpr std::string_view VERTICAL = "\u2502"; ///< Solid vertical line
         constexpr std::string_view VERTICAL_THICK = "\u2503"; ///< Thicker version of solid vertical line
@@ -470,6 +511,8 @@ namespace steppable::symbols
         // endregion
 
         constexpr std::string_view CROSS = "\u253C"; ///< A combining cross between a horizontal and vertical line.
+        constexpr std::string_view CROSS_THICK =
+            "\u253F"; ///< Thicker version of a combining cross between a horizontal and vertical line.
     } // namespace BoxDrawing
 } // namespace steppable::symbols
 

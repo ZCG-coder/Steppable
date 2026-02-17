@@ -28,6 +28,7 @@
 #include "util.hpp"
 
 #include <cctype>
+#include <numeric>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -42,6 +43,108 @@ namespace steppable::prettyPrint
     using namespace steppable::stringUtils;
     using namespace steppable::utils;
     using namespace std::literals;
+
+    void Table::checkSelfSanity()
+    {
+        size_t firstRowItems = cells.front().size();
+
+        for (const auto& row : cells)
+        {
+            // Check for uniform rows
+            if (row.size() != firstRowItems)
+            {
+                output::error("Table::Table"s, "Cannot initialize a Table instance with non-uniform rows."s);
+                output::info("Table::Table"s, "Use TableCell::merger to merge cells"s);
+                utils::programSafeExit(1);
+            }
+        }
+    }
+
+    Table::Table(decltype(cells) cells) : cells(std::move(cells)) { checkSelfSanity(); }
+
+    [[nodiscard]] std::string Table::present()
+    {
+        std::vector<size_t> colLengths(cells.front().size(), 0);
+        std::vector<size_t> rowHeights(cells.size(), 0);
+
+        for (size_t j = 0; j < cells.size(); j++)
+        {
+            const auto& row = cells.at(j);
+
+            for (size_t i = 0; i < row.size(); i++)
+            {
+                // Calculate minimum space needed
+                const auto& cell = row.at(i);
+
+                colLengths.at(i) = std::max(getStringWidth(cell.value), colLengths.at(i));
+                rowHeights.at(j) = std::max(getStringHeight(cell.value), rowHeights.at(j));
+            }
+        }
+
+        size_t totalHeight = std::reduce(rowHeights.begin(), rowHeights.end()) + cells.size();
+        size_t totalWidth = std::reduce(colLengths.begin(), colLengths.end()) + 4 * (cells.front().size() - 1);
+        ConsoleOutput output(totalHeight + 1, totalWidth + 1);
+
+        // Create bottom border
+        std::string topBorder;
+        std::string bottomBorder;
+        std::string rowSeparator;
+        for (const auto& length : colLengths)
+        {
+            // Two spaces for padding
+            topBorder += symbols::BoxDrawing::HORIZONTAL_DOWN_THICK;
+            bottomBorder += symbols::BoxDrawing::HORIZONTAL_UP_THICK;
+            rowSeparator += symbols::BoxDrawing::CROSS;
+
+            for (size_t i = 0; i < length + 2; i++)
+            {
+                topBorder += symbols::BoxDrawing::HORIZONTAL_THICK;
+                bottomBorder += symbols::BoxDrawing::HORIZONTAL_THICK;
+                rowSeparator += symbols::BoxDrawing::HORIZONTAL;
+            }
+        }
+        topBorder += symbols::BoxDrawing::TOP_RIGHT_CORNER_THICK;
+        bottomBorder += symbols::BoxDrawing::BOTTOM_RIGHT_CORNER_THICK;
+        rowSeparator += symbols::BoxDrawing::VERTICAL_LEFT;
+
+        // Write top border
+        output.write(topBorder, { .x = 0, .y = 0 });
+        output.write(symbols::BoxDrawing::TOP_LEFT_CORNER_THICK, { .x = 0, .y = 0 });
+
+        // Write cells
+        for (size_t j = 0; j < cells.size(); j++)
+        {
+            const auto& row = cells.at(j);
+            long long y = 1 + std::reduce(rowHeights.begin(), rowHeights.begin() + j) + j;
+
+            for (size_t i = 0; i < row.size(); i++)
+            {
+                const auto cell = row.at(i);
+                long long x = 2 + std::reduce(colLengths.begin(), colLengths.begin() + i) + (3 * i);
+
+                // Create left border
+                for (long long k = 0; k < rowHeights.at(j); k++)
+                    output.write(symbols::BoxDrawing::VERTICAL, { .x = x - 2, .y = y + k });
+                output.write(cell.value, { .x = x, .y = y });
+            }
+
+            // Create right border
+            for (long long k = 0; k < rowHeights.at(j); k++)
+                output.write(symbols::BoxDrawing::VERTICAL,
+                             { .x = static_cast<long long>(totalWidth - 1), .y = y + k });
+
+            // Write row separator
+            output.write(rowSeparator, { .x = 0, .y = y + static_cast<long long>(rowHeights.at(j)) });
+            output.write(symbols::BoxDrawing::VERTICAL_RIGHT, { .x = 0, .y = y + static_cast<long long>(rowHeights.at(j)) });
+        }
+
+        // Write bottom border
+        output.write(bottomBorder, { .x = 0, .y = static_cast<long long>(totalHeight) });
+        output.write(symbols::BoxDrawing::BOTTOM_LEFT_CORNER_THICK,
+                     { .x = 0, .y = static_cast<long long>(totalHeight) });
+
+        return output.asString();
+    }
 
     std::string wrapString(const std::string& s, const long long width, const WrappingOptions& options)
     {
@@ -176,8 +279,6 @@ namespace steppable::prettyPrint
             GraphemeIterator graphemeIterator(outputString);
             std::string cluster;
             size_t i = 0;
-            if (alignment == HorizontalAlignment::RIGHT)
-                i = stringWidth - 1;
 
             while (graphemeIterator.next(cluster))
             {
@@ -194,10 +295,7 @@ namespace steppable::prettyPrint
                 if (buffer[p.y][p.x + i] == " " or cluster != " ")
                     buffer[p.y][p.x + i] = ss.str();
 
-                if (alignment == HorizontalAlignment::RIGHT)
-                    i--;
-                else
-                    i++;
+                i++;
             }
         }
 
