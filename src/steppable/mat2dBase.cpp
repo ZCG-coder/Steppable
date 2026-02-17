@@ -212,6 +212,13 @@ namespace steppable
             for (size_t r = 0; r < _rows; r++)
             {
                 divisor = matrix[lead][lead];
+                if (divisor == 0)
+                {
+                    // Prevent division by zero
+                    output::warning("MatrixBase::rref"s, "Divisor reached 0. Ending computation."s);
+                    goto done;
+                }
+
                 multiplier = matrix[r][lead] / matrix[lead][lead];
                 for (size_t c = 0; c < _cols; c++)
                     if (r == lead)
@@ -219,6 +226,13 @@ namespace steppable
 #if defined(STP_DEB_CALC_DIVISION_RESULT_INSPECT) && DEBUG
                         auto oldMatrixRC = matrix[r][c];
 #endif
+
+                        if (divisor == 0)
+                        {
+                            // Prevent division by zero
+                            output::warning("MatrixBase::rref"s, "Divisor reached 0. Ending computation."s);
+                            goto done;
+                        }
 
                         matrix[r][c] /= divisor;
 
@@ -255,6 +269,7 @@ namespace steppable
 #endif
         }
 
+    done:
         matrix = roundOffValues(matrix, static_cast<int>(prec));
         return MatrixBase{ matrix, prec };
     }
