@@ -125,7 +125,34 @@ namespace steppable::prettyPrint
                 // Create left border
                 for (long long k = 0; k < rowHeights.at(j); k++)
                     output.write(symbols::BoxDrawing::VERTICAL, { .x = x - 2, .y = y + k });
-                output.write(cell.value, { .x = x, .y = y });
+
+                switch (cell.alignment)
+                {
+                case HorizontalAlignment::LEFT:
+                {
+                    output.write(cell.value, { .x = x, .y = y });
+                    break;
+                }
+                case HorizontalAlignment::ABSOLUTE_CENTER:
+                case HorizontalAlignment::CENTER:
+                {
+                    output.write(cell.value,
+                                 { .x = static_cast<long long>(x + (getStringWidth(cell.value) / 2)), .y = y },
+                                 false,
+                                 colors::keepOriginal,
+                                 HorizontalAlignment::CENTER);
+                    break;
+                }
+                case HorizontalAlignment::RIGHT:
+                {
+                    output.write(cell.value,
+                                 { .x = static_cast<long long>(x + getStringWidth(cell.value)), .y = y },
+                                 false,
+                                 colors::keepOriginal,
+                                 HorizontalAlignment::CENTER);
+                    break;
+                }
+                }
             }
 
             // Create right border
@@ -135,7 +162,8 @@ namespace steppable::prettyPrint
 
             // Write row separator
             output.write(rowSeparator, { .x = 0, .y = y + static_cast<long long>(rowHeights.at(j)) });
-            output.write(symbols::BoxDrawing::VERTICAL_RIGHT, { .x = 0, .y = y + static_cast<long long>(rowHeights.at(j)) });
+            output.write(symbols::BoxDrawing::VERTICAL_RIGHT,
+                         { .x = 0, .y = y + static_cast<long long>(rowHeights.at(j)) });
         }
 
         // Write bottom border
