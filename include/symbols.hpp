@@ -213,12 +213,12 @@ namespace steppable::prettyPrint
     {
         std::vector<std::vector<TableCell>> cells;
 
-        void checkSelfSanity();
+        void checkSelfSanity() const;
 
     public:
         Table(decltype(cells) cells);
 
-        [[nodiscard]] std::string present();
+        [[nodiscard]] std::string present() const;
     };
 
     /**

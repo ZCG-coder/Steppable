@@ -22,7 +22,6 @@
 
 #include "types/chem.hpp"
 
-#include "SQLiteCpp/Column.h"
 #include "SQLiteCpp/SQLiteCpp.h"
 #include "output.hpp"
 #include "platform.hpp"
@@ -32,7 +31,6 @@
 #include <algorithm>
 #include <filesystem>
 #include <iterator>
-#include <sqlite3.h>
 #include <string>
 #include <vector>
 
@@ -40,96 +38,121 @@ using namespace std::literals;
 
 namespace steppable::chem
 {
+    void Element::initializeFromStmt(SQLite::Statement stmt)
+    {
+        auto rows = getRowsForStmt<20>(stmt);
+
+        const auto& row = rows.front();
+        if (rows.empty())
+        {
+            output::error("Element::initializeFromStmt"s, "No matching element found for statement."s);
+            utils::programSafeExit(1);
+        }
+
+        const auto& [_atomicNumber,
+                     _symbol,
+                     _name,
+                     _atomicMass,
+                     _cpkCol,
+                     _electronConf,
+                     _electroNeg,
+                     _atomicRadius,
+                     _ionizaEnergy,
+                     _electronAff,
+                     _oxidStates,
+                     _stdState,
+                     _meltPtK,
+                     _boilPtK,
+                     _density,
+                     _groupBlk,
+                     _yearDiscover,
+                     _predicted,
+                     _electronShells,
+                     _numShells] = row;
+        this->atomicNumber = _atomicNumber;
+        this->symbol = _symbol;
+        this->name = _name;
+        this->atomicMass = _atomicMass;
+        this->electroNeg = _electroNeg;
+        this->atomicRadius = _atomicRadius;
+        this->ionizaEnergy = _ionizaEnergy;
+        this->electronAff = _electronAff;
+        this->stdState = _stdState;
+        this->meltPtK = _meltPtK;
+        this->boilPtK = _boilPtK;
+        this->density = _density;
+        this->groupBlk = _groupBlk;
+        this->yearDiscover = std::stoi(_yearDiscover);
+        this->predicted = _predicted == "1";
+        this->numShells = _numShells;
+
+        // Electron shells -> shells vector
+        this->electronConf.clear();
+        this->electronShells.clear();
+        std::vector electronShellsVec = stringUtils::split(_electronShells, ',');
+        std::ranges::transform(electronShellsVec,
+                               std::back_inserter(this->electronShells),
+                               [](const std::string& i) -> int { return std::stoi(i); });
+
+        // Electron configuration -> subshells
+        std::vector subshells = stringUtils::split(_electronConf, ',');
+        for (const auto& subshell : subshells)
+        {
+            Subshell currentSubshell{};
+            size_t i = 0;
+            std::string order;
+            for (;; i++)
+                if ('0' <= subshell.at(i) && subshell.at(i) <= '9')
+                    order += subshell.at(i);
+                else
+                    break;
+            currentSubshell.order = order;
+            currentSubshell.type = subshell[++i];
+
+            std::string electronCount;
+            for (;; i++)
+                if (('0' <= subshell[i]) && (subshell[i] <= '9'))
+                    electronCount += subshell[i];
+                else
+                    break;
+
+            currentSubshell.electrons = electronCount;
+
+            this->electronConf.emplace_back(currentSubshell);
+        }
+
+        // CPK color
+        this->cpkCol = {
+            _cpkCol[0], _cpkCol[1], _cpkCol[2], _cpkCol[3], _cpkCol[4], _cpkCol[5],
+        };
+    }
+
     Element::Element(const int atomicNumber) :
-        sqlite::STP_DataConnectorBase(steppable::utils::getResDirectory() / "chem" / "pd_tbl.db"),
-        atomicNumber(atomicNumber)
+        STP_DataConnectorBase(utils::getResDirectory() / "chem" / "pd_tbl.db"), atomicNumber(atomicNumber)
     {
         try
         {
             auto stmt = createStmt("SELECT * FROM Elements WHERE AtomicNumber = ?");
             stmt.bind(1, atomicNumber);
-            auto rows = getRowsForStmt<20>(stmt);
-
-            const auto& row = rows.front();
-
-            const auto& [_atomicNumber,
-                         _symbol,
-                         _name,
-                         _atomicMass,
-                         _cpkCol,
-                         _electronConf,
-                         _electroNeg,
-                         _atomicRadius,
-                         _ionizaEnergy,
-                         _electronAff,
-                         _oxidStates,
-                         _stdState,
-                         _meltPtK,
-                         _boilPtK,
-                         _density,
-                         _groupBlk,
-                         _yearDiscover,
-                         _predicted,
-                         _electronShells,
-                         _numShells] = row;
-            this->atomicNumber = _atomicNumber;
-            this->symbol = _symbol;
-            this->name = _name;
-            this->atomicMass = _atomicMass;
-            this->electroNeg = _electroNeg;
-            this->atomicRadius = _atomicRadius;
-            this->ionizaEnergy = _ionizaEnergy;
-            this->electronAff = _electronAff;
-            this->stdState = _stdState;
-            this->meltPtK = _meltPtK;
-            this->boilPtK = _boilPtK;
-            this->density = _density;
-            this->groupBlk = _groupBlk;
-            this->yearDiscover = std::stoi(_yearDiscover);
-            this->predicted = _predicted == "1";
-            this->numShells = _numShells;
-
-            // Electron shells -> shells vector
-            this->electronConf.clear();
-            this->electronShells.clear();
-            std::vector electronShellsVec = stringUtils::split(_electronShells, ',');
-            std::ranges::transform(electronShellsVec,
-                                   std::back_inserter(this->electronShells),
-                                   [](const std::string& i) -> int { return std::stoi(i); });
-
-            // Electron configuration -> subshells
-            std::vector subshells = stringUtils::split(_electronConf, ',');
-            for (const auto& subshell : subshells)
-            {
-                Subshell currentSubshell{};
-                size_t i = 0;
-                std::string order;
-                for (;; i++)
-                    if ('0' <= subshell.at(i) && subshell.at(i) <= '9')
-                        order += subshell.at(i);
-                    else
-                        break;
-                currentSubshell.order = order;
-                currentSubshell.type = subshell[++i];
-
-                std::string electronCount;
-                for (;; i++)
-                    if (('0' <= subshell[i]) && (subshell[i] <= '9'))
-                        electronCount += subshell[i];
-                    else
-                        break;
-
-                currentSubshell.electrons = electronCount;
-
-                this->electronConf.emplace_back(currentSubshell);
-            }
-
-            // CPK color
-            this->cpkCol = {
-                _cpkCol[0], _cpkCol[1], _cpkCol[2], _cpkCol[3], _cpkCol[4], _cpkCol[5],
-            };
+            initializeFromStmt(std::move(stmt));
         }
-        catch (const std::exception& e)
+        catch (const std::exception&)
+        {
+            output::error("Element"s, "An error occurred. ({0})"s, { std::to_string(getDb().getErrorCode()) });
+            output::info("Element"s, std::string(getDb().getErrorMsg()));
+        }
+    }
+
+    Element::Element(const std::string& symbol) :
+        STP_DataConnectorBase(utils::getResDirectory() / "chem" / "pd_tbl.db")
+    {
+        try
+        {
+            auto stmt = createStmt("SELECT * FROM Elements WHERE Symbol = ?");
+            stmt.bind(1, symbol);
+            initializeFromStmt(std::move(stmt));
+        }
+        catch (const std::exception&)
         {
             output::error("Element"s, "An error occurred. ({0})"s, { std::to_string(getDb().getErrorCode()) });
             output::info("Element"s, std::string(getDb().getErrorMsg()));
@@ -177,7 +200,7 @@ namespace steppable::chem
 
         // Write Atomic Mass
         output.write(numUtils::roundOff(atomicMass.present(), 3),
-                     { .x = leftpad + width, .y = 1 },
+                     { .x = leftpad + width - 2, .y = 1 },
                      false,
                      utils::colors::keepOriginal,
                      prettyPrint::HorizontalAlignment::RIGHT);
@@ -185,7 +208,7 @@ namespace steppable::chem
 
         // Write Atomic Number
         output.write("Atomic Number ->",
-                     { .x = 19, .y = 2 },
+                     { .x = leftpad - 2, .y = 2 },
                      false,
                      utils::colors::keepOriginal,
                      prettyPrint::HorizontalAlignment::RIGHT);
@@ -214,7 +237,7 @@ namespace steppable::chem
                      utils::colors::keepOriginal,
                      prettyPrint::HorizontalAlignment::CENTER);
         output.write("Group Block\n->",
-                     { .x = 19, .y = 5 },
+                     { .x = leftpad - 2, .y = 5 },
                      false,
                      utils::colors::keepOriginal,
                      prettyPrint::HorizontalAlignment::RIGHT);
@@ -225,9 +248,9 @@ namespace steppable::chem
 #ifndef NO_MAIN
 int main()
 {
-    steppable::utils::Utf8CodePage utf8;
+    [[maybe_unused]] steppable::utils::Utf8CodePage utf8;
 
     using namespace steppable::sqlite;
-    std::cout << steppable::chem::Element(1).present() << "\n";
+    std::cout << steppable::chem::Element("Fr").present() << "\n";
 }
 #endif

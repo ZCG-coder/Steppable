@@ -27,7 +27,6 @@
 #include "platform.hpp"
 #include "util.hpp"
 
-#include <cctype>
 #include <numeric>
 #include <sstream>
 #include <string>
@@ -44,9 +43,9 @@ namespace steppable::prettyPrint
     using namespace steppable::utils;
     using namespace std::literals;
 
-    void Table::checkSelfSanity()
+    void Table::checkSelfSanity() const
     {
-        size_t firstRowItems = cells.front().size();
+        const size_t firstRowItems = cells.front().size();
 
         for (const auto& row : cells)
         {
@@ -55,14 +54,14 @@ namespace steppable::prettyPrint
             {
                 output::error("Table::Table"s, "Cannot initialize a Table instance with non-uniform rows."s);
                 output::info("Table::Table"s, "Use TableCell::merger to merge cells"s);
-                utils::programSafeExit(1);
+                programSafeExit(1);
             }
         }
     }
 
     Table::Table(decltype(cells) cells) : cells(std::move(cells)) { checkSelfSanity(); }
 
-    [[nodiscard]] std::string Table::present()
+    [[nodiscard]] std::string Table::present() const
     {
         std::vector<size_t> colLengths(cells.front().size(), 0);
         std::vector<size_t> rowHeights(cells.size(), 0);
@@ -266,8 +265,8 @@ namespace steppable::prettyPrint
             {
                 const std::string& line = lines.at(lineIdx);
 
-                pos = { .x = static_cast<long long>(_pos.x - (getStringWidth(line) / 2)),
-                        .y = static_cast<long long>(_pos.y + lineIdx) };
+                pos = { .x = _pos.x - static_cast<long long>(getStringWidth(line) / 2),
+                        .y = _pos.y + static_cast<long long>(lineIdx) };
                 _write(line, pos, false, color, HorizontalAlignment::LEFT);
             }
             return;
@@ -279,8 +278,8 @@ namespace steppable::prettyPrint
             {
                 const std::string& line = lines.at(lineIdx);
 
-                pos = { .x = static_cast<long long>(_pos.x - getStringWidth(line) - 1),
-                        .y = static_cast<long long>(_pos.y + lineIdx) };
+                pos = { .x = _pos.x - static_cast<long long>(getStringWidth(line) - 1),
+                        .y = _pos.y + static_cast<long long>(lineIdx) };
                 _write(line, pos, false, color, HorizontalAlignment::LEFT);
             }
             return;

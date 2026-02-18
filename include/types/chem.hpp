@@ -20,12 +20,10 @@
  * SOFTWARE.                                                                                      *
  **************************************************************************************************/
 
-#include "colors.hpp"
-#include "platform.hpp"
-#include "rounding.hpp"
+#pragma once
+
 #include "steppable/number.hpp"
 #include "stpSqlite.hpp"
-#include "symbols.hpp"
 
 #include <array>
 #include <string>
@@ -49,7 +47,7 @@ namespace steppable::chem
         [[nodiscard]] Number getElectrons() const { return electrons; }
     };
 
-    class Element : private sqlite::STP_DataConnectorBase
+    class Element : sqlite::STP_DataConnectorBase
     {
         friend class Atom;
 
@@ -69,12 +67,13 @@ namespace steppable::chem
         Number boilPtK;
         Number density;
         std::string groupBlk;
-        int yearDiscover;
-        bool predicted;
+        int yearDiscover = 0;
+        bool predicted = false;
         std::vector<Number> electronShells;
         Number numShells;
 
     public:
+        void initializeFromStmt(SQLite::Statement stmt);
         Element(int atomicNumber);
 
         Element(const std::string& symbol);
