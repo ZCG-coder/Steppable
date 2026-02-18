@@ -137,19 +137,19 @@ namespace steppable::prettyPrint
                 case HorizontalAlignment::CENTER:
                 {
                     output.write(cell.value,
-                                 { .x = static_cast<long long>(x + (getStringWidth(cell.value) / 2)), .y = y },
+                                 { .x = static_cast<long long>(x + (colLengths.at(i) / 2)), .y = y },
                                  false,
-                                 colors::keepOriginal,
+                                 colors::red,
                                  HorizontalAlignment::CENTER);
                     break;
                 }
                 case HorizontalAlignment::RIGHT:
                 {
                     output.write(cell.value,
-                                 { .x = static_cast<long long>(x + getStringWidth(cell.value)), .y = y },
+                                 { .x = static_cast<long long>(x + colLengths.at(i) + 1), .y = y },
                                  false,
-                                 colors::keepOriginal,
-                                 HorizontalAlignment::CENTER);
+                                 colors::yellow,
+                                 HorizontalAlignment::RIGHT);
                     break;
                 }
                 }
@@ -287,6 +287,7 @@ namespace steppable::prettyPrint
         }
         }
 
+        // We are certain that the following statements will run only when alignment is HorizontalAlignment::LEFT.
         Position p = pos;
         if (s == "\n")
         {
@@ -295,7 +296,7 @@ namespace steppable::prettyPrint
             return;
         }
         size_t stringWidth = getUnicodeDisplayWidth(outputString);
-        if (stringWidth <= 1)
+        if (stringWidth == 1)
         {
             std::stringstream ss;
             color(ss);
@@ -317,11 +318,13 @@ namespace steppable::prettyPrint
                     p.x = pos.x;
                     continue;
                 }
+                if (cluster.empty())
+                    continue;
+
                 std::stringstream ss;
                 color(ss);
                 ss << cluster << reset;
-                if (buffer[p.y][p.x + i] == " " or cluster != " ")
-                    buffer[p.y][p.x + i] = ss.str();
+                buffer[p.y][p.x + i] = ss.str();
 
                 i++;
             }
@@ -385,7 +388,7 @@ namespace steppable::prettyPrint
 
     size_t getStringWidth(const std::string& s)
     {
-        auto strings = split(s, '\n');
+        const auto strings = split(s, '\n');
         size_t max = 0;
         for (const auto& string : strings)
             max = std::max(max, getUnicodeDisplayWidth(string));

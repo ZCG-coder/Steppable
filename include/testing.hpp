@@ -30,23 +30,30 @@
 
 #pragma once
 
+// ReSharper disable CppUnusedIncludeDirective
+#include "colors.hpp"
 #include "format.hpp"
+#include "output.hpp"
 #include "types/concepts.hpp"
+#include "util.hpp"
 
+#include <iomanip>
+#include <iostream>
 #include <string>
+// ReSharper restore CppUnusedIncludeDirective
 
 /// @brief This macro defines the main function and initializes the Utf8CodePage object, and prepares the error counter.
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define TEST_START()                                         \
-    /* NOLINTNEXTLINE(bugprone-exception-escape) */          \
-    int main()                                               \
-    {                                                        \
-        using namespace steppable::stringUtils; \
-        using namespace steppable::utils;       \
-        using namespace steppable::testing;                  \
-        using namespace steppable::output;                   \
-        using namespace std::literals;                       \
-        Utf8CodePage use_utf8;                               \
+#define TEST_START()                                \
+    /* NOLINTNEXTLINE(bugprone-exception-escape) */ \
+    int main()                                      \
+    {                                               \
+        using namespace steppable::stringUtils;     \
+        using namespace steppable::utils;           \
+        using namespace steppable::testing;         \
+        using namespace steppable::output;          \
+        using namespace std::literals;              \
+        Utf8CodePage use_utf8;                      \
         int errors = 0;
 
 /// @brief This macro defines a test section with the given name.
@@ -178,8 +185,7 @@ namespace steppable::testing
         template<concepts::Presentable ValueTA, concepts::Presentable ValueTB>
         void assertIsEqual(const ValueTA& a, const ValueTB& b)
         {
-            const std::string& conditionName =
-                format::format("Object {0} == {1}", { a.present(), b.present() });
+            const std::string& conditionName = format::format("Object {0} == {1}", { a.present(), b.present() });
             _assertCondition(static_cast<bool>(a == b), conditionName);
         }
 
@@ -191,8 +197,7 @@ namespace steppable::testing
         template<concepts::Presentable ValueTA, concepts::Presentable ValueTB>
         void assertIsNotEqual(ValueTA a, ValueTB b)
         {
-            const std::string& conditionName =
-                format::format("Object {0} != {1}", { a.present(), b.present() });
+            const std::string& conditionName = format::format("Object {0} != {1}", { a.present(), b.present() });
             bool res = static_cast<bool>(a != b);
             _assertCondition(res, conditionName);
         }

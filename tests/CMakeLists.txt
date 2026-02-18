@@ -30,6 +30,7 @@ SET(TEST_TARGETS_TEMP
     steppable::factors
     steppable::format
     steppable::table
+    steppable::unicode
     ${COMPONENTS}
 )
 
