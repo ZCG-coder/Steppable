@@ -26,6 +26,30 @@
 
 namespace steppable
 {
+    template<typename DataT>
+    struct _Vec2
+    {
+        DataT x; ///< Coordinate x.
+        DataT y; ///< Coordinate y.
+    };
+
+    template<typename DataT>
+    struct _Vec3
+    {
+        DataT x; ///< Coordinate x.
+        DataT y; ///< Coordinate y.
+        DataT z; ///< Coordinate z.
+    };
+
+    template<typename DataT>
+    struct _Vec4
+    {
+        DataT x; ///< Coordinate x.
+        DataT y; ///< Coordinate y.
+        DataT z; ///< Coordinate z.
+        DataT w; ///< Coordinate w.
+    };
+
     /**
      * @struct XYPoint
      * @brief A point object

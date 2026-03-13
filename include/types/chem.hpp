@@ -24,13 +24,18 @@
 
 #include "steppable/number.hpp"
 #include "stpSqlite.hpp"
+#include "types/point.hpp"
 
 #include <array>
+#include <cstdint>
 #include <string>
+#include <variant>
 #include <vector>
 
 namespace steppable::chem
 {
+    using STP_AtomCoord = _Vec3<Number>;
+
     class Subshell
     {
         Number order;
@@ -102,16 +107,324 @@ namespace steppable::chem
         [[nodiscard]] std::string present() const;
     };
 
+    /**
+     * @brief Types of chemical bonds.
+     */
+    enum class BondType : std::uint8_t
+    {
+        Single, ///< Single bond
+        Double, ///< Double bond
+        Triple, ///< Triple bond
+        Ionic ///< Ionic bond
+    };
+
+    /**
+     * @brief Represents a bond between two atoms.
+     */
+    class Bond
+    {
+    public:
+        /**
+         * @param atomIdx1 Index of the first atom.
+         * @param atomIdx2 Index of the second atom.
+         * @param type Type of the bond.
+         */
+        Bond(size_t atomIdx1, size_t atomIdx2, BondType type);
+
+        /**
+         * @return Index of the first atom.
+         */
+        [[nodiscard]] size_t getAtom1Index() const;
+
+        /**
+         * @return Index of the second atom.
+         */
+        [[nodiscard]] size_t getAtom2Index() const;
+
+        /**
+         * @return Bond type.
+         */
+        [[nodiscard]] BondType getType() const;
+
+        /**
+         * @brief Serialize to string.
+         * @return Bond as a string.
+         */
+        [[nodiscard]] std::string toString() const;
+
+        /**
+         * @brief Deserialize from string.
+         * @param str Bond as a string.
+         * @return Bond instance.
+         */
+        static Bond fromString(const std::string& str);
+
+    private:
+        size_t atomIdx1, atomIdx2;
+        BondType type;
+    };
+
+    /**
+     * @brief Represents a chemical atom (with optional charge and coordinates).
+     */
     class Atom
     {
-        Element elem;
-        Number protons = elem.atomicNumber;
-        Number neutrons = -1;
-        Number electrons = elem.atomicNumber;
-
     public:
-        Atom(const Element& elem, int neutrons = -1);
+        /**
+         * @param symbol Element symbol.
+         * @param atomicNumber Atomic number.
+         * @param charge Formal charge.
+         * @param coord 3D coordinate.
+         */
+        Atom(std::string symbol, Number atomicNumber, Number charge = Number(), STP_AtomCoord coord = { 0, 0, 0 });
 
-        [[nodiscard]] std::string present();
+        /**
+         * @return Element symbol.
+         */
+        [[nodiscard]] const std::string& getSymbol() const;
+
+        /**
+         * @return Atomic number.
+         */
+        [[nodiscard]] Number getAtomicNumber() const;
+
+        /**
+         * @return Formal charge.
+         */
+        [[nodiscard]] Number getCharge() const;
+
+        /**
+         * @param charge New formal charge.
+         */
+        void setCharge(Number charge);
+
+        /**
+         * @param c 3D coordinate.
+         */
+        void setCoordinate(const STP_AtomCoord& c);
+
+        /**
+         * @return 3D coordinate.
+         */
+        [[nodiscard]] STP_AtomCoord getCoordinate() const;
+
+        /**
+         * @brief Serialize to SMILES.
+         * @return Atom as SMILES string.
+         */
+        [[nodiscard]] std::string toSmiles() const;
+
+        /**
+         * @brief Serialize to MOL.
+         * @return Atom as MOL string.
+         */
+        [[nodiscard]] std::string toMol() const;
+
+        /**
+         * @brief Deserialize from SMILES.
+         * @param smiles SMILES string.
+         * @return Atom instance.
+         */
+        static Atom fromSmiles(const std::string& smiles);
+
+        /**
+         * @brief Deserialize from MOL.
+         * @param mol MOL string.
+         * @return Atom instance.
+         */
+        static Atom fromMol(const std::string& mol);
+
+    private:
+        std::string symbol;
+        Number atomicNumber;
+        Number charge;
+        STP_AtomCoord coordinate;
+    };
+
+    /**
+     * @brief Represents a chemical molecule (collection of atoms and bonds).
+     */
+    class Molecule
+    {
+    public:
+        /**
+         * @param atom Atom to add.
+         * @return Index of atom in this molecule.
+         */
+        size_t addAtom(const Atom& atom);
+
+        /**
+         * @param bond Bond to add.
+         */
+        void addBond(const Bond& bond);
+
+        /**
+         * @param idx Atom index.
+         * @return Atom at the given index.
+         */
+        [[nodiscard]] const Atom& getAtom(size_t idx) const;
+
+        /**
+         * @return Vector of atoms.
+         */
+        [[nodiscard]] const std::vector<Atom>& getAtoms() const;
+
+        /**
+         * @return Vector of bonds.
+         */
+        [[nodiscard]] const std::vector<Bond>& getBonds() const;
+
+        /**
+         * @return Net charge of the molecule.
+         */
+        [[nodiscard]] Number getNetCharge() const;
+
+        /**
+         * @brief Serialize to SMILES.
+         * @return Molecule as SMILES string.
+         */
+        [[nodiscard]] std::string toSmiles() const;
+
+        /**
+         * @brief Serialize to MOL.
+         * @return Molecule as MOL string.
+         */
+        [[nodiscard]] std::string toMol() const;
+
+        /**
+         * @brief Deserialize from SMILES.
+         * @param smiles SMILES string.
+         * @return Molecule instance.
+         */
+        static Molecule fromSmiles(const std::string& smiles);
+
+        /**
+         * @brief Deserialize from MOL.
+         * @param mol MOL string.
+         * @return Molecule instance.
+         */
+        static Molecule fromMol(const std::string& mol);
+
+    private:
+        std::vector<Atom> atoms;
+        std::vector<Bond> bonds;
+    };
+
+    /**
+     * @brief Chemistry unit: single atom/ion or molecule/polyatomic ion.
+     */
+    class CompoundUnit
+    {
+    public:
+        /**
+         * @param atom Atom to construct unit.
+         */
+        CompoundUnit(const Atom& atom);
+
+        /**
+         * @param mol Molecule to construct unit.
+         */
+        CompoundUnit(const Molecule& mol);
+
+        /**
+         * @return True if unit is atom.
+         */
+        [[nodiscard]] bool isAtom() const;
+
+        /**
+         * @return Atom if unit is atom.
+         */
+        [[nodiscard]] const Atom& getAtom() const;
+
+        /**
+         * @return Molecule if unit is molecule.
+         */
+        [[nodiscard]] const Molecule& getMolecule() const;
+
+        /**
+         * @return Net charge.
+         */
+        [[nodiscard]] Number getNetCharge() const;
+
+        /**
+         * @brief Serialize to SMILES.
+         * @return Unit as SMILES string.
+         */
+        [[nodiscard]] std::string toSmiles() const;
+
+        /**
+         * @brief Serialize to MOL.
+         * @return Unit as MOL string.
+         */
+        [[nodiscard]] std::string toMol() const;
+
+        /**
+         * @brief Deserialize from SMILES.
+         * @param smiles SMILES string.
+         * @return CompoundUnit instance.
+         */
+        static CompoundUnit fromSmiles(const std::string& smiles);
+
+        /**
+         * @brief Deserialize from MOL.
+         * @param mol MOL string.
+         * @return CompoundUnit instance.
+         */
+        static CompoundUnit fromMol(const std::string& mol);
+
+    private:
+        std::variant<Atom, Molecule> unit;
+    };
+
+    /**
+     * @brief Chemical combination (compound), e.g., NaCl, CaCl2.
+     */
+    class Compound
+    {
+    public:
+        /**
+         * @param unit CompoundUnit to add.
+         * @param count Number of times to add unit.
+         */
+        void addUnit(const CompoundUnit& unit, Number count = Number(1));
+
+        /**
+         * @return Units of compound and their multiplicities.
+         */
+        [[nodiscard]] const std::vector<std::pair<CompoundUnit, Number>>& getUnits() const;
+
+        /**
+         * @return Net charge of compound.
+         */
+        [[nodiscard]] Number getNetCharge() const;
+
+        /**
+         * @brief Serialize to SMILES.
+         * @return Compound as SMILES string.
+         */
+        [[nodiscard]] std::string toSmiles() const;
+
+        /**
+         * @brief Serialize to MOL (SDF-style for units).
+         * @return Compound as MOL/SDF string.
+         */
+        [[nodiscard]] std::string toMol() const;
+
+        /**
+         * @brief Deserialize from SMILES.
+         * @param smiles SMILES string.
+         * @return Compound instance.
+         */
+        static Compound fromSmiles(const std::string& smiles);
+
+        /**
+         * @brief Deserialize from MOL/SDF.
+         * @param mol MOL/SDF string.
+         * @return Compound instance.
+         */
+        static Compound fromMol(const std::string& mol);
+
+    private:
+        std::vector<std::pair<CompoundUnit, Number>> units;
     };
 } // namespace steppable::chem

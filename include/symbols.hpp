@@ -81,8 +81,8 @@ namespace steppable::prettyPrint
 
     enum class WrappingOptions : std::uint8_t
     {
-        BREAK,
-        ELLIPSIS,
+        BREAK, ///< Break each line of the string at given length.
+        ELLIPSIS, ///< Break the string with ellipses (...).
     };
 
     /**
