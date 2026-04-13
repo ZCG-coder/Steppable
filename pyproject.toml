@@ -12,7 +12,7 @@ requires-python = ">= 3.11"
 dynamic = ["classifiers", "optional-dependencies"]
 
 dependencies = [
-    "setuptools >= 61.0",
+    "setuptools >= 82.0.1",
     "nanobind >= 1.9.2",
     "pyyaml >= 6.0.1",
     "matplotlib >= 3.9.0; 'Windows' not in platform_system",
@@ -21,5 +21,5 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["setuptools >= 61.0", "nanobind >= 1.9.2"]
+requires = ["setuptools >= 82.0.1", "nanobind >= 1.9.2"]
 build-backend = "setuptools.build_meta"
