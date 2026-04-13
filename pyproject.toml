@@ -15,7 +15,7 @@ dependencies = [
     "setuptools >= 61.0",
     "nanobind >= 1.9.2",
     "pyyaml >= 6.0.1",
-    "matplotlib >= 3.9.0; 'Windows' not in platform_system",
+    "matplotlib >= 3.10.8; 'Windows' not in platform_system",
     "black >= 24.4.2",
     "isort >= 5.13.2",
 ]
