@@ -143,8 +143,7 @@ namespace steppable::chem
         }
     }
 
-    Element::Element(const std::string& symbol) :
-        STP_DataConnectorBase(utils::getResDirectory() / "chem" / "pd_tbl.db")
+    Element::Element(const std::string& symbol) : STP_DataConnectorBase(utils::getResDirectory() / "chem" / "pd_tbl.db")
     {
         try
         {

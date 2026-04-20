@@ -105,4 +105,8 @@ namespace steppable::sqlite
 
         return res;
     }
+
+    class STP_DatabasePool
+    {
+    };
 } // namespace steppable::sqlite

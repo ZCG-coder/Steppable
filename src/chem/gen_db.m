@@ -47,6 +47,123 @@ pd_tbl_pubchem.ElectronShells = shell_cnts';
 pd_tbl_pubchem.NumShells = num_shells_all';
 pd_tbl_pubchem %[output:24555c83]
 %%
+%[text] ## Expand subshell notation
+function full = expand_subshells(cfg, varargin)
+% expand_subshells Expand noble-gas shorthand like "[He]2s1 2p1"
+% into full subshell notation like "1s2 2s1 2p1".
+
+%
+% Usage:
+%   expandElectronConfig("[He]2s1 2p1")
+%   expandElectronConfig("[Ne] 3s2 3p5", "Combine", true)
+%
+% Name-Value:
+%   "Combine" (default true) : combine duplicate subshells by summing electrons
+%   "Sort"    (default true) : sort by n then subshell order s,p,d,f,g,h,i
+
+opts.Combine = true;
+opts.Sort    = true;
+opts = parseOpts(opts, varargin{:});
+
+cfg = string(cfg);
+% cfg = regexprep(cfg, "(?<=\])", " ");     % add a space after ] if present
+cfg = strtrim(cfg);
+
+% --- Noble gas core table (ground-state configs) ---
+core = containers.Map( ...
+    ["He","Ne","Ar","Kr","Xe","Rn","Og"], ...
+    ["1s2", ...
+     "1s2 2s2 2p6", ...
+     "1s2 2s2 2p6 3s2 3p6", ...
+     "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6", ...
+     "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6", ...
+     "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6", ...
+     "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p6" ...
+    ] );
+
+% --- Expand [X] if present ---
+m = regexp(cfg, "^\[([A-Za-z]{1,2})\]\s*(.*)$", "tokens", "once");
+if ~isempty(m)
+    sym = string(m{1});
+    rest = string(m{2});
+    if ~isKey(core, sym)
+        error("Unknown noble-gas core [%s].", sym);
+    end
+    expanded = string(core(sym));
+    if strlength(rest) > 0
+        cfg = expanded + " " + rest;
+    else
+        cfg = expanded;
+    end
+end
+
+% --- Tokenize subshells like "2s1" ---
+tokens = regexp(cfg, "(\d+)([spdfghi])(\d+)", "tokens");
+if isempty(tokens)
+    error("No subshell tokens found in input: %s", cfg);
+end
+
+% Convert to numeric arrays
+N = numel(tokens);
+n = zeros(N,1);
+ell = strings(N,1);
+e = zeros(N,1);
+for i = 1:N
+    t = tokens{i};
+    n(i)   = str2double(t{1});
+    ell(i) = string(t{2});
+    e(i)   = str2double(t{3});
+end
+
+% --- Combine duplicates (same n and subshell letter) ---
+if opts.Combine
+    key = strcat(string(n), ell);
+    [ukey, ~, idx] = unique(key, "stable");
+    n2 = zeros(numel(ukey),1);
+    ell2 = strings(numel(ukey),1);
+    e2 = zeros(numel(ukey),1);
+    for k = 1:numel(ukey)
+        sel = (idx == k);
+        n2(k) = n(find(sel,1,"first"));
+        ell2(k) = ell(find(sel,1,"first"));
+        e2(k) = sum(e(sel));
+    end
+    n = n2; ell = ell2; e = e2;
+end
+
+% --- Sort by n then subshell order ---
+if opts.Sort
+    order = struct('s',1,'p',2,'d',3,'f',4,'g',5,'h',6,'i',7);
+    o = arrayfun(@(c) order.(char(c)), ell);
+    T = table(n, o(:), ell, e, 'VariableNames', ["n","o","ell","e"]);
+    T = sortrows(T, ["n","o"]);
+    n = T.n; ell = T.ell; e = T.e;
+end
+
+% Rebuild string
+parts = strings(numel(n),1);
+for i = 1:numel(n)
+    parts(i) = sprintf("%d%s%d", n(i), ell(i), e(i));
+end
+full = strjoin(parts, " ");
+end
+
+function opts = parseOpts(opts, varargin)
+if mod(numel(varargin),2) ~= 0
+    error("Options must be name-value pairs.");
+end
+for i = 1:2:numel(varargin)
+    name = string(varargin{i});
+    val  = varargin{i+1};
+    if ~isfield(opts, name)
+        error("Unknown option: %s", name);
+    end
+    opts.(name) = val;
+end
+end
+
+pd_tbl_pubchem.ElectronConfiguration = arrayfun(@(x) expand_subshells(x), string(pd_tbl_pubchem.ElectronConfiguration)) %[output:570025e5]
+%%
 %[text] ## Create SQLite Database
 %[text] Write elements to the periodic table SQLite file.
 if isfile("pd_tbl.db")
@@ -55,12 +172,12 @@ else
     conn = sqlite("pd_tbl.db", "create");
 end
 
-conn.exec("DROP TABLE Elements;")
+conn.exec("DROP TABLE IF EXISTS Elements;")
 
 contents = fileread("init.sql");
 conn.exec(contents) % Create DB
 
-for i = 1:number %[output:group:86d35bf0]
+for i = 1:number %[output:group:8415a41d]
     query = "INSERT INTO Elements VALUES (";
     query = query + num2str(i) + ",";
     query = query + "'" + pd_tbl_pubchem.Symbol(i) + "',";
@@ -83,10 +200,10 @@ for i = 1:number %[output:group:86d35bf0]
     query = query + "'" + pd_tbl_pubchem.ElectronShells(i) + "',";
     query = query + pd_tbl_pubchem.NumShells(i);
     query = query + ");";
-    query %[output:4087054e] %[output:37d85611] %[output:0dcdd128] %[output:7622b742] %[output:52a406c2] %[output:6d465f9b] %[output:8941e3d2] %[output:293be991] %[output:713b3232] %[output:8ecae576] %[output:5f3b5be1] %[output:9331e7b0] %[output:64d80f2e] %[output:2e73c8c3] %[output:9800efdb] %[output:4faff284] %[output:423011ea] %[output:28e104cc] %[output:10f51164] %[output:8c353542] %[output:04ec9818] %[output:13947a2b] %[output:47bb5873] %[output:89f1691d] %[output:4d4b5d3c] %[output:5c1d1f09] %[output:6151c634] %[output:12b5801d] %[output:064be771] %[output:7d0aae83] %[output:843ffca1] %[output:16123ff0] %[output:90a346db] %[output:1b2c23bd] %[output:6ae2f14b] %[output:2edd4f5b] %[output:8d306ad2] %[output:2eee0291] %[output:420e8a40] %[output:0f17f77c] %[output:08506b33] %[output:3d3a3f9c] %[output:7a62baf5] %[output:029c2e30] %[output:24d3e41a] %[output:6b3d9741] %[output:3b327c97] %[output:1d4515f5] %[output:3f00d0cc] %[output:6a8277ca] %[output:7c91cfa3] %[output:572345ae] %[output:7eeb3b7e] %[output:1264b9b0] %[output:9097dddb] %[output:88af8610] %[output:8ff3ddb0] %[output:5e870cbd] %[output:0d666aaf] %[output:99d3fa73] %[output:73552a62] %[output:60c53d13] %[output:42a40cb0] %[output:2c0a88f2] %[output:96677fc2] %[output:5956ec42] %[output:0617d78d] %[output:600670e5] %[output:6db68d48] %[output:99c743c9] %[output:4162014c] %[output:7c1e2a44] %[output:28722beb] %[output:44e335b1] %[output:55904462] %[output:83612d9c] %[output:8e40b096] %[output:44e7ac53] %[output:7060646f] %[output:1a30318e] %[output:598542dd] %[output:44f1a28a] %[output:0891e3b1] %[output:58942af3] %[output:49b50d0c] %[output:6f7a911d] %[output:08515fae] %[output:98886fa6] %[output:8eb310d5] %[output:20f07cb4] %[output:4ac4efdd] %[output:93dcb970] %[output:556dd372] %[output:01ae1940] %[output:4f1d5075] %[output:4264d076] %[output:6990fb80] %[output:6ae6f9c4] %[output:7898b937] %[output:030ec1c7] %[output:77bd92c6] %[output:455749e5] %[output:59d24a16] %[output:73f8d1ab] %[output:2b6d2d13] %[output:4cd8fb2c] %[output:26afac6a] %[output:5c7754e2] %[output:3883f069] %[output:943a5924] %[output:9ba15938] %[output:9b1551fa] %[output:3234ab82] %[output:41dc3032] %[output:4a0ae77e] %[output:8c33cc4f] %[output:1702e50f] %[output:10671bbf]
+    query %[output:61adc711] %[output:21fc4aab] %[output:8cbf252b] %[output:44ba7576] %[output:61d1a4ae] %[output:705e3662] %[output:05a919e9] %[output:1eaaaceb] %[output:305164c5] %[output:18ec42e6] %[output:7a0baddd] %[output:0b6606eb] %[output:402e7982] %[output:1ed53b30] %[output:9603c065] %[output:2f25b5fa] %[output:1628789e] %[output:5f1df04c] %[output:3c84e1b0] %[output:0c478aff] %[output:56a14ff5] %[output:9f9f4e72] %[output:89d0f3fb] %[output:94284dfd] %[output:6e164ab7] %[output:85eaab7c] %[output:7d1e5041] %[output:369a40a4] %[output:49d44bf3] %[output:97d0d222] %[output:351457a6] %[output:2ea86022] %[output:79776650] %[output:0510fac3] %[output:5dce926e] %[output:936124c1] %[output:0aef359b] %[output:2148fc71] %[output:6bc845f2] %[output:1c27e0ff] %[output:55bd8041] %[output:7dddcc7e] %[output:9d33ea8c] %[output:6a443b20] %[output:3bc6555f] %[output:79336079] %[output:619c35b9] %[output:84e8598f] %[output:0b5c39ca] %[output:64a580c1] %[output:5b46cc7b] %[output:36f1276c] %[output:6054a7b2] %[output:77570aed] %[output:2a4121f7] %[output:746917cc] %[output:8c975864] %[output:5b464e7e] %[output:95db32b8] %[output:446c3abf] %[output:31c40090] %[output:599c8750] %[output:63f05aab] %[output:2c0c2fc3] %[output:6306af6b] %[output:0de400ff] %[output:5b54ebd9] %[output:985917d9] %[output:71e49a19] %[output:515e9081] %[output:552384c7] %[output:52ef4ae3] %[output:6e2a0fb3] %[output:4cfbd344] %[output:7f825bb1] %[output:3c808978] %[output:2033eb4e] %[output:6bd1672e] %[output:295a6b8c] %[output:6faa355e] %[output:329b2615] %[output:6f5787c0] %[output:9156dc39] %[output:65bde374] %[output:1ab149d1] %[output:1e60ae7c] %[output:44929270] %[output:71f0fcc8] %[output:0ef6dbc1] %[output:4b85fb87] %[output:177e8985] %[output:8bf1afb3] %[output:8109daa8] %[output:9b353ce7] %[output:31f5b0c9] %[output:7c5cbda0] %[output:6c8f5cee] %[output:7862cd6f] %[output:8147413e] %[output:4035b42d] %[output:92094023] %[output:192a6a38] %[output:035d281e] %[output:76ed4284] %[output:1a3dbda8] %[output:471d4537] %[output:05faaa62] %[output:58a8c82a] %[output:8855f4ab] %[output:042f9b73] %[output:70f6143f] %[output:4a90cf67] %[output:2a35cba9] %[output:083bc20f] %[output:680b0617] %[output:157d258a] %[output:36d3a6f6] %[output:2d04bfb2]
 
     conn.exec(query)
-end %[output:group:86d35bf0]
+end %[output:group:8415a41d]
 %%
 function [counts, countsStr] = config_to_shell_counts(cfgStr, pd_tbl_pubchem)
 %CONFIG_TO_SHELL_COUNTS Convert an electron-configuration string into per-shell counts.
@@ -243,357 +360,360 @@ clear opts
 %[output:24555c83]
 %   data: {"dataType":"tabular","outputData":{"columnNames":["AtomicNumber","Symbol","Name","AtomicMass","CPKHexColor","ElectronConfiguration","Electronegativity","AtomicRadius","IonizationEnergy","ElectronAffinity","OxidationStates","StandardState","MeltingPoint","BoilingPoint","Density","GroupBlock","YearDiscovered","PropertiesPredicted","ElectronShells","NumShells"],"columns":20,"dataTypes":["double","string","string","double","string","string","double","double","double","double","string","string","double","double","double","string","double","double","string","double"],"header":"118×20 table","name":"pd_tbl_pubchem","rows":118,"type":"table","value":[["1","\"H\"","\"Hydrogen\"","1.0080","\"FFFFFF\"","\"1s1\"","2.2000","120","13.5980","0.7540","\"+1,-1\"","\"Gas\"","13.8100","20.2800","8.9880e-05","\"Nonmetal\"","1766","0","\"1\"","1"],["2","\"He\"","\"Helium\"","4.0026","\"D9FFFF\"","\"1s2\"","-1","140","24.5870","-1","\"0\"","\"Gas\"","0.9500","4.2200","1.7850e-04","\"Noble gas\"","1868","0","\"2\"","1"],["3","\"Li\"","\"Lithium\"","7","\"CC80FF\"","\"[He]2s1\"","0.9800","182","5.3920","0.6180","\"+1\"","\"Solid\"","453.6500","1615","0.5340","\"Alkali metal\"","1817","0","\"2,1\"","2"],["4","\"Be\"","\"Beryllium\"","9.0122","\"C2FF00\"","\"[He]2s2\"","1.5700","153","9.3230","-1","\"+2\"","\"Solid\"","1560","2744","1.8500","\"Alkaline earth metal\"","1798","0","\"2,2\"","2"],["5","\"B\"","\"Boron\"","10.8100","\"FFB5B5\"","\"[He]2s2 2p1\"","2.0400","192","8.2980","0.2770","\"+3\"","\"Solid\"","2348","4273","2.3700","\"Metalloid\"","1808","0","\"2,3\"","2"],["6","\"C\"","\"Carbon\"","12.0110","\"909090\"","\"[He]2s2 2p2\"","2.5500","170","11.2600","1.2630","\"+4,+2,-4\"","\"Solid\"","3823","4098","2.2670","\"Nonmetal\"","-1","0","\"2,4\"","2"],["7","\"N\"","\"Nitrogen\"","14.0070","\"3050F8\"","\"[He] 2s2 2p3\"","3.0400","155","14.5340","-1","\"+5,+4,+3,+2,+1,-1,-2,-3\"","\"Gas\"","63.1500","77.3600","0.0013","\"Nonmetal\"","1772","0","\"2,5\"","2"],["8","\"O\"","\"Oxygen\"","15.9990","\"FF0D0D\"","\"[He]2s2 2p4\"","3.4400","152","13.6180","1.4610","\"-2\"","\"Gas\"","54.3600","90.2000","0.0014","\"Nonmetal\"","1774","0","\"2,6\"","2"],["9","\"F\"","\"Fluorine\"","18.9984","\"90E050\"","\"[He]2s2 2p5\"","3.9800","135","17.4230","3.3390","\"-1\"","\"Gas\"","53.5300","85.0300","0.0017","\"Halogen\"","1670","0","\"2,7\"","2"],["10","\"Ne\"","\"Neon\"","20.1800","\"B3E3F5\"","\"[He]2s2 2p6\"","-1","154","21.5650","-1","\"0\"","\"Gas\"","24.5600","27.0700","8.9990e-04","\"Noble gas\"","1898","0","\"2,8\"","2"],["11","\"Na\"","\"Sodium\"","22.9898","\"AB5CF2\"","\"[Ne]3s1\"","0.9300","227","5.1390","0.5480","\"+1\"","\"Solid\"","370.9500","1156","0.9700","\"Alkali metal\"","1807","0","\"2,8,1\"","3"],["12","\"Mg\"","\"Magnesium\"","24.3050","\"8AFF00\"","\"[Ne]3s2\"","1.3100","173","7.6460","-1","\"+2\"","\"Solid\"","923","1363","1.7400","\"Alkaline earth metal\"","1808","0","\"2,8,2\"","3"],["13","\"Al\"","\"Aluminum\"","26.9815","\"BFA6A6\"","\"[Ne]3s2 3p1\"","1.6100","184","5.9860","0.4410","\"+3\"","\"Solid\"","933.4370","2792","2.7000","\"Post-transition metal\"","-1","0","\"2,8,3\"","3"],["14","\"Si\"","\"Silicon\"","28.0850","\"F0C8A0\"","\"[Ne]3s2 3p2\"","1.9000","210","8.1520","1.3850","\"+4,+2,-4\"","\"Solid\"","1687","3538","2.3296","\"Metalloid\"","1854","0","\"2,8,4\"","3"]]}}
 %---
-%[output:4087054e]
+%[output:570025e5]
+%   data: {"dataType":"tabular","outputData":{"columnNames":["AtomicNumber","Symbol","Name","AtomicMass","CPKHexColor","ElectronConfiguration","Electronegativity","AtomicRadius","IonizationEnergy","ElectronAffinity","OxidationStates","StandardState","MeltingPoint","BoilingPoint","Density","GroupBlock","YearDiscovered","PropertiesPredicted","ElectronShells","NumShells"],"columns":20,"dataTypes":["double","string","string","double","string","string","double","double","double","double","string","string","double","double","double","string","double","double","string","double"],"header":"118×20 table","name":"pd_tbl_pubchem","rows":118,"type":"table","value":[["1","\"H\"","\"Hydrogen\"","1.0080","\"FFFFFF\"","\"1s1\"","2.2000","120","13.5980","0.7540","\"+1,-1\"","\"Gas\"","13.8100","20.2800","8.9880e-05","\"Nonmetal\"","1766","0","\"1\"","1"],["2","\"He\"","\"Helium\"","4.0026","\"D9FFFF\"","\"1s2\"","-1","140","24.5870","-1","\"0\"","\"Gas\"","0.9500","4.2200","1.7850e-04","\"Noble gas\"","1868","0","\"2\"","1"],["3","\"Li\"","\"Lithium\"","7","\"CC80FF\"","\"1s2 2s1\"","0.9800","182","5.3920","0.6180","\"+1\"","\"Solid\"","453.6500","1615","0.5340","\"Alkali metal\"","1817","0","\"2,1\"","2"],["4","\"Be\"","\"Beryllium\"","9.0122","\"C2FF00\"","\"1s2 2s2\"","1.5700","153","9.3230","-1","\"+2\"","\"Solid\"","1560","2744","1.8500","\"Alkaline earth metal\"","1798","0","\"2,2\"","2"],["5","\"B\"","\"Boron\"","10.8100","\"FFB5B5\"","\"1s2 2s2 2p1\"","2.0400","192","8.2980","0.2770","\"+3\"","\"Solid\"","2348","4273","2.3700","\"Metalloid\"","1808","0","\"2,3\"","2"],["6","\"C\"","\"Carbon\"","12.0110","\"909090\"","\"1s2 2s2 2p2\"","2.5500","170","11.2600","1.2630","\"+4,+2,-4\"","\"Solid\"","3823","4098","2.2670","\"Nonmetal\"","-1","0","\"2,4\"","2"],["7","\"N\"","\"Nitrogen\"","14.0070","\"3050F8\"","\"1s2 2s2 2p3\"","3.0400","155","14.5340","-1","\"+5,+4,+3,+2,+1,-1,-2,-3\"","\"Gas\"","63.1500","77.3600","0.0013","\"Nonmetal\"","1772","0","\"2,5\"","2"],["8","\"O\"","\"Oxygen\"","15.9990","\"FF0D0D\"","\"1s2 2s2 2p4\"","3.4400","152","13.6180","1.4610","\"-2\"","\"Gas\"","54.3600","90.2000","0.0014","\"Nonmetal\"","1774","0","\"2,6\"","2"],["9","\"F\"","\"Fluorine\"","18.9984","\"90E050\"","\"1s2 2s2 2p5\"","3.9800","135","17.4230","3.3390","\"-1\"","\"Gas\"","53.5300","85.0300","0.0017","\"Halogen\"","1670","0","\"2,7\"","2"],["10","\"Ne\"","\"Neon\"","20.1800","\"B3E3F5\"","\"1s2 2s2 2p6\"","-1","154","21.5650","-1","\"0\"","\"Gas\"","24.5600","27.0700","8.9990e-04","\"Noble gas\"","1898","0","\"2,8\"","2"],["11","\"Na\"","\"Sodium\"","22.9898","\"AB5CF2\"","\"1s2 2s2 2p6 3s1\"","0.9300","227","5.1390","0.5480","\"+1\"","\"Solid\"","370.9500","1156","0.9700","\"Alkali metal\"","1807","0","\"2,8,1\"","3"],["12","\"Mg\"","\"Magnesium\"","24.3050","\"8AFF00\"","\"1s2 2s2 2p6 3s2\"","1.3100","173","7.6460","-1","\"+2\"","\"Solid\"","923","1363","1.7400","\"Alkaline earth metal\"","1808","0","\"2,8,2\"","3"],["13","\"Al\"","\"Aluminum\"","26.9815","\"BFA6A6\"","\"1s2 2s2 2p6 3s2 3p1\"","1.6100","184","5.9860","0.4410","\"+3\"","\"Solid\"","933.4370","2792","2.7000","\"Post-transition metal\"","-1","0","\"2,8,3\"","3"],["14","\"Si\"","\"Silicon\"","28.0850","\"F0C8A0\"","\"1s2 2s2 2p6 3s2 3p2\"","1.9000","210","8.1520","1.3850","\"+4,+2,-4\"","\"Solid\"","1687","3538","2.3296","\"Metalloid\"","1854","0","\"2,8,4\"","3"]]}}
+%---
+%[output:61adc711]
 %   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (1,'H','Hydrogen',1.008,'FFFFFF','1s1',2.2,120,13.598,0.754,'+1,-1','Gas',13.81,20.28,8.988e-05,'Nonmetal',1766,0,'1',1);\""}}
 %---
-%[output:37d85611]
+%[output:21fc4aab]
 %   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (2,'He','Helium',4.0026,'D9FFFF','1s2',-1,140,24.587,-1,'0','Gas',0.95,4.22,0.0001785,'Noble gas',1868,0,'2',1);\""}}
 %---
-%[output:0dcdd128]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (3,'Li','Lithium',7,'CC80FF','[He]2s1',0.98,182,5.392,0.618,'+1','Solid',453.65,1615,0.534,'Alkali metal',1817,0,'2,1',2);\""}}
+%[output:8cbf252b]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (3,'Li','Lithium',7,'CC80FF','1s2 2s1',0.98,182,5.392,0.618,'+1','Solid',453.65,1615,0.534,'Alkali metal',1817,0,'2,1',2);\""}}
 %---
-%[output:7622b742]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (4,'Be','Beryllium',9.0122,'C2FF00','[He]2s2',1.57,153,9.323,-1,'+2','Solid',1560,2744,1.85,'Alkaline earth metal',1798,0,'2,2',2);\""}}
+%[output:44ba7576]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (4,'Be','Beryllium',9.0122,'C2FF00','1s2 2s2',1.57,153,9.323,-1,'+2','Solid',1560,2744,1.85,'Alkaline earth metal',1798,0,'2,2',2);\""}}
 %---
-%[output:52a406c2]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (5,'B','Boron',10.81,'FFB5B5','[He]2s2 2p1',2.04,192,8.298,0.277,'+3','Solid',2348,4273,2.37,'Metalloid',1808,0,'2,3',2);\""}}
+%[output:61d1a4ae]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (5,'B','Boron',10.81,'FFB5B5','1s2 2s2 2p1',2.04,192,8.298,0.277,'+3','Solid',2348,4273,2.37,'Metalloid',1808,0,'2,3',2);\""}}
 %---
-%[output:6d465f9b]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (6,'C','Carbon',12.011,'909090','[He]2s2 2p2',2.55,170,11.26,1.263,'+4,+2,-4','Solid',3823,4098,2.267,'Nonmetal',-1,0,'2,4',2);\""}}
+%[output:705e3662]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (6,'C','Carbon',12.011,'909090','1s2 2s2 2p2',2.55,170,11.26,1.263,'+4,+2,-4','Solid',3823,4098,2.267,'Nonmetal',-1,0,'2,4',2);\""}}
 %---
-%[output:8941e3d2]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (7,'N','Nitrogen',14.007,'3050F8','[He] 2s2 2p3',3.04,155,14.534,-1,'+5,+4,+3,+2,+1,-1,-2,-3','Gas',63.15,77.36,0.0012506,'Nonmetal',1772,0,'2,5',2);\""}}
+%[output:05a919e9]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (7,'N','Nitrogen',14.007,'3050F8','1s2 2s2 2p3',3.04,155,14.534,-1,'+5,+4,+3,+2,+1,-1,-2,-3','Gas',63.15,77.36,0.0012506,'Nonmetal',1772,0,'2,5',2);\""}}
 %---
-%[output:293be991]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (8,'O','Oxygen',15.999,'FF0D0D','[He]2s2 2p4',3.44,152,13.618,1.461,'-2','Gas',54.36,90.2,0.001429,'Nonmetal',1774,0,'2,6',2);\""}}
+%[output:1eaaaceb]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (8,'O','Oxygen',15.999,'FF0D0D','1s2 2s2 2p4',3.44,152,13.618,1.461,'-2','Gas',54.36,90.2,0.001429,'Nonmetal',1774,0,'2,6',2);\""}}
 %---
-%[output:713b3232]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (9,'F','Fluorine',18.9984,'90E050','[He]2s2 2p5',3.98,135,17.423,3.339,'-1','Gas',53.53,85.03,0.001696,'Halogen',1670,0,'2,7',2);\""}}
+%[output:305164c5]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (9,'F','Fluorine',18.9984,'90E050','1s2 2s2 2p5',3.98,135,17.423,3.339,'-1','Gas',53.53,85.03,0.001696,'Halogen',1670,0,'2,7',2);\""}}
 %---
-%[output:8ecae576]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (10,'Ne','Neon',20.18,'B3E3F5','[He]2s2 2p6',-1,154,21.565,-1,'0','Gas',24.56,27.07,0.0008999,'Noble gas',1898,0,'2,8',2);\""}}
+%[output:18ec42e6]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (10,'Ne','Neon',20.18,'B3E3F5','1s2 2s2 2p6',-1,154,21.565,-1,'0','Gas',24.56,27.07,0.0008999,'Noble gas',1898,0,'2,8',2);\""}}
 %---
-%[output:5f3b5be1]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (11,'Na','Sodium',22.9898,'AB5CF2','[Ne]3s1',0.93,227,5.139,0.548,'+1','Solid',370.95,1156,0.97,'Alkali metal',1807,0,'2,8,1',3);\""}}
+%[output:7a0baddd]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (11,'Na','Sodium',22.9898,'AB5CF2','1s2 2s2 2p6 3s1',0.93,227,5.139,0.548,'+1','Solid',370.95,1156,0.97,'Alkali metal',1807,0,'2,8,1',3);\""}}
 %---
-%[output:9331e7b0]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (12,'Mg','Magnesium',24.305,'8AFF00','[Ne]3s2',1.31,173,7.646,-1,'+2','Solid',923,1363,1.74,'Alkaline earth metal',1808,0,'2,8,2',3);\""}}
+%[output:0b6606eb]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (12,'Mg','Magnesium',24.305,'8AFF00','1s2 2s2 2p6 3s2',1.31,173,7.646,-1,'+2','Solid',923,1363,1.74,'Alkaline earth metal',1808,0,'2,8,2',3);\""}}
 %---
-%[output:64d80f2e]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (13,'Al','Aluminum',26.9815,'BFA6A6','[Ne]3s2 3p1',1.61,184,5.986,0.441,'+3','Solid',933.437,2792,2.7,'Post-transition metal',-1,0,'2,8,3',3);\""}}
+%[output:402e7982]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (13,'Al','Aluminum',26.9815,'BFA6A6','1s2 2s2 2p6 3s2 3p1',1.61,184,5.986,0.441,'+3','Solid',933.437,2792,2.7,'Post-transition metal',-1,0,'2,8,3',3);\""}}
 %---
-%[output:2e73c8c3]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (14,'Si','Silicon',28.085,'F0C8A0','[Ne]3s2 3p2',1.9,210,8.152,1.385,'+4,+2,-4','Solid',1687,3538,2.3296,'Metalloid',1854,0,'2,8,4',3);\""}}
+%[output:1ed53b30]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (14,'Si','Silicon',28.085,'F0C8A0','1s2 2s2 2p6 3s2 3p2',1.9,210,8.152,1.385,'+4,+2,-4','Solid',1687,3538,2.3296,'Metalloid',1854,0,'2,8,4',3);\""}}
 %---
-%[output:9800efdb]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (15,'P','Phosphorus',30.9738,'FF8000','[Ne]3s2 3p3',2.19,180,10.487,0.746,'+5,+3,-3','Solid',317.3,553.65,1.82,'Nonmetal',1669,0,'2,8,5',3);\""}}
+%[output:9603c065]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (15,'P','Phosphorus',30.9738,'FF8000','1s2 2s2 2p6 3s2 3p3',2.19,180,10.487,0.746,'+5,+3,-3','Solid',317.3,553.65,1.82,'Nonmetal',1669,0,'2,8,5',3);\""}}
 %---
-%[output:4faff284]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (16,'S','Sulfur',32.07,'FFFF30','[Ne]3s2 3p4',2.58,180,10.36,2.077,'+6,+4,-2','Solid',388.36,717.75,2.067,'Nonmetal',-1,0,'2,8,6',3);\""}}
+%[output:2f25b5fa]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (16,'S','Sulfur',32.07,'FFFF30','1s2 2s2 2p6 3s2 3p4',2.58,180,10.36,2.077,'+6,+4,-2','Solid',388.36,717.75,2.067,'Nonmetal',-1,0,'2,8,6',3);\""}}
 %---
-%[output:423011ea]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (17,'Cl','Chlorine',35.45,'1FF01F','[Ne]3s2 3p5',3.16,175,12.968,3.617,'+7,+5,+1,-1','Gas',171.65,239.11,0.003214,'Halogen',1774,0,'2,8,7',3);\""}}
+%[output:1628789e]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (17,'Cl','Chlorine',35.45,'1FF01F','1s2 2s2 2p6 3s2 3p5',3.16,175,12.968,3.617,'+7,+5,+1,-1','Gas',171.65,239.11,0.003214,'Halogen',1774,0,'2,8,7',3);\""}}
 %---
-%[output:28e104cc]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (18,'Ar','Argon',39.9,'80D1E3','[Ne]3s2 3p6',-1,188,15.76,-1,'0','Gas',83.8,87.3,0.0017837,'Noble gas',1894,0,'2,8,8',3);\""}}
+%[output:5f1df04c]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (18,'Ar','Argon',39.9,'80D1E3','1s2 2s2 2p6 3s2 3p6',-1,188,15.76,-1,'0','Gas',83.8,87.3,0.0017837,'Noble gas',1894,0,'2,8,8',3);\""}}
 %---
-%[output:10f51164]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (19,'K','Potassium',39.0983,'8F40D4','[Ar]4s1',0.82,275,4.341,0.501,'+1','Solid',336.53,1032,0.89,'Alkali metal',1807,0,'2,8,8,1',4);\""}}
+%[output:3c84e1b0]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (19,'K','Potassium',39.0983,'8F40D4','1s2 2s2 2p6 3s2 3p6 4s1',0.82,275,4.341,0.501,'+1','Solid',336.53,1032,0.89,'Alkali metal',1807,0,'2,8,8,1',4);\""}}
 %---
-%[output:8c353542]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (20,'Ca','Calcium',40.08,'3DFF00','[Ar]4s2',1,231,6.113,-1,'+2','Solid',1115,1757,1.54,'Alkaline earth metal',-1,0,'2,8,8,2',4);\""}}
+%[output:0c478aff]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (20,'Ca','Calcium',40.08,'3DFF00','1s2 2s2 2p6 3s2 3p6 4s2',1,231,6.113,-1,'+2','Solid',1115,1757,1.54,'Alkaline earth metal',-1,0,'2,8,8,2',4);\""}}
 %---
-%[output:04ec9818]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (21,'Sc','Scandium',44.9559,'E6E6E6','[Ar]4s2 3d1',1.36,211,6.561,0.188,'+3','Solid',1814,3109,2.99,'Transition metal',1879,0,'2,8,9,2',4);\""}}
+%[output:56a14ff5]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (21,'Sc','Scandium',44.9559,'E6E6E6','1s2 2s2 2p6 3s2 3p6 3d1 4s2',1.36,211,6.561,0.188,'+3','Solid',1814,3109,2.99,'Transition metal',1879,0,'2,8,9,2',4);\""}}
 %---
-%[output:13947a2b]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (22,'Ti','Titanium',47.867,'BFC2C7','[Ar]4s2 3d2',1.54,187,6.828,0.079,'+4,+3,+2','Solid',1941,3560,4.5,'Transition metal',1791,0,'2,8,10,2',4);\""}}
+%[output:9f9f4e72]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (22,'Ti','Titanium',47.867,'BFC2C7','1s2 2s2 2p6 3s2 3p6 3d2 4s2',1.54,187,6.828,0.079,'+4,+3,+2','Solid',1941,3560,4.5,'Transition metal',1791,0,'2,8,10,2',4);\""}}
 %---
-%[output:47bb5873]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (23,'V','Vanadium',50.9415,'A6A6AB','[Ar]4s2 3d3',1.63,179,6.746,0.525,'+5,+4,+3,+2','Solid',2183,3680,6,'Transition metal',1801,0,'2,8,11,2',4);\""}}
+%[output:89d0f3fb]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (23,'V','Vanadium',50.9415,'A6A6AB','1s2 2s2 2p6 3s2 3p6 3d3 4s2',1.63,179,6.746,0.525,'+5,+4,+3,+2','Solid',2183,3680,6,'Transition metal',1801,0,'2,8,11,2',4);\""}}
 %---
-%[output:89f1691d]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (24,'Cr','Chromium',51.996,'8A99C7','[Ar]3d5 4s1',1.66,189,6.767,0.666,'+6,+3,+2','Solid',2180,2944,7.15,'Transition metal',1797,0,'2,8,13,1',4);\""}}
+%[output:94284dfd]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (24,'Cr','Chromium',51.996,'8A99C7','1s2 2s2 2p6 3s2 3p6 3d5 4s1',1.66,189,6.767,0.666,'+6,+3,+2','Solid',2180,2944,7.15,'Transition metal',1797,0,'2,8,13,1',4);\""}}
 %---
-%[output:4d4b5d3c]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (25,'Mn','Manganese',54.938,'9C7AC7','[Ar]4s2 3d5',1.55,197,7.434,-1,'+7,+4,+3,+2','Solid',1519,2334,7.3,'Transition metal',1774,0,'2,8,13,2',4);\""}}
+%[output:6e164ab7]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (25,'Mn','Manganese',54.938,'9C7AC7','1s2 2s2 2p6 3s2 3p6 3d5 4s2',1.55,197,7.434,-1,'+7,+4,+3,+2','Solid',1519,2334,7.3,'Transition metal',1774,0,'2,8,13,2',4);\""}}
 %---
-%[output:5c1d1f09]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (26,'Fe','Iron',55.84,'E06633','[Ar]4s2 3d6',1.83,194,7.902,0.163,'+3,+2','Solid',1811,3134,7.874,'Transition metal',-1,0,'2,8,14,2',4);\""}}
+%[output:85eaab7c]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (26,'Fe','Iron',55.84,'E06633','1s2 2s2 2p6 3s2 3p6 3d6 4s2',1.83,194,7.902,0.163,'+3,+2','Solid',1811,3134,7.874,'Transition metal',-1,0,'2,8,14,2',4);\""}}
 %---
-%[output:6151c634]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (27,'Co','Cobalt',58.9332,'F090A0','[Ar]4s2 3d7',1.88,192,7.881,0.661,'+3,+2','Solid',1768,3200,8.86,'Transition metal',1735,0,'2,8,15,2',4);\""}}
+%[output:7d1e5041]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (27,'Co','Cobalt',58.9332,'F090A0','1s2 2s2 2p6 3s2 3p6 3d7 4s2',1.88,192,7.881,0.661,'+3,+2','Solid',1768,3200,8.86,'Transition metal',1735,0,'2,8,15,2',4);\""}}
 %---
-%[output:12b5801d]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (28,'Ni','Nickel',58.693,'50D050','[Ar]4s2 3d8',1.91,163,7.64,1.156,'+3,+2','Solid',1728,3186,8.912,'Transition metal',1751,0,'2,8,16,2',4);\""}}
+%[output:369a40a4]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (28,'Ni','Nickel',58.693,'50D050','1s2 2s2 2p6 3s2 3p6 3d8 4s2',1.91,163,7.64,1.156,'+3,+2','Solid',1728,3186,8.912,'Transition metal',1751,0,'2,8,16,2',4);\""}}
 %---
-%[output:064be771]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (29,'Cu','Copper',63.55,'C88033','[Ar]4s1 3d10',1.9,140,7.726,1.228,'+2,+1','Solid',1357.77,2835,8.933,'Transition metal',-1,0,'2,8,18,1',4);\""}}
+%[output:49d44bf3]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (29,'Cu','Copper',63.55,'C88033','1s2 2s2 2p6 3s2 3p6 3d10 4s1',1.9,140,7.726,1.228,'+2,+1','Solid',1357.77,2835,8.933,'Transition metal',-1,0,'2,8,18,1',4);\""}}
 %---
-%[output:7d0aae83]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (30,'Zn','Zinc',65.4,'7D80B0','[Ar]4s2 3d10',1.65,139,9.394,-1,'+2','Solid',692.68,1180,7.134,'Transition metal',1746,0,'2,8,18,2',4);\""}}
+%[output:97d0d222]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (30,'Zn','Zinc',65.4,'7D80B0','1s2 2s2 2p6 3s2 3p6 3d10 4s2',1.65,139,9.394,-1,'+2','Solid',692.68,1180,7.134,'Transition metal',1746,0,'2,8,18,2',4);\""}}
 %---
-%[output:843ffca1]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (31,'Ga','Gallium',69.723,'C28F8F','[Ar]4s2 3d10 4p1',1.81,187,5.999,0.3,'+3','Solid',302.91,2477,5.91,'Post-transition metal',1875,0,'2,8,18,3',4);\""}}
+%[output:351457a6]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (31,'Ga','Gallium',69.723,'C28F8F','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p1',1.81,187,5.999,0.3,'+3','Solid',302.91,2477,5.91,'Post-transition metal',1875,0,'2,8,18,3',4);\""}}
 %---
-%[output:16123ff0]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (32,'Ge','Germanium',72.63,'668F8F','[Ar]4s2 3d10 4p2',2.01,211,7.9,1.35,'+4,+2','Solid',1211.4,3106,5.323,'Metalloid',1886,0,'2,8,18,4',4);\""}}
+%[output:2ea86022]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (32,'Ge','Germanium',72.63,'668F8F','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p2',2.01,211,7.9,1.35,'+4,+2','Solid',1211.4,3106,5.323,'Metalloid',1886,0,'2,8,18,4',4);\""}}
 %---
-%[output:90a346db]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (33,'As','Arsenic',74.9216,'BD80E3','[Ar]4s2 3d10 4p3',2.18,185,9.815,0.81,'+5,+3,-3','Solid',1090,887,5.776,'Metalloid',-1,0,'2,8,18,5',4);\""}}
+%[output:79776650]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (33,'As','Arsenic',74.9216,'BD80E3','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p3',2.18,185,9.815,0.81,'+5,+3,-3','Solid',1090,887,5.776,'Metalloid',-1,0,'2,8,18,5',4);\""}}
 %---
-%[output:1b2c23bd]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (34,'Se','Selenium',78.97,'FFA100','[Ar]4s2 3d10 4p4',2.55,190,9.752,2.021,'+6,+4,-2','Solid',493.65,958,4.809,'Nonmetal',1817,0,'2,8,18,6',4);\""}}
+%[output:0510fac3]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (34,'Se','Selenium',78.97,'FFA100','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p4',2.55,190,9.752,2.021,'+6,+4,-2','Solid',493.65,958,4.809,'Nonmetal',1817,0,'2,8,18,6',4);\""}}
 %---
-%[output:6ae2f14b]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (35,'Br','Bromine',79.9,'A62929','[Ar]4s2 3d10 4p5',2.96,183,11.814,3.365,'+5,+1,-1','Liquid',265.95,331.95,3.11,'Halogen',1826,0,'2,8,18,7',4);\""}}
+%[output:5dce926e]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (35,'Br','Bromine',79.9,'A62929','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p5',2.96,183,11.814,3.365,'+5,+1,-1','Liquid',265.95,331.95,3.11,'Halogen',1826,0,'2,8,18,7',4);\""}}
 %---
-%[output:2edd4f5b]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (36,'Kr','Krypton',83.8,'5CB8D1','[Ar]4s2 3d10 4p6',3,202,14,-1,'0','Gas',115.79,119.93,0.003733,'Noble gas',1898,0,'2,8,18,8',4);\""}}
+%[output:936124c1]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (36,'Kr','Krypton',83.8,'5CB8D1','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6',3,202,14,-1,'0','Gas',115.79,119.93,0.003733,'Noble gas',1898,0,'2,8,18,8',4);\""}}
 %---
-%[output:8d306ad2]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (37,'Rb','Rubidium',85.468,'702EB0','[Kr]5s1',0.82,303,4.177,0.468,'+1','Solid',312.46,961,1.53,'Alkali metal',1861,0,'2,8,18,8,1',5);\""}}
+%[output:0aef359b]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (37,'Rb','Rubidium',85.468,'702EB0','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 5s1',0.82,303,4.177,0.468,'+1','Solid',312.46,961,1.53,'Alkali metal',1861,0,'2,8,18,8,1',5);\""}}
 %---
-%[output:2eee0291]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (38,'Sr','Strontium',87.62,'00FF00','[Kr]5s2',0.95,249,5.695,-1,'+2','Solid',1050,1655,2.64,'Alkaline earth metal',1790,0,'2,8,18,8,2',5);\""}}
+%[output:2148fc71]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (38,'Sr','Strontium',87.62,'00FF00','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 5s2',0.95,249,5.695,-1,'+2','Solid',1050,1655,2.64,'Alkaline earth metal',1790,0,'2,8,18,8,2',5);\""}}
 %---
-%[output:420e8a40]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (39,'Y','Yttrium',88.9058,'94FFFF','[Kr]5s2 4d1',1.22,219,6.217,0.307,'+3','Solid',1795,3618,4.47,'Transition metal',1794,0,'2,8,18,9,2',5);\""}}
+%[output:6bc845f2]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (39,'Y','Yttrium',88.9058,'94FFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d1 5s2',1.22,219,6.217,0.307,'+3','Solid',1795,3618,4.47,'Transition metal',1794,0,'2,8,18,9,2',5);\""}}
 %---
-%[output:0f17f77c]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (40,'Zr','Zirconium',91.22,'94E0E0','[Kr]5s2 4d2',1.33,186,6.634,0.426,'+4','Solid',2128,4682,6.52,'Transition metal',1789,0,'2,8,18,10,2',5);\""}}
+%[output:1c27e0ff]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (40,'Zr','Zirconium',91.22,'94E0E0','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d2 5s2',1.33,186,6.634,0.426,'+4','Solid',2128,4682,6.52,'Transition metal',1789,0,'2,8,18,10,2',5);\""}}
 %---
-%[output:08506b33]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (41,'Nb','Niobium',92.9064,'73C2C9','[Kr]5s1 4d4',1.6,207,6.759,0.893,'+5,+3','Solid',2750,5017,8.57,'Transition metal',1801,0,'2,8,18,12,1',5);\""}}
+%[output:55bd8041]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (41,'Nb','Niobium',92.9064,'73C2C9','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d4 5s1',1.6,207,6.759,0.893,'+5,+3','Solid',2750,5017,8.57,'Transition metal',1801,0,'2,8,18,12,1',5);\""}}
 %---
-%[output:3d3a3f9c]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (42,'Mo','Molybdenum',95.95,'54B5B5','[Kr]5s1 4d5',2.16,209,7.092,0.746,'+6','Solid',2896,4912,10.2,'Transition metal',1778,0,'2,8,18,13,1',5);\""}}
+%[output:7dddcc7e]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (42,'Mo','Molybdenum',95.95,'54B5B5','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d5 5s1',2.16,209,7.092,0.746,'+6','Solid',2896,4912,10.2,'Transition metal',1778,0,'2,8,18,13,1',5);\""}}
 %---
-%[output:7a62baf5]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (43,'Tc','Technetium',96.9064,'3B9E9E','[Kr]5s2 4d5',1.9,209,7.28,0.55,'+7,+6,+4','Solid',2430,4538,11,'Transition metal',1937,0,'2,8,18,13,2',5);\""}}
+%[output:9d33ea8c]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (43,'Tc','Technetium',96.9064,'3B9E9E','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d5 5s2',1.9,209,7.28,0.55,'+7,+6,+4','Solid',2430,4538,11,'Transition metal',1937,0,'2,8,18,13,2',5);\""}}
 %---
-%[output:029c2e30]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (44,'Ru','Ruthenium',101.1,'248F8F','[Kr]5s1 4d7',2.2,207,7.361,1.05,'+3','Solid',2607,4423,12.1,'Transition metal',1827,0,'2,8,18,15,1',5);\""}}
+%[output:6a443b20]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (44,'Ru','Ruthenium',101.1,'248F8F','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d7 5s1',2.2,207,7.361,1.05,'+3','Solid',2607,4423,12.1,'Transition metal',1827,0,'2,8,18,15,1',5);\""}}
 %---
-%[output:24d3e41a]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (45,'Rh','Rhodium',102.9055,'0A7D8C','[Kr]5s1 4d8',2.28,195,7.459,1.137,'+3','Solid',2237,3968,12.4,'Transition metal',1803,0,'2,8,18,16,1',5);\""}}
+%[output:3bc6555f]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (45,'Rh','Rhodium',102.9055,'0A7D8C','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d8 5s1',2.28,195,7.459,1.137,'+3','Solid',2237,3968,12.4,'Transition metal',1803,0,'2,8,18,16,1',5);\""}}
 %---
-%[output:6b3d9741]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (46,'Pd','Palladium',106.42,'6985','[Kr]4d10',2.2,202,8.337,0.557,'+3,+2','Solid',1828.05,3236,12,'Transition metal',1803,0,'2,8,18,18',4);\""}}
+%[output:79336079]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (46,'Pd','Palladium',106.42,'6985','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10',2.2,202,8.337,0.557,'+3,+2','Solid',1828.05,3236,12,'Transition metal',1803,0,'2,8,18,18',4);\""}}
 %---
-%[output:3b327c97]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (47,'Ag','Silver',107.868,'C0C0C0','[Kr]5s1 4d10',1.93,172,7.576,1.302,'+1','Solid',1234.93,2435,10.501,'Transition metal',-1,0,'2,8,18,18,1',5);\""}}
+%[output:619c35b9]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (47,'Ag','Silver',107.868,'C0C0C0','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s1',1.93,172,7.576,1.302,'+1','Solid',1234.93,2435,10.501,'Transition metal',-1,0,'2,8,18,18,1',5);\""}}
 %---
-%[output:1d4515f5]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (48,'Cd','Cadmium',112.41,'FFD98F','[Kr]5s2 4d10',1.69,158,8.994,-1,'+2','Solid',594.22,1040,8.69,'Transition metal',1817,0,'2,8,18,18,2',5);\""}}
+%[output:84e8598f]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (48,'Cd','Cadmium',112.41,'FFD98F','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2',1.69,158,8.994,-1,'+2','Solid',594.22,1040,8.69,'Transition metal',1817,0,'2,8,18,18,2',5);\""}}
 %---
-%[output:3f00d0cc]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (49,'In','Indium',114.818,'A67573','[Kr]5s2 4d10 5p1',1.78,193,5.786,0.3,'+3','Solid',429.75,2345,7.31,'Post-transition metal',1863,0,'2,8,18,18,3',5);\""}}
+%[output:0b5c39ca]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (49,'In','Indium',114.818,'A67573','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p1',1.78,193,5.786,0.3,'+3','Solid',429.75,2345,7.31,'Post-transition metal',1863,0,'2,8,18,18,3',5);\""}}
 %---
-%[output:6a8277ca]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (50,'Sn','Tin',118.71,'668080','[Kr]5s2 4d10 5p2',1.96,217,7.344,1.2,'+4,+2','Solid',505.08,2875,7.287,'Post-transition metal',-1,0,'2,8,18,18,4',5);\""}}
+%[output:64a580c1]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (50,'Sn','Tin',118.71,'668080','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p2',1.96,217,7.344,1.2,'+4,+2','Solid',505.08,2875,7.287,'Post-transition metal',-1,0,'2,8,18,18,4',5);\""}}
 %---
-%[output:7c91cfa3]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (51,'Sb','Antimony',121.76,'9E63B5','[Kr]5s2 4d10 5p3',2.05,206,8.64,1.07,'+5,+3,-3','Solid',903.78,1860,6.685,'Metalloid',-1,0,'2,8,18,18,5',5);\""}}
+%[output:5b46cc7b]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (51,'Sb','Antimony',121.76,'9E63B5','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p3',2.05,206,8.64,1.07,'+5,+3,-3','Solid',903.78,1860,6.685,'Metalloid',-1,0,'2,8,18,18,5',5);\""}}
 %---
-%[output:572345ae]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (52,'Te','Tellurium',127.6,'D47A00','[Kr]5s2 4d10 5p4',2.1,206,9.01,1.971,'+6,+4,-2','Solid',722.66,1261,6.232,'Metalloid',1782,0,'2,8,18,18,6',5);\""}}
+%[output:36f1276c]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (52,'Te','Tellurium',127.6,'D47A00','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p4',2.1,206,9.01,1.971,'+6,+4,-2','Solid',722.66,1261,6.232,'Metalloid',1782,0,'2,8,18,18,6',5);\""}}
 %---
-%[output:7eeb3b7e]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (53,'I','Iodine',126.9045,'940094','[Kr]5s2 4d10 5p5',2.66,198,10.451,3.059,'+7,+5,+1,-1','Solid',386.85,457.55,4.93,'Halogen',1811,0,'2,8,18,18,7',5);\""}}
+%[output:6054a7b2]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (53,'I','Iodine',126.9045,'940094','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p5',2.66,198,10.451,3.059,'+7,+5,+1,-1','Solid',386.85,457.55,4.93,'Halogen',1811,0,'2,8,18,18,7',5);\""}}
 %---
-%[output:1264b9b0]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (54,'Xe','Xenon',131.29,'429EB0','[Kr]5s2 4d10 5p6',2.6,216,12.13,-1,'0','Gas',161.36,165.03,0.005887,'Noble gas',1898,0,'2,8,18,18,8',5);\""}}
+%[output:77570aed]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (54,'Xe','Xenon',131.29,'429EB0','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p6',2.6,216,12.13,-1,'0','Gas',161.36,165.03,0.005887,'Noble gas',1898,0,'2,8,18,18,8',5);\""}}
 %---
-%[output:9097dddb]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (55,'Cs','Cesium',132.9055,'57178F','[Xe]6s1',0.79,343,3.894,0.472,'+1','Solid',301.59,944,1.93,'Alkali metal',1860,0,'2,8,18,18,8,1',6);\""}}
+%[output:2a4121f7]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (55,'Cs','Cesium',132.9055,'57178F','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p6 6s1',0.79,343,3.894,0.472,'+1','Solid',301.59,944,1.93,'Alkali metal',1860,0,'2,8,18,18,8,1',6);\""}}
 %---
-%[output:88af8610]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (56,'Ba','Barium',137.33,'00C900','[Xe]6s2',0.89,268,5.212,-1,'+2','Solid',1000,2170,3.62,'Alkaline earth metal',1808,0,'2,8,18,18,8,2',6);\""}}
+%[output:746917cc]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (56,'Ba','Barium',137.33,'00C900','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p6 6s2',0.89,268,5.212,-1,'+2','Solid',1000,2170,3.62,'Alkaline earth metal',1808,0,'2,8,18,18,8,2',6);\""}}
 %---
-%[output:8ff3ddb0]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (57,'La','Lanthanum',138.9055,'70D4FF','[Xe]6s2 5d1',1.1,240,5.577,0.5,'+3','Solid',1191,3737,6.15,'Lanthanide',1839,0,'2,8,18,18,9,2',6);\""}}
+%[output:8c975864]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (57,'La','Lanthanum',138.9055,'70D4FF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p6 5d1 6s2',1.1,240,5.577,0.5,'+3','Solid',1191,3737,6.15,'Lanthanide',1839,0,'2,8,18,18,9,2',6);\""}}
 %---
-%[output:5e870cbd]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (58,'Ce','Cerium',140.116,'FFFFC7','[Xe]6s2 4f1 5d1',1.12,235,5.539,0.5,'+4,+3','Solid',1071,3697,6.77,'Lanthanide',1803,0,'2,8,18,19,9,2',6);\""}}
+%[output:5b464e7e]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (58,'Ce','Cerium',140.116,'FFFFC7','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f1 5s2 5p6 5d1 6s2',1.12,235,5.539,0.5,'+4,+3','Solid',1071,3697,6.77,'Lanthanide',1803,0,'2,8,18,19,9,2',6);\""}}
 %---
-%[output:0d666aaf]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (59,'Pr','Praseodymium',140.9077,'D9FFC7','[Xe]6s2 4f3',1.13,239,5.464,-1,'+3','Solid',1204,3793,6.77,'Lanthanide',1885,0,'2,8,18,21,8,2',6);\""}}
+%[output:95db32b8]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (59,'Pr','Praseodymium',140.9077,'D9FFC7','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f3 5s2 5p6 6s2',1.13,239,5.464,-1,'+3','Solid',1204,3793,6.77,'Lanthanide',1885,0,'2,8,18,21,8,2',6);\""}}
 %---
-%[output:99d3fa73]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (60,'Nd','Neodymium',144.24,'C7FFC7','[Xe]6s2 4f4',1.14,229,5.525,-1,'+3','Solid',1294,3347,7.01,'Lanthanide',1885,0,'2,8,18,22,8,2',6);\""}}
+%[output:446c3abf]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (60,'Nd','Neodymium',144.24,'C7FFC7','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f4 5s2 5p6 6s2',1.14,229,5.525,-1,'+3','Solid',1294,3347,7.01,'Lanthanide',1885,0,'2,8,18,22,8,2',6);\""}}
 %---
-%[output:73552a62]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (61,'Pm','Promethium',144.9128,'A3FFC7','[Xe]6s2 4f5',-1,236,5.55,-1,'+3','Solid',1315,3273,7.26,'Lanthanide',1945,0,'2,8,18,23,8,2',6);\""}}
+%[output:31c40090]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (61,'Pm','Promethium',144.9128,'A3FFC7','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f5 5s2 5p6 6s2',-1,236,5.55,-1,'+3','Solid',1315,3273,7.26,'Lanthanide',1945,0,'2,8,18,23,8,2',6);\""}}
 %---
-%[output:60c53d13]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (62,'Sm','Samarium',150.4,'8FFFC7','[Xe]6s2 4f6',1.17,229,5.644,-1,'+3,+2','Solid',1347,2067,7.52,'Lanthanide',1879,0,'2,8,18,24,8,2',6);\""}}
+%[output:599c8750]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (62,'Sm','Samarium',150.4,'8FFFC7','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f6 5s2 5p6 6s2',1.17,229,5.644,-1,'+3,+2','Solid',1347,2067,7.52,'Lanthanide',1879,0,'2,8,18,24,8,2',6);\""}}
 %---
-%[output:42a40cb0]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (63,'Eu','Europium',151.964,'61FFC7','[Xe]6s2 4f7',-1,233,5.67,-1,'+3,+2','Solid',1095,1802,5.24,'Lanthanide',1901,0,'2,8,18,25,8,2',6);\""}}
+%[output:63f05aab]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (63,'Eu','Europium',151.964,'61FFC7','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f7 5s2 5p6 6s2',-1,233,5.67,-1,'+3,+2','Solid',1095,1802,5.24,'Lanthanide',1901,0,'2,8,18,25,8,2',6);\""}}
 %---
-%[output:2c0a88f2]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (64,'Gd','Gadolinium',157.25,'45FFC7','[Xe]6s2 4f7 5d1',1.2,237,6.15,-1,'+3','Solid',1586,3546,7.9,'Lanthanide',1880,0,'2,8,18,25,9,2',6);\""}}
+%[output:2c0c2fc3]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (64,'Gd','Gadolinium',157.25,'45FFC7','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f7 5s2 5p6 5d1 6s2',1.2,237,6.15,-1,'+3','Solid',1586,3546,7.9,'Lanthanide',1880,0,'2,8,18,25,9,2',6);\""}}
 %---
-%[output:96677fc2]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (65,'Tb','Terbium',158.9254,'30FFC7','[Xe]6s2 4f9',-1,221,5.864,-1,'+3','Solid',1629,3503,8.23,'Lanthanide',1843,0,'2,8,18,27,8,2',6);\""}}
+%[output:6306af6b]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (65,'Tb','Terbium',158.9254,'30FFC7','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f9 5s2 5p6 6s2',-1,221,5.864,-1,'+3','Solid',1629,3503,8.23,'Lanthanide',1843,0,'2,8,18,27,8,2',6);\""}}
 %---
-%[output:5956ec42]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (66,'Dy','Dysprosium',162.5,'1FFFC7','[Xe]6s2 4f10',1.22,229,5.939,-1,'+3','Solid',1685,2840,8.55,'Lanthanide',1886,0,'2,8,18,28,8,2',6);\""}}
+%[output:0de400ff]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (66,'Dy','Dysprosium',162.5,'1FFFC7','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f10 5s2 5p6 6s2',1.22,229,5.939,-1,'+3','Solid',1685,2840,8.55,'Lanthanide',1886,0,'2,8,18,28,8,2',6);\""}}
 %---
-%[output:0617d78d]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (67,'Ho','Holmium',164.9303,'00FF9C','[Xe]6s2 4f11',1.23,216,6.022,-1,'+3','Solid',1747,2973,8.8,'Lanthanide',1878,0,'2,8,18,29,8,2',6);\""}}
+%[output:5b54ebd9]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (67,'Ho','Holmium',164.9303,'00FF9C','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f11 5s2 5p6 6s2',1.23,216,6.022,-1,'+3','Solid',1747,2973,8.8,'Lanthanide',1878,0,'2,8,18,29,8,2',6);\""}}
 %---
-%[output:600670e5]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (68,'Er','Erbium',167.26,'','[Xe]6s2 4f12',1.24,235,6.108,-1,'+3','Solid',1802,3141,9.07,'Lanthanide',1843,0,'2,8,18,30,8,2',6);\""}}
+%[output:985917d9]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (68,'Er','Erbium',167.26,'','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f12 5s2 5p6 6s2',1.24,235,6.108,-1,'+3','Solid',1802,3141,9.07,'Lanthanide',1843,0,'2,8,18,30,8,2',6);\""}}
 %---
-%[output:6db68d48]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (69,'Tm','Thulium',168.9342,'00D452','[Xe]6s2 4f13',1.25,227,6.184,-1,'+3','Solid',1818,2223,9.32,'Lanthanide',1879,0,'2,8,18,31,8,2',6);\""}}
+%[output:71e49a19]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (69,'Tm','Thulium',168.9342,'00D452','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f13 5s2 5p6 6s2',1.25,227,6.184,-1,'+3','Solid',1818,2223,9.32,'Lanthanide',1879,0,'2,8,18,31,8,2',6);\""}}
 %---
-%[output:99c743c9]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (70,'Yb','Ytterbium',173.05,'00BF38','[Xe]6s2 4f14',-1,242,6.254,-1,'+3,+2','Solid',1092,1469,6.9,'Lanthanide',1878,0,'2,8,18,32,8,2',6);\""}}
+%[output:515e9081]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (70,'Yb','Ytterbium',173.05,'00BF38','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 6s2',-1,242,6.254,-1,'+3,+2','Solid',1092,1469,6.9,'Lanthanide',1878,0,'2,8,18,32,8,2',6);\""}}
 %---
-%[output:4162014c]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (71,'Lu','Lutetium',174.9667,'00AB24','[Xe]6s2 4f14 5d1',1.27,221,5.426,-1,'+3','Solid',1936,3675,9.84,'Lanthanide',1907,0,'2,8,18,32,9,2',6);\""}}
+%[output:552384c7]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (71,'Lu','Lutetium',174.9667,'00AB24','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d1 6s2',1.27,221,5.426,-1,'+3','Solid',1936,3675,9.84,'Lanthanide',1907,0,'2,8,18,32,9,2',6);\""}}
 %---
-%[output:7c1e2a44]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (72,'Hf','Hafnium',178.49,'4DC2FF','[Xe]6s2 4f14 5d2',1.3,212,6.825,-1,'+4','Solid',2506,4876,13.3,'Transition metal',1923,0,'2,8,18,32,10,2',6);\""}}
+%[output:52ef4ae3]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (72,'Hf','Hafnium',178.49,'4DC2FF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d2 6s2',1.3,212,6.825,-1,'+4','Solid',2506,4876,13.3,'Transition metal',1923,0,'2,8,18,32,10,2',6);\""}}
 %---
-%[output:28722beb]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (73,'Ta','Tantalum',180.9479,'4DA6FF','[Xe]6s2 4f14 5d3',1.5,217,7.89,0.322,'+5','Solid',3290,5731,16.4,'Transition metal',1802,0,'2,8,18,32,11,2',6);\""}}
+%[output:6e2a0fb3]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (73,'Ta','Tantalum',180.9479,'4DA6FF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d3 6s2',1.5,217,7.89,0.322,'+5','Solid',3290,5731,16.4,'Transition metal',1802,0,'2,8,18,32,11,2',6);\""}}
 %---
-%[output:44e335b1]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (74,'W','Tungsten',183.84,'2194D6','[Xe]6s2 4f14 5d4',2.36,210,7.98,0.815,'+6','Solid',3695,5828,19.3,'Transition metal',1783,0,'2,8,18,32,12,2',6);\""}}
+%[output:4cfbd344]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (74,'W','Tungsten',183.84,'2194D6','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d4 6s2',2.36,210,7.98,0.815,'+6','Solid',3695,5828,19.3,'Transition metal',1783,0,'2,8,18,32,12,2',6);\""}}
 %---
-%[output:55904462]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (75,'Re','Rhenium',186.207,'267DAB','[Xe]6s2 4f14 5d5',1.9,217,7.88,0.15,'+7,+6,+4','Solid',3459,5869,20.8,'Transition metal',1925,0,'2,8,18,32,13,2',6);\""}}
+%[output:7f825bb1]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (75,'Re','Rhenium',186.207,'267DAB','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d5 6s2',1.9,217,7.88,0.15,'+7,+6,+4','Solid',3459,5869,20.8,'Transition metal',1925,0,'2,8,18,32,13,2',6);\""}}
 %---
-%[output:83612d9c]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (76,'Os','Osmium',190.2,'266696','[Xe]6s2 4f14 5d6',2.2,216,8.7,1.1,'+4,+3','Solid',3306,5285,22.57,'Transition metal',1803,0,'2,8,18,32,14,2',6);\""}}
+%[output:3c808978]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (76,'Os','Osmium',190.2,'266696','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d6 6s2',2.2,216,8.7,1.1,'+4,+3','Solid',3306,5285,22.57,'Transition metal',1803,0,'2,8,18,32,14,2',6);\""}}
 %---
-%[output:8e40b096]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (77,'Ir','Iridium',192.22,'175487','[Xe]6s2 4f14 5d7',2.2,202,9.1,1.565,'+4,+3','Solid',2719,4701,22.42,'Transition metal',1803,0,'2,8,18,32,15,2',6);\""}}
+%[output:2033eb4e]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (77,'Ir','Iridium',192.22,'175487','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d7 6s2',2.2,202,9.1,1.565,'+4,+3','Solid',2719,4701,22.42,'Transition metal',1803,0,'2,8,18,32,15,2',6);\""}}
 %---
-%[output:44e7ac53]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (78,'Pt','Platinum',195.08,'D0D0E0','[Xe]6s1 4f14 5d9',2.28,209,9,2.128,'+4,+2','Solid',2041.55,4098,21.46,'Transition metal',1735,0,'2,8,18,32,17,1',6);\""}}
+%[output:6bd1672e]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (78,'Pt','Platinum',195.08,'D0D0E0','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d9 6s1',2.28,209,9,2.128,'+4,+2','Solid',2041.55,4098,21.46,'Transition metal',1735,0,'2,8,18,32,17,1',6);\""}}
 %---
-%[output:7060646f]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (79,'Au','Gold',196.9666,'FFD123','[Xe]6s1 4f14 5d10',2.54,166,9.226,2.309,'+3,+1','Solid',1337.33,3129,19.282,'Transition metal',-1,0,'2,8,18,32,18,1',6);\""}}
+%[output:295a6b8c]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (79,'Au','Gold',196.9666,'FFD123','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s1',2.54,166,9.226,2.309,'+3,+1','Solid',1337.33,3129,19.282,'Transition metal',-1,0,'2,8,18,32,18,1',6);\""}}
 %---
-%[output:1a30318e]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (80,'Hg','Mercury',200.59,'B8B8D0','[Xe]6s2 4f14 5d10',2,209,10.438,-1,'+2,+1','Liquid',234.32,629.88,13.5336,'Transition metal',-1,0,'2,8,18,32,18,2',6);\""}}
+%[output:6faa355e]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (80,'Hg','Mercury',200.59,'B8B8D0','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2',2,209,10.438,-1,'+2,+1','Liquid',234.32,629.88,13.5336,'Transition metal',-1,0,'2,8,18,32,18,2',6);\""}}
 %---
-%[output:598542dd]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (81,'Tl','Thallium',204.383,'A6544D','[Xe]6s2 4f14 5d10 6p1',1.62,196,6.108,0.2,'+3,+1','Solid',577,1746,11.8,'Post-transition metal',1861,0,'2,8,18,32,18,3',6);\""}}
+%[output:329b2615]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (81,'Tl','Thallium',204.383,'A6544D','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p1',1.62,196,6.108,0.2,'+3,+1','Solid',577,1746,11.8,'Post-transition metal',1861,0,'2,8,18,32,18,3',6);\""}}
 %---
-%[output:44f1a28a]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (82,'Pb','Lead',207,'575961','[Xe]6s2 4f14 5d10 6p2',2.33,202,7.417,0.36,'+4,+2','Solid',600.61,2022,11.342,'Post-transition metal',-1,0,'2,8,18,32,18,4',6);\""}}
+%[output:6f5787c0]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (82,'Pb','Lead',207,'575961','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p2',2.33,202,7.417,0.36,'+4,+2','Solid',600.61,2022,11.342,'Post-transition metal',-1,0,'2,8,18,32,18,4',6);\""}}
 %---
-%[output:0891e3b1]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (83,'Bi','Bismuth',208.9804,'9E4FB5','[Xe]6s2 4f14 5d10 6p3',2.02,207,7.289,0.946,'+5,+3','Solid',544.55,1837,9.807,'Post-transition metal',1753,0,'2,8,18,32,18,5',6);\""}}
+%[output:9156dc39]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (83,'Bi','Bismuth',208.9804,'9E4FB5','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p3',2.02,207,7.289,0.946,'+5,+3','Solid',544.55,1837,9.807,'Post-transition metal',1753,0,'2,8,18,32,18,5',6);\""}}
 %---
-%[output:58942af3]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (84,'Po','Polonium',208.9824,'AB5C00','[Xe]6s2 4f14 5d10 6p4',2,197,8.417,1.9,'+4,+2','Solid',527,1235,9.32,'Metalloid',1898,0,'2,8,18,32,18,6',6);\""}}
+%[output:65bde374]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (84,'Po','Polonium',208.9824,'AB5C00','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p4',2,197,8.417,1.9,'+4,+2','Solid',527,1235,9.32,'Metalloid',1898,0,'2,8,18,32,18,6',6);\""}}
 %---
-%[output:49b50d0c]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (85,'At','Astatine',209.9872,'754F45','[Xe]6s2 4f14 5d10 6p5',2.2,202,9.5,2.8,'7,5,3,1,-1','Solid',575,-1,7,'Halogen',1940,0,'2,8,18,32,18,7',6);\""}}
+%[output:1ab149d1]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (85,'At','Astatine',209.9872,'754F45','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p5',2.2,202,9.5,2.8,'7,5,3,1,-1','Solid',575,-1,7,'Halogen',1940,0,'2,8,18,32,18,7',6);\""}}
 %---
-%[output:6f7a911d]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (86,'Rn','Radon',222.0176,'428296','[Xe]6s2 4f14 5d10 6p6',-1,220,10.745,-1,'0','Gas',202,211.45,0.00973,'Noble gas',1900,0,'2,8,18,32,18,8',6);\""}}
+%[output:1e60ae7c]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (86,'Rn','Radon',222.0176,'428296','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p6',-1,220,10.745,-1,'0','Gas',202,211.45,0.00973,'Noble gas',1900,0,'2,8,18,32,18,8',6);\""}}
 %---
-%[output:08515fae]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (87,'Fr','Francium',223.0197,'420066','[Rn]7s1',0.7,348,3.9,0.47,'+1','Solid',300,-1,-1,'Alkali metal',1939,0,'2,8,18,32,18,8,1',7);\""}}
+%[output:44929270]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (87,'Fr','Francium',223.0197,'420066','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p6 7s1',0.7,348,3.9,0.47,'+1','Solid',300,-1,-1,'Alkali metal',1939,0,'2,8,18,32,18,8,1',7);\""}}
 %---
-%[output:98886fa6]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (88,'Ra','Radium',226.0254,'007D00','[Rn]7s2',0.9,283,5.279,-1,'+2','Solid',973,1413,5,'Alkaline earth metal',1898,0,'2,8,18,32,18,8,2',7);\""}}
+%[output:71f0fcc8]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (88,'Ra','Radium',226.0254,'007D00','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p6 7s2',0.9,283,5.279,-1,'+2','Solid',973,1413,5,'Alkaline earth metal',1898,0,'2,8,18,32,18,8,2',7);\""}}
 %---
-%[output:8eb310d5]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (89,'Ac','Actinium',227.0277,'70ABFA','[Rn]7s2 6d1',1.1,260,5.17,-1,'+3','Solid',1324,3471,10.07,'Actinide',1899,0,'2,8,18,32,18,9,2',7);\""}}
+%[output:0ef6dbc1]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (89,'Ac','Actinium',227.0277,'70ABFA','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p6 6d1 7s2',1.1,260,5.17,-1,'+3','Solid',1324,3471,10.07,'Actinide',1899,0,'2,8,18,32,18,9,2',7);\""}}
 %---
-%[output:20f07cb4]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (90,'Th','Thorium',232.038,'00BAFF','[Rn]7s2 6d2',1.3,237,6.08,-1,'+4','Solid',2023,5061,11.72,'Actinide',1828,0,'2,8,18,32,18,10,2',7);\""}}
+%[output:4b85fb87]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (90,'Th','Thorium',232.038,'00BAFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 6s2 6p6 6d2 7s2',1.3,237,6.08,-1,'+4','Solid',2023,5061,11.72,'Actinide',1828,0,'2,8,18,32,18,10,2',7);\""}}
 %---
-%[output:4ac4efdd]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (91,'Pa','Protactinium',231.0359,'00A1FF','[Rn]7s2 5f2 6d1',1.5,243,5.89,-1,'+5,+4','Solid',1845,-1,15.37,'Actinide',1913,0,'2,8,18,32,20,9,2',7);\""}}
+%[output:177e8985]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (91,'Pa','Protactinium',231.0359,'00A1FF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f2 6s2 6p6 6d1 7s2',1.5,243,5.89,-1,'+5,+4','Solid',1845,-1,15.37,'Actinide',1913,0,'2,8,18,32,20,9,2',7);\""}}
 %---
-%[output:93dcb970]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (92,'U','Uranium',238.0289,'008FFF','[Rn]7s2 5f3 6d1',1.38,240,6.194,-1,'+6,+5,+4,+3','Solid',1408,4404,18.95,'Actinide',1789,0,'2,8,18,32,21,9,2',7);\""}}
+%[output:8bf1afb3]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (92,'U','Uranium',238.0289,'008FFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f3 6s2 6p6 6d1 7s2',1.38,240,6.194,-1,'+6,+5,+4,+3','Solid',1408,4404,18.95,'Actinide',1789,0,'2,8,18,32,21,9,2',7);\""}}
 %---
-%[output:556dd372]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (93,'Np','Neptunium',237.0482,'0080FF','[Rn]7s2 5f4 6d1',1.36,221,6.266,-1,'+6,+5,+4,+3','Solid',917,4175,20.25,'Actinide',1940,0,'2,8,18,32,22,9,2',7);\""}}
+%[output:8109daa8]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (93,'Np','Neptunium',237.0482,'0080FF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f4 6s2 6p6 6d1 7s2',1.36,221,6.266,-1,'+6,+5,+4,+3','Solid',917,4175,20.25,'Actinide',1940,0,'2,8,18,32,22,9,2',7);\""}}
 %---
-%[output:01ae1940]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (94,'Pu','Plutonium',244.0642,'006BFF','[Rn]7s2 5f6',1.28,243,6.06,-1,'+6,+5,+4,+3','Solid',913,3501,19.84,'Actinide',1940,0,'2,8,18,32,24,8,2',7);\""}}
+%[output:9b353ce7]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (94,'Pu','Plutonium',244.0642,'006BFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f6 6s2 6p6 7s2',1.28,243,6.06,-1,'+6,+5,+4,+3','Solid',913,3501,19.84,'Actinide',1940,0,'2,8,18,32,24,8,2',7);\""}}
 %---
-%[output:4f1d5075]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (95,'Am','Americium',243.0614,'545CF2','[Rn]7s2 5f7',1.3,244,5.993,-1,'+6,+5,+4,+3','Solid',1449,2284,13.69,'Actinide',1944,0,'2,8,18,32,25,8,2',7);\""}}
+%[output:31f5b0c9]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (95,'Am','Americium',243.0614,'545CF2','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f7 6s2 6p6 7s2',1.3,244,5.993,-1,'+6,+5,+4,+3','Solid',1449,2284,13.69,'Actinide',1944,0,'2,8,18,32,25,8,2',7);\""}}
 %---
-%[output:4264d076]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (96,'Cm','Curium',247.0703,'785CE3','[Rn]7s2 5f7 6d1',1.3,245,6.02,-1,'+3','Solid',1618,3400,13.51,'Actinide',1944,0,'2,8,18,32,25,9,2',7);\""}}
+%[output:7c5cbda0]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (96,'Cm','Curium',247.0703,'785CE3','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f7 6s2 6p6 6d1 7s2',1.3,245,6.02,-1,'+3','Solid',1618,3400,13.51,'Actinide',1944,0,'2,8,18,32,25,9,2',7);\""}}
 %---
-%[output:6990fb80]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (97,'Bk','Berkelium',247.0703,'8A4FE3','[Rn]7s2 5f9',1.3,244,6.23,-1,'+4,+3','Solid',1323,-1,14,'Actinide',1949,0,'2,8,18,32,27,8,2',7);\""}}
+%[output:6c8f5cee]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (97,'Bk','Berkelium',247.0703,'8A4FE3','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f9 6s2 6p6 7s2',1.3,244,6.23,-1,'+4,+3','Solid',1323,-1,14,'Actinide',1949,0,'2,8,18,32,27,8,2',7);\""}}
 %---
-%[output:6ae6f9c4]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (98,'Cf','Californium',251.0796,'A136D4','[Rn]7s2 5f10',1.3,245,6.3,-1,'+3','Solid',1173,-1,-1,'Actinide',1950,0,'2,8,18,32,28,8,2',7);\""}}
+%[output:7862cd6f]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (98,'Cf','Californium',251.0796,'A136D4','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f10 6s2 6p6 7s2',1.3,245,6.3,-1,'+3','Solid',1173,-1,-1,'Actinide',1950,0,'2,8,18,32,28,8,2',7);\""}}
 %---
-%[output:7898b937]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (99,'Es','Einsteinium',252.083,'B31FD4','[Rn]7s2 5f11',1.3,245,6.42,-1,'+3','Solid',1133,-1,-1,'Actinide',1952,0,'2,8,18,32,29,8,2',7);\""}}
+%[output:8147413e]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (99,'Es','Einsteinium',252.083,'B31FD4','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f11 6s2 6p6 7s2',1.3,245,6.42,-1,'+3','Solid',1133,-1,-1,'Actinide',1952,0,'2,8,18,32,29,8,2',7);\""}}
 %---
-%[output:030ec1c7]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (100,'Fm','Fermium',257.0951,'B31FBA','[Rn] 5f12 7s2',1.3,-1,6.5,-1,'+3','Solid',1800,-1,-1,'Actinide',1952,0,'2,8,18,32,30,8,2',7);\""}}
+%[output:4035b42d]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (100,'Fm','Fermium',257.0951,'B31FBA','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f12 6s2 6p6 7s2',1.3,-1,6.5,-1,'+3','Solid',1800,-1,-1,'Actinide',1952,0,'2,8,18,32,30,8,2',7);\""}}
 %---
-%[output:77bd92c6]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (101,'Md','Mendelevium',258.0984,'B30DA6','[Rn]7s2 5f13',1.3,-1,6.58,-1,'+3,+2','Solid',1100,-1,-1,'Actinide',1955,0,'2,8,18,32,31,8,2',7);\""}}
+%[output:92094023]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (101,'Md','Mendelevium',258.0984,'B30DA6','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f13 6s2 6p6 7s2',1.3,-1,6.58,-1,'+3,+2','Solid',1100,-1,-1,'Actinide',1955,0,'2,8,18,32,31,8,2',7);\""}}
 %---
-%[output:455749e5]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (102,'No','Nobelium',259.101,'BD0D87','[Rn]7s2 5f14',1.3,-1,6.65,-1,'+3,+2','Solid',1100,-1,-1,'Actinide',1957,0,'2,8,18,32,32,8,2',7);\""}}
+%[output:192a6a38]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (102,'No','Nobelium',259.101,'BD0D87','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 7s2',1.3,-1,6.65,-1,'+3,+2','Solid',1100,-1,-1,'Actinide',1957,0,'2,8,18,32,32,8,2',7);\""}}
 %---
-%[output:59d24a16]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (103,'Lr','Lawrencium',266.12,'C70066','[Rn]7s2 5f14 6d1',1.3,-1,-1,-1,'+3','Solid',1900,-1,-1,'Actinide',1961,0,'2,8,18,32,32,9,2',7);\""}}
+%[output:035d281e]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (103,'Lr','Lawrencium',266.12,'C70066','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d1 7s2',1.3,-1,-1,-1,'+3','Solid',1900,-1,-1,'Actinide',1961,0,'2,8,18,32,32,9,2',7);\""}}
 %---
-%[output:73f8d1ab]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (104,'Rf','Rutherfordium',267.122,'CC0059','[Rn]7s2 5f14 6d2',-1,-1,-1,-1,'+4','Solid',-1,-1,-1,'Transition metal',1964,0,'2,8,18,32,32,10,2',7);\""}}
+%[output:76ed4284]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (104,'Rf','Rutherfordium',267.122,'CC0059','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d2 7s2',-1,-1,-1,-1,'+4','Solid',-1,-1,-1,'Transition metal',1964,0,'2,8,18,32,32,10,2',7);\""}}
 %---
-%[output:2b6d2d13]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (105,'Db','Dubnium',268.126,'D1004F','[Rn]7s2 5f14 6d3',-1,-1,-1,-1,'+5,+4,+3','Solid',-1,-1,-1,'Transition metal',1967,0,'2,8,18,32,32,11,2',7);\""}}
+%[output:1a3dbda8]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (105,'Db','Dubnium',268.126,'D1004F','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d3 7s2',-1,-1,-1,-1,'+5,+4,+3','Solid',-1,-1,-1,'Transition metal',1967,0,'2,8,18,32,32,11,2',7);\""}}
 %---
-%[output:4cd8fb2c]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (106,'Sg','Seaborgium',269.128,'D90045','[Rn]7s2 5f14 6d4',-1,-1,-1,-1,'+6,+5,+4,+3,0','Solid',-1,-1,-1,'Transition metal',1974,0,'2,8,18,32,32,12,2',7);\""}}
+%[output:471d4537]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (106,'Sg','Seaborgium',269.128,'D90045','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d4 7s2',-1,-1,-1,-1,'+6,+5,+4,+3,0','Solid',-1,-1,-1,'Transition metal',1974,0,'2,8,18,32,32,12,2',7);\""}}
 %---
-%[output:26afac6a]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (107,'Bh','Bohrium',270.133,'E00038','[Rn]7s2 5f14 6d5',-1,-1,-1,-1,'+7,+5,+4,+3','Solid',-1,-1,-1,'Transition metal',1976,0,'2,8,18,32,32,13,2',7);\""}}
+%[output:05faaa62]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (107,'Bh','Bohrium',270.133,'E00038','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d5 7s2',-1,-1,-1,-1,'+7,+5,+4,+3','Solid',-1,-1,-1,'Transition metal',1976,0,'2,8,18,32,32,13,2',7);\""}}
 %---
-%[output:5c7754e2]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (108,'Hs','Hassium',269.1336,'E6002E','[Rn]7s2 5f14 6d6',-1,-1,-1,-1,'+8,+6,+5,+4,+3,+2','Solid',-1,-1,-1,'Transition metal',1984,0,'2,8,18,32,32,14,2',7);\""}}
+%[output:58a8c82a]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (108,'Hs','Hassium',269.1336,'E6002E','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d6 7s2',-1,-1,-1,-1,'+8,+6,+5,+4,+3,+2','Solid',-1,-1,-1,'Transition metal',1984,0,'2,8,18,32,32,14,2',7);\""}}
 %---
-%[output:3883f069]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (109,'Mt','Meitnerium',277.154,'EB0026','[Rn]7s2 5f14 6d7 ',-1,-1,-1,-1,'+9,+8,+6,+4,+3,+1','Solid',-1,-1,-1,'Transition metal',1982,1,'2,8,18,32,32,15,2',7);\""}}
+%[output:8855f4ab]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (109,'Mt','Meitnerium',277.154,'EB0026','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d7 7s2',-1,-1,-1,-1,'+9,+8,+6,+4,+3,+1','Solid',-1,-1,-1,'Transition metal',1982,1,'2,8,18,32,32,15,2',7);\""}}
 %---
-%[output:943a5924]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (110,'Ds','Darmstadtium',282.166,'FFFFFF','[Rn]7s2 5f14 6d8',-1,-1,-1,-1,'+8,+6,+4,+2,0','Solid',-1,-1,-1,'Transition metal',1994,1,'2,8,18,32,32,16,2',7);\""}}
+%[output:042f9b73]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (110,'Ds','Darmstadtium',282.166,'FFFFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d8 7s2',-1,-1,-1,-1,'+8,+6,+4,+2,0','Solid',-1,-1,-1,'Transition metal',1994,1,'2,8,18,32,32,16,2',7);\""}}
 %---
-%[output:9ba15938]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (111,'Rg','Roentgenium',282.169,'FFFFFF','[Rn]7s2 5f14 6d9',-1,-1,-1,-1,'+5,+3,+1,-1','Solid',-1,-1,-1,'Transition metal',1994,1,'2,8,18,32,32,17,2',7);\""}}
+%[output:70f6143f]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (111,'Rg','Roentgenium',282.169,'FFFFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d9 7s2',-1,-1,-1,-1,'+5,+3,+1,-1','Solid',-1,-1,-1,'Transition metal',1994,1,'2,8,18,32,32,17,2',7);\""}}
 %---
-%[output:9b1551fa]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (112,'Cn','Copernicium',286.179,'FFFFFF','[Rn]7s2 5f14 6d10',-1,-1,-1,-1,'+2,+1,0','Solid',-1,-1,-1,'Transition metal',1996,1,'2,8,18,32,32,18,2',7);\""}}
+%[output:4a90cf67]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (112,'Cn','Copernicium',286.179,'FFFFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d10 7s2',-1,-1,-1,-1,'+2,+1,0','Solid',-1,-1,-1,'Transition metal',1996,1,'2,8,18,32,32,18,2',7);\""}}
 %---
-%[output:3234ab82]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (113,'Nh','Nihonium',286.182,'FFFFFF','[Rn]5f14 6d10 7s2 7p1',-1,-1,-1,-1,'','Solid',-1,-1,-1,'Post-transition metal',2004,1,'2,8,18,32,32,18,3',7);\""}}
+%[output:2a35cba9]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (113,'Nh','Nihonium',286.182,'FFFFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d10 7s2 7p1',-1,-1,-1,-1,'','Solid',-1,-1,-1,'Post-transition metal',2004,1,'2,8,18,32,32,18,3',7);\""}}
 %---
-%[output:41dc3032]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (114,'Fl','Flerovium',290.192,'FFFFFF','[Rn]7s2 7p2 5f14 6d10',-1,-1,-1,-1,'+6,+4,+2,+1,0','Solid',-1,-1,-1,'Post-transition metal',1998,1,'2,8,18,32,32,18,4',7);\""}}
+%[output:083bc20f]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (114,'Fl','Flerovium',290.192,'FFFFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d10 7s2 7p2',-1,-1,-1,-1,'+6,+4,+2,+1,0','Solid',-1,-1,-1,'Post-transition metal',1998,1,'2,8,18,32,32,18,4',7);\""}}
 %---
-%[output:4a0ae77e]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (115,'Mc','Moscovium',290.196,'FFFFFF','[Rn]7s2 7p3 5f14 6d10',-1,-1,-1,-1,'+3,+1','Solid',-1,-1,-1,'Post-transition metal',2003,1,'2,8,18,32,32,18,5',7);\""}}
+%[output:680b0617]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (115,'Mc','Moscovium',290.196,'FFFFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d10 7s2 7p3',-1,-1,-1,-1,'+3,+1','Solid',-1,-1,-1,'Post-transition metal',2003,1,'2,8,18,32,32,18,5',7);\""}}
 %---
-%[output:8c33cc4f]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (116,'Lv','Livermorium',293.205,'FFFFFF','[Rn]7s2 7p4 5f14 6d10',-1,-1,-1,-1,'+4,+2,-2','Solid',-1,-1,-1,'Post-transition metal',2000,1,'2,8,18,32,32,18,6',7);\""}}
+%[output:157d258a]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (116,'Lv','Livermorium',293.205,'FFFFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d10 7s2 7p4',-1,-1,-1,-1,'+4,+2,-2','Solid',-1,-1,-1,'Post-transition metal',2000,1,'2,8,18,32,32,18,6',7);\""}}
 %---
-%[output:1702e50f]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (117,'Ts','Tennessine',294.211,'FFFFFF','[Rn]7s2 7p5 5f14 6d10',-1,-1,-1,-1,'+5,+3,+1,-1','Solid',-1,-1,-1,'Halogen',2010,1,'2,8,18,32,32,18,7',7);\""}}
+%[output:36d3a6f6]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (117,'Ts','Tennessine',294.211,'FFFFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d10 7s2 7p5',-1,-1,-1,-1,'+5,+3,+1,-1','Solid',-1,-1,-1,'Halogen',2010,1,'2,8,18,32,32,18,7',7);\""}}
 %---
-%[output:10671bbf]
-%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (118,'Og','Oganesson',295.216,'FFFFFF','[Rn]7s2 7p6 5f14 6d10',-1,-1,-1,-1,'+6,+4,+2,+1,0,-1','Gas',-1,-1,-1,'Noble gas',2006,1,'2,8,18,32,32,18,8',7);\""}}
+%[output:2d04bfb2]
+%   data: {"dataType":"textualVariable","outputData":{"name":"query","value":"\"INSERT INTO Elements VALUES (118,'Og','Oganesson',295.216,'FFFFFF','1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d10 5f14 6s2 6p6 6d10 7s2 7p6',-1,-1,-1,-1,'+6,+4,+2,+1,0,-1','Gas',-1,-1,-1,'Noble gas',2006,1,'2,8,18,32,32,18,8',7);\""}}
 %---
